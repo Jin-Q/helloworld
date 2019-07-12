@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<CusTrusteeInfo.xml>
+	<TableModel id="CusTrusteeInfo" cnname="委托托管信息表" dbTableName="cus_trustee_info">
+		<TableInfo/>
+		<Field id="serno" isPK="true" columnName="serno" cnname="业务编号" length="40" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="consignor_type" columnName="consignor_type" cnname="委托类别" length="4" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="is_provid_accredit" columnName="is_provid_accredit" cnname="是否提供书面授权书" length="4" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="consignor_id" columnName="consignor_id" cnname="委托人" length="20" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="consignor_br_id" columnName="consignor_br_id" cnname="委托机构" length="20" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="trustee_id" columnName="trustee_id" cnname="托管人" length="20" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="trustee_br_id" columnName="trustee_br_id" cnname="托管机构" length="20" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="trustee_detail" columnName="trustee_detail" cnname="托管详情" length="250" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="trustee_date" columnName="trustee_date" cnname="托管日期" length="10" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="retract_date" columnName="retract_date" cnname="收回日期" length="10" JSPTag="text" canBeNull="true" JDBCType="CHAR"/>
+		<Field id="supervise_date" columnName="supervise_date" cnname="审批日期" length="10" JSPTag="text" canBeNull="true" JDBCType="CHAR"/>
+		<Field id="trustee_status" columnName="trustee_status" cnname="托管状态" length="1" JSPTag="text" canBeNull="true" JDBCType="CHAR"/>
+		<Field id="input_id" columnName="input_id" cnname="登记人" length="20" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="input_br_id" columnName="input_br_id" cnname="登记机构" length="20" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="input_date" columnName="input_date" cnname="登记日期" length="10" JSPTag="text" canBeNull="false" JDBCType="CHAR"/>
+		<OrderFields>serno[desc];</OrderFields>
+	</TableModel>
+</CusTrusteeInfo.xml>

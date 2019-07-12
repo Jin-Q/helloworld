@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actionDefines>
+	<classMap>
+		<map id="action" class="com.yucheng.cmis.ad.mvc.ADRequestController"/>
+		<map id="flowInvoker" class="com.yucheng.cmis.ad.mvc.ADFlowInvoker"/>
+		<map id="outputViews" class="java.util.HashMap"/>
+		<map id="output" class="com.ecc.emp.data.KeyedCollection"/>
+		<map id="kColl" class="com.ecc.emp.data.KeyedCollection"/>
+		<map id="iColl" class="com.ecc.emp.data.IndexedCollection"/>
+		<map id="field" class="com.ecc.emp.data.DataField"/>
+	</classMap>
+	<!-- 表格数据获取，带Footer-->
+	<action id="getRscTaskInfoHisData" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.psp.op.rectask.QueryRscTaskInfoHisListOp"  />
+		    <transition dest="queryListRes"/>
+		</flowInvoker>
+		<outputViews>
+			<jsonView class="com.yucheng.cmis.view.JSONView" id="queryListRes">
+				<output>
+					<iColl id="RscTaskInfoList">
+						<kColl>
+						</kColl>
+					</iColl>
+					<kColl id="pageInfo">
+						<field id="currentPage" />
+						<field id="maxLine" />
+						<field id="recordSize" />
+					</kColl>
+				</output>
+			</jsonView>
+		</outputViews>
+	</action>
+	
+	<!-- 列表页面 -->
+	<action id="getRscTaskInfoHisListPage" type="normal" checkSession="true" >
+	    <flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.psp.op.rectask.QueryRscTaskInfoHisListOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="biz01line/psp/RecTask/RscTaskInfoHis/listRscTaskInfoHis.jsp" />
+		</outputViews>
+     </action>
+	
+	
+	<!-- 新增页面 -->
+	<action id="getRscTaskInfoHisAddPage" type="normal" checkSession="true" >
+		<jspView id="addPage" url="psp/rectask/rsctaskinfohis/addRscTaskInfoHis.jsp"/>
+	</action>
+
+	<!-- 修改页面 -->
+	<action id="getRscTaskInfoHisUpdatePage" type="normal" checkSession="true" >
+		<jspView id="updatePage" url="psp/rectask/rsctaskinfohis/modifyRscTaskInfoHis.jsp"/>
+	</action>
+
+	<!-- 详情页面 -->
+	<action id="getRscTaskInfoHisDetailPage" type="normal" checkSession="true" > 
+		 <flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.psp.op.rectask.QueryRscTaskInfoHisDetailOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="biz01line/psp/RecTask/RscTaskInfoHis/detailRscTaskInfoHis.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 新增记录
+	 <action id="addRscTaskInfoHisData4kcoll" type="normal" checkSession="true">
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.psp.rectask.op.RscTaskInfoHisCRUDOp" method="addRscTaskInfoHis" />
+			<transition dest="retPage" />
+		</flowInvoker>
+		<outputViews>
+			<view id="retPage" class="com.yucheng.cmis.view.JSONView">
+				<output class="com.ecc.emp.data.KeyedCollection">
+					<field id="flag" class="com.ecc.emp.data.DataField"/>
+				</output>
+			</view>
+		</outputViews>
+	</action>
+	 -->
+	<!-- 删除记录
+	<action id="deleteRscTaskInfoHisData" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.psp.rectask.op.RscTaskInfoHisCRUDOp" method="removeRscTaskInfoHis"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<view id="retPage" class="com.yucheng.cmis.view.JSONView">
+				<output class="com.ecc.emp.data.KeyedCollection">
+					<field id="flag" class="com.ecc.emp.data.DataField"/>
+				</output>
+			</view>
+		</outputViews>
+	</action> -->
+	
+	<!-- 更新记录兼容emp 
+	<action id="updateRscTaskInfoHisData4kcoll" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.psp.rectask.op.RscTaskInfoHisCRUDOp" method="updateRscTaskInfoHis"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<view id="retPage" class="com.yucheng.cmis.view.JSONView">
+				<output class="com.ecc.emp.data.KeyedCollection">
+					<field id="flag" class="com.ecc.emp.data.DataField"/>
+				</output>
+			</view>
+		</outputViews>
+	</action>-->
+	
+	<!-- 获得明细信息 
+	<action id="getRscTaskInfoHisUpdateData" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.psp.rectask.op.RscTaskInfoHisCRUDOp" method="queryRscTaskInfoHisDetail"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jsonView id="retPage" class="com.yucheng.cmis.view.JQueryJSONView">
+				<output>
+					<kColl id="RscTaskInfoHis"></kColl>
+				</output>
+			</jsonView>
+		</outputViews>
+	</action>-->
+	
+</actionDefines>

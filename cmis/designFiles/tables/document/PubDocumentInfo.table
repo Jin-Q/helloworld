@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<PubDocumentInfo.xml>
+	<TableModel id="PubDocumentInfo" pageSize="15" cnname="PUB_DOCUMENT_INFO" isPaged="true" dbTableName="pub_document_info">
+		<Field id="file_pk" isPK="true" columnName="file_pk" cnname="文件PK" length="32" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="file_name" columnName="file_name" cnname="文件名称" length="100" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="file_path" columnName="file_path" cnname="文件路径" length="1000" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="file_size" columnName="file_size" cnname="文件大小" length="0" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="file_unit" columnName="file_unit" cnname="文件大小单位" length="100" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="file_memo" columnName="file_memo" cnname="文件描述" length="2000" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="create_date" columnName="create_date" cnname="上传日期" length="10" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="create_man" columnName="create_man" cnname="上传人" length="20" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<OrderFields>file_pk[desc];</OrderFields>
+		<FilterFields>file_name;file_size;create_date;create_man;</FilterFields>
+		<RecordRestrict query="true" delete="true" update="true"/>
+		<TableInfo>系统文档列表</TableInfo>
+	</TableModel>
+</PubDocumentInfo.xml>

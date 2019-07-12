@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actionDefines>
+	<classMap>
+		<map id="action" class="com.yucheng.cmis.ad.mvc.ADRequestController"/>
+		<map id="flowInvoker" class="com.yucheng.cmis.ad.mvc.ADFlowInvoker"/>
+		<map id="outputViews" class="java.util.HashMap"/>
+		<map id="output" class="com.ecc.emp.data.KeyedCollection"/>
+		<map id="kColl" class="com.ecc.emp.data.KeyedCollection"/>
+		<map id="iColl" class="com.ecc.emp.data.IndexedCollection"/>
+		<map id="field" class="com.ecc.emp.data.DataField"/>
+	</classMap>
+	
+	<!-- 获取操作主页面 -->
+	<action id="queryCusSameOrgList" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.cus.op.cussameorg.QueryCusSameOrgListOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="biz01line/cus/cusbase/CusSameOrg/queryCusSameOrgList.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 单笔授信pop框 -->
+	<action id="queryCusSameOrgForPopList" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.cus.op.cussameorg.QueryCusSameOrgToLmtSigListOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="biz01line/cus/cusbase/CusSameOrg/queryCusSameOrgListForPop.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 同业授信批量客戶专用POP，不要改 -->
+	<action id="queryCusSameOrgPop4Batch" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.cus.op.cussameorg.QueryCusSameOrgPop4Batch"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="biz01line/cus/cusbase/CusSameOrg/queryCusSameOrgListPop4Batch.jsp" />
+		</outputViews>
+	</action>
+
+	<!--modified by lisj 2015-2-28 需求编号：【XD150213011】增加同业授信批量导入功能, 导出成生成excel -->
+	<action id="expBatchToExcel" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.cus.op.cussameorg.ExpBatchToExcelOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+		   <view id="retPage" class="com.yucheng.cmis.view.ExcelView">
+ 				<excelWorkbook fileName="CusSameOrg.xls" class="com.yucheng.cmis.view.excel.ExcelWorkbook">
+ 					<excelSheet id="1" name="同业客户" isTitle="true" iCollName="CusSameOrgList" class="com.yucheng.cmis.view.excel.ExcelSheet">
+ 						<excelColumn dataName="cus_id" name="客户码" cellType="string" class="com.yucheng.cmis.view.excel.ExcelColumn"/>
+ 						<excelColumn dataName="same_org_cnname" name="同业机构(行)名称" class="com.yucheng.cmis.view.excel.ExcelColumn"/>
+ 						<excelColumn dataName="same_org_type" name="同业机构类型" dictName="STD_ZB_INTER_BANK_ORG" class="com.yucheng.cmis.view.excel.ExcelColumn"/>
+ 						<excelColumn dataName="country" name="国别" dictName="STD_GB_2659-2000" class="com.yucheng.cmis.view.excel.ExcelColumn"/>
+ 						<excelColumn dataName="reg_cap_amt" name="注册资金(万元)" cellType='numeric' class="com.yucheng.cmis.view.excel.ExcelColumn"/>
+ 						<excelColumn dataName="assets" name="总资产(万元)" cellType='numeric' class="com.yucheng.cmis.view.excel.ExcelColumn"/>
+ 						<excelColumn dataName="crd_grade" name="信用等级" dictName="STD_ZB_FINA_GRADE" class="com.yucheng.cmis.view.excel.ExcelColumn"/>
+ 					</excelSheet>
+ 				</excelWorkbook>
+ 			</view>
+		</outputViews>
+	</action>
+	
+	<!-- 获得编辑页面 -->
+	<action id="getCusSameOrgUpdatePage" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation updateCheck="false" class="com.yucheng.cmis.biz01line.cus.op.cussameorg.QueryCusSameOrgDetailOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="biz01line/cus/cusbase/CusSameOrg/updateCusSameOrgRecord.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 更新记录 -->
+	<action id="updateCusSameOrgRecord" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.cus.op.cussameorg.UpdateCusSameOrgRecordOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<view id="retPage" class="com.yucheng.cmis.view.JSONView">
+				<output class="com.ecc.emp.data.KeyedCollection">
+					<field id="flag" class="com.ecc.emp.data.DataField" />
+				</output>
+			</view>
+		</outputViews>
+	</action>
+	
+	<!-- 获得查看页面 -->
+	<action id="getCusSameOrgViewPage" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.cus.op.cussameorg.QueryCusSameOrgDetailOp"/>
+			<transition dest="updatePage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="updatePage" url="biz01line/cus/cusbase/CusSameOrg/queryCusSameOrgDetail.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 获得查看页面 for 通过总行行号查询-->
+	<action id="getCusSameOrgView4Head" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.cus.op.cussameorg.QueryCusSameOrgDetail4HeadOp"/>
+			<transition dest="updatePage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="updatePage" url="biz01line/cus/cusbase/CusSameOrg/queryCusSameOrgDetail.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 获得新增页面 -->
+	<action id="getCusSameOrgAddPage" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.cus.op.cussameorg.AddCusSameOrgDetailOp"/>
+			<transition dest="addPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="addPage" url="biz01line/cus/cusbase/CusSameOrg/addCusSameOrgRecord.jsp"/>
+		</outputViews>
+	</action>
+	
+	<!-- 新增记录 -->
+	<action id="addCusSameOrgRecord" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.cus.op.cussameorg.AddCusSameOrgRecordOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<view id="retPage" class="com.yucheng.cmis.view.JSONView">
+				<output class="com.ecc.emp.data.KeyedCollection">
+					<field id="flag" class="com.ecc.emp.data.DataField" />
+				</output>
+			</view>
+		</outputViews>
+	</action>
+	
+	<!-- 获取上级行号  返回给pop-->
+	<action id="getValueQueryUpOrgEstList" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.cus.op.cussameorg.QueryUpOrgEstListOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="biz01line/cus/cusbase/CusSameOrg/queryUpOrgEstPop.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 获得同业客户资料详细查看POP框页面 -->
+	<action id="getIntbankViewPage" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.cus.op.cussameorg.QueryCusSameOrgDetailOp"/>
+			<transition dest="updatePage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="updatePage" url="biz01line/cus/cusbase/CusSameOrg/queryIntbankDetail.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 同业授信批量客戶POP分页查询 -->
+		<action id="getcusSameOrgPop4Batch" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.cus.op.cussameorg.QueryCusSameOrgPop4Batch"/>
+			<transition dest="queryListRes"/>
+		</flowInvoker>
+		<outputViews>
+			<jsonView class="com.yucheng.cmis.view.JSONView" id="queryListRes">
+				<output>
+					<iColl id="CusSameOrgList">
+						<kColl>
+						</kColl>
+					</iColl>
+					<kColl id="pageInfo">
+						<field id="currentPage" />
+						<field id="maxLine" />
+						<field id="recordSize" />
+					</kColl>
+				</output>
+			</jsonView>
+		</outputViews>
+	</action>
+	
+	<!-- 同业pop分页查询记录列表 -->
+		<action id="pageCusSameOrgQueryPop" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.cus.op.cussameorg.QueryCusSameOrgPopListOp"/>
+			<transition dest="queryListRes"/>
+		</flowInvoker>
+		<outputViews>
+			<jsonView class="com.yucheng.cmis.view.JSONView" id="queryListRes">
+				<output>
+					<iColl id="CusSameOrgList">
+						<kColl>
+						</kColl>
+					</iColl>
+					<kColl id="pageInfo">
+						<field id="currentPage" />
+						<field id="maxLine" />
+						<field id="recordSize" />
+					</kColl>
+				</output>
+			</jsonView>
+		</outputViews>
+	</action>
+	
+	<!-- 分页查询记录列表 -->
+		<action id="pageCusSameOrgQuery" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.cus.op.cussameorg.QueryCusSameOrgListOp"/>
+			<transition dest="queryListRes"/>
+		</flowInvoker>
+		<outputViews>
+			<jsonView class="com.yucheng.cmis.view.JSONView" id="queryListRes">
+				<output>
+					<iColl id="CusSameOrgList">
+						<kColl>
+						</kColl>
+					</iColl>
+					<kColl id="pageInfo">
+						<field id="currentPage" />
+						<field id="maxLine" />
+						<field id="recordSize" />
+					</kColl>
+				</output>
+			</jsonView>
+		</outputViews>
+	</action>
+	
+	<!-- add by lisj 2015-2-13 需求编号：【XD150213011】增加同业授信批量导入功能  -->
+    <action id="downLoadSameCusBaseInfoTmplate" type="normal" checkSession="true" >
+	    <flowInvoker>
+	      <operation class="com.yucheng.cmis.biz01line.cus.op.cussameorg.DownLoadSameCusBaseInfoTmplateOp"/>
+	      <transition dest="retPage"/>
+	    </flowInvoker>
+	    <outputViews>
+	      <jspView id="retPage" url="biz01line/cus/cusbase/CusSameOrg/downLoadExcel.jsp" />
+	    </outputViews>
+    </action>
+    
+    <!-- add by lisj 2015-2-27 需求编号：【XD150213011】增加同业授信批量导入功能 ,导入页面 -->
+	<action id="querySameCusBaseInfoImport" type="normal" checkSession="true" >
+		<jspView id="retPage" url="biz01line/cus/cusbase/CusSameOrg/querySameCusBaseInfoImport.jsp" />
+	</action>
+	
+	<!--add by lisj 2015-2-27 需求编号：【XD150213011】增加同业授信批量导入功能 ,导入EXCEL -->
+	<action id="importSameCusBaseInfo" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.cus.op.cussameorg.ImportSameCusBaseInfoOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="biz01line/cus/cusbase/CusSameOrg/importResult.jsp" />
+		</outputViews>
+	</action>
+</actionDefines>

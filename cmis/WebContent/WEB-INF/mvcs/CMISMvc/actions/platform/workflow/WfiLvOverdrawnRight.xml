@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actionDefines>
+	<classMap>
+		<map id="action" class="com.yucheng.cmis.ad.mvc.ADRequestController"/>
+		<map id="flowInvoker" class="com.yucheng.cmis.ad.mvc.ADFlowInvoker"/>
+		<map id="outputViews" class="java.util.HashMap"/>
+		<map id="output" class="com.ecc.emp.data.KeyedCollection"/>
+		<map id="kColl" class="com.ecc.emp.data.KeyedCollection"/>
+		<map id="iColl" class="com.ecc.emp.data.IndexedCollection"/>
+		<map id="field" class="com.ecc.emp.data.DataField"/>
+	</classMap>
+	
+	<!-- 获取操作主页面 -->
+	<action id="queryWfiLvOverdrawnRightList" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.platform.workflow.op.wfilvoverdrawnright.QueryWfiLvOverdrawnRightListOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="platform/workflow/WfiLvOverdrawnRight/queryWfiLvOverdrawnRightList.jsp" />
+		</outputViews>
+	</action>
+	<!-- 初始化透支配置 -->
+	<action id="initWfiLvOverdrawnRightRecord" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.platform.workflow.op.wfilvoverdrawnright.InitWfiLvOverdrawnRightOp"/>
+			<transition dest="initOp"/>
+		</flowInvoker>
+		<outputViews>
+			<jsonView class="com.yucheng.cmis.view.JSONView" id="initOp">
+				<output>
+					<field id="flag" class="com.ecc.emp.data.DataField"/>
+				</output>
+			</jsonView>
+		</outputViews>
+	</action>
+	<!-- 获得编辑页面 -->
+	<action id="getWfiLvOverdrawnRightUpdatePage" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation updateCheck="false" class="com.yucheng.cmis.platform.workflow.op.wfilvoverdrawnright.QueryWfiLvOverdrawnRightDetailOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="platform/workflow/WfiLvOverdrawnRight/updateWfiLvOverdrawnRightRecord.jsp" />
+		</outputViews>
+	</action>
+	
+	
+	<!-- 更新记录 -->
+	<action id="updateWfiLvOverdrawnRightRecord" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.platform.workflow.op.wfilvoverdrawnright.UpdateWfiLvOverdrawnRightRecordOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jsonView class="com.yucheng.cmis.view.JSONView" id="retPage">
+				<output>
+					<field id="flag" class="com.ecc.emp.data.DataField"/>
+				</output>
+			</jsonView>
+		</outputViews>
+	</action>
+	
+	<!-- 获得查看页面 -->
+	<action id="getWfiLvOverdrawnRightViewPage" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.platform.workflow.op.wfilvoverdrawnright.QueryWfiLvOverdrawnRightDetailOp"/>
+			<transition dest="updatePage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="updatePage" url="platform/workflow/WfiLvOverdrawnRight/queryWfiLvOverdrawnRightDetail.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 获得初始化页面 -->
+	<action id="getWfiLvOverdrawnRightAddPage" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.platform.workflow.op.wfilvoverdrawnright.QueryWfiLvOverdrawnRightByOrgIdAndLineDetailOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="platform/workflow/WfiLvOverdrawnRight/addWfiLvOverdrawnRightRecord.jsp" />
+		</outputViews>
+	</action>
+	<!-- 获得向导页面 -->
+	<action id="getWfiLvOverdrawnRightLeadPage" type="normal" checkSession="true" >
+		<jspView id="addPage" url="platform/workflow/WfiLvOverdrawnRight/addWfiLvOverdrawnRightLead.jsp"/>
+	</action>
+	
+	<!-- 新增记录 -->
+	<action id="addWfiLvOverdrawnRightRecord" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.platform.workflow.op.wfilvoverdrawnright.AddWfiLvOverdrawnRightRecordOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="operationResult.jsp?url=queryWfiLvOverdrawnRightList.do" />
+		</outputViews>
+	</action>	
+	
+	<!-- 删除记录 -->
+	<action id="deleteWfiLvOverdrawnRightRecord" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.platform.workflow.op.wfilvoverdrawnright.DeleteWfiLvOverdrawnRightRecordOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<view id="retPage" class="com.yucheng.cmis.view.JSONView">
+				<output class="com.ecc.emp.data.KeyedCollection">
+					<field id="flag" class="com.ecc.emp.data.DataField"/>
+					<field id="msg" class="com.ecc.emp.data.DataField" />
+				</output>
+			</view>
+		</outputViews>
+	</action>
+	
+	<!-- 分页查询记录列表 -->
+		<action id="pageWfiLvOverdrawnRightQuery" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.platform.workflow.op.wfilvoverdrawnright.QueryWfiLvOverdrawnRightListOp"/>
+			<transition dest="queryListRes"/>
+		</flowInvoker>
+		<outputViews>
+			<jsonView class="com.yucheng.cmis.view.JSONView" id="queryListRes">
+				<output>
+					<iColl id="WfiLvOverdrawnRightList">
+						<kColl>
+						</kColl>
+					</iColl>
+					<kColl id="pageInfo">
+						<field id="currentPage" />
+						<field id="maxLine" />
+						<field id="recordSize" />
+					</kColl>
+				</output>
+			</jsonView>
+		</outputViews>
+	</action>
+	
+</actionDefines>
+
+
+

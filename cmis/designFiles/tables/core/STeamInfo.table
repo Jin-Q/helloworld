@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<STeamInfo.xml>
+	<TableModel id="STeamInfo" pageSize="10" cnname="团队信息表" isPaged="true" dbTableName="s_team_info">
+		<TableInfo/>
+		<Field id="team_no" isPK="true" columnName="team_no" cnname="团队编号" length="20" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="team_name" columnName="team_name" cnname="团队名称" length="60" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="team_type" columnName="team_type" cnname="团队类型" length="20" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="belg_line" dictname="STD_ZB_BELONG_TEAM" columnName="belg_line" cnname="归属条线" length="6" JSPTag="select" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="memo" columnName="memo" cnname="备注" length="250" JSPTag="textarea" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="input_id" columnName="input_id" cnname="登记人" length="20" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="input_br_id" columnName="input_br_id" cnname="登记机构" length="20" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="input_date" columnName="input_date" cnname="登记日期" length="10" JSPTag="date" canBeNull="true" JDBCType="CHAR"/>
+		<OrderFields>team_no[desc];</OrderFields>
+		<ConditionFields>team_no;team_name;belg_line;</ConditionFields>
+		<FilterFields>team_no;team_name;team_type;belg_line;</FilterFields>
+		<RecordRestrict query="true" delete="true" update="true"/>
+	</TableModel>
+</STeamInfo.xml>

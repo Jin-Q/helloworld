@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<IqpNetMagInfo.xml>
+	<TableModel id="IqpNetMagInfo" pageSize="10" cnname="网络管理信息" isPaged="true" dbTableName="iqp_net_mag_info">
+		<TableInfo/>
+		<Field id="serno" columnName="serno" cnname="业务编号" length="40" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="net_agr_no" isPK="true" columnName="net_agr_no" cnname="网络协议编号" length="40" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="cus_id" columnName="cus_id" cnname="客户号码" length="30" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="main_prd" columnName="main_prd" cnname="主要产品" length="500" JSPTag="textarea" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="devlfore" columnName="devlfore" cnname="发展前景" length="500" JSPTag="textarea" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="inte_income" columnName="inte_income" cnname="综合收益概述" length="500" JSPTag="textarea" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="app_resn" columnName="app_resn" cnname="申请理由" length="500" JSPTag="textarea" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="trade_devlfore" columnName="trade_devlfore" cnname="行业发展前景" length="500" JSPTag="textarea" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="batair_lmt_amt" dataType="Currency" columnName="batair_lmt_amt" cnname="间接授信额度" length="16" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="dealer_rebuyamt" dataType="Currency" columnName="dealer_rebuyamt" cnname="经销商回购担保额度" length="16" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="buyer_rebuy_amt" dataType="Currency" columnName="buyer_rebuy_amt" cnname="买方回购担保额度" length="16" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="fin_bail_perc" dataType="Percent" columnName="fin_bail_perc" cnname="融资保证金比例" length="10" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="disp_term" columnName="disp_term" cnname="发货期限" length="10" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="coop_term_type" dictname="STD_ZB_TERM_TYPE" columnName="coop_term_type" cnname="合作期限类型" length="3" JSPTag="select" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="coop_term" columnName="coop_term" cnname="合作期限" length="10" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="sale_reliterm" columnName="sale_reliterm" cnname="销售调剂期" length="10" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="respond_mode" dictname="STD_ZB_RESPOND_MODE" columnName="respond_mode" cnname="承担责任方式" length="2" JSPTag="select" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="rebuy_cond" columnName="rebuy_cond" cnname="回购条件" length="500" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="rebuy_perc" dataType="Percent" columnName="rebuy_perc" cnname="回购比例" length="10" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="dealer_lmt_type" dictname="STD_BIZ_TYPE" columnName="dealer_lmt_type" cnname="经销商授信业务种类" length="40" JSPTag="select" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="provider_lmt_type" dictname="STD_BIZ_TYPE" columnName="provider_lmt_type" cnname="供应商授信业务种类" length="40" JSPTag="select" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="oversee_mode" dictname="STD_ZB_OVERSEE_MODE" columnName="oversee_mode" cnname="监管方式" length="40" JSPTag="select" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="net_build_date" columnName="net_build_date" cnname="网络建立时间" length="10" JSPTag="date" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="memo" columnName="memo" cnname="备注" length="500" JSPTag="textarea" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="manager_id" columnName="manager_id" cnname="责任人" length="20" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="manager_br_id" columnName="manager_br_id" cnname="管理机构" length="20" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="input_id" columnName="input_id" cnname="登记人" length="20" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="input_br_id" columnName="input_br_id" cnname="登记机构" length="20" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="input_date" columnName="input_date" cnname="登记日期" length="10" JSPTag="date" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="status" dictname="STD_ZB_STATUS" columnName="status" cnname="网络状态" length="3" JSPTag="select" canBeNull="true" JDBCType="VARCHAR2"/>
+		<OrderFields>net_agr_no;</OrderFields>
+		<ConditionFields>cus_id;</ConditionFields>
+		<FilterFields>serno;cus_id;input_id;input_br_id;input_date;</FilterFields>
+		<Field id="flow_type" columnName="flow_type" cnname="流程类型" length="2" JSPTag="text" JDBCType="VARCHAR2"/>
+	</TableModel>
+</IqpNetMagInfo.xml>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<PspSchCatRel.xml>
+	<TableModel id="PspSchCatRel" cnname="方案与目录关系表" dbTableName="psp_sch_cat_rel">
+		<Field id="scheme_id" isPK="true" columnName="scheme_id" cnname="方案编号" length="40" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="catalog_id" isPK="true" columnName="catalog_id" cnname="目录编号" length="40" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="seq" columnName="seq" cnname="排序" length="38" JDBCType="NUMBER" canBeNull="true"/>
+	</TableModel>
+</PspSchCatRel.xml>

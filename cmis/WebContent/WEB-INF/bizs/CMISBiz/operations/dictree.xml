@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<SelfDefinedOp.xml id="dictree">
+	<EMPBusinessLogic id="dictree" operationContext="dictreeSrvCtx">
+		<operation id="getDicJSONTree" name="得到树形字典JSON串"
+			class="com.yucheng.cmis.operation.CMISShowTreeDic">
+			<flow />
+		</operation>
+	</EMPBusinessLogic>
+	<context id="dictreeSrvCtx" type="op">
+		<refKColl refId="dictreeSrvData" />
+	</context>
+	<kColl id="dictreeSrvData">
+		<field id="errorCode" />
+		<field id="errorMsg" />
+	</kColl>
+</SelfDefinedOp.xml>

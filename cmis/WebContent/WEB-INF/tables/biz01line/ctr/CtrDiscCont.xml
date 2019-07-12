@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<CtrDiscCont.xml>
+	<TableModel id="CtrDiscCont" cnname="贴现合同从表" dbTableName="ctr_disc_cont">
+		<Field id="cont_no" isPK="true" columnName="cont_no" cnname="合同编号" length="40" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="bill_type" columnName="bill_type" cnname="票据种类" length="5" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="is_elec_bill" columnName="is_elec_bill" cnname="是否电子票据" length="1" JDBCType="CHAR" canBeNull="true"/>
+		<Field id="disc_type" columnName="disc_type" cnname="贴现类型" length="5" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="disc_rate" columnName="disc_rate" cnname="贴现利息" length="16" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="net_pay_amt" columnName="net_pay_amt" cnname="实付总金额" length="16" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="bill_qty" columnName="bill_qty" cnname="票据数量" length="38" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="disc_date" columnName="disc_date" cnname="贴现日期" length="10" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="is_agent_disc" columnName="is_agent_disc" cnname="是否代理贴现" length="1" JDBCType="CHAR" canBeNull="true"/>
+		<Field id="agent_acct_no" columnName="agent_acct_no" cnname="代理人账户" length="40" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="agent_acct_name" columnName="agent_acct_name" cnname="代理人名称" length="80" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="agent_org_no" columnName="agent_org_no" cnname="代理人开户行行号" length="40" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="agent_org_name" columnName="agent_org_name" cnname="代理人开户行行名" length="80" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="pvp_pact_cond_memo" columnName="pvp_pact_cond_memo" cnname="出账落实条件说明" length="250" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="dscnt_int_pay_mode" columnName="dscnt_int_pay_mode" cnname="贴现利息支付方式" length="5" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="pint_no" columnName="pint_no" cnname="付息账号" length="40" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="pint_acct_name" columnName="pint_acct_name" cnname="付息账户名" length="80" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="busdrft_dscnt_mode" columnName="busdrft_dscnt_mode" cnname="商票贴现类型" length="5" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="five_classfiy" columnName="five_classfiy" cnname="五级分类" length="10" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="spe_loan_type" columnName="spe_loan_type" cnname="特殊贷款类型" length="10" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="limit_useed_type" columnName="limit_useed_type" cnname="额度占用类型" length="10" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="loan_type" columnName="loan_type" cnname="贷款种类" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="estate_adjust_type" columnName="estate_adjust_type" cnname="产业结构调整类型" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="com_up_indtify" columnName="com_up_indtify" cnname="工业转型升级标识" length="50" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="strategy_new_loan" columnName="strategy_new_loan" cnname="战略新兴产业类型" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="new_prd_loan" columnName="new_prd_loan" cnname="新兴产业贷款" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="green_prd" columnName="green_prd" cnname="绿色产品" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="agriculture_type" columnName="agriculture_type" cnname="涉农贷款类型" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="loan_direction" columnName="loan_direction" cnname="贷款投向" length="100" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="loan_belong1" columnName="loan_belong1" cnname="贷款归属1" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="loan_belong2" columnName="loan_belong2" cnname="贷款归属2" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="loan_belong3" columnName="loan_belong3" cnname="贷款归属3" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="ensure_project_loan" columnName="ensure_project_loan" cnname="保障性安居工程贷款" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="loan_use_type" columnName="loan_use_type" cnname="借款用途" length="250" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="repay_src_des" columnName="repay_src_des" cnname="还款来源" length="250" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="biz_sour" columnName="biz_sour" cnname="业务来源" length="250" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="sour_memo" columnName="sour_memo" cnname="来源说明" length="250" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="is_collect_stamp" columnName="is_collect_stamp" cnname="是否收取印花税" length="2" JDBCType="VARCHAR2"/>
+		<Field id="stamp_collect_mode" columnName="stamp_collect_mode" cnname="印花税收取方式" length="20" JDBCType="VARCHAR2"/>
+	</TableModel>
+</CtrDiscCont.xml>

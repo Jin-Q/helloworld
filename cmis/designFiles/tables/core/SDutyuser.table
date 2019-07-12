@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<SDutyuser.xml>
+	<TableModel id="SDutyuser" cnname="岗位用户表" dbTableName="s_dutyuser">
+		<TableInfo/>
+		<Field id="dutyno" isPK="true" columnName="dutyno" cnname="岗位码" length="4" JSPTag="text" canBeNull="false" JDBCType="CHAR"/>
+		<Field id="actorno" isPK="true" columnName="actorno" cnname="用户码" length="8" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="state" columnName="state" cnname="状态" length="38" JSPTag="text" canBeNull="false" JDBCType="NUMBER"/>
+		<Field id="orgid" columnName="orgid" cnname="组织号" length="16" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<OrderFields>dutyno[desc];actorno[desc];</OrderFields>
+	</TableModel>
+</SDutyuser.xml>

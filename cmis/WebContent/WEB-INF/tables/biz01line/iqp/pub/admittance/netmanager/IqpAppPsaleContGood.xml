@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<IqpAppPsaleContGood.xml>
+	<TableModel id="IqpAppPsaleContGood" cnname="购销合同商品表" dbTableName="iqp_app_psale_cont_good">
+		<Field id="serno" isPK="true" columnName="serno" cnname="业务流水号" length="40" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="psale_cont" isPK="true" columnName="psale_cont" cnname="购销合同编号" length="40" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="commo_name" isPK="true" columnName="commo_name" cnname="商品名称" length="100" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="qnt" columnName="qnt" cnname="数量" length="16" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="unit_price" columnName="unit_price" cnname="单价（元）" length="16" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="total" columnName="total" cnname="总价值（元）" length="16" JDBCType="NUMBER" canBeNull="true"/>
+	    <Field id="qnt_unit" columnName="qnt_unit" cnname="数量单位" length="2" JDBCType="VARCHAR2" canBeNull="true"/>
+	</TableModel>
+</IqpAppPsaleContGood.xml>

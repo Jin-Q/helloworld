@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<WfiDemo.xml>
+	<TableModel id="WfiDemo" cnname="流程示例表" dbTableName="wfi_demo">
+		<Field id="serno" isPK="true" columnName="serno" cnname="SERNO" length="20" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="cus_id" columnName="cus_id" cnname="CUS_ID" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="cus_name" columnName="cus_name" cnname="CUS_NAME" length="40" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="approve_status" columnName="approve_status" cnname="APPROVE_STATUS" length="3" JDBCType="VARCHAR2" canBeNull="true"/>
+	</TableModel>
+</WfiDemo.xml>

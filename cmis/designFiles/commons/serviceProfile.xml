@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<EditorProfile rootElement="Services">
+	<elementCatalog id="rootCatalog" name="rootCatalog">
+		<Element id="Services" name="Services" iconName="/images/tabOrder.gif">
+			<childElements>
+				<child id="CMISOrgService" allowedCount="*"/>
+				<child id="CMISParamProviderService" allowedCount="*"/>
+				<!-- 资源不需要是EMP服务，现改为CMISRolePermissionComponent
+				<child id="CMISRolePermissionService" allowedCount="*"/>
+				-->
+				<child id="PropertiesFileService" allowedCount="*"/>
+				<child id="CMISTreeDicService" allowedCount="*"/>
+				<child id="CMISProductTreeDicService" allowedCount="*"/>
+				<!-- child id="CMISResourceService" allowedCount="*"/ -->
+				<child id="PkGeneratorSet" allowedCount="*"/>
+				<child id="RecordRestrict" allowedCount="*"/>
+				<child id="CMISDataDicMapService" allowedCount="*" desc="CMISDataDicMapService"/>
+				<child id="CMISDataDicService" allowedCount="*" desc="CMISDataDicService"/>
+				<child id="PrdBasicDao" allowedCount="*" desc="PrdBasicDao"/>
+				<child id="CMISDataSource" allowedCount="*" desc="CMISDataSource"/>
+				<child id="EncryptService" allowedCount="*" desc="EncryptService"/>
+				<child id="TableBlobOpService" allowedCount="*" desc="TableBlobOpService"/>
+				<child id="TableModelDAO" allowedCount="*" desc="TableModelDAO"/>
+				<child id="TableModelDAO4DB2" allowedCount="*" desc="TableModelDAO4DB2"/>
+				<child id="TableModelDAO4Oracle" allowedCount="*" desc="TableModelDAO4Oracle"/>
+				<child id="TableModelLoader" allowedCount="*" desc="TableModelLoader"/>
+				<child id="TCPIPService" allowedCount="*" desc="TCPIPService"/>
+				<child id="CMISSequenceService" allowedCount="*" desc="CMISSequenceService"/>
+				<child id="CMISSequenceService4FJXD" allowedCount="*" desc="CMISSequenceService4FJXD"/>
+			</childElements>
+			<document/>
+		</Element>
+	</elementCatalog>
+	<elementCatalog id="CMIS" name="信贷平台基础服务">
+		<Element id="CMISSequenceTemplate" name="CMISSequenceTemplate" iconName="/images/tabOrder.gif">
+			<attributes>
+				<attr id="implClass" attrName="implClass" attrType="String" mustSet="true" editorClass="com.ecc.ide.editor.ClassNamePropertyEditor">
+						</attr>
+			</attributes>
+			<document/>
+		</Element>
+		<Element id="CMISOrgService" name="组织机构服务" implClass="com.yucheng.cmis.core.service.CMISOrgService" iconName="/images/tabOrder.gif">
+			<childElements>
+				<child id="CMISOrgService" allowedCount="1"/>
+			</childElements>
+			<document/>
+		</Element>
+		<Element id="CMISParam" name="参数对象" implClass="com.yucheng.cmis.paramprovider.CMISParamProviderItem" iconName="/images/tabOrder.gif">
+			<attributes>
+				<attr id="id" attrName="参数ID" attrType="String" mustSet="true">
+						</attr>
+				<attr id="name" attrName="参数名称" attrType="String">
+						</attr>
+				<attr id="defaultValue" attrName="参数缺省值" attrType="String">
+						</attr>
+				<attr id="value" attrName="参数值" attrType="String">
+						</attr>
+			</attributes>
+			<document/>
+		</Element>
+		<Element id="CMISParamProviderService" name="公共参数定义服务" implClass="com.yucheng.cmis.paramprovider.CMISParamProviderService" iconName="/images/tabOrder.gif">
+			<childElements>
+				<child id="CMISParam" allowedCount="*"/>
+			</childElements>
+			<document/>
+		</Element>
+		<!-- 资源不需要是EMP服务，现改为CMISRolePermissionComponent
+		<Element id="CMISRolePermissionService" name="生成权限文件服务" implClass="com.yucheng.cmis.permission.CMISRolePermissionService" iconName="/images/tabOrder.gif">
+			<attributes>
+				<attr id="fileRootPath" attrName="文件地址" attrType="String">
+						</attr>
+			</attributes>
+			<document/>
+		</Element>
+		-->
+		<Element id="PropertiesFileService" name="PropertiesFileService" implClass="com.yucheng.cmis.service.PropertiesFileService" iconName="/images/tabOrder.gif">
+			<document/>
+		</Element>
+		<Element id="CMISTreeDicService" name="树形字典服务" implClass="com.yucheng.cmis.dic.CMISTreeDicService" iconName="/images/tabOrder.gif">
+			<attributes>
+				<attr id="tableName" attrName="表名" attrType="String">
+						</attr>
+				<attr id="enNameColumn" attrName="英文字段" attrType="String">
+						</attr>
+				<attr id="cnNameColumn" attrName="中文字段" attrType="String">
+						</attr>
+				<attr id="parentColumn" attrName="父节点字段" attrType="String">
+						</attr>
+				<attr id="typeColumn" attrName="类型字段" attrType="String">
+						</attr>
+				<attr id="locateColumn" attrName="locate字段" attrType="String">
+						</attr>
+				<attr id="levelColumn" attrName="级别字段" attrType="String">
+						</attr>
+				<attr id="orderByColumn" attrName="排序字段" attrType="String">
+						</attr>
+				<attr id="displaySeparator" attrName="显示分隔符" attrType="String">
+						</attr>
+			</attributes>
+			<document/>
+		</Element>
+		
+		<Element id="CMISProductTreeDicService" name="产品目录树形字典服务" implClass="com.yucheng.cmis.biz01line.prd.prdtools.tree.CMISProductTreeDicService" iconName="/images/tabOrder.gif">
+			<attributes>
+				<attr id="catalogId" attrName="目录编号" attrType="String">
+						</attr>
+				<attr id="catalogName" attrName="目录名称" attrType="String">
+						</attr>
+				<attr id="supCatalogId" attrName="上级目录" attrType="String">
+						</attr>
+				<attr id="catalogLevel" attrName="目录级别" attrType="String">
+						</attr>
+				<attr id="Comments" attrName="备注" attrType="String">
+						</attr>
+				<attr id="displaySeparator" attrName="显示分隔符" attrType="String">
+						</attr>
+			</attributes>
+			<document/>
+		</Element>
+		<!--  
+		<Element id="CMISResourceService" name="资源操作服务" implClass="com.yucheng.cmis.permission.CMISResourceService" iconName="/images/tabOrder.gif">
+			<attributes>
+			</attributes>
+			<document/>
+		</Element>
+		-->
+		<Element id="PkGeneratorSet" name="主键生成" implClass="com.ecc.emp.dbmodel.service.pkgenerator.PkGeneratorSet" iconName="/images/tabOrder.gif">
+			<attributes>
+			</attributes>
+			<childElements>
+				<child id="PkGenerator" allowedCount="*"/>
+			</childElements>
+			<document/>
+		</Element>
+		<Element id="PkGenerator" name="UNID主键生成" implClass="com.ecc.emp.dbmodel.service.pkgenerator.UNIDGenerator" iconName="/images/tabOrder.gif" wizardClass="com.ecc.ide.editor.wizard.ServiceXMLDefineWizard">
+			<attributes>
+				<attr id="id" attrName="UNID缺省实现" desc= "UNID缺省实现"/>
+			</attributes>
+			<document/>
+		</Element>
+	</elementCatalog>
+	<elementCatalog id="extendedElements" name="extendedElements">
+		<Element id="CMISDataDicMapService" name="CMISDataDicMapService" implClass="com.yucheng.cmis.dic.CMISDataDicMapService" iconName="/images/newElement.gif">
+			<attributes>
+				<attr id="states" editable="false" valueList="0=成功;">
+						</attr>
+				<attr id="label" attrName="描述" desc= "描述"/>
+			</attributes>
+			<document/>
+		</Element>
+		<Element id="CMISDataDicService" name="CMISDataDicService" implClass="com.yucheng.cmis.dic.CMISDataDicService" iconName="/images/newElement.gif">
+			<attributes>
+				<attr id="states" editable="false" valueList="0=成功;">
+						</attr>
+				<attr id="label" attrName="描述" desc= "描述"/>
+			</attributes>
+			<document/>
+		</Element>
+		<Element id="PrdBasicDao" name="PrdBasicDao" implClass="com.yucheng.cmis.prd.prdbasicinfo.dao.PrdBasicDao" iconName="/images/newElement.gif">
+			<attributes>
+				<attr id="states" editable="false" valueList="0=成功;">
+						</attr>
+				<attr id="label" attrName="描述" desc= "描述"/>
+			</attributes>
+			<document/>
+		</Element>
+		<Element id="CMISDataSource" name="CMISDataSource" implClass="com.ecc.emp.dbmodel.service.CMISDataSource" iconName="/images/newElement.gif">
+			<attributes>
+				<attr id="states" editable="false" valueList="0=成功;" desc= ""/>
+				<attr id="label" attrName="描述" desc= "描述"/>
+			</attributes>
+			<document></document>
+		</Element>
+		<Element id="EncryptService" name="EncryptService" implClass="com.ecc.emp.dbmodel.service.EncryptService" iconName="/images/newElement.gif">
+			<attributes>
+				<attr id="states" editable="false" valueList="0=成功;" desc= ""/>
+				<attr id="label" attrName="描述" desc= "描述"/>
+			</attributes>
+			<document></document>
+		</Element>
+		<Element id="TableBlobOpService" name="TableBlobOpService" implClass="com.ecc.emp.dbmodel.service.TableBlobOpService" iconName="/images/newElement.gif">
+			<attributes>
+				<attr id="states" editable="false" valueList="0=成功;" desc= ""/>
+				<attr id="label" attrName="描述" desc= "描述"/>
+			</attributes>
+			<document></document>
+		</Element>
+		<Element id="TableModelDAO" name="TableModelDAO" implClass="com.ecc.emp.dbmodel.service.TableModelDAO" iconName="/images/newElement.gif">
+			<attributes>
+				<attr id="states" editable="false" valueList="0=成功;" desc= ""/>
+				<attr id="label" attrName="描述" desc= "描述"/>
+			</attributes>
+			<document></document>
+		</Element>
+		<Element id="TableModelDAO4DB2" name="TableModelDAO4DB2" implClass="com.ecc.emp.dbmodel.service.TableModelDAO4DB2" iconName="/images/newElement.gif">
+			<attributes>
+				<attr id="states" editable="false" valueList="0=成功;" desc= ""/>
+				<attr id="label" attrName="描述" desc= "描述"/>
+			</attributes>
+			<document></document>
+		</Element>
+		<Element id="TableModelDAO4Oracle" name="TableModelDAO4Oracle" implClass="com.ecc.emp.dbmodel.service.TableModelDAO4Oracle" iconName="/images/newElement.gif">
+			<attributes>
+				<attr id="states" editable="false" valueList="0=成功;" desc= ""/>
+				<attr id="label" attrName="描述" desc= "描述"/>
+			</attributes>
+			<document></document>
+		</Element>
+		<Element id="TableModelLoader" name="TableModelLoader" implClass="com.ecc.emp.dbmodel.service.TableModelLoader" iconName="/images/newElement.gif">
+			<attributes>
+				<attr id="states" editable="false" valueList="0=成功;" desc= ""/>
+				<attr id="label" attrName="描述" desc= "描述"/>
+			</attributes>
+			<document></document>
+		</Element>
+		<Element id="TCPIPService" name="TCPIPService" implClass="com.ecc.emp.tcpip.TCPIPService" iconName="/images/newElement.gif">
+			<attributes>
+				<attr id="states" editable="false" valueList="0=成功;" desc= ""/>
+				<attr id="label" attrName="描述" desc= "描述"/>
+			</attributes>
+			<document></document>
+		</Element>
+		<Element id="CMISSequenceService" name="CMISSequenceService" implClass="com.yucheng.cmis.pub.sequence.CMISSequenceService" iconName="/images/newElement.gif">
+			<attributes>
+				<attr id="states" editable="false" valueList="0=成功;" desc= ""/>
+				<attr id="label" attrName="描述" desc= "描述"/>
+			</attributes>
+			<document></document>
+		</Element>
+		<Element id="CMISSequenceService4FJXD" name="CMISSequenceService4FJXD" implClass="com.yucheng.cmis.pub.sequence.CMISSequenceService4FJXD" iconName="/images/newElement.gif">
+			<attributes>
+				<attr id="states" editable="false" valueList="0=成功;" desc= ""/>
+				<attr id="label" attrName="描述" desc= "描述"/>
+			</attributes>
+			<document></document>
+		</Element>
+	</elementCatalog>
+</EditorProfile>

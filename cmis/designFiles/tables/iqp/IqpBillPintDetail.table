@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<IqpBillPintDetail.xml>
+	<TableModel id="IqpBillPintDetail" cnname="票据付息明细表" dbTableName="iqp_bill_pint_detail">
+		<TableInfo/>
+		<Field id="pk" JDBCType="VARCHAR2" length="32" columnName="pk" canBeNull="false" pkGenerator="UNID" isPK="true" JSPTag="text" cnname="物理主键"/>
+		<Field id="acctsvcr" columnName="acctsvcr" cnname="开户行行号" length="20" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="acctsvcrnm" columnName="acctsvcrnm" cnname="开户行行名" length="100" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="pint_no" columnName="pint_no" cnname="付息账号" length="40" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="pint_acct_name" columnName="pint_acct_name" cnname="付息账户开户名" length="80" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="pint_perc" columnName="pint_perc" cnname="付息比例" length="10" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="pint_amt" columnName="pint_amt" cnname="付息金额" length="16" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="batch_no" columnName="batch_no" cnname="批次号" length="40" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="porder_no" columnName="porder_no" cnname="汇票号码" length="40" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="acct_gl_code" columnName="acct_gl_code" cnname="ACCT_GL_CODE" JSPTag="text" length="20" JDBCType="VARCHAR2"/>
+		<Field id="cur_type" columnName="cur_type" cnname="CUR_TYPE" JSPTag="text" length="3" JDBCType="CHAR"/>
+		<Field id="acc_type" columnName="acc_type" cnname="ACC_TYPE" JSPTag="text" length="6" JDBCType="VARCHAR2"/>
+		<Field id="is_local_bank" columnName="is_local_bank" cnname="是否本行账号" JSPTag="text" length="1" JDBCType="VARCHAR2"/>
+	</TableModel>
+</IqpBillPintDetail.xml>

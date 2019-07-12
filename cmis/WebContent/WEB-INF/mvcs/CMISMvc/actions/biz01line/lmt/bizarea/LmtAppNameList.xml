@@ -1,0 +1,315 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actionDefines>
+	<classMap>
+		<map id="action" class="com.yucheng.cmis.ad.mvc.ADRequestController"/>
+		<map id="flowInvoker" class="com.yucheng.cmis.ad.mvc.ADFlowInvoker"/>
+		<map id="outputViews" class="java.util.HashMap"/>
+		<map id="output" class="com.ecc.emp.data.KeyedCollection"/>
+		<map id="kColl" class="com.ecc.emp.data.KeyedCollection"/>
+		<map id="iColl" class="com.ecc.emp.data.IndexedCollection"/>
+		<map id="field" class="com.ecc.emp.data.DataField"/>
+	</classMap>
+	
+	<!-- 获取操作主页面 -->
+	<action id="queryLmtAppNameListList" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.lmt.op.bizarea.lmtappnamelist.QueryLmtAppNameListListOp"/>
+				<transition dest="join" condition="($retValue='join')"/>
+				<transition dest="back" condition="($retValue='back')"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="join" url="biz01line/lmt/bizarea/LmtAppNameList/queryLmtAppNameListList.jsp" />
+			<jspView id="back" url="biz01line/lmt/bizarea/LmtAppNameList/queryLmtAppNameListList4Back.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 获得编辑页面 -->
+	<action id="getLmtAppNameListUpdatePage" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation updateCheck="false" class="com.yucheng.cmis.biz01line.lmt.op.bizarea.lmtappnamelist.QueryLmtAppNameListDetailOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="biz01line/lmt/bizarea/LmtAppNameList/updateLmtAppNameListRecord.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 更新记录 -->
+	<action id="updateLmtAppNameListRecord" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.lmt.op.bizarea.lmtappnamelist.UpdateLmtAppNameListRecordOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<view id="retPage" class="com.yucheng.cmis.view.JSONView">
+				<output class="com.ecc.emp.data.KeyedCollection">
+					<field id="flag" class="com.ecc.emp.data.DataField" />
+				</output>
+			</view>
+		</outputViews>
+	</action>
+	
+	<!-- 获得查看页面 -->
+	<action id="getLmtAppNameListViewPage" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.lmt.op.bizarea.lmtappnamelist.QueryLmtAppNameListDetailOp"/>
+			<transition dest="updatePage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="updatePage" url="biz01line/lmt/bizarea/LmtAppNameList/queryLmtAppNameListDetail.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 获得新增页面 -->
+	<action id="getLmtAppNameListAddPage" type="normal" checkSession="true" >
+		<jspView id="addPage" url="biz01line/lmt/bizarea/LmtAppNameList/addLmtAppNameListRecord.jsp"/>
+	</action>
+	
+	<!-- 新增记录前先检查是否存在其他圈商中 -->
+	<action id="chkBeforeAddLmtAppNameRecord" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.lmt.op.bizarea.lmtappnamelist.ChkBeforeAddLmtAppNameRecordOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<view id="retPage" class="com.yucheng.cmis.view.JSONView">
+				<output class="com.ecc.emp.data.KeyedCollection">
+					<field id="flag" class="com.ecc.emp.data.DataField" />
+					<field id="returnMsg" class="com.ecc.emp.data.DataField" />
+				</output>
+			</view>
+		</outputViews>
+	</action>
+	
+	<!-- 新增记录 -->
+	<action id="addLmtAppNameListRecord" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.lmt.op.bizarea.lmtappnamelist.AddLmtAppNameListRecordOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<view id="retPage" class="com.yucheng.cmis.view.JSONView">
+				<output class="com.ecc.emp.data.KeyedCollection">
+					<field id="flag" class="com.ecc.emp.data.DataField" />
+				</output>
+			</view>
+		</outputViews>
+	</action>	
+	
+	<!-- 删除记录 -->
+	<action id="deleteLmtAppNameListRecord" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.lmt.op.bizarea.lmtappnamelist.DeleteLmtAppNameListRecordOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<view id="retPage" class="com.yucheng.cmis.view.JSONView">
+				<output class="com.ecc.emp.data.KeyedCollection">
+					<field id="flag" class="com.ecc.emp.data.DataField" />
+				</output>
+			</view>
+		</outputViews>
+	</action>
+	
+	<!-- 退圈时：将名单中客户放入申请名单表中 -->
+	<action id="addNameToAppList" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.lmt.op.bizarea.lmtappnamelist.AddNameToAppListOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<view id="retPage" class="com.yucheng.cmis.view.JSONView">
+				<output class="com.ecc.emp.data.KeyedCollection">
+					<field id="flag" class="com.ecc.emp.data.DataField" />
+				</output>
+			</view>
+		</outputViews>
+	</action>
+	
+	<!-- 分页查询记录列表 -->
+	<action id="pageLmtAppNameListQuery" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.lmt.op.bizarea.lmtappnamelist.QueryLmtAppNameListListOp"/>
+			<transition dest="queryListRes"/>
+		</flowInvoker>
+		<outputViews>
+			<jsonView class="com.yucheng.cmis.view.JSONView" id="queryListRes">
+				<output>
+					<iColl id="LmtAppNameListList">
+						<kColl>
+						</kColl>
+					</iColl>
+					<kColl id="pageInfo">
+						<field id="currentPage" />
+						<field id="maxLine" />
+						<field id="recordSize" />
+					</kColl>
+				</output>
+			</jsonView>
+		</outputViews>
+	</action>
+	<!--*****************************************联保小组**************************************************-->
+	<!-- 获取操作主页面 -->
+	<action id="queryLmtNameList_jointList" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.lmt.op.jointguar.lmtnamelist_joint.QueryLmtNameList_jointListOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="biz01line/lmt/LmtAppJointGuar/LmtNameList_joint/queryLmtNameList_jointList.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 获得新增页面 -->
+	<action id="getLmtNameList_jointAddPage" type="normal" checkSession="true" >
+		<jspView id="addPage" url="biz01line/lmt/LmtAppJointGuar/LmtNameList_joint/addLmtNameList_jointRecord.jsp"/>
+	</action>
+	
+	<!-- 新增记录前检查 -->
+	<action id="chkBeforeAddJointCoopNameRecord" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.lmt.op.jointguar.lmtnamelist_joint.ChkBeforeAddJointCoopNameRecordOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+            <view id="retPage" class="com.yucheng.cmis.view.JSONView">
+                <output class="com.ecc.emp.data.KeyedCollection">
+                    <field id="flag" class="com.ecc.emp.data.DataField"/>
+                    <field id="returnMsg" class="com.ecc.emp.data.DataField"/>
+                </output>
+            </view>
+        </outputViews>
+	</action>
+	
+	<!-- 新增记录 -->
+	<action id="addLmtNameList_jointRecord" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.lmt.op.jointguar.lmtnamelist_joint.AddLmtNameList_jointRecordOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+            <view id="retPage" class="com.yucheng.cmis.view.JSONView">
+                <output class="com.ecc.emp.data.KeyedCollection">
+                    <field id="flag" class="com.ecc.emp.data.DataField"/>
+                </output>
+            </view>
+        </outputViews>
+	</action>
+	
+	<!-- 获得编辑页面 -->
+	<action id="getLmtNameList_jointUpdatePage" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.lmt.op.bizarea.lmtappnamelist.QueryLmtAppNameListDetailOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="biz01line/lmt/LmtAppJointGuar/LmtNameList_joint/updateLmtNameList_jointRecord.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 获得查看页面 -->
+	<action id="getLmtNameList_jointViewPage" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.lmt.op.bizarea.lmtappnamelist.QueryLmtAppNameListDetailOp"/>
+			<transition dest="updatePage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="updatePage" url="biz01line/lmt/LmtAppJointGuar/LmtNameList_joint/queryLmtNameList_jointDetail.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 分页查询记录列表 -->
+	<action id="pageLmtNameList_jointQuery" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.lmt.op.jointguar.lmtnamelist_joint.QueryLmtNameList_jointListOp"/>
+			<transition dest="queryListRes"/>
+		</flowInvoker>
+		<outputViews>
+			<jsonView class="com.yucheng.cmis.view.JSONView" id="queryListRes">
+				<output>
+					<iColl id="LmtAppNameListList">
+						<kColl>
+						</kColl>
+					</iColl>
+					<kColl id="pageInfo">
+						<field id="currentPage" />
+						<field id="maxLine" />
+						<field id="recordSize" />
+					</kColl>
+				</output>
+			</jsonView>
+		</outputViews>
+	</action>
+	
+	<!--************************************名单设置额度处理********************************************************-->
+	<!-- 获得新增页面 -->
+	<action id="getLmtAppDetailsJointAddPage" type="normal" checkSession="true" >
+		<jspView id="addPage" url="biz01line/lmt/LmtAppJointGuar/LmtAppDetailsJoint/addLmtAppDetailsJoint.jsp"/>
+	</action>
+	<!-- 新增记录 -->
+	<action id="addLmtAppDetailsJointRecord" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.lmt.op.jointguar.lmtappdetailsjoint.AddLmtAppDetailsJointOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+            <view id="retPage" class="com.yucheng.cmis.view.JSONView">
+                <output class="com.ecc.emp.data.KeyedCollection">
+                    <field id="flag" class="com.ecc.emp.data.DataField"/>
+                </output>
+            </view>
+        </outputViews>
+	</action>	
+	<!-- 获得查看页面 -->
+	<action id="getLmtAppDetailsJointViewPage" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.lmt.op.jointguar.lmtappdetailsjoint.GetAddLmtAppDetailsJointOp"/>
+			<transition dest="updatePage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="updatePage" url="biz01line/lmt/LmtAppJointGuar/LmtAppDetailsJoint/queryLmtAppDetailsJoint.jsp" />
+		</outputViews>
+	</action>
+	<!-- 获得编辑页面 -->
+	<action id="getLmtAppDetailsJointUpdatePage" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation updateCheck="false" class="com.yucheng.cmis.biz01line.lmt.op.jointguar.lmtappdetailsjoint.GetAddLmtAppDetailsJointOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="biz01line/lmt/LmtAppJointGuar/LmtAppDetailsJoint/updateLmtAppDetailsJoint.jsp" />
+		</outputViews>
+	</action>
+	<!-- 更新记录 -->
+	<action id="updateLmtAppDetailsJointRecord" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.lmt.op.jointguar.lmtappdetailsjoint.UpdateLmtAppDetailsJointOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<view id="retPage" class="com.yucheng.cmis.view.JSONView">
+				<output class="com.ecc.emp.data.KeyedCollection">
+					<field id="flag" class="com.ecc.emp.data.DataField" />
+				</output>
+			</view>
+		</outputViews>
+	</action>
+	<!-- 删除记录 -->
+	<action id="deleteLmtAppDetailsJointRecord" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.lmt.op.jointguar.lmtappdetailsjoint.DeleteLmtAppDetailsJointOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<view id="retPage" class="com.yucheng.cmis.view.JSONView">
+				<output class="com.ecc.emp.data.KeyedCollection">
+					<field id="flag" class="com.ecc.emp.data.DataField" />
+				</output>
+			</view>	
+		</outputViews>
+	</action>
+	
+</actionDefines>
+
+
+

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<WfOrgRightUp.xml>
+	<TableModel id="WfOrgRightUp" cnname="机构权限上收登记表" dbTableName="wf_org_right_up">
+		<Field id="organno" columnName="organno" cnname="机构码" length="12" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="organname" columnName="organname" cnname="机构名称" length="100" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="int_date" columnName="int_date" cnname="起始日期" length="10" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="end_date" columnName="end_date" cnname="截止日期" length="10" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="memo" columnName="memo" cnname="备注" length="250" JDBCType="VARCHAR2" canBeNull="true"/>
+	</TableModel>
+</WfOrgRightUp.xml>

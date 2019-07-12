@@ -1,0 +1,296 @@
+<?xml version="1.0" encoding="GBK" ?>
+
+
+<web-app id="WebApp_ID" version="2.4" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd" xmlns="http://java.sun.com/xml/ns/j2ee">
+	<!-- Vaadin config -->
+	<context-param>
+		<description>
+		Vaadin production mode</description>
+		<param-name>productionMode</param-name>
+		<param-value>false</param-value>
+	</context-param>
+	
+	<!--  JMX Manager setting param load by startuplistener -->
+	<!--  EMPLog setting param load by startuplistener -->
+	<!-- 
+	<listener> 
+		<listener-class>com.ecc.echain.util.Trigger</listener-class> 
+		</listener>
+	-->
+	<context-param>
+		<param-name>resourceFileName</param-name>
+		<param-value>WEB-INF/commons/resource.xml</param-value>
+	</context-param>
+	<context-param>
+		<param-name>logSettingFile</param-name>
+		<param-value>WEB-INF/commons/logging.xml</param-value>
+	</context-param>
+	<context-param>
+		<param-name>logImplClass</param-name>
+		<param-value>com.ecc.emp.log.EMPLog4jLog</param-value>
+	</context-param>
+	<context-param>
+		<param-name>functionFileName</param-name>
+		<param-value>WEB-INF/commons/function.xml</param-value>
+	</context-param>
+	<filter>
+		<filter-name>CMISMvcEncoding</filter-name>
+		<filter-class> com.ecc.emp.web.jsptags.SetCharacterEncodingFilter</filter-class>
+		<init-param>
+			<param-name>encoding</param-name>
+			<param-value>UTF-8</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>CMISMvcEncoding</filter-name>
+		<url-pattern>*.do</url-pattern>
+	</filter-mapping>
+	<listener>
+		<listener-class> com.ecc.emp.util.StartupListener</listener-class>
+	</listener>
+	<servlet>
+		<servlet-name>definitionservlet</servlet-name>
+		<servlet-class> com.ecc.echain.workflow.servlet.DefinitionServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>monitorservlet</servlet-name>
+		<servlet-class> com.ecc.echain.workflow.servlet.MonitorServlet</servlet-class>
+	</servlet>
+	
+	
+	<servlet>
+		<servlet-name>TestTCPIPChanel</servlet-name>
+		<servlet-class>com.ecc.emp.access.tcpip.EMPTCPIPServiceServlet</servlet-class>
+		<init-param>
+			<param-name>factoryName</param-name>
+			<param-value>CMISBiz</param-value>
+		</init-param>
+		<init-param>
+			<param-name>servletContextFile</param-name>
+			<param-value>WEB-INF/channels/TestTCPIPChanel.xml</param-value>
+		</init-param>
+		<init-param>
+			<param-name>sessionIdField</param-name>
+			<param-value/>
+		</init-param>
+		<load-on-startup>2</load-on-startup>
+	</servlet>
+	<!--
+	
+	<servlet>
+		<servlet-name>creditMsgByWebService</servlet-name>
+		<servlet-class>com.ecc.emp.access.webservice.EMPWebServiceServlet</servlet-class>
+		<init-param>
+			<param-name>factoryName</param-name>
+			<param-value>CMISBiz</param-value>
+		</init-param>
+		<init-param>
+			<param-name>servletContextFile</param-name>
+			<param-value>WEB-INF/channels/creditMsgByWebService.xml</param-value>
+		</init-param>
+		<init-param>
+			<param-name>sessionIdField</param-name>
+			<param-value>sessionID</param-value>
+		</init-param>
+		<load-on-startup>2</load-on-startup>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>creditMsgByWebService</servlet-name>
+		<url-pattern>/creditMsgByWebService/*</url-pattern>
+	</servlet-mapping>
+	-->
+	
+	<servlet>
+		<servlet-name>CMISMvcServlet</servlet-name>
+		<servlet-class>com.ecc.emp.web.servlet.EMPRequestServlet</servlet-class>
+		<init-param>
+			<param-name>iniFile</param-name>
+			<param-value>WEB-INF/bizs/CMISBiz/settings.xml</param-value>
+		</init-param>
+		<init-param>
+			<param-name>enableInitialize</param-name>
+			<param-value>true</param-value>
+		</init-param>
+		<init-param>
+			<param-name>password</param-name>
+			<param-value>eccemp</param-value>
+		</init-param>
+		<init-param>
+			<param-name>factoryName</param-name>
+			<param-value>CMISBiz</param-value>
+		</init-param>
+		<init-param>
+			<param-name>rootContextName</param-name>
+			<param-value>rootCtx</param-value>
+		</init-param>
+		<init-param>
+			<param-name>servletContextFile</param-name>
+			<param-value> WEB-INF/mvcs/CMISMvc/empServletContext.xml</param-value>
+		</init-param>
+		<init-param>
+			<param-name>jspRootPath</param-name>
+			<param-value>WEB-INF/mvcs/CMISMvc/</param-value>
+		</init-param>
+		<init-param>
+			<param-name>resourceFileName</param-name>
+			<param-value>/WEB-INF/commons/resource.xml</param-value>
+		</init-param>
+		<init-param>
+			<param-name>contentDivId</param-name>
+			<param-value>area_content</param-value>
+		</init-param>
+		<init-param>
+			<param-name>logType</param-name>
+			<param-value>log4j</param-value>
+		</init-param>
+		<init-param>
+			<param-name>logSettingFile</param-name>
+			<param-value>WEB-INF/commons/logging.xml</param-value>
+		</init-param>
+		<init-param>
+			<param-name>logFileName</param-name>
+			<param-value>WEB-INF/empLog.log</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet>
+		<servlet-name>studiojnlpservlet</servlet-name>
+		<servlet-class> com.ecc.echain.util.StudioJNLPServlet</servlet-class>
+	</servlet>
+	<!-- shuffle-->
+	<servlet>
+	<servlet-name>ShuffleServlet</servlet-name>
+	<servlet-class>com.ecc.shuffleserver.ShuffleServlet</servlet-class>
+	<load-on-startup>3</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ShuffleServlet</servlet-name>
+		<url-pattern>/ShuffleServlet</url-pattern>
+	</servlet-mapping>
+	<servlet>
+	    <servlet-name>shufflejnlpservlet</servlet-name>
+	    <servlet-class>com.ecc.shuffleserver.ShuffleJNLPServlet</servlet-class>
+		<init-param>
+			<param-name>userManagerClass</param-name>
+			<param-value>com.ecc.shuffleserver.manager.GeneralUserManager</param-value>
+		</init-param>
+	</servlet>
+	 <servlet-mapping>
+	    <servlet-name>shufflejnlpservlet</servlet-name>
+	    <url-pattern>/shufflejnlpservlet</url-pattern>
+	  </servlet-mapping>
+	<!-- shuffle-->
+	
+	<servlet>
+		<servlet-name>reportServlet</servlet-name>
+		<servlet-class>com.runqian.util.webutil.SetContextServlet</servlet-class>
+		<init-param>
+			<param-name>configFile</param-name>
+			<param-value>/WEB-INF/reportConfig.xml</param-value>
+		</init-param>
+	    <load-on-startup>2</load-on-startup>
+  </servlet>
+	<servlet-mapping>
+		<servlet-name>reportServlet</servlet-name>
+		<url-pattern>/reportServlet</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		  <servlet-name>YM_HTTP_ESB</servlet-name>
+		<!--<servlet-class>com.ecc.emp.access.http.EMPHttpAccessServlet</servlet-class>-->
+		
+		<servlet-class>com.yucheng.cmis.biz01line.esb.interfaces.imple.EMPHttpAccessForJsonServlet</servlet-class>
+		
+		<init-param>
+			<param-name>factoryName</param-name>
+			<param-value>CMISBiz</param-value>
+		</init-param>
+		<init-param>
+			<param-name>servletContextFile</param-name>
+			<param-value>WEB-INF/channels/YM_HTTP_ESB.xml</param-value>
+		</init-param>
+		<init-param>
+		    <param-name>encoding</param-name>
+		    <param-value>UTF-8</param-value>
+		</init-param>
+		<init-param>
+		    <param-name>forceEncoding</param-name>
+		    <param-value>true</param-value>
+		</init-param>
+		<init-param>
+			<param-name>sessionIdField</param-name>
+			<param-value />
+		</init-param>
+		<load-on-startup>3</load-on-startup>
+	</servlet>
+	<servlet>
+		<servlet-name>mainPage</servlet-name>
+		<servlet-class>
+		com.vaadin.terminal.gwt.server.ApplicationServlet</servlet-class>
+		<init-param>
+			<description>Vaadin application class to start</description>
+			<param-name>application</param-name>
+			<param-value>com.vaadin.demo.MainDemo</param-value>
+		</init-param>
+	</servlet>
+	
+	
+	<servlet-mapping>
+		<servlet-name>mainPage</servlet-name>
+		<url-pattern>/VAADIN/*</url-pattern>
+	</servlet-mapping>
+	
+	<!--<servlet id="Servlet_PortalClient">
+         <servlet-name>EasyconPortalClient</servlet-name>
+         <servlet-class>com.easycon.portal.client.ClientService</servlet-class>
+         <load-on-startup>1</load-on-startup>
+         <init-param>
+            <param-name>PortalServerIp</param-name>
+            <param-value>168.168.241.150</param-value>
+		 </init-param>
+		 <init-param>            
+            <param-name>PortalServerPort</param-name>
+            <param-value>12009</param-value>            
+         </init-param>
+		 <init-param>            
+            <param-name>ClientSyncClass</param-name>
+            <param-value>com.easycon.portal.client.PortalBusiBus</param-value>            
+         </init-param>         
+      </servlet>
+
+	
+	--><servlet-mapping>
+		<servlet-name>definitionservlet</servlet-name>
+		<url-pattern>/definitionservlet</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>monitorservlet</servlet-name>
+		<url-pattern>/monitorservlet</url-pattern>
+	</servlet-mapping>
+	
+	<servlet-mapping>
+		<servlet-name>CMISMvcServlet</servlet-name>
+		<url-pattern>*.do</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>studiojnlpservlet</servlet-name>
+		<url-pattern>/echainstudio.jnlp</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>TestTCPIPChanel</servlet-name>
+		<url-pattern>/TestTCPIPChanel/*</url-pattern>
+	</servlet-mapping>
+    <servlet-mapping>
+		<servlet-name>YM_HTTP_ESB</servlet-name>
+		<url-pattern>/YM_HTTP_ESB/*</url-pattern>
+	</servlet-mapping>
+ 
+	<welcome-file-list>
+		<welcome-file>index.html</welcome-file>
+		<welcome-file>index.htm</welcome-file>
+		<welcome-file>index.jsp</welcome-file>
+		<welcome-file>default.html</welcome-file>
+		<welcome-file>default.htm</welcome-file>
+		<welcome-file>default.jsp</welcome-file>
+	</welcome-file-list>
+</web-app>

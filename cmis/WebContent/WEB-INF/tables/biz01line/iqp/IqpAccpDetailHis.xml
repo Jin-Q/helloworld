@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<IqpAccpDetailHis.xml>
+	<TableModel id="IqpAccpDetailHis" cnname="承兑汇票申请明细备份表" dbTableName="iqp_accp_detail_his">
+		<Field id="pk1" isPK="true" columnName="pk1" cnname="主键" length="40" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="serno" columnName="serno" cnname="业务编号" length="40" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="clt_person" columnName="clt_person" cnname="收款人" length="80" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="clt_acct_no" columnName="clt_acct_no" cnname="收款人账号" length="40" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="paorg_no" columnName="paorg_no" cnname="收款人开户行行号" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="paorg_name" columnName="paorg_name" cnname="收款人开户行行名" length="100" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="drft_amt" columnName="drft_amt" cnname="票面金额" length="16" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="term_type" columnName="term_type" cnname="期限类型" length="5" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="term" columnName="term" cnname="期限" length="38" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="bill_isse_date" columnName="bill_isse_date" cnname="出票日期" length="10" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="bill_expiry_date" columnName="bill_expiry_date" cnname="票据到期日期" length="10" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="porder_no" columnName="porder_no" cnname="票据号" length="40" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="batch_no" columnName="batch_no" cnname="票据批次" length="40" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="modify_rel_serno" isPK="false" columnName="modify_rel_serno" cnname="打回业务修改操作流水号" length="40" JDBCType="VARCHAR2"/>
+	</TableModel>
+</IqpAccpDetailHis.xml>

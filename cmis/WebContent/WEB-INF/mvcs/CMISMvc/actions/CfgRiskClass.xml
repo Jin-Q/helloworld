@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actionDefines>
+	<classMap>
+		<map id="action" class="com.yucheng.cmis.ad.mvc.ADRequestController"/>
+		<map id="flowInvoker" class="com.yucheng.cmis.ad.mvc.ADFlowInvoker"/>
+		<map id="outputViews" class="java.util.HashMap"/>
+		<map id="output" class="com.ecc.emp.data.KeyedCollection"/>
+		<map id="kColl" class="com.ecc.emp.data.KeyedCollection"/>
+		<map id="iColl" class="com.ecc.emp.data.IndexedCollection"/>
+		<map id="field" class="com.ecc.emp.data.DataField"/>
+	</classMap>
+	
+	<!--获取列表信息-->
+	<action id="queryCfgRiskClassList" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.ops.cfg.cfgriskclass.QueryCfgRiskClassListOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="cfg/CfgRiskClass/queryCfgRiskClassList.jsp" />
+		</outputViews>
+	</action>
+	
+	
+	<!-- 保存修改记录-->
+	<action id="updateCfgRiskClassRecord" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.ops.cfg.cfgriskclass.UpdateCfgRiskClassRecordOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<view id="retPage" class="com.yucheng.cmis.view.JSONView">
+				<output class="com.ecc.emp.data.KeyedCollection">
+					<field id="flag" class="com.ecc.emp.data.DataField" />
+				</output>
+			</view>
+		</outputViews>
+	</action>
+	
+	
+	
+</actionDefines>
+
+
+

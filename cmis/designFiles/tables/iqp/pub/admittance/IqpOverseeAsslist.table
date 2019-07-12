@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<IqpOverseeAsslist.xml>
+	<TableModel id="IqpOverseeAsslist" pageSize="10" cnname="资产明细" isPaged="true" dbTableName="iqp_oversee_asslist">
+		<TableInfo/>
+		<Field id="name" isPK="true" columnName="name" cnname="资产名称" length="32" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="oversee_org_id" columnName="oversee_org_id" cnname="监管机构编号" length="32" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="is_pldimn" dictname="STD_ZX_YES_NO" columnName="is_pldimn" cnname="是否已抵质押" length="1" JSPTag="select" canBeNull="true" JDBCType="CHAR"/>
+		<Field id="wrr_proof" columnName="wrr_proof" cnname="权利凭证" length="32" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="util_term" columnName="util_term" cnname="已使用年限" length="10" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="util_case" dictname="STD_ZX_FIELD_OWNER" columnName="util_case" cnname="目前使用情况" length="2" JSPTag="select" canBeNull="true" JDBCType="CHAR"/>
+		<Field id="reckon_value" dataType="Currency" columnName="reckon_value" cnname="估计现值" length="16" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="fore_value" dataType="Currency" columnName="fore_value" cnname="账面净值" length="16" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="assent_qnt" columnName="assent_qnt" cnname="资产数量" length="10" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="assent_type" dictname="STD_ZB_ASSENT_TYPE" columnName="assent_type" cnname="资产类别" length="2" JSPTag="select" canBeNull="true" JDBCType="CHAR"/>
+		<OrderFields>oversee_org_id;</OrderFields>
+		<FilterFields>name;assent_qnt;fore_value;reckon_value;util_case;util_term;wrr_proof;is_pldimn;</FilterFields>
+	</TableModel>
+</IqpOverseeAsslist.xml>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<IqpAccumulationFundInfo.xml>
+	<TableModel id="IqpAccumulationFundInfo" cnname="公积金贷款" dbTableName="iqp_accumulation_fund_info">
+		<Field id="serno" isEncrypted="false" isPK="true" columnName="serno" cnname="业务流水号" length="40" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="apply_amount" columnName="apply_amount" cnname="申请金额" length="16" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="apply_cur_type" columnName="apply_cur_type" cnname="申请币种" length="3" JDBCType="CHAR" canBeNull="true"/>
+		<Field id="ir_accord_type" columnName="ir_accord_type" cnname="利率依据方式" length="2" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="ir_type" columnName="ir_type" cnname="利率种类" length="5" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="ir_adjust_type" columnName="ir_adjust_type" cnname="利率调整方式" length="5" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="ruling_ir" columnName="ruling_ir" cnname="基准利率（年）" length="16" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="ir_float_type" columnName="ir_float_type" cnname="利率浮动方式" length="5" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="ir_float_rate" columnName="ir_float_rate" cnname="利率浮动比" length="16" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="ir_float_point" columnName="ir_float_point" cnname="利率浮动点数" length="10" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="reality_ir_y" columnName="reality_ir_y" cnname="执行利率（年）" length="16" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="overdue_float_type" columnName="overdue_float_type" cnname="逾期利率浮动方式" length="5" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="overdue_rate" columnName="overdue_rate" cnname="逾期利率浮动比" length="16" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="overdue_point" columnName="overdue_point" cnname="逾期利率浮动点" length="10" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="overdue_rate_y" columnName="overdue_rate_y" cnname="逾期利率（年）" length="16" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="default_float_type" columnName="default_float_type" cnname="违约利率浮动方式" length="5" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="default_rate" columnName="default_rate" cnname="违约利率浮动比" length="16" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="default_point" columnName="default_point" cnname="违约利率浮动点" length="10" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="default_rate_y" columnName="default_rate_y" cnname="违约利率（年）" length="16" JDBCType="NUMBER" canBeNull="true"/>
+	</TableModel>
+</IqpAccumulationFundInfo.xml>

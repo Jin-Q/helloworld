@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<S>
+	<!--通过证件类型、证件号码查询是否存在信贷系统 -->
+	<SQL id="queryCusBase" parameterClass="java.util.HashMap" resultClass="java.util.HashMap" onlyReturnFirst="true" >
+	   <SELECT>
+	  	<![CDATA[
+			select cus_id from cus_base where cert_type = ${cert_type} and cert_code = ${cert_code}
+		]]>
+	   </SELECT>
+	</SQL>
+	
+	<!-- 插入客户 记录信息 -->
+	<SQL id="insertCusBase" parameterClass="java.lang.String" valueClass ="java.util.HashMap" >
+	  <INSERT>
+	  <![CDATA[
+	  	INSERT INTO CUS_BASE (CUS_ID,CUS_NAME,CUS_TYPE,CERT_TYPE,CERT_CODE,OPEN_DATE,CUS_COUNTRY,CUS_STATUS,INPUT_DATE) VALUES (${cus_id},${cus_name},${cus_type},${cert_type},${cert_code},${open_date},${cus_country},${cus_status},${input_date})
+	  ]]>
+	  </INSERT> 
+	</SQL>
+	
+	<!-- 插入客户 记录信息 -->
+	<SQL id="insertCusIndiv" parameterClass="java.lang.String" valueClass ="java.util.HashMap" >
+	  <INSERT>
+	  <![CDATA[
+	  	INSERT INTO CUS_INDIV (
+	  			CUS_ID,
+	  			AGRI_FLG,
+	  			INDIV_DT_OF_BIRTH,
+	  			INDIV_EDT,
+	  			POST_ADDR,
+	  			POST_CODE,
+	  			PHONE,MOBILE,
+	  			INDIV_RSD_ADDR,
+	  			INDIV_ZIP_CODE,
+	  			INDIV_COM_NAME,
+	  			INDIV_COM_TYP,
+	  			INDIV_COM_FLD,
+	  			INDIV_COM_JOB_TTL,
+	  			COM_INIT_LOAN_DATE,
+	  			HX_CUS_ID
+	  	)VALUES (
+	  			${cus_id},
+	  			${agri_flg},
+	  			${indiv_dt_of_birth},
+	  			${indiv_edt},
+	  			${post_addr},
+	  			${post_code},
+	  			${phone},
+	  			${mobile},
+	  			${indiv_rsd_addr},
+	  			${indiv_zip_code},
+	  			${indiv_com_name},
+	  			${indiv_com_typ},
+	  			${indiv_com_fld},
+	  			${indiv_com_job_ttl},
+	  			${com_init_loan_date},
+	  			${hx_cus_id}
+	  	)
+	  ]]>
+	  </INSERT> 
+	</SQL>
+	
+	<SQL id="updateCusBase" parameterClass="com.ecc.emp.data.KeyedCollection" valueClass="java.lang.String">
+	   <UPDATE>
+	  <![CDATA[
+	  	update cus_base  set hx_cus_id=${_SIG_VALUE} where cus_id=${cus_id}
+	  ]]>
+	   </UPDATE>
+	</SQL>
+	
+	<SQL id="queryLmtAgrDetailsByAppNo" parameterClass="java.util.HashMap" resultClass="java.util.HashMap" onlyReturnFirst="true" >
+	   <SELECT>
+	  	<![CDATA[
+			select * from lmt_Agr_Details where app_no = ${app_no}
+		]]>
+	   </SELECT>
+	</SQL>
+	
+	<SQL id="queryLmtAgrIndivByAppNo" parameterClass="java.util.HashMap" resultClass="java.util.HashMap" onlyReturnFirst="true" >
+	   <SELECT>
+	  	<![CDATA[
+			select * from lmt_Agr_Indiv where app_no = ${app_no}
+		]]>
+	   </SELECT>
+	</SQL>
+	
+	<SQL id="queryCtrLoanContByAgrNo" parameterClass="java.util.HashMap" resultClass="java.util.HashMap" onlyReturnFirst="true" >
+	   <SELECT>
+	  	<![CDATA[
+			select * from Ctr_Loan_Cont where limit_acc_no = ${app_no}
+		]]>
+	   </SELECT>
+	</SQL>
+	
+	<SQL id="queryAccLoanByAgrNo" parameterClass="java.util.HashMap" resultClass="java.util.HashMap" onlyReturnFirst="true" >
+	   <SELECT>
+	  	<![CDATA[
+			select * from Acc_Loan where agr_no = ${agr_no}
+		]]>
+	   </SELECT>
+	</SQL>
+	
+	<SQL id="queryIqpLoanAppByAgrNo" parameterClass="java.util.HashMap" resultClass="java.util.HashMap" onlyReturnFirst="true" >
+	   <SELECT>
+	  	<![CDATA[
+			select * from Iqp_Loan_App where limit_acc_no = ${agr_no}
+		]]>
+	   </SELECT>
+	</SQL>
+</S>

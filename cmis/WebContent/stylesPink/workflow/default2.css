@@ -1,0 +1,66 @@
+/**信贷管理系统
+ * @version  2014-05-16
+ * @author wangms2@yuchengtech.com
+ *pink
+ */ 
+ 
+@charset "utf-8";
+/**-- Document Css Start --**/
+body{font-size:12px;background-color:#fff;margin:0;color:#020000;line-height:140%;
+font-family:SimSun,"Microsoft Yahei",Verdana, Geneva, Arial, Helvetica, sans-serif;}
+p,form,img,ul,li,ol,dl,dt,dd,table,td,th{margin:0;padding:0;}
+li{list-style:none;}
+img{border:none;}
+table{border-collapse:collapse;}
+a{text-decoration:none;}
+a:link {font-size: 12px;color: #020000;}
+a:visited {font-size: 12px;	color: #545454;}
+a:hover {font-size: 12px; color: #ff0000;}
+a:active {font-size: 12px; color: #222;}
+input,select,option,textarea{font-size:12px;}
+select{border-color:#b7b7b7;}
+fieldset{border:1px solid #c2c2c2;}
+/**-- Document Css end --**/
+
+
+.button2{font-size:12px;color: #020000;padding: 2px 0 0 0;background-color:#F4F9FF;height: 19px;border:1px solid #b7bac1;}
+.button {font-size:12px;cursor:pointer;color:4b4b4b;border:1px solid #a7a6aa;background: url(../../images/workflow/button_Bg.jpg) repeat-x;
+height:24px; padding:0 5px;	}
+.title{font-weight:700;font-size:12px;color:#020000;font-family:"宋体";text-align:center;}
+.tablemain {background: #fff;width:100%; border:1px solid #b7b7b7; border-right:none;}
+.tablemain td { height: 26px;border-bottom:1px solid #dadada;padding:3px 5px;}
+.tablemain th{padding:3px 5px;}
+.trtitle{font-weight: bold;FONT-SIZE: 12px;COLOR: #424242;FONT-FAMILY: '宋体';background-color:#fed5d5;text-align: center;}
+.trclass {background-color: #fff;FONT-SIZE: 12px;COLOR: #424242;FONT-FAMILY: 宋体;height:20px}
+.trclass2 {background-color: #ffe3e3;FONT-SIZE: 12px;COLOR: #424242;FONT-FAMILY: 宋体;;height:20px}
+.trclass3 {background-color:#fdd1d1;FONT-SIZE: 12px;COLOR: #424242;FONT-FAMILY: 宋体;cursor:pointer;}
+
+.tablemain2 {background: #fff;width:100%; border:1px solid #d1d1d1; border-right:none;  border-bottom:none;}
+.tablemain2 td { height: 31px; border:1px solid #d1d1d1; border-top:none; border-left:none;}
+.tablemain2 .trtitle{font-weight: bold;FONT-SIZE: 12px;COLOR: #000;FONT-FAMILY: '宋体';BACKGROUND:#d4e4f3 url(../../images/workflow/table_title_bg.jpg) repeat-x;text-align: center;}
+.trtitle2{FONT-SIZE: 12px;COLOR: #000;FONT-FAMILY: '宋体';BACKGROUND: url(../../images/workflow/table_title_bg.jpg) repeat-x;}
+.selectNextNodeStyle {margin: 20px;}
+.selectNextNodeStyle1 {margin-top: 20px;margin-left: 20px;margin-bottom: 2px;}
+.selectNextNodeStyle2 {margin-top: 2px;margin-left: 20px;margin-bottom: 20px;}
+
+.tdtitle{font-weight:700;font-size: 12px;color: #000000; padding: 5px 5px 5px 5px;background-color:#e3e4e3;height: 20px;BORDER: #B7BAC1 0pt solid;}
+.td{font-size: 12px;color: #020000;padding: 5px;background-color:#FFF;height: 20px;BORDER: #B7BAC1 0pt solid;}
+td{padding-top:3px;padding-left:5px;padding-right:2px;padding-bottom:2px;font-size:12px;}
+
+#goPage{border:1px solid #b7b7b7;text-align:center;}
+font{font-size:12px;}
+.a2{font-size:12px;color:#020000;background:url(../../images/blue/QZ_btn.png) no-repeat center center;padding:3px 10px;}
+.a2_pre{padding-left:20px;background:url(../../images/blue/QZ_pre.png) no-repeat left center;padding-right:0;}
+.a2_next{padding-right:20px;background:url(../../images/blue/QZ_next.png) no-repeat right center;padding-left:0;}
+
+
+
+
+
+
+
+
+
+
+
+

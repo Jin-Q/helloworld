@@ -1,0 +1,360 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actionDefines>
+	<classMap>
+		<map id="action" class="com.yucheng.cmis.ad.mvc.ADRequestController"/>
+		<map id="flowInvoker" class="com.yucheng.cmis.ad.mvc.ADFlowInvoker"/>
+		<map id="outputViews" class="java.util.HashMap"/>
+		<map id="output" class="com.ecc.emp.data.KeyedCollection"/>
+		<map id="kColl" class="com.ecc.emp.data.KeyedCollection"/>
+		<map id="iColl" class="com.ecc.emp.data.IndexedCollection"/>
+		<map id="field" class="com.ecc.emp.data.DataField"/>
+	</classMap>
+	
+	<!-- 获取操作主页面 -->
+	<action id="queryWfiLvCreditRightList" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.platform.workflow.op.wfilvcreditright.QueryWfiLvCreditRightListOp"/>
+			<transition dest="retPage" condition="($retValue='0')" />
+			<transition dest="retSubPage" condition="($retValue='1')" />
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="platform/workflow/WfiLvCreditRight/queryWfiLvCreditRightList.jsp" />
+			<jspView id="retSubPage" url="platform/workflow/WfiLvCreditRight/querySubWfiLvCreditRightList.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 获取社区支行操作主页面 -->
+	<action id="queryCommBranchCreditRightList" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.platform.workflow.op.wfilvcreditright.QueryCommBranchCreditRightListOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="platform/workflow/WfiLvCreditRight/queryCommBranchCreditRightList.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 获得编辑页面 -->
+	<action id="getWfiLvCreditRightUpdatePage" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation updateCheck="false" class="com.yucheng.cmis.platform.workflow.op.wfilvcreditright.QueryWfiLvCreditRightDetailOp"/>
+			<transition dest="retPage" condition="($retValue='0')" />
+			<transition dest="retSubPage" condition="($retValue='1')" />
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="platform/workflow/WfiLvCreditRight/updateWfiLvCreditRightRecord.jsp" />
+			<jspView id="retSubPage" url="platform/workflow/WfiLvCreditRight/updateSubWfiLvCreditRightRecord.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 更新记录 -->
+	<action id="updateWfiLvCreditRightRecord" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.platform.workflow.op.wfilvcreditright.UpdateWfiLvCreditRightRecordOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jsonView class="com.yucheng.cmis.view.JSONView" id="retPage">
+				<output>
+					<field id="flag" class="com.ecc.emp.data.DataField"/>
+				</output>
+			</jsonView>
+		</outputViews>
+	</action>
+	
+	<!-- 获得查看页面 -->
+	<action id="getWfiLvCreditRightViewPage" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.platform.workflow.op.wfilvcreditright.QueryWfiLvCreditRightDetailOp"/>
+			<transition dest="retPage" condition="($retValue='0')" />
+			<transition dest="retSubPage" condition="($retValue='1')" />
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="platform/workflow/WfiLvCreditRight/queryWfiLvCreditRightDetail.jsp" />
+			<jspView id="retSubPage" url="platform/workflow/WfiLvCreditRight/querySubWfiLvCreditRightDetail.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 获得新增页面 -->
+	<action id="getWfiLvCreditRightAddPage" type="normal" checkSession="true" >
+		<jspView id="addPage" url="platform/workflow/WfiLvCreditRight/addWfiLvCreditRightRecord.jsp"/>
+	</action>
+	
+	<!-- 新增记录 -->
+	<action id="addWfiLvCreditRightRecord" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.platform.workflow.op.wfilvcreditright.AddWfiLvCreditRightRecordOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jsonView id="retPage" class="com.yucheng.cmis.view.JSONView" >
+				<output>
+					<field id="flag" class="com.ecc.emp.data.DataField"/>
+				</output>
+			</jsonView>
+		</outputViews>
+	</action>	
+	
+	<!-- 删除记录 -->
+	<action id="deleteWfiLvCreditRightRecord" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.platform.workflow.op.wfilvcreditright.DeleteWfiLvCreditRightRecordOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jsonView class="com.yucheng.cmis.view.JSONView" id="retPage">
+				<output>
+					<field id="flag" class="com.ecc.emp.data.DataField"/>
+				</output>
+			</jsonView>
+		</outputViews>
+	</action>
+	
+	<!-- 分页查询记录列表 -->
+		<action id="pageWfiLvCreditRightQuery" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.platform.workflow.op.wfilvcreditright.QueryWfiLvCreditRightListOp"/>
+			<transition dest="queryListRes"/>
+		</flowInvoker>
+		<outputViews>
+			<jsonView class="com.yucheng.cmis.view.JSONView" id="queryListRes">
+				<output>
+					<iColl id="WfiLvCreditRightList">
+						<kColl>
+						</kColl>
+					</iColl>
+					<kColl id="pageInfo">
+						<field id="currentPage" />
+						<field id="maxLine" />
+						<field id="recordSize" />
+					</kColl>
+				</output>
+			</jsonView>
+		</outputViews>
+	</action>
+	
+	<!-- 分页社区支行查询记录列表 -->
+	<action id="pageCommBranchCreditRightQuery" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.platform.workflow.op.wfilvcreditright.QueryCommBranchCreditRightListOp"/>
+			<transition dest="queryListRes"/>
+		</flowInvoker>
+		<outputViews>
+			<jsonView class="com.yucheng.cmis.view.JSONView" id="queryListRes">
+				<output>
+					<iColl id="CommBranchCreditRightList">
+						<kColl>
+						</kColl>
+					</iColl>
+					<kColl id="pageInfo">
+						<field id="currentPage" />
+						<field id="maxLine" />
+						<field id="recordSize" />
+					</kColl>
+				</output>
+			</jsonView>
+		</outputViews>
+	</action>
+	
+	<!-- 初始化授权配置 -->
+	<action id="initWfiLvCreditRightRecord" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.platform.workflow.op.wfilvcreditright.InitWfiLvCreditRightOp"/>
+			<transition dest="initOp"/>
+		</flowInvoker>
+		<outputViews>
+			<jsonView class="com.yucheng.cmis.view.JSONView" id="initOp">
+				<output>
+					<field id="flag" class="com.ecc.emp.data.DataField"/>
+				</output>
+			</jsonView>
+		</outputViews>
+	</action>
+	
+	
+	<!-- 更新记录 -->
+	<action id="updateSubWfiLvCreditRightRecord" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.platform.workflow.op.wfilvcreditright.UpdateWfiLvCreditRightRecordOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jsonView class="com.yucheng.cmis.view.JSONView" id="retPage">
+				<output>
+					<field id="flag" class="com.ecc.emp.data.DataField"/>
+				</output>
+			</jsonView>
+		</outputViews>
+	</action>
+	
+	<!-- 校验分/支行审批金额是否小于总行金额 -->
+	<action id="checkWLCRSubCrdAmt" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.platform.workflow.op.wfilvcreditright.CheckWLCRSubCrdAmtOp"/>
+			<transition dest="checkAmtOp"/>
+		</flowInvoker>
+		<outputViews>
+			<jsonView class="com.yucheng.cmis.view.JSONView" id="checkAmtOp">
+				<output>
+					<field id="flag" class="com.ecc.emp.data.DataField"/>
+				</output>
+			</jsonView>
+		</outputViews>
+	</action>
+	
+	<!-- 校验机构是否存在社区支行权限配置信息 -->
+	<action id="checkCommBranchRecord" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.platform.workflow.op.wfilvcreditright.CheckCommBranchRecordOp"/>
+			<transition dest="checkOp"/>
+		</flowInvoker>
+		<outputViews>
+			<jsonView class="com.yucheng.cmis.view.JSONView" id="checkOp">
+				<output>
+					<field id="flag" class="com.ecc.emp.data.DataField"/>
+				</output>
+			</jsonView>
+		</outputViews>
+	</action>
+	
+	<!-- 获取机构码页面 -->
+	<action id="getWfiLvCreditRightOrgInfoViewPage" type="normal" checkSession="true" >
+		<jspView id="retPage" url="platform/workflow/WfiLvCreditRight/queryWfiLvCreditRightOrgInfo.jsp" />
+	</action>
+	
+	<!-- 获取社区支行修改页面 -->
+	<action id="getCommBranchCreditRightUpdatePage" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.platform.workflow.op.wfilvcreditright.QueryCommBranchCreditRightDetailOp"/>
+			<transition dest="updatePage"/>
+		</flowInvoker>
+		<outputViews>	
+		<jspView id="updatePage" url="platform/workflow/WfiLvCreditRight/updateCommBranchCreditRight.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 更新记录 -->
+	<action id="updateCommBranchCreditRightRecord" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.platform.workflow.op.wfilvcreditright.UpdateCommBranchCreditRightRecordOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jsonView class="com.yucheng.cmis.view.JSONView" id="retPage">
+				<output>
+					<field id="flag" class="com.ecc.emp.data.DataField"/>
+				</output>
+			</jsonView>
+		</outputViews>
+	</action>
+	
+	<!-- 获取社区支行详情页面 -->
+	<action id="getCommBranchCreditRightViewPage" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.platform.workflow.op.wfilvcreditright.QueryCommBranchCreditRightDetailOp"/>
+			<transition dest="updatePage"/>
+		</flowInvoker>
+		<outputViews>	
+		<jspView id="updatePage" url="platform/workflow/WfiLvCreditRight/queryCommBranchCreditRightDetail.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 删除记录 -->
+	<action id="deleteCommBranchCreditRightRecord" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.platform.workflow.op.wfilvcreditright.DeleteCommBranchCreditRightRecordOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jsonView class="com.yucheng.cmis.view.JSONView" id="retPage">
+				<output>
+					<field id="flag" class="com.ecc.emp.data.DataField"/>
+				</output>
+			</jsonView>
+		</outputViews>
+	</action>
+	
+	<!-- 社区支行机构列表POP界面 -->
+	<action id="queryCommBranchPop" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.platform.workflow.op.wfilvcreditright.QueryCommBranchListOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="platform/workflow/WfiLvCreditRight/queryCommBranchPop.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 社区支行机构列表POP分页查询 -->
+	<action id="pageCommBranchPopQuery" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.platform.workflow.op.wfilvcreditright.QueryCommBranchListOp"/>
+			<transition dest="queryListRes"/>
+		</flowInvoker>
+		<outputViews>
+			<jsonView class="com.yucheng.cmis.view.JSONView" id="queryListRes">
+				<output>
+					<iColl id="WfiOrgCbRelList">
+						<kColl>
+						</kColl>
+					</iColl>
+					<kColl id="pageInfo">
+						<field id="currentPage" />
+						<field id="maxLine" />
+						<field id="recordSize" />
+					</kColl>
+				</output>
+			</jsonView>
+		</outputViews>
+	</action>
+	
+	<!-- 获得社区支行授权新增页面 -->
+	<action id="getWfiLvCreditRight4CBAddPage" type="normal" checkSession="true" >
+		<jspView id="addPage" url="platform/workflow/WfiLvCreditRight/addWfiLvCreditRight4CBRecord.jsp"/>
+	</action>
+		
+	<!-- 获得社区支行编辑页面 -->
+	<action id="getWfiLvCreditRight4CBUpdatePage" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation updateCheck="false" class="com.yucheng.cmis.platform.workflow.op.wfilvcreditright.QueryWfiLvCreditRightDetailOp"/>
+			<transition dest="retPage" />
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="platform/workflow/WfiLvCreditRight/updateWfiLvCreditRight4CBRecord.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 获得查看页面 -->
+	<action id="getWfiLvCreditRight4CBViewPage" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.platform.workflow.op.wfilvcreditright.QueryWfiLvCreditRightDetailOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="platform/workflow/WfiLvCreditRight/queryWfiLvCreditRight4CBDetail.jsp" />
+		</outputViews>
+	</action>
+	
+		<!-- 分页查询记录列表 -->
+	<action id="pageWfiLvCreditRight4CBQuery" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.platform.workflow.op.wfilvcreditright.QueryCommBranchCreditRightDetailOp"/>
+			<transition dest="queryListRes"/>
+		</flowInvoker>
+		<outputViews>
+			<jsonView class="com.yucheng.cmis.view.JSONView" id="queryListRes">
+				<output>
+					<iColl id="WfiLvCreditRightList">
+						<kColl>
+						</kColl>
+					</iColl>
+					<kColl id="pageInfo">
+						<field id="currentPage" />
+						<field id="maxLine" />
+						<field id="recordSize" />
+					</kColl>
+				</output>
+			</jsonView>
+		</outputViews>
+	</action>	
+</actionDefines>

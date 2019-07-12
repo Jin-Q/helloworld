@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<mbeans.xml>
+
+	<classMap>
+		<map id="EMPMBean" class="com.ecc.emp.jmx.support.EMPMBeanInfo" />
+		<map id="attr" class="com.ecc.emp.jmx.support.AttrInfo" />
+		<map id="op" class="com.ecc.emp.jmx.support.OperationInfo" />
+		<map id="mbeanExportor" class="com.ecc.emp.jmx.support.EMPMBeanExportor" />
+		<map id="notifies" class="com.ecc.emp.jmx.support.RegistryInfo" />
+	</classMap>
+
+	<mbeanExportor id="mbeanExportor">
+
+		<!-- 直接实例化JavaClass 并导出为MBean -->
+		<EMPMBean id="systemInfoBean" name="systemInfo"
+			objectClass="com.ecc.emp.jmx.support.SystemInfoMBean" description="System info bean"
+			type="native">
+			<attr id="freeMemory" name="freeMemory" displayName="freeMemory"
+				description="current free memory" access="R" />
+			<attr id="totalMemory" name="totalMemory" displayName="totalMemory"
+				description="current total memory" access="R" />
+			<attr id="maxMemory" name="maxMemory" displayName="maxMemory"
+				description="current max memory" access="R" />
+			<op id="doGC" name="doGC" displayName="doGarbageCollection"
+				description="doGarbageColl" />
+
+		</EMPMBean>
+
+		<EMPMBean id="propertiesInfoBean" name="propertiesInfo"
+			objectClass="com.ecc.emp.jmx.support.PropertiesInfoMBean"
+			description="Properties info bean" type="native">
+			<attr id="javaClassPath" name="javaClassPath" displayName="javaClassPath"
+				description="current java class path" access="R" />
+			<attr id="javaClassVersion" name="javaClassVersion" displayName="javaClassVersion"
+				description="current java class version" access="R" />
+			<attr id="javaHome" name="javaHome" displayName="javaHome"
+				description="current java home" access="R" />
+			<attr id="javaSpecificationVendor" name="javaSpecificationVendor"
+				displayName="javaSpecificationVendor" description="current java specification vendor"
+				access="R" />
+			<attr id="javaSpecificationVersion" name="javaSpecificationVersion"
+				displayName="javaSpecificationVersion" description="current java specification version"
+				access="R" />
+			<attr id="javaVendor" name="javaVendor" displayName="javaVendor"
+				description="current java vendor" access="R" />
+			<attr id="javaVendorUrl" name="javaVendorUrl" displayName="javaVendorUrl"
+				description="current java vendor url" access="R" />
+			<attr id="javaVersion" name="javaVersion" displayName="javaVersion"
+				description="current java version" access="R" />
+			<attr id="javaVmName" name="javaVmName" displayName="javaVmName"
+				description="current java vm name" access="R" />
+			<attr id="javaVmSpecificationName" name="javaVmSpecificationName"
+				displayName="javaVmSpecificationName" description="current java vm specification name"
+				access="R" />
+			<attr id="javaVmSpecificationVendor" name="javaVmSpecificationVendor"
+				displayName="javaVmSpecificationVendor" description="current java vm specification vendor"
+				access="R" />
+			<attr id="javaVmSpecificationVersion" name="javaVmSpecificationVersion"
+				displayName="javaVmSpecificationVersion" description="current java vm specification version"
+				access="R" />
+			<attr id="javaVmVendor" name="javaVmVendor" displayName="javaVmVendor"
+				description="current java vm vendor" access="R" />
+			<attr id="javaVmVersion" name="javaVmVersion" displayName="javaVmVersion"
+				description="current java vm version" access="R" />
+		</EMPMBean>
+
+		<EMPMBean id="CMISBiz" name="EMPFlowComponentFactory"
+			objectId="CMISBiz" description="The EMP Flow component factory!"
+			type="factory">
+			<attr id="InstancedFlowCount" name="InstancedFlowCount"
+				displayName="实例化的流程数目" description="Instanced flow count" access="R" />
+			<op id="reloadFlow" name="reloadFlow" displayName="重载指定Flow配置文件"
+				description="重载指定的Flow配置文件" paramNameStr="flowId" />
+			<op id="reloadAllFlow" name="reloadAllFlow" displayName="重载全部的Flow配置文件"
+				description="重载全部的Flow配置文件" />
+			<op id="getFlowAccessInfo" name="getFlowAccessInfo" displayName="取得指定Flow的访问信息"
+				description="取得指定Flow的访问信息" paramNameStr="flowId" />
+		</EMPMBean>
+	</mbeanExportor>
+</mbeans.xml>

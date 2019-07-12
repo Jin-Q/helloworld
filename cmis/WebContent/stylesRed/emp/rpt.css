@@ -1,0 +1,38 @@
+/**信贷管理系统
+ * @version  2014-05-16
+ * @author wangms2@yuchengtech.com
+ *red
+ */ 
+ 
+@charset "utf-8";
+/**-- Document Css Start --**/
+body{font-size:12px;background-color:#fff;margin:0;color:#020000;line-height:140%;
+font-family:SimSun,"Microsoft Yahei",Verdana, Geneva, Arial, Helvetica, sans-serif;}
+p,form,img,ul,li,ol,dl,dt,dd,table,td,th{margin:0;padding:0;}
+li{list-style:none;}
+img{border:none;}
+table{border-collapse:collapse;}
+a{text-decoration:none;}
+a:link {font-size: 12px;color: #020000;}
+a:visited {font-size: 12px;	color: #545454;}
+a:hover {font-size: 12px; color: #ff0000;}
+a:active {font-size: 12px; color: #222;}
+input,select,option,textarea{font-size:12px;}
+select{border-color:#b7b7b7;}
+fieldset{border:1px solid #c2c2c2;}
+/**-- Document Css end --**/
+
+/***** EMP.field.Base label *****/
+.emp_rpt_label {vertical-align: bottom;text-align: left;nowrap;}
+.emp_rpt_label_formula {vertical-align: bottom;text-align: left;color:#ff0000;font-size:12px;}
+.emp_rpt_tr {height:26px;}
+.emp_rpt_tr td{border-collapse: collapse;border-bottom:1px solid #dadada;padding:0 5px;}
+.emp_rpt_flatspan{text-align: right;}
+.emp_rpt_text_input{text-align: right;width:90px;}
+.emp_rpt_text_input_readonly{border-color: #ccc;text-align: right;}
+.emp_rpt_whole_table{width: 100%;border: 0;border-spacing: 0;border-collapse: collapse;background:#fff;}
+.emp_rpt_whole_table table{border:none;font-family:"宋体",Microsoft Yahei;font-size:12px;color:#424242;}
+.emp_rpt_head{background-color: #f6e2d7;text-align: center;font-size:13px;font-weight:600;}
+.emp_rpt_order{text-align: center;}
+.emp_table_fna {width: 900px;border-spacing: 0;border:1px solid #b7b7b7;border-collapse: collapse;}
+.emp_table_fna_tr {background-color: #e3e3e3;}

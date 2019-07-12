@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<SResource.xml>
+	<TableModel id="SResource" cnname="资源表模型" dbTableName="s_resource">
+		<Field id="resourceid" isPK="true" columnName="resourceid" cnname="资源ID" length="32" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="cnname" columnName="cnname" cnname="中文名" length="50" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="systempk" columnName="systempk" cnname="系统主键" length="20" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="url" columnName="url" cnname="资源URL" length="254" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="parentid" columnName="parentid" cnname="上级资源" length="50" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="tablename" columnName="tablename" cnname="TABLENAME" length="50" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="procid" columnName="procid" cnname="PROCID" length="100" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="orderid" columnName="orderid" cnname="排序字段" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="memo" columnName="memo" cnname="备注" length="50" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="icon" columnName="icon" cnname="资源图标" length="100" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="orgid" columnName="orgid" cnname="组织号" length="16" JDBCType="VARCHAR2" canBeNull="true"/>
+	</TableModel>
+</SResource.xml>

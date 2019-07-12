@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<CcrBizModel.xml>
+	<TableModel id="CcrBizModel" pageSize="10" cnname="行业数据模型" isPaged="true" dbTableName="ccr_biz_model">
+		<TableInfo/>
+		<Field id="com_cll_typ" isPK="true" columnName="com_cll_typ" cnname="行业类型" length="5" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="com_opt_scale" isPK="true" columnName="com_opt_scale" cnname="企业规模" length="2" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="index_no" isPK="true" columnName="index_no" cnname="指标编号" length="12" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="index_name" columnName="index_name" cnname="指标名称" length="60" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="excellent_score" columnName="excellent_score" cnname="优秀值" length="16" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="good_score" columnName="good_score" cnname="良好值" length="16" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="average_score" columnName="average_score" cnname="平均值" length="16" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="lower_score" columnName="lower_score" cnname="较低值" length="16" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="worse_score" columnName="worse_score" cnname="较差值" length="16" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="worst_score" columnName="worst_score" cnname="最差值" length="16" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<OrderFields>com_cll_typ[desc];com_opt_scale[desc];index_no[desc];</OrderFields>
+		<ConditionFields>com_cll_typ;index_no;index_name;</ConditionFields>
+	</TableModel>
+</CcrBizModel.xml>

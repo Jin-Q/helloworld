@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actionDefines>
+	<classMap>
+		<map id="action" class="com.yucheng.cmis.ad.mvc.ADRequestController"/>
+		<map id="flowInvoker" class="com.yucheng.cmis.ad.mvc.ADFlowInvoker"/>
+		<map id="outputViews" class="java.util.HashMap"/>
+		<map id="output" class="com.ecc.emp.data.KeyedCollection"/>
+		<map id="kColl" class="com.ecc.emp.data.KeyedCollection"/>
+		<map id="iColl" class="com.ecc.emp.data.IndexedCollection"/>
+		<map id="field" class="com.ecc.emp.data.DataField"/>
+	</classMap>
+	
+	<!-- 获取操作主页面 -->
+	<action id="queryAccpDetailList" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.cont.op.accpdetail.QueryAccpDetailListOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="biz01line/cont/AccpDetail/queryAccpDetailList.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 获得编辑页面 -->
+	<action id="getAccpDetailUpdatePage" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation updateCheck="false" class="com.yucheng.cmis.biz01line.cont.op.accpdetail.QueryAccpDetailDetailOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="biz01line/cont/AccpDetail/updateAccpDetailRecord.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 更新记录 -->
+	<action id="updateAccpDetailRecord" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.cont.op.accpdetail.UpdateAccpDetailRecordOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="operationResult.jsp?url=queryAccpDetailList.do" />
+		</outputViews>
+	</action>
+	
+	<!-- 获得查看页面 -->
+	<action id="getAccpDetailViewPage" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.cont.op.accpdetail.QueryAccpDetailDetailOp"/>
+			<transition dest="updatePage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="updatePage" url="biz01line/cont/AccpDetail/queryAccpDetailDetail.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 获得新增页面 -->
+	<action id="getAccpDetailAddPage" type="normal" checkSession="true" >
+		<jspView id="addPage" url="biz01line/cont/AccpDetail/addAccpDetailRecord.jsp"/>
+	</action>
+	
+	<!-- 新增记录 -->
+	<action id="addAccpDetailRecord" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.cont.op.accpdetail.AddAccpDetailRecordOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="operationResult.jsp?url=queryAccpDetailList.do" />
+		</outputViews>
+	</action>	
+	
+	<!-- 删除记录 -->
+	<action id="deleteAccpDetailRecord" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.cont.op.accpdetail.DeleteAccpDetailRecordOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="operationResult.jsp?url=queryAccpDetailList.do" />
+		</outputViews>
+	</action>
+	
+	<!-- 分页查询记录列表 -->
+		<action id="pageAccpDetailQuery" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.cont.op.accpdetail.QueryAccpDetailListOp"/>
+			<transition dest="queryListRes"/>
+		</flowInvoker>
+		<outputViews>
+			<jsonView class="com.yucheng.cmis.view.JSONView" id="queryListRes">
+				<output>
+					<iColl id="AccpDetailList">
+						<kColl>
+							<field id="pyee" />
+							<field id="pyee _acct_no" />
+							<field id="pyee_acctsvcr_no" />
+							<field id="pyee_acctsvcr_name" />
+							<field id="drft_amt" />
+						</kColl>
+					</iColl>
+					<kColl id="pageInfo">
+						<field id="currentPage" />
+						<field id="maxLine" />
+						<field id="recordSize" />
+					</kColl>
+				</output>
+			</jsonView>
+		</outputViews>
+	</action>
+	
+</actionDefines>
+
+
+

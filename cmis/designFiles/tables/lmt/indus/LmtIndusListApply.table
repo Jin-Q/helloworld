@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<LmtIndusListApply.xml>
+	<TableModel id="LmtIndusListApply" pageSize="10" cnname="行业名单申请表" isPaged="true" dbTableName="lmt_indus_list_apply">
+		<TableInfo/>
+		<Field id="serno" isPK="true" columnName="serno" cnname="业务编号" length="40" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="cus_id" isPK="true" columnName="cus_id" cnname="客户码" length="30" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="is_do_limit" dictname="STD_ZX_YES_NO" columnName="is_do_limit" cnname="是否进行额度设置" length="5" JSPTag="select" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="memo" columnName="memo" cnname="备注" length="250" JSPTag="textarea" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="status" dictname="STD_ZB_LIST_STATUS" columnName="status" cnname="状态" length="5" JSPTag="select" canBeNull="true" JDBCType="VARCHAR2"/>
+		<OrderFields>serno[desc];cus_id[desc];</OrderFields>
+		<ConditionFields>serno;cus_id;</ConditionFields>
+		<FilterFields>serno;cus_id;is_do_limit;status;</FilterFields>
+		<RecordRestrict query="false" delete="false" update="false"/>
+	</TableModel>
+</LmtIndusListApply.xml>

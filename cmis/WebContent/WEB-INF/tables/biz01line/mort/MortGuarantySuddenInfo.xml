@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<MortGuarantySuddenInfo.xml>
+	<TableModel id="MortGuarantySuddenInfo" cnname="记录抵质押品意外情况" dbTableName="mort_guaranty_sudden_info">
+		<Field id="accident_no" isPK="true" columnName="accident_no" cnname="意外情况编码" length="40" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="guaranty_no" columnName="guaranty_no" cnname="押品编号" length="40" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="accident_resn" columnName="accident_resn" cnname="意外原因" length="2000" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="occur_date" columnName="occur_date" cnname="发生日期" length="10" JDBCType="CHAR" canBeNull="true"/>
+		<Field id="other_note" columnName="other_note" cnname="其他说明" length="1000" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="sys_update_time" columnName="sys_update_time" cnname="系统更新时间" length="10" JDBCType="CHAR" canBeNull="true"/>
+		<Field id="accident_type" columnName="accident_type" cnname="意外情况类型" length="1" JDBCType="char" canBeNull="true"/>
+	</TableModel>
+</MortGuarantySuddenInfo.xml>

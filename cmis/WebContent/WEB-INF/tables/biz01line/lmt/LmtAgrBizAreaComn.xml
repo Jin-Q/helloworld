@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<LmtAgrBizAreaComn.xml>
+	<TableModel id="LmtAgrBizAreaComn" cnname="目标客户群（一般商圈）结果表" dbTableName="lmt_agr_biz_area_comn">
+		<Field id="shop_type" columnName="shop_type" cnname="商户类型" length="2" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="main_prd" columnName="main_prd" cnname="主要产品" length="200" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="oper_model" columnName="oper_model" cnname="经营规模" length="10" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="other_cond" columnName="other_cond" cnname="其他准入条件" length="200" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="agr_no" isPK="true" columnName="agr_no" cnname="商圈协议编号" length="40" JDBCType="VARCHAR2"/>
+	</TableModel>
+</LmtAgrBizAreaComn.xml>

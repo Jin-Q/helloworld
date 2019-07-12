@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<function.xml>
+
+	<function name="转换为字符串"
+		implClass="com.ecc.shuffle.upgrade.function.ToString"
+		retType="string">
+		<args>
+			<arg type="object" />
+			<arg type="string" />
+		</args>
+		<refStr>@转换为字符串($src, '$fmt')</refStr>
+	</function>
+
+	<function name="打印debug信息"
+		implClass="com.ecc.shuffle.upgrade.function.PrintDebugMessage"
+		retType="void">
+		<args>
+			<arg type="string" />
+		</args>
+		<refStr>@打印debug信息('$msg')</refStr>
+	</function>
+
+	<function name="指标评分"
+		implClass="com.ecc.shuffle.upgrade.function.Grade" retType="string">
+		<args>
+			<arg type="string" />
+			<arg type="float" />
+		</args>
+		<refStr>@指标评分('VAL01|55|85|1|-0.23|7|', $指标值)</refStr>
+	</function>
+
+</function.xml>

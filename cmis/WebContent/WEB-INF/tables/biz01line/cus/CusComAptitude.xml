@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<CusComAptitude.xml>
+	<TableModel id="CusComAptitude" cnname="对公客户资质信息表" dbTableName="cus_com_aptitude">
+		<Field id="cus_id" isPK="true" columnName="cus_id" cnname="客户代码" length="30" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="com_apt_code" isPK="true" columnName="com_apt_code" cnname="资质证书编号" length="40" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="com_apt_name" columnName="com_apt_name" cnname="资质名称" length="60" JDBCType="VARCHAR2"/>
+		<Field id="com_apt_dec" columnName="com_apt_dec" cnname="资质说明" length="200" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="com_apt_cls" columnName="com_apt_cls" cnname="资质等级" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="reg_bch_id" columnName="reg_bch_id" cnname="发证/登记机构" length="80" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="crt_date" columnName="crt_date" cnname="发证/登记日期" length="10" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="com_apt_expired" columnName="com_apt_expired" cnname="资质有效期" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="remark" columnName="remark" cnname="备注" length="250" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="input_id" columnName="input_id" cnname="登记人" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="input_br_id" columnName="input_br_id" cnname="登记机构" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="input_date" columnName="input_date" cnname="登记日期" length="10" JDBCType="CHAR" canBeNull="true"/>
+		<Field id="last_upd_id" columnName="last_upd_id" cnname="更新人" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="last_upd_date" columnName="last_upd_date" cnname="更新日期" length="10" JDBCType="VARCHAR2" canBeNull="true"/>
+	</TableModel>
+</CusComAptitude.xml>

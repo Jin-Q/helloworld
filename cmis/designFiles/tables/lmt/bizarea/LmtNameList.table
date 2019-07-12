@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<LmtNameList.xml>
+	<TableModel id="LmtNameList" pageSize="15" cnname="名单表" isPaged="true" dbTableName="lmt_name_list">
+		<TableInfo>名单表</TableInfo>
+		<Field id="cus_id" isPK="true" columnName="cus_id" cnname="客户码" length="20" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="is_limit_set" dictname="STD_ZX_YES_NO" columnName="is_limit_set" cnname="是否进行额度设置" length="4" JSPTag="select" canBeNull="true" JDBCType="VARCHAR2"/>
+		<OrderFields>name_serno;</OrderFields>
+		<ConditionFields>joint_guar_no;cus_id;</ConditionFields>
+		<RecordRestrict query="true" delete="true" update="true"/>
+		<Field id="cus_status" dictname="STD_LMT_CUS_STATUS" columnName="cus_status" cnname="客户状态" length="4" JSPTag="select" JDBCType="VARCHAR2"/>
+		<Field id="memo" columnName="memo" cnname="备注" length="400" JSPTag="text" JDBCType="VARCHAR2"/>
+		<Field id="agr_no" isPK="true" columnName="agr_no" cnname="协议编号" length="40" JSPTag="text" JDBCType="VARCHAR2"/>
+		<Field id="sub_type" columnName="sub_type" cnname="分项类别" length="4" JSPTag="text" JDBCType="VARCHAR2"/>
+		<Field id="bail_rate" columnName="bail_rate" cnname="保证金比例" length="10" JSPTag="text" JDBCType="NUMBER"/>
+	</TableModel>
+</LmtNameList.xml>

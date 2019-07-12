@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actionDefines>
+	<classMap>
+		<map id="action" class="com.yucheng.cmis.ad.mvc.ADRequestController"/>
+		<map id="flowInvoker" class="com.yucheng.cmis.ad.mvc.ADFlowInvoker"/>
+		<map id="outputViews" class="java.util.HashMap"/>
+		<map id="output" class="com.ecc.emp.data.KeyedCollection"/>
+		<map id="kColl" class="com.ecc.emp.data.KeyedCollection"/>
+		<map id="iColl" class="com.ecc.emp.data.IndexedCollection"/>
+		<map id="field" class="com.ecc.emp.data.DataField"/>
+	</classMap>
+	
+	<!-- 获取操作主页面 -->
+	<action id="queryCusOrgInfoList" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.cus.op.cuscogniz.evalorgbranchinfo.QueryCusOrgInfoListOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="biz01line/cus/cuscogniz/EvalOrgBranchInfo/queryCusOrgInfoList.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 获得编辑页面 -->
+	<action id="getCusOrgInfoUpdatePage" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation updateCheck="false" class="com.yucheng.cmis.biz01line.cus.op.cuscogniz.evalorgbranchinfo.QueryCusOrgInfoDetailOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="biz01line/cus/cuscogniz/EvalOrgBranchInfo/updateCusOrgInfoRecord.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 更新记录 -->
+	<action id="updateCusOrgInfoRecord" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.cus.op.cuscogniz.evalorgbranchinfo.UpdateCusOrgInfoRecordOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<!--<jspView id="retPage" url="operationResult.jsp?url=queryCusOrgInfoList.do" />-->
+			<view id="retPage" class="com.yucheng.cmis.view.JSONView">
+				<output class="com.ecc.emp.data.KeyedCollection">
+						<field id="operMsg" class="com.ecc.emp.data.DataField"/>
+				</output>
+			</view>
+		</outputViews>
+	</action>
+	
+	<!-- 获得查看页面 -->
+	<action id="getCusOrgInfoViewPage" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.cus.op.cuscogniz.evalorgbranchinfo.QueryCusOrgInfoDetailOp"/>
+			<transition dest="updatePage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="updatePage" url="biz01line/cus/cuscogniz/EvalOrgBranchInfo/queryCusOrgInfoDetail.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 获得新增页面 -->
+	<action id="getCusOrgInfoAddPage" type="normal" checkSession="true" >
+		<jspView id="addPage" url="biz01line/cus/cuscogniz/EvalOrgBranchInfo/addCusOrgInfoRecord.jsp"/>
+	</action>
+	
+	<!-- 新增记录 -->
+	<action id="addCusOrgInfoRecord" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.cus.op.cuscogniz.evalorgbranchinfo.AddCusOrgInfoRecordOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<!--<jspView id="retPage" url="operationResult.jsp?url=queryCusOrgInfoList.do" />-->
+			<view id="retPage" class="com.yucheng.cmis.view.JSONView">
+				<output class="com.ecc.emp.data.KeyedCollection">
+						<field id="operMsg" class="com.ecc.emp.data.DataField"/>
+				</output>
+			</view>
+		</outputViews>
+	</action>	
+	
+	<!-- 删除记录 -->
+	<action id="deleteCusOrgInfoRecord" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.cus.op.cuscogniz.evalorgbranchinfo.DeleteCusOrgInfoRecordOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<!--<jspView id="retPage" url="operationResult.jsp?url=queryCusOrgInfoList.do" />-->
+			<view id="retPage" class="com.yucheng.cmis.view.JSONView">
+				<output class="com.ecc.emp.data.KeyedCollection">
+						<field id="operMsg" class="com.ecc.emp.data.DataField"/>
+				</output>
+			</view>
+		</outputViews>
+	</action>
+	
+	<!-- 分页查询记录列表 -->
+		<action id="pageCusOrgInfoQuery" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.cus.op.cuscogniz.evalorgbranchinfo.QueryCusOrgInfoListOp"/>
+			<transition dest="queryListRes"/>
+		</flowInvoker>
+		<outputViews>
+			<jsonView class="com.yucheng.cmis.view.JSONView" id="queryListRes">
+				<output>
+					<iColl id="CusOrgInfoList">
+						<kColl>
+						</kColl>
+					</iColl>
+					<kColl id="pageInfo">
+						<field id="currentPage" />
+						<field id="maxLine" />
+						<field id="recordSize" />
+					</kColl>
+				</output>
+			</jsonView>
+		</outputViews>
+	</action>
+	
+</actionDefines>
+
+
+

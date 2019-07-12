@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<CfgBizRule.xml>
+	<TableModel id="CfgBizRule" pageSize="10" cnname="业务规则条目" isPaged="true" dbTableName="cfg_biz_rule">
+		<TableInfo/>
+		<Field id="cfg_org_group_pk" columnName="cfg_org_group_pk" cnname="机构配置组PK" length="40" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="cfg_biz_rule_pk" JDBCType="VARCHAR2" length="40" columnName="cfg_biz_rule_pk" canBeNull="false" pkGenerator="UNID" isPK="true" isEncrypted="false" JSPTag="text" cnname="规则条目PK"/>
+		<Field id="biz_cate_cd" dictname="ZB_BIZ_CATE" columnName="biz_cate_cd" cnname="业务类型编号" length="3" JSPTag="select" canBeNull="false" JDBCType="CHAR"/>
+		<Field id="rule_cond" columnName="rule_cond" cnname="规则条件" length="400" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="rule_desc" columnName="rule_desc" cnname="规则描述" length="200" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="rule_rslt" columnName="rule_rslt" cnname="规则结果" length="200" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="rule_pri" columnName="rule_pri" cnname="规则优先级" length="38" JSPTag="text" canBeNull="false" JDBCType="NUMBER"/>
+		<OrderFields>cfg_biz_rule_pk;rule_pri;</OrderFields>
+		<FilterFields>biz_cate_cd;rule_cond;rule_desc;rule_rslt;rule_pri;</FilterFields>
+		<RecordRestrict query="true" delete="true" update="true"/>
+		<ConditionFields>biz_cate_cd;rule_desc;rule_pri;cfg_org_group_pk;</ConditionFields>
+	</TableModel>
+</CfgBizRule.xml>

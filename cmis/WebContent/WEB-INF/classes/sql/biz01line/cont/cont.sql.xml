@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<S>
+
+<!-- 根据业务编号和费用代码查询-->
+<SQL id="selectIqpAppendTremsByIColl" parameterClass="java.util.HashMap" resultClass="com.ecc.emp.data.KeyedCollection" onlyReturnFirst="false">
+  <SELECT>
+  <![CDATA[
+	 SELECT serno FROM iqp_append_terms WHERE serno=${serno} AND fee_code=${fee_code}
+  ]]>
+  </SELECT>
+</SQL>
+
+<!-- 根据业务编号和费用代码，更新记录  -->
+<SQL id="updateIqpAppendTremsByIColl" parameterClass="java.util.HashMap" valueClass ="java.util.HashMap" >
+   <UPDATE>
+  <![CDATA[
+  	update iqp_append_terms set fee_desc=${fee_desc},benmark_amt=${benmark_amt},calc_express=${calc_express},fee_type=${fee_type},fee_amt=${fee_amt} where serno=${serno} and fee_code=${fee_code}
+  ]]>
+   </UPDATE>
+</SQL>
+	
+<!-- 插入附加条款信息 -->
+<SQL id="insertIqpAppendTremsByIColl" parameterClass="java.lang.String" valueClass ="java.util.HashMap" >
+  <INSERT>
+  <![CDATA[
+  	INSERT INTO iqp_append_terms(serno,fee_code,fee_desc,benmark_amt,calc_express,fee_type,fee_amt) VALUES (${serno},${fee_code},${fee_desc},${benmark_amt},${calc_express},${fee_type},${fee_amt})
+  ]]>
+  </INSERT> 
+</SQL>	
+
+<!-- 删除产品适用机构信息 -->
+<SQL id="deleteIqpAppendTremsByIColl"  parameterClass="java.util.HashMap" >
+  <DELETE>
+  <![CDATA[
+  	DELETE iqp_append_terms WHERE serno=${serno} AND fee_code=${fee_code}
+  ]]>
+  </DELETE>
+</SQL>
+
+<!-- 根据额度合同业务编号更新  -->
+<SQL id="updateCtrLimitLmtRelBySerno" parameterClass="java.lang.String" valueClass ="java.lang.String" >
+   <UPDATE>
+  <![CDATA[
+  	update ctr_limit_lmt_rel set limit_cont_no = ${_SIG_VALUE} where limit_serno= ${_SIG_VALUE}
+  ]]>
+   </UPDATE>
+</SQL>
+<!-- 根据额度合同业务编号更新  -->
+<SQL id="updateCusManagerBySerno" parameterClass="java.lang.String" valueClass ="java.lang.String" >
+   <UPDATE>
+  <![CDATA[
+  	update cus_manager set cont_no = ${_SIG_VALUE} where serno= ${_SIG_VALUE}
+  ]]>
+   </UPDATE>
+</SQL>
+<!-- 根据额度合同业务编号删除原有合同从表信息  -->
+<SQL id="deleteCtrLimitLmtRelByContNo" parameterClass="java.lang.String" >
+   <DELETE>
+  <![CDATA[
+  	delete from ctr_limit_lmt_rel_temp where limit_cont_no = ${_SIG_VALUE}
+  ]]>
+   </DELETE>
+</SQL>
+<!-- 根据额度合同业务编号删除变更合同从表信息  -->
+<SQL id="deleteCtrLimitLmtRelTempByContNo" parameterClass="java.lang.String" >
+   <DELETE>
+  <![CDATA[
+  	delete from ctr_limit_lmt_rel_temp where limit_cont_no = ${_SIG_VALUE}
+  ]]>
+   </DELETE>
+</SQL>
+<!-- 根据额度合同业务编号跟新客户经理绩效从表信息  -->
+<SQL id="updateCusManagerByContNo" parameterClass="java.lang.String" >
+   <UPDATE>
+  <![CDATA[
+  	update cus_manager set cont_no='' where cont_no=${_SIG_VALUE}
+  ]]>
+   </UPDATE>
+</SQL>
+
+<!-- 根据额度合同业务流水号跟新客户经理绩效从表信息  -->
+<SQL id="updateCusManagerForSerno" parameterClass="java.util.HashMap"  valueClass ="java.lang.String" >
+   <UPDATE>
+  <![CDATA[
+  	update cus_manager set cont_no=${_SIG_VALUE} where serno=${serno}
+  ]]>
+   </UPDATE>
+</SQL>
+<!-- 删除申请时产生的数据信息  -->
+<SQL id="deleteCtrLimitLmtRelBySerno" parameterClass="java.lang.String" >
+   <DELETE>
+  <![CDATA[
+  	delete from ctr_limit_lmt_rel where limit_serno = ${_SIG_VALUE} and limit_cont_no is null
+  ]]>
+   </DELETE>
+</SQL>
+<!-- 删除申请时产生的数据信息  -->
+<SQL id="deleteCtrLimitLmtRelTempBySerno" parameterClass="java.lang.String" >
+   <DELETE>
+  <![CDATA[
+  	delete from ctr_limit_lmt_rel_temp where limit_serno = ${_SIG_VALUE}
+  ]]>
+   </DELETE>
+</SQL>
+<!-- 删除申请时产生的客户经理绩效数据信息  -->
+<SQL id="deleteCusManagerBySerno" parameterClass="java.lang.String" >
+   <DELETE>
+  <![CDATA[
+  	delete from cus_manager where serno = ${_SIG_VALUE} and cont_no is null
+  ]]>
+   </DELETE>
+</SQL>
+
+<!-- 合同撤销时，更新业务担保合同状态    20140728 业务合同撤销、注销时将业务与担保合同状态置为“3 解除” -->
+<SQL id="updateGrtLoanRGur" parameterClass="java.lang.String"  valueClass="java.lang.String" >
+   <UPDATE>
+  <![CDATA[
+  	update grt_loan_r_gur a set a.corre_rel='5' where a.cont_no = '${_SIG_VALUE}'
+  ]]>
+   </UPDATE>
+</SQL>
+<!-- 合同签订时，更新保证金状态为执行中  -->
+<SQL id="updatePubBailInfo" parameterClass="java.lang.String" >
+   <UPDATE>
+  <![CDATA[
+  	update pub_bail_info set bail_status='3' where cont_no=${_SIG_VALUE}
+  ]]>
+   </UPDATE>
+</SQL>
+
+</S>

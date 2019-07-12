@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<FncConfTemplate.xml>
+	<TableModel id="FncConfTemplate" pageSize="15" cnname="财务报表列表" isPaged="true" dbTableName="fnc_conf_template">
+		<TableInfo/>
+		<Field id="fnc_id" isPK="true" columnName="fnc_id" cnname="报表编号" length="6" JSPTag="text" canBeNull="false" JDBCType="CHAR"/>
+		<Field id="fnc_name" columnName="fnc_name" cnname="报表名称" length="200" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="fnc_bs_style_id" columnName="fnc_bs_style_id" cnname="资产负债表样式编号" length="6" JSPTag="text" canBeNull="true" JDBCType="CHAR"/>
+		<Field id="fnc_pl_style_id" columnName="fnc_pl_style_id" cnname="损益表" length="6" JSPTag="text" canBeNull="true" JDBCType="CHAR"/>
+		<Field id="fnc_cf_style_id" columnName="fnc_cf_style_id" cnname="现金流量" length="6" JSPTag="text" canBeNull="true" JDBCType="CHAR"/>
+		<Field id="fnc_fi_style_id" columnName="fnc_fi_style_id" cnname="财务指标" length="6" JSPTag="text" canBeNull="true" JDBCType="CHAR"/>
+		<Field id="fnc_ri_style_id" columnName="fnc_ri_style_id" cnname="所有者权益变动" length="6" JSPTag="text" canBeNull="true" JDBCType="CHAR"/>
+		<Field id="fnc_smp_style_id" columnName="fnc_smp_style_id" cnname="简表" length="6" JSPTag="text" canBeNull="true" JDBCType="CHAR"/>
+		<Field id="fnc_style_id1" columnName="fnc_style_id1" cnname="保留" length="6" JSPTag="text" canBeNull="true" JDBCType="CHAR"/>
+		<Field id="fnc_style_id2" columnName="fnc_style_id2" cnname="保留" length="6" JSPTag="text" canBeNull="true" JDBCType="CHAR"/>
+		<ConditionFields>fnc_id;fnc_name;</ConditionFields>
+		<FilterFields>fnc_id;fnc_name;fnc_bs_style_id;fnc_pl_style_id;fnc_cf_style_id;fnc_fi_style_id;</FilterFields>
+		<Field id="no_ind" dictname="STD_ZB_FNC_NOIND" columnName="no_ind" cnname="新旧报表标志" length="1" JSPTag="text" JDBCType="CHAR"/>
+		<Field id="com_ind" dictname="STD_ZB_FNC_COMIND" columnName="com_ind" cnname="企事业报表标志" length="1" JSPTag="text" JDBCType="CHAR"/>
+		<Field id="fnc_acc_style_id" columnName="fnc_acc_style_id" cnname="FNC_ACC_STYLE_ID" JSPTag="text" length="6" JDBCType="VARCHAR2"/>
+		<Field id="fnc_de_style_id" columnName="fnc_de_style_id" cnname="FNC_DE_STYLE_ID" JSPTag="text" length="6" JDBCType="VARCHAR2"/>
+	</TableModel>
+</FncConfTemplate.xml>

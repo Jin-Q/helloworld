@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actionDefines>
+	<classMap>
+		<map id="action" class="com.yucheng.cmis.ad.mvc.ADRequestController"/>
+		<map id="flowInvoker" class="com.yucheng.cmis.ad.mvc.ADFlowInvoker"/>
+		<map id="outputViews" class="java.util.HashMap"/>
+		<map id="output" class="com.ecc.emp.data.KeyedCollection"/>
+		<map id="kColl" class="com.ecc.emp.data.KeyedCollection"/>
+		<map id="iColl" class="com.ecc.emp.data.IndexedCollection"/>
+		<map id="field" class="com.ecc.emp.data.DataField"/>
+	</classMap>
+
+	<!-- 获取操作主页面 -->
+	<action id="getUploadInfoPage" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.upload.op.QueryUploadListOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="biz01line/upload/upload.jsp"/>
+		</outputViews>
+	</action>
+	
+	<!-- 上传文档页面 -->
+	<action id="uploadFileInfoPage" type="normal" checkSession="true" >
+		<jspView id="retPage" url="biz01line/upload/uploadFileInfoPage.jsp"/>
+	</action>
+	
+	<!-- 上传文档页面 -->
+	<action id="addUploadFileInfoRecord" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.upload.op.AddUploadFileInfoRecordOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="biz01line/upload/operationResult.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 调阅文档 -->
+	<action id="downLoadUploadFileInfoRecordOp" type="normal" checkSession="true">
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.upload.op.DownLoadUploadFileInfoRecordOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="biz01line/upload/download.jsp"/>
+		</outputViews>
+	</action>
+	
+	
+	<!-- 删除记录 -->
+	<action id="deletePubDocumentInfoRecordOp" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.upload.op.DeleteUploadFileInfoRecordOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<view id="retPage" class="com.yucheng.cmis.view.JSONView">
+				<output class="com.ecc.emp.data.KeyedCollection">
+					<field id="flag" />
+					<field id="message" />
+				</output>
+			</view>
+		</outputViews>
+	</action>
+	
+	<!-- 在线预览 -->
+	<action id="viewFileOnline" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.upload.op.ViewFileOnlineRecordOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="biz01line/upload/onlineView.jsp"/>
+		</outputViews>
+	</action>
+	
+	<!-- 分页信息 -->
+	<action id="pagePubDocumentInfoListQuery" type="normal" checkSession="true">
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.upload.op.QueryUploadListOp"/>
+			<transition dest="queryListRes"/>
+		</flowInvoker>
+		<outputViews>
+			<jsonView class="com.yucheng.cmis.view.JSONView" id="queryListRes">
+				<output>
+					<iColl id="PubDocumentInfoList">
+						<kColl>
+						</kColl>
+					</iColl>
+					<kColl id="pageInfo">
+						<field id="currentPage" />
+						<field id="maxLine" />
+						<field id="recordSize" />
+					</kColl>
+				</output>
+			</jsonView>
+		</outputViews>
+	</action>
+	
+</actionDefines>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<PvpLimitSet.xml>
+	<TableModel id="PvpLimitSet" cnname="出账队列额度控制表" dbTableName="pvp_limit_set">
+		<Field id="serno" isPK="true" columnName="serno" cnname="流水号" length="40" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="open_day" columnName="open_day" cnname="营业日期" length="10" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="org_id" columnName="org_id" cnname="所属机构" length="30" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="limit_amt" columnName="limit_amt" cnname="额度设定" length="16" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="out_limit_amt" columnName="out_limit_amt" cnname="已放额度" length="16" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="memo" columnName="memo" cnname="备注" length="300" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="status" columnName="status" cnname="状态" length="1" JDBCType="CHAR" canBeNull="true"/>
+		<Field id="input_id" columnName="input_id" cnname="更新人" length="40" JDBCType="VARCHAR2"/>
+	</TableModel>
+</PvpLimitSet.xml>

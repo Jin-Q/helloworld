@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<PrdRepayPlan.xml>
+	<TableModel id="PrdRepayPlan" pageSize="10" cnname="还款方式策略" isPaged="true" dbTableName="prd_repay_plan">
+		<TableInfo/>
+		<Field id="serno" isPK="true" columnName="serno" cnname="序号" length="30" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="repay_mode_id" columnName="repay_mode_id" cnname="还款方式代码" length="10" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="exe_times" columnName="exe_times" cnname="执行期数" length="3" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="cap_perc" dataType="Percent" columnName="cap_perc" cnname="本金比例" length="16" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="cal_term" columnName="cal_term" cnname="计算期限" length="3" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="repay_mode" columnName="repay_mode" cnname="还款方式" length="10" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="repay_type" columnName="repay_type" cnname="还款类型" length="10" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="int_cal_basic" columnName="int_cal_basic" cnname="利息计算基础" length="10" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="is_update" dictname="STD_ZX_YES_NO" columnName="is_update" cnname="是否允许修改" length="1" JSPTag="select" canBeNull="true" JDBCType="CHAR"/>
+		<Field id="rate_type" dataType="Rate" columnName="rate_type" cnname="利率类型" length="10" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="rate_mode" columnName="rate_mode" cnname="利率模式" length="10" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="rate_sprd" columnName="rate_sprd" cnname="利差" length="16" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="rate_pefloat" dataType="Percent" columnName="rate_pefloat" cnname="利率浮动比例" length="16" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="rate_cal_basic" columnName="rate_cal_basic" cnname="利率计算基础" length="10" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="new_change_time" columnName="new_change_time" cnname="最新变更时间" length="20" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="new_change_user" columnName="new_change_user" cnname="最新变更用户" length="10" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="repay_trem" columnName="repay_trem" cnname="还款间隔周期" length="10" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="repay_interval" columnName="repay_interval" cnname="还款间隔" length="3" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<OrderFields>serno;repay_mode_id;</OrderFields>
+		<FilterFields>serno;exe_times;repay_mode;rate_type;rate_sprd;rate_pefloat;rate_cal_basic;repay_interval;repay_trem;</FilterFields>
+		<RecordRestrict query="true" delete="true" update="true"/>
+	</TableModel>
+</PrdRepayPlan.xml>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<WfiJoinHis.xml>
+	<TableModel id="WfiJoinHis" cnname="信贷流程接入中间表历史" dbTableName="wfi_join_his">
+		<Field id="instanceid" isPK="true" columnName="instanceid" cnname="流程实例号" length="32" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="main_instanceid" columnName="main_instanceid" cnname="MAIN_INSTANCEID" length="32" JDBCType="VARCHAR2"/>
+		<Field id="table_name" columnName="table_name" cnname="表模型ID" length="64" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="pk_col" columnName="pk_col" cnname="申请表主键字段名" length="32" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="pk_value" columnName="pk_value" cnname="申请表主键值" length="32" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="cus_id" columnName="cus_id" cnname="申请客户ID" length="30" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="cus_name" columnName="cus_name" cnname="申请客户名称" length="80" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="cus_type" columnName="cus_type" cnname="申请客户类型" length="10" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="appl_type" columnName="appl_type" cnname="申请类型" length="10" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="wfsign" columnName="wfsign" cnname="WFSIGN" length="32" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="prevent_list" columnName="prevent_list" cnname="风险拦截list多个用英文逗号分隔" length="200" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="prd_pk" columnName="prd_pk" cnname="业务产品PK" length="32" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="prd_name" columnName="prd_name" cnname="产品名称" length="60" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="cert_type" columnName="cert_type" cnname="客户证件类型" length="2" JDBCType="CHAR" canBeNull="true"/>
+		<Field id="cert_code" columnName="cert_code" cnname="客户证件号码" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="amt" columnName="amt" cnname="申请金额" length="16" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="term" columnName="term" cnname="申请期限" length="16" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="ruling_ir" columnName="ruling_ir" cnname="基准利率（年）" length="16" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="reality_ir_y" columnName="reality_ir_y" cnname="月利率（年）" length="16" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="input_id" columnName="input_id" cnname="业务登记人" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="input_br_id" columnName="input_br_id" cnname="业务登记机构" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="apply_date" columnName="apply_date" cnname="业务申请日期" length="10" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="status_name" columnName="status_name" cnname="业务审批状态字段名" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="wfi_end_org" columnName="wfi_end_org" cnname="流程办结机构" length="30" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="wfi_status" columnName="wfi_status" cnname="流程审批状态" length="10" JDBCType="VARCHAR2" canBeNull="true"/>
+	</TableModel>
+</WfiJoinHis.xml>

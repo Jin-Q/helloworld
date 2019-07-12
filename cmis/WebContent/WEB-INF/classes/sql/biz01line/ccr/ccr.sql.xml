@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<S>
+
+<!-- 根据流水号，指标组，指标编号重置指标得分SQL  -->
+<SQL id="resetCcrGIndScore" parameterClass="com.yucheng.cmis.biz01line.ccr.domain.CcrGIndScore" resultClass="java.lang.String" onlyReturnFirst="true">
+   <UPDATE>
+  <![CDATA[
+	update ccr_g_ind_score g set g.index_score=0,g.index_value='' where g.serno=${serno}  and g.group_no=${groupNo} and g.index_no=${indexNo}
+  ]]>
+   </UPDATE>
+ 
+</SQL>
+
+<!-- 根据指标组，流水号重置指标得分SQL  -->
+<SQL id="resetCcrGIndScore_bak" parameterClass="com.yucheng.cmis.biz01line.ccr.domain.CcrGIndScore" resultClass="java.lang.String" onlyReturnFirst="true">
+   <UPDATE>
+  <![CDATA[
+	update ccr_g_ind_score g set g.index_score=0,g.index_value='' where g.serno=${serno}  and g.group_no=${groupNo}
+  ]]>
+   </UPDATE>
+</SQL>
+
+<!-- 重置指标组得分SQL  -->
+<SQL id="resetCcrMGroupScore" parameterClass="com.yucheng.cmis.biz01line.ccr.domain.CcrMGroupScore" resultClass="java.lang.String" onlyReturnFirst="true">
+   <UPDATE>
+  <![CDATA[
+	update ccr_m_group_score g set g.group_score=0 where g.serno=${serno}  and g.group_no=${groupNo}
+  ]]>
+   </UPDATE>
+ 
+</SQL>
+<!-- 根据客户码获得其上次评级日期及评级结果SQL -->
+<SQL id="getDateGradeByCusID" parameterClass="java.util.HashMap" resultClass="com.ecc.emp.data.KeyedCollection" >
+   <SELECT>
+  <![CDATA[
+    select a.app_end_date,b.adjusted_grade from ccr_app_info a,ccr_app_detail b where a.approve_status='997' and a.serno=b.serno and a.cus_id=${cusId} and a.flag=${flag} and a.app_end_date <= ${appEndDate} order by a.app_end_date desc
+  ]]>
+   </SELECT>
+</SQL>
+<!-- 根据个人授信编号更新评级表审批状态字段 -->
+<SQL id="updateCcrAppInfoByLmtNo" parameterClass="java.lang.String" valueClass ="java.util.HashMap" >
+   <UPDATE>
+  <![CDATA[
+	update ccr_app_info a set a.app_end_date=${appEndDate}, a.start_date=${startDate}, a.expiring_date=${expiringDate}, a.approve_status=${status} where a.lmt_serno=${_SIG_VALUE}
+  ]]>
+   </UPDATE>
+</SQL>
+
+<!-- 根据个人评级编号更新评级表审批状态字段 -->
+<SQL id="updateCcrAppInfoByserNo" parameterClass="java.lang.String" valueClass ="java.util.HashMap" >
+   <UPDATE>
+  <![CDATA[
+	update ccr_app_info a set a.app_end_date=${appEndDate}, a.start_date=${startDate}, a.expiring_date=${expiringDate}, a.approve_status=${status} where a.serno=${_SIG_VALUE}
+  ]]>
+   </UPDATE>
+</SQL>
+<!-- 根据客户码串获取客户评级信息 -->
+<SQL id="getCcrAppInfoByCusIdStr" parameterClass="java.lang.String" resultClass="com.ecc.emp.data.KeyedCollection" onlyReturnFirst="false">
+   <SELECT>
+  <![CDATA[
+    select a.serno,a.cus_id,a.start_date,a.expiring_date,a.approve_status,a.manager_id,a.manager_br_id,b.adjusted_grade,a.lmt_serno from ccr_app_info a,ccr_app_detail b where a.serno=b.serno and a.flag='5' and a.cus_id in(${_SIG_VALUE}) and a.approve_status='997' and a.expiring_date>=(select openday from pub_sys_info where sys_id='10001')
+  ]]>	
+   </SELECT>
+</SQL>
+<!-- 根据个人授信编号获取评级申请业务编号以及评级客户的客户码 -->
+<SQL id="getCusIdByLmtNo" parameterClass="java.lang.String" resultClass="com.ecc.emp.data.KeyedCollection" onlyReturnFirst="false">
+   <SELECT>
+  <![CDATA[
+    select a.cus_id cusId ,a.expiring_date gradeDt,b.adjusted_grade grade from ccr_app_info a,ccr_app_detail b where a.lmt_serno=${_SIG_VALUE} and flag = '5' and a.serno=b.serno
+  ]]>	
+   </SELECT>
+   
+</SQL>
+
+<!-- 根据个人评级编号获取评级申请业务编号以及评级客户的客户码 -->
+<SQL id="getCusIdByserNo" parameterClass="java.lang.String" resultClass="com.ecc.emp.data.KeyedCollection" onlyReturnFirst="false">
+   <SELECT>
+  <![CDATA[
+    select a.cus_id cusId ,a.expiring_date gradeDt,b.adjusted_grade grade from ccr_app_info a,ccr_app_detail b where a.serno=${_SIG_VALUE} and flag = '5' and a.serno=b.serno
+  ]]>	
+   </SELECT>
+   
+</SQL>
+</S>

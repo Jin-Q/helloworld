@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<IqpPurcarInfo.xml>
+	<TableModel id="IqpPurcarInfo" pageSize="10" cnname="机构法人购车信息" isPaged="true" dbTableName="iqp_purcar_info">
+		<TableInfo/>
+		<Field id="serno" isPK="true" columnName="serno" cnname="业务编号" length="40" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="car_sign" columnName="car_sign" cnname="汽车品牌" length="40" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="car_name" columnName="car_name" cnname="汽车名称" length="100" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="car_model" columnName="car_model" cnname="汽车型号" length="20" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="car_no" columnName="car_no" cnname="车架号" length="40" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="car_type" columnName="car_type" cnname="汽车种类" length="20" JSPTag="select" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="car_get_type" columnName="car_get_type" cnname="汽车取得方式" length="20" JSPTag="select" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="car_use" columnName="car_use" cnname="汽车用途" length="250" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="car_seller" columnName="car_seller" cnname="汽车销售商" length="100" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="buy_amt" dataType="Currency" columnName="buy_amt" cnname="购买金额" length="16" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="loan_rate" dataType="Percent" columnName="loan_rate" cnname="贷款比例" length="10" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="first_pay_rate" dataType="Percent" columnName="first_pay_rate" cnname="首付款比率" length="10" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<OrderFields>serno;</OrderFields>
+		<ConditionFields>serno;</ConditionFields>
+		<FilterFields>car_sign;car_name;car_model;buy_amt;loan_rate;first_pay_rate;</FilterFields>
+	</TableModel>
+</IqpPurcarInfo.xml>

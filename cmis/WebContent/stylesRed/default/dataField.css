@@ -1,0 +1,189 @@
+.cmisgroup {
+	width: 100%;
+	/*border-collapse: collapse;*/
+	border-collapse: separate;
+	border-spacing: 5px;
+
+}
+
+.cmisgroup tr {
+	height: 22px;
+
+}
+
+.cmisgroup td {
+	/*border-width: 1px;
+	border-color: #b7b7b7;
+	border-style: solid;*/
+	padding: 1px, 10px;
+	
+}
+/*********ÊôÐÔ*********/
+.emp_dfcontainer_title {
+	vertical-align: top;
+	padding-top: 4px;	
+	text-align: right;
+}
+/*********ÊäÈëÓò*********/
+span.emp_datafield input, span.emp_datafield select, span.emp_datafield textarea {
+	border:1px solid #b7b7b7;
+	text-align: left;
+
+}
+/*********ÊäÈëÓò*********/
+span.emp_datafield input, span.emp_datafield select {
+    	width: 180px;
+	height: 18px;
+}
+/*********ÊäÈëÓò*********/
+span.emp_datafield textarea {
+	width: 500px; 
+	height: 60px;
+}
+
+.tablelist 	span.emp_datafield input {
+	width: 100%; 
+}
+
+/********* HIDDEN *********/
+span.emp_datafield_hidden {
+	display: none;
+}
+
+/********* FLAT *********/
+span.emp_datafield span.flatspan {
+	display: none;
+}
+
+span.emp_datafield_flat * {
+	display: none;
+}
+
+span.emp_datafield_flat span.flatspan {
+	display: inline;
+}
+
+/********* READONLY**********/
+span.emp_datafield input.selectfake {
+	display: none;
+}
+
+span.emp_datafield_readonly input.selectfake {
+	display: inline;
+}
+
+span.emp_datafield_readonly select {
+	display: none;
+}
+
+span.emp_datafield_readonly button {
+	display: none;
+}
+
+span.emp_datafield button {
+	height:18px;
+}
+
+span.emp_datafield span.required {
+	color: red;
+}
+
+span.emp_datafield_readonly input, span.emp_datafield_readonly textarea {
+	border-color: #CEC7BD;
+}
+
+.cmisgroup td.td_title {
+	background: #6699CC;
+	color: #FFFFFF;
+}
+
+.cmisgroup td.title_readonly {
+	background: #999999;
+}
+
+.emp_gridlayout td {
+	/*white-space:nowrap;*/	
+}
+
+.column1 span.emp_dfcontainer_title {
+	width: 100px;
+	height: 0px;
+	margin-left: 10px;
+}
+
+.column1 span.emp_dfcontainer_content {
+	height: 0px;
+	margin-left: 10px;
+}
+
+.column2 span.emp_dfcontainer_title {
+	width: 100px;
+	height: 0px;
+	margin-left: 10px;
+}
+
+.column2 span.emp_dfcontainer_content {
+	margin-left: 10px;
+	height: 0px;
+}
+
+.column3 span.emp_dfcontainer_title {
+	width: 100px;
+	height: 0px;
+}
+
+.column3 span.emp_dfcontainer_content {
+	height: 0px;
+}
+
+
+.emp_datatype_Decimal, .emp_datatype_Decimal input {
+	text-align: right;
+}
+
+.emp_datatype_Ratio, .emp_datatype_Ratio input {
+	text-align: right;
+}
+
+
+
+
+.relatedtabs_tabs a {
+	border-color: #b7b7b7;
+	border-width: 1px;
+	border-style: solid;
+	padding: 4px 7px;
+	text-decoration: none;
+	color: #336699;
+	font-variant:small-caps;
+}
+
+.relatedtabs_tabs a.activated {
+	background-color: #b7b7b7;
+	color: #FFF;
+}
+
+
+.relatedtabs_iframes {
+	border-color: #b7b7b7;
+	border-width: 1px;
+	border-style: solid;
+	background-color: #FFF;
+	width: 100%;
+	overflow-x: hidden;
+	height:390px;
+}
+
+.relatedtabs_main {
+	padding : 20px;
+	height:390px;
+	scrolling:auto;
+}
+
+.relatedtabs_iframes iframe {
+	width: 100%;
+	
+	border: 0px;
+	height:390px;
+}
+

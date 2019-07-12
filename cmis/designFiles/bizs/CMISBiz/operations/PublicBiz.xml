@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!-- 希望能提炼一些公共的操作形成通用的方法，以减轻工作量  -->
+<SelfDefinedOp.xml id="PublicBiz">
+	<EMPBusinessLogic id="PublicBiz" operationContext="PublicBizSrvCtx">
+		<operation id="getOpinion" name="获得审批页面"
+				   class="com.yucheng.cmis.wfi.op.GetOpinionPageOP" >
+				   <flow />
+		</operation>
+	</EMPBusinessLogic>
+	<context id="PublicBizSrvCtx" type="op">
+		<refKColl refId="PublicBizSrvData"/>
+	</context>
+	<kColl id="PublicBizSrvData">
+		<field id="errorCode"/>
+		<field id="errorMsg"/>
+	</kColl>
+</SelfDefinedOp.xml>

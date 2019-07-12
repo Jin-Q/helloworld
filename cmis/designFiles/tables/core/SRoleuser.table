@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<SRoleuser.xml>
+	<TableModel id="SRoleuser" cnname="角色用户表" dbTableName="s_roleuser">
+		<TableInfo/>
+		<Field id="roleno" isPK="true" columnName="roleno" cnname="角色码" length="4" JSPTag="text" canBeNull="false" JDBCType="CHAR"/>
+		<Field id="actorno" isPK="true" columnName="actorno" cnname="用户码" length="8" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="state" columnName="state" cnname="状态" length="38" JSPTag="text" canBeNull="false" JDBCType="NUMBER"/>
+		<Field id="orgid" columnName="orgid" cnname="组织号" length="16" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<OrderFields>roleno[desc];actorno[desc];</OrderFields>
+	</TableModel>
+</SRoleuser.xml>

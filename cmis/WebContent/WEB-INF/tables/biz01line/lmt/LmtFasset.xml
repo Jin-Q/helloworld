@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<LmtFasset.xml>
+	<TableModel id="LmtFasset" cnname="家庭资产" dbTableName="lmt_fasset">
+		<Field id="cus_id" isPK="true" columnName="cus_id" cnname="客户码" length="30" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="cus_attr" columnName="cus_attr" cnname="客户属性" length="12" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="fasset_type" columnName="fasset_type" cnname="家庭资产类型" length="50" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="autho_name" columnName="autho_name" cnname="权属人名称" length="10" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="identy_perc" columnName="identy_perc" cnname="认定比例" length="10" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="asset_seval" columnName="asset_seval" cnname="资产原估值" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="asset_ivalue" columnName="asset_ivalue" cnname="资产认定值" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="memo" columnName="memo" cnname="备注" length="60" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="serno" isPK="true" columnName="serno" cnname="流水号" length="40" JDBCType="VARCHAR2" canBeNull="true"/>
+	</TableModel>
+</LmtFasset.xml>

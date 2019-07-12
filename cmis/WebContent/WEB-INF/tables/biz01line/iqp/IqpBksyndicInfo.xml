@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<IqpBksyndicInfo.xml>
+	<TableModel id="IqpBksyndicInfo" cnname="银团信息" dbTableName="iqp_bksyndic_info">
+		<Field id="serno" columnName="serno" cnname="业务编号" length="40" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="prtcpt_org_no" columnName="prtcpt_org_no" cnname="参与行行号" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="prtcpt_org_name" columnName="prtcpt_org_name" cnname="参与行行名" length="100" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="is_this_org" columnName="is_this_org" cnname="是否本行" length="1" JDBCType="CHAR" canBeNull="true"/>
+		<Field id="prtcpt_role" columnName="prtcpt_role" cnname="参与角色" length="10" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="prtcpt_curr" columnName="prtcpt_curr" cnname="参与币种" length="3" JDBCType="CHAR" canBeNull="true"/>
+		<Field id="prtcpt_amt_rate" columnName="prtcpt_amt_rate" cnname="参与金额比例" length="10" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="prtcpt_amt" columnName="prtcpt_amt" cnname="参与金额" length="16" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="agent_int_acct_no" columnName="agent_int_acct_no" cnname="代收利息账号" length="40" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="agent_int_acct_name" columnName="agent_int_acct_name" cnname="代收利息账户名" length="80" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="bank_acct_no" columnName="bank_acct_no" cnname="银行账号" length="40" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="bank_acct_name" columnName="bank_acct_name" cnname="银行账户名" length="100" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="pk1" isPK="true" columnName="pk1" cnname="PK1" length="40" JDBCType="VARCHAR2"/>
+	</TableModel>
+</IqpBksyndicInfo.xml>

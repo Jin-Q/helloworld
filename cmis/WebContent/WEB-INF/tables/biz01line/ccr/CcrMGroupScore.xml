@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<CcrMGroupScore.xml>
+	<TableModel id="CcrMGroupScore" cnname="模型下组的得分明细" dbTableName="ccr_m_group_score">
+		<Field id="serno" isPK="true" columnName="serno" cnname="业务编号" length="40" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="cus_id" isPK="true" columnName="cus_id" cnname="客户编号" length="40" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="ccr_date" columnName="ccr_date" cnname="日期" length="10" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="model_no" isPK="true" columnName="model_no" cnname="模型编号" length="12" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="model_name" columnName="model_name" cnname="模型名称" length="60" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="group_no" isPK="true" columnName="group_no" cnname="组别编号" length="12" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="group_name" columnName="group_name" cnname="组别名称" length="60" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="group_score" columnName="group_score" cnname="组得分" length="10" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="scoring_manager" isPK="true" columnName="scoring_manager" cnname="评分人" length="20" JDBCType="VARCHAR2" canBeNull="false"/>
+	</TableModel>
+</CcrMGroupScore.xml>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<PrdCatalog.xml>
+	<TableModel id="PrdCatalog" pageSize="10" cnname="产品目录表" isPaged="true" dbTableName="prd_catalog">
+		<TableInfo/>
+		<Field id="catalogid" isPK="true" columnName="catalogid" cnname="目录编号" length="14" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="catalogname" columnName="catalogname" cnname="目录名称" length="40" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="cataloglevel" columnName="cataloglevel" cnname="目录层级" length="200" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="supcatalogid" columnName="supcatalogid" cnname="上级目录编码" length="20" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="comments" columnName="comments" cnname="备注" length="200" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="inputid" columnName="inputid" cnname="登记人员" length="30" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="inputdate" columnName="inputdate" cnname="登记日期" length="10" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="orgid" columnName="orgid" cnname="登记机构" length="20" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<RecordRestrict query="true" delete="true" update="true"/>
+		<OrderFields>catalogid;catalogname;cataloglevel;supcatalogid;</OrderFields>
+		<ConditionFields>catalogid;catalogname;cataloglevel;</ConditionFields>
+		<FilterFields>catalogid;catalogname;cataloglevel;supcatalogid;comments;inputid;inputdate;orgid;</FilterFields>
+		<Field id="catalogtype" columnName="catalogtype" cnname="CATALOGTYPE" JSPTag="text" length="20" JDBCType="VARCHAR2"/>
+	</TableModel>
+</PrdCatalog.xml>

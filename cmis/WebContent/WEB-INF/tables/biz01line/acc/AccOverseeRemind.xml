@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<AccOverseeRemind.xml>
+	<TableModel id="AccOverseeRemind" cnname="补/平仓提醒" dbTableName="acc_oversee_remind">
+		<Field id="oversee_agr_no" isPK="true" columnName="oversee_agr_no" cnname="监管协议号" length="40" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="mortgagor_id" columnName="mortgagor_id" cnname="客户编号" length="30" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="identy_total" columnName="identy_total" cnname="货物价值" length="0" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="stor_line" columnName="stor_line" cnname="平仓线" length="10" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="risk_open_amt" columnName="risk_open_amt" cnname="敞口金额" length="0" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="vigi_line" columnName="vigi_line" cnname="补仓线" length="10" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="mort_rate" columnName="mort_rate" cnname="当前质押率" length="0" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="gap_amt" columnName="gap_amt" cnname="缺口金额" length="0" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="input_id" columnName="input_id" cnname="登记人" length="20" JDBCType="VARCHAR2"/>
+		<Field id="input_br_id" columnName="input_br_id" cnname="登记机构" length="20" JDBCType="VARCHAR2"/>
+	</TableModel>
+</AccOverseeRemind.xml>

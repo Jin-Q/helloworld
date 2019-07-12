@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<CtrLoanContSub.xml>
+	<TableModel id="CtrLoanContSub" cnname="贷款合同从表" dbTableName="ctr_loan_cont_sub">
+		<TableInfo/>
+		<Field id="cont_no" isPK="true" columnName="cont_no" cnname="合同编号" length="40" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="is_close_loan" columnName="is_close_loan" cnname="是否无间贷" length="1" JSPTag="text" canBeNull="true" JDBCType="CHAR"/>
+		<Field id="repay_bill" columnName="repay_bill" cnname="偿还借据" length="40" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="loan_form" columnName="loan_form" cnname="贷款形式" length="5" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="loan_nature" columnName="loan_nature" cnname="贷款性质" length="5" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="is_conf_pay_type" columnName="is_conf_pay_type" cnname="是否确定支付方式" length="1" JSPTag="text" canBeNull="true" JDBCType="CHAR"/>
+		<Field id="pay_type" columnName="pay_type" cnname="支付方式" length="5" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="ir_accord_type" columnName="ir_accord_type" cnname="利率依据方式" length="5" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="ir_type" columnName="ir_type" cnname="利率种类" length="5" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="ir_adjust_type" columnName="ir_adjust_type" cnname="利率调整方式" length="5" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="ruling_ir" columnName="ruling_ir" cnname="基准利率（年）" length="16" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="ir_float_type" columnName="ir_float_type" cnname="利率浮动方式" length="5" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="ir_float_rate" columnName="ir_float_rate" cnname="利率浮动比" length="10" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="default_rate" columnName="default_rate" cnname="违约利率浮动比" length="10" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="overdue_rate" columnName="overdue_rate" cnname="逾期利率浮动比" length="10" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="ir_float_point" columnName="ir_float_point" cnname="利率浮动点数" length="38" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="reality_ir_y" columnName="reality_ir_y" cnname="执行利率（年）" length="16" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="fir_repay_date" columnName="fir_repay_date" cnname="首次还款日" length="10" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="repay_type" columnName="repay_type" cnname="还款方式" length="10" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="interest_term" columnName="interest_term" cnname="计息周期" length="10" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="five_classfiy" columnName="five_classfiy" cnname="五级分类" length="10" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="spe_loan_type" columnName="spe_loan_type" cnname="特殊贷款类型" length="5" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="limit_useed_type" columnName="limit_useed_type" cnname="额度占用类型" length="5" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="loan_type" columnName="loan_type" cnname="贷款种类" length="5" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="estate_adjust_type" columnName="estate_adjust_type" cnname="产业结构调整类型" length="5" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="com_up_indtify" columnName="com_up_indtify" cnname="工业转型升级标识" length="40" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="strategy_new_type" columnName="strategy_new_type" cnname="战略新兴产业类型" length="5" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="new_prd_loan" columnName="new_prd_loan" cnname="新兴产业贷款" length="5" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="green_prd" columnName="green_prd" cnname="绿色产品" length="5" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="agriculture_type" columnName="agriculture_type" cnname="涉农贷款类型" length="20" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="loan_direction" columnName="loan_direction" cnname="贷款投向" length="100" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="loan_belong1" columnName="loan_belong1" cnname="贷款归属1" length="100" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="loan_belong2" columnName="loan_belong2" cnname="贷款归属2" length="100" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="loan_belong3" columnName="loan_belong3" cnname="贷款归属3" length="100" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="ensure_project_loan" columnName="ensure_project_loan" cnname="保障性安居工程贷款" length="5" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="loan_use_type" columnName="loan_use_type" cnname="借款用途" length="250" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="repay_src_des" columnName="repay_src_des" cnname="还款来源" length="250" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="overdue_float_type" columnName="overdue_float_type" cnname="逾期利率浮动方式" length="5" JSPTag="text" JDBCType="VARCHAR2"/>
+		<Field id="overdue_point" columnName="overdue_point" cnname="逾期利率浮动点" length="38" JSPTag="text" JDBCType="NUMBER"/>
+		<Field id="overdue_rate_y" columnName="overdue_rate_y" cnname="逾期利率（年）" length="16" JSPTag="text" JDBCType="NUMBER"/>
+		<Field id="default_float_type" columnName="default_float_type" cnname="违约利率浮动方式" length="5" JSPTag="text" JDBCType="VARCHAR2"/>
+		<Field id="default_point" columnName="default_point" cnname="违约利率浮动点" length="38" JSPTag="text" JDBCType="NUMBER"/>
+		<Field id="default_rate_y" columnName="default_rate_y" cnname="违约利率（年）" length="16" JSPTag="text" JDBCType="NUMBER"/>
+		<Field id="pad_rate_y" columnName="pad_rate_y" cnname="垫款利率（年）" length="16" JSPTag="text" JDBCType="NUMBER"/>
+		<Field id="ir_next_adjust_term" columnName="ir_next_adjust_term" cnname="下一次利率调整间隔" length="2" JSPTag="text" JDBCType="NUMBER"/>
+		<Field id="ir_next_adjust_unit" columnName="ir_next_adjust_unit" cnname="下一次利率调整单位" length="10" JSPTag="text" JDBCType="VARCHAR2"/>
+		<Field id="fir_adjust_day" columnName="fir_adjust_day" cnname="第一次调整日" length="10" JSPTag="text" JDBCType="VARCHAR2"/>
+		<Field id="ruling_ir_code" columnName="ruling_ir_code" cnname="基准利率代码" length="40" JSPTag="text" JDBCType="VARCHAR2"/>
+		<Field id="principal_loan_typ" columnName="principal_loan_typ" cnname="委托贷款种类" length="2" JSPTag="text" JDBCType="CHAR"/>
+		<Field id="is_term" dictname="STD_ZX_YES_NO" columnName="is_term" cnname="是否期供" length="1" JSPTag="select" JDBCType="CHAR"/>
+		<Field id="repay_date" columnName="repay_date" cnname="还款日" length="10" JSPTag="text" JDBCType="VARCHAR2"/>
+		<Field id="repay_space" columnName="repay_space" cnname="还款间隔" length="10" JSPTag="text" JDBCType="VARCHAR2"/>
+		<Field id="repay_term" columnName="repay_term" cnname="还款间隔周期" length="10" JSPTag="text" JDBCType="VARCHAR2"/>
+		<Field id="is_collect_stamp" columnName="is_collect_stamp" cnname="是否收取印花税" length="2" JSPTag="text" JDBCType="VARCHAR2"/>
+		<Field id="stamp_collect_mode" columnName="stamp_collect_mode" cnname="印花税收取方式" length="20" JSPTag="text" JDBCType="VARCHAR2"/>
+		<Field id="cont_term" columnName="cont_term" cnname="合同期限" length="38" JSPTag="text" JDBCType="NUMBER"/>
+		<Field id="term_type" columnName="term_type" cnname="期限类型" length="5" JSPTag="text" JDBCType="VARCHAR2"/>
+		<Field id="is_delay" columnName="is_delay" cnname="是否节假日顺延" length="1" JSPTag="text" JDBCType="CHAR"/>
+		<Field id="loan_belong4" columnName="loan_belong4" cnname="贷款归属4" length="20" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="actp_status" columnName="actp_status" cnname="税票提供状态" length="3" JSPTag="text" JDBCType="VARCHAR2"/>
+		<Field id="cus_card_code" columnName="cus_card_code" cnname="自助卡号" length="50" JSPTag="text" JDBCType="VARCHAR2"/>
+		<!--/**added by wangj 2015/05/12  需求编号:XD141222087,法人账户透支需求变更  begin**/-->
+		<Field id="overdrawn_term" columnName="overdrawn_term" cnname="透支期限" length="38" JSPTag="text" JDBCType="NUMBER"/>
+		<Field id="overdrawn_type" columnName="overdrawn_type" cnname="透支类型" length="5" JSPTag="text" JDBCType="VARCHAR2"/>
+		<Field id="is_freeze" columnName="is_freeze" cnname="是否冻结" length="2" JSPTag="select" canBeNull="true" JDBCType="VARCHAR2"/>
+		<!--/**added by wangj 2015/05/12  需求编号:XD141222087,法人账户透支需求变更  end**/-->
+		<!--/**added by wangj 2015/08/19  需求编号:XD150825064_源泉宝法人账户透支改造  begin**/-->
+		<Field id="belg_line" columnName="belg_line" cnname="业务条线（STD_ZB_BUSILINE 法人透支业务时用到）" length="20" JSPTag="text" JDBCType="VARCHAR2"/>
+		<!--/**added by wangj 2015/08/19  需求编号:XD150825064_源泉宝法人账户透支改造  end**/-->
+		<Field id="marketing_br_id" columnName="marketing_br_id" cnname="营销机构" JSPTag="text" length="5" JDBCType="VARCHAR2"/>
+	</TableModel>
+</CtrLoanContSub.xml>

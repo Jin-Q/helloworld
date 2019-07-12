@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actionDefines>
+	<classMap>
+		<map id="action" class="com.yucheng.cmis.ad.mvc.ADRequestController"/>
+		<map id="flowInvoker" class="com.yucheng.cmis.ad.mvc.ADFlowInvoker"/>
+		<map id="outputViews" class="java.util.HashMap"/>
+		<map id="output" class="com.ecc.emp.data.KeyedCollection"/>
+		<map id="kColl" class="com.ecc.emp.data.KeyedCollection"/>
+		<map id="iColl" class="com.ecc.emp.data.IndexedCollection"/>
+		<map id="field" class="com.ecc.emp.data.DataField"/>
+	</classMap>
+	<!-- 获得新增页面 -->
+	<action id="getMortAccountsReceOthersAddPage" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.mort.mortaccountsreceothers.AddMortAccountsReceOthersLeadOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="biz01line/mort/MortAccountsReceOthers/addMortAccountsReceOthersRecord.jsp"/>
+		</outputViews>
+	</action>
+	
+	<!-- 新增记录 -->
+	<action id="addMortAccountsReceOthersRecord" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.mort.mortaccountsreceothers.AddMortAccountsReceOthersRecordOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jsonView class="com.yucheng.cmis.view.JSONView" id="retPage">
+				<output>
+					<field id="flag" />
+				</output>
+			</jsonView>
+		</outputViews>
+	</action>	
+	
+</actionDefines>
+
+
+

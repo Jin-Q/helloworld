@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<LmtFasset.xml>
+	<TableModel id="LmtFasset" cnname="家庭资产" dbTableName="lmt_fasset">
+		<TableInfo/>
+		<Field id="cus_id" isPK="true" columnName="cus_id" cnname="客户码" length="30" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="cus_attr" dictname="STD_ZB_CUS_ATTR" columnName="cus_attr" cnname="客户属性" length="12" JSPTag="select" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="fasset_type" columnName="fasset_type" cnname="家庭资产类型" length="50" JSPTag="select" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="autho_name" columnName="autho_name" cnname="权属人名称" length="10" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="identy_perc" dataType="Float" columnName="identy_perc" cnname="认定比例" length="10" JSPTag="text" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="asset_seval" dataType="Currency" columnName="asset_seval" cnname="资产原估值" length="20" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="asset_ivalue" dataType="Currency" columnName="asset_ivalue" cnname="资产认定值" length="20" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="memo" columnName="memo" cnname="备注" length="60" JSPTag="textarea" canBeNull="true" JDBCType="VARCHAR2"/>
+		<OrderFields>cus_id[desc];</OrderFields>
+		<RecordRestrict query="true"/>
+		<FilterFields>cus_id;cus_attr;fasset_type;autho_name;asset_seval;asset_ivalue;mborrow_rela;</FilterFields>
+		<Field id="serno" isPK="true" columnName="serno" cnname="流水号" length="40" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+	</TableModel>
+</LmtFasset.xml>

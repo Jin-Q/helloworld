@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<CusIndivTax.xml>
+	<TableModel id="CusIndivTax" pageSize="15" cnname="纳税情况" isPaged="true" dbTableName="cus_indiv_tax">
+		<TableInfo/>
+		<Field id="cus_id" isPK="true" columnName="cus_id" cnname="客户代码" length="30" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="serno" isPK="true" columnName="serno" cnname="编号" length="20" JSPTag="text" JDBCType="VARCHAR2"/>
+		<Field id="indiv_taxes" JDBCType="CHAR" length="2" columnName="indiv_taxes" canBeNull="false" dictname="STD_ZB_INV_TAXES" isPK="true" JSPTag="select" cnname="税种"/>
+		<Field id="indiv_tax_amt" dataType="Currency" columnName="indiv_tax_amt" cnname="应纳税金额" length="16" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="indiv_tax_pay_amt" columnName="indiv_tax_pay_amt" cnname="已缴纳/支付金额" length="16" JSPTag="text" JDBCType="NUMBER"/>
+		<Field id="indiv_tax_dt" columnName="indiv_tax_dt" cnname="纳税日期" length="10" JSPTag="date" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="indiv_tax_flg" dictname="STD_ZX_YES_NO" columnName="indiv_tax_flg" cnname="是否正常缴纳" length="1" JSPTag="select" canBeNull="true" JDBCType="CHAR"/>
+		<Field id="remark" columnName="remark" cnname="备注" length="250" JSPTag="textarea" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="input_id" columnName="input_id" cnname="登记人" length="20" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="input_br_id" columnName="input_br_id" cnname="登记机构" length="20" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="input_date" columnName="input_date" cnname="登记日期" length="10" JSPTag="date" canBeNull="true" JDBCType="CHAR"/>
+		<Field id="last_upd_id" columnName="last_upd_id" cnname="更新人" length="20" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="last_upd_date" columnName="last_upd_date" cnname="更新日期" length="10" JSPTag="date" canBeNull="true" JDBCType="VARCHAR2"/>
+		<OrderFields>cus_id[desc];indiv_taxes[desc];</OrderFields>
+		<FilterFields>cus_id;indiv_taxes;indiv_tax_amt;indiv_tax_dt;indiv_tax_flg;</FilterFields>
+		<ConditionFields/>
+	</TableModel>
+</CusIndivTax.xml>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<MortAccountsReceOthers.xml>
+	<TableModel id="MortAccountsReceOthers" cnname="应收账款其他可转让的权利" dbTableName="mort_accounts_rece_others">
+		<TableInfo/>
+		<Field id="debt_other_id" isPK="true" columnName="debt_other_id" cnname="应收账款其他可转让的权利编号" length="40" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="guaranty_no" columnName="guaranty_no" cnname="押品编号" length="40" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="right_sort" columnName="right_sort" cnname="权利类别//" length="20" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="approval_no" columnName="approval_no" cnname="收费权质押批文号" length="80" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="approval_org" columnName="approval_org" cnname="收费权质押批文单位" length="100" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="use_years" columnName="use_years" cnname="使用年限" length="8" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="register_org_name" columnName="register_org_name" cnname="登记机构名称" length="100" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="currency_cd" dictname="STD_ZX_CUR_TYPE" columnName="currency_cd" cnname="币种" length="3" JSPTag="select" canBeNull="true" JDBCType="CHAR"/>
+		<Field id="account_value" dataType="Currency" columnName="account_value" cnname="价值" length="20" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="user_name" columnName="user_name" cnname="使用人" length="100" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="memo" columnName="memo" cnname="备注" length="1000" JSPTag="textarea" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="sys_update_time" columnName="sys_update_time" cnname="系统更新时间" length="10" JSPTag="date" canBeNull="true" JDBCType="CHAR"/>
+		<Field id="use_begin_date" columnName="use_begin_date" cnname="可使用起始日" length="10" JSPTag="date" canBeNull="true" JDBCType="CHAR"/>
+		<Field id="use_end_date" columnName="use_end_date" cnname="可使用终止日" length="10" JSPTag="date" canBeNull="true" JDBCType="CHAR"/>
+		<Field id="standard_value" columnName="standard_value" cnname="收费标准" length="40" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<OrderFields>debt_other_id[desc];</OrderFields>
+	</TableModel>
+</MortAccountsReceOthers.xml>

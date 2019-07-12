@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<OrgLoadeporat.xml>
+	<TableModel id="OrgLoadeporat" cnname="机构存贷比" dbTableName="org_loadeporat">
+		<TableInfo/>
+		<Field id="org_no" isPK="true" columnName="org_no" cnname="机构码" length="40" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="loadeporat" dataType="Percent" columnName="loadeporat" cnname="存贷比" length="10" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+	</TableModel>
+</OrgLoadeporat.xml>

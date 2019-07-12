@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<IqpExportOrderFin.xml>
+	<TableModel id="IqpExportOrderFin" cnname="出口订单融资从表" dbTableName="iqp_export_order_fin">
+		<Field id="serno" isPK="true" columnName="serno" cnname="业务编号" length="40" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="order_cont_cur_type" columnName="order_cont_cur_type" cnname="订单合同币种" length="3" JDBCType="CHAR" canBeNull="true"/>
+		<Field id="order_cont_amt" columnName="order_cont_amt" cnname="订单合同金额" length="16" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="biz_settl_mode" columnName="biz_settl_mode" cnname="原业务结算方式" length="5" JDBCType="VARCHAR2" canBeNull="true"/>
+	</TableModel>
+</IqpExportOrderFin.xml>

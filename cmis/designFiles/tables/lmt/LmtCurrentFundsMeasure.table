@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<LmtCurrentFundsMeasure.xml>
+	<TableModel id="LmtCurrentFundsMeasure" cnname="授信限额测算" dbTableName="lmt_current_funds_measure">
+		<TableInfo/>
+		<Field id="serno" isPK="true" columnName="serno" cnname="业务流水号" length="40" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="cus_id" columnName="cus_id" cnname="客户码" length="30" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="current_funds_amt" columnName="current_funds_amt" cnname="流动资金贷款额度" length="16" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="operation_funds" columnName="operation_funds" cnname="营运资金量" length="16" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="borrower_monetary_fund" columnName="borrower_monetary_fund" cnname="借款人自有资金" length="16" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="liab_fund" columnName="liab_fund" cnname="可负债额资产" length="16" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="real_liab_fund" columnName="real_liab_fund" cnname="实有负债额" length="16" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="current_funds_loan" columnName="current_funds_loan" cnname="现有流动资金贷款" length="16" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="owner_int" columnName="owner_int" cnname="所有者权益" length="16" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="funds_other_channels" columnName="funds_other_channels" cnname="其他渠道提供的营运资金" length="16" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="invisible_fund" columnName="invisible_fund" cnname="无形资产" length="16" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="operation_turnover_count" columnName="operation_turnover_count" cnname="营运资金周转次数" length="16" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="pre_receive_turnover_time" columnName="pre_receive_turnover_time" cnname="预收账款周转天数" length="16" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="goods_turnover_time" columnName="goods_turnover_time" cnname="存货周转天数" length="16" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="need_receive_turnover_time" columnName="need_receive_turnover_time" cnname="应收账款周转天数" length="16" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="need_pay_turnover_time" columnName="need_pay_turnover_time" cnname="应付账款周转天数" length="16" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="pre_pay_turnover_time" columnName="pre_pay_turnover_time" cnname="预付账款周转天数" length="16" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="defer_fund" columnName="defer_fund" cnname="递延资产" length="16" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="visible_fund" columnName="visible_fund" cnname="有形净资产" length="16" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="last_year_income" columnName="last_year_income" cnname="上年度销售收入" length="16" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="last_year_profit_rate" columnName="last_year_profit_rate" cnname="上年度销售利润率" length="16" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="addmod_flag" columnName="addmod_flag" cnname="新增变更标志，1新增，2变更" length="1" JSPTag="text" canBeNull="true" JDBCType="CHAR"/>
+		<Field id="com_cll_type" columnName="com_cll_type" cnname="所属行业" length="5" JSPTag="text" JDBCType="VARCHAR2"/>
+		<Field id="lmt_amt" columnName="lmt_amt" cnname="授信额度" length="16" JSPTag="text" JDBCType="NUMBER"/>
+		<Field id="cll_asset_debt_rate" columnName="cll_asset_debt_rate" cnname="行业资产负债率(%)" JSPTag="text" length="16" JDBCType="NUMBER"/>
+	</TableModel>
+</LmtCurrentFundsMeasure.xml>

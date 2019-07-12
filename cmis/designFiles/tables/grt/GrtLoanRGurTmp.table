@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<GrtLoanRGurTmp.xml>
+	<TableModel id="GrtLoanRGurTmp" cnname="出账退回修改缓存" dbTableName="grt_loan_r_gur_tmp">
+		<TableInfo/>
+		<Field id="biz_serno" isPK="true" columnName="biz_serno" cnname="BIZ_SERNO" length="40" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="guar_cont_no" isPK="true" columnName="guar_cont_no" cnname="GUAR_CONT_NO" length="40" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="guar_amt" columnName="guar_amt" cnname="GUAR_AMT" length="16" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<OrderFields>biz_serno[desc];guar_cont_no[desc];</OrderFields>
+	</TableModel>
+</GrtLoanRGurTmp.xml>

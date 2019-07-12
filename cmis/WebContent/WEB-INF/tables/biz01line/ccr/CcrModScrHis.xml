@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<CcrModScrHis.xml>
+	<TableModel id="CcrModScrHis" cnname="模型得分历史表" dbTableName="ccr_mod_scr_his">
+		<Field id="model_no" isPK="true" columnName="model_no" cnname="MODEL_NO" length="12" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="model_name" columnName="model_name" cnname="MODEL_NAME" length="60" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="serno" isPK="true" columnName="serno" cnname="SERNO" length="40" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="cus_id" columnName="cus_id" cnname="CUS_ID" length="30" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="ccr_date" columnName="ccr_date" cnname="CCR_DATE" length="10" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="nature_score" columnName="nature_score" cnname="NATURE_SCORE" length="10" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="quantity_score" columnName="quantity_score" cnname="QUANTITY_SCORE" length="16" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="limit_score" columnName="limit_score" cnname="LIMIT_SCORE" length="10" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="all_score" columnName="all_score" cnname="ALL_SCORE" length="10" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="scoring_manager" isPK="true" columnName="scoring_manager" cnname="SCORING_MANAGER" length="20" JDBCType="VARCHAR2" canBeNull="false"/>
+	</TableModel>
+</CcrModScrHis.xml>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<PspPropertyRealpro.xml>
+	<TableModel id="PspPropertyRealpro" cnname="贷后检查固定资产分析-房地产" dbTableName="psp_property_realpro">
+		<TableInfo/>
+		<Field id="property_id" isPK="true" columnName="property_id" cnname="资产编号" length="32" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="location" columnName="location" cnname="坐落" length="100" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="arch_squ" columnName="arch_squ" cnname="建筑面积" length="16" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="land_squ" columnName="land_squ" cnname="土地面积" length="16" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="land_cha" columnName="land_cha" cnname="土地性质" length="5" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="use_agelimit" dataType="Int" columnName="use_agelimit" cnname="使用年限" length="8" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="pur_price" dataType="Currency" columnName="pur_price" cnname="购置价或造价" length="16" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="is_pld" dictname="STD_ZX_YES_NO" columnName="is_pld" cnname="是否抵押" length="5" JSPTag="select" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="is_close" dictname="STD_ZX_YES_NO" columnName="is_close" cnname="是否查封" length="5" JSPTag="select" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="is_rent" dictname="STD_ZX_YES_NO" columnName="is_rent" cnname="是否出租" length="5" JSPTag="select" canBeNull="true" JDBCType="VARCHAR2"/>
+		<OrderFields>property_id[desc];</OrderFields>
+	</TableModel>
+</PspPropertyRealpro.xml>

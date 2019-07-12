@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<MortAccountsReceivable.xml>
+	<TableModel id="MortAccountsReceivable" pageSize="15" cnname="应收账款" isPaged="true" dbTableName="mort_accounts_receivable">
+		<TableInfo/>
+		<Field id="debt_id" JDBCType="VARCHAR2" length="60" columnName="debt_id" canBeNull="false" isPK="true" isEncrypted="false" JSPTag="text" cnname="应收账款编号"/>
+		<Field id="guaranty_no" columnName="guaranty_no" cnname="押品编号" length="60" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="guaranty_name" columnName="guaranty_name" cnname="押品名称" length="100" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="buy_cus_name" columnName="buy_cus_name" cnname="买方客户名称" length="40" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="sel_cus_name" columnName="sel_cus_name" cnname="卖方客户名称" length="40" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="bond_mode" dictname="STD_ACTRECPO_BOND_TYPE" columnName="bond_mode" cnname="债券类型" length="5" JSPTag="select" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="invc_no" columnName="invc_no" cnname="发票号" length="40" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="invc_ccy" dictname="STD_ZX_CUR_TYPE" columnName="invc_ccy" cnname="发票币种" length="3" JSPTag="select" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="invc_amt" dataType="Currency" columnName="invc_amt" cnname="发票金额" length="16" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="cont_no" columnName="cont_no" cnname="商业合同编号" length="40" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="bond_amt" dataType="Currency" columnName="bond_amt" cnname="债券金额" length="16" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="invc_date" columnName="invc_date" cnname="开票日期" length="10" JSPTag="date" canBeNull="true" JDBCType="CHAR"/>
+		<Field id="bond_pay_date" columnName="bond_pay_date" cnname="付款日期" length="10" JSPTag="date" canBeNull="true" JDBCType="CHAR"/>
+		<Field id="status" columnName="status" cnname="状态" length="5" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="input_id" columnName="input_id" cnname="登记人" length="20" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="input_br_id" columnName="input_br_id" cnname="登记机构" length="20" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="input_date" columnName="input_date" cnname="登记日期" length="10" JSPTag="date" canBeNull="true" JDBCType="CHAR"/>
+		<OrderFields>debt_id;</OrderFields>
+		<ConditionFields>guaranty_no;buy_cus_name;sel_cus_name;</ConditionFields>
+		<FilterFields>buy_cus_name;sel_cus_name;cont_no;invc_no;invc_amt;invc_date;bond_pay_date;status;</FilterFields>
+		<RecordRestrict query="true" delete="true" update="true"/>
+	</TableModel>
+</MortAccountsReceivable.xml>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<IqpGuarantInfo.xml>
+	<TableModel id="IqpGuarantInfo" pageSize="10" cnname="保函信息表" isPaged="true" dbTableName="iqp_guarant_info">
+		<TableInfo/>
+		<Field id="serno" isPK="true" columnName="serno" cnname="业务编号" length="40" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="guarant_type" columnName="guarant_type" cnname="保函种类" length="5" JSPTag="select" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="guarant_mode" columnName="guarant_mode" cnname="保函类型" length="5" JSPTag="select" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="open_type" columnName="open_type" cnname="开立类型" length="5" JSPTag="select" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="is_bank_format" dictname="STD_ZX_YES_NO" columnName="is_bank_format" cnname="是否我行标准格式" length="1" JSPTag="select" canBeNull="true" JDBCType="CHAR"/>
+		<Field id="is_agt_guarant" dictname="STD_ZX_YES_NO" columnName="is_agt_guarant" cnname="是否转开代理行保函" length="1" JSPTag="select" canBeNull="true" JDBCType="CHAR"/>
+		<Field id="agt_bank_no" columnName="agt_bank_no" cnname="代理行行号" length="20" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="agt_bank_name" columnName="agt_bank_name" cnname="代理行名称" length="100" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="item_name" columnName="item_name" cnname="项目名称" length="80" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="item_amt" dataType="Currency" columnName="item_amt" cnname="项目金额" length="16" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="cont_no" columnName="cont_no" cnname="合同编号" length="40" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="cont_name" columnName="cont_name" cnname="合同名称" length="100" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="ben_name" columnName="ben_name" cnname="受益人名称" length="80" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="ben_addr" columnName="ben_addr" cnname="受益人地址" length="150" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="ben_acct_org_no" columnName="ben_acct_org_no" cnname="受益人开户行行号" length="20" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="guarant_pay_type" columnName="guarant_pay_type" cnname="保函付款方式" length="5" JSPTag="select" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="corre_busnes_cont_amt" dataType="Currency" columnName="corre_busnes_cont_amt" cnname="相关贸易合同金额" length="16" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<OrderFields>serno;</OrderFields>
+		<Field id="ben_acct_no" isPK="false" columnName="ben_acct_no" cnname="受益人账号" length="40" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<ConditionFields>serno;</ConditionFields>
+		<FilterFields>serno;guarant_type;guarant_mode;open_type;is_bank_format;is_agt_guarant;agt_bank_no;agt_bank_name;item_name;item_amt;cont_no;cont_name;ben_name;</FilterFields>
+		<Field id="chrg_rate" dataType="Rate" columnName="chrg_rate" cnname="手续费率" length="10" JSPTag="text" JDBCType="NUMBER"/>
+		<Field id="cur_type" dictname="STD_ZX_CUR_TYPE" columnName="cur_type" cnname="商务币种" JSPTag="select" length="3" JDBCType="CHAR"/>
+	</TableModel>
+</IqpGuarantInfo.xml>

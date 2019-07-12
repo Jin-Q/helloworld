@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<STreedic.xml>
+	<TableModel id="STreedic" cnname="树形字典" dbTableName="s_treedic">
+		<TableInfo/>
+		<Field id="enname" isPK="true" columnName="enname" cnname="ENNAME" length="20" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="cnname" isPK="true" columnName="cnname" cnname="CNNAME" length="60" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="abvenname" columnName="abvenname" cnname="ABVENNAME" length="20" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="locate" columnName="locate" cnname="LOCATE" length="100" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="opttype" isPK="false" columnName="opttype" cnname="OPTTYPE" length="20" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="memo" columnName="memo" cnname="MEMO" length="30" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="flag" columnName="flag" cnname="FLAG" length="3" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="levels" columnName="levels" cnname="LEVELS" length="2" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="orderid" columnName="orderid" cnname="ORDERID" length="38" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+	</TableModel>
+</STreedic.xml>

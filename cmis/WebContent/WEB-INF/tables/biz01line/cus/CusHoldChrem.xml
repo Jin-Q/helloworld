@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<CusHoldChrem.xml>
+	<TableModel id="CusHoldChrem" cnname="持有理财表" dbTableName="cus_hold_chrem">
+		<Field id="cus_id" columnName="cus_id" cnname="客户码" length="30" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="prod_name" columnName="prod_name" cnname="产品名称" length="80" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="chrem_type" columnName="chrem_type" cnname="理财类型" length="3" JDBCType="CHAR" canBeNull="true"/>
+		<Field id="subscr_date" columnName="subscr_date" cnname="认购时间" length="10" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="subscr_amt" columnName="subscr_amt" cnname="认购金额" length="16" JDBCType="NUMBER" canBeNull="false"/>
+		<Field id="start_date" columnName="start_date" cnname="开始时间" length="10" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="end_date" columnName="end_date" cnname="到期时间" length="10" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="expect_income_rate" columnName="expect_income_rate" cnname="预期收益率" length="16" JDBCType="NUMBER" canBeNull="false"/>
+		<Field id="input_id" columnName="input_id" cnname="登记人" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="input_br_id" columnName="input_br_id" cnname="登记机构" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="input_date" columnName="input_date" cnname="登记日期" length="10" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="serno" isPK="true" columnName="serno" cnname="流水号" length="40" JDBCType="VARCHAR2" canBeNull="false"/>
+	</TableModel>
+</CusHoldChrem.xml>

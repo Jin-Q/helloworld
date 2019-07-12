@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<PrdPolcyScheme.xml>
+	<TableModel id="PrdPolcyScheme" cnname="政策资料设置方案" dbTableName="prd_polcy_scheme">
+		<Field id="schemeid" isPK="true" columnName="schemeid" cnname="方案编号" length="30" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="schemename" columnName="schemename" cnname="方案名称" length="40" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="effectived" columnName="effectived" cnname="是否启用" length="1" JDBCType="CHAR" canBeNull="true"/>
+		<Field id="comments" columnName="comments" cnname="备注" length="200" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="inputid" columnName="inputid" cnname="登记人员" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="inputdate" columnName="inputdate" cnname="登记日期" length="10" JDBCType="CHAR" canBeNull="true"/>
+		<Field id="orgid" columnName="orgid" cnname="登记机构" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+	</TableModel>
+</PrdPolcyScheme.xml>

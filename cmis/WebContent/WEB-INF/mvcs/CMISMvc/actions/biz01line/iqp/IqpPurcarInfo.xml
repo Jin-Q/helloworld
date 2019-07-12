@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actionDefines>
+	<classMap>
+		<map id="action" class="com.yucheng.cmis.ad.mvc.ADRequestController"/>
+		<map id="flowInvoker" class="com.yucheng.cmis.ad.mvc.ADFlowInvoker"/>
+		<map id="outputViews" class="java.util.HashMap"/>
+		<map id="output" class="com.ecc.emp.data.KeyedCollection"/>
+		<map id="kColl" class="com.ecc.emp.data.KeyedCollection"/>
+		<map id="iColl" class="com.ecc.emp.data.IndexedCollection"/>
+		<map id="field" class="com.ecc.emp.data.DataField"/>
+	</classMap>
+	
+	<!-- 获取操作主页面 -->
+	<action id="queryIqpPurcarInfoList" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.iqp.op.iqppurcarinfo.QueryIqpPurcarInfoListOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="biz01line/iqp/IqpPurcarInfo/queryIqpPurcarInfoList.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 获得编辑页面 -->
+	<action id="getIqpPurcarInfoUpdatePage" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation updateCheck="false" class="com.yucheng.cmis.biz01line.iqp.op.iqppurcarinfo.QueryIqpPurcarInfoDetailOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="biz01line/iqp/IqpPurcarInfo/updateIqpPurcarInfoRecord.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 更新记录 -->
+	<action id="updateIqpPurcarInfoRecord" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.iqp.op.iqppurcarinfo.UpdateIqpPurcarInfoRecordOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<view id="retPage" class="com.yucheng.cmis.view.JSONView">
+				<output class="com.ecc.emp.data.KeyedCollection">
+					<field id="flag" class="com.ecc.emp.data.DataField" />
+				</output>
+			</view>
+		</outputViews>
+	</action>
+	
+	<!-- 获得查看页面 -->
+	<action id="getIqpPurcarInfoViewPage" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.iqp.op.iqppurcarinfo.QueryIqpPurcarInfoDetailOp"/>
+			<transition dest="updatePage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="updatePage" url="biz01line/iqp/IqpPurcarInfo/queryIqpPurcarInfoDetail.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 获得新增页面 -->
+	<action id="getIqpPurcarInfoAddPage" type="normal" checkSession="true" >
+		<jspView id="addPage" url="biz01line/iqp/IqpPurcarInfo/addIqpPurcarInfoRecord.jsp"/>
+	</action>
+	
+	<!-- 新增记录 -->
+	<action id="addIqpPurcarInfoRecord" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.iqp.op.iqppurcarinfo.AddIqpPurcarInfoRecordOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="operationResult.jsp?url=queryIqpPurcarInfoList.do" />
+		</outputViews>
+	</action>	
+	
+	<!-- 删除记录 -->
+	<action id="deleteIqpPurcarInfoRecord" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.iqp.op.iqppurcarinfo.DeleteIqpPurcarInfoRecordOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="operationResult.jsp?url=queryIqpPurcarInfoList.do" />
+		</outputViews>
+	</action>
+	
+	<!-- 分页查询记录列表 -->
+		<action id="pageIqpPurcarInfoQuery" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.iqp.op.iqppurcarinfo.QueryIqpPurcarInfoListOp"/>
+			<transition dest="queryListRes"/>
+		</flowInvoker>
+		<outputViews>
+			<jsonView class="com.yucheng.cmis.view.JSONView" id="queryListRes">
+				<output>
+					<iColl id="IqpPurcarInfoList">
+						<kColl>
+							<field id="car_sign" />
+							<field id="car_name" />
+							<field id="car_model" />
+							<field id="buy_amt" />
+							<field id="loan_rate" />
+							<field id="first_pay_rate" />
+						</kColl>
+					</iColl>
+					<kColl id="pageInfo">
+						<field id="currentPage" />
+						<field id="maxLine" />
+						<field id="recordSize" />
+					</kColl>
+				</output>
+			</jsonView>
+		</outputViews>
+	</action>
+	
+</actionDefines>
+
+
+

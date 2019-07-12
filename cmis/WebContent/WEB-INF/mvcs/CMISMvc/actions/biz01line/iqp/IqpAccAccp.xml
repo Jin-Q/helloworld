@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actionDefines>
+	<classMap>
+		<map id="action" class="com.yucheng.cmis.ad.mvc.ADRequestController"/>
+		<map id="flowInvoker" class="com.yucheng.cmis.ad.mvc.ADFlowInvoker"/>
+		<map id="outputViews" class="java.util.HashMap"/>
+		<map id="output" class="com.ecc.emp.data.KeyedCollection"/>
+		<map id="kColl" class="com.ecc.emp.data.KeyedCollection"/>
+		<map id="iColl" class="com.ecc.emp.data.IndexedCollection"/>
+		<map id="field" class="com.ecc.emp.data.DataField"/>
+	</classMap>
+	
+	<!-- 查询记录列表 -->
+	<action id="queryIqpAccAccpList" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.iqp.op.iqpaccaccp.QueryIqpAccAccpListOp"/>
+			<transition dest="queryListRes"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="queryListRes" url="biz01line/iqp/IqpAccAccp/queryIqpAccAccpList.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 获取新增页面 -->
+	<action id="getIqpAccAccpAddPage" type="normal" checkSession="true" >
+		<jspView id="queryListRes" url="biz01line/iqp/IqpAccAccp/addIqpAccAccpRecord.jsp" />
+	</action>
+	
+	<!-- 新增信息 -->
+	<action id="addIqpAccAccpRecord" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.iqp.op.iqpaccaccp.AddIqpAccAccpRecordOp"/>
+			<transition dest="queryListRes"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="queryListRes" url="biz01line/iqp/IqpAccAccp/updateIqpAccAccpRecord.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 获得编辑页面 -->
+	<action id="getIqpAccAccpUpdatePage" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation updateCheck="false" class="com.yucheng.cmis.biz01line.iqp.op.iqpaccaccp.QueryIqpAccAccpDetailOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="biz01line/iqp/IqpAccAccp/updateIqpAccAccpRecord.jsp" />
+		</outputViews>
+	</action>
+	<!-- 获得基本信息展示页面 -->
+	<action id="getIqpAccAccpShowBasicPage" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation updateCheck="false" class="com.yucheng.cmis.biz01line.iqp.op.iqpaccaccp.QueryIqpAccAccpShowBasicOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="biz01line/iqp/IqpAccAccp/showBasicIqpAccAccpRecord.jsp" />
+		</outputViews>
+	</action>
+
+	<!-- 修改信息 -->
+	<action id="updateIqpAccAccpRecord" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.iqp.op.iqpaccaccp.UpdateIqpAccAccpRecordOp"/>
+			<transition dest="queryListRes"/>
+		</flowInvoker>
+		<outputViews>
+			<view id="queryListRes" class="com.yucheng.cmis.view.JSONView">
+				<output class="com.ecc.emp.data.KeyedCollection">
+					<field id="flag" class="com.ecc.emp.data.DataField" />
+				</output>
+			</view>
+		</outputViews>
+	</action>
+	
+	<!--刷新页面时更新票据金额 -->
+	<action id="updateBillQntRecord" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.iqp.op.iqpaccaccp.UpdateBillQntRecordOp"/>
+			<transition dest="queryListRes"/>
+		</flowInvoker>
+		<outputViews>
+			<view id="queryListRes" class="com.yucheng.cmis.view.JSONView">
+				<output class="com.ecc.emp.data.KeyedCollection">
+					<field id="flag" class="com.ecc.emp.data.DataField" />
+					<field id="bill_qnt" class="com.ecc.emp.data.DataField" />
+					<field id="msg" class="com.ecc.emp.data.DataField" />
+					<field id="prd_id" class="com.ecc.emp.data.DataField" />
+				</output>
+			</view>
+		</outputViews>
+	</action>
+	
+	<!-- 删除信息 -->
+	<action id="deleteIqpAccAccpRecord" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.iqp.op.iqpaccaccp.DeleteIqpAccAccpRecordOp"/>
+			<transition dest="queryListRes"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="queryListRes" url="operationResult.jsp?url=queryIqpAccAccpList.do" />
+		</outputViews>
+	</action>
+	
+	<!-- 查询详情 -->
+	<action id="queryIqpAccAccpDetail" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.iqp.op.iqpaccaccp.QueryIqpAccAccpDetailOp"/>
+			<transition dest="queryDetailRes"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="queryDetailRes" url="biz01line/iqp/IqpAccAccp/queryIqpAccAccpDetail.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 分页查询记录列表 -->
+	<action id="pageIqpAccAccpQuery" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.iqp.op.iqpaccaccp.QueryIqpAccAccpListOp"/>
+			<transition dest="queryListRes"/>
+		</flowInvoker>
+		<outputViews>
+			<jsonView class="com.yucheng.cmis.view.JSONView" id="queryListRes">
+				<output>
+					<iColl id="IqpAccAccpList">
+						<kColl>
+							<field id="opac_org" />
+							<field id="is_elec_bill" />
+							<field id="bill_qty" />
+							<field id="actp_org_name" />
+							<field id="loan_use" />
+						</kColl>
+					</iColl>
+					<kColl id="pageInfo">
+						<field id="currentPage" />
+						<field id="maxLine" />
+						<field id="recordSize" />
+					</kColl>
+					
+				</output>
+			</jsonView>
+		</outputViews>
+	</action>
+	
+	
+	<!--*************************子表【承兑汇票申请明细】*******************************-->
+	
+	<!-- 作为子表的列表页面 -->
+	<action id="queryIqpAccAccpIqpAccpDetailList" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.iqp.op.iqpaccaccp.iqpaccpdetail.QueryIqpAccAccpIqpAccpDetailListOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="biz01line/iqp/IqpAccAccp/IqpAccpDetail/queryIqpAccAccpIqpAccpDetailList.jsp" />
+		</outputViews>
+	</action>
+	<!-- 获得作为子表的新增页面 -->
+	<action id="getIqpAccAccpIqpAccpDetailAddPage" type="normal" checkSession="true" >
+		<jspView id="addPage" url="biz01line/iqp/IqpAccAccp/IqpAccpDetail/addIqpAccAccpIqpAccpDetailRecord.jsp"/>
+	</action>
+	
+	<!-- 获得子表编辑页面 -->
+	<action id="getIqpAccAccpIqpAccpDetailUpdatePage" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.iqp.op.iqpaccaccp.iqpaccpdetail.QueryIqpAccAccpIqpAccpDetailDetailOp"/>
+			<transition dest="updatePage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="updatePage" url="biz01line/iqp/IqpAccAccp/IqpAccpDetail/updateIqpAccAccpIqpAccpDetailRecord.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 子表详情查询 -->
+	<action id="queryIqpAccAccpIqpAccpDetailDetail" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.iqp.op.iqpaccaccp.iqpaccpdetail.QueryIqpAccAccpIqpAccpDetailDetailOp"/>
+			<transition dest="queryDetail"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="queryDetail" url="biz01line/iqp/IqpAccAccp/IqpAccpDetail/queryIqpAccAccpIqpAccpDetailDetail.jsp"/>
+		</outputViews>	
+	</action>
+	
+	<!-- 子表新增记录 -->
+	<action id="addIqpAccAccpIqpAccpDetailRecord" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.iqp.op.iqpaccaccp.iqpaccpdetail.AddIqpAccAccpIqpAccpDetailRecordOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+         <outputViews>
+			<view id="retPage" class="com.yucheng.cmis.view.JSONView">
+				<output class="com.ecc.emp.data.KeyedCollection">
+					<field id="flag" class="com.ecc.emp.data.DataField"/>
+					<field id="message" class="com.ecc.emp.data.DataField"/>
+				</output>
+			</view>   
+		</outputViews>
+	</action>	
+	
+	<!-- 子表更新记录 -->
+	<action id="updateIqpAccAccpIqpAccpDetailRecord" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.iqp.op.iqpaccaccp.iqpaccpdetail.UpdateIqpAccAccpIqpAccpDetailRecordOp"/>
+			<transition dest="updateRecordRes"/>
+		</flowInvoker>
+		<outputViews>
+			<view id="updateRecordRes" class="com.yucheng.cmis.view.JSONView">
+				<output class="com.ecc.emp.data.KeyedCollection">
+					<field id="flag" class="com.ecc.emp.data.DataField"/>
+					<field id="message" class="com.ecc.emp.data.DataField"/>
+				</output>
+			</view>   
+		</outputViews>
+	</action>
+	
+	<!-- 子表删除记录 -->
+	<action id="deleteIqpAccAccpIqpAccpDetailRecord" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.iqp.op.iqpaccaccp.iqpaccpdetail.DeleteIqpAccAccpIqpAccpDetailRecordOp"/>
+			<transition dest="deleteRecordRes"/>
+		</flowInvoker>
+		<outputViews>
+			<view id="deleteRecordRes" class="com.yucheng.cmis.view.JSONView">
+				<output class="com.ecc.emp.data.KeyedCollection">
+					<field id="flag" class="com.ecc.emp.data.DataField"/>
+				</output>
+			</view>  
+		</outputViews>
+	</action>
+	
+	<!-- 导入汇票明细excel页面 -->
+	<action id="importIqpAccpDetailPage" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.arp.op.pubAction.ArpPubNullOp"/>
+			<transition dest="addPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="addPage" url="biz01line/iqp/IqpAccAccp/IqpAccpDetail/importIqpAccpDetailPage.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 导入汇票明细excel后台处理 -->
+	<action id="importIqpAccpDetailOp" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.iqp.op.iqpaccaccp.iqpaccpdetail.ImportIqpAccpDetailOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="biz01line/iqp/IqpBillDetail/importResult.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 分页查询记录列表 -->
+		<action id="pageIqpAccAccpIqpAccpDetailQuery" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.iqp.op.iqpaccaccp.iqpaccpdetail.QueryIqpAccAccpIqpAccpDetailListOp"/>
+			<transition dest="queryListRes"/>
+		</flowInvoker>
+		<outputViews>
+			<jsonView class="com.yucheng.cmis.view.JSONView" id="queryListRes">
+				<output>
+					<iColl id="IqpAccpDetailList">
+						<kColl>
+							<field id="serno" />
+							<field id="clt_person" />
+							<field id="clt_acct_no" />
+							<field id="paorg_no" />
+							<field id="paorg_name" />
+							<field id="drft_amt" />
+							<field id="term_type" />
+							<field id="term" />
+							<field id="pk1" />
+						</kColl>
+					</iColl>
+					<kColl id="pageInfo">
+						<field id="currentPage" />
+						<field id="maxLine" />
+						<field id="recordSize" />
+					</kColl>
+				</output>
+			</jsonView>
+		</outputViews>
+	</action>	
+	
+</actionDefines>

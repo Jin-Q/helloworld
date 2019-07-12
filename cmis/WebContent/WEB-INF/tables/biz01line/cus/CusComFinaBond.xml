@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<CusComFinaBond.xml>
+	<TableModel id="CusComFinaBond" cnname="公客户融资债券信息表" dbTableName="cus_com_fina_bond">
+		<Field id="cus_id" isPK="true" columnName="cus_id" cnname="客户代码" length="30" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="seq" isPK="true" columnName="seq" cnname="序号" length="38" JDBCType="NUMBER" canBeNull="false"/>
+		<Field id="com_bond_pub_dt" columnName="com_bond_pub_dt" cnname="发行时间" length="10" JDBCType="CHAR" canBeNull="true"/>
+		<Field id="com_bond_name" columnName="com_bond_name" cnname="债券名称" length="60" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="com_bond_typ" columnName="com_bond_typ" cnname="债券类型" length="2" JDBCType="CHAR" canBeNull="true"/>
+		<Field id="com_bond_trm" columnName="com_bond_trm" cnname="债券期限(年)" length="38" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="com_bond_cur_typ" columnName="com_bond_cur_typ" cnname="币种" length="3" JDBCType="CHAR" canBeNull="true"/>
+		<Field id="com_bond_amt" columnName="com_bond_amt" cnname="总金额" length="16" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="com_bond_rate" columnName="com_bond_rate" cnname="年利率(%)" length="16" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="com_bond_mrk_flg" columnName="com_bond_mrk_flg" cnname="是否上市" length="1" JDBCType="CHAR" canBeNull="true"/>
+		<Field id="com_bond_mrk_place" columnName="com_bond_mrk_place" cnname="上市地" length="2" JDBCType="CHAR" canBeNull="true"/>
+		<Field id="com_bond_mrk_brs" columnName="com_bond_mrk_brs" cnname="上市交易所" length="60" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="com_bond_eva_amt" columnName="com_bond_eva_amt" cnname="债券评估价" length="16" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="remark" columnName="remark" cnname="备注" length="250" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="input_id" columnName="input_id" cnname="登记人" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="input_br_id" columnName="input_br_id" cnname="登记机构" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="input_date" columnName="input_date" cnname="登记日期" length="10" JDBCType="CHAR" canBeNull="true"/>
+		<Field id="last_upd_id" columnName="last_upd_id" cnname="更新人" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="last_upd_date" columnName="last_upd_date" cnname="更新日期" length="10" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="com_bond_crt_info" columnName="com_bond_crt_info" cnname="债券等级" length="60" JDBCType="VARCHAR2"/>
+		<Field id="com_bond_crt_org" columnName="com_bond_crt_org" cnname="评级机构" length="80" JDBCType="VARCHAR2"/>
+		<Field id="com_bond_no" columnName="com_bond_no" cnname="债券编号" length="30" JDBCType="VARCHAR2"/>
+		<Field id="com_bond_end_dt" columnName="com_bond_end_dt" cnname="债券到期日期" length="10" JDBCType="VARCHAR2"/>
+		<Field id="com_bond_cls" columnName="com_bond_cls" cnname="债券分类" length="10" JDBCType="VARCHAR2"/>
+		<Field id="com_acct_typ" columnName="com_acct_typ" cnname="账户类型" length="10" JDBCType="VARCHAR2"/>
+		<Field id="com_bond_assure_means" columnName="com_bond_assure_means" cnname="担保方式" length="10" JDBCType="VARCHAR2"/>
+	</TableModel>
+</CusComFinaBond.xml>

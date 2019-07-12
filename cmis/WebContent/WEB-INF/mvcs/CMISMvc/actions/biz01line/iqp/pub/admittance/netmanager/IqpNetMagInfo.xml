@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actionDefines>
+	<classMap>
+		<map id="action" class="com.yucheng.cmis.ad.mvc.ADRequestController"/>
+		<map id="flowInvoker" class="com.yucheng.cmis.ad.mvc.ADFlowInvoker"/>
+		<map id="outputViews" class="java.util.HashMap"/>
+		<map id="output" class="com.ecc.emp.data.KeyedCollection"/>
+		<map id="kColl" class="com.ecc.emp.data.KeyedCollection"/>
+		<map id="iColl" class="com.ecc.emp.data.IndexedCollection"/>
+		<map id="field" class="com.ecc.emp.data.DataField"/>
+	</classMap>
+	
+	<!-- 获取操作主页面 -->
+	<action id="queryIqpNetMagInfoList" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.iqp.op.pub.admittance.netmanager.iqpnetmaginfo.QueryIqpNetMagInfoListOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="biz01line/iqp/pub/admittance/netmanager/IqpNetMagInfo/queryIqpNetMagInfoList.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 获取网络编号POP -->
+	<action id="queryIqpNetAgrNo" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.iqp.op.pub.admittance.netmanager.iqpnetmaginfo.QueryIqpNetMagInfoPopOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="biz01line/iqp/pub/admittance/netmanager/IqpNetMagInfo/queryIqpNetMagInfo4PopList.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 入网/退网申请成功后，编辑成员信息 -->
+	<action id="getIqpNetMagInfoUpdatePage" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation updateCheck="false" class="com.yucheng.cmis.biz01line.iqp.op.pub.admittance.netmanager.iqpnetmaginfo.QueryIqpNetMagInfoDetailOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="biz01line/iqp/pub/admittance/netmanager/IqpNetMagInfo/updateIqpNetMagInfoRecord.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 入网/退网申请成功后，查看成员信息 -->
+	<action id="getIqpNetCoreConViewPage" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation updateCheck="false" class="com.yucheng.cmis.biz01line.iqp.op.pub.admittance.netmanager.iqpnetmaginfo.QueryIqpNetMagInfoDetailOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="biz01line/iqp/pub/admittance/netmanager/IqpNetMagInfo/queryIqpNetMagInfoRecord.jsp" />
+		</outputViews>
+	</action>
+	
+	
+	<!-- 修改入网/退网申请记录 -->
+	<action id="updateIqpNetMagInfoRecord" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.iqp.op.pub.admittance.netmanager.iqpnetmaginfo.UpdateIqpNetMagInfoRecordOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<view id="retPage" class="com.yucheng.cmis.view.JSONView">
+				<output class="com.ecc.emp.data.KeyedCollection">
+					<field id="flag" class="com.ecc.emp.data.DataField" />
+				</output>
+			</view>
+		</outputViews>
+	</action>
+	
+	<!-- 获得查看页面 -->
+	<action id="getIqpNetMagInfoViewPage" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.iqp.op.pub.admittance.netmanager.iqpnetmaginfo.QueryIqpNetMagInfoDetailOp"/>
+			<transition dest="updatePage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="updatePage" url="biz01line/iqp/pub/admittance/netmanager/IqpNetMagInfo/queryIqpNetMagInfoDetail.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 获得入网/退网申请页面 -->
+	<action id="getIqpNetMagInfoAddPage" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation updateCheck="false" class="com.yucheng.cmis.biz01line.iqp.op.pub.admittance.netmanager.iqpnetmaginfo.QueryIqpNetMagInfoDetailOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="biz01line/iqp/pub/admittance/netmanager/IqpNetMagInfo/addIqpNetMagInfoRecord.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 新增入网/退网申请记录 -->
+	<action id="addIqpNetMagInfoRecord" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.iqp.op.pub.admittance.netmanager.iqpnetmaginfo.AddIqpCore4enterRecordOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<view id="retPage" class="com.yucheng.cmis.view.JSONView">
+				<output class="com.ecc.emp.data.KeyedCollection">
+					<field id="flag" class="com.ecc.emp.data.DataField" />
+				</output>
+			</view>
+		</outputViews>
+	</action>	
+	<!-- 删除记录 -->
+	<action id="deleteIqpNetMagInfoRecord" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.iqp.op.pub.admittance.netmanager.iqpnetmaginfo.DeleteIqpNetMagInfoRecordOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="operationResult.jsp?url=queryIqpNetMagInfoList.do" />
+		</outputViews>
+	</action>
+	<!-- 检查是否存在入网或退网申请 -->
+	<action id="checkNetExist" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.iqp.op.pub.admittance.netmanager.iqpnetmaginfo.CheckNetExistOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<view id="retPage" class="com.yucheng.cmis.view.JSONView">
+				<output class="com.ecc.emp.data.KeyedCollection">
+					<field id="flag" />
+					<field id="serno" />
+				</output>
+			</view>
+		</outputViews>
+	</action>
+	<!-- 提交时，检查网络中是否存在待入网或带退货的成员 -->
+	<action id="checkMemIsInNet" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.iqp.op.pub.admittance.netmanager.iqpnetmaginfo.CheckMemIsInNetOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<view id="retPage" class="com.yucheng.cmis.view.JSONView">
+				<output class="com.ecc.emp.data.KeyedCollection">
+					<field id="flag" class="com.ecc.emp.data.DataField" />
+				</output>
+			</view>
+		</outputViews>
+	</action>
+	
+	<!-- 网络管理POP框 -->
+	<action id="queryNetMagInfoPop" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.iqp.op.pub.admittance.netmanager.iqpnetmaginfo.QueryIqpNetMagInfoListOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="biz01line/iqp/pub/admittance/netmanager/IqpNetMagInfo/queryIqpNetMagInfoPopList.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 核心企业POP框 -->
+	<action id="searchCoreConPop" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.iqp.op.pub.admittance.netmanager.iqpnetmaginfo.QueryIqpNetMag4CoreConOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="biz01line/iqp/pub/admittance/netmanager/IqpNetMagInfo/queryIqpNetMag4CoreCon.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 核心企业POP框分页查询记录列表 -->
+		<action id="pagesearchCoreConQuery" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.iqp.op.pub.admittance.netmanager.iqpnetmaginfo.QueryIqpNetMag4CoreConOp"/>
+			<transition dest="queryListRes"/>
+		</flowInvoker>
+		<outputViews>
+			<jsonView class="com.yucheng.cmis.view.JSONView" id="queryListRes">
+				<output>
+					<iColl id="IqpNetMagInfoList">
+						<kColl>
+						</kColl>
+					</iColl>
+					<kColl id="pageInfo">
+						<field id="currentPage" />
+						<field id="maxLine" />
+						<field id="recordSize" />
+					</kColl>
+				</output>
+			</jsonView>
+		</outputViews>
+	</action>
+	
+	<!-- 分页查询记录列表 -->
+		<action id="pageIqpNetMagInfoQuery" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.iqp.op.pub.admittance.netmanager.iqpnetmaginfo.QueryIqpNetMagInfoListOp"/>
+			<transition dest="queryListRes"/>
+		</flowInvoker>
+		<outputViews>
+			<jsonView class="com.yucheng.cmis.view.JSONView" id="queryListRes">
+				<output>
+					<iColl id="IqpNetMagInfoList">
+						<kColl>
+						</kColl>
+					</iColl>
+					<kColl id="pageInfo">
+						<field id="currentPage" />
+						<field id="maxLine" />
+						<field id="recordSize" />
+					</kColl>
+				</output>
+			</jsonView>
+		</outputViews>
+	</action>
+	
+	<!-- 网络Pop分页查询记录列表 -->
+		<action id="pageIqpNetAgrNo" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.iqp.op.pub.admittance.netmanager.iqpnetmaginfo.QueryIqpNetMagInfoPopOp"/>
+			<transition dest="queryListRes"/>
+		</flowInvoker>
+		<outputViews>
+			<jsonView class="com.yucheng.cmis.view.JSONView" id="queryListRes">
+				<output>
+					<iColl id="IqpNetMagInfoList">
+						<kColl>
+						</kColl>
+					</iColl>
+					<kColl id="pageInfo">
+						<field id="currentPage" />
+						<field id="maxLine" />
+						<field id="recordSize" />
+					</kColl>
+				</output>
+			</jsonView>
+		</outputViews>
+	</action>
+</actionDefines>

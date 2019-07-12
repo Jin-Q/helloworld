@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<IqpCredit.xml>
+	<TableModel id="IqpCredit" pageSize="10" cnname="信用证从表" isPaged="true" dbTableName="iqp_credit">
+		<TableInfo/>
+		<Field id="serno" isPK="true" columnName="serno" cnname="业务编号" length="40" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="end_date" columnName="end_date" cnname="到期日" length="10" JSPTag="date" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="credit_term_type" columnName="credit_term_type" cnname="信用证期限类型" length="5" JSPTag="select" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="fast_day" columnName="fast_day" cnname="远期天数" length="38" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="is_revolv_credit" dictname="STD_ZX_YES_NO" columnName="is_revolv_credit" cnname="是否循环信用证" length="1" JSPTag="select" canBeNull="true" JDBCType="CHAR"/>
+		<Field id="is_internal_cert" dictname="STD_ZX_YES_NO" columnName="is_internal_cert" cnname="是否国内信用证" length="1" JSPTag="select" canBeNull="true" JDBCType="CHAR"/>
+		<Field id="is_ctrl_gclaim" columnName="is_ctrl_gclaim" cnname="是否可控货权" length="1" JSPTag="select" canBeNull="true" JDBCType="CHAR"/>
+		<Field id="busnes_cont" columnName="busnes_cont" cnname="贸易合同号" length="40" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="beneficiar" columnName="beneficiar" cnname="受益人" length="40" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="beneficiar_country" dictname="STD_GB_2659-2000" columnName="beneficiar_country" cnname="受益人所在国家" length="100" JSPTag="select" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="floodact_perc" dataType="Percent" columnName="floodact_perc" cnname="溢装比例" length="10" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="shortact_perc" dataType="Percent" columnName="shortact_perc" cnname="短装比例" length="10" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<OrderFields>serno;</OrderFields>
+		<ConditionFields>is_limit_cont_pay;limit_cont_no;credit _type;</ConditionFields>
+		<FilterFields>is_limit_cont_pay;limit_cont_no;end_date;credit _type;credit_term_type;fast_day;floodact_perc;shortact_perc;</FilterFields>
+		<Field id="credit_type" columnName="credit_type" cnname="CREDIT_TYPE" length="5" JSPTag="text" JDBCType="VARCHAR2"/>
+		<Field id="chrg_rate" dataType="Rate" columnName="chrg_rate" cnname="手续费率" length="10" JSPTag="text" JDBCType="NUMBER"/>
+		<Field id="cdt_cert_no" columnName="cdt_cert_no" cnname="CDT_CERT_NO" JSPTag="text" length="40" JDBCType="VARCHAR2"/>
+	</TableModel>
+</IqpCredit.xml>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<IqpGreenDeclInfo.xml>
+	<TableModel id="IqpGreenDeclInfo" cnname="绿色减排信息" dbTableName="iqp_green_decl_info">
+		<Field id="serno" isPK="true" columnName="serno" cnname="业务流水号" length="40" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="cont_no" columnName="cont_no" cnname="合同编号" length="40" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="green_indus" columnName="green_indus" cnname="绿色产业类型" length="10" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="reduc_coal" columnName="reduc_coal" cnname="项目年节约标准煤量" length="16" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="emission_co2" columnName="emission_co2" cnname="项目年减排二氧化碳量" length="16" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="emission_cod" columnName="emission_cod" cnname="项目年COD减排量" length="16" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="emission_an" columnName="emission_an" cnname="项目年氨氮减排量" length="16" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="emission_so2" columnName="emission_so2" cnname="项目二氧化硫减排量" length="16" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="emission_no" columnName="emission_no" cnname="项目年氮氧化物减排量" length="16" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="reduc_water" columnName="reduc_water" cnname="项目年节水量" length="16" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="totl_invest" columnName="totl_invest" cnname="项目总投资额" length="16" JDBCType="NUMBER" canBeNull="true"/>
+	</TableModel>
+</IqpGreenDeclInfo.xml>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<IqpPsaleCont.xml>
+	<TableModel id="IqpPsaleCont" cnname="年度购销合同" dbTableName="iqp_psale_cont">
+		<Field id="net_agr_no" columnName="net_agr_no" cnname="网络编号" length="40" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="psale_cont" isPK="true" columnName="psale_cont" cnname="购销合同编号" length="40" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="buyer_cus_id" columnName="buyer_cus_id" cnname="买方客户编号" length="30" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="barg_cus_id" columnName="barg_cus_id" cnname="卖方客户编号" length="30" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="cont_amt" columnName="cont_amt" cnname="合同金额" length="16" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="start_date" columnName="start_date" cnname="起始到期" length="10" JDBCType="CHAR" canBeNull="true"/>
+		<Field id="end_date" columnName="end_date" cnname="到期日期" length="10" JDBCType="CHAR" canBeNull="true"/>
+		<Field id="commo_name" columnName="commo_name" cnname="商品名称" length="100" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="qnt" columnName="qnt" cnname="数量" length="16" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="unit_price" columnName="unit_price" cnname="单价" length="16" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="total" columnName="total" cnname="总价值" length="16" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="memo" columnName="memo" cnname="备注" length="500" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="status" columnName="status" cnname="状态" length="1" JDBCType="CHAR" canBeNull="true"/>
+		<Field id="input_id" columnName="input_id" cnname="登记人" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="input_br_id" columnName="input_br_id" cnname="登记机构" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="input_date" columnName="input_date" cnname="登记日期" length="10" JDBCType="CHAR" canBeNull="true"/>
+	    <Field id="qnt_unit" columnName="qnt_unit" cnname="数量单位" length="2" JDBCType="VARCHAR2"/>
+	    <Field id="mem_cus_id" columnName="mem_cus_id" cnname="客户码" length="30" JDBCType="VARCHAR2"/>
+	</TableModel>
+</IqpPsaleCont.xml>

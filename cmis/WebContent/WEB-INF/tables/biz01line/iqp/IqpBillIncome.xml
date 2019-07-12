@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<IqpBillIncome.xml>
+	<TableModel id="IqpBillIncome" cnname="票据收益计算表" dbTableName="iqp_bill_income">
+		<Field id="biz_type" columnName="biz_type" cnname="业务类型" length="5" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="batch_no" isPK="true" columnName="batch_no" cnname="批次号" length="40" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="porder_no" isPK="true" columnName="porder_no" cnname="汇票号码" length="40" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="fore_disc_date" columnName="fore_disc_date" cnname="预计转/贴现日期" length="10" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="drft_amt" columnName="drft_amt" cnname="票面金额" length="16" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="disc_days" columnName="disc_days" cnname="贴现天数" length="38" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="adj_days" columnName="adj_days" cnname="调整天数" length="38" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="disc_rate" columnName="disc_rate" cnname="转/贴现利率" length="10" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="int" columnName="int" cnname="利息" length="10" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="fore_rebuy_date" columnName="fore_rebuy_date" cnname="预计回购日期" length="10" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="rebuy_days" columnName="rebuy_days" cnname="回购天数" length="38" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="rebuy_int" columnName="rebuy_int" cnname="回购利息" length="16" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="dscnt_int_pay_mode" columnName="dscnt_int_pay_mode" cnname="贴现利息支付方式" length="5" JDBCType="VARCHAR2"/>
+	</TableModel>
+</IqpBillIncome.xml>

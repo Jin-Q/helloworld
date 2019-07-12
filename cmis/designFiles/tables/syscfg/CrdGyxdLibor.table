@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<CrdGyxdLibor.xml>
+	<TableModel id="CrdGyxdLibor" pageSize="10" cnname="LIBOR维护" isPaged="true" dbTableName="crd_gyxd_libor">
+		<TableInfo/>
+		<Field id="pk_id" isPK="true" columnName="pk_id" cnname="PK_ID" length="40" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="libor_date" columnName="libor_date" cnname="LIBOR日期" length="10" JSPTag="date" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="cur_type" dictname="STD_ZX_CUR_TYPE" columnName="cur_type" cnname="币种" length="3" JSPTag="select" canBeNull="true" JDBCType="CHAR"/>
+		<Field id="rate_type" dictname="STD_ZB_LIBOR_TYPE" columnName="rate_type" cnname="利率种类" length="60" JSPTag="select" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="ruling_ir" dataType="Rate" columnName="ruling_ir" cnname="基准利率" length="12" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="maintain_id" columnName="maintain_id" cnname="维护人" length="10" JSPTag="pop" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="check_id" columnName="check_id" cnname="复核人" length="10" JSPTag="pop" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="status" dictname="STD_ZB_LIBOR_STATUS" columnName="status" cnname="状态" length="2" JSPTag="select" canBeNull="true" JDBCType="CHAR"/>
+		<Field id="imp_date" columnName="imp_date" cnname="导入日期" length="10" JSPTag="date" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="startdate" columnName="startdate" cnname="生效日期" length="10" JSPTag="date" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="organno" columnName="organno" cnname="机构码" length="20" JSPTag="pop" canBeNull="true" JDBCType="VARCHAR2"/>
+		<OrderFields>libor_date;cur_type;startdate;</OrderFields>
+		<ConditionFields>libor_date;cur_type;</ConditionFields>
+		<FilterFields>libor_date;cur_type;rate_type;ruling_ir;imp_date;status;</FilterFields>
+		<RecordRestrict query="true" delete="true" update="true"/>
+	</TableModel>
+</CrdGyxdLibor.xml>

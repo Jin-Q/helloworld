@@ -1,0 +1,111 @@
+#set($tableModelName=${TableModel.tableId})
+#set ($checkSession="false")
+<?xml version="1.0" encoding="${xmlEncode}" ?>
+
+
+<EMPMVC name="${tableModelName}" x="0" height="502" width="1518" y="0">
+	<action id="add${tableModelName}Record" name="action0" x="16" height="64" width="108" type="normal" checkSession="${checkSession}" y="6">
+		<reference name="ref0" dest="view0"/>
+	</action>
+	<view id="add${tableModelName}Record.jsp" name="view0" x="17" height="65" jspFile="${subPath}${tableModelName}/add${tableModelName}Record.jsp" width="107" y="116">
+		<reference name="ref1" dest="flow0" condition="execute"/>
+		<reference name="ref2" dest="modelUpdater0" condition="uses"/>
+	</view>
+	<flow id="${tableModelName}" name="flow0" x="8" height="66" width="120" refId="addRecord" y="312" fileName="${tableModelName}.biz">
+		<transition name="transition9" dest="view10" retValue="success"/>
+	</flow>
+	<modelUpdater name="modelUpdater0" x="88" height="62" width="87" class="com.ecc.emp.ad.mvc.ADModelUpdater" y="208">
+		<reference name="ref3" dest="flow0" condition="update"/>
+	</modelUpdater>
+	<action id="update${tableModelName}Record" name="action1" x="302" height="66" width="110" type="normal" checkSession="${checkSession}" y="11">
+		<reference name="ref0" dest="flow1"/>
+		<reference name="ref4" dest="modelUpdater1" condition="uses"/>
+	</action>
+	<flow id="${tableModelName}" name="flow1" x="304" height="60" width="108" refId="updateRecord" y="191" fileName="${tableModelName}.biz">
+		<transition name="transition10" dest="view11" retValue="success"/>
+		<transition name="transition15" dest="view13" retValue="failed"/>
+	</flow>
+	<modelUpdater name="modelUpdater1" x="372" height="56" width="102" class="com.ecc.emp.ad.mvc.ADModelUpdater" y="102">
+		<reference name="ref5" dest="flow1" condition="update"/>
+	</modelUpdater>
+	<action id="query${tableModelName}List" name="action5" x="180" height="64" width="106" type="normal" checkSession="${checkSession}" y="11">
+		<reference name="ref0" dest="flow5"/>
+		<reference name="ref0" dest="modelUpdater8" condition="uses"/>
+	</action>
+	<flow id="${tableModelName}" name="flow5" x="181" height="64" width="105" refId="queryList" y="187" fileName="${tableModelName}.biz">
+		<transition name="transition6" dest="view7" retValue="success"/>
+		<transition name="transition14" dest="view13" retValue="failed"/>
+	</flow>
+	<view id="query${tableModelName}List.jsp" name="view7" x="175" height="66" jspFile="${subPath}${tableModelName}/query${tableModelName}List.jsp" width="115" y="319"/>
+	<action id="delete${tableModelName}Record" name="action6" x="446" height="63" width="108" type="normal" checkSession="${checkSession}" y="12">
+		<reference name="ref0" dest="flow6"/>
+		<reference name="ref6" dest="modelUpdater5" condition="uses"/>
+	</action>
+	<flow id="${tableModelName}" name="flow6" x="436" height="68" width="127" refId="deleteRecord" y="185" fileName="${tableModelName}.biz">
+		<transition name="transition11" dest="view11" retValue="success"/>
+		<transition name="transition16" dest="view13" retValue="failed"/>
+	</flow>
+	<modelUpdater name="modelUpdater5" x="520" height="53" width="93" class="com.ecc.emp.ad.mvc.ADModelUpdater" y="104">
+		<reference name="ref7" dest="flow6" condition="update"/>
+	</modelUpdater>
+	<action id="get${tableModelName}UpdatePage" name="action7" x="599" height="63" width="116" type="normal" checkSession="${checkSession}" y="11">
+		<reference name="ref8" dest="modelUpdater6" condition="uses"/>
+		<reference name="ref10" dest="flow7"/>
+	</action>
+	<flow id="${tableModelName}" name="flow7" x="598" height="70" width="121" refId="queryDetail" y="187" fileName="${tableModelName}.biz">
+		<transition name="transition7" dest="view8" retValue="success"/>
+	</flow>
+	<modelUpdater name="modelUpdater6" x="676" height="56" width="105" class="com.ecc.emp.ad.mvc.ADModelUpdater" y="98">
+		<reference name="ref9" dest="flow7" condition="update"/>
+	</modelUpdater>
+	<view id="update${tableModelName}Record.jsp" name="view8" x="605" height="68" jspFile="${subPath}${tableModelName}/update${tableModelName}Record.jsp" width="107" y="305"/>
+	<view id="operationResult.jsp" name="view10" x="6" height="59" jspFile="operationResult.jsp?url=query${tableModelName}List.do" width="127" y="425"/>
+	<view id="operationResult.jsp" name="view11" x="420" height="70" jspFile="operationResult.jsp?url=query${tableModelName}List.do" width="160" y="327"/>
+	<action id="get${tableModelName}ViewPage" name="action8" x="749" height="70" width="160" type="normal" checkSession="${checkSession}" y="9">
+		<reference name="ref11" dest="modelUpdater7" condition="uses"/>
+		<reference name="ref13" dest="flow9"/>
+	</action>
+	<modelUpdater name="modelUpdater7" x="867" height="54" width="105" class="com.ecc.emp.ad.mvc.ADModelUpdater" y="111">
+		<reference name="ref14" dest="flow9" condition="update"/>
+	</modelUpdater>
+	<view id="query${tableModelName}Detail.jsp" name="view12" x="768" height="64" jspFile="${subPath}${tableModelName}/query${tableModelName}Detail.jsp" width="122" y="311"/>
+	<flow id="${tableModelName}" name="flow9" x="770" height="66" width="121" refId="queryDetail" y="188" fileName="${tableModelName}.biz">
+		<transition name="transition13" dest="view12" retValue="success"/>
+	</flow>
+	<action id="page${tableModelName}Query" name="action9" x="939" height="72" width="149" type="normal" checkSession="${checkSession}" y="10">
+		<selfDefNode name="selfDefNode0" x="64" height="70" width="160" y="49">
+			<Map name="outputViews" class="java.util.HashMap">
+				<jsonView id="queryListRes" class="com.ecc.emp.ad.mvc.JSONView">
+					<output class="com.ecc.emp.data.KeyedCollection">
+						<iColl id="${tableModelName}List">
+							<kColl>
+#foreach(${filterField} in ${TableModel.filterFields})
+								<field id="${filterField}" />
+#end
+							</kColl>
+						</iColl>
+#if(${TableModel.isPaged()}==true)
+						<kColl id="pageInfo">
+							<field id="currentPage" />
+							<field id="maxLine" />
+							<field id="recordSize" />
+						</kColl>
+#end
+					</output>
+				</jsonView>
+			</Map>
+		</selfDefNode>
+		<selfDefNode name="selfDefNode1" x="17" height="70" width="160" y="35">
+			<refFlow flowId="${tableModelName}" op="queryList">
+				<transition dest="queryListRes"/>
+			</refFlow>
+		</selfDefNode>
+		<reference name="ref15" dest="modelUpdater9" condition="uses"/>
+	</action>
+	<modelUpdater name="modelUpdater8" x="242" height="61" width="78" class="com.ecc.emp.ad.mvc.ADModelUpdater" y="103">
+		<reference name="ref12" dest="flow5" condition="update"/>
+	</modelUpdater>
+	<modelUpdater name="modelUpdater9" x="954" height="67" width="117" class="com.ecc.emp.ad.mvc.ADModelUpdater" y="189"/>
+	<view id="restrictError.jsp" name="view13" x="266" height="70" jspFile="restrictError.jsp?url=query${tableModelName}List.do" width="160" y="413"/>
+</EMPMVC>
+

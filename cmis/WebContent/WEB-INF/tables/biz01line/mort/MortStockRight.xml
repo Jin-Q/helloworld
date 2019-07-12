@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<MortStockRight.xml>
+	<TableModel id="MortStockRight" cnname="股权" dbTableName="mort_stock_right">
+		<Field id="stock_right_id" isPK="true" columnName="stock_right_id" cnname="股权编号" length="40" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="guaranty_no" columnName="guaranty_no" cnname="押品编号" length="40" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="stock_right_type" columnName="stock_right_type" cnname="股权类型//" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="issue_org_name" columnName="issue_org_name" cnname="发行单位" length="100" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="cert_no" columnName="cert_no" cnname="权证号" length="40" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="stock_count" columnName="stock_count" cnname="数量（股）" length="16" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="issue_price" columnName="issue_price" cnname="发行价格" length="20" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="net_value_per_stock" columnName="net_value_per_stock" cnname="最新每股净资产" length="20" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="buy_price" columnName="buy_price" cnname="购入价格" length="20" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="buy_date" columnName="buy_date" cnname="购入日期" length="10" JDBCType="CHAR" canBeNull="true"/>
+		<Field id="memo" columnName="memo" cnname="备注" length="1000" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="sys_update_time" columnName="sys_update_time" cnname="系统更新时间" length="10" JDBCType="CHAR" canBeNull="true"/>
+	</TableModel>
+</MortStockRight.xml>

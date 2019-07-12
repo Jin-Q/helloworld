@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<PvpHangUpDetail.xml>
+	<TableModel id="PvpHangUpDetail" cnname="挂起操作明细表" dbTableName="pvp_hang_up_detail">
+		<TableInfo/>
+		<Field id="hang_id" isPK="true" columnName="hang_id" cnname="主键" length="40" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="cont_no" columnName="cont_no" cnname="合同编号" length="40" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="operation" columnName="operation" cnname="操作" length="5" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="input_date" columnName="input_date" cnname="操作时间" length="10" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="input_id" columnName="input_id" cnname="登记人" length="30" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="input_br_id" columnName="input_br_id" cnname="登记人所属机构" length="20" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<OrderFields>hang_id[desc];</OrderFields>
+	</TableModel>
+</PvpHangUpDetail.xml>

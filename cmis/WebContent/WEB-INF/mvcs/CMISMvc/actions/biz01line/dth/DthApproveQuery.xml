@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actionDefines>
+	<classMap>
+		<map id="action" class="com.yucheng.cmis.ad.mvc.ADRequestController"/>
+		<map id="flowInvoker" class="com.yucheng.cmis.ad.mvc.ADFlowInvoker"/>
+		<map id="outputViews" class="java.util.HashMap"/>
+		<map id="output" class="com.ecc.emp.data.KeyedCollection"/>
+		<map id="kColl" class="com.ecc.emp.data.KeyedCollection"/>
+		<map id="iColl" class="com.ecc.emp.data.IndexedCollection"/>
+		<map id="field" class="com.ecc.emp.data.DataField"/>
+	</classMap>
+	
+	<!-- 1.首页审批量统计begin -->
+	<action id="queryDthApproveQueryPage" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.dth.op.dthApproveQuery.QueryDthApproveQueryPageOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="biz01line/dth/dthApproveQuery/queryDthApproveQueryPage.jsp" />
+		</outputViews>
+	</action>
+	<!-- 1.首页审批量统计end -->
+	
+	<!-- 2.所有审批记录报备begin -->
+	<action id="getDthApproveQueryPage" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.dth.op.dthApproveQuery.GetDthApproveQueryPageOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="biz01line/dth/dthApproveQuery/getDthApproveQueryPage.jsp" />
+		</outputViews>
+	</action>
+	<!-- 2.所有审批记录报备end -->
+	
+	<!-- 3.单人审批记录报备，这里单独写一个op，能少调用很多方法，显示会快很多 -->
+	<action id="singleDthApproveQueryPage" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.dth.op.dthApproveQuery.SingleDthApproveQueryPageOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="biz01line/dth/dthApproveQuery/singleDthApproveQueryPage.jsp" />
+		</outputViews>
+	</action>
+	<!-- 3.所有审批记录报备end -->
+	
+	<!-- 4.查询分析begin -->
+	<action id="queryDthApproveAnalyPage" type="normal" checkSession="true" >
+		<jspView id="queryPage" url="biz01line/dth/dthApproveQuery/queryDthApproveAnalyPage.jsp"/>
+	</action>
+	
+	<action id="getDthApproveAnalyPage" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.dth.op.dthApproveQuery.GetDthApproveAnalyPage"/>
+			<transition dest="not_excel" condition="($retValue='not_excel')"/>
+			<transition dest="lmt_excel" condition="($retValue='lmt_excel')" />
+			<transition dest="ccr_excel" condition="($retValue='ccr_excel')" />
+		</flowInvoker>
+		<outputViews>
+			<jspView id="not_excel" url="biz01line/dth/dthApproveQuery/getDthApproveAnalyPage.jsp" />
+			
+		    <view id="lmt_excel" class="com.yucheng.cmis.view.ExcelView">
+ 				<excelWorkbook fileName="ApproveQuery.xls" class="com.yucheng.cmis.view.excel.ExcelWorkbook">
+ 					<excelSheet id="1" name="审批报备" isTitle="true" iCollName="resultSet" class="com.yucheng.cmis.view.excel.ExcelSheet">
+ 						<excelColumn dataName="orgid_displayname" name="经办机构" class="com.yucheng.cmis.view.excel.ExcelColumn"/>
+ 						<excelColumn dataName="cus_name" name="客户名称" class="com.yucheng.cmis.view.excel.ExcelColumn"/>
+ 						<excelColumn dataName="belg_line" name="条线" dictName="STD_ZB_BIZ_BELG"  class="com.yucheng.cmis.view.excel.ExcelColumn"/>
+ 						<excelColumn dataName="com_cll_door_type" name="行业门类" class="com.yucheng.cmis.view.excel.ExcelColumn"/>
+ 						<excelColumn dataName="com_cll_big_type" name="行业大类" class="com.yucheng.cmis.view.excel.ExcelColumn"/>
+ 						<excelColumn dataName="com_cll_type" name="行业编号" class="com.yucheng.cmis.view.excel.ExcelColumn"/>
+ 						<excelColumn dataName="prd_id_displayname" name="业务品种" class="com.yucheng.cmis.view.excel.ExcelColumn"/>
+ 						<excelColumn dataName="guar_type_displayname" name="担保方式" class="com.yucheng.cmis.view.excel.ExcelColumn"/>
+ 						<excelColumn dataName="port_amt" name="上报金额" cellType='numeric' class="com.yucheng.cmis.view.excel.ExcelColumn"/>
+ 						<excelColumn dataName="crd_totl_amt" name="授信金额" cellType='numeric' class="com.yucheng.cmis.view.excel.ExcelColumn"/>
+ 						<excelColumn dataName="org_crd_totl_amt" name="原有授信金额" cellType='numeric' class="com.yucheng.cmis.view.excel.ExcelColumn"/>
+ 						<excelColumn dataName="change_amt" name="新增金额" cellType='numeric' class="com.yucheng.cmis.view.excel.ExcelColumn"/>
+ 						<excelColumn dataName="report_type" name="上报类型" dictName="STD_APPROVE_APP_TYPE" class="com.yucheng.cmis.view.excel.ExcelColumn"/>
+ 						<excelColumn dataName="approve_status" name="审批结果" dictName="WF_APP_STATUS" class="com.yucheng.cmis.view.excel.ExcelColumn"/>
+ 						<excelColumn dataName="username" name="审批人" class="com.yucheng.cmis.view.excel.ExcelColumn"/>
+ 						<excelColumn dataName="num" name="审批顺序" class="com.yucheng.cmis.view.excel.ExcelColumn"/>
+ 						<excelColumn dataName="commenttime" name="审批日期" class="com.yucheng.cmis.view.excel.ExcelColumn"/>
+ 						<excelColumn dataName="spsj" name="审批时效" class="com.yucheng.cmis.view.excel.ExcelColumn"/>
+ 						<excelColumn dataName="commentcontent" name="审批意见" class="com.yucheng.cmis.view.excel.ExcelColumn"/>
+ 					</excelSheet>
+ 				</excelWorkbook>
+ 			</view>
+
+		   <view id="ccr_excel" class="com.yucheng.cmis.view.ExcelView">
+ 				<excelWorkbook fileName="ApproveQuery.xls" class="com.yucheng.cmis.view.excel.ExcelWorkbook">
+ 					<excelSheet id="1" name="审批报备" isTitle="true" iCollName="resultSet" class="com.yucheng.cmis.view.excel.ExcelSheet">
+ 						<excelColumn dataName="orgid_displayname" name="经办机构" class="com.yucheng.cmis.view.excel.ExcelColumn"/>
+ 						<excelColumn dataName="cus_name" name="客户名称" class="com.yucheng.cmis.view.excel.ExcelColumn"/>
+ 						<excelColumn dataName="belg_line" name="条线" dictName="STD_ZB_BIZ_BELG"  class="com.yucheng.cmis.view.excel.ExcelColumn"/>
+ 						<excelColumn dataName="com_cll_door_type" name="行业门类" class="com.yucheng.cmis.view.excel.ExcelColumn"/>
+ 						<excelColumn dataName="com_cll_big_type" name="行业大类" class="com.yucheng.cmis.view.excel.ExcelColumn"/>
+ 						<excelColumn dataName="com_cll_type" name="行业编号" class="com.yucheng.cmis.view.excel.ExcelColumn"/> 						
+ 						<excelColumn dataName="flag" name="信用等级模型" class="com.yucheng.cmis.view.excel.ExcelColumn"/>
+ 						<excelColumn dataName="app_type" name="申请类型" dictName="STD_APPROVE_APP_TYPE" class="com.yucheng.cmis.view.excel.ExcelColumn" />
+ 						<excelColumn dataName="auto_score" name="机评得分" class="com.yucheng.cmis.view.excel.ExcelColumn"/>
+ 						<excelColumn dataName="auto_grade" name="机评信用等级" dictName="STD_ZB_CREDIT_GRADE" class="com.yucheng.cmis.view.excel.ExcelColumn"/>
+ 						<excelColumn dataName="adjusted_grade" name="客户经理调整信用等级"
+ 						dictName="STD_ZB_CREDIT_GRADE" class="com.yucheng.cmis.view.excel.ExcelColumn"/> 						
+ 						<excelColumn dataName="approve_status" name="审批结果" dictName="WF_APP_STATUS" class="com.yucheng.cmis.view.excel.ExcelColumn"/>
+ 						<excelColumn dataName="username" name="审批人" class="com.yucheng.cmis.view.excel.ExcelColumn"/>
+ 						<excelColumn dataName="num" name="审批顺序" class="com.yucheng.cmis.view.excel.ExcelColumn"/>
+ 						<excelColumn dataName="commenttime" name="审批日期" class="com.yucheng.cmis.view.excel.ExcelColumn"/>
+ 						<excelColumn dataName="spsj" name="审批时效" class="com.yucheng.cmis.view.excel.ExcelColumn"/>
+ 						<excelColumn dataName="commentcontent" name="审批意见" class="com.yucheng.cmis.view.excel.ExcelColumn"/>
+ 					</excelSheet>
+ 				</excelWorkbook>
+ 			</view>
+		</outputViews>
+	</action>
+	
+	<action id="pageDthApproveAnaly" type="normal" checkSession="true">
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.dth.op.dthApproveQuery.GetDthApproveAnalyPage" />
+			<transition dest="queryListRes" />
+		</flowInvoker>
+		<outputViews>
+			<jsonView class="com.yucheng.cmis.view.JSONView" id="queryListRes">
+				<output>
+					<iColl id="resultSet">
+						<kColl>
+						</kColl>
+					</iColl>
+					<kColl id="pageInfo">
+						<field id="currentPage" />
+						<field id="maxLine" />
+						<field id="recordSize" />
+					</kColl>
+				</output>
+			</jsonView>
+		</outputViews>
+	</action>
+	<!-- 2.所有审批记录报备end -->
+	
+	<!-- 全部授信，导出成excel -->
+	<action id="expAllLmtToExcel" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.dth.op.dthApproveQuery.GetDthApproveQueryPageOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+		   <view id="retPage" class="com.yucheng.cmis.view.ExcelView">
+ 				<excelWorkbook fileName="ApproveQuery.xls" class="com.yucheng.cmis.view.excel.ExcelWorkbook">
+ 					<excelSheet id="1" name="审批报备" isTitle="true" iCollName="ApproveQueryList" class="com.yucheng.cmis.view.excel.ExcelSheet">
+ 						<excelColumn dataName="orgid_displayname" name="经办机构" class="com.yucheng.cmis.view.excel.ExcelColumn"/>
+ 						<excelColumn dataName="cus_name" name="客户名称" class="com.yucheng.cmis.view.excel.ExcelColumn"/>
+ 						<excelColumn dataName="belg_line" name="条线" dictName="STD_ZB_BIZ_BELG"  class="com.yucheng.cmis.view.excel.ExcelColumn"/>
+ 						<excelColumn dataName="com_cll_door_type" name="行业门类" class="com.yucheng.cmis.view.excel.ExcelColumn"/>
+ 						<excelColumn dataName="com_cll_big_type" name="行业大类" class="com.yucheng.cmis.view.excel.ExcelColumn"/>
+ 						<excelColumn dataName="com_cll_type" name="行业编号" class="com.yucheng.cmis.view.excel.ExcelColumn"/>
+ 						<excelColumn dataName="prd_id_displayname" name="业务品种" class="com.yucheng.cmis.view.excel.ExcelColumn"/>
+ 						<excelColumn dataName="guar_type_displayname" name="担保方式" class="com.yucheng.cmis.view.excel.ExcelColumn"/>
+ 						<excelColumn dataName="crd_totl_amt" name="上报金额" dictName="STD_APPROVE_APP_TYPE" cellType='numeric' class="com.yucheng.cmis.view.excel.ExcelColumn"/>
+ 						<excelColumn dataName="crd_totl_amt" name="授信金额" cellType='numeric' class="com.yucheng.cmis.view.excel.ExcelColumn"/>
+ 						<excelColumn dataName="org_crd_totl_amt" name="原有授信金额" cellType='numeric' class="com.yucheng.cmis.view.excel.ExcelColumn"/>
+ 						<excelColumn dataName="change_amt" name="新增金额" cellType='numeric' class="com.yucheng.cmis.view.excel.ExcelColumn"/>
+ 						<excelColumn dataName="report_type" name="上报类型" dictName="STD_APPROVE_APP_TYPE" class="com.yucheng.cmis.view.excel.ExcelColumn"/>
+ 						<excelColumn dataName="approve_status" name="审批结果" dictName="WF_APP_STATUS" class="com.yucheng.cmis.view.excel.ExcelColumn"/>
+ 						<excelColumn dataName="username" name="审批人" class="com.yucheng.cmis.view.excel.ExcelColumn"/>
+ 						<excelColumn dataName="num" name="审批顺序" class="com.yucheng.cmis.view.excel.ExcelColumn"/>
+ 						<excelColumn dataName="nodeendtime" name="审批时间" class="com.yucheng.cmis.view.excel.ExcelColumn"/>
+ 						<excelColumn dataName="commentcontent" name="审批意见" class="com.yucheng.cmis.view.excel.ExcelColumn"/>
+ 					</excelSheet>
+ 				</excelWorkbook>
+ 			</view>
+		</outputViews>
+	</action>
+	
+	<!-- 全部评级，导出成excel -->
+	<action id="expAllCcrToExcel" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.dth.op.dthApproveQuery.GetDthApproveQueryPageOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+		   <view id="retPage" class="com.yucheng.cmis.view.ExcelView">
+ 				<excelWorkbook fileName="ApproveQuery.xls" class="com.yucheng.cmis.view.excel.ExcelWorkbook">
+ 					<excelSheet id="1" name="审批报备" isTitle="true" iCollName="ApproveQueryList" class="com.yucheng.cmis.view.excel.ExcelSheet">
+ 						<excelColumn dataName="orgid_displayname" name="经办机构" class="com.yucheng.cmis.view.excel.ExcelColumn"/>
+ 						<excelColumn dataName="cus_name" name="客户名称" class="com.yucheng.cmis.view.excel.ExcelColumn"/>
+ 						<excelColumn dataName="belg_line" name="条线" dictName="STD_ZB_BIZ_BELG"  class="com.yucheng.cmis.view.excel.ExcelColumn"/>
+ 						<excelColumn dataName="com_cll_door_type" name="行业门类" class="com.yucheng.cmis.view.excel.ExcelColumn"/>
+ 						<excelColumn dataName="com_cll_big_type" name="行业大类" class="com.yucheng.cmis.view.excel.ExcelColumn"/>
+ 						<excelColumn dataName="com_cll_type" name="行业编号" class="com.yucheng.cmis.view.excel.ExcelColumn"/> 						
+ 						<excelColumn dataName="flag" name="信用等级模型" class="com.yucheng.cmis.view.excel.ExcelColumn"/>
+ 						<excelColumn dataName="app_type" name="申请类型" dictName="STD_APPROVE_APP_TYPE" class="com.yucheng.cmis.view.excel.ExcelColumn"/>
+ 						<excelColumn dataName="auto_score" name="机评得分" class="com.yucheng.cmis.view.excel.ExcelColumn"/>
+ 						<excelColumn dataName="auto_grade" name="机评信用等级" dictName="STD_ZB_CREDIT_GRADE" class="com.yucheng.cmis.view.excel.ExcelColumn"/>
+ 						<excelColumn dataName="adjusted_grade" name="客户经理调整信用等级"
+ 						dictName="STD_ZB_CREDIT_GRADE" class="com.yucheng.cmis.view.excel.ExcelColumn"/> 						
+ 						<excelColumn dataName="approve_status" name="审批结果" dictName="WF_APP_STATUS" class="com.yucheng.cmis.view.excel.ExcelColumn"/>
+ 						<excelColumn dataName="username" name="审批人" class="com.yucheng.cmis.view.excel.ExcelColumn"/>
+ 						<excelColumn dataName="num" name="审批顺序" class="com.yucheng.cmis.view.excel.ExcelColumn"/>
+ 						<excelColumn dataName="nodeendtime" name="审批时间" class="com.yucheng.cmis.view.excel.ExcelColumn"/>
+ 						<excelColumn dataName="commentcontent" name="审批意见" class="com.yucheng.cmis.view.excel.ExcelColumn"/>
+ 					</excelSheet>
+ 				</excelWorkbook>
+ 			</view>
+		</outputViews>
+	</action>
+	
+	<!-- 单人授信，导出成excel -->
+	<action id="expSingleLmtToExcel" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.dth.op.dthApproveQuery.SingleDthApproveQueryPageOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>		
+		<outputViews>
+		   <view id="retPage" class="com.yucheng.cmis.view.ExcelView">
+ 				<excelWorkbook fileName="ApproveQuery.xls" class="com.yucheng.cmis.view.excel.ExcelWorkbook">
+ 					<excelSheet id="1" name="审批报备" isTitle="true" iCollName="ApproveQueryList" class="com.yucheng.cmis.view.excel.ExcelSheet">
+ 						<excelColumn dataName="orgid_displayname" name="经办机构" class="com.yucheng.cmis.view.excel.ExcelColumn"/>
+ 						<excelColumn dataName="cus_name" name="客户名称" class="com.yucheng.cmis.view.excel.ExcelColumn"/>
+ 						<excelColumn dataName="crd_totl_amt" name="上报金额" cellType='numeric' class="com.yucheng.cmis.view.excel.ExcelColumn"/>
+ 						<excelColumn dataName="crd_totl_amt" name="授信金额" cellType='numeric' class="com.yucheng.cmis.view.excel.ExcelColumn"/>
+ 						<excelColumn dataName="org_crd_totl_amt" name="原有授信金额" cellType='numeric' class="com.yucheng.cmis.view.excel.ExcelColumn"/>
+ 						<excelColumn dataName="change_amt" name="新增金额" cellType='numeric' class="com.yucheng.cmis.view.excel.ExcelColumn"/>
+ 						<excelColumn dataName="username" name="审批人" class="com.yucheng.cmis.view.excel.ExcelColumn"/>
+ 						<excelColumn dataName="num" name="审批顺序" class="com.yucheng.cmis.view.excel.ExcelColumn"/>
+ 						<excelColumn dataName="nodeendtime" name="审批时间" class="com.yucheng.cmis.view.excel.ExcelColumn"/>
+ 						<excelColumn dataName="commentcontent" name="审批意见" class="com.yucheng.cmis.view.excel.ExcelColumn"/>
+ 					</excelSheet>
+ 				</excelWorkbook>
+ 			</view>
+		</outputViews>
+	</action>
+	
+	<!-- 单人评级，导出成excel -->
+	<action id="expSingleCcrToExcel" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.dth.op.dthApproveQuery.SingleDthApproveQueryPageOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+		   <view id="retPage" class="com.yucheng.cmis.view.ExcelView">
+ 				<excelWorkbook fileName="ApproveQuery.xls" class="com.yucheng.cmis.view.excel.ExcelWorkbook">
+ 					<excelSheet id="1" name="审批报备" isTitle="true" iCollName="ApproveQueryList" class="com.yucheng.cmis.view.excel.ExcelSheet">
+ 						<excelColumn dataName="orgid_displayname" name="经办机构" class="com.yucheng.cmis.view.excel.ExcelColumn"/>
+ 						<excelColumn dataName="cus_name" name="客户名称" class="com.yucheng.cmis.view.excel.ExcelColumn"/>			
+ 						<excelColumn dataName="flag" name="信用等级模型" class="com.yucheng.cmis.view.excel.ExcelColumn"/>
+ 						<excelColumn dataName="app_type" name="申请类型" class="com.yucheng.cmis.view.excel.ExcelColumn"/>
+ 						<excelColumn dataName="auto_score" name="机评得分" class="com.yucheng.cmis.view.excel.ExcelColumn"/>
+ 						<excelColumn dataName="auto_grade" name="机评信用等级" dictName="STD_ZB_CREDIT_GRADE" class="com.yucheng.cmis.view.excel.ExcelColumn"/>
+ 						<excelColumn dataName="adjusted_grade" name="客户经理调整信用等级"
+ 						dictName="STD_ZB_CREDIT_GRADE" class="com.yucheng.cmis.view.excel.ExcelColumn"/> 						
+ 						<excelColumn dataName="username" name="审批人" class="com.yucheng.cmis.view.excel.ExcelColumn"/>
+ 						<excelColumn dataName="num" name="审批顺序" class="com.yucheng.cmis.view.excel.ExcelColumn"/>
+ 						<excelColumn dataName="nodeendtime" name="审批时间" class="com.yucheng.cmis.view.excel.ExcelColumn"/>
+ 						<excelColumn dataName="commentcontent" name="审批意见" class="com.yucheng.cmis.view.excel.ExcelColumn"/>
+ 					</excelSheet>
+ 				</excelWorkbook>
+ 			</view>
+		</outputViews>
+	</action>
+
+</actionDefines>

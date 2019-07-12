@@ -1,0 +1,52 @@
+/*green*/
+
+body {padding: 0px;margin: 0px;/*background:#fff;*/}
+	
+.page_welcome{border:1px solid #b7b7b7;margin-top:10px;}
+.page_welcome_main {width:100%;height:498px;}
+#jTabView h3{border-bottom:2px solid #34af07;font-size:14px;font-weight:normal;font-family:Microsoft Yahei;margin:0;}
+#jTabView h3 a{display:inline-block;padding:3px 20px 0px 20px;height:22px;color:#fff;background-color:#34af07;}
+em{font-style:normal;}
+#jTabView h3 a:hover{color:#fff;background-color:#34af07;}
+.jtab{color:#545454;background-color:#d7d7d7;}
+.curr.jtab{color:#fff;background-color:#34af07;}
+.jtab-con{width:100%;height:auto;_margin-top:10px;}
+#rt_content_p{overflow:hidden;}
+#rt_content_p a{font-size:12px;overflow:hidden;}
+.info{font-weight: normal;font-variant: normal;font-family:Microsoft Yahei;color:#1F57A6;align:center;
+padding:50px 0px 0px  100px ;font-size:30px;weight:900px;}
+.xzzq_box {height: auto;margin:0;}
+.xzzq_box .rt_content p a.xz_p1:hover {background: url(../images/index/xz_p1.gif) 50% 0 no-repeat;}
+.xzzq_box .rt_content p a.xz_p1 {background: url(../images/index/xz_ps1.gif) 50% 0 no-repeat;}
+.xzzq_box .rt_content p a {display:block;width: 110px;height: 26px;line-height: 26px;padding-top: 52px;text-align: center;
+margin: 10px 0;_height:78px;float:left;}
+.xzzq_box .rt_content p a:hover{color:#545454;}
+a:hover {color: #fff;}
+a {cursor: pointer;color: #2D2D2D;}
+a, a img {text-decoration: none;border: none;}
+.height_1 {background-color: #B8B8B8;height: 1px;width: 96%;overflow: hidden;margin: 10px 0;}
+.hyy_yhgglb{height:26px;line-height:26px;text-align:left;text-indent:50px;font-dize:14px;font-family:Microsoft Yahei;
+background:url(../images/hyy_laba.gif) no-repeat 10px 0;padding-bottom:5px;border-bottom:2px solid #34af07;}
+.hyy_fkgd {padding: 5px;text-align: left;overflow: hidden;}
+.hyy_fkgd .hyy_gd {list-style: none;float: right;color: #031355;padding-right: 10px;}
+.hyy_wzico {height: 9px;width: 16px;margin-right: 6px;background-position: left center;}
+#demo li{font-size:12px;}
+.hyy_gd{font-size:12px;}
+
+/**/
+.hyy_fkgd #demo #demo1 ul li a:hover,.hyy_fkgd #demo #demo2 ul li a:hover{color:#545454;}
+
+/*scroll-img 2014-5-23*/
+#demo1,#demo2{height:620px;float:left;margin:0;padding:0;}
+#demo1 li,#demo2 li{width:438px;height:620px;float:left;margin-right:10px;}
+
+/*add style 2014-5-26*/
+body#QZ_welcomeBody{background-color:transparent;background:none;_background:#d2eec3 url(../images/welcomeBg.jpg) no-repeat right bottom;}
+
+
+
+
+
+
+
+

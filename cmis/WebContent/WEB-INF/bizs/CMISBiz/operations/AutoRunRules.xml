@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<SelfDefinedOp.xml id="AutoRunRules">
+	<EMPBusinessLogic id="AutoRunRules" operationContext="AutoRunRulesSrvCtx">
+		<operation id="AutoRunRulesOp" name="自动日终调度">
+			<flow>
+				<action id="StartAction0" implClass="com.ecc.emp.flow.EMPStartAction">
+					<transition dest="SelfAction0" />
+				</action>
+				<action id="EndAction0" implClass="com.ecc.emp.flow.EMPEndAction" />
+				<action id="SelfAction0"
+					implClass="com.yucheng.cmis.daytaskmgr.op.daybattaskinfo.AutoRunRulesAction"
+					label="com.yucheng.cmis.daytaskmgr.op.daybattaskinfo.AutoRunRulesAction">
+					<transition dest="EndAction0" />
+				</action>
+			</flow>
+		</operation>
+		<refFormat name="testFormat" refId="testFormat" />
+		<refFormat name="ReqPkgHead4All" refId="ReqPkgHead4All" />
+		<refFormat name="RepPkgHead4All" refId="RepPkgHead4All" />
+		<refFormat name="ReqPkg180007" refId="ReqPkg180007" />
+		<refFormat name="RepPkg180007" refId="RepPkg180007" />
+		<refFormat name="ReqPkg180008" refId="ReqPkg180008" />
+		<refFormat name="RepPkg180008" refId="RepPkg180008" />
+		<refFormat name="ReqPkg27490D" refId="ReqPkg27490D" />
+		<refFormat name="RepPkg27490D" refId="RepPkg27490D" />
+		<refFormat name="ReqPkg48A040" refId="ReqPkg48A040" />
+		<refFormat name="RepPkg48A040" refId="RepPkg48A040" />
+		<refFormat name="ReqPkg48A010" refId="ReqPkg48A010" />
+		<refFormat name="RepPkg48A010" refId="RepPkg48A010" />
+		<refFormat name="ReqPkg48A020" refId="ReqPkg48A020" />
+		<refFormat name="RepPkg48A020" refId="RepPkg48A020" />
+		<refFormat name="ReqPkg48A030" refId="ReqPkg48A030" />
+		<refFormat name="RepPkg48A030" refId="RepPkg48A030" />
+		<refFormat name="ReqPkg48A050-01" refId="ReqPkg48A050-01" />
+		<refFormat name="ReqPkg48A050-0201" refId="ReqPkg48A050-0201" />
+		<refFormat name="ReqPkg48A050-0202" refId="ReqPkg48A050-0202" />
+		<refFormat name="ReqPkg48A050-0203" refId="ReqPkg48A050-0203" />
+		<refFormat name="ReqPkg48A050-0301" refId="ReqPkg48A050-0301" />
+		<refFormat name="ReqPkg48A050-0302" refId="ReqPkg48A050-0302" />
+		<refFormat name="ReqPkg48A050-0401" refId="ReqPkg48A050-0401" />
+		<refFormat name="ReqPkg48A050-0402" refId="ReqPkg48A050-0402" />
+		<refFormat name="ReqPkg48A050-0501" refId="ReqPkg48A050-0501" />
+		<refFormat name="ReqPkg48A050-0502" refId="ReqPkg48A050-0502" />
+		<refFormat name="ReqPkg48A050-0503" refId="ReqPkg48A050-0503" />
+		<refFormat name="ReqPkg48A050-0601" refId="ReqPkg48A050-0601" />
+		<refFormat name="ReqPkg48A050-0602" refId="ReqPkg48A050-0602" />
+		<refFormat name="ReqPkg48A050-0603" refId="ReqPkg48A050-0603" />
+		<refFormat name="ReqPkg48A050-07" refId="ReqPkg48A050-07" />
+		<refFormat name="ReqPkg48A050-08" refId="ReqPkg48A050-08" />
+		<refFormat name="ReqPkg48A050-09" refId="ReqPkg48A050-09" />
+		<refFormat name="ReqPkg48A050-10" refId="ReqPkg48A050-10" />
+		<refFormat name="ReqPkg48A050-11" refId="ReqPkg48A050-11" />
+		<refFormat name="ReqPkg48A050-12" refId="ReqPkg48A050-12" />
+		<refFormat name="ReqPkg48A050-13" refId="ReqPkg48A050-13" />
+		<refFormat name="ReqPkg48A050-14" refId="ReqPkg48A050-14" />
+		<refFormat name="600010" refId="600010" />
+		<refFormat name="600011" refId="600011" />
+		<refFormat name="600012" refId="600012" />
+		<refFormat name="600020" refId="600020" />
+		<refFormat name="600021" refId="600021" />
+		<refFormat name="600030" refId="600030" />
+		<refFormat name="600031" refId="600031" />
+		<refFormat name="600041" refId="600041" />
+		<refFormat name="600051" refId="600051" />
+		<refFormat name="600052" refId="600052" />
+		<refFormat name="600060" refId="600060" />
+		<refFormat name="600061" refId="600061" />
+		<refFormat name="600062" refId="600062" />
+		<refFormat name="600070" refId="600070" />
+	</EMPBusinessLogic>
+	<context id="AutoRunRulesSrvCtx" parent="rootCtx" type="op">
+		<refKColl refId="AutoRunRulesSrvData" />
+	</context>
+	<kColl id="AutoRunRulesSrvData">
+		<field id="errorCode" />
+		<field id="errorMsg" />
+	</kColl>
+</SelfDefinedOp.xml>

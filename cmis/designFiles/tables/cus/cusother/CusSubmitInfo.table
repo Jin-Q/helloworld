@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<CusSubmitInfo.xml>
+	<TableModel id="CusSubmitInfo" pageSize="15" cnname="客户信息录入提交信息" isPaged="true" dbTableName="cus_submit_info">
+		<TableInfo/>
+		<Field id="serno" JDBCType="VARCHAR2" length="40" columnName="serno" canBeNull="false" pkGenerator="UNID" isPK="true" JSPTag="text" cnname="流水号"/>
+		<Field id="cus_id" columnName="cus_id" cnname="客户编号" length="21" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="cus_name" columnName="cus_name" cnname="客户名称" length="80" JSPTag="text" JDBCType="VARCHAR2"/>
+		<Field id="memo" columnName="memo" cnname="提示信息" length="400" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="handover_id" columnName="handover_id" cnname="移交人" length="20" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="handover_memo" columnName="handover_memo" cnname="移交说明" length="400" JSPTag="text" JDBCType="VARCHAR2"/>
+		<Field id="input_date" columnName="input_date" cnname="录入日期" length="10" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="opr_time" columnName="opr_time" cnname="提交时间" length="30" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="over_time" columnName="over_time" cnname="完成时间" length="30" JSPTag="text" JDBCType="VARCHAR2"/>
+		<OrderFields>serno[desc];</OrderFields>
+		<RecordRestrict query="true" delete="true" update="true"/>
+		<Field id="handover_date" columnName="handover_date" cnname="移交日期" length="10" JSPTag="text" JDBCType="VARCHAR2"/>
+		<Field id="end_flag" columnName="end_flag" cnname="完成标志(0.完成 1.未完成)" length="1" JSPTag="text" canBeNull="false" JDBCType="CHAR"/>
+		<Field id="opr_type" columnName="opr_type" cnname="操作类型(1.提交 2.打回 3.移交)" length="10" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="submit_id" columnName="submit_id" cnname="提交人" JSPTag="text" length="20" JDBCType="VARCHAR2"/>
+		<Field id="rcv_id" columnName="rcv_id" cnname="接收人" JSPTag="text" length="20" JDBCType="VARCHAR2"/>
+	</TableModel>
+</CusSubmitInfo.xml>

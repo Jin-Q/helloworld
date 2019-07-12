@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<FncLoan.xml>
+	<TableModel id="FncLoan" pageSize="10" cnname="主要借款明细" isPaged="true" dbTableName="fnc_loan">
+		<TableInfo/>
+		<Field id="fnc_loan_typ" columnName="fnc_loan_typ" cnname="借款类别" length="1" JSPTag="text" canBeNull="true" JDBCType="CHAR"/>
+		<Field id="cus_id" columnName="cus_id" cnname="客户代码" length="30" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="fnc_ym" columnName="fnc_ym" cnname="年月" length="6" JSPTag="text" canBeNull="false" JDBCType="CHAR"/>
+		<Field id="fnc_amt" columnName="fnc_amt" cnname="金额" length="16" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="fnc_blc" columnName="fnc_blc" cnname="余额" length="16" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="remark" columnName="remark" cnname="备注" length="250" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="input_id" columnName="input_id" cnname="登记人" length="20" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="input_br_id" columnName="input_br_id" cnname="登记机构" length="20" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="input_date" columnName="input_date" cnname="登记日期" length="10" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="last_upd_id" columnName="last_upd_id" cnname="更新人" length="20" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="last_upd_date" columnName="last_upd_date" cnname="更新日期" length="10" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="pk_id" JDBCType="VARCHAR2" length="32" columnName="pk_id" canBeNull="false" pkGenerator="UNID" isPK="true" JSPTag="text" cnname="主键"/>
+		<Field id="fnc_unit" columnName="fnc_unit" cnname="单位" length="2" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="fnc_per_typ" columnName="fnc_per_typ" cnname="报表周期类型" length="2" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="cus_name" columnName="cus_name" cnname="客户姓名" length="80" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="fnc_loan_name" columnName="fnc_loan_name" cnname="债权人名称" length="10" JSPTag="text" canBeNull="true" JDBCType="CHAR"/>
+		<Field id="fnc_loan_use" columnName="fnc_loan_use" cnname="借款用途" length="10" JSPTag="text" canBeNull="true" JDBCType="CHAR"/>
+		<OrderFields>pk_id[desc];</OrderFields>
+		<ConditionFields>cus_id;cus_name;</ConditionFields>
+		<FilterFields>cus_id;cus_name;fnc_loan_typ;fnc_amt;fnc_blc;input_id;input_date;input_br_id;</FilterFields>
+		<RecordRestrict query="true" delete="true" update="true"/>
+	</TableModel>
+</FncLoan.xml>

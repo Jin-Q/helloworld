@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<FncStatBase.xml>
+	<TableModel id="FncStatBase" pageSize="15" cnname="公司客户报表" isPaged="true" dbTableName="fnc_stat_base">
+		<TableInfo/>
+		<Field id="cus_id" isPK="true" columnName="cus_id" cnname="客户代码" length="20" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="stat_prd_style" JDBCType="CHAR" length="1" columnName="stat_prd_style" canBeNull="false" dictname="STD_ZB_TIME_TYPE" isPK="true" JSPTag="select" cnname="报表周期类型"/>
+		<Field id="stat_prd" isPK="true" columnName="stat_prd" cnname="报表期间" length="6" JSPTag="text" canBeNull="false" JDBCType="CHAR"/>
+		<Field id="stat_bs_style_id" columnName="stat_bs_style_id" cnname="资产样式编号" length="6" JSPTag="text" canBeNull="true" JDBCType="CHAR"/>
+		<Field id="stat_pl_style_id" columnName="stat_pl_style_id" cnname="损益表编号" length="6" JSPTag="text" canBeNull="true" JDBCType="CHAR"/>
+		<Field id="stat_cf_style_id" columnName="stat_cf_style_id" cnname="现金流量表编号" length="6" JSPTag="text" canBeNull="true" JDBCType="CHAR"/>
+		<Field id="stat_fi_style_id" columnName="stat_fi_style_id" cnname="财务指标表编号" length="6" JSPTag="text" canBeNull="true" JDBCType="CHAR"/>
+		<Field id="stat_soe_style_id" columnName="stat_soe_style_id" cnname="所有者权益变动表编号" length="6" JSPTag="text" canBeNull="true" JDBCType="CHAR"/>
+		<Field id="stat_sl_style_id" columnName="stat_sl_style_id" cnname="财务简表编号" length="6" JSPTag="text" canBeNull="true" JDBCType="CHAR"/>
+		<Field id="style_id1" columnName="style_id1" cnname="保留" length="6" JSPTag="text" canBeNull="true" JDBCType="CHAR"/>
+		<Field id="style_id2" columnName="style_id2" cnname="保留1" length="6" JSPTag="text" canBeNull="true" JDBCType="CHAR"/>
+		<Field id="state_flg" columnName="state_flg" cnname="状态" length="6" JSPTag="text" canBeNull="true" JDBCType="CHAR"/>
+		<Field id="stat_is_nrpt" dictname="STD_ZX_YES_NO" columnName="stat_is_nrpt" cnname="是否新报表" length="1" JSPTag="select" canBeNull="true" JDBCType="CHAR"/>
+		<Field id="stat_style" isPK="true" columnName="stat_style" cnname="报表口径" length="1" JSPTag="text" canBeNull="false" JDBCType="CHAR"/>
+		<Field id="stat_is_audit" columnName="stat_is_audit" cnname="是否经过审计" length="1" JSPTag="select" canBeNull="true" JDBCType="CHAR"/>
+		<Field id="stat_adt_entr" columnName="stat_adt_entr" cnname="审计单位" length="60" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="stat_adt_conc" columnName="stat_adt_conc" cnname="审计结论" length="200" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="stat_is_adjt" columnName="stat_is_adjt" cnname="是否经过调整" length="1" JSPTag="select" canBeNull="true" JDBCType="CHAR"/>
+		<Field id="stat_adj_rsn" columnName="stat_adj_rsn" cnname="财务报表调整原因" length="200" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<ConditionFields>cus_id;stat_prd_style;stat_prd;stat_style;</ConditionFields>
+		<FilterFields>cus_id;stat_prd_style;stat_prd;stat_style;stat_bs_style_id;state_flg;</FilterFields>
+		<Field id="input_id" columnName="input_id" cnname="登记人" length="20" JSPTag="text" JDBCType="VARCHAR2"/>
+		<Field id="input_br_id" columnName="input_br_id" cnname="登记机构" length="20" JSPTag="text" JDBCType="VARCHAR2"/>
+		<Field id="input_date" columnName="input_date" cnname="登记日期" length="10" JSPTag="date" JDBCType="CHAR"/>
+		<Field id="last_upd_id" columnName="last_upd_id" cnname="更新人" length="20" JSPTag="text" JDBCType="VARCHAR2"/>
+		<Field id="last_upd_date" columnName="last_upd_date" cnname="更新日期" length="10" JSPTag="date" JDBCType="VARCHAR2"/>
+		<Field id="stat_acc_style_id" columnName="stat_acc_style_id" cnname="会计科目余额" length="6" JSPTag="text" JDBCType="VARCHAR2"/>
+		<Field id="stat_de_style_id" columnName="stat_de_style_id" cnname="经济合作社财务收支明细" length="6" JSPTag="text" JDBCType="VARCHAR2"/>
+		<Field id="fnc_type" isPK="true" columnName="fnc_type" cnname="报表类型" length="10" JSPTag="text" JDBCType="VARCHAR2"/>
+	</TableModel>
+</FncStatBase.xml>

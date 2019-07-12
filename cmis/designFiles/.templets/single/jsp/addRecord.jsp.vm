@@ -1,0 +1,40 @@
+#set ($tableModelName=${TableModel.tableId})
+<%@page language="java" contentType="text/html; charset=${jspEncode}"%>
+<%@taglib uri="/WEB-INF/emp.tld" prefix="emp" %>
+<emp:page>
+<html>
+<head>
+<title>新增页面</title>
+
+<jsp:include page="/include.jsp" flush="true"/>
+
+<script type="text/javascript">
+
+	/*--user code begin--*/
+			
+	/*--user code end--*/
+	
+</script>
+</head>
+<body class="page_content">
+	
+	<emp:form id="submitForm" action="add${tableModelName}Record.do" method="POST">
+		
+		<emp:gridLayout id="${tableModelName}Group" title="${TableModel.tableCnname}" maxColumn="2">
+#foreach(${fieldWra} in ${TableModel.fieldsList})
+#set ($jspTagType=${fieldWra.getJSPTag()})
+			${JspBuilder.generateTag(${fieldWra},"${jspTagType}")}
+#end
+		</emp:gridLayout>
+		
+		<div align="center">
+			<br>
+			<emp:button id="submit" label="确定" op="add"/>
+			<emp:button id="reset" label="取消"/>
+		</div>
+	</emp:form>
+	
+</body>
+</html>
+</emp:page>
+

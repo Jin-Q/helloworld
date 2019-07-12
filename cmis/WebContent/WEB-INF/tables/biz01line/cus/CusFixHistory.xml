@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<CusFixHistory.xml>
+	<TableModel id="CusFixHistory" cnname="客户修改历史" dbTableName="cus_fix_history">
+		<Field id="serno" isPK="true" columnName="serno" pkGenerator="UNID" cnname="流水号" length="32" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="update_id" columnName="update_id" cnname="修改人" length="20" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="update_type" columnName="update_type" cnname="修改类型" length="4" JDBCType="CHAR" canBeNull="false"/>
+		<Field id="memo" columnName="memo" cnname="备注" length="400" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="update_date" columnName="update_date" cnname="修改日期" length="10" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="checkcode" columnName="checkcode" cnname="校验码" length="20" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="input_br_id" columnName="input_br_id" cnname="登记机构" length="20" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="cus_id" columnName="cus_id" cnname="客户码" length="20" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="cus_name" columnName="cus_name" cnname="客户名称" length="80" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="auth_id" columnName="auth_id" cnname="授权人" length="20" JDBCType="VARCHAR2"/>
+	</TableModel>
+</CusFixHistory.xml>

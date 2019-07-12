@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<IqpBksyndic.xml>
+	<TableModel id="IqpBksyndic" cnname="银团从表" dbTableName="iqp_bksyndic">
+		<Field id="serno" isPK="true" columnName="serno" cnname="业务编号" length="40" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="bank_syndic_type" columnName="bank_syndic_type" cnname="银团类型" length="50" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="agent_org_flag" columnName="agent_org_flag" cnname="代理行标志" length="5" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="bank_syndic_amt" columnName="bank_syndic_amt" cnname="银团贷款总金额" length="16" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="agent_rate" columnName="agent_rate" cnname="代理费率" length="10" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="amt_arra_rate" columnName="amt_arra_rate" cnname="资金安排费率" length="10" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="bank_syndic_desc" columnName="bank_syndic_desc" cnname="银团项目描述" length="250" JDBCType="VARCHAR2" canBeNull="true"/>
+		<One2MultiRef toField="serno" refModelId="IqpBksyndicInfo" fromField="serno"/>
+	</TableModel>
+</IqpBksyndic.xml>

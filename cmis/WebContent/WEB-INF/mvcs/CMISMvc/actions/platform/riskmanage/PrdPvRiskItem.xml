@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actionDefines>
+	<classMap>
+		<map id="action" class="com.yucheng.cmis.ad.mvc.ADRequestController"/>
+		<map id="flowInvoker" class="com.yucheng.cmis.ad.mvc.ADFlowInvoker"/>
+		<map id="outputViews" class="java.util.HashMap"/>
+		<map id="output" class="com.ecc.emp.data.KeyedCollection"/>
+		<map id="kColl" class="com.ecc.emp.data.KeyedCollection"/>
+		<map id="iColl" class="com.ecc.emp.data.IndexedCollection"/>
+		<map id="field" class="com.ecc.emp.data.DataField"/>
+	</classMap>
+	
+	<!-- 获取操作主页面 -->
+	<action id="queryPrdPvRiskItemList" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.platform.riskmanage.op.prdpvriskitem.QueryPrdPvRiskItemListOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="platform/riskmanage/PrdPvRiskItem/queryPrdPvRiskItemList.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 获取操作主页面 -->
+	<action id="queryPrdPvRiskItemPopList" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.platform.riskmanage.op.prdpvriskitem.QueryPrdPvRiskItemListOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="platform/riskmanage/PrdPvRiskItem/queryPrdPvRiskItemPopList.jsp" />
+		</outputViews>
+	</action>
+	<!-- 获得编辑页面 -->
+	<action id="getPrdPvRiskItemUpdatePage" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation updateCheck="false" class="com.yucheng.cmis.platform.riskmanage.op.prdpvriskitem.QueryPrdPvRiskItemDetailOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="platform/riskmanage/PrdPvRiskItem/updatePrdPvRiskItemRecord.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 更新记录 -->
+	<action id="updatePrdPvRiskItemRecord" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.platform.riskmanage.op.prdpvriskitem.UpdatePrdPvRiskItemRecordOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="operationResult.jsp?url=queryPrdPvRiskItemList.do" />
+		</outputViews>
+	</action>
+	
+	<!-- 获得查看页面 -->
+	<action id="getPrdPvRiskItemViewPage" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.platform.riskmanage.op.prdpvriskitem.QueryPrdPvRiskItemDetailOp"/>
+			<transition dest="updatePage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="updatePage" url="platform/riskmanage/PrdPvRiskItem/queryPrdPvRiskItemDetail.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 获得新增页面 -->
+	<action id="getPrdPvRiskItemAddPage" type="normal" checkSession="true" >
+		<jspView id="addPage" url="platform/riskmanage/PrdPvRiskItem/addPrdPvRiskItemRecord.jsp"/>
+	</action>
+	
+	<!-- 选择规则-->
+	<action id="rulespop" type="normal" checkSession="true" >
+		<jspView id="addPage" url="platform/shuffle/SfTrans/rulespop.jsp"/>
+	</action>
+	
+	<!-- 新增记录 -->
+	<action id="addPrdPvRiskItemRecord" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.platform.riskmanage.op.prdpvriskitem.AddPrdPvRiskItemRecordOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="operationResult.jsp?url=queryPrdPvRiskItemList.do" />
+		</outputViews>
+	</action>	
+	
+	<!-- 删除记录 -->
+	<action id="deletePrdPvRiskItemRecord" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.platform.riskmanage.op.prdpvriskitem.DeletePrdPvRiskItemRecordOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="operationResult.jsp?url=queryPrdPvRiskItemList.do" />
+		</outputViews>
+	</action>
+	
+	<!-- 分页查询记录列表 -->
+		<action id="pagePrdPvRiskItemQuery" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.platform.riskmanage.op.prdpvriskitem.QueryPrdPvRiskItemListOp"/>
+			<transition dest="queryListRes"/>
+		</flowInvoker>
+		<outputViews>
+			<jsonView class="com.yucheng.cmis.view.JSONView" id="queryListRes">
+				<output>
+					<iColl id="PrdPvRiskItemList">
+						<kColl>
+							<field id="item_id" />
+							<field id="item_name" />
+							<field id="used_ind" />
+						</kColl>
+					</iColl>
+					<kColl id="pageInfo">
+						<field id="currentPage" />
+						<field id="maxLine" />
+						<field id="recordSize" />
+					</kColl>
+				</output>
+			</jsonView>
+		</outputViews>
+	</action>
+	
+</actionDefines>
+
+
+

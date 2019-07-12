@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<IqpMortValueMana.xml>
+	<TableModel id="IqpMortValueMana" cnname="押品价格管理" dbTableName="iqp_mort_value_mana">
+		<Field id="value_no" isPK="true" columnName="value_no" cnname="价格编号" length="40" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="catalog_no" columnName="catalog_no" cnname="目录编号" length="40" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="sale_area" columnName="sale_area" cnname="销售区域" length="200" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="produce_vender" columnName="produce_vender" cnname="生产厂家" length="200" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="freq_unit" columnName="freq_unit" cnname="盯市频率单位" length="4" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="freq" columnName="freq" cnname="盯市频率" length="0" JDBCType="NUMBER" canBeNull="false"/>
+		<Field id="market_value" columnName="market_value" cnname="市场价" length="16" JDBCType="NUMBER" canBeNull="false"/>
+		<Field id="auth_date" columnName="auth_date" cnname="价格核准时间" length="10" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="change_valve" columnName="change_valve" cnname="价格变动阀值" length="16" JDBCType="NUMBER" canBeNull="false"/>
+		<Field id="info_sour" columnName="info_sour" cnname="价格信息来源" length="4" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="is_qual_judge" columnName="is_qual_judge" cnname="是否需要品质鉴定" length="4" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="memo" columnName="memo" cnname="备注" length="200" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="status" columnName="status" cnname="状态" length="4" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="input_id" columnName="input_id" cnname="登记人" length="20" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="input_br_id" columnName="input_br_id" cnname="登记机构" length="20" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="input_date" columnName="input_date" cnname="登记日期" length="10" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="produce_area" columnName="produce_area" cnname="产地" length="200" JDBCType="VARCHAR2"/>
+		<Field id="model" columnName="model" cnname="型号" length="40" JDBCType="VARCHAR2"/>
+		<Field id="unit" columnName="unit" cnname="计价单位" length="4" JDBCType="VARCHAR2"/>
+	</TableModel>
+</IqpMortValueMana.xml>

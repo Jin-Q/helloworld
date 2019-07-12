@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actionDefines>
+	<classMap>
+		<map id="action" class="com.yucheng.cmis.ad.mvc.ADRequestController"/>
+		<map id="flowInvoker" class="com.yucheng.cmis.ad.mvc.ADFlowInvoker"/>
+		<map id="outputViews" class="java.util.HashMap"/>
+		<map id="output" class="com.ecc.emp.data.KeyedCollection"/>
+		<map id="kColl" class="com.ecc.emp.data.KeyedCollection"/>
+		<map id="iColl" class="com.ecc.emp.data.IndexedCollection"/>
+		<map id="field" class="com.ecc.emp.data.DataField"/>
+	</classMap>
+	
+	<!-- 获取操作主页面 -->
+	<action id="queryArpLawExecuteRecoverList" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.arp.op.arplawexecuterecover.QueryArpLawExecuteRecoverListOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="biz01line/arp/ArpLawExecuteRecover/queryArpLawExecuteRecoverList.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 获得编辑页面 -->
+	<action id="getArpLawExecuteRecoverUpdatePage" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation updateCheck="true" class="com.yucheng.cmis.biz01line.arp.op.arplawexecuterecover.QueryArpLawExecuteRecoverDetailOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="biz01line/arp/ArpLawExecuteRecover/updateArpLawExecuteRecoverRecord.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 更新记录 -->
+	<action id="updateArpLawExecuteRecoverRecord" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.arp.op.arplawexecuterecover.UpdateArpLawExecuteRecoverRecordOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<view id="retPage" class="com.yucheng.cmis.view.JSONView">
+				<output class="com.ecc.emp.data.KeyedCollection">
+						<field id="flag" class="com.ecc.emp.data.DataField"/>
+				</output>
+			</view>
+		</outputViews>
+	</action>
+	
+	<!-- 获得查看页面 -->
+	<action id="getArpLawExecuteRecoverViewPage" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.arp.op.arplawexecuterecover.QueryArpLawExecuteRecoverDetailOp"/>
+			<transition dest="updatePage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="updatePage" url="biz01line/arp/ArpLawExecuteRecover/queryArpLawExecuteRecoverDetail.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 获得新增页面 -->
+	<action id="getArpLawExecuteRecoverAddPage" type="normal" checkSession="true" >
+		<jspView id="addPage" url="biz01line/arp/ArpLawExecuteRecover/addArpLawExecuteRecoverRecord.jsp"/>
+	</action>
+	
+	<!-- 新增记录 -->
+	<action id="addArpLawExecuteRecoverRecord" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.arp.op.arplawexecuterecover.AddArpLawExecuteRecoverRecordOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<view id="retPage" class="com.yucheng.cmis.view.JSONView">
+				<output class="com.ecc.emp.data.KeyedCollection">
+						<field id="flag" class="com.ecc.emp.data.DataField"/>
+				</output>
+			</view>
+		</outputViews>
+	</action>
+	
+	<!-- 删除记录 -->
+	<action id="deleteArpLawExecuteRecoverRecord" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.arp.op.arplawexecuterecover.DeleteArpLawExecuteRecoverRecordOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<view id="retPage" class="com.yucheng.cmis.view.JSONView">
+				<output class="com.ecc.emp.data.KeyedCollection">
+						<field id="flag" class="com.ecc.emp.data.DataField"/>
+				</output>
+			</view>
+		</outputViews>
+	</action>
+	
+	<!-- 分页查询记录列表 -->
+		<action id="pageArpLawExecuteRecoverQuery" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.arp.op.arplawexecuterecover.QueryArpLawExecuteRecoverListOp"/>
+			<transition dest="queryListRes"/>
+		</flowInvoker>
+		<outputViews>
+			<jsonView class="com.yucheng.cmis.view.JSONView" id="queryListRes">
+				<output>
+					<iColl id="ArpLawExecuteRecoverList">
+						<kColl>
+						</kColl>
+					</iColl>
+					<kColl id="pageInfo">
+						<field id="currentPage" />
+						<field id="maxLine" />
+						<field id="recordSize" />
+					</kColl>
+				</output>
+			</jsonView>
+		</outputViews>
+	</action>
+	
+</actionDefines>

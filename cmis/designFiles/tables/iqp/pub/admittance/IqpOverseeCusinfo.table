@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<IqpOverseeCusinfo.xml>
+	<TableModel id="IqpOverseeCusinfo" cnname="监管机构客户信息" dbTableName="iqp_oversee_cusinfo">
+		<TableInfo/>
+		<Field id="cus_name" columnName="cus_name" cnname="客户名称" length="80" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="transfer_qnt" columnName="transfer_qnt" cnname="年吞吐量" length="40" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="avg_storage" columnName="avg_storage" cnname="平均仓储量" length="40" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="biz_yearn" columnName="biz_yearn" cnname="年均业务收入" length="16" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="coop_bank" columnName="coop_bank" cnname="合作银行" length="100" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="goods_name" columnName="goods_name" cnname="储运货物名称" length="100" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="serno" columnName="serno" cnname="业务流水号" length="40" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="cusinfo_id" isPK="true" columnName="cusinfo_id" cnname="客户信息编号" length="40" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<OrderFields>cusinfo_id[desc];</OrderFields>
+	</TableModel>
+</IqpOverseeCusinfo.xml>

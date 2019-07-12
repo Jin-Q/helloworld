@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<IndLib.xml>
+	<TableModel id="IndLib" pageSize="10" cnname="指标库信息" isPaged="true" dbTableName="ind_lib">
+		<TableInfo/>
+		<Field id="index_no" isPK="true" columnName="index_no" cnname="指标编号" length="8" JSPTag="text" canBeNull="false" JDBCType="CHAR"/>
+		<Field id="index_name" columnName="index_name" cnname="指标名称" length="60" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="par_index_no" columnName="par_index_no" cnname="上级指标编号" length="8" JSPTag="text" canBeNull="true" JDBCType="CHAR"/>
+		<Field id="index_property" columnName="index_property" cnname="指标性质" length="1" JSPTag="text" canBeNull="false" JDBCType="CHAR"/>
+		<Field id="index_type" columnName="index_type" cnname="指标类别" length="1" JSPTag="text" canBeNull="false" JDBCType="CHAR"/>
+		<Field id="input_type" columnName="input_type" cnname="指标取值方式" length="1" JSPTag="text" canBeNull="false" JDBCType="CHAR"/>
+		<Field id="input_classpath" columnName="input_classpath" cnname="指标取值实现类" length="100" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="exe_cycle" columnName="exe_cycle" cnname="执行周期" length="1" JSPTag="text" canBeNull="true" JDBCType="CHAR"/>
+		<Field id="index_level" columnName="index_level" cnname="指标级别" length="1" JSPTag="text" canBeNull="true" JDBCType="CHAR"/>
+		<OrderFields>index_no[desc];</OrderFields>
+		<ConditionFields>index_no;index_name;</ConditionFields>
+		<One2MultiRef toField="index_no" refModelId="IndOpt" fromField="index_no"/>
+		<One2MultiRef toField="index_no" refModelId="IndPara" fromField="index_no"/>
+		<Field id="fnc_index_rpt" columnName="fnc_index_rpt" cnname="财务指标编号" JSPTag="text" length="16" JDBCType="VARCHAR2"/>
+	</TableModel>
+</IndLib.xml>

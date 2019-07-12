@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<EsbConfigImple.xml>
+	<TableModel id="EsbConfigImple" cnname="接口交易配置表" dbTableName="esb_config_imple">
+		<Field id="esb_id" isPK="true" columnName="esb_id" cnname="主键" length="40" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="service_code" columnName="service_code" cnname="交易码" length="30" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="service_sence" columnName="service_sence" cnname="交易场景" length="5" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="imple_class" columnName="imple_class" cnname="交易实现类" length="300" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="memo" columnName="memo" cnname="备注" length="200" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="status" columnName="status" cnname="状态" length="5" JDBCType="VARCHAR2" canBeNull="true"/>
+	</TableModel>
+</EsbConfigImple.xml>

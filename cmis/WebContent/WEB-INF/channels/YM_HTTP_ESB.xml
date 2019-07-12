@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<servletContext>
+	<classMap>
+		<map id="jspView" class="com.ecc.emp.web.servlet.view.JSPView"/>
+		<map id="jspWizzardView" class="com.ecc.emp.web.servlet.view.JSPWizzardView"/>
+		<map id="modelUpdator" class="com.ecc.emp.web.servlet.mvc.EMPModelUpdater"/>
+		<map id="refFlow" class="com.ecc.emp.web.servlet.mvc.EMPFlowInvoker"/>
+		<map id="transition" class="com.ecc.emp.flow.Transition"/>
+		<map id="kColl" class="com.ecc.emp.data.KeyedCollection"/>
+		<map id="field" class="com.ecc.emp.web.servlet.mvc.ViewField"/>
+		<map id="iColl" class="com.ecc.emp.data.IndexedCollection"/>
+		<map id="ExceptionHandler" class="com.ecc.emp.web.servlet.mvc.ExceptionHandler"/>
+		<map id="ExceptionView" class="com.ecc.emp.web.servlet.view.ExceptionView"/>
+		<map id="fmtDef" class="com.ecc.emp.format.FormatElement"/>
+		<map id="record" class="com.ecc.emp.format.KeyedFormat"/>
+		<map id="iColl" class="com.ecc.emp.format.IndexedFormat"/>
+		<map id="fString" class="com.ecc.emp.format.String.StringFormat"/>
+		<map id="nullCheck" class="com.ecc.emp.format.String.NullCheck"/>
+		<map id="delim" class="com.ecc.emp.format.String.Delimiter"/>
+		<map id="Map" class="java.util.HashMap"/>
+		<map id="MapEntry" class="com.ecc.emp.component.xml.MapEntry"/>
+		<map id="ListEntry" class="com.ecc.emp.component.xml.ListEntry"/>
+		<map id="accessManager" class="com.ecc.emp.accesscontrol.EMPAccessManager"/>
+		<map id="EMPMBean" class="com.ecc.emp.jmx.support.EMPMBeanInfo"/>
+		<map id="attr" class="com.ecc.emp.jmx.support.AttrInfo"/>
+		<map id="op" class="com.ecc.emp.jmx.support.OperationInfo"/>
+		<map id="mbeanExportor" class="com.ecc.emp.jmx.support.EMPMBeanExportor"/>
+		<map id="HttpService" class="com.yucheng.cmis.biz01line.esb.interfaces.imple.EMPHTTPRequestService"/>
+		<map id="RequestHeadFormat" class="com.ecc.emp.format.FormatElement"/>
+		<map id="ResponseHeadFormat" class="com.ecc.emp.format.FormatElement"/>
+		<map id="requestDataFormat" class="com.ecc.emp.format.FormatElement"/>
+		<map id="responseDataFormat" class="com.ecc.emp.format.FormatElement"/>
+		<map id="xmlWrap" class="com.ecc.emp.format.xml.XMLWrapFormat"/>
+		<map id="xmlFullTag" class="com.ecc.emp.format.xml.XMLFullTagFormat"/>
+		<map id="xmlHead" class="com.ecc.emp.format.xml.XMLHeadTagFormat"/>
+		<map id="xmlIColl" class="com.ecc.emp.format.xml.XMLIndexedFormat"/>
+		<map id="xmlTag" class="com.ecc.emp.format.xml.XMLTagFormat"/>
+		<map id="FixedLenFormat" class="com.ecc.emp.format.String.FixedLenFormat"/>
+	</classMap>
+	<sessionManager name="out0" width="160" sessionTimeOut="600000" class="com.ecc.emp.session.EMPSessionManager" y="333" x="300" height="70" sessionCheckInterval="120000"/>
+	<HttpRequestHandler appendReqHead="false" serviceIdField="T_ID" class="com.yucheng.cmis.biz01line.esb.interfaces.imple.EMPHttpRequestHandler" appendRepHead="false" sessionIdField="sessionId"></HttpRequestHandler>
+	 
+	<accessManager class="com.ecc.emp.accesscontrol.EMPAccessManager"/>
+	 
+</servletContext>

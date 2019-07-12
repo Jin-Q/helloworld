@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actionDefines>
+	<classMap>
+		<map id="action" class="com.yucheng.cmis.ad.mvc.ADRequestController"/>
+		<map id="flowInvoker" class="com.yucheng.cmis.ad.mvc.ADFlowInvoker"/>
+		<map id="outputViews" class="java.util.HashMap"/>
+		<map id="output" class="com.ecc.emp.data.KeyedCollection"/>
+		<map id="kColl" class="com.ecc.emp.data.KeyedCollection"/>
+		<map id="iColl" class="com.ecc.emp.data.IndexedCollection"/>
+		<map id="field" class="com.ecc.emp.data.DataField"/>
+	</classMap>
+	
+	<!-- 鏌ヨ璁板綍鍒楄〃 -->
+	<action id="queryIndModelList" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.ind.op.indmodel.QueryIndModelListOp"/>
+			<transition dest="queryListRes"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="queryListRes" url="biz01line/ind/IndModel/queryIndModelList.jsp" />
+		</outputViews>
+	</action>
+	<action id="queryIndModelPopList" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.ind.op.indmodel.QueryIndModelPopListOp"/>
+			<transition dest="PopListRes"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="PopListRes" url="biz01line/ind/IndModel/queryIndModelPopList.jsp" />
+		</outputViews>
+	</action>
+	
+	<action id="pageIndModelPopQuery" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.ind.op.indmodel.QueryIndModelPopListOp"/>
+			<transition dest="queryListRes"/>
+		</flowInvoker>
+		<outputViews>
+			<jsonView class="com.yucheng.cmis.view.JSONView" id="queryListRes">
+				<output>
+					<iColl id="IndModelList">
+						<kColl>
+							
+						</kColl>
+					</iColl>
+					<kColl id="pageInfo">
+						<field id="currentPage" />
+						<field id="maxLine" />
+						<field id="recordSize" />
+					</kColl>
+					
+				</output>
+			</jsonView>
+		</outputViews>
+	</action>
+	
+	<action id="genJspFileOp" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.ind.op.indmodel.GenJspFileOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<view id="retPage" class="com.yucheng.cmis.view.JSONView">
+				<output class="com.ecc.emp.data.KeyedCollection">
+						<field id="genResult" class="com.ecc.emp.data.DataField"/>
+				</output>
+			</view>
+		</outputViews>
+	</action>
+	<!-- 鑾峰彇鏂板椤甸潰 -->
+	<action id="getIndModelAddPage" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.ind.op.indmodel.GetIndModelAddPageOp"/>
+			<transition dest="addPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="addPage" url="biz01line/ind/IndModel/addIndModelRecord.jsp" />
+		</outputViews> 
+	</action>
+	
+	<!-- 鏂板淇℃伅 -->
+	<action id="addIndModelRecord" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.ind.op.indmodel.AddIndModelRecordOp"/>
+			<transition dest="queryListRes"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="queryListRes" url="biz01line/ind/IndModel/updateIndModelRecord.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 鑾峰緱缂栬緫椤甸潰 -->
+	<action id="getIndModelUpdatePage" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation updateCheck="false" class="com.yucheng.cmis.biz01line.ind.op.indmodel.QueryIndModelDetailOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="biz01line/ind/IndModel/updateIndModelRecord.jsp" />
+		</outputViews>
+	</action>
+
+	<!-- 淇敼淇℃伅 -->
+	<action id="updateIndModelRecord" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.ind.op.indmodel.UpdateIndModelRecordOp"/>
+			<transition dest="queryListRes"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="queryListRes" url="operationResult.jsp?url=queryIndModelList.do" />
+		</outputViews>
+	</action>
+	
+	<!-- 鍒犻櫎淇℃伅 -->
+	<action id="deleteIndModelRecord" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.ind.op.indmodel.DeleteIndModelRecordOp"/>
+			<transition dest="queryListRes"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="queryListRes" url="operationResult.jsp?url=queryIndModelList.do" />
+		</outputViews>
+	</action>
+	
+	<!-- 鏌ヨ璇︽儏 -->
+	<action id="queryIndModelDetail" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.ind.op.indmodel.QueryIndModelDetailOp"/>
+			<transition dest="queryDetailRes"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="queryDetailRes" url="biz01line/ind/IndModel/queryIndModelDetail.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 鍒嗛〉鏌ヨ璁板綍鍒楄〃 -->
+	<action id="pageIndModelQuery" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.ind.op.indmodel.QueryIndModelListOp"/>
+			<transition dest="queryListRes"/>
+		</flowInvoker>
+		<outputViews>
+			<jsonView class="com.yucheng.cmis.view.JSONView" id="queryListRes">
+				<output>
+					<iColl id="IndModelList">
+						<kColl>
+							
+						</kColl>
+					</iColl>
+					<kColl id="pageInfo">
+						<field id="currentPage" />
+						<field id="maxLine" />
+						<field id="recordSize" />
+					</kColl>
+					
+				</output>
+			</jsonView>
+		</outputViews>
+	</action>
+	
+	
+	<!--*************************瀛愯〃銆�模型指标组关联设置銆�*******************************-->
+	
+	<!-- 浣滀负瀛愯〃鐨勫垪琛ㄩ〉闈� -->
+	<action id="queryIndModelIndModelGroupList" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.ind.op.indmodel.indmodelgroup.QueryIndModelIndModelGroupListOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="biz01line/ind/IndModel/IndModelGroup/queryIndModelIndModelGroupList.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 鑾峰緱浣滀负瀛愯〃鐨勬柊澧為〉闈� -->
+	<action id="getIndModelIndModelGroupAddPage" type="normal" checkSession="true" >
+		<jspView id="addPage" url="biz01line/ind/IndModel/IndModelGroup/addIndModelIndModelGroupRecord.jsp"/>
+	</action>
+	
+	<!-- 鑾峰緱瀛愯〃缂栬緫椤甸潰 -->
+	<action id="getIndModelIndModelGroupUpdatePage" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.ind.op.indmodel.indmodelgroup.QueryIndModelIndModelGroupDetailOp"/>
+			<transition dest="updatePage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="updatePage" url="biz01line/ind/IndModel/IndModelGroup/updateIndModelIndModelGroupRecord.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 瀛愯〃璇︽儏鏌ヨ -->
+	<action id="queryIndModelIndModelGroupDetail" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.ind.op.indmodel.indmodelgroup.QueryIndModelIndModelGroupDetailOp"/>
+			<transition dest="queryDetail"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="queryDetail" url="biz01line/ind/IndModel/IndModelGroup/queryIndModelIndModelGroupDetail.jsp"/>
+		</outputViews>	
+	</action>
+	
+	<!-- 瀛愯〃鏂板璁板綍 -->
+	<action id="addIndModelIndModelGroupRecord" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.ind.op.indmodel.indmodelgroup.AddIndModelIndModelGroupRecordOp"/>
+			<transition dest="addRecordRes"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="addRecordRes" url="refreshList.jsp?method=refreshIndModelGroup()"/>
+		</outputViews>
+	</action>
+	
+	<!-- 瀛愯〃鏇存柊璁板綍 -->
+	<action id="updateIndModelIndModelGroupRecord" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.ind.op.indmodel.indmodelgroup.UpdateIndModelIndModelGroupRecordOp"/>
+			<transition dest="updateRecordRes"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="updateRecordRes" url="refreshList.jsp?method=refreshIndModelGroup()"/>
+		</outputViews>
+	</action>
+	
+	<!-- 瀛愯〃鍒犻櫎璁板綍 -->
+	<action id="deleteIndModelIndModelGroupRecord" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.ind.op.indmodel.indmodelgroup.DeleteIndModelIndModelGroupRecordOp"/>
+			<transition dest="deleteRecordRes"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="deleteRecordRes" url="refreshList.jsp?method=refreshIndModelGroup()"/>
+		</outputViews>
+	</action>
+	
+	<!-- 鍒嗛〉鏌ヨ璁板綍鍒楄〃 -->
+		<action id="pageIndModelIndModelGroupQuery" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.ind.op.indmodel.indmodelgroup.QueryIndModelIndModelGroupListOp"/>
+			<transition dest="queryListRes"/>
+		</flowInvoker>
+		<outputViews>
+			<jsonView class="com.yucheng.cmis.view.JSONView" id="queryListRes">
+				<output>
+					<iColl id="IndModelGroupList">
+						<kColl>
+						</kColl>
+					</iColl>
+					<kColl id="pageInfo">
+						<field id="currentPage" />
+						<field id="maxLine" />
+						<field id="recordSize" />
+					</kColl>
+				</output>
+			</jsonView>
+		</outputViews>
+	</action>	
+	
+</actionDefines>

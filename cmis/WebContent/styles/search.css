@@ -1,0 +1,95 @@
+@CHARSET "UTF-8";
+.container{
+	width:80%;
+	padding:20px;
+	margin:0px;
+}
+.leftContainer,.rightContainer{		
+		width:35%;
+}
+.centerContainer{
+	width:10%;
+	float:left
+}
+.leftContainer{	
+		padding-left:20px;
+		float:left;
+		text-align: right;
+}
+.rightContainer{	
+		padding-right:20px;
+		float:left;
+		text-align: left;
+}
+.clear{
+	clear:both;
+}
+.leftFooter,rightFooter{
+	
+}
+.col{
+	display:block;
+	margin:0px;
+	text-align:left;
+	clear:both;
+	padding:2px 20px 1px 40px;
+}
+.col span{
+	display: block;
+	float:left;
+	text-align:left;
+	padding:2px 5px 1px 10px;
+}
+.titleCol{
+	width:100px;	
+	border-top:5px;
+	font-size:14px;
+	text-align: right;
+}
+.selectCol{
+	width:150px;
+	
+}
+.inputCol{
+}
+body{
+	padding-top :10px;
+}
+.formContainer input[@type="button"]{
+		color:#195B8F;	
+		width:50px;
+		border:1px solid #195B8F;
+		font-size: 12px;
+}
+.seleteSwrap select{
+	border:1px solid #195B8F;
+	height:300px;
+	width:200px;
+}
+.seleteSwrap select option{
+	font-size: 14px;
+	color: #195B8F;
+	
+}
+
+.selectCol select{
+	border:1px solid #195B8F;
+	width:150px;
+}
+.selectCol input{
+	border:1px solid #195B8F;
+	width:150px;
+}
+.inputCol input[@type="text"]{
+	border:1px solid #195B8F;
+	width:150px;
+}
+.btnStyle{	
+	width:100%;
+	height:30px;
+	font-size: 14px;
+}
+ .btnDiv{
+	clear:both;
+	padding:10px;
+}

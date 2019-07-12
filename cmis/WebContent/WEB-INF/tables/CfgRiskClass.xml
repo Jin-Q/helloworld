@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<CfgRiskClass.xml>
+	<TableModel id="CfgRiskClass" cnname="风险分类配置" dbTableName="cfg_risk_class">
+		<Field id="guar_way" isPK="true" columnName="guar_way" cnname="担保方式" length="3" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="ovdue_days" isPK="true" columnName="ovdue_days" cnname="本期逾期天数" length="10" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="risk_class" columnName="risk_class" cnname="风险分类类型" length="3" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="upd_id" columnName="upd_id" cnname="更新人" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="upd_br_id" columnName="upd_br_id" cnname="更新机构" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="upd_date" columnName="upd_date" cnname="更新日期" length="10" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="cfg_desc" columnName="cfg_desc" cnname="认定描述" length="2000" JDBCType="VARCHAR2" canBeNull="true"/>
+	</TableModel>
+</CfgRiskClass.xml>

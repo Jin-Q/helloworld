@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<IqpDrfpoMana.xml>
+	<TableModel id="IqpDrfpoMana" cnname="票据池管理" dbTableName="iqp_drfpo_mana">
+		<Field id="drfpo_no" isPK="true" columnName="drfpo_no" cnname="池编号" length="30" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="cus_id" columnName="cus_id" cnname="客户编码" length="40" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="drfpo_type" columnName="drfpo_type" cnname="池类型" length="5" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="bail_acc_no" columnName="bail_acc_no" cnname="回款保证金账号" length="40" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="bail_acc_name" columnName="bail_acc_name" cnname="回款保证金账户名" length="80" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="memo" columnName="memo" cnname="备注" length="500" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="status" columnName="status" cnname="状态" length="5" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="input_id" columnName="input_id" cnname="登记人" length="30" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="input_br_id" columnName="input_br_id" cnname="登记机构" length="30" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="input_date" columnName="input_date" cnname="登记日期" length="10" JDBCType="CHAR" canBeNull="true"/>
+		<Field id="manager_id" columnName="manager_id" cnname="责任人" length="30" JDBCType="VARCHAR2"/>
+		<Field id="manager_br_id" columnName="manager_br_id" cnname="责任机构" length="30" JDBCType="VARCHAR2"/>
+		<Field id="bill_amt" columnName="bill_amt" cnname="在池票据总金额" length="20" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="image_guaranty_no" columnName="image_guaranty_no" cnname="影像押品编号" length="40" JDBCType="VARCHAR2" canBeNull="true"/>
+	</TableModel>
+</IqpDrfpoMana.xml>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<IqpRentInfo.xml>
+	<TableModel id="IqpRentInfo" pageSize="15" cnname="银租通出租信息" isPaged="true" dbTableName="iqp_rent_info">
+		<TableInfo/>
+		<Field id="rent_serno" isPK="true" columnName="rent_serno" cnname="出租编号" length="40" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="serno" columnName="serno" cnname="业务编号" length="40" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="start_date" columnName="start_date" cnname="起始日期" length="10" JSPTag="date" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="end_date" columnName="end_date" cnname="到期日期" length="10" JSPTag="date" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="rent_coll_term_unit" dictname="STD_ZX_FREQ_UNIT" columnName="rent_coll_term_unit" cnname="租金收取期限单位" length="5" JSPTag="select" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="rent_coll_term" dataType="Int" columnName="rent_coll_term" cnname="租金收取期限" length="38" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="every_rent_amt" dataType="Currency" columnName="every_rent_amt" cnname="每期租金" length="16" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="pld_amt" dataType="Currency" columnName="pld_amt" cnname="押金" length="16" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="total_rent_amt" dataType="Currency" columnName="total_rent_amt" cnname="总租金" length="16" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="rent_amt_coll_type" dictname="STD_ZB_RENT_COLL_TYPE" columnName="rent_amt_coll_type" cnname="租金收取方式" length="10" JSPTag="select" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="lessee_name" columnName="lessee_name" cnname="承租人名称" length="80" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="lessee_cert_type" dictname="STD_ZB_CERT_TYP" columnName="lessee_cert_type" cnname="承租人证件类型" length="10" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="lessee_cert_no" columnName="lessee_cert_no" cnname="承租人证件号码" length="20" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="lessee_phone" dataType="Phone" columnName="lessee_phone" cnname="承租人电话" length="20" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="lessee_mobile" dataType="Mobile" columnName="lessee_mobile" cnname="承租人手机" length="20" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="lessee_addr" columnName="lessee_addr" cnname="承租人地址" length="150" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="memo" columnName="memo" cnname="备注" length="250" JSPTag="textarea" canBeNull="true" JDBCType="VARCHAR2"/>
+		<OrderFields>rent_serno[desc];</OrderFields>
+		<FilterFields>lessee_name;lessee_cert_no;every_rent_amt;pld_amt;total_rent_amt;start_date;end_date;</FilterFields>
+		<RecordRestrict query="true" delete="true" update="true"/>
+		<Field id="rent_acctsvcr_no" columnName="rent_acctsvcr_no" cnname="租金收取开户行行号" JSPTag="text" length="40" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="rent_acctsvcrnm" columnName="rent_acctsvcrnm" cnname="租金收取开户行行名" JSPTag="text" length="150" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="rent_no" columnName="rent_no" cnname="租金收取账号" JSPTag="text" length="40" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="rent_name" columnName="rent_name" cnname="租金收取账户名" JSPTag="text" length="150" canBeNull="true" JDBCType="VARCHAR2"/>
+	</TableModel>
+</IqpRentInfo.xml>

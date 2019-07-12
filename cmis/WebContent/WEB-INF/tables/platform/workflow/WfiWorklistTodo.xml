@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<WfiWorklistTodo.xml>
+	<TableModel id="WfiWorklistTodo" cnname="待办流程列表" dbTableName="wfi_worklist_todo">
+		<Field id="instanceid" columnName="instanceid" cnname="流程实例号" length="32" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="maininstanceid" columnName="maininstanceid" cnname="主流程实例号" length="32" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="mainnodeid" columnName="mainnodeid" cnname="主流程节点ID" length="32" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="wfstatus" columnName="wfstatus" cnname="工作流状态 0：流转中 1：流程结束 2：流程挂起 3：流程异常中止 4：预结束 5：流程过期办理" length="1" JDBCType="CHAR" canBeNull="true"/>
+		<Field id="wfid" columnName="wfid" cnname="流程ID" length="32" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="wfname" columnName="wfname" cnname="流程名称" length="50" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="wfsign" columnName="wfsign" cnname="流程标识" length="32" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="wfjobname" columnName="wfjobname" cnname="流程工作名称" length="200" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="wfstarttime" columnName="wfstarttime" cnname="流程启动时间" length="19" JDBCType="CHAR" canBeNull="true"/>
+		<Field id="wfplanendtime" columnName="wfplanendtime" cnname="预办结时间" length="19" JDBCType="CHAR" canBeNull="true"/>
+		<Field id="wfadmin" columnName="wfadmin" cnname="流程管理员" length="200" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="bdraft" columnName="bdraft" cnname="是否处于拟稿状态 1：拟稿状态 0：流转中" length="1" JDBCType="CHAR" canBeNull="true"/>
+		<Field id="author" columnName="author" cnname="流程启动者" length="50" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="spstatus" columnName="spstatus" cnname="审批状态 0：审批中 1：同意 2：不同意 3：部分同意 4：不明确" length="1" JDBCType="CHAR" canBeNull="true"/>
+		<Field id="orgid" columnName="orgid" cnname="流程机构ID" length="32" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="sysid" columnName="sysid" cnname="流程系统ID" length="32" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="prenodeid" columnName="prenodeid" cnname="前一节点ID" length="32" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="prenodename" columnName="prenodename" cnname="前一节点名称" length="50" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="nodeid" columnName="nodeid" cnname="节点ID" length="32" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="nodename" columnName="nodename" cnname="节点名称" length="50" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="nodestatus" columnName="nodestatus" cnname="节点状态 0：正常办理 1：催办 2：办理结束 3：待签收 4：拿回 5：退回 6：挂起 7：打回 8：审批协助 9：取消办结 " length="2" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="nodestarttime" columnName="nodestarttime" cnname="节点开始时间" length="19" JDBCType="CHAR" canBeNull="true"/>
+		<Field id="nodeaccepttime" columnName="nodeaccepttime" cnname="节点受理时间" length="19" JDBCType="CHAR" canBeNull="true"/>
+		<Field id="nodeplanendtime" columnName="nodeplanendtime" cnname="节点办理时限" length="19" JDBCType="CHAR" canBeNull="true"/>
+		<Field id="currentnodeuser" columnName="currentnodeuser" cnname="当前节点办理人" length="2000" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="currentnodeusers" columnName="currentnodeusers" cnname="当前节点必办人员" length="2000" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="originalusers" columnName="originalusers" cnname="原始办理人" length="100" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="preprocessorlist" columnName="preprocessorlist" cnname="前一节点办理人列表" length="100" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="allprocessor" columnName="allprocessor" cnname="所有流程参与人" length="2000" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="announceuser" columnName="announceuser" cnname="抄送对象" length="2000" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="isprocessed" columnName="isprocessed" cnname="节点是否已经办理过" length="1" JDBCType="CHAR" canBeNull="true"/>
+		<Field id="table_name" columnName="table_name" cnname="表模型ID" length="64" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="pk_col" columnName="pk_col" cnname="申请表主键字段名" length="32" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="pk_value" columnName="pk_value" cnname="申请表主键值" length="32" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="cus_id" columnName="cus_id" cnname="申请客户ID" length="30" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="cus_name" columnName="cus_name" cnname="申请客户名称" length="80" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="cus_type" columnName="cus_type" cnname="申请客户类型" length="3" JDBCType="CHAR" canBeNull="true"/>
+		<Field id="cus_crd_grade" columnName="cus_crd_grade" cnname="信用等级" length="3" JDBCType="CHAR" canBeNull="true"/>
+		<Field id="appl_type" columnName="appl_type" cnname="申请类型" length="3" JDBCType="CHAR" canBeNull="true"/>
+		<Field id="prd_pk" columnName="prd_pk" cnname="业务产品PK" length="32" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="prd_name" columnName="prd_name" cnname="产品名称" length="60" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="cert_type" columnName="cert_type" cnname="客户证件类型" length="2" JDBCType="CHAR" canBeNull="true"/>
+		<Field id="cert_code" columnName="cert_code" cnname="客户证件号码" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="amt" columnName="amt" cnname="申请金额" length="16" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="term" columnName="term" cnname="申请期限" length="38" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="ruling_ir" columnName="ruling_ir" cnname="基准利率（年）" length="16" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="reality_ir_y" columnName="reality_ir_y" cnname="月利率（年）" length="16" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="input_id" columnName="input_id" cnname="业务登记人" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="input_br_id" columnName="input_br_id" cnname="业务登记机构" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="apply_date" columnName="apply_date" cnname="业务申请日期" length="10" JDBCType="CHAR" canBeNull="true"/>
+		<Field id="prevent_list" columnName="prevent_list" cnname="风险拦截list多个用英文逗号分隔" length="200" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="status_name" columnName="status_name" cnname="业务审批状态字段名（默认approve_status）" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="wfi_status" columnName="wfi_status" cnname="流程审批状态 000.待发起状态 111.审批中状态 990.取消状态 991.追回（拿回重办）状态，当前办理环节是流程的第一个节点 992.打回状态；当前办理环节是流程的第一个节点，包括退回，打回，打回重办到第一个节点 997.审批通过状态 998.审批否决（不同意）状态" length="10" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="cust_mgr" columnName="cust_mgr" cnname="主管客户经理" length="20" JDBCType="VARCHAR2"/>
+	</TableModel>
+</WfiWorklistTodo.xml>

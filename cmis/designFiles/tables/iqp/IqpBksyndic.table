@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<IqpBksyndic.xml>
+	<TableModel id="IqpBksyndic" pageSize="10" cnname="银团从表" isPaged="true" dbTableName="iqp_bksyndic">
+		<TableInfo/>
+		<Field id="serno" isPK="true" columnName="serno" cnname="业务编号" length="40" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="bank_syndic_type" columnName="bank_syndic_type" cnname="银团类型" length="50" JSPTag="select" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="agent_org_flag" columnName="agent_org_flag" cnname="代理行标志" length="5" JSPTag="select" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="bank_syndic_amt" dataType="Currency" columnName="bank_syndic_amt" cnname="银团贷款总金额" length="16" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="agent_rate" dataType="Rate" columnName="agent_rate" cnname="代理费率" length="10" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="amt_arra_rate" dataType="Rate" columnName="amt_arra_rate" cnname="资金安排费率" length="10" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="bank_syndic_desc" columnName="bank_syndic_desc" cnname="银团项目描述" length="250" JSPTag="textarea" canBeNull="true" JDBCType="VARCHAR2"/>
+		<OrderFields>serno;</OrderFields>
+		<ConditionFields>bank_syndic_type;</ConditionFields>
+		<FilterFields>bank_syndic_type;agent_org_flag;bank_syndic_amt;agent_rate;amt_arra_rate;</FilterFields>
+		<One2MultiRef toField="serno" refModelId="IqpBksyndicInfo" fromField="serno"/>
+	</TableModel>
+</IqpBksyndic.xml>

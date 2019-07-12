@@ -1,0 +1,118 @@
+#set($tableModelName=${TableModel.tableId})
+#set($lowerName=${tableModelName.toLowerCase()})
+<?xml version="1.0" encoding="${xmlEncode}"?>
+<actionDefines>
+	<classMap>
+		<map id="action" class="com.yucheng.cmis.ad.mvc.ADRequestController"/>
+		<map id="flowInvoker" class="com.yucheng.cmis.ad.mvc.ADFlowInvoker"/>
+		<map id="outputViews" class="java.util.HashMap"/>
+		<map id="output" class="com.ecc.emp.data.KeyedCollection"/>
+		<map id="kColl" class="com.ecc.emp.data.KeyedCollection"/>
+		<map id="iColl" class="com.ecc.emp.data.IndexedCollection"/>
+		<map id="field" class="com.ecc.emp.data.DataField"/>
+	</classMap>
+	
+	<!-- 获取操作主页面 -->
+	<action id="query${tableModelName}List" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.ops.${packageName}${lowerName}.Query${tableModelName}ListOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="${subPath}${tableModelName}/query${tableModelName}List.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 获得编辑页面 -->
+	<action id="get${tableModelName}UpdatePage" type="normal" checkSession="true" >
+		<flowInvoker>
+#set($update=${TableModel.getRecordRestrict("update")})
+			<operation updateCheck="${update}" class="com.yucheng.cmis.ops.${packageName}${lowerName}.Query${tableModelName}DetailOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="${subPath}${tableModelName}/update${tableModelName}Record.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 更新记录 -->
+	<action id="update${tableModelName}Record" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.ops.${packageName}${lowerName}.Update${tableModelName}RecordOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="operationResult.jsp?url=query${tableModelName}List.do" />
+		</outputViews>
+	</action>
+	
+	<!-- 获得查看页面 -->
+	<action id="get${tableModelName}ViewPage" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.ops.${packageName}${lowerName}.Query${tableModelName}DetailOp"/>
+			<transition dest="updatePage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="updatePage" url="${subPath}${tableModelName}/query${tableModelName}Detail.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 获得新增页面 -->
+	<action id="get${tableModelName}AddPage" type="normal" checkSession="true" >
+		<jspView id="addPage" url="${subPath}${tableModelName}/add${tableModelName}Record.jsp"/>
+	</action>
+	
+	<!-- 新增记录 -->
+	<action id="add${tableModelName}Record" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.ops.${packageName}${lowerName}.Add${tableModelName}RecordOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="operationResult.jsp?url=query${tableModelName}List.do" />
+		</outputViews>
+	</action>	
+	
+	<!-- 删除记录 -->
+	<action id="delete${tableModelName}Record" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.ops.${packageName}${lowerName}.Delete${tableModelName}RecordOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="operationResult.jsp?url=query${tableModelName}List.do" />
+		</outputViews>
+	</action>
+	
+	<!-- 分页查询记录列表 -->
+		<action id="page${tableModelName}Query" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.ops.${packageName}${lowerName}.Query${tableModelName}ListOp"/>
+			<transition dest="queryListRes"/>
+		</flowInvoker>
+		<outputViews>
+			<jsonView class="com.yucheng.cmis.view.JSONView" id="queryListRes">
+				<output>
+					<iColl id="${tableModelName}List">
+						<kColl>
+#foreach(${filterField} in ${TableModel.filterFields})
+							<field id="${filterField}" />
+#end
+						</kColl>
+					</iColl>
+#if(${TableModel.isPaged()}==true)
+					<kColl id="pageInfo">
+						<field id="currentPage" />
+						<field id="maxLine" />
+						<field id="recordSize" />
+					</kColl>
+#end
+				</output>
+			</jsonView>
+		</outputViews>
+	</action>
+	
+</actionDefines>
+
+
+

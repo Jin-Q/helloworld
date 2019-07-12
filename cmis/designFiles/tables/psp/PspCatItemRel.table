@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<PspCatItemRel.xml>
+	<TableModel id="PspCatItemRel" pageSize="10" cnname="检查目录和项目关系表" isPaged="true" dbTableName="psp_cat_item_rel">
+		<TableInfo/>
+		<Field id="catalog_id" isPK="true" columnName="catalog_id" cnname="目录编号" length="40" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="item_id" isPK="true" columnName="item_id" cnname="项目编号" length="40" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="seq" columnName="seq" cnname="排序" length="38" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<OrderFields>catalog_id[desc];item_id[desc];</OrderFields>
+		<ConditionFields>catalog_id;item_id;</ConditionFields>
+	</TableModel>
+</PspCatItemRel.xml>

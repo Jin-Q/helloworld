@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<WfInstanceGatherProperty.xml>
+	<TableModel id="WfInstanceGatherProperty" cnname="会办信息流转实例表" dbTableName="wf_instance_gather_property">
+		<TableInfo/>
+		<Field id="instanceid" isPK="true" columnName="instanceid" cnname="INSTANCEID" length="32" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="beforeinstanceid" columnName="beforeinstanceid" cnname="BEFOREINSTANCEID" length="32" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="maininstanceid" columnName="maininstanceid" cnname="MAININSTANCEID" length="32" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="bizseqno" columnName="bizseqno" cnname="BIZSEQNO" length="32" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="mainnodeid" columnName="mainnodeid" cnname="MAINNODEID" length="32" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="mainnodename" columnName="mainnodename" cnname="MAINNODENAME" length="50" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="mainjobname" columnName="mainjobname" cnname="MAINJOBNAME" length="200" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="gatherstartuserid" columnName="gatherstartuserid" cnname="GATHERSTARTUSERID" length="50" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="gatherstartusername" columnName="gatherstartusername" cnname="GATHERSTARTUSERNAME" length="100" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="gatherenduserid" columnName="gatherenduserid" cnname="GATHERENDUSERID" length="50" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="gatherendusername" columnName="gatherendusername" cnname="GATHERENDUSERNAME" length="100" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="gathertitle" columnName="gathertitle" cnname="GATHERTITLE" length="200" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="gatherdesc" columnName="gatherdesc" cnname="GATHERDESC" length="2000" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="currentgatheruserlist" columnName="currentgatheruserlist" cnname="CURRENTGATHERUSERLIST" length="2000" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="allprocessor" columnName="allprocessor" cnname="ALLPROCESSOR" length="2000" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="allprocessorname" columnName="allprocessorname" cnname="ALLPROCESSORNAME" length="2000" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="currentgatherprocessors" columnName="currentgatherprocessors" cnname="CURRENTGATHERPROCESSORS" length="2000" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="gatherstarttime" columnName="gatherstarttime" cnname="GATHERSTARTTIME" length="19" JSPTag="text" canBeNull="true" JDBCType="CHAR"/>
+		<OrderFields>instanceid[desc];</OrderFields>
+	</TableModel>
+</WfInstanceGatherProperty.xml>

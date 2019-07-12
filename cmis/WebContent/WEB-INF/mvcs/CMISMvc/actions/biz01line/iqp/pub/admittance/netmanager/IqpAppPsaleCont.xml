@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actionDefines>
+	<classMap>
+		<map id="action" class="com.yucheng.cmis.ad.mvc.ADRequestController"/>
+		<map id="flowInvoker" class="com.yucheng.cmis.ad.mvc.ADFlowInvoker"/>
+		<map id="outputViews" class="java.util.HashMap"/>
+		<map id="output" class="com.ecc.emp.data.KeyedCollection"/>
+		<map id="kColl" class="com.ecc.emp.data.KeyedCollection"/>
+		<map id="iColl" class="com.ecc.emp.data.IndexedCollection"/>
+		<map id="field" class="com.ecc.emp.data.DataField"/>
+	</classMap>
+	
+	<!-- 获取操作主页面 -->
+	<action id="queryIqpAppPsaleContList" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.iqp.op.pub.admittance.netmanager.iqpapppsalecont.QueryIqpAppPsaleContListOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="biz01line/iqp/pub/admittance/netmanager/IqpAppPsaleCont/queryIqpAppPsaleContList.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 购销合同POP框 --> 
+	<action id="queryIqpAppPsaleContPop" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.iqp.op.pub.admittance.netmanager.iqpapppsalecont.QueryIqpAppPsaleContListOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="biz01line/iqp/pub/admittance/netmanager/IqpAppPsaleCont/queryIqpAppPsaleContPop.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 获得编辑页面 -->
+	<action id="getIqpAppPsaleContUpdatePage" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation updateCheck="false" class="com.yucheng.cmis.biz01line.iqp.op.pub.admittance.netmanager.iqpapppsalecont.QueryIqpAppPsaleContDetailOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="biz01line/iqp/pub/admittance/netmanager/IqpAppPsaleCont/updateIqpAppPsaleContRecord.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 更新记录 -->
+	<action id="updateIqpAppPsaleContRecord" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.iqp.op.pub.admittance.netmanager.iqpapppsalecont.UpdateIqpAppPsaleContRecordOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<view id="retPage" class="com.yucheng.cmis.view.JSONView">
+				<output class="com.ecc.emp.data.KeyedCollection">
+					<field id="flag" class="com.ecc.emp.data.DataField" />
+				</output>
+			</view>
+		</outputViews>
+	</action>
+	
+	<!-- 获得查看页面 -->
+	<action id="getIqpAppPsaleContViewPage" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.iqp.op.pub.admittance.netmanager.iqpapppsalecont.QueryIqpAppPsaleContDetailOp"/>
+			<transition dest="updatePage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="updatePage" url="biz01line/iqp/pub/admittance/netmanager/IqpAppPsaleCont/queryIqpAppPsaleContDetail.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 获得新增页面 -->
+	<action id="getIqpAppPsaleContAddPage" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.iqp.op.pub.admittance.netmanager.iqpapppsalecont.IqpAppPsaleContAddOp"/>
+			<transition dest="addPage"/>
+		</flowInvoker>
+		<outputViews>
+		  <jspView id="addPage" url="biz01line/iqp/pub/admittance/netmanager/IqpAppPsaleCont/addIqpAppPsaleContRecord.jsp"/>
+		</outputViews>
+	</action>
+	
+	<!-- 新增记录 -->
+	<action id="addIqpAppPsaleContRecord" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.iqp.op.pub.admittance.netmanager.iqpapppsalecont.AddIqpAppPsaleContRecordOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<view id="retPage" class="com.yucheng.cmis.view.JSONView">
+				<output class="com.ecc.emp.data.KeyedCollection">
+					<field id="flag" class="com.ecc.emp.data.DataField" />
+					<field id="psale_cont" class="com.ecc.emp.data.DataField" />
+				</output>
+			</view>
+		</outputViews>
+	</action>	
+	
+	<!-- 删除记录 -->
+	<action id="deleteIqpAppPsaleContRecord" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.iqp.op.pub.admittance.netmanager.iqpapppsalecont.DeleteIqpAppPsaleContRecordOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<view id="retPage" class="com.yucheng.cmis.view.JSONView">
+				<output class="com.ecc.emp.data.KeyedCollection">
+					<field id="flag" class="com.ecc.emp.data.DataField" />
+				</output>
+			</view>
+		</outputViews>
+	</action>
+	
+	<!-- 失效撤销 -->
+	<action id="removeIqpAppPsaleContRecord" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.iqp.op.pub.admittance.netmanager.iqpapppsalecont.RemoveIqpAppPsaleContRecordOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<view id="retPage" class="com.yucheng.cmis.view.JSONView">
+				<output class="com.ecc.emp.data.KeyedCollection">
+					<field id="flag" class="com.ecc.emp.data.DataField" />
+					<field id="msg" class="com.ecc.emp.data.DataField" />
+				</output>
+			</view>
+		</outputViews>
+	</action>
+	
+	<!-- 分页查询记录列表 -->
+		<action id="pageIqpAppPsaleContQuery" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.iqp.op.pub.admittance.netmanager.iqpapppsalecont.QueryIqpAppPsaleContListOp"/>
+			<transition dest="queryListRes"/>
+		</flowInvoker>
+		<outputViews>
+			<jsonView class="com.yucheng.cmis.view.JSONView" id="queryListRes">
+				<output>
+					<iColl id="IqpAppPsaleContList">
+						<kColl>
+						</kColl>
+					</iColl>
+					<kColl id="pageInfo">
+						<field id="currentPage" />
+						<field id="maxLine" />
+						<field id="recordSize" />
+					</kColl>
+				</output>
+			</jsonView>
+		</outputViews>
+	</action>
+	
+</actionDefines>
+
+
+

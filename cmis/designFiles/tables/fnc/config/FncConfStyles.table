@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<FncConfStyles.xml>
+	<TableModel id="FncConfStyles" pageSize="15" cnname="报表样式列表" isPaged="true" dbTableName="fnc_conf_styles">
+		<TableInfo/>
+		<Field id="style_id" isPK="true" columnName="style_id" cnname="报表样式编号" length="6" JSPTag="text" canBeNull="false" JDBCType="CHAR"/>
+		<Field id="fnc_name" columnName="fnc_name" cnname="报表名称" length="200" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="fnc_conf_dis_name" columnName="fnc_conf_dis_name" cnname="显示名称" length="200" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="fnc_conf_typ" columnName="fnc_conf_typ" cnname="所属报表种类" length="2" JSPTag="text" canBeNull="true" JDBCType="CHAR"/>
+		<Field id="fnc_conf_cotes" columnName="fnc_conf_cotes" cnname="栏位" length="38" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<ConditionFields>style_id;fnc_name;</ConditionFields>
+		<Field id="fnc_conf_data_col" dictname="STD_ZB_FNC_COL" columnName="fnc_conf_data_col" cnname="数据列数" length="38" JSPTag="text" JDBCType="NUMBER"/>
+		<FilterFields>style_id;fnc_name;fnc_conf_dis_name;fnc_conf_typ;fnc_conf_cotes;fnc_conf_data_col;</FilterFields>
+		<Field id="head_left" columnName="head_left" cnname="表头左部描述" length="200" JSPTag="text" JDBCType="VARCHAR2"/>
+		<Field id="food_right" columnName="food_right" cnname="表尾右部描述" length="200" JSPTag="text" JDBCType="VARCHAR2"/>
+		<Field id="food_center" columnName="food_center" cnname="表尾中部描述" length="200" JSPTag="text" JDBCType="VARCHAR2"/>
+		<Field id="food_left" columnName="food_left" cnname="表尾左部描述" length="200" JSPTag="text" JDBCType="VARCHAR2"/>
+		<Field id="head_right" columnName="head_right" cnname="表头右部描述" length="200" JSPTag="text" JDBCType="VARCHAR2"/>
+		<Field id="head_center" columnName="head_center" cnname="表头中部描述" length="200" JSPTag="text" JDBCType="VARCHAR2"/>
+		<Field id="no_ind" dictname="STD_ZB_FNC_NOIND" columnName="no_ind" cnname="新旧报表标志" length="1" JSPTag="text" JDBCType="CHAR"/>
+		<Field id="com_ind" dictname="STD_ZB_FNC_COMIND" columnName="com_ind" cnname="企事业报表标志" length="1" JSPTag="text" JDBCType="CHAR"/>
+		<Field id="data_dec1" dictname="STD_ZB_FNC_DCD" columnName="data_dec1" cnname="第一列数据描述" length="2" JSPTag="text" JDBCType="CHAR"/>
+		<Field id="data_dec2" dictname="STD_ZB_FNC_DCD" columnName="data_dec2" cnname="第二列数据描述" length="2" JSPTag="text" JDBCType="CHAR"/>
+		<Field id="data_dec3" dictname="STD_ZB_FNC_DCD" columnName="data_dec3" cnname="第三列数据描述" JSPTag="text" length="2" JDBCType="CHAR"/>
+		<Field id="data_dec4" dictname="STD_ZB_FNC_DCD" columnName="data_dec4" cnname="第四列数据描述" JSPTag="text" length="2" JDBCType="CHAR"/>
+		<Field id="data_dec5" dictname="STD_ZB_FNC_DCD" columnName="data_dec5" cnname="第五列数据描述" JSPTag="text" length="2" JDBCType="CHAR"/>
+		<Field id="data_dec6" dictname="STD_ZB_FNC_DCD" columnName="data_dec6" cnname="第六列数据描述" JSPTag="text" length="2" JDBCType="CHAR"/>
+		<Field id="data_dec7" dictname="STD_ZB_FNC_DCD" columnName="data_dec7" cnname="第七列数据描述" JSPTag="text" length="2" JDBCType="CHAR"/>
+		<Field id="data_dec8" dictname="STD_ZB_FNC_DCD" columnName="data_dec8" cnname="第八列数据描述" JSPTag="text" length="2" JDBCType="CHAR"/>
+	</TableModel>
+</FncConfStyles.xml>

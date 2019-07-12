@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<LmtSigLmt.xml>
+	<TableModel id="LmtSigLmt" pageSize="15" cnname="单笔授信" isPaged="true" dbTableName="lmt_sig_lmt">
+		<TableInfo/>
+		<Field id="serno" isPK="true" columnName="serno" cnname="业务编号" length="32" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="app_date" columnName="app_date" cnname="申请日期" length="10" JSPTag="date" canBeNull="true" JDBCType="CHAR"/>
+		<Field id="over_date" columnName="over_date" cnname="办结日期" length="10" JSPTag="date" canBeNull="true" JDBCType="CHAR"/>
+		<Field id="cus_id" columnName="cus_id" cnname="客户码" length="32" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="app_type" dictname="STD_ZB_APP_TYPE" columnName="app_type" cnname="申请类型" length="5" JSPTag="select" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="app_cls" columnName="app_cls" cnname="申请类别" length="3" JSPTag="select" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="limit_type" dictname="STD_ZB_LIMIT_TYPE" columnName="limit_type" cnname="额度类型" length="2" JSPTag="select" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="owner_wrr" columnName="owner_wrr" cnname="所有者权益" length="16" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="asserts" columnName="asserts" cnname="总资产" length="16" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="risk_quota" columnName="risk_quota" cnname="风险限额" length="16" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="cur_type" columnName="cur_type" cnname="授信币种" length="3" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="lmt_amt" columnName="lmt_amt" cnname="授信金额" length="16" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="term_type" dictname="STD_ZB_TERM_TYPE" columnName="term_type" cnname="期限类型" length="3" JSPTag="select" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="term" columnName="term" cnname="期限" length="6" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="memo" columnName="memo" cnname="备注" length="200" JSPTag="textarea" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="manager_id" columnName="manager_id" cnname="责任人" length="20" JSPTag="pop" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="manager_br_id" columnName="manager_br_id" cnname="管理机构" length="32" JSPTag="pop" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="input_id" columnName="input_id" cnname="登记人" length="20" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="input_br_id" columnName="input_br_id" cnname="登记机构" length="32" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="input_date" columnName="input_date" cnname="登记日期" length="10" JSPTag="date" canBeNull="true" JDBCType="CHAR"/>
+		<Field id="approve_status" dictname="WF_APP_STATUS" columnName="approve_status" cnname="审批状态" length="3" JSPTag="select" canBeNull="true" JDBCType="VARCHAR2"/>
+		<OrderFields>serno;</OrderFields>
+		<ConditionFields>serno;cus_id;app_date;approve_status;</ConditionFields>
+		<FilterFields>serno;cus_id;lmt_amt;manager_id;manager_br_id;app_cls;app_date;</FilterFields>
+		<One2MultiRef toField="serno" refModelId="LmtSubApp" fromField="serno"/>
+		<Field id="flow_type" columnName="flow_type" cnname="流程类型" JSPTag="text" length="2" JDBCType="VARCHAR2"/>
+		<Field id="batch_serno" columnName="batch_serno" cnname="批量流水号" JSPTag="text" length="32" JDBCType="VARCHAR2"/>
+	</TableModel>
+</LmtSigLmt.xml>

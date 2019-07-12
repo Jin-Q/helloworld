@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<MortImpawnOthers.xml>
+	<TableModel id="MortImpawnOthers" cnname="其他质押品" dbTableName="mort_impawn_others">
+		<Field id="impawn_other_id" isPK="true" columnName="impawn_other_id" cnname="质押品编号" length="40" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="guaranty_no" columnName="guaranty_no" cnname="押品编号" length="40" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="guaranty_name" columnName="guaranty_name" cnname="质押物名称" length="100" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="impawn_quantity" columnName="impawn_quantity" cnname="数量及单位" length="16" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="buy_date" columnName="buy_date" cnname="购入/起始日期" length="10" JDBCType="CHAR" canBeNull="true"/>
+		<Field id="expire_date" columnName="expire_date" cnname="到期日期" length="10" JDBCType="CHAR" canBeNull="true"/>
+		<Field id="buy_sum" columnName="buy_sum" cnname="购入金额" length="16" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="memo" columnName="memo" cnname="备注" length="1000" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="sys_update_time" columnName="sys_update_time" cnname="系统更新时间" length="10" JDBCType="CHAR" canBeNull="true"/>
+		<Field id="buy_curr_cd" columnName="buy_curr_cd" cnname="币种" length="3" JDBCType="CHAR" canBeNull="true"/>
+	</TableModel>
+</MortImpawnOthers.xml>

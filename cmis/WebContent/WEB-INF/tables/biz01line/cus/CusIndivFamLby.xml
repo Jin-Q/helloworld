@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<CusIndivFamLby.xml>
+	<TableModel id="CusIndivFamLby" cnname="负债情况" dbTableName="cus_indiv_fam_lby">
+		<Field id="cus_id" isPK="true" columnName="cus_id" cnname="客户编号" length="30" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="indiv_debt_id" isPK="true" columnName="indiv_debt_id" cnname="负债编号" length="40" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="indiv_debt_typ" columnName="indiv_debt_typ" cnname="负债类型" length="2" JDBCType="CHAR" canBeNull="true"/>
+		<Field id="indiv_debt_desc" columnName="indiv_debt_desc" cnname="负债描述" length="80" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="indiv_creditor" columnName="indiv_creditor" cnname="债权人" length="80" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="indiv_debt_cur" columnName="indiv_debt_cur" cnname="负债币种" length="3" JDBCType="CHAR" canBeNull="true"/>
+		<Field id="indiv_debt_amt" columnName="indiv_debt_amt" cnname="负债金额" length="16" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="indiv_debt_str_dt" columnName="indiv_debt_str_dt" cnname="债务开始时间" length="10" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="indiv_debt_end_dt" columnName="indiv_debt_end_dt" cnname="债务结束时间" length="10" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="remark" columnName="remark" cnname="备注" length="250" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="input_id" columnName="input_id" cnname="登记人" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="input_br_id" columnName="input_br_id" cnname="登记机构" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="input_date" columnName="input_date" cnname="登记日期" length="10" JDBCType="CHAR" canBeNull="true"/>
+		<Field id="last_upd_id" columnName="last_upd_id" cnname="更新人" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="last_upd_date" columnName="last_upd_date" cnname="更新日期" length="10" JDBCType="VARCHAR2" canBeNull="true"/>
+	</TableModel>
+</CusIndivFamLby.xml>

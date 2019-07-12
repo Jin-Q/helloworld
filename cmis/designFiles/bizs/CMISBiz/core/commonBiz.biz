@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<MCITransaction trxName="commonBiz" trxCode="commonBiz">
+	<datas>
+		<refData access="private" refId="errorCode"/>
+		<refData access="private" refId="errorMsg"/>
+	</datas>
+	<document/>
+	<services/>
+	<formats/>
+	<operation id="getAddPage" name="获得新增页面模板流程">
+		<document/>
+		<flow name="flow1" x="10" height="400" width="500" y="10">
+			<StartAction name="StartAction0" x="109" height="40" width="100" y="16">
+				<transition name="transition0" dest="AgileExtendedAction0"/>
+			</StartAction>
+			<AgileExtendedAction name="AgileExtendedAction0" x="112" height="40" width="100" y="184">
+				<transition name="transition1" dest="EndAction0"/>
+			</AgileExtendedAction>
+			<EndAction name="EndAction0" x="123" result="0" height="40" width="100" y="347"/>
+		</flow>
+		<input/>
+		<output/>
+	</operation>
+	<operation id="queryList" name="查询多条记录模板流程" refFlowId="queryListCommonFlow">
+		<document/>
+		<flow x="10" height="400" width="500" y="10">
+			<ExtendedAction name="ExtendedAction0" x="108" height="40" width="100" y="96" extendId="BeforeAction">
+				<transition name="transition1" dest="QueryListTableAction0"/>
+			</ExtendedAction>
+			<ExtendedAction name="ExtendedAction1" x="113" height="40" width="100" y="270" extendId="AfterAction">
+				<transition name="transition3" dest="EndAction0"/>
+			</ExtendedAction>
+			<ExtendedAction name="ExtendedAction2" x="139" height="40" width="100" defaultRetValue="0" y="268" extendId="ExtendedNoRecord">
+				<transition name="transition5" dest="EndAction0"/>
+			</ExtendedAction>
+			<ExtendedAction name="ExtendedAction3" x="276" height="40" width="100" y="272" extendId="ExtendedAction3">
+				<transition name="transition7" dest="EndAction0"/>
+			</ExtendedAction>
+		</flow>
+		<input/>
+		<output/>
+	</operation>
+	<operation id="queryClassify" name="查询分类记录模板流程" refFlowId="queryClassifyCommonFlow">
+		<document/>
+		<flow x="10" height="400" width="500" y="10">
+			<ExtendedAction name="ExtendedAction0" x="108" height="40" width="100" y="96" extendId="BeforeAction">
+				<transition name="transition1" dest="QueryClassifyTableAction0"/>
+			</ExtendedAction>
+			<ExtendedAction name="ExtendedAction1" x="113" height="40" width="100" y="270" extendId="AfterAction">
+				<transition name="transition3" dest="EndAction0"/>
+			</ExtendedAction>
+			<ExtendedAction name="ExtendedAction2" x="191" height="40" width="100" defaultRetValue="0" y="266" extendId="ExtendedNoRecord">
+				<transition name="transition5" dest="EndAction0"/>
+			</ExtendedAction>
+		</flow>
+		<input/>
+		<output/>
+	</operation>
+	<operation id="addRecord" name="新增单条记录模板流程" refFlowId="addRecordCommonFlow">
+		<document/>
+		<flow x="10" height="400" width="500" y="10">
+			<ExtendedAction name="ExtendedAction0" x="152" height="40" width="100" y="94" extendId="BeforeAction">
+				<transition name="transition1" dest="AddTableAction0"/>
+			</ExtendedAction>
+			<ExtendedAction name="ExtendedAction1" x="154" height="40" width="100" y="299" extendId="AfterAction">
+				<transition name="transition3" dest="EndAction0"/>
+			</ExtendedAction>
+		</flow>
+		<input/>
+		<output/>
+	</operation>
+	<operation id="queryDetail" name="查询单条记录模板流程" refFlowId="queryDetailCommonFlow">
+		<document/>
+		<flow x="10" height="400" width="500" y="10">
+			<ExtendedAction name="ExtendedAction0" x="220" height="106" width="185" y="75" extendId="BeforeAction">
+				<transition name="transition1" dest="QueryDetailTableAction0"/>
+			</ExtendedAction>
+			<ExtendedAction name="ExtendedAction1" x="13" height="100" width="210" y="293" extendId="AfterAction">
+				<transition name="transition3" dest="EndAction0"/>
+			</ExtendedAction>
+			<ExtendedAction name="ExtendedAction2" x="237" height="40" width="100" defaultRetValue="0" y="319" extendId="ExtendedNoRecord">
+				<transition name="transition5" dest="EndAction0"/>
+			</ExtendedAction>
+		</flow>
+		<input/>
+		<output/>
+	</operation>
+	<operation id="queryJoinedDetail" name="查询单条记录模板流程（联合表）" refFlowId="queryJoinedDetailCommonFlow">
+		<document/>
+		<flow x="10" height="400" width="500" y="10">
+			<ExtendedAction name="ExtendedAction0" x="153" height="40" width="100" y="103" extendId="BeforeAction">
+				<transition name="transition1" dest="QueryDetailTableAction0"/>
+			</ExtendedAction>
+			<ExtendedAction name="ExtendedAction1" x="42" height="40" width="100" y="317" extendId="AfterAction">
+				<transition name="transition3" dest="EndAction0"/>
+			</ExtendedAction>
+			<ExtendedAction name="ExtendedAction2" x="237" height="40" width="100" defaultRetValue="0" y="319" extendId="ExtendedNoRecord">
+				<transition name="transition5" dest="EndAction0"/>
+			</ExtendedAction>
+		</flow>
+		<input/>
+		<output/>
+	</operation>
+	<operation id="updateRecord" name="更新单条记录模板流程" refFlowId="updateRecordCommonFlow">
+		<document/>
+		<flow x="10" height="400" width="500" y="10">
+			<ExtendedAction name="ExtendedAction0" x="161" height="40" width="100" y="100" extendId="BeforeAction">
+				<transition name="transition1" dest="UpdateTableAction0"/>
+			</ExtendedAction>
+			<ExtendedAction name="ExtendedAction1" x="160" height="40" width="100" y="314" extendId="AfterAction">
+				<transition name="transition3" dest="EndAction0"/>
+			</ExtendedAction>
+		</flow>
+		<input/>
+		<output/>
+	</operation>
+	<operation id="deleteRecord" name="删除记录模板流程" refFlowId="deleteRecordCommonFlow">
+		<document/>
+		<flow x="10" height="400" width="500" y="10">
+			<ExtendedAction name="ExtendedAction0" x="158" height="40" width="100" y="107" extendId="BeforeAction">
+				<transition name="transition1" dest="DeleteTableAction0"/>
+			</ExtendedAction>
+			<ExtendedAction name="ExtendedAction1" x="158" height="40" width="100" y="307" extendId="AfterAction">
+				<transition name="transition3" dest="EndAction0"/>
+			</ExtendedAction>
+		</flow>
+		<input/>
+		<output/>
+	</operation>
+	<operation id="deleteJoinedRecord" name="删除记录模板流程（联合表）" refFlowId="deleteJoinedRecordCommonFlow">
+		<document/>
+		<flow x="10" height="400" width="500" y="10">
+			<ExtendedAction name="ExtendedAction0" x="158" height="40" width="100" y="107" extendId="BeforeAction">
+				<transition name="transition1" dest="DeleteTableAction0"/>
+			</ExtendedAction>
+			<ExtendedAction name="ExtendedAction1" x="158" height="40" width="100" y="307" extendId="AfterAction">
+				<transition name="transition3" dest="EndAction0"/>
+			</ExtendedAction>
+		</flow>
+		<input/>
+		<output/>
+	</operation>
+	<operation id="saveRecord" name="保存记录信息" refFlowId="saveRecordCommonFlow">
+		<document/>
+		<flow x="10" height="400" width="500" y="10">
+			<ExtendedAction name="ExtendedAction0" x="168" height="40" width="100" defaultRetValue="0" y="111" extendId="BeforeExtended">
+				<transition name="transition1" label="未办理" dest="AddTableAction0" condition="($isProcessed = '0') and ($isDraft = '1')"/>
+				<transition name="transition2" label="已开始办理" dest="UpdateTableAction0"/>
+			</ExtendedAction>
+			<ExtendedAction name="ExtendedAction1" x="180" height="40" width="100" defaultRetValue="0" y="320" extendId="AfterExtended">
+				<transition name="transition5" dest="EndAction0"/>
+			</ExtendedAction>
+		</flow>
+		<input/>
+		<output/>
+	</operation>
+	<operation id="getJoinTableGroup" name="得联合表组">
+		<document/>
+		<flow name="flow1" x="10" height="400" width="500" y="10">
+			<StartAction name="StartAction0" x="127" height="40" width="100" y="61">
+				<transition name="transition1" dest="getJoinTableGroupAction0"/>
+			</StartAction>
+			<EndAction name="EndAction0" x="127" height="40" width="100" y="303"/>
+			<getJoinTableGroupAction name="getJoinTableGroupAction0" x="104" height="40" width="148" y="172">
+				<transition name="transition2" dest="EndAction0"/>
+			</getJoinTableGroupAction>
+		</flow>
+		<input/>
+		<output/>
+	</operation>
+	<operation id="queryDetail4WF" name="查询单条记录模板流程(针对工作流)" refFlowId="queryDetail4WFCommonFlow">
+		<document/>
+		<flow height="400" x="10" width="500" y="10">
+			<ExtendedAction name="ExtendedAction0" x="157" height="40" width="100" y="106" extendId="BeforeAction">
+				<transition name="transition1" dest="QueryDetailTableAction4WF0"/>
+			</ExtendedAction>
+			<ExtendedAction name="ExtendedAction1" x="90" height="40" width="100" y="307" extendId="AfterAction">
+				<transition name="transition3" dest="EndAction0"/>
+			</ExtendedAction>
+			<ExtendedAction name="ExtendedAction2" x="266" height="40" width="100" y="309" extendId="ExtendedNoRecord">
+				<transition name="transition5" dest="EndAction0"/>
+			</ExtendedAction>
+		</flow>
+		<input/>
+		<output/>
+	</operation>
+</MCITransaction>

@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actionDefines>
+	<classMap>
+		<map id="action" class="com.yucheng.cmis.ad.mvc.ADRequestController"/>
+		<map id="flowInvoker" class="com.yucheng.cmis.ad.mvc.ADFlowInvoker"/>
+		<map id="outputViews" class="java.util.HashMap"/>
+		<map id="output" class="com.ecc.emp.data.KeyedCollection"/>
+		<map id="kColl" class="com.ecc.emp.data.KeyedCollection"/>
+		<map id="iColl" class="com.ecc.emp.data.IndexedCollection"/>
+		<map id="field" class="com.ecc.emp.data.DataField"/>
+	</classMap>
+	
+	<!-- 获取操作主页面 -->
+	<action id="queryCtrLimitContList" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.cont.op.ctrlimitcont.QueryCtrLimitContListOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="biz01line/cont/CtrLimitCont/queryCtrLimitContList.jsp" />
+		</outputViews>
+	</action>
+	<!-- 获取操作主页面 -->
+	<action id="queryCtrLimitContHisList" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.cont.op.ctrlimitcont.QueryCtrLimitContHisListOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="biz01line/cont/CtrLimitCont/queryCtrLimitContHisList.jsp" />
+		</outputViews>
+	</action>
+	<!-- 获得编辑页面 -->
+	<action id="getCtrLimitContUpdatePage" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation updateCheck="false" class="com.yucheng.cmis.biz01line.cont.op.ctrlimitcont.QueryCtrLimitContDetailOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="biz01line/cont/CtrLimitCont/updateCtrLimitContRecord.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 更新记录 -->
+	<action id="updateCtrLimitContRecord" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.cont.op.ctrlimitcont.UpdateCtrLimitContRecordOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<view id="retPage" class="com.yucheng.cmis.view.JSONView">
+				<output class="com.ecc.emp.data.KeyedCollection">
+					<field id="flag" class="com.ecc.emp.data.DataField" />
+				</output>
+			</view>
+		</outputViews>
+	</action>
+	
+	<!-- 注销操作 -->
+	<action id="destroyCtrLimitCont" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.cont.op.ctrlimitcont.DestroyCtrLimitContOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<view id="retPage" class="com.yucheng.cmis.view.JSONView">
+				<output class="com.ecc.emp.data.KeyedCollection">
+					<field id="flag" class="com.ecc.emp.data.DataField" />
+					<field id="billNo" class="com.ecc.emp.data.DataField" />
+				</output>
+			</view>
+		</outputViews>
+	</action>
+	
+	<!-- 获得查看页面 -->
+	<action id="getCtrLimitContViewPage" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.cont.op.ctrlimitcont.QueryCtrLimitContDetailOp"/>
+			<transition dest="updatePage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="updatePage" url="biz01line/cont/CtrLimitCont/queryCtrLimitContDetail.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 获得新增页面 -->
+	<action id="getCtrLimitContAddPage" type="normal" checkSession="true" >
+		<jspView id="addPage" url="biz01line/cont/CtrLimitCont/addCtrLimitContRecord.jsp"/>
+	</action>
+	
+	<!-- 新增记录 -->
+	<action id="addCtrLimitContRecord" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.cont.op.ctrlimitcont.AddCtrLimitContRecordOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="operationResult.jsp?url=queryCtrLimitContList.do" />
+		</outputViews>
+	</action>	
+	
+	<!-- 删除记录 -->
+	<action id="deleteCtrLimitContRecord" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.cont.op.ctrlimitcont.DeleteCtrLimitContRecordOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="operationResult.jsp?url=queryCtrLimitContList.do" />
+		</outputViews>
+	</action>
+	
+	<!-- 分页查询记录列表 -->
+		<action id="pageCtrLimitContQuery" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.cont.op.ctrlimitcont.QueryCtrLimitContListOp"/>
+			<transition dest="queryListRes"/>
+		</flowInvoker>
+		<outputViews>
+			<jsonView class="com.yucheng.cmis.view.JSONView" id="queryListRes">
+				<output>
+					<iColl id="CtrLimitContList">
+						<kColl>
+							<field id="cont_no" />
+							<field id="serno" />
+							<field id="cont_cn" />
+							<field id="cus_id" />
+							<field id="cur_type" />
+							<field id="cont_amt" />
+							<field id="start_date" />
+							<field id="end_date" />
+							<field id="cont_status" />
+							<field id="memo" />
+							<field id="manager_br_id" />
+							<field id="input_id" />
+							<field id="input_br_id" />
+							<field id="cus_id_displayname" />
+							<field id="manager_br_id_displayname" />
+							<field id="input_id_displayname" />
+							<field id="input_br_id_displayname" />
+						</kColl>
+					</iColl>
+					<kColl id="pageInfo">
+						<field id="currentPage" />
+						<field id="maxLine" />
+						<field id="recordSize" />
+					</kColl>
+				</output>
+			</jsonView>
+		</outputViews>
+	</action>
+	
+</actionDefines>
+
+
+

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<PspDunningRecord.xml>
+	<TableModel id="PspDunningRecord" cnname="催收纪录及回执登记" dbTableName="psp_dunning_record">
+		<Field id="serno" isPK="true" columnName="serno" cnname="催收函编号" length="40" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="dunning_date" columnName="dunning_date" cnname="催收日期" length="10" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="dunning_obj_type" columnName="dunning_obj_type" cnname="催收对象类型" length="5" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="cus_id" columnName="cus_id" cnname="客户码" length="30" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="dunning_type" columnName="dunning_type" cnname="催收方式" length="5" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="dunning_id" columnName="dunning_id" cnname="催收人" length="20" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="dunning_time" columnName="dunning_time" cnname="催收时间" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="cur_type" columnName="cur_type" cnname="催收币种" length="20" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="dunning_amt" columnName="dunning_amt" cnname="催收金额" length="16" JDBCType="NUMBER" canBeNull="false"/>
+		<Field id="is_link" columnName="is_link" cnname="是否取得联系" length="5" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="overdue_resn" columnName="overdue_resn" cnname="逾期或欠息原因" length="500" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="repay_promiss_time" columnName="repay_promiss_time" cnname="还款承诺时间" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="dunning_dec" columnName="dunning_dec" cnname="催收情况描述" length="500" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="sign_date" columnName="sign_date" cnname="签收日期" length="10" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="sign_id" columnName="sign_id" cnname="签收人" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="is_reply" columnName="is_reply" cnname="是否回执" length="5" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="reply_date" columnName="reply_date" cnname="回执日期" length="10" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="reply_info" columnName="reply_info" cnname="回执内容" length="500" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="memo" columnName="memo" cnname="备注" length="500" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="input_id" columnName="input_id" cnname="登记人" length="20" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="input_br_id" columnName="input_br_id" cnname="登记机构" length="20" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="input_date" columnName="input_date" cnname="登记日期" length="10" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="task_serno" columnName="task_serno" cnname="催收信息编号" length="40" JDBCType="VARCHAR2" canBeNull="true"/>
+	</TableModel>
+</PspDunningRecord.xml>

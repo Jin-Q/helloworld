@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<SDept.xml>
+	<TableModel id="SDept" cnname="部门表" dbTableName="s_dept">
+		<Field id="depno" isPK="true" columnName="depno" cnname="部门码" length="16" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="organno" columnName="organno" cnname="机构码" length="16" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="supdepno" columnName="supdepno" cnname="上级部门码" length="16" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="depname" columnName="depname" cnname="部门名称" length="40" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="depshortform" columnName="depshortform" cnname="部门简称" length="40" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="enname" columnName="enname" cnname="英文名" length="40" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="orderno" isEncrypted="false" columnName="orderno" cnname="序号" length="38" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="distno" columnName="distno" cnname="地区编号" length="10" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="launchdate" columnName="launchdate" cnname="开办日期" length="10" JDBCType="CHAR" canBeNull="true"/>
+		<Field id="deplevel" columnName="deplevel" cnname="部门级别" length="38" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="state" columnName="state" cnname="状态" length="38" JDBCType="NUMBER" canBeNull="false"/>
+		<Field id="depchief" columnName="depchief" cnname="部门负责人" length="32" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="telnum" columnName="telnum" cnname="联系电话" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="address" columnName="address" cnname="地址" length="200" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="postcode" columnName="postcode" cnname="邮编" length="10" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="memo" columnName="memo" cnname="备注" length="60" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="orgid" columnName="orgid" cnname="组织号" length="16" JDBCType="VARCHAR2" canBeNull="true"/>
+	</TableModel>
+</SDept.xml>

@@ -1,0 +1,92 @@
+#set ($tableModelName=${TableModel.tableId})
+#set($relatedField=${TableModel.relatedField})
+#set($primaryRelatedField=${TableModel.primaryRelatedField})
+#set($primaryTableName=${TableModel.primaryTableName})
+<%@page language="java" contentType="text/html; charset=${jspEncode}"%>
+<%@taglib uri="/WEB-INF/emp.tld" prefix="emp" %>
+<emp:page>
+<html>
+<head>
+<title>子表列表查询页面</title>
+
+<jsp:include page="/include.jsp" flush="true"/>
+
+<script type="text/javascript">
+	
+	function doGetUpdate${tableModelName}Page() {
+		var paramStr = ${tableModelName}List._obj.getParamStr([${TableModel.getPkString()}]);
+		if (paramStr!=null) {
+			var url = '<emp:url action="get${TableModel.primaryTableName}${tableModelName}UpdatePage.do"/>?'+paramStr;
+			url = EMPTools.encodeURI(url);
+			EMPTools.openWindow(url,'newwindow');
+		}
+	};
+	
+	function doGetAdd${tableModelName}Page(){
+		var ${relatedField} = window.parent.window.${primaryTableName}.${primaryRelatedField}._getValue();
+		var url = '<emp:url action="get${TableModel.primaryTableName}${tableModelName}AddPage.do"/>?${tableModelName}.${relatedField}='+${relatedField};
+		url = EMPTools.encodeURI(url);
+		EMPTools.openWindow(url,'newwindow');
+	};
+	
+	function doDelete${tableModelName}() {
+		var paramStr = ${tableModelName}List._obj.getParamStr([${TableModel.getPkString()}]);
+		if (paramStr != null) {
+			if(confirm("是否确认要删除？")){
+				var url = '<emp:url action="delete${TableModel.primaryTableName}${tableModelName}Record.do"/>?'+paramStr;
+				url = EMPTools.encodeURI(url);
+				window.location = url;
+			}
+		} else {
+			alert('请先选择一条记录！');
+		}
+	};
+	
+	function doView${tableModelName}() {
+		var paramStr = ${tableModelName}List._obj.getParamStr([${TableModel.getPkString()}]);
+		if (paramStr!=null) {
+			var url = '<emp:url action="query${TableModel.primaryTableName}${tableModelName}Detail.do"/>?'+paramStr;
+			url = EMPTools.encodeURI(url);
+			EMPTools.openWindow(url,'newwindow');
+		}else {
+			alert('请先选择一条记录！');
+		}
+	};
+	
+	/*--user code begin--*/
+			
+	/*--user code end--*/
+	
+</script>
+</head>
+
+<body class="page_content">
+
+	<div align="left">
+		<emp:button id="getAdd${tableModelName}Page" label="新增" op="add_${tableModelName}"/>
+		<emp:button id="getUpdate${tableModelName}Page" label="修改" op="update_${tableModelName}"/>
+		<emp:button id="delete${tableModelName}" label="删除" op="remove_${tableModelName}"/>
+		<emp:button id="view${tableModelName}" label="查看" op="view_${tableModelName}"/>
+	</div>
+							
+	<emp:table icollName="${tableModelName}List" pageMode="${TableModel.isPaged()}" url="page${TableModel.primaryTableName}${tableModelName}Query.do" reqParams="${primaryTableName}.${primaryRelatedField}=$${primaryTableName}.${primaryRelatedField};">
+
+#set($filterSize=${TableModel.getFilterFieldsSize()})
+#if(${filterSize}>0)
+#foreach(${filterField} in ${TableModel.filterFields})
+#set($fieldWra=${TableModel.getFieldById("${filterField}")})
+		${JspBuilder.generateTag(${fieldWra},"tableitem")}
+#end
+#else
+#foreach(${fieldWra} in ${TableModel.fieldsList})
+		${JspBuilder.generateTag(${fieldWra},"tableitem")}
+#end
+#end
+#foreach(${pkWra} in ${TableModel.getPKOutFilter()})
+		${JspBuilder.generateTag(${pkWra},"hiddentableitem")}
+#end
+	</emp:table>
+				
+</body>
+</html>
+</emp:page>

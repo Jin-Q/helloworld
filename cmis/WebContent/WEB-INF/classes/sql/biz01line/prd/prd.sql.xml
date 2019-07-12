@@ -1,0 +1,289 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<S>
+<!-- 通过产品编号获得产品配置表中产品配置信息 -->
+<SQL id="getPrdBasicinfoByPrdId4KColl" parameterClass="java.lang.String" resultClass="com.ecc.emp.data.KeyedCollection" onlyReturnFirst="false">
+  <SELECT>
+  <![CDATA[
+	 SELECT * FROM PRD_BASICINFO WHERE PRDID=${_SIG_VALUE}
+  ]]>
+  </SELECT>
+</SQL>
+<!-- 通过产品编号获得产品配置表中产品配置信息 -->
+<SQL id="getPrdBasicinfoByPrdId4PrdBasicinfo" parameterClass="java.lang.String" resultClass="com.ecc.emp.data.KeyedCollection" onlyReturnFirst="false">
+  <SELECT>
+  <![CDATA[
+	 SELECT * FROM PRD_BASICINFO WHERE PRDID=${_SIG_VALUE}
+  ]]>
+  </SELECT>
+</SQL>
+<!-- 通过产品编号获得产品适用机构信息 -->
+<SQL id="getPrdApplyOrgByPrdId" parameterClass="java.lang.String" resultClass="com.ecc.emp.data.KeyedCollection" onlyReturnFirst="false">
+  <SELECT>
+  <![CDATA[
+	 SELECT * FROM PRD_ORG_APPLY WHERE PRD_ID=${_SIG_VALUE}
+  ]]>
+  </SELECT>
+</SQL>
+
+<!-- 根据政策编号获取已配置流程 -->
+<SQL id="getFlowIdBySchemeId" parameterClass="java.lang.String" resultClass="com.ecc.emp.data.KeyedCollection" onlyReturnFirst="false">
+  <SELECT>
+  <![CDATA[
+	 SELECT DISTINCT(FLOWID),EFFECTIVE,SCHEMEID FROM PRD_SCHEME_SPACE_REL WHERE SCHEMEID=${_SIG_VALUE}
+  ]]>
+  </SELECT>
+</SQL>
+<!-- 根据政策值流程值获得选择的流程节点值 -->
+<SQL id="getFlowNodeBySchemeIdAndFlowId" parameterClass="com.ecc.emp.data.KeyedCollection" resultClass="com.ecc.emp.data.KeyedCollection" onlyReturnFirst="false">
+  <SELECT>
+  <![CDATA[
+	 SELECT DISTINCT(FLOWNODE) FROM PRD_SCHEME_SPACE_REL WHERE SCHEMEID=${schemeid} AND FLOWID=${flowid}
+  ]]>
+  </SELECT>
+</SQL>
+<!-- 根据删除原有关联场景信息 -->
+<SQL id="deleteSchemeRel"  parameterClass="com.ecc.emp.data.KeyedCollection" >
+  <DELETE>
+  <![CDATA[
+  DELETE FROM PRD_SCHEME_SPACE_REL WHERE SCHEMEID=${schemeid} AND FLOWID=${flowid} AND FLOWNODE=${flownode} AND PLOCYCODE=${schemecode}
+  ]]>
+  </DELETE>
+</SQL>
+<!-- 插入新的关联场景信息 -->
+<SQL id="insertSchemeRel" parameterClass="java.lang.String" valueClass ="java.util.HashMap" >
+  <INSERT>
+  <![CDATA[
+  	INSERT INTO PRD_SCHEME_SPACE_REL(SCHEMEID,FLOWID,FLOWNODE,PLOCYCODE,STATUS) VALUES (${schemeid},${flowid},${flownode},${schemecode},${status})
+  ]]>
+  </INSERT> 
+</SQL>
+<!-- 更新关联场景状态信息  -->
+<SQL id="updateSchemeRelStatus" parameterClass="java.lang.String" valueClass ="java.util.HashMap" >
+   <UPDATE>
+  <![CDATA[
+	UPDATE PRD_SCHEME_SPACE_REL SET EFFECTIVE=${status} WHERE SCHEMEID=${schemeid} AND FLOWID=${flowid} AND FLOWNODE=${flownode} AND PLOCYCODE=${schemecode}
+  ]]>
+   </UPDATE>
+</SQL>
+<!-- 根据删除原有关联场景信息Map -->
+<SQL id="deleteSchemeRelMap"  parameterClass="java.lang.String" valueClass ="java.util.HashMap" >
+  <DELETE>
+  <![CDATA[
+  	DELETE FROM PRD_SCHEME_SPACE_REL WHERE SCHEMEID=${schemeid} AND FLOWID=${flowid} AND FLOWNODE=${flownode} AND PLOCYCODE=${schemecode}
+  ]]>
+  </DELETE>
+</SQL>
+<!-- 删除政策方案关联场景信息 -->
+<SQL id="deleteSchemeRel1"  parameterClass="java.util.HashMap" >
+  <DELETE>
+  <![CDATA[
+  	DELETE FROM PRD_SCHEME_SPACE_REL WHERE SCHEMEID=${schemeid} AND FLOWID=${flowid}
+  ]]>
+  </DELETE>
+</SQL>
+<!-- 更新政策方案关联场景状态信息  -->
+<SQL id="updateSchemeRelStatus1" parameterClass="java.util.HashMap" valueClass ="java.lang.String" >
+   <UPDATE>
+  <![CDATA[
+  	UPDATE PRD_SCHEME_SPACE_REL SET EFFECTIVE=${_SIG_VALUE} WHERE SCHEMEID=${schemeid} AND FLOWID=${flowid}
+  ]]>
+   </UPDATE>
+</SQL>
+<!-- 根据政策方案ID、流程ID、流程节点ID获得节点配置的政策策略 -->
+<SQL id="getPlocyListBySchemeIdAndFlowIdAndNodeId" parameterClass="com.ecc.emp.data.KeyedCollection" resultClass="com.ecc.emp.data.KeyedCollection" onlyReturnFirst="false">
+  <SELECT>
+  <![CDATA[
+	 SELECT T2.SCHEMECODE,T2.SCHEMEDESC,T1.STATUS FROM PRD_SCHEME_SPACE_REL T1,PRD_PLOCY T2 WHERE T1.SCHEMEID=${schemeid} AND T1.FLOWID=${flowid} AND T1.FLOWNODE=${flownode} AND T1.PLOCYCODE=T2.SCHEMECODE
+  ]]>
+  </SELECT>
+</SQL>
+<!-- 产品配置模块【根据产品ID获取产品项下关联的机构】 -->
+<SQL id="getPrdOrgApplyICollByPrdId" parameterClass="java.lang.String" resultClass="com.ecc.emp.data.KeyedCollection" onlyReturnFirst="false">
+  <SELECT>
+  <![CDATA[
+	 SELECT T1.ORG_ID,T2.ORGANNAME,T1.APPLY_RANGE,T1.APPLY_TYPE FROM PRD_ORG_APPLY T1,S_ORG T2 WHERE T1.PRD_ID=${_SIG_VALUE} AND T1.ORG_ID=T2.ORGANNO
+  ]]>
+  </SELECT>
+</SQL>
+<!-- 插入产品适用机构信息 -->
+<SQL id="insertPrdOrgApplyByIColl" parameterClass="java.lang.String" valueClass ="java.util.HashMap" >
+  <INSERT>
+  <![CDATA[
+  	INSERT INTO PRD_ORG_APPLY(PRD_ID,ORG_ID,APPLY_RANGE,APPLY_TYPE) VALUES (${prd_id},${org_id},${apply_range},${apply_type})
+  ]]>
+  </INSERT> 
+</SQL>
+<!-- 删除产品适用机构信息 -->
+<SQL id="deletePrdOrgApplyByIColl"  parameterClass="java.util.HashMap" >
+  <DELETE>
+  <![CDATA[
+  	DELETE PRD_ORG_APPLY WHERE PRD_ID=${prd_id} AND ORG_ID=${org_id}
+  ]]>
+  </DELETE>
+</SQL>
+<!-- 根据产品编号，机构编号，查询关联表中是否已经关联 -->
+<SQL id="selectPrdOrgApplyByIColl" parameterClass="java.util.HashMap" resultClass="com.ecc.emp.data.KeyedCollection" onlyReturnFirst="false">
+  <SELECT>
+  <![CDATA[
+	 SELECT PRD_ID FROM PRD_ORG_APPLY WHERE PRD_ID=${prd_id} AND ORG_ID=${org_id}
+  ]]>
+  </SELECT>
+</SQL>
+<!-- 根据产品编号，机构编号，更新关联表中原有记录  -->
+<SQL id="updatePrdOrgApplyByIColl" parameterClass="java.util.HashMap" valueClass ="java.util.HashMap" >
+   <UPDATE>
+  <![CDATA[
+  	update prd_org_apply set apply_range=${apply_range},apply_type=${apply_type} where prd_id=${prd_id} and org_id=${org_id}
+  ]]>
+   </UPDATE>
+</SQL>
+<!-- 产品配置模块【根据政策ID、流程ID获取政策方案项下流程中所有政策信息】     -->
+<SQL id="getPlocyListBySchemeIdAndFlowId" parameterClass="java.lang.String" resultClass="com.ecc.emp.data.KeyedCollection" onlyReturnFirst="false">
+  <SELECT>
+  <![CDATA[
+	 SELECT DISTINCT(T2.SCHEMECODE),T2.SCHEMEDESC FROM PRD_SCHEME_SPACE_REL T1, PRD_PLOCY T2 WHERE FLOWID IS NULL AND SCHEMEID=${_SIG_VALUE} AND T1.PLOCYCODE=T2.SCHEMECODE
+  ]]>
+  </SELECT>
+</SQL>
+<!-- 产品配置模块【根据政策方案ID和获取的资料列表建立两者关联关系】 -->
+<SQL id="connPrdPlocyWithPrdScheme" parameterClass="java.lang.String" valueClass ="java.util.HashMap" >
+  <INSERT>
+  <![CDATA[
+  	INSERT INTO PRD_SCHEME_SPACE_REL(SCHEMEID,PLOCYCODE) VALUES (${schemeid},${plocycode})
+  ]]>
+  </INSERT> 
+</SQL>
+<!-- 往政策场景关联表中插入关联信息   -->
+<SQL id="selectPrdSchemeSpaceRel" parameterClass="java.util.HashMap" resultClass="com.ecc.emp.data.KeyedCollection" onlyReturnFirst="false">
+  <SELECT>
+  <![CDATA[
+	 SELECT SCHEMEID FROM PRD_SCHEME_SPACE_REL WHERE SCHEMEID=${schemeid} AND PLOCYCODE=${plocycode} AND FLOWID=${flowid} AND FLOWNODE=${flownode}
+  ]]>
+  </SELECT>
+</SQL>
+<!-- 更新政策场景关联信息  -->
+<SQL id="updatePrdSchemeSpaceRel" parameterClass="java.util.HashMap" valueClass ="java.util.HashMap" >
+   <UPDATE>
+  <![CDATA[
+  	UPDATE PRD_SCHEME_SPACE_REL SET STATUS = ${status} WHERE SCHEMEID=${schemeid} AND PLOCYCODE=${plocycode} AND FLOWID=${flowid} AND FLOWNODE=${flownode}
+  ]]>
+   </UPDATE>
+</SQL>
+<!-- 新增政策场景关联信息 -->
+<SQL id="insertPrdSchemeSpaceRel" parameterClass="java.lang.String" valueClass ="java.util.HashMap" >
+  <INSERT>
+  <![CDATA[
+  	INSERT INTO PRD_SCHEME_SPACE_REL(SCHEMEID,FLOWID,FLOWNODE,PLOCYCODE,STATUS) VALUES (${schemeid},${flowid},${flownode},${plocycode},${status})
+  ]]>
+  </INSERT> 
+</SQL>
+<!-- 通过政策ID获取政策资料列表数据   -->
+<SQL id="getPlocyRelListBySchemeId" parameterClass="java.lang.String" resultClass="com.ecc.emp.data.KeyedCollection" onlyReturnFirst="false">
+  <SELECT>
+  <![CDATA[
+	 SELECT DISTINCT(T1.SCHEMECODE),T1.SCHEMEDESC,T1.IFWARRANT,T1.SCHEMETYPE,T1.INPUTID,T1.INPUTDATE,T1.ORGID FROM PRD_PLOCY T1,PRD_SCHEME_SPACE_REL T2 WHERE T2.SCHEMEID=${_SIG_VALUE} AND T2.PLOCYCODE = T1.SCHEMECODE
+  ]]>
+  </SELECT>
+</SQL>
+<!-- 删除政策资料关联关系 -->
+<SQL id="delPrdPlocyWithPrdScheme"  parameterClass="java.util.HashMap" >
+  <DELETE>
+  <![CDATA[
+  	DELETE FROM PRD_SCHEME_SPACE_REL WHERE SCHEMEID=${schemeid} AND PLOCYCODE=${schemecode}
+  ]]>
+  </DELETE>
+</SQL>
+<!-- 通过政策ID获取政策资料列表数据   -->
+<SQL id="getTabResourceListByParentId" resultClass="com.ecc.emp.data.KeyedCollection" onlyReturnFirst="false">
+  <SELECT>
+  <![CDATA[
+	 SELECT RESOURCEID,CNNAME FROM S_RESOURCE
+  ]]>
+  </SELECT>
+</SQL>
+<!-- 通过产品上级目录ID获得产品目录下所有配置的产品信息   -->
+<SQL id="getPrdByParentCatalogId" parameterClass="java.lang.String" resultClass="com.ecc.emp.data.KeyedCollection" onlyReturnFirst="false">
+  <SELECT>
+  <![CDATA[
+	 SELECT T1.PRDID AS CATALOGID,T1.PRDNAME AS CATALOGNAME,T2.CATALOGLEVEL||','||T1.PRDID AS CATALOGLEVEL, T1.SUPCATALOG AS SUPCATALOGID FROM PRD_BASICINFO T1,PRD_CATALOG T2 WHERE T1.SUPCATALOG=${_SIG_VALUE} AND T1.SUPCATALOG=T2.CATALOGID
+  ]]>
+  </SELECT>
+</SQL>
+<!-- 通过业务线以及上级目录ID获得目录下的目录以及产品信息   -->
+<SQL id="getNextCatalogByBizline" parameterClass="java.util.HashMap" resultClass="com.ecc.emp.data.KeyedCollection" onlyReturnFirst="false">
+  <SELECT>
+  <![CDATA[
+	 SELECT CATALOGID,CATALOGNAME,CATALOGLEVEL,SUPCATALOGID FROM PRD_CATALOG WHERE SUPCATALOGID=${nodeid} AND CATALOGTYPE LIKE '%${bizline}%' UNION ALL SELECT PRDID AS CATALOGID,PRDNAME AS CATALOGNAME,(SELECT CATALOGLEVEL FROM PRD_CATALOG WHERE CATALOGID=${nodeid})||','||PRDID AS CATALOGLEVEL,SUPCATALOG AS SUPCATALOGID FROM PRD_BASICINFO WHERE SUPCATALOG = ${nodeid}
+  ]]>
+  </SELECT>
+</SQL>
+<!-- 通过目录ID获得目录下的产品信息  modified by yangzy 2015/05/08 需求编号:XD150318023,微贷平台零售自助贷款改造,屏蔽自助贷款品种100084,100085  -->
+<SQL id="queryPrdBasicinfoByCatalog" parameterClass="java.util.HashMap" resultClass="com.ecc.emp.data.KeyedCollection" onlyReturnFirst="false">
+  <SELECT>
+  <![CDATA[
+	 SELECT * FROM PRD_BASICINFO WHERE SUPCATALOG = ${catalogid} AND PRDSTATUS = '0' AND PRDID NOT IN ('100084','100085') AND STARTDATE <= ${currentdate} AND  ENDDATE >= ${currentdate}
+  ]]>
+  </SELECT>
+</SQL>
+<!-- 通过目录ID获得下一级目录信息  -->
+<!-- modify by chenBQ 20190325 默认不展示网贷 -->
+<SQL id="getNextCatalogByCatalogId" parameterClass="java.lang.String" resultClass="com.ecc.emp.data.KeyedCollection" onlyReturnFirst="false">
+  <SELECT>
+  <![CDATA[
+	SELECT * FROM PRD_CATALOG WHERE SUPCATALOGID = ${_SIG_VALUE} and CATALOGID !='PRD20161130723' 
+  ]]>
+  </SELECT>
+</SQL>
+
+<!-- 通过资源ID获取资源操作表中的操作权限   -->
+<SQL id="getActionByResourceId" parameterClass="java.lang.String" resultClass="com.ecc.emp.data.KeyedCollection" onlyReturnFirst="false">
+  <SELECT>
+  <![CDATA[
+	SELECT * FROM S_RESOURCEACTION WHERE RESOURCEID = ${_SIG_VALUE}
+  ]]>
+  </SELECT>
+</SQL>
+
+<!-- 通过业务品种、币种、期限获取利率信息 -->
+<SQL id="getRate" parameterClass="java.util.HashMap" resultClass="com.ecc.emp.data.KeyedCollection">
+  <DELETE>
+  <![CDATA[
+  	SELECT * FROM PRD_RATE WHERE BIZ_TYPE = ${prdid} AND CUR_TYPE = ${curtype} AND ${termM} between TERM_MIN and TERM_MAX
+  ]]>
+  </DELETE>
+</SQL>
+
+<!-- 通过币种和利率种类获取Libor基准年利率 -->
+<SQL id="getLiborRate" parameterClass="java.util.HashMap" resultClass="com.ecc.emp.data.KeyedCollection"  onlyReturnFirst="false">
+  <DELETE>
+  <![CDATA[
+  	SELECT (case when ${irType} = '01' then libor.one_month_ir 
+             when ${irType} = '02' then libor.two_month_ir
+             when ${irType} = '03' then libor.three_month_ir
+             when ${irType} = '04' then libor.four_month_ir
+             when ${irType} = '05' then libor.five_month_ir
+             when ${irType} = '06' then libor.six_month_ir
+             when ${irType} = '07' then libor.seven_month_ir
+             when ${irType} = '08' then libor.eight_month_ir
+             when ${irType} = '09' then libor.nine_month_ir
+             when ${irType} = '10' then libor.ten_month_ir
+             when ${irType} = '11' then libor.eleven_month_ir
+             when ${irType} = '12' then libor.twelve_month_ir
+             else libor.one_week_ir end           
+             ) as libor_rate
+  FROM prd_libor_maintain libor
+ WHERE libor.CUR_TYPE = ${currType}
+   AND libor.STATUS = '03'
+  ]]>
+  </DELETE>
+</SQL>
+<!-- LIBOR利率，复核、生效、打回时，更改利率状态-->
+<SQL id="updatePrdLiborMaintain" parameterClass="java.lang.String" valueClass ="java.util.HashMap" >
+   <UPDATE>
+  <![CDATA[
+  	update prd_libor_maintain set check_id=${check_id},start_date=${start_date},status=${status} where status=${_SIG_VALUE}
+  	and imp_date = (select openday from pub_sys_info )
+  ]]>
+   </UPDATE>
+</SQL>
+</S>

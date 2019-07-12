@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<MortStorExwaDetail.xml>
+	<TableModel id="MortStorExwaDetail" cnname="押品出入库明细" dbTableName="mort_stor_exwa_detail">
+		<Field id="serno" isPK="true" columnName="serno" cnname="业务编号" length="60" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="guaranty_no" columnName="guaranty_no" cnname="押品编号" length="40" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="warrant_no" isPK="true" columnName="warrant_no" cnname="权证编号" length="100" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="warrant_type" isPK="true" columnName="warrant_type" cnname="权证类型" length="2" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="warrant_state" columnName="warrant_state" cnname="权证状态" length="2" JDBCType="VARCHAR2"/>
+		<Field id="ori_warrant_state" columnName="ori_warrant_state" cnname="原权证状态" length="2" JDBCType="VARCHAR2"/>
+	</TableModel>
+</MortStorExwaDetail.xml>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<FileUploadInfo.xml>
+	<TableModel id="FileUploadInfo" cnname="上传下载" dbTableName="file_upload_info">
+	<Field id="id" isPK="true" columnName="id"  cnname="主键" length="20" JDBCType="VARCHAR2" canBeNull="false"/>
+	<Field id="module_id" columnName="module_id" cnname="模块标识" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+	<Field id="func_id" columnName="func_id" cnname="功能标识" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+	<Field id="data_id" columnName="data_id" cnname="数据标识" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+	<Field id="file_name" columnName="file_name" cnname="文件名称" length="200" JDBCType="VARCHAR2" canBeNull="true"/>
+	<Field id="file_type" columnName="file_type" cnname="文件类型" length="10" JDBCType="VARCHAR2" canBeNull="true"/>
+	<Field id="file_size" columnName="file_size" cnname="文件大小" length="16" JDBCType="NUMBER" canBeNull="true"/>
+	<Field id="file_path" columnName="file_path" cnname="文件路径" length="500" JDBCType="VARCHAR2" canBeNull="true"/>
+	<Field id="year" columnName="year" cnname="年" length="4" JDBCType="CHAR" canBeNull="true"/>
+	<Field id="month" columnName="month" cnname="月" length="2" JDBCType="CHAR" canBeNull="true"/>
+	<Field id="day" columnName="day" cnname="日" length="2" JDBCType="CHAR" canBeNull="true"/> 
+	<Field id="created_by" columnName="created_by" cnname="创建人" length="20" JDBCType="VARCHAR2" canBeNull="true"/> 
+	<Field id="creation_date" columnName="creation_date" cnname="创建时间" length="20" JDBCType="VARCHAR2" canBeNull="true"/> 
+
+	</TableModel>
+</FileUploadInfo.xml>

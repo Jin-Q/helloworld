@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<MortLandBelongs.xml>
+	<TableModel id="MortLandBelongs" cnname="土地承包经营权共有人情况" dbTableName="mort_land_belongs">
+		<TableInfo/>
+		<Field id="land_id" isPK="true" columnName="land_id" cnname="主键" length="30" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="guaranty_no" columnName="guaranty_no" cnname="押品编号" length="30" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="cus_name" columnName="cus_name" cnname="姓名" length="100" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="sex" columnName="sex" cnname="性别" length="2" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="age" columnName="age" cnname="年龄" length="3" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+	</TableModel>
+</MortLandBelongs.xml>

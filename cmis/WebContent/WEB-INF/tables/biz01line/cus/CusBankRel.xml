@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<CusBankRel.xml>
+	<TableModel id="CusBankRel" cnname="客户与我行关系" dbTableName="cus_bank_rel">
+		<Field id="cus_id" isPK="true" columnName="cus_id" cnname="客户编号" length="20" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="cus_name" columnName="cus_name" cnname="客户名称" length="60" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="cus_bank_rel" columnName="cus_bank_rel" cnname="客户与我行关系" length="2" JDBCType="CHAR" canBeNull="true"/>
+		<Field id="cus_bank_rel_name" columnName="cus_bank_rel_name" cnname="客户与我行关系名称" length="60" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="reg_name" columnName="reg_name" cnname="登记人" length="60" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="reg_org" columnName="reg_org" cnname="登记机构" length="60" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="reg_date" columnName="reg_date" cnname="登记日期" length="10" JDBCType="VARCHAR2" canBeNull="true"/>
+	</TableModel>
+</CusBankRel.xml>

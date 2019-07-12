@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actionDefines>
+	<classMap>
+		<map id="action" class="com.yucheng.cmis.ad.mvc.ADRequestController"/>
+		<map id="flowInvoker" class="com.yucheng.cmis.ad.mvc.ADFlowInvoker"/>
+		<map id="outputViews" class="java.util.HashMap"/>
+		<map id="output" class="com.ecc.emp.data.KeyedCollection"/>
+		<map id="kColl" class="com.ecc.emp.data.KeyedCollection"/>
+		<map id="iColl" class="com.ecc.emp.data.IndexedCollection"/>
+		<map id="field" class="com.ecc.emp.data.DataField"/>
+	</classMap>
+	
+	<!-- 获取操作主页面 -->
+	<action id="querypluginregList" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.platform.pluginmanager.op.QuerypluginregListOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="platform/pluginmanager/querypluginregList.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 获得查看页面 -->
+	<action id="getpluginregViewPage" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.platform.pluginmanager.op.QuerypluginregDetailOp"/>
+			<transition dest="updatePage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="updatePage" url="platform/pluginmanager/querypluginregDetail.jsp" />
+		</outputViews>
+	</action>
+	
+	
+	<!-- 安装插件 -->
+	<action id="installPlugin" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.platform.pluginmanager.op.InstallPluginOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<view id="retPage" class="com.yucheng.cmis.view.JSONView">
+				<output class="com.ecc.emp.data.KeyedCollection">
+					<field id="flag" class="com.ecc.emp.data.DataField"/>
+					<field id="message" class="com.ecc.emp.data.DataField"/>
+				</output>
+			</view>
+		</outputViews>
+	</action>	
+	
+	<!-- 更新插件 -->
+	<action id="updatePlugin" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.platform.pluginmanager.op.UpdatePluginOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<view id="retPage" class="com.yucheng.cmis.view.JSONView">
+				<output class="com.ecc.emp.data.KeyedCollection">
+					<field id="flag" class="com.ecc.emp.data.DataField"/>
+					<field id="message" class="com.ecc.emp.data.DataField"/>
+				</output>
+			</view>
+		</outputViews>
+	</action>	
+	
+	
+	<!-- 卸载插件 -->
+	<action id="uninstallPlugin" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.platform.pluginmanager.op.UninstallPluginOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<view id="retPage" class="com.yucheng.cmis.view.JSONView">
+				<output class="com.ecc.emp.data.KeyedCollection">
+					<field id="flag" class="com.ecc.emp.data.DataField"/>
+					<field id="message" class="com.ecc.emp.data.DataField"/>
+				</output>
+			</view>
+		</outputViews>
+	</action>	
+	
+	<!-- 导出插件 -->	
+	<action id="exportPlugin" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.platform.pluginmanager.op.ExportPluginOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<view id="retPage" class="com.yucheng.cmis.view.JSONView">
+				<output class="com.ecc.emp.data.KeyedCollection">
+					<field id="flag" class="com.ecc.emp.data.DataField"/>
+					<field id="message" class="com.ecc.emp.data.DataField"/>
+				</output>
+			</view>
+		</outputViews>
+	</action>	
+	
+	
+	
+	<!-- 分页查询记录列表 -->
+		<action id="pagepluginregQuery" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.platform.pluginmanager.op.QuerypluginregListOp"/>
+			<transition dest="queryListRes"/>
+		</flowInvoker>
+		<outputViews>
+			<jsonView class="com.yucheng.cmis.view.JSONView" id="queryListRes">
+				<output>
+					<iColl id="pluginregList">
+						<kColl>
+							<field id="plugin_modual_id"></field>
+							<field id="plugin_modual_name" />
+							<field id="install_date" />
+							<field id="plugin_version" />
+							<field id="plugin_status" />
+						</kColl>
+					</iColl>
+				</output>
+			</jsonView>
+		</outputViews>
+	</action>
+	
+</actionDefines>
+
+
+

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<AccPad.xml>
+	<TableModel id="AccPad" cnname="垫款台帐" dbTableName="acc_pad">
+		<Field id="serno" isPK="false" columnName="serno" cnname="业务编号" length="40" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="acc_day" columnName="acc_day" cnname="日期" length="5" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="acc_year" columnName="acc_year" cnname="年份" length="5" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="acc_mon" columnName="acc_mon" cnname="月份" length="5" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="prd_id" columnName="prd_id" cnname="产品编号" length="40" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="cont_no" columnName="cont_no" cnname="合同编号" length="40" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="bill_no" isPK="true" columnName="bill_no" cnname="借据编号" length="40" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="cus_id" columnName="cus_id" cnname="客户编码" length="40" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="pad_type" columnName="pad_type" cnname="垫款种类" length="5" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="pad_bill_no" columnName="pad_bill_no" cnname="垫款业务借据编号" length="40" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="pad_cur_type" columnName="pad_cur_type" cnname="垫款币种" length="5" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="pad_amt" columnName="pad_amt" cnname="垫款金额" length="16" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="pad_date" columnName="pad_date" cnname="垫款日期" length="10" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="pad_bal" columnName="pad_bal" cnname="垫款余额" length="16" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="separate_date" columnName="separate_date" cnname="清分日期" length="10" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="writeoff_date" columnName="writeoff_date" cnname="核销日期" length="10" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="five_class" columnName="five_class" cnname="五级分类" length="10" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="twelve_cls_flg" columnName="twelve_cls_flg" cnname="十二级分类标志" length="5" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="manager_br_id" columnName="manager_br_id" cnname="管理机构" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="fina_br_id" columnName="fina_br_id" cnname="账务机构" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="accp_status" columnName="accp_status" cnname="台账状态" length="5" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="normal_balance" columnName="normal_balance" cnname="正常余额" length="16" JDBCType="NUMBER"/>
+		<Field id="overdue_balance" columnName="overdue_balance" cnname="逾期余额" length="16" JDBCType="NUMBER"/>
+		<Field id="slack_balance" columnName="slack_balance" cnname="呆滞余额" length="16" JDBCType="NUMBER"/>
+		<Field id="bad_dbt_balance" columnName="bad_dbt_balance" cnname="呆账余额" length="16" JDBCType="NUMBER"/>
+		<Field id="settl_date" columnName="settl_date" cnname="结清日期" length="10" JDBCType="VARCHAR2"/>
+	</TableModel>
+</AccPad.xml>

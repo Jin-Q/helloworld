@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<CusGrpInfo.xml>
+	<TableModel id="CusGrpInfo" cnname="集团客户基本信息" dbTableName="cus_grp_info">
+		<Field id="grp_no" isPK="true" columnName="grp_no" cnname="集团编号" length="30" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="grp_name" columnName="grp_name" cnname="集团名称" length="60" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="parent_cus_id" columnName="parent_cus_id" cnname="母公司客户号" length="30" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="grp_finance_type" columnName="grp_finance_type" cnname="集团融资形式" length="2" JDBCType="CHAR" canBeNull="false"/>
+		<Field id="grp_cus_type" columnName="grp_cus_type" cnname="集团客户类型" length="10" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="grp_detail" columnName="grp_detail" cnname="集团情况说明" length="250" JDBCType="VARCHAR2" canBeNull="true"/>
+		<One2MultiRef toField="grp_no" refModelId="CusGrpMember" fromField="grp_no"/>
+		<Field id="manager_br_id" columnName="manager_br_id" cnname="责任人机构" length="20" JDBCType="VARCHAR2"/>
+		<Field id="manager_id" columnName="manager_id" cnname="责任人" length="20" JDBCType="VARCHAR2"/>
+		<Field id="input_id" columnName="input_id" cnname="登记人" length="20" JDBCType="VARCHAR2"/>
+		<Field id="input_br_id" columnName="input_br_id" cnname="登记机构" length="20" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="input_date" columnName="input_date" cnname="登记日期" length="10" JDBCType="VARCHAR2" canBeNull="false"/>
+	</TableModel>
+</CusGrpInfo.xml>

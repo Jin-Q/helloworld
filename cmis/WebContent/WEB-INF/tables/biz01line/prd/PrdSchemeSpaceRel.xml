@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<PrdSchemeSpaceRel.xml>
+	<TableModel id="PrdSchemeSpaceRel" cnname="政策资料方案关联及场景设置" dbTableName="prd_scheme_space_rel">
+		<Field id="schemeid" columnName="schemeid" cnname="方案编号" length="30" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="plocycode" columnName="plocycode" cnname="政策资料代码" length="30" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="flowid" columnName="flowid" cnname="适用流程" length="30" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="flownode" columnName="flownode" cnname="流程节点" length="30" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="status" columnName="status" cnname="审核状态" length="1" JDBCType="CHAR" canBeNull="true"/>
+		<Field id="effective" columnName="effective" cnname="是否启用" length="1" JDBCType="CHAR" canBeNull="true"/>
+	</TableModel>
+</PrdSchemeSpaceRel.xml>

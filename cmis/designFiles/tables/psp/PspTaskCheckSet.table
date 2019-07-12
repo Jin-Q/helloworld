@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<PspTaskCheckSet.xml>
+	<TableModel id="PspTaskCheckSet" pageSize="15" cnname="贷后检查任务设置" isPaged="true" dbTableName="psp_task_check_set">
+		<TableInfo/>
+		<Field id="serno" isPK="true" columnName="serno" cnname="任务编号" length="60" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="task_name" columnName="task_name" cnname="任务名称" length="60" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="cus_type" dictname="STD_ZB_PSP_CUS_TYPE" columnName="cus_type" cnname="客户类型" length="2" JSPTag="select" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="risk_type" dictname="STD_ZB_FIVE_SORT" columnName="risk_type" cnname="风险分类" length="40" JSPTag="select" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="cdt_eval" dictname="STD_ZB_CREDIT_GRADE" columnName="cdt_eval" cnname="信用评级" length="40" JSPTag="select" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="trade_ter" dictname="STD_ZB_TRADE_TER" columnName="trade_ter" cnname="担保方式" length="40" JSPTag="select" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="check_mode" dictname="STD_ZB_CHECK_TYPE" columnName="check_mode" cnname="检查方式" length="2" JSPTag="select" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="task_freq_unit" dictname="STD_ZX_FREQ_UNIT" columnName="task_freq_unit" cnname="任务频率单位" length="2" JSPTag="select" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="task_freq" dataType="Int" columnName="task_freq" cnname="任务频率" length="10" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="task_status" dictname="STD_ZB_TASK_STATUS" columnName="task_status" cnname="任务状态" length="2" JSPTag="select" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="memo" columnName="memo" cnname="备注" length="200" JSPTag="textarea" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="input_id" columnName="input_id" cnname="登记人" length="10" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="input_br_id" columnName="input_br_id" cnname="登记机构" length="10" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="input_date" columnName="input_date" cnname="登记日期" length="10" JSPTag="date" canBeNull="true" JDBCType="VARCHAR2"/>
+		<OrderFields>serno[desc];</OrderFields>
+		<ConditionFields>serno;task_name;task_status;</ConditionFields>
+		<FilterFields>serno;task_name;cus_type;check_mode;task_status;input_id;input_br_id;input_date;</FilterFields>
+		<RecordRestrict query="true" delete="true" update="true"/>
+		<Field id="finish_term" columnName="finish_term" cnname="FINISH_TERM" length="6" JSPTag="text" JDBCType="VARCHAR2"/>
+		<Field id="is_special" columnName="is_special" cnname="IS_SPECIAL" length="2" JSPTag="text" JDBCType="VARCHAR2"/>
+		<Field id="cus_id" columnName="cus_id" cnname="CUS_ID" length="40" JSPTag="text" JDBCType="VARCHAR2"/>
+		<Field id="amt_area" columnName="amt_area" cnname="金额范围" length="2" JSPTag="text" JDBCType="VARCHAR2"/>
+		<Field id="loan_bal" columnName="loan_bal" cnname="贷款余额" length="16" JSPTag="text" JDBCType="NUMBER"/>
+		<Field id="prd_id" columnName="prd_id" cnname="业务品种" length="1000" JSPTag="text" JDBCType="VARCHAR2"/>
+	</TableModel>
+</PspTaskCheckSet.xml>

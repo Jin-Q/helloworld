@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actionDefines>
+	<classMap>
+		<map id="action" class="com.yucheng.cmis.ad.mvc.ADRequestController"/>
+		<map id="flowInvoker" class="com.yucheng.cmis.ad.mvc.ADFlowInvoker"/>
+		<map id="outputViews" class="java.util.HashMap"/>
+		<map id="output" class="com.ecc.emp.data.KeyedCollection"/>
+		<map id="kColl" class="com.ecc.emp.data.KeyedCollection"/>
+		<map id="iColl" class="com.ecc.emp.data.IndexedCollection"/>
+		<map id="field" class="com.ecc.emp.data.DataField"/>
+	</classMap>
+	
+	<!-- 获取操作主页面 -->
+	<action id="queryIqpNetCoreConList" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.ops.iqp.iqpnetcorecon.QueryIqpNetCoreConListOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="iqp/IqpNetCoreCon/queryIqpNetCoreConList.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 获得编辑页面 -->
+	<action id="getIqpNetCoreConUpdatePage" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation updateCheck="false" class="com.yucheng.cmis.ops.iqp.iqpnetcorecon.QueryIqpNetCoreConDetailOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="iqp/IqpNetCoreCon/updateIqpNetCoreConRecord.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 更新记录 -->
+	<action id="updateIqpNetCoreConRecord" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.ops.iqp.iqpnetcorecon.UpdateIqpNetCoreConRecordOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="operationResult.jsp?url=queryIqpNetCoreConList.do" />
+		</outputViews>
+	</action>
+	
+	<!-- 获得查看页面 -->
+	<!--<action id="getIqpNetCoreConViewPage" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.ops.iqp.iqpnetcorecon.QueryIqpNetCoreConDetailOp"/>
+			<transition dest="updatePage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="updatePage" url="iqp/IqpNetCoreCon/queryIqpNetCoreConDetail.jsp" />
+		</outputViews>
+	</action>-->
+	
+	<!-- 获得新增页面 -->
+	<action id="getIqpNetCoreConAddPage" type="normal" checkSession="true" >
+		<jspView id="addPage" url="iqp/IqpNetCoreCon/addIqpNetCoreConRecord.jsp"/>
+	</action>
+	
+	<!-- 下一步跳转页面 -->
+	<action id="IqpNetCoreCon4nextRecord" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.ops.iqp.iqpnetcorecon.IqpNetCoreCon4nextRecordOp"/>
+			<transition dest="updatePage"/>
+		</flowInvoker>
+		<outputViews>
+			<view id="updatePage" class="com.yucheng.cmis.view.JSONView">
+				<output class="com.ecc.emp.data.KeyedCollection">
+					<field id="flag" />
+					<field id="serno" />
+				</output>
+			</view>
+		</outputViews>
+	</action>
+	
+	<!-- 新增记录 -->
+	<action id="addIqpNetCoreConRecord" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.ops.iqp.iqpnetcorecon.AddIqpNetCoreConRecordOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="operationResult.jsp?url=queryIqpNetCoreConList.do" />
+		</outputViews>
+	</action>	
+	
+	<!-- 删除记录 -->
+	<action id="deleteIqpNetCoreConRecord" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.ops.iqp.iqpnetcorecon.DeleteIqpNetCoreConRecordOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<view id="retPage" class="com.yucheng.cmis.view.JSONView">
+				<output class="com.ecc.emp.data.KeyedCollection">
+					<field id="flag" />
+				</output>
+			</view>
+		</outputViews>
+	</action>
+	
+	<!-- 分页查询记录列表 -->
+		<action id="pageIqpNetCoreConQuery" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.ops.iqp.iqpnetcorecon.QueryIqpNetCoreConListOp"/>
+			<transition dest="queryListRes"/>
+		</flowInvoker>
+		<outputViews>
+			<jsonView class="com.yucheng.cmis.view.JSONView" id="queryListRes">
+				<output>
+					<iColl id="IqpNetCoreConList">
+						<kColl>
+						</kColl>
+					</iColl>
+				</output>
+			</jsonView>
+		</outputViews>
+	</action>
+	
+</actionDefines>
+
+
+

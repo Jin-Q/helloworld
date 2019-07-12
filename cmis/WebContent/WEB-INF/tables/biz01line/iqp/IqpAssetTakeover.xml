@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<IqpAssetTakeover.xml>
+	<TableModel id="IqpAssetTakeover" cnname="资产转让" dbTableName="iqp_asset_takeover">
+		<Field id="serno" isPK="true" columnName="serno" cnname="业务编号" length="40" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="asset_no" columnName="asset_no" cnname="资产包编号" length="40" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="prd_id" columnName="prd_id" cnname="产品编码" length="10" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="takeover_type" columnName="takeover_type" cnname="转让方式" length="5" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="toorg_no" columnName="toorg_no" cnname="交易对手行号" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="toorg_name" columnName="toorg_name" cnname="交易对手行名" length="100" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="toorg_acct_name" columnName="toorg_acct_name" cnname="交易对手户名" length="80" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="tooorg_org_no" columnName="tooorg_org_no" cnname="交易对手开户行行号" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="tooorg_org_name" columnName="tooorg_org_name" cnname="交易对手开户行行名" length="100" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="topp_addr" columnName="topp_addr" cnname="交易对手所在城市" length="150" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="this_acct" columnName="this_acct" cnname="本行账户" length="5" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="this_acct_name" columnName="this_acct_name" cnname="本行账户名" length="80" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="acctsvcr_no" columnName="acctsvcr_no" cnname="开户行行号" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="acctsvcr_name" columnName="acctsvcr_name" cnname="开户行行名" length="100" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="takeover_curr" columnName="takeover_curr" cnname="转让币种" length="3" JDBCType="CHAR" canBeNull="true"/>
+		<Field id="asset_total_amt" columnName="asset_total_amt" cnname="资产总额" length="16" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="takeover_amt" columnName="takeover_amt" cnname="转让金额" length="16" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="takeover_rate" columnName="takeover_rate" cnname="转让利息" length="10" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="int_type" columnName="int_type" cnname="收息方式" length="5" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="takeover_date" columnName="takeover_date" cnname="转让日期" length="10" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="csgn_rate" columnName="csgn_rate" cnname="委托费率" length="10" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="takeover_times" columnName="takeover_times" cnname="转让笔数" length="38" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="risk_is_trans" columnName="risk_is_trans" cnname="风险是否转移" length="1" JDBCType="CHAR" canBeNull="true"/>
+		<Field id="memo" columnName="memo" cnname="备注" length="250" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="manager_br_id" columnName="manager_br_id" cnname="管理机构" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="input_id" columnName="input_id" cnname="登记人" length="40" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="input_br_id" columnName="input_br_id" cnname="登记机构" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="input_date" columnName="input_date" cnname="登记日期" length="10" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="approve_status" columnName="approve_status" cnname="申请状态" length="5" JDBCType="VARCHAR2" canBeNull="true"/>
+	</TableModel>
+</IqpAssetTakeover.xml>

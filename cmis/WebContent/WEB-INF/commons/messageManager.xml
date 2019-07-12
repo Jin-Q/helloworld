@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<messageManager.xml>
+	<classMap>
+		<map id="messageGroup" class="com.yucheng.cmis.message.CMISMessageGroup"/>
+		<map id="message" class="com.yucheng.cmis.message.CMISMessage"/>
+	</classMap>
+		
+	<messageGroup id="CMISException">
+		<!-- 通用对照信息 -->
+		<message code="datasourcenull_error" display="在Context中数据源为空"/><!--  -->
+		<message code="datasource_error" display="取数据源发生异常"/>
+		<message code="connection_error" display="获取数据库连接异常"/>
+		
+		<message code="add_error" display="新增失败，请重新操作!"/>
+		<message code="update_error" display="修改失败，请重新操作!"/>
+		<message code="delete_error" display="删除失败，请重新操作!"/>
+		<message code="query_error" display="查询失败，请重新操作!"/>
+
+		<!-- 特殊异常对照表 -->
+		
+	</messageGroup>
+	
+	<messageGroup id="AgentException">
+		<!-- 通用对照信息 -->
+		<message code="datasourcenull_error" display="在Context中数据源为空"/><!--  -->
+		<message code="datasource_error" display="取数据源发生异常"/>
+		<message code="connection_error" display="获取数据库连接异常"/>
+		
+		<message code="add_error" display="新增失败，请重新操作!"/>
+		<message code="update_error" display="修改失败，请重新操作!"/>
+		<message code="delete_error" display="删除失败，请重新操作!"/>
+		<message code="query_error" display="查询失败，请重新操作!"/>
+
+		<!-- 特殊异常对照表 -->
+		<!-- 贷前调查部分 -->
+		<message code="IQPACCPAPPNOVICEADD" display="发票号重复，请检查。信息添加失败!"/>
+		<message code="IQPDISCBILLADD" display="汇票号重复，请检查。信息添加失败!"/>
+		<message code="IQPDISCIQPGUARANTORAAPP" display="找不到该客户以联保小组组长身份所存在的联保协议!"/>
+		<!-- 客户信贷关系信息 -->		
+		<message code="CUSLOANRELADDOPIDTYPE" display="客户客户经理关系新增失败（客户经理类型错误）"/>
+		<message code="CUSLOANRELUPDATEOPIDTYPE" display="客户客户经理关系更新失败（客户经理类型错误）"/>
+		<message code="CUSLOANRELDELETECUSID" display="客户客户经理关系删除失败（客户代码错误）"/>
+		<message code="CUSLOANRELDELETELOANOPTID" display="客户客户经理关系删除失败（客户经理代码错误）"/>
+		<message code="CUSLOANRELDELETELOANCHID" display="客户客户经理关系删除失败（主管行代码错误）"/>
+		<message code="CUSLOANRELQUERYCUSID" display="客户客户经理关系查询失败（客户代码错误）"/>
+		<message code="CUSLOANRELQUERYLOANOPTID" display="客户客户经理关系查询失败（客户经理代码错误）"/>
+		<message code="CUSLOANRELQUERYLOANCHID" display="客户客户经理关系查询失败（主管行代码错误）"/>
+		<!-- 客户信贷关系信息 -->
+		<message code="CUSLOANRELLOGADDOPIDTYPE" display="客户客户经理关系变更新增失败（客户经理类型错误）"/>
+		<message code="CUSLOANRELLOGUPDATEOPIDTYPE" display="客户客户经理关系变更更新失败（客户经理类型错误）"/>
+		<message code="CUSLOANRELLOGDELETECUSID" display="客户客户经理关系变更删除失败（客户代码错误）"/>
+		<message code="CUSLOANRELLOGDELETELOANOPTID" display="客户客户经理关系变更删除失败（客户经理代码错误）"/>
+		<message code="CUSLOANRELLOGDELETELOANCHID" display="客户客户经理关系变更删除失败（主管行代码错误）"/>
+		<message code="CUSLOANRELLOGQUERYCUSID" display="客户客户经理关系变更查询失败（客户代码错误）"/>
+		<message code="CUSLOANRELLOGQUERYLOANOPTID" display="客户客户经理关系变更查询失败（客户经理代码错误）"/>
+		<message code="CUSLOANRELLOGQUERYLOANCHID" display="客户客户经理关系变更查询失败（主管行代码错误）"/>
+	</messageGroup>
+	
+	<messageGroup id="ComponentException">
+		<!-- 通用对照信息 -->
+		<message code="datasourcenull_error" display="在Context中数据源为空"/><!--  -->
+		<message code="datasource_error" display="取数据源发生异常"/>
+		<message code="connection_error" display="获取数据库连接异常"/>
+		
+		<message code="add_error" display="新增失败，请重新操作!"/>
+		<message code="update_error" display="修改失败，请重新操作!"/>
+		<message code="delete_error" display="删除失败，请重新操作!"/>
+		<message code="query_error" display="查询失败，请重新操作!"/>
+
+		<!-- 特殊异常对照表 -->
+		<!-- 客户信贷关系信息 -->
+		<message code="CUSLOANRELADDOPIDTYPE" display="客户客户经理关系新增失败（客户经理类型错误）"/>
+		<message code="CUSLOANRELUPDATEOPIDTYPE" display="客户客户经理关系更新失败（客户经理类型错误）"/>
+		<message code="CUSLOANRELDELETECUSID" display="客户客户经理关系删除失败（客户代码错误）"/>
+		<message code="CUSLOANRELDELETELOANOPTID" display="客户客户经理关系删除失败（客户经理代码错误）"/>
+		<message code="CUSLOANRELDELETELOANCHID" display="客户客户经理关系删除失败（主管行代码错误）"/>
+		<message code="CUSLOANRELQUERYCUSID" display="客户客户经理关系查询失败（客户代码错误）"/>
+		<message code="CUSLOANRELQUERYLOANOPTID" display="客户客户经理关系查询失败（客户经理代码错误）"/>
+		<message code="CUSLOANRELQUERYLOANCHID" display="客户客户经理关系查询失败（主管行代码错误）"/>
+		<!-- 客户信贷关系信息 -->
+		<message code="CUSLOANRELLOGADDOPIDTYPE" display="客户客户经理关系变更新增失败（客户经理类型错误）"/>
+		<message code="CUSLOANRELLOGUPDATEOPIDTYPE" display="客户客户经理关系变更更新失败（客户经理类型错误）"/>
+		<message code="CUSLOANRELLOGDELETECUSID" display="客户客户经理关系变更删除失败（客户代码错误）"/>
+		<message code="CUSLOANRELLOGDELETELOANOPTID" display="客户客户经理关系变更删除失败（客户经理代码错误）"/>
+		<message code="CUSLOANRELLOGDELETELOANCHID" display="客户客户经理关系变更删除失败（主管行代码错误）"/>
+		<message code="CUSLOANRELLOGQUERYCUSID" display="客户客户经理关系变更查询失败（客户代码错误）"/>
+		<message code="CUSLOANRELLOGQUERYLOANOPTID" display="客户客户经理关系变更查询失败（客户经理代码错误）"/>
+		<message code="CUSLOANRELLOGQUERYLOANCHID" display="客户客户经理关系变更查询失败（主管行代码错误）"/>
+		
+	</messageGroup>
+	
+</messageManager.xml>

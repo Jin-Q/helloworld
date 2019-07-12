@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<IqpDelivAssure.xml>
+	<TableModel id="IqpDelivAssure" pageSize="10" cnname="提货担保从表" isPaged="true" dbTableName="iqp_deliv_assure">
+		<TableInfo/>
+		<Field id="serno" isPK="true" columnName="serno" cnname="业务编号" length="40" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="is_replace" columnName="is_replace" cnname="是否置换" length="1" JSPTag="select" canBeNull="true" JDBCType="CHAR"/>
+		<Field id="rpled_serno" columnName="rpled_serno" cnname="被置换业务编号" length="40" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="cdt_cert_no" columnName="cdt_cert_no" cnname="信用证编号" length="40" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="cdt_approve_advice" columnName="cdt_approve_advice" cnname="国业部审查意见" length="250" JSPTag="textarea" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="reorder_no" columnName="reorder_no" cnname="提单号码" length="40" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="commo_name" columnName="commo_name" cnname="商品名称" length="100" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<OrderFields>serno;</OrderFields>
+		<ConditionFields>is_limit_cont_pay;limit_cont_no;cdt_cert_no;reorder_no;</ConditionFields>
+		<FilterFields>is_limit_cont_pay;limit_cont_no;is_replace;cdt_cert_no;reorder_no;</FilterFields>
+		<Field id="chrg_rate" dataType="Rate" columnName="chrg_rate" cnname="手续费率" length="10" JSPTag="text" JDBCType="NUMBER"/>
+	</TableModel>
+</IqpDelivAssure.xml>

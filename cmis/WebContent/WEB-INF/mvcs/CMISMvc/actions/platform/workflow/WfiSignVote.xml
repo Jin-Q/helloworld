@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actionDefines>
+	<classMap>
+		<map id="action" class="com.yucheng.cmis.ad.mvc.ADRequestController"/>
+		<map id="flowInvoker" class="com.yucheng.cmis.ad.mvc.ADFlowInvoker"/>
+		<map id="outputViews" class="java.util.HashMap"/>
+		<map id="output" class="com.ecc.emp.data.KeyedCollection"/>
+		<map id="kColl" class="com.ecc.emp.data.KeyedCollection"/>
+		<map id="iColl" class="com.ecc.emp.data.IndexedCollection"/>
+		<map id="field" class="com.ecc.emp.data.DataField"/>
+	</classMap>
+	
+	<!-- 获取操作主页面 -->
+	<action id="queryWfiSignVoteList" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.platform.workflow.meetingsign.op.wfisignvote.QueryWfiSignVoteListOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="platform/workflow/meetingsign/wfisignvote/queryWfiSignVoteList.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 获得编辑页面 -->
+	<action id="getWfiSignVoteUpdatePage" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation updateCheck="false" class="com.yucheng.cmis.platform.workflow.meetingsign.op.wfisignvote.QueryWfiSignVoteDetailOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="platform/workflow/meetingsign/wfisignvote/updateWfiSignVoteRecord.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 更新记录 -->
+	<action id="updateWfiSignVoteRecord" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.platform.workflow.meetingsign.op.wfisignvote.UpdateWfiSignVoteRecordOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="operationResult.jsp?url=queryWfiSignVoteList.do" />
+		</outputViews>
+	</action>
+	
+	<!-- 获得查看页面 -->
+	<action id="getWfiSignVoteViewPage" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.platform.workflow.meetingsign.op.wfisignvote.QueryWfiSignVoteDetailOp"/>
+			<transition dest="updatePage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="updatePage" url="platform/workflow/meetingsign/wfisignvote/queryWfiSignVoteDetail.jsp" />
+		</outputViews>
+	</action>
+	
+	
+	
+	<!-- 分页查询记录列表 -->
+		<action id="pageWfiSignVoteQuery" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.platform.workflow.meetingsign.op.wfisignvote.QueryWfiSignVoteListOp"/>
+			<transition dest="queryListRes"/>
+		</flowInvoker>
+		<outputViews>
+			<jsonView class="com.yucheng.cmis.view.JSONView" id="queryListRes">
+				<output>
+					<iColl id="WfiSignVoteList">
+						<kColl>
+						    <field id="serno"/>
+						    <field id="biz_type"/>
+						    <field id="st_task_name"/>
+							<field id="sv_vote_id" />
+							<field id="sv_exe_user" />
+							<field id="sv_exe_user_displayname"/>
+							<field id="sv_result" />
+							<field id="sv_status" />
+							<field id="sv_start_time" />
+							<field id="sv_end_time" />
+							<field id="sv_request_time" />
+						</kColl>
+					</iColl>
+					<kColl id="pageInfo">
+						<field id="currentPage" />
+						<field id="maxLine" />
+						<field id="recordSize" />
+					</kColl>
+				</output>
+			</jsonView>
+		</outputViews>
+	</action>
+	
+	<!--*************************子表【贷审会投票表】*******************************-->
+	<!-- 作为子表的列表页面 -->
+	<action id="queryWfiSignTaskWfiSignVoteList" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.platform.workflow.meetingsign.op.wfisignvote.QueryWfiSignTaskWfiSignVoteListOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="platform/workflow/meetingsign/wfisignvote/queryWfiSignTaskWfiSignVoteList.jsp" />
+		</outputViews>
+	</action>
+	
+	
+	<!-- 子表详情查询 -->
+	<action id="queryWfiSignTaskWfiSignVoteDetail" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.platform.workflow.meetingsign.op.wfisignvote.QueryWfiSignTaskWfiSignVoteDetailOp"/>
+			<transition dest="queryDetail"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="queryDetail" url="platform/workflow/meetingsign/wfisignvote/queryWfiSignTaskWfiSignVoteDetail.jsp"/>
+		</outputViews>	
+	</action>
+	
+	<!-- 分页查询记录列表 -->
+	<action id="pageWfiSignTaskWfiSignVoteQuery" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.platform.workflow.meetingsign.op.wfisignvote.QueryWfiSignTaskWfiSignVoteListOp"/>
+			<transition dest="queryListRes"/>
+		</flowInvoker>
+		<outputViews>
+			<jsonView class="com.yucheng.cmis.view.JSONView" id="queryListRes">
+				<output>
+					<iColl id="WfiSignVoteList">
+						<kColl>
+							<field id="sv_vote_id" />
+							<field id="sv_exe_user" />
+							<field id="sv_exe_user_displayname" />
+							<field id="sv_result" />
+							<field id="sv_status" />
+							<field id="sv_start_time" />
+							<field id="sv_end_time" />
+							<field id="sv_request_time" />
+						</kColl>
+					</iColl>
+					<kColl id="pageInfo">
+						<field id="currentPage" />
+						<field id="maxLine" />
+						<field id="recordSize" />
+					</kColl>
+				</output>
+			</jsonView>
+		</outputViews>
+	</action>
+	
+</actionDefines>

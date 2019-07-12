@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<LmtAppDetailsHis.xml>
+	<TableModel id="LmtAppDetailsHis" cnname="授信变更分项历史记录" dbTableName="lmt_app_details_his">
+		<TableInfo/>
+		<Field id="serno" isPK="true" columnName="serno" cnname="流水号" length="40" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="agr_no" isPK="false" columnName="agr_no" cnname="协议编号" length="40" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="sub_type" dictname="STD_ZB_SUB_TYPE" columnName="sub_type" cnname="分项类别:一般授信/商圈/联保/行业/供应链/其他(STD_LMT_PROJ_TYPE)" length="2" JSPTag="select" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="cus_id" columnName="cus_id" cnname="客户码" length="30" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="core_corp_cus_id" columnName="core_corp_cus_id" cnname="核心企业客户码  供应链授信时需要" length="30" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="core_corp_duty" dictname="STD_ZB_CORP_DUTY" columnName="core_corp_duty" cnname="核心企业责任：保证/回购  供应链授信时需要" length="2" JSPTag="select" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="limit_type" dictname="STD_ZB_LIMIT_TYPE" columnName="limit_type" cnname="额度类型：循环额度/临时额度" length="2" JSPTag="select" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="limit_code" isPK="true" columnName="limit_code" cnname="授信额度编号" length="32" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="limit_name" columnName="limit_name" cnname="额度品种名称" length="60" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="prd_id" columnName="prd_id" cnname="适用产品" length="400" JSPTag="textarea" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="cur_type" dictname="STD_ZX_CUR_TYPE" columnName="cur_type" cnname="授信币种" length="5" JSPTag="select" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="crd_amt" columnName="crd_amt" cnname="授信金额" length="16" JSPTag="text" canBeNull="false" JDBCType="NUMBER"/>
+		<Field id="froze_amt" columnName="froze_amt" cnname="冻结金额" length="16" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="enable_amt" columnName="enable_amt" cnname="启用金额" length="16" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="guar_type" columnName="guar_type" cnname="担保方式" length="3" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="term_type" dictname="STD_ZB_TERM_TYPE" columnName="term_type" cnname="授信期限类型" length="3" JSPTag="select" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="term" columnName="term" cnname="授信期限" length="3" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="is_adj_term" dictname="STD_ZX_YES_NO" columnName="is_adj_term" cnname="是否调整期限" length="2" JSPTag="select" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="is_pre_crd" columnName="is_pre_crd" cnname="是否预授信" length="2" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="start_date" columnName="start_date" cnname="授信起始日" length="10" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="end_date" columnName="end_date" cnname="授信到期日" length="10" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="cus_type" columnName="cus_type" cnname="客户类别:供应商/经销商/其他" length="3" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="lmt_status" dictname="STD_LMT_STATUS" columnName="lmt_status" cnname="台账状态" length="2" JSPTag="select" JDBCType="VARCHAR2"/>
+		<OrderFields>serno[desc];limit_code[desc];</OrderFields>
+		<Field id="lrisk_type" columnName="lrisk_type" cnname="低风险业务类型" JSPTag="text" length="10" JDBCType="VARCHAR2"/>
+		<Field id="lmt_type" columnName="lmt_type" cnname="授信类别" JSPTag="text" length="10" JDBCType="VARCHAR2"/>
+		<Field id="green_indus" columnName="green_indus" cnname="绿色产业类型" JSPTag="text" length="10" JDBCType="VARCHAR2"/>
+		<Field id="green_pro_type" columnName="green_pro_type" cnname="绿色授信项目类型" JSPTag="text" length="1" JDBCType="VARCHAR2"/>
+	</TableModel>
+</LmtAppDetailsHis.xml>

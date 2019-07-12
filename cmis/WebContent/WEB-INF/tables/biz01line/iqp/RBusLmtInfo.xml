@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<RBusLmtInfo.xml>
+	<TableModel id="RBusLmtInfo" cnname="授信和业务关系" dbTableName="r_bus_lmt_info">
+		<Field id="agr_no" columnName="agr_no" cnname="授信协议编号" length="40" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="serno" isPK="true" columnName="serno" cnname="业务编号" length="40" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="cont_no" columnName="cont_no" cnname="合同编号" length="40" JDBCType="VARCHAR2" canBeNull="true"/>
+	</TableModel>
+</RBusLmtInfo.xml>

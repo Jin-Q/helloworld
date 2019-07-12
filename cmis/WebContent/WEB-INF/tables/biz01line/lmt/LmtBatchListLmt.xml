@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<LmtBatchListLmt.xml>
+	<TableModel id="LmtBatchListLmt" cnname="批量名单授信" dbTableName="lmt_batch_list_lmt">
+		<Field id="serno" isPK="true" columnName="serno" cnname="业务编号" length="32" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="cus_id" columnName="cus_id" cnname="客户码" length="32" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="cur_type" columnName="cur_type" cnname="授信币种" length="3" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="lmt_amt" columnName="lmt_amt" cnname="授信金额" length="16" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="term_type" columnName="term_type" cnname="期限类型" length="3" JDBCType="CHAR" canBeNull="true"/>
+		<Field id="term" columnName="term" cnname="期限" length="6" JDBCType="CHAR" canBeNull="true"/>
+		<Field id="memo" columnName="memo" cnname="备注" length="200" JDBCType="VARCHAR2" canBeNull="true"/>
+	</TableModel>
+</LmtBatchListLmt.xml>

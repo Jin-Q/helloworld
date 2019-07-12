@@ -1,0 +1,211 @@
+<%@page language="java" contentType="text/html; charset=UTF-8"%>
+<%@taglib uri="/WEB-INF/emp.tld" prefix="emp" %>
+<emp:page>
+
+<html>
+<head>
+<title>列表查询页面</title>
+
+<jsp:include page="/include.jsp" flush="true"/>
+<jsp:include page="/WEB-INF/mvcs/CMISMvc/biz01line/image/pubAction/imagePubAction.jsp" flush="true"/>
+<script type="text/javascript">
+	
+	function doQuery(){
+		var form = document.getElementById('queryForm');
+		CtrRpddscntCont._toForm(form);
+		CtrRpddscntContList._obj.ajaxQuery(null,form);
+	};
+	
+	function doGetUpdateCtrRpddscntContPage() {
+		var paramStr = CtrRpddscntContList._obj.getParamStr(['serno','cont_no']);
+		if (paramStr != null) {
+		    /** modified by yangzy 20140928 合同查询模块查看及签订功能改为弹出框查看模式 begin **/
+			var url = '<emp:url action="getCtrRpddscntContUpdatePage.do"/>?'+paramStr+"&op=view";
+			url = EMPTools.encodeURI(url);
+			//window.location = url;
+			var param = 'height=700, width=1200, top=80, left=80, toolbar=no, menubar=no, scrollbars=yes, resizable=no, location=no, status=no';
+			window.open(url,'newWindow_CtrRpddscntCont',param); 
+			/** modified by yangzy 20140928 合同查询模块查看及签订功能改为弹出框查看模式 end **/
+		} else {
+			alert('请先选择一条记录！');
+		}
+	};
+
+	/** added by yangzy 20140928 合同查询模块查看及签订功能改为弹出框查看模式 begin **/
+	function refresh(){
+		var direct = document.getElementById("emp_pq_jumpButton");
+		    direct.click();
+	};
+	/** added by yangzy 20140928 合同查询模块查看及签订功能改为弹出框查看模式 end **/
+	
+	function doViewCtrRpddscntCont() {
+		var paramStr = CtrRpddscntContList._obj.getParamStr(['serno','cont_no']);
+		if (paramStr != null) {
+		    /** modified by yangzy 20140928 合同查询模块查看及签订功能改为弹出框查看模式 begin **/
+			var url = '<emp:url action="getCtrRpddscntContViewPage.do"/>?'+paramStr+"&op=view&viewtype=out&flag=CtrRpddscntCont";
+			url = EMPTools.encodeURI(url);
+			//window.location = url;
+			var param = 'height=700, width=1200, top=80, left=80, toolbar=no, menubar=no, scrollbars=yes, resizable=no, location=no, status=no';
+			window.open(url,'newWindow_CtrRpddscntCont',param); 
+			/** modified by yangzy 20140928 合同查询模块查看及签订功能改为弹出框查看模式 end **/
+		} else {
+			alert('请先选择一条记录！');
+		}
+	};
+	
+	function doGetAddCtrRpddscntContPage() {
+		var url = '<emp:url action="getCtrRpddscntContAddPage.do"/>';
+		url = EMPTools.encodeURI(url);
+		window.location = url;
+	};
+	
+	function doDeleteCtrRpddscntCont() {
+		var paramStr = CtrRpddscntContList._obj.getParamStr(['serno','cont_no']);
+		if (paramStr != null) {
+			if(confirm("是否确认要删除？")){
+				var url = '<emp:url action="deleteCtrRpddscntContRecord.do"/>?'+paramStr;
+				url = EMPTools.encodeURI(url);
+				window.location = url;
+			}
+		} else {
+			alert('请先选择一条记录！');
+		}
+	};
+	
+	function doReset(){
+		page.dataGroups.CtrRpddscntContGroup.reset();
+	};
+	
+	/*--user code begin--*/
+	function getOrgNo(data){
+		CtrRpddscntCont.toorg_no._setValue(data.same_org_no._getValue());
+		CtrRpddscntCont.toorg_name._setValue(data.same_org_cnname._getValue());
+    };
+    function doImageView(){
+		var data = CtrRpddscntContList._obj.getSelectedData();
+		if (data != null && data !=0) {
+			ImageAction('View25');	//业务资料查看
+		} else {
+			alert('请先选择一条记录！');
+		}		
+	};
+	function doImageCheck(){
+		var data = CtrRpddscntContList._obj.getSelectedData();
+		if (data != null && data !=0) {
+			if( confirm("影像信息将直接归档，请确认!") ){
+				ImageAction('Check3132');	//业务资料核对
+			}
+		} else {
+			alert('请先选择一条记录！');
+		}		
+	};
+	function ImageAction(image_action){
+		var data = new Array();
+		data['serno'] = CtrRpddscntContList._obj.getParamValue(['serno']);	//业务编号
+		data['cus_id'] = CtrRpddscntContList._obj.getParamValue(['toorg_no']);	//客户码
+		data['prd_id'] = CtrRpddscntContList._obj.getParamValue(['prd_id']);	//业务品种
+		data['prd_stage'] = 'YWSQ'; //业务阶段：YWSQ业务申请，YWSP业务审批，CZSQ出账申请，CZSH出账审核，DHTZ贷后台账，其他填空
+		data['image_action'] = image_action	//影像接口调用类型:影像扫描、影像查看、影像核对。后面数字取接口文档编号
+		doPubImageAction(data);
+	};
+	//作废
+    function doRemoveCtrRpddscntCont(){
+    	var paramStr = CtrRpddscntContList._obj.getParamStr(['cont_no']);
+    	if (paramStr != null) {
+    		var approve_status = CtrRpddscntContList._obj.getSelectedData()[0].cont_status._getValue();
+    		if(approve_status == "100"){
+    		if(confirm("是否确认要作废？")){
+    			var handleSuccess = function(o){
+    				if(o.responseText !== undefined) {
+    					try {
+    						var jsonstr = eval("("+o.responseText+")");
+    					} catch(e) {
+    						alert("Parse jsonstr1 define error!" + e.message);
+    						return;
+    					}
+    					var flag = jsonstr.flag;
+    					if(flag == "success"){
+    						alert("作废成功!");
+    						window.location.reload();
+        				}else{
+    						alert("发生异常!"); 
+    					}
+    				}
+    			};
+    			var handleFailure = function(o){
+    				alert("异步请求出错！");	
+    			};
+    			var callback = {
+    				success:handleSuccess,
+    				failure:handleFailure
+    			};
+    			var url = '<emp:url action="removeCtrRpddscntCont.do"/>?'+paramStr;	
+    			url = EMPTools.encodeURI(url);
+    			var obj1 = YAHOO.util.Connect.asyncRequest('POST',url, callback,null)
+    		}     
+    		}else{
+    			alert("只有状态为【未生效】的合同才可以作废！");
+    		}
+    	} else {
+    		alert('请先选择一条记录！');
+    	}
+    };
+
+	/*--user code end--*/
+	/*****2019-03-01 jiangcuihua 附件上传  start******/
+	function doUpload(){
+		var paramStr = CtrRpddscntContList._obj.getParamValue(['serno']);
+		if (paramStr!=null) {
+			var url = '<emp:url action="getUploadInfoPage.do"/>?file_type=05&serno='+paramStr;
+			url = EMPTools.encodeURI(url);
+			window.location = url;
+		} else {
+			alert('请先选择一条记录！');
+		}
+	}
+	/*****2019-03-01 jiangcuihua 附件上传  end******/
+</script>
+</head>
+<body class="page_content">
+	<form  method="POST" action="#" id="queryForm">
+	</form>
+
+	<emp:gridLayout id="CtrRpddscntContGroup" title="输入查询条件" maxColumn="3">
+			<emp:text id="CtrRpddscntCont.cont_no" label="合同编号" />
+			<emp:pop id="CtrRpddscntCont.toorg_name" label="交易对手行名" url="queryCusSameOrgForPopList.do?restrictUsed=false" returnMethod="getOrgNo" required="false" buttonLabel="选择" />
+			<emp:select id="CtrRpddscntCont.rpddscnt_type" label="转贴现方式" dictname="STD_ZB_RPDDSCNT_MODE"/>
+			<emp:text id="CtrRpddscntCont.toorg_no" label="交易对手行号" hidden="true"/>
+	</emp:gridLayout>
+	
+	<jsp:include page="/queryInclude.jsp" flush="true" />
+	
+	<div align="left">
+		<emp:button id="getUpdateCtrRpddscntContPage" label="签订" op="update"/>
+		<emp:button id="removeCtrRpddscntCont" label="作废" op="remove"/>
+		<emp:button id="viewCtrRpddscntCont" label="查看" op="view"/>
+		<emp:button id="ImageView" label="影像查看" op="ImageView"/>
+		<emp:button id="ImageCheck" label="影像核对" op="ImageCheck"/>
+		<emp:button id="upload" label="附件"/>
+	</div>
+
+	<emp:table icollName="CtrRpddscntContList" pageMode="true" url="pageCtrRpddscntContQuery.do">
+		<emp:text id="cont_no" label="合同编号" />
+		<emp:text id="serno" label="业务编号" hidden="true"/>
+		<emp:text id="batch_no" label="批次号" hidden="true"/>
+		<emp:text id="toorg_no" label="交易对手行号" />
+		<emp:text id="toorg_name" label="交易对手行名" />
+		<emp:text id="prd_id_displayname" label="产品名称" />
+		<emp:text id="bill_type" label="票据种类" dictname="STD_DRFT_TYPE" />
+		<emp:text id="rpddscnt_type" label="转贴现方式" dictname="STD_ZB_BUSI_TYPE" />
+		<emp:text id="bill_total_amt" label="票据总金额" dataType="Currency"/>
+		<emp:text id="bill_qnt" label="票据数量" />
+		<emp:text id="manager_br_id_displayname" label="管理机构" />
+		<emp:text id="input_id_displayname" label="登记人" />	
+		<emp:text id="manager_br_id" label="管理机构" hidden="true"/>
+		<emp:text id="cont_status" label="合同状态" dictname="STD_ZB_CTRLOANCONT_TYPE" />
+	</emp:table>
+	
+</body>
+</html>
+</emp:page>
+    

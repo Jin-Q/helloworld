@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<contexts.xml>
+	<context id="rootCtx" type="root">
+		<refKColl refId="rootKColl" />
+		<refService alias="transactionManager" type="service"
+			refId="transactionManager" />
+		<refService alias="sqlService" type="service" refId="sqlService" />
+		<refService alias="tableService4JDBC" type="service"
+			refId="tableService4JDBC" />
+		<refService alias="dataSource" type="service" refId="dataSource" />
+		<refService alias="paramService" type="service" refId="paramService" />
+		<refService alias="propertiesFileService" type="service"
+			refId="propertiesFileService" />
+		<refService alias="dataDicService" type="service" refId="dataDicService" />
+		<refService alias="treeDicService" type="service" refId="treeDicService" />
+		<refService alias="tableModelDAO" type="service" refId="tableModelDAO" />
+		<refService alias="tableModelLoader" type="service"
+			refId="tableModelLoader" />
+		<refService alias="pkGeneratorSet" type="service" refId="pkGeneratorSet" />
+		<refService alias="recordRestrict" type="service" refId="recordRestrict" />
+		<refService alias="empquartzschedulemanager0" type="service"
+			refId="empquartzschedulemanager0" />
+		<refService alias="YM_HTTP_ESB" type="service" refId="YM_HTTP_ESB"/>
+	</context>
+	<context id="APPChannelCtx" parent="rootCtx" type="channel">
+		<refKColl refId="APPChannelKColl" />
+	</context>
+	<context id="APPSessionCtx" parent="APPChannelCtx" type="session">
+		<refKColl refId="APPSessionKColl" />
+	</context>
+</contexts.xml>

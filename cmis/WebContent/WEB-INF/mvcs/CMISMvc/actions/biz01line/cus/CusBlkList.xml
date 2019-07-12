@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actionDefines>
+	<classMap>
+		<map id="action" class="com.yucheng.cmis.ad.mvc.ADRequestController"/>
+		<map id="flowInvoker" class="com.yucheng.cmis.ad.mvc.ADFlowInvoker"/>
+		<map id="outputViews" class="java.util.HashMap"/>
+		<map id="output" class="com.ecc.emp.data.KeyedCollection"/>
+		<map id="kColl" class="com.ecc.emp.data.KeyedCollection"/>
+		<map id="iColl" class="com.ecc.emp.data.IndexedCollection"/>
+		<map id="field" class="com.ecc.emp.data.DataField"/>
+	</classMap>
+	
+	<!-- 获取操作主页面 -->
+	<action id="queryCusBlkListList" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.cus.op.cusblklist.QueryCusBlkListListOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="biz01line/cus/cusbase/CusBlkList/queryCusBlkListList.jsp" />
+		</outputViews>
+	</action>
+	<!-- 获取操作主页面（临时表） -->
+	<action id="queryCusBlkListTempList" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.cus.op.cusblklist.QueryCusBlkListTempListOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="biz01line/cus/cusbase/CusBlkList/queryCusBlkListTempList.jsp" />
+		</outputViews>
+	</action>
+	<action id="queryCusBlkListListTwo" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.cus.op.cusblklist.QueryCusBlkListListOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="biz01line/cus/cusbase/CusBlkList/queryCusBlkListListTwo.jsp" />
+		</outputViews>
+	</action>
+	<!-- 下载不宜贷款户导入模板 -->
+	<action id="downLoadCusBlkTmplate" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.cus.op.cusblklist.DownLoadCusBlkTemplateOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="biz01line/cus/cusbase/CusBlkList/downLoadExcel.jsp" />
+		</outputViews>
+	</action>
+	<!-- 导入页面 -->
+	<action id="queryCusBlkListImport" type="normal" checkSession="true" >
+		<jspView id="retPage" url="biz01line/cus/cusbase/CusBlkList/queryCusBlkListImport.jsp" />
+	</action>
+	
+	<!-- 导入EXCEL -->
+	<action id="importCusBlkListTask" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.cus.op.cusblklist.ImportCusBlkListOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="biz01line/cus/cusbase/CusBlkList/importResult.jsp" />
+		</outputViews>
+	</action>
+	<!-- 导出成生成excel -->
+	<action id="cusBlkListExpBatchToExcel"  type="normal"  checkSession="true" >                                                                                           
+		<flowInvoker>                                                                                                                                            
+			<operation class="com.yucheng.cmis.biz01line.cus.op.cusblklist.CusBlkListExpBatchToExcelOp"/>                                                                    
+			<transition dest="retPage"/>                                                                                                                           
+		</flowInvoker>                                                                                                                                           
+		<outputViews>                                                                                                                                            
+		   <view id="retPage" class="com.yucheng.cmis.view.ExcelView">                                                                                           
+ 				<excelWorkbook fileName="CusBlkList.xls" class="com.yucheng.cmis.view.excel.ExcelWorkbook">                                                          
+ 					<excelSheet id="1" name="共享客户清单" isTitle="true" iCollName="CusBlkListList" class="com.yucheng.cmis.view.excel.ExcelSheet">                       
+ 						<excelColumn dataName="xuhao" name="序号" class="com.yucheng.cmis.view.excel.ExcelColumn"/>                              
+ 						<excelColumn dataName="cus_name" name="客户名称" class="com.yucheng.cmis.view.excel.ExcelColumn"/>      
+ 						<excelColumn dataName="cert_type" name="证件类型"  dictName="STD_ZB_CERT_TYP" class="com.yucheng.cmis.view.excel.ExcelColumn"/>                                       
+ 						<excelColumn dataName="cert_code" name="证件号码" class="com.yucheng.cmis.view.excel.ExcelColumn"/>                          
+ 						<excelColumn dataName="legal_name" name="法定代表人" class="com.yucheng.cmis.view.excel.ExcelColumn"/>     
+ 						<excelColumn dataName="legal_addr_displayname"  name="地址" class="com.yucheng.cmis.view.excel.ExcelColumn"/>   
+ 						<excelColumn dataName="black_type"  name="客户类型"  dictName="STD_ZB_EVENT_TYP" class="com.yucheng.cmis.view.excel.ExcelColumn"/> 
+ 						<excelColumn dataName="black_reason"  name="客户描述" class="com.yucheng.cmis.view.excel.ExcelColumn"/>                                      
+ 					 	<excelColumn dataName="data_source" name="数据来源"  dictName="STD_ZB_DATA_SOURCE" class="com.yucheng.cmis.view.excel.ExcelColumn"/>  
+ 					 	<excelColumn dataName="input_br_id_displayname" name="登记机构"  class="com.yucheng.cmis.view.excel.ExcelColumn"/>
+ 					 	<excelColumn dataName="input_id_displayname" name="登记人"  class="com.yucheng.cmis.view.excel.ExcelColumn"/>
+ 					 	<excelColumn dataName="input_date" name="登记日期"  class="com.yucheng.cmis.view.excel.ExcelColumn"/>
+ 					 	<excelColumn dataName="manager_br_id_displayname" name="管理机构"  class="com.yucheng.cmis.view.excel.ExcelColumn"/>
+ 					 	<excelColumn dataName="manager_id_displayname" name="责任人"  class="com.yucheng.cmis.view.excel.ExcelColumn"/>
+ 					 	<excelColumn dataName="status" name="状态"   dictName="STD_CUS_BLK_STATUS" class="com.yucheng.cmis.view.excel.ExcelColumn"/>                                     
+ 					</excelSheet>                                                                                                                                      
+ 				</excelWorkbook>                                                                                                                                     
+ 			</view>                                                                                                                                                
+		</outputViews>                                                                                                                                           
+	</action>    
+		
+	
+	
+	<!-- 获得编辑页面 -->
+	<action id="getCusBlkListUpdatePage" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation updateCheck="false" class="com.yucheng.cmis.biz01line.cus.op.cusblklist.QueryCusBlkListDetailOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="biz01line/cus/cusbase/CusBlkList/updateCusBlkListRecord.jsp" />
+		</outputViews>
+	</action>
+
+	<!-- 将黑名单客户状态置为生效 -->
+	<action id="updateCusBlkStatus" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation updateCheck="false" class="com.yucheng.cmis.biz01line.cus.op.cusblklist.UpdateCusBlkStatusOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<view id="retPage" class="com.yucheng.cmis.view.JSONView">
+				<output class="com.ecc.emp.data.KeyedCollection">
+					<field id="flag" class="com.ecc.emp.data.DataField"/>
+				</output>
+			</view>
+		</outputViews>
+	</action>
+	
+	<!-- 更新记录 -->
+	<action id="updateCusBlkListRecord" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.cus.op.cusblklist.UpdateCusBlkListRecordOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<view id="retPage" class="com.yucheng.cmis.view.JSONView">
+				<output class="com.ecc.emp.data.KeyedCollection">
+					<field id="flag" class="com.ecc.emp.data.DataField" />
+				</output>
+			</view>
+		</outputViews>
+	</action>
+	
+	<!-- 获得查看页面 -->
+	<action id="getCusBlkListViewPage" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.cus.op.cusblklist.QueryCusBlkListDetailOp"/>
+			<transition dest="updatePage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="updatePage" url="biz01line/cus/cusbase/CusBlkList/queryCusBlkListDetail.jsp" />
+		</outputViews>
+	</action>
+	<!-- 获得查看页面（临时表）-->
+	<action id="getCusBlkListTempViewPage" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.cus.op.cusblklist.QueryCusBlkListTempDetailOp"/>
+			<transition dest="updatePage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="updatePage" url="biz01line/cus/cusbase/CusBlkList/queryCusBlkListTempDetail.jsp" />
+		</outputViews>
+	</action>
+	<!-- 获得新增页面 -->
+	<action id="getCusBlkListAddPage" type="normal" checkSession="true" >
+		<jspView id="addPage" url="biz01line/cus/cusbase/CusBlkList/addCusBlkListRecord.jsp"/>
+	</action>
+	
+	<!-- 新增记录 -->
+	<action id="addCusBlkListRecord" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.cus.op.cusblklist.AddCusBlkListRecordOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<view id="retPage" class="com.yucheng.cmis.view.JSONView">
+				<output class="com.ecc.emp.data.KeyedCollection">
+					<field id="flag" class="com.ecc.emp.data.DataField" />
+				</output>
+			</view>
+		</outputViews>
+	</action>	
+	
+	<!-- 删除记录 -->
+	<action id="deleteCusBlkListRecord" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.cus.op.cusblklist.DeleteCusBlkListRecordOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<view id="retPage" class="com.yucheng.cmis.view.JSONView">
+				<output class="com.ecc.emp.data.KeyedCollection">
+					<field id="flag" class="com.ecc.emp.data.DataField" />
+				</output>
+			</view>
+		</outputViews>
+	</action>
+	
+	<!-- 分页查询记录列表 -->
+		<action id="pageCusBlkListQuery" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.cus.op.cusblklist.QueryCusBlkListListOp"/>
+			<transition dest="queryListRes"/>
+		</flowInvoker>
+		<outputViews>
+			<jsonView class="com.yucheng.cmis.view.JSONView" id="queryListRes">
+				<output>
+					<iColl id="CusBlkListList">
+						<kColl>
+						</kColl>
+					</iColl>
+					<kColl id="pageInfo">
+						<field id="currentPage" />
+						<field id="maxLine" />
+						<field id="recordSize" />
+					</kColl>
+				</output>
+			</jsonView>
+		</outputViews>
+	</action>
+	<!-- 分页查询记录列表（临时表） -->
+		<action id="pageCusBlkListTempQuery" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.cus.op.cusblklist.QueryCusBlkListTempListOp"/>
+			<transition dest="queryListRes"/>
+		</flowInvoker>
+		<outputViews>
+			<jsonView class="com.yucheng.cmis.view.JSONView" id="queryListRes">
+				<output>
+					<iColl id="CusBlkListTempList">
+						<kColl>
+						</kColl>
+					</iColl>
+					<kColl id="pageInfo">
+						<field id="currentPage" />
+						<field id="maxLine" />
+						<field id="recordSize" />
+					</kColl>
+				</output>
+			</jsonView>
+		</outputViews>
+	</action>
+	<!-- POP获取操作主页面 -->
+	<action id="queryCusBlkListPopList" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.cus.op.cusblklist.QueryCusBlkListPopListOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="biz01line/cus/cusbase/CusBlkList/queryCusBlkListPopList.jsp" />
+		</outputViews>
+	</action>
+	<!-- POP分页查询记录列表 -->
+	<action id="pageCusBlkListQueryPop" type="normal" checkSession="true" >
+	<flowInvoker>
+		<operation class="com.yucheng.cmis.biz01line.cus.op.cusblklist.QueryCusBlkListPopListOp"/>
+		<transition dest="queryListRes"/>
+	</flowInvoker>
+	<outputViews>
+		<jsonView class="com.yucheng.cmis.view.JSONView" id="queryListRes">
+			<output>
+				<iColl id="CusBlkListList">
+					<kColl>
+					</kColl>
+				</iColl>
+				<kColl id="pageInfo">
+					<field id="currentPage" />
+					<field id="maxLine" />
+					<field id="recordSize" />
+				</kColl>
+			</output>
+		</jsonView>
+	</outputViews>
+    </action>
+</actionDefines>
+
+		
+

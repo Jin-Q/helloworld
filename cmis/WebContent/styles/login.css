@@ -1,0 +1,138 @@
+/**
+ * 信贷管理系统 
+ * 登录页
+ * @version 0.1 2009-03-02
+ * @author YangMing@yuchengtech.com
+ */ 
+/** 全局设置---Start **/
+body{font-size:12px;margin:0px;color:#22436F;background-color:#89D3E7;}
+* {margin: 0;padding: 0;}
+a{text-decoration:none}
+p {margin: 0px;padding: 0px;}
+form{ margin: 0; padding: 0; }
+img{border:0}
+ul {margin: 0px;padding: 0px;}
+td,th {margin:0px;font-size: 12px;}
+li {margin:0px;	list-style-type: none;}
+table {border: none;padding: 0;margin: 0;}
+a:link {font-size: 12px;color: #000;	text-decoration: none;}
+a:visited {font-size: 12px;	color: #000;	text-decoration: none;}
+a:hover {font-size: 12px; color: #166297; text-decoration: none;}
+a:active {font-size: 12px; color: #000; text-decoration: none;}
+
+/** 全局设置---End **/
+#main {background-image: url(../images/login_bg2.gif);width:100%;height:100%;overflow:auto;}
+#content {margin:0px auto;background: url(../images/login_bg.gif) no-repeat left top;width:100%;height:600px;overflow:hidden;}
+#login {width:530px; height:130px; margin:100px 0px 0px 340px; vertical-align: middle;}
+#txtput { float:left;width:250px;padding:15px 0px 0px 0px;}
+#txtput li { margin:6px 0px 6px 0px;font-weight:bold}
+#txtput img { margin:0px 6px 0px 0px;}
+#login_bt {width:61px;float:left;padding-top:12px;}
+
+
+
+/*
+body {
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+}
+.OrangeFont {
+	color: #FC5C04;
+	font-size: 12px;
+	font-family:tahoma,宋体;
+}
+.bg_map_background {
+	background-image: url(images/choose_bg.gif);
+	background-position: right top;
+	background-repeat: no-repeat;
+}
+.head_map_background {
+	background-image: url(images/Header_bg.gif);
+	background-position: right top;
+	background-repeat: no-repeat;
+}
+.bottom_map_background {
+	background-image: url(images/Header_bg.gif);
+	background-position: right top;
+	background-repeat: no-repeat;
+}
+
+.head_map_body{
+	background-image: url(images/page_welcome_main2.jpg);
+	background-position: left top;
+	background-repeat: no-repeat;
+	width:100%;
+	height:485px;
+}
+	.page_welcome{
+		margin:0px 0px 0px 0px;
+		background:url(images/welcome_bg.gif);
+		border:1px solid #4097B3;
+	}
+	.page_welcome_main {
+		background:url(images/page_welcome_main2.jpg) left top no-repeat;
+		width:100%;
+		height:485px;
+	}
+  .info{
+	font-weight: normal;
+	font-variant: normal;
+	font-family:"黑体";
+	color:#1F57A6;
+	padding:0px 0px 0px  0px ;
+	font-size:30px;
+	weight:400px;
+	
+	}
+.OrangeBox {
+	border: 1px solid #FC5C04;
+}
+.px12 {
+	font-size: 12px;
+	line-height: 20px;
+	font-family:tahoma,宋体;
+}
+.STYLE1 {color: #FC5C04; font-size: 12px; font-weight: bold;margin-top: 0px; }
+
+.btn1_mouseout {
+ BORDER-RIGHT: #1F57A6 1px solid; PADDING-RIGHT: 2px; BORDER-TOP: #1F57A6 1px solid; PADDING-LEFT: 2px; FONT-SIZE: 12px; FILTER: progid:DXImageTransform.Microsoft.Gradient(GradientType=0, StartColorStr=#ffffff, EndColorStr=#1F57A6); BORDER-LEFT: #1F57A6 1px solid; CURSOR: hand; COLOR: black; PADDING-TOP: 2px; BORDER-BOTTOM: #1F57A6 1px solid
+}
+.btn1_mouseover {
+ BORDER-RIGHT: #1F57A6 1px solid; PADDING-RIGHT: 2px; BORDER-TOP: #1F57A6 1px solid;  border-bottom: #1F57A6 1px solid; border-left: #1F57A6 1px solid; PADDING-LEFT: 2px; FONT-SIZE: 12px; FILTER: progid:DXImageTransform.Microsoft.Gradient(GradientType=0, StartColorStr=#ffffff, EndColorStr=#46A3FF); BORDER-LEFT: #1F57A6 1px solid; CURSOR: hand; COLOR: black; PADDING-TOP: 2px; BORDER-BOTTOM: #1F57A6 1px solid
+}
+.btn1_mouseout_other {
+ BORDER-RIGHT: #1F57A6 1px solid; PADDING-RIGHT: 2px; BORDER-TOP: #1F57A6 1px solid; PADDING-LEFT: 2px; FONT-SIZE: 12px; FILTER: progid:DXImageTransform.Microsoft.Gradient(GradientType=0, StartColorStr=#ffffff, EndColorStr=#46A3FF); BORDER-LEFT: #1F57A6 1px solid; CURSOR: hand; COLOR: black; PADDING-TOP: 2px; BORDER-BOTTOM: #1F57A6 1px solid
+}
+.btn1_mouseover_other {
+ BORDER-RIGHT: #1F57A6 1px solid; PADDING-RIGHT: 2px; BORDER-TOP: #1F57A6 1px solid;  border-bottom: #1F57A6 1px solid; border-left: #1F57A6 1px solid; PADDING-LEFT: 2px; FONT-SIZE: 12px; FILTER: progid:DXImageTransform.Microsoft.Gradient(GradientType=0, StartColorStr=#ffffff, EndColorStr=#1F57A6); BORDER-LEFT: #1F57A6 1px solid; CURSOR: hand; COLOR: black; PADDING-TOP: 2px; BORDER-BOTTOM: #1F57A6 1px solid
+}
+
+*/
+
+
+
+
+
+
+
+
+/**/
+#QZ_mainbody{background:#182c73 url(../images/loginBg_2.jpg) no-repeat 0 0;}
+#QZ_mainbody #main{background:none;}
+.info{font-weight: normal;font-variant: normal;font-family:Microsoft Yahei;
+color:#1F57A6;padding:0;font-size:24px;margin-bottom:20px;}
+.QZ_loginTable td{padding-bottom:15px;}
+.QZ_loginTable td button{margin-right:15px;}
+.btn1_mouseout{width:200px;height:35px;background:url(../images/loginBtn.png) no-repeat center;border:none;cursor:pointer;}
+.btn1_mouseover{width:200px;height:35px;background:url(../images/loginBtn_hover.png) no-repeat center;border:none;cursor:pointer;}
+.btn1_mouseout_other{width:200px;height:35px;background:url(../images/loginBtn.png) no-repeat center;border:none;cursor:pointer;}
+.btn1_mouseover_other{width:200px;height:35px;background:url(../images/loginBtn_hover.png) no-repeat center;border:none;cursor:pointer;}
+
+
+
+
+
+
+

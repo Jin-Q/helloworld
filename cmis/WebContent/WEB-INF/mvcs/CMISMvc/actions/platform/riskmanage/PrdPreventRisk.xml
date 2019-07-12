@@ -1,0 +1,478 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actionDefines>
+	<classMap>
+		<map id="action" class="com.yucheng.cmis.ad.mvc.ADRequestController"/>
+		<map id="flowInvoker" class="com.yucheng.cmis.ad.mvc.ADFlowInvoker"/>
+		<map id="outputViews" class="java.util.HashMap"/>
+		<map id="output" class="com.ecc.emp.data.KeyedCollection"/>
+		<map id="kColl" class="com.ecc.emp.data.KeyedCollection"/>
+		<map id="iColl" class="com.ecc.emp.data.IndexedCollection"/>
+		<map id="field" class="com.ecc.emp.data.DataField"/>
+	</classMap>
+	
+	<!-- 查询尚未选择的拦截项记录列表 -->
+	<action id="queryPrdPvItemListPop" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.platform.riskmanage.op.prdpreventrisk.QueryPrdPvItemListPopOp"/>
+			<transition dest="queryListRes"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="queryListRes" url="platform/riskmanage/PrdPreventRisk/queryPrdPvItemListPop.jsp" />
+		</outputViews>
+	</action>
+	<!-- 分页查询尚未选择的拦截项记录列表  -->
+		<action id="pageQueryPrdPvItemListPop" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.platform.riskmanage.op.prdpreventrisk.QueryPrdPvItemListPopOp"/>
+			<transition dest="queryListRes"/>
+		</flowInvoker>
+		<outputViews>
+			<jsonView class="com.yucheng.cmis.view.JSONView" id="queryListRes">
+				<output>
+					<iColl id="PrdPvRiskItemList">
+						<kColl>
+							<field id="item_id" />
+							<field id="item_name" />
+							<field id="used_ind" />
+						</kColl>
+					</iColl>
+					<kColl id="pageInfo">
+						<field id="currentPage" />
+						<field id="maxLine" />
+						<field id="recordSize" />
+					</kColl>
+				</output>
+			</jsonView>
+		</outputViews>
+	</action>	
+	<!-- 查询风险拦截方案下所配置的风险拦截项 -->
+	<action id="queryPrdPvRiskItemRelList" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.platform.riskmanage.op.prdpreventrisk.QueryPrdPvRiskItemRelListOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jsonView class="com.yucheng.cmis.view.JSONView" id="retPage">
+				<output>
+					<iColl id="PrdPvRiskItemRelList">
+						<kColl>
+						</kColl>
+					</iColl>
+					<kColl id="pageInfo">
+						<field id="currentPage" />
+						<field id="maxLine" />
+						<field id="recordSize" />
+					</kColl>
+				</output>
+			</jsonView>
+		</outputViews>
+	</action>
+	
+	<!-- 导入拦截项关联关系 -->
+	<action id="importPrdPreventItemRel" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.platform.riskmanage.op.prdpreventrisk.ImportPrdPreventItemRelOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<view id="retPage" class="com.yucheng.cmis.view.JSONView">
+				<output class="com.ecc.emp.data.KeyedCollection">
+					<field id="flag" class="com.ecc.emp.data.DataField" />
+				</output>
+			</view>
+		</outputViews>
+	</action>
+	<!-- 删除拦截项关联关系 -->
+	<action id="delPrdPreventItemRel" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.platform.riskmanage.op.prdpreventrisk.DelPrdPreventItemRelOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<view id="retPage" class="com.yucheng.cmis.view.JSONView">
+				<output class="com.ecc.emp.data.KeyedCollection">
+					<field id="flag" class="com.ecc.emp.data.DataField" />
+				</output>
+			</view>
+		</outputViews>
+	</action>
+	
+	<!-- 查询记录列表 -->
+	<action id="queryPrdPreventRiskList" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.platform.riskmanage.op.prdpreventrisk.QueryPrdPreventRiskListOp"/>
+			<transition dest="queryListRes"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="queryListRes" url="platform/riskmanage/PrdPreventRisk/queryPrdPreventRiskList.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 获取新增页面 -->
+	<action id="getPrdPreventRiskAddPage" type="normal" checkSession="true" >
+		<jspView id="queryListRes" url="platform/riskmanage/PrdPreventRisk/addPrdPreventRiskRecord.jsp" />
+	</action>
+	
+	<!-- 新增信息 -->
+	<action id="addPrdPreventRiskRecord" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.platform.riskmanage.op.prdpreventrisk.AddPrdPreventRiskRecordOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<view id="retPage" class="com.yucheng.cmis.view.JSONView">
+				<output class="com.ecc.emp.data.KeyedCollection">
+					<field id="flag" class="com.ecc.emp.data.DataField" />
+					<field id="prevent_id" class="com.ecc.emp.data.DataField" />
+				</output>
+			</view>
+		</outputViews>
+	</action>
+	
+	<!-- 获得编辑页面 -->
+	<action id="getPrdPreventRiskUpdatePage" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation updateCheck="false" class="com.yucheng.cmis.platform.riskmanage.op.prdpreventrisk.QueryPrdPreventRiskDetailOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="platform/riskmanage/PrdPreventRisk/updatePrdPreventRiskRecord.jsp" />
+		</outputViews>
+	</action>
+
+	<!-- 修改信息 -->
+	<action id="updatePrdPreventRiskRecord" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.platform.riskmanage.op.prdpreventrisk.UpdatePrdPreventRiskRecordOp"/>
+			<transition dest="queryListRes"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="queryListRes" url="operationResult.jsp?url=queryPrdPreventRiskList.do" />
+		</outputViews>
+	</action>
+	
+	<!-- 删除信息 -->
+	<action id="deletePrdPreventRiskRecord" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.platform.riskmanage.op.prdpreventrisk.DeletePrdPreventRiskRecordOp"/>
+			<transition dest="queryListRes"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="queryListRes" url="operationResult.jsp?url=queryPrdPreventRiskList.do" />
+		</outputViews>
+	</action>
+	
+	<!-- 查询详情 -->
+	<action id="queryPrdPreventRiskDetail" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.platform.riskmanage.op.prdpreventrisk.QueryPrdPreventRiskDetailOp"/>
+			<transition dest="queryDetailRes"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="queryDetailRes" url="platform/riskmanage/PrdPreventRisk/queryPrdPreventRiskDetail.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 分页查询记录列表 -->
+	<action id="pagePrdPreventRiskQuery" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.platform.riskmanage.op.prdpreventrisk.QueryPrdPreventRiskListOp"/>
+			<transition dest="queryListRes"/>
+		</flowInvoker>
+		<outputViews>
+			<jsonView class="com.yucheng.cmis.view.JSONView" id="queryListRes">
+				<output>
+					<iColl id="PrdPreventRiskList">
+						<kColl>
+							<field id="prevent_id" />
+							<field id="prevent_desc" />
+							<field id="used_ind" />
+						</kColl>
+					</iColl>
+					<kColl id="pageInfo">
+						<field id="currentPage" />
+						<field id="maxLine" />
+						<field id="recordSize" />
+					</kColl>
+					
+				</output>
+			</jsonView>
+		</outputViews>
+	</action>
+	<!-- 风险拦截检查 -->
+	<action id="procRiskInspect4WF" label="风险拦截检查" type="normal" checkSession="false">
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.platform.riskmanage.op.ProcRiskInspect4WFOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+				<jspView id="retPage" url="platform/riskmanage/preventRisk.jsp" />
+		</outputViews>
+	</action>
+	<action id="procRiskInspect" label="风险拦截检查" type="normal" checkSession="false">
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.platform.riskmanage.op.ProcRiskInspectOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="platform/riskmanage/preventRisk.jsp" />
+		</outputViews>
+	</action>
+	<!-- 风险拦截检查连接处理类 -->
+	<action id="doUrlDual" label="风险拦截连接处理类" type="normal" checkSession="false">
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.platform.riskmanage.op.DoUrlDualOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<view id="retPage" class="com.yucheng.cmis.view.JSONView">
+				<output class="com.ecc.emp.data.KeyedCollection">
+					<field id="flag" class="com.ecc.emp.data.DataField" />
+					<field id="nextUrl" class="com.ecc.emp.data.DataField" />
+				</output>
+			</view>
+		</outputViews>
+	</action>
+	<!--*************************子表【风险拦截场景,适用流程】*******************************-->
+	
+	<!-- 作为子表的列表页面 -->
+	<action id="queryPrdPreventRiskPrdPvRiskSceneList" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.platform.riskmanage.op.prdpreventrisk.prdpvriskscene.QueryPrdPreventRiskPrdPvRiskSceneListOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="platform/riskmanage/PrdPreventRisk/PrdPvRiskScene/queryPrdPreventRiskPrdPvRiskSceneList.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 获得作为子表的新增页面 -->
+	<action id="getPrdPreventRiskPrdPvRiskSceneAddPage" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.platform.riskmanage.op.prdpreventrisk.prdpvriskscene.AddPrdPreventRiskSceneDetailOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="platform/riskmanage/PrdPreventRisk/PrdPvRiskScene/addPrdPreventRiskSceneDetail.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 修改页面改变流程节点出发的操作 -->
+	<action id="getPrdPvRiskSceneChangeUpdatePage" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.platform.riskmanage.op.prdpreventrisk.prdpvriskscene.GetPrdPvRiskSceneChangeUpdatePageOp"/>
+			<transition dest="updatePage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="updatePage" url="platform/riskmanage/PrdPreventRisk/PrdPvRiskScene/updatePrdPreventRiskPrdPvRiskSceneRecord.jsp" />
+		</outputViews>
+	</action>
+	<!-- 查看页面改变流程节点出发的操作 -->
+	<action id="getPrdPvRiskSceneChangeQueryPage" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.platform.riskmanage.op.prdpreventrisk.prdpvriskscene.GetPrdPvRiskSceneChangeUpdatePageOp"/>
+			<transition dest="updatePage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="updatePage" url="platform/riskmanage/PrdPreventRisk/PrdPvRiskScene/queryPrdPreventRiskPrdPvRiskSceneDetail.jsp" />
+		</outputViews>
+	</action>
+	<!-- 获得子表编辑页面 -->
+	<action id="getPrdPreventRiskPrdPvRiskSceneUpdatePage" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.platform.riskmanage.op.prdpreventrisk.prdpvriskscene.QueryPrdPreventRiskPrdPvRiskSceneDetailOp"/>
+			<transition dest="updatePage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="updatePage" url="platform/riskmanage/PrdPreventRisk/PrdPvRiskScene/updatePrdPreventRiskPrdPvRiskSceneRecord.jsp" />
+		</outputViews>
+	</action>
+	<!-- 子表详情查询 -->
+	<action id="queryPrdPreventRiskPrdPvRiskSceneDetail" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.platform.riskmanage.op.prdpreventrisk.prdpvriskscene.QueryPrdPreventRiskPrdPvRiskSceneDetailOp"/>
+			<transition dest="queryDetail"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="queryDetail" url="platform/riskmanage/PrdPreventRisk/PrdPvRiskScene/queryPrdPreventRiskPrdPvRiskSceneDetail.jsp"/>
+		</outputViews>	
+	</action>
+	
+	<!-- 子表新增记录 -->
+	<action id="addPrdPreventRiskPrdPvRiskSceneRecord" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.platform.riskmanage.op.prdpreventrisk.prdpvriskscene.AddPrdPreventRiskPrdPvRiskSceneRecordOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<view id="retPage" class="com.yucheng.cmis.view.JSONView">
+				<output class="com.ecc.emp.data.KeyedCollection">
+					<field id="flag" class="com.ecc.emp.data.DataField" />
+				</output>
+			</view>
+		</outputViews>
+	</action>
+	
+	<!-- 子表更新记录 -->
+	<action id="updatePrdPreventRiskPrdPvRiskSceneRecord" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.platform.riskmanage.op.prdpreventrisk.prdpvriskscene.UpdatePrdPreventRiskPrdPvRiskSceneRecordOp"/>
+			<transition dest="updateRecordRes"/>
+		</flowInvoker>
+		<outputViews>
+			<view id="updateRecordRes" class="com.yucheng.cmis.view.JSONView">
+				<output class="com.ecc.emp.data.KeyedCollection">
+					<field id="flag" class="com.ecc.emp.data.DataField" />
+				</output>
+			</view>
+		</outputViews>
+	</action>
+	
+	<!-- 子表删除记录 -->
+	<action id="deletePrdPreventRiskPrdPvRiskSceneRecord" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.platform.riskmanage.op.prdpreventrisk.prdpvriskscene.DeletePrdPreventRiskPrdPvRiskSceneRecordOp"/>
+			<transition dest="deleteRecordRes"/>
+		</flowInvoker>
+		<outputViews>
+			<view id="deleteRecordRes" class="com.yucheng.cmis.view.JSONView">
+				<output class="com.ecc.emp.data.KeyedCollection">
+					<field id="flag" class="com.ecc.emp.data.DataField" />
+				</output>
+			</view>
+		</outputViews>
+	</action>
+	
+	<!-- 分页查询记录列表 -->
+		<action id="pagePrdPreventRiskPrdPvRiskSceneQuery" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.platform.riskmanage.op.prdpreventrisk.prdpvriskscene.QueryPrdPreventRiskPrdPvRiskSceneListOp"/>
+			<transition dest="queryListRes"/>
+		</flowInvoker>
+		<outputViews>
+			<jsonView class="com.yucheng.cmis.view.JSONView" id="queryListRes">
+				<output>
+					<iColl id="PrdPvRiskSceneList">
+						<kColl>
+						</kColl>
+					</iColl>
+					<kColl id="pageInfo">
+						<field id="currentPage" />
+						<field id="maxLine" />
+						<field id="recordSize" />
+					</kColl>
+				</output>
+			</jsonView>
+		</outputViews>
+	</action>	
+	<!--*************************子表【风险拦截场景，一般场景，不适用流程】*******************************-->
+	<!-- 获得拦截场景的列表页面 -->
+	<action id="queryPrdPvRiskSceneList" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.platform.riskmanage.op.prdpreventrisk.prdpvriskscene.QueryPrdPvRiskSceneListOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="platform/riskmanage/PrdPreventRisk/PrdPvRiskScene/queryPrdPvRiskSceneList.jsp" />
+		</outputViews>
+	</action>
+	<!-- 保存列表场景操作 -->
+	<action id="savePrdPreventRiskScene" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.platform.riskmanage.op.prdpreventrisk.prdpvriskscene.SavePrdPreventRiskSceneOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<view id="retPage" class="com.yucheng.cmis.view.JSONView">
+				<output class="com.ecc.emp.data.KeyedCollection">
+					<field id="flag" class="com.ecc.emp.data.DataField" />
+				</output>
+			</view>
+		</outputViews>
+	</action>
+	<!-- 获得作为子表的新增页面 -->
+	<action id="getAddPrdPreventRiskScenePage" type="normal" checkSession="true" >
+		<jspView id="addPage" url="platform/riskmanage/PrdPreventRisk/PrdPvRiskScene/addPrdPvRiskSceneRecord.jsp" />
+	</action>
+	<!-- 新增场景操作
+	<action id="addPrdPreventRiskScenePage" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.platform.riskmanage.op.prdpreventrisk.prdpvriskscene.GetAddPrdPreventRiskScenePageOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="platform/riskmanage/PrdPreventRisk/PrdPvRiskScene/queryPrdPvRiskSceneList.jsp" />
+		</outputViews>
+	</action> -->
+	<!-- 获得修改场景页面
+	<action id="getUpdatePrdPreventRiskScenePage" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.platform.riskmanage.op.prdpreventrisk.prdpvriskscene.GetUpdatePrdPreventRiskScenePageOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="platform/riskmanage/PrdPreventRisk/PrdPvRiskScene/updatePrdPvRiskSceneRecord.jsp" />
+		</outputViews>
+	</action>  -->
+	<!-- 修改场景操作
+	<action id="updatePrdPreventRiskScene" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.platform.riskmanage.op.prdpreventrisk.prdpvriskscene.UpdatePrdPreventRiskSceneOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<view id="retPage" class="com.yucheng.cmis.view.JSONView">
+				<output class="com.ecc.emp.data.KeyedCollection">
+					<field id="flag" class="com.ecc.emp.data.DataField" />
+				</output>
+			</view>
+		</outputViews>
+	</action> -->
+	<!-- 删除场景操作 
+	<action id="deletePrdPreventRiskScene" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.platform.riskmanage.op.prdpreventrisk.prdpvriskscene.DeletePrdPreventRiskSceneOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<view id="retPage" class="com.yucheng.cmis.view.JSONView">
+				<output class="com.ecc.emp.data.KeyedCollection">
+					<field id="flag" class="com.ecc.emp.data.DataField" />
+				</output>
+			</view>
+		</outputViews>
+	</action> -->
+	<!-- 获得查看场景页面 
+	<action id="viewPrdPreventRiskScene" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.platform.riskmanage.op.prdpreventrisk.prdpvriskscene.GetUpdatePrdPreventRiskScenePageOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="platform/riskmanage/PrdPreventRisk/PrdPvRiskScene/queryPrdPvRiskSceneDetail.jsp" />
+		</outputViews>
+	</action>-->
+	<!-- 分页查询记录列表 -->
+		<action id="pagePrdPvRiskSceneQuery" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.platform.riskmanage.op.prdpreventrisk.prdpvriskscene.QueryPrdPvRiskSceneListOp"/>
+			<transition dest="queryListRes"/>
+		</flowInvoker>
+		<outputViews>
+			<jsonView class="com.yucheng.cmis.view.JSONView" id="queryListRes">
+				<output>
+					<iColl id="PrdPvRiskSceneList">
+						<kColl>
+						</kColl>
+					</iColl>
+					<kColl id="pageInfo">
+						<field id="currentPage" />
+						<field id="maxLine" />
+						<field id="recordSize" />
+					</kColl>
+				</output>
+			</jsonView>
+		</outputViews>
+	</action>	
+	
+</actionDefines>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<IqpTogetherRqstr.xml>
+	<TableModel id="IqpTogetherRqstr" cnname="共同申请人" dbTableName="iqp_together_rqstr">
+		<Field id="serno" isPK="true" columnName="serno" cnname="业务编号" length="40" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="cont_no" columnName="cont_no" cnname="合同编号" length="40" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="cus_id" isPK="true" columnName="cus_id" cnname="客户编号" length="40" JDBCType="VARCHAR2" canBeNull="true"/>
+	</TableModel>
+</IqpTogetherRqstr.xml>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<WfiBpRight.xml>
+	<TableModel id="WfiBpRight" pageSize="10" cnname="审批授权" isPaged="true" dbTableName="wfi_bp_right">
+		<TableInfo/>
+		<Field id="pk1" JDBCType="VARCHAR2" length="36" columnName="pk1" canBeNull="false" pkGenerator="UNID" isPK="true" JSPTag="text" cnname="主键"/>
+		<Field id="approve_type" columnName="approve_type" cnname="审批类型" length="1" JSPTag="select" canBeNull="false" JDBCType="CHAR"/>
+		<Field id="approve_org" columnName="approve_org" cnname="审批机构" length="10" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="approve_duty" columnName="approve_duty" cnname="审批岗位" length="100" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="approver" columnName="approver" cnname="审批人员" length="20" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="cus_type" columnName="cus_type" cnname="客户类型" length="10" JSPTag="select" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="app_type" columnName="app_type" cnname="业务分类" length="100" JSPTag="select" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="biz_type" columnName="biz_type" cnname="业务标志（1.贷款 2.授信）" length="1" JSPTag="select" canBeNull="false" JDBCType="CHAR"/>
+		<Field id="sig_amt" dataType="Currency" columnName="sig_amt" cnname="单笔金额" length="16" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="open_amt" dataType="Currency" columnName="open_amt" cnname="敞口金额" length="16" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="single_amt" dataType="Currency" columnName="single_amt" cnname="单户金额" length="16" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<OrderFields>pk1[desc];</OrderFields>
+		<ConditionFields>approve_type;biz_type;</ConditionFields>
+		<FilterFields>approve_type;approve_org;approve_duty;approver;cus_type;app_type;biz_type;sig_amt;open_amt;single_amt;pk1;</FilterFields>
+	</TableModel>
+</WfiBpRight.xml>

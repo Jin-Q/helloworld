@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<MortNobleMetal.xml>
+	<TableModel id="MortNobleMetal" cnname="贵金属" dbTableName="mort_noble_metal">
+		<Field id="metal_id" isPK="true" columnName="metal_id" cnname="贵金属编号" length="40" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="guaranty_no" columnName="guaranty_no" cnname="押品编号" length="40" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="coll_name" columnName="coll_name" cnname="质押物名称" length="200" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="coll_weight" columnName="coll_weight" cnname="重量(g)" length="16" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="cover_pieces" columnName="cover_pieces" cnname="内含(件)" length="8" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="quality" columnName="quality" cnname="成色%" length="16" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="remark" columnName="remark" cnname="备注" length="1000" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="sys_update_time" columnName="sys_update_time" cnname="系统更新时间" length="10" JDBCType="CHAR" canBeNull="true"/>
+		<Field id="model_no" columnName="model_no" cnname="质物品牌/型号" length="40" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="standard_no" columnName="standard_no" cnname="质物品种/规格" length="40" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="storage_place" columnName="storage_place" cnname="储存场所" length="40" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="storager" columnName="storager" cnname="监管方/仓储方" length="40" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="coll_buy_date" columnName="coll_buy_date" cnname="质物购置日期" length="10" JDBCType="CHAR" canBeNull="true"/>
+		<Field id="coll_max_years" columnName="coll_max_years" cnname="质物最高使用年限" length="10" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="coll_used_years" columnName="coll_used_years" cnname="质物已使用年限" length="10" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="metal_type" columnName="metal_type" cnname="金属类型" length="10" JDBCType="VARCHAR2" canBeNull="true"/>
+	</TableModel>
+</MortNobleMetal.xml>

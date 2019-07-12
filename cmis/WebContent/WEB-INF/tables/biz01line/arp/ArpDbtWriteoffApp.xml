@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<ArpDbtWriteoffApp.xml>
+	<TableModel id="ArpDbtWriteoffApp" cnname="呆账核销申请表" dbTableName="arp_dbt_writeoff_app">
+		<Field id="serno" isPK="true" columnName="serno" cnname="业务编号" length="40" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="cus_id" columnName="cus_id" cnname="客户编号" length="30" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="loan_balance" columnName="loan_balance" cnname="贷款余额" length="16" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="writeoff_qnt" columnName="writeoff_qnt" cnname="核销笔数" length="38" JDBCType="NUMBER" canBeNull="false"/>
+		<Field id="writeoff_resn" columnName="writeoff_resn" cnname="核销理由" length="250" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="whether_appx_appeal" columnName="whether_appx_appeal" cnname="是否保留追诉权" length="10" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="app_date" columnName="app_date" cnname="申请日期" length="10" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="over_date" columnName="over_date" cnname="办结日期" length="10" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="memo" columnName="memo" cnname="备注" length="250" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="manager_id" columnName="manager_id" cnname="责任人" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="manager_br_id" columnName="manager_br_id" cnname="责任机构" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="input_id" columnName="input_id" cnname="登记人" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="input_br_id" columnName="input_br_id" cnname="登记机构" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="input_date" columnName="input_date" cnname="登记日期" length="10" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="approve_status" columnName="approve_status" cnname="申请状态" length="3" JDBCType="VARCHAR2" canBeNull="true"/>
+	</TableModel>
+</ArpDbtWriteoffApp.xml>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<CusComAcc.xml>
+	<TableModel id="CusComAcc" cnname="结算账户登记" dbTableName="cus_com_acc">
+		<Field id="cus_id" isPK="true" columnName="cus_id" cnname="客户代码" length="30" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="cus_name" columnName="cus_name" cnname="客户名称" length="80" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="acc_no" isPK="true" columnName="acc_no" cnname="一般结算账户帐号" length="32" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="acc_date" columnName="acc_date" cnname="一般账户开户日期" length="10" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="acc_open_org" columnName="acc_open_org" cnname="开户机构" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="acc_open_orgname" columnName="acc_open_orgname" cnname="开户机构名称" length="80" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="acc_org" columnName="acc_org" cnname="核算机构" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="acc_orgname" columnName="acc_orgname" cnname="核算机构名称" length="80" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="acc_name" columnName="acc_name" cnname="帐户名称 " length="90" JDBCType="VARCHAR2"/>
+		<Field id="acc_type" columnName="acc_type" cnname="账户类型" length="1" JDBCType="VARCHAR2"/>
+	</TableModel>
+</CusComAcc.xml>

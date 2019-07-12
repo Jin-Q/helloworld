@@ -1,0 +1,114 @@
+#set ($tableModelName=${TableModel.tableId})
+<%@page language="java" contentType="text/html; charset=${jspEncode}"%>
+<%@taglib uri="/WEB-INF/emp.tld" prefix="emp" %>
+<emp:page>
+
+<html>
+<head>
+<title>列表查询页面</title>
+
+<jsp:include page="/include.jsp" flush="true"/>
+
+<script type="text/javascript">
+	
+	function doQuery(){
+		var form = document.getElementById('queryForm');
+		${tableModelName}._toForm(form);
+		${tableModelName}List._obj.ajaxQuery(null,form);
+	};
+	
+	function doGetUpdate${tableModelName}Page() {
+		var paramStr = ${tableModelName}List._obj.getParamStr([${TableModel.getPkString()}]);
+		if (paramStr != null) {
+			var url = '<emp:url action="get${tableModelName}UpdatePage.do"/>?'+paramStr;
+			url = EMPTools.encodeURI(url);
+			window.location = url;
+		} else {
+			alert('请先选择一条记录！');
+		}
+	};
+	
+	function doView${tableModelName}() {
+		var paramStr = ${tableModelName}List._obj.getParamStr([${TableModel.getPkString()}]);
+		if (paramStr != null) {
+			var url = '<emp:url action="get${tableModelName}ViewPage.do"/>?'+paramStr;
+			url = EMPTools.encodeURI(url);
+			window.location = url;
+		} else {
+			alert('请先选择一条记录！');
+		}
+	};
+	
+	function doGetAdd${tableModelName}Page() {
+		var url = '<emp:url action="get${tableModelName}AddPage.do"/>';
+		url = EMPTools.encodeURI(url);
+		window.location = url;
+	};
+	
+	function doDelete${tableModelName}() {
+		var paramStr = ${tableModelName}List._obj.getParamStr([${TableModel.getPkString()}]);
+		if (paramStr != null) {
+			if(confirm("是否确认要删除？")){
+				var url = '<emp:url action="delete${tableModelName}Record.do"/>?'+paramStr;
+				url = EMPTools.encodeURI(url);
+				window.location = url;
+			}
+		} else {
+			alert('请先选择一条记录！');
+		}
+	};
+	
+	function doReset(){
+		page.dataGroups.${tableModelName}Group.reset();
+	};
+	
+	/*--user code begin--*/
+			
+	/*--user code end--*/
+	
+</script>
+</head>
+<body class="page_content">
+	<form  method="POST" action="#" id="queryForm">
+	</form>
+
+#set($conFieldsSize=${TableModel.getConditionFieldsSize()})
+#if(${conFieldsSize}>0)
+	<emp:gridLayout id="${tableModelName}Group" title="输入查询条件" maxColumn="2">
+#foreach(${conField} in ${TableModel.conditionFields})
+#set($fieldWra=${TableModel.getFieldById("${conField}")})
+			${JspBuilder.generateTag(${fieldWra},"condition")}
+#end
+	</emp:gridLayout>
+	
+	<jsp:include page="/queryInclude.jsp" flush="true" />
+#end
+	
+	<div align="left">
+		<emp:button id="getAdd${tableModelName}Page" label="新增" op="add"/>
+		<emp:button id="getUpdate${tableModelName}Page" label="修改" op="update"/>
+		<emp:button id="delete${tableModelName}" label="删除" op="remove"/>
+		<emp:button id="view${tableModelName}" label="查看" op="view"/>
+	</div>
+
+	<emp:table icollName="${tableModelName}List" pageMode="${TableModel.isPaged()}" url="page${tableModelName}Query.do">
+#set($filterSize=${TableModel.getFilterFieldsSize()})
+#if(${filterSize}>0)
+#foreach(${filterField} in ${TableModel.filterFields})
+#set($fieldWra=${TableModel.getFieldById("${filterField}")})
+		${JspBuilder.generateTag(${fieldWra},"tableitem")}
+#end
+#else
+#foreach(${fieldWra} in ${TableModel.fieldsList})
+		${JspBuilder.generateTag(${fieldWra},"tableitem")}
+#end
+#end
+#foreach(${pkWra} in ${TableModel.getPKOutFilter()})
+		${JspBuilder.generateTag(${pkWra},"hiddentableitem")}
+#end
+	</emp:table>
+	
+</body>
+</html>
+</emp:page>
+    

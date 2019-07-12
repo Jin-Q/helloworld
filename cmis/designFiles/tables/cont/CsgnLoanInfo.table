@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<CsgnLoanInfo.xml>
+	<TableModel id="CsgnLoanInfo" pageSize="10" cnname="委托贷款关联信息" isPaged="true" dbTableName="csgn_loan_info">
+		<TableInfo/>
+		<Field id="serno" isPK="true" columnName="serno" cnname="业务编号" length="40" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="cont_no" columnName="cont_no" cnname="合同编号" length="40" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="csgn_cus_id" columnName="csgn_cus_id" cnname="委托人客户码" length="40" JSPTag="pop" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="csgn_amt" dataType="Currency" columnName="csgn_amt" cnname="委托金额" length="16" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="csgn_acct_no" columnName="csgn_acct_no" cnname="委托人一般账号" length="40" JSPTag="pop" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="csgn_acct_name" columnName="csgn_acct_name" cnname="委托人一般账户名" length="100" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="chrg_rate" dataType="Rate" columnName="chrg_rate" cnname="手续费率" length="10" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="csgn_chrg_pay_rate" dataType="Percent" columnName="csgn_chrg_pay_rate" cnname="委托人手续费支付比例" length="10" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="debit_chrg_pay_rate" dataType="Percent" columnName="debit_chrg_pay_rate" cnname="借款人手续费支付比例" length="10" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="csgn_inner_dep_no" columnName="csgn_inner_dep_no" cnname="委托人内部存款账号" length="40" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="csgn_inner_dep_name" columnName="csgn_inner_dep_name" cnname="委托人内部存款账户名" length="100" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<OrderFields>serno;cont_no;</OrderFields>
+		<ConditionFields>serno;csgn_cus_id;</ConditionFields>
+		<FilterFields>csgn_cus_id;csgn_amt;csgn_acct_no;csgn_acct_name;chrg_rate;csgn_chrg_pay_rate;debit_chrg_pay_rate;</FilterFields>
+	</TableModel>
+</CsgnLoanInfo.xml>

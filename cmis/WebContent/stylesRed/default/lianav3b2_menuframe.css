@@ -1,0 +1,331 @@
+/**** CSS for China Constuction Bank perbank ****/
+/**** zhoujun e-Channels ****/
+/**** First created on 2007.02.13 ****/
+
+* { 
+margin:0; 
+padding:0; 
+}
+img {
+border:0;
+}
+
+body,div,td,span,input,select,p {
+font:12px "ËÎÌו",Tahoma;
+}
+
+body {
+background:transparent;
+padding:0;
+margin:0;
+}
+
+#Page_content { 
+width:960px;
+padding:0;
+margin:0 auto;
+}
+
+#Header {
+/*background:url(../../images/bluetwo/logo_right.gif) right top no-repeat;*/
+}
+
+#logo {
+background:url(../../images/bluetwo/menu1_off.gif) right bottom repeat-x;
+}
+
+/** shortcut **/
+
+#shortcut {
+float:right;
+margin-top:10px;
+margin-right:14px;
+font-weight:bold;
+}
+
+#shortcut a {
+color:#6C6C6C;
+text-decoration:none;
+}
+
+#shortcut a:hover {
+color:#6C6C6C;
+text-decoration:none;
+}
+
+#shortcut img {
+vertical-align:text-bottom;
+}
+.logo_setting {
+background:url(../../images/bluetwo/logo_setting.gif) left top no-repeat;
+padding-top:5px;
+padding-left:22px;
+margin-left:10px;
+height:23px;
+float:left;
+}
+.logo_map {
+background:url(../../images/bluetwo/logo_map.gif) left top no-repeat;
+padding-top:5px;
+padding-left:22px;
+margin-left:10px;
+height:23px;
+float:left;
+}
+.logo_help {
+background:url(../../images/bluetwo/logo_help.gif) left top no-repeat;
+padding-top:5px;
+padding-left:22px;
+margin-left:10px;
+height:23px;
+float:left;
+}
+/** use as pic **/
+.logo_icon {
+background:url(../../images/bluetwo/logo_icon.gif) left top no-repeat;
+width:140px;
+height:55px;
+}
+.logo_icon_bottom {
+background:url(../../images/bluetwo/logo_icon_bottom.gif) left bottom no-repeat;
+width:9px;
+height:29px;
+margin-right:30px;
+float:left;
+}
+/** other frames **/
+#Page_left {
+width:186px;
+float:left;
+background:url(../../images/bluetwo/info_left.gif) left top repeat-y;
+}
+
+.slide_l {
+background:url(../../images/bluetwo/info_middle_slide.gif) left top no-repeat;
+cursor:pointer;
+vertical-align:top;
+margin-top:130px;
+width:10px;
+height:108px;
+}
+
+.slide_r {
+background:url(../../images/bluetwo/info_middle_slide2.gif) left top no-repeat;
+cursor:pointer;
+vertical-align:top;
+margin-top:130px;
+width:10px;
+height:108px;
+}
+
+#Page_right {
+float:right;
+}
+#Page_middle {
+float:left;
+height:600px;
+background:url(../../images/bluetwo/d6e7fd.gif) left top repeat-y;
+}
+
+#Footer {
+text-align:center;
+color:#fff;
+float:left;
+}
+
+.footer_td {
+background:url(../../images/bluetwo/footer_middle.gif) left top repeat-x;
+}
+
+.footer_left {
+background:url(../../images/bluetwo/footer_middle.gif) left top repeat-x;
+width:7px;
+height:30px;
+float:left;
+}
+
+.footer_right {
+background:url(../../images/bluetwo/footer_middle.gif) left top repeat-x;
+width:7px;
+height:31px;
+display:inline;
+float:right;
+}
+
+#menu_lv1 {
+height:29px;
+margin-left:180px;
+}
+
+.menu1_front {
+
+}
+
+.menu1_on {
+background:url(../../images/bluetwo/menu1_on_right.gif) right bottom no-repeat;
+float:left;
+font-size:13px;
+}
+
+.menu1_on a,
+.menu1_on a:visited {
+display:block;
+color:#f7d46e;
+font-weight:bold;
+background:url(../../images/bluetwo/menu1_on_left.gif) left top no-repeat;
+text-decoration:none;
+padding:10px 14px 4px 17px;
+}
+
+.menu1_off {
+background:url(../../images/bluetwo/menu1_off_right.gif) right top no-repeat;
+float:left;
+font-size:13px;
+}
+
+.menu1_off a,
+.menu1_off a:visited {
+display:block;
+color:#fff;
+font-weight:bold;
+background:url(../../images/bluetwo/menu1_off_left.gif) left top no-repeat;
+text-decoration:none;
+padding:10px 14px 4px 17px;
+}
+.menu1_off a:hover{
+color:#ececec;
+}
+/** menu lv2 **/
+
+#menu_lv2 {
+
+}
+
+.menu_lv2_td {
+background:#32558f;
+padding-left:121px;
+}
+
+.menu_lv2_left {
+background:#32558f;
+}
+
+.menu2_off {
+color:#ffffff;
+float:left;
+}
+.menu2_off a,
+.menu2_off a:visited  {
+text-decoration:none;
+display:block;
+color:#ffffff;
+padding:7px 10px 4px 10px;
+}
+.menu2_off a:hover  {
+text-decoration:underline;
+}
+
+.menu2_on {
+background:url(../../images/bluetwo/menu2_on_right.gif) right bottom repeat-x;
+float:left;
+}
+.menu2_on a,
+.menu2_on a:visited {
+display:block;
+background:url(../../images/bluetwo/menu2_on_left.gif) left bottom no-repeat;
+text-decoration:none;
+color:#f7d46e;
+padding:7px 10px 4px 10px;
+}
+
+.menu_lv2_item div {
+vertical-align:0%;
+}
+
+.menu_lv2_item a:hover {
+/*color:#E3384A;*/
+}
+
+.menu2_middle {
+background: url(../../images/bluetwo/menu2_middle.gif) left top no-repeat;
+font-size:16px;
+float:left;
+display:inline;
+}
+
+.menu_exit{
+background:url(../../images/bluetwo/menu_lv2_right.gif) left top no-repeat;
+}
+
+.menu_exit img{
+vertical-align:top;
+padding:0px 0px 3px 23px;
+cursor:pointer;
+}
+/*** info ***/
+.info_time {
+background:url(../../images/bluetwo/info_time.gif) left top no-repeat;
+padding:9px 6px 3px 13px;
+color:#5fb0e5;
+font-weight:bold;
+width:167px;
+float:left;
+}
+.info_time_cornor {
+float:left;
+background:url(../../images/bluetwo/info_middle_top.gif) left top no-repeat;
+height:27px !important;
+height:26px;
+width:25px;
+}
+/*** form ***/
+.form_content_head {
+background:url(../../images/bluetwo/form_content_head.gif) left top repeat-x;
+height:27px !important;
+height:26px;
+}
+/***menuskin***/
+.menuskin {
+border-right : 1px solid #5D5D5D;
+border-bottom : 1px solid #3C3C3C;
+visibility : hidden;
+font-size : 12px;
+position : absolute;
+color : #595757;
+background-color : #EBEBEB;
+background-repeat : repeat-y;
+/*filter:alpha(opacity=90);*/
+} 
+.menuskin td {
+line-height:25px;
+padding-right : 15px;
+padding-left : 20px;
+text-decoration : none;
+
+}
+.menuskin td.menu3_td {
+background:url(../../images/bluetwo/menu3_arrow.gif) right top no-repeat;
+}
+.menuskin td.menu3_td {
+background:url(../../images/bluetwo/menu3_arrow.gif) right top no-repeat;
+}
+
+.menuskin img {
+vertical-align:middle;
+}
+.menu3_div {
+
+}
+.menu3_div_on {
+background-color:#AFD6FD;
+color:#0596C7;
+}
+.menu3_divide {
+padding:1px 5px;
+background:url(../../images/bluetwo/menu3_divide.gif) left top repeat-x;
+}
+/*** misc ***/
+
+.clear {clear:both;}
+.text_center {text-align:center;}
+.text_right {text-align:right;}

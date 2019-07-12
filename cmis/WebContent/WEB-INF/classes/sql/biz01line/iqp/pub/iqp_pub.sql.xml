@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<S>
+	<!-- 通过目录ID获得下一级目录信息   -->
+	<SQL id="searchCatalogManaBySupCatalogNo" parameterClass="java.lang.String" resultClass="java.lang.String">
+	  <SELECT>
+	  <![CDATA[
+		SELECT COUNT(1) FROM IQP_MORT_CATALOG_MANA WHERE SUP_CATALOG_NO = ${_SIG_VALUE} AND STATUS='1'
+	  ]]>
+	  </SELECT>
+	</SQL>
+	<!-- 通过目录ID获得下一级目录信息（只包含非含价商品）   -->
+	<SQL id="searchCatalogManaNoValueBySupCatalogNo" parameterClass="java.lang.String" resultClass="java.lang.String">
+	  <SELECT>
+	  <![CDATA[
+		SELECT COUNT(1) FROM IQP_MORT_CATALOG_MANA WHERE SUP_CATALOG_NO = ${_SIG_VALUE} AND STATUS='1' AND ATTR_TYPE='01'
+	  ]]>
+	  </SELECT>
+	</SQL>
+	<!-- 通过目录ID取得最大的下一个目录ID   -->
+	<SQL id="searchMaxCatalogNo" parameterClass="java.lang.String" resultClass="java.lang.String">
+	  <SELECT>
+	  <![CDATA[
+		SELECT  MAX(CATALOG_NO) from (SELECT MAX(CATALOG_NO) as CATALOG_NO FROM IQP_APP_MORT_DETAIL  WHERE SUP_CATALOG_NO= ${_SIG_VALUE}
+	  union SELECT MAX(CATALOG_NO) as CATALOG_NO FROM iqp_mort_catalog_mana  WHERE SUP_CATALOG_NO= ${_SIG_VALUE})
+	  ]]>
+	  </SELECT>
+	</SQL>
+	<!-- 通过目录ID取得最大的下一个目录ID（准入）   -->
+	<SQL id="searchMaxCatalogNoDetail" parameterClass="java.lang.String" resultClass="java.lang.String">
+	  <SELECT>
+	  <![CDATA[
+	  SELECT  MAX(CATALOG_NO) from (SELECT MAX(CATALOG_NO) as CATALOG_NO FROM IQP_APP_MORT_DETAIL  WHERE SUP_CATALOG_NO= ${_SIG_VALUE}
+	  union SELECT MAX(CATALOG_NO) as CATALOG_NO FROM iqp_mort_catalog_mana  WHERE SUP_CATALOG_NO= ${_SIG_VALUE})
+	  ]]>
+	  </SELECT>
+	</SQL>
+	
+	<!--  修改一级目录时更新树形字典的押品类别的货物质押对应的名称     -->
+	<SQL id="updateTreeDicByCatalogNo" parameterClass="java.lang.String" resultClass="java.lang.String" valueClass="java.lang.String">
+	  <UPDATE>
+	  <![CDATA[
+		UPDATE S_TREEDIC SET CNNAME=${_SIG_VALUE} WHERE OPTTYPE= 'MORT_TYPE' AND ENNAME= ${_SIG_VALUE}
+	  ]]>
+	  </UPDATE>
+	</SQL>
+	
+	<!--  删除一级目录时同步删除树形字典的押品类别项下货物质押对应数据     -->
+	<SQL id="deleteTreeDicByCatalogNo" parameterClass="java.lang.String" resultClass="java.lang.String" >
+	  <DELETE>
+	  <![CDATA[
+		DELETE S_TREEDIC WHERE OPTTYPE= 'MORT_TYPE' AND ENNAME= ${_SIG_VALUE}
+	  ]]>
+	  </DELETE>
+	</SQL>
+	
+	<!-- 修改押品目录状态   -->
+	<SQL id="updateCatalogManaStatus" parameterClass="java.lang.String" valueClass ="java.lang.String" >
+	   <UPDATE>
+	  <![CDATA[  	
+		UPDATE IQP_MORT_CATALOG_MANA SET STATUS = ${_SIG_VALUE} WHERE CATALOG_NO = ${_SIG_VALUE}
+	  ]]>
+	   </UPDATE>
+	</SQL>
+	
+	<!-- 根据目录编号查询该目录下价格信息数量   -->
+	<SQL id="searchValueManaByCatalogNo" parameterClass="java.lang.String" resultClass="java.lang.String">
+	  <SELECT>
+	  <![CDATA[
+		SELECT COUNT(1) FROM IQP_MORT_VALUE_MANA WHERE SUBSTR(CATALOG_NO,INSTR(CATALOG_NO,',',-1)+1) = ${_SIG_VALUE}
+	  ]]>
+	  </SELECT>
+	</SQL>
+	
+	<!-- 修改押品价格状态   -->
+	<SQL id="updateValueManaStatus" parameterClass="java.lang.String" valueClass ="java.lang.String" >
+	   <UPDATE>
+	  <![CDATA[  	
+		UPDATE IQP_MORT_VALUE_MANA SET STATUS = ${_SIG_VALUE} WHERE VALUE_NO = ${_SIG_VALUE}
+	  ]]>
+	   </UPDATE>
+	</SQL>
+
+</S>

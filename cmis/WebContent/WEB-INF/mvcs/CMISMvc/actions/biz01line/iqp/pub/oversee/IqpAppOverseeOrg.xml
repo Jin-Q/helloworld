@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actionDefines>
+	<classMap>
+		<map id="action" class="com.yucheng.cmis.ad.mvc.ADRequestController"/>
+		<map id="flowInvoker" class="com.yucheng.cmis.ad.mvc.ADFlowInvoker"/>
+		<map id="outputViews" class="java.util.HashMap"/>
+		<map id="output" class="com.ecc.emp.data.KeyedCollection"/>
+		<map id="kColl" class="com.ecc.emp.data.KeyedCollection"/>
+		<map id="iColl" class="com.ecc.emp.data.IndexedCollection"/>
+		<map id="field" class="com.ecc.emp.data.DataField"/>
+	</classMap>
+	
+	<!-- 获取操作主页面 -->
+	<action id="queryIqpAppOverseeOrgList" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.iqp.op.pub.oversee.iqpappoverseeorg.QueryIqpAppOverseeOrgListOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="biz01line/iqp/pub/admittance/IqpAppOverseeOrg/queryIqpAppOverseeOrgList.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 新增下一步  -->
+	<action id="next2addIqpAppOverseeOrgPage" type="normal" checkSession="true" >
+		<jspView id="addPage" url="biz01line/iqp/pub/admittance/IqpAppOverseeOrg/Next2addIqpAppOverseeOrgPage.jsp"/>
+	</action>
+	
+	<!-- 监管机构下一步到新增页面 -->
+	<action id="getIqpAppOverseeOrgAddPage" type="normal" checkSession="true" >
+	    <flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.iqp.op.pub.oversee.iqpappoverseeorg.QueryNextIqpAppOverseeOrgPageOp"/>
+			<transition dest="addPage"/>
+		</flowInvoker>
+		<outputViews>
+		<jspView id="addPage" url="biz01line/iqp/pub/admittance/IqpAppOverseeOrg/addIqpAppOverseeOrgRecord.jsp"/>
+		</outputViews>
+	</action>
+	
+	<!-- 获得编辑页面 -->
+	<action id="getIqpAppOverseeOrgUpdatePage" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation updateCheck="true" class="com.yucheng.cmis.biz01line.iqp.op.pub.oversee.iqpappoverseeorg.QueryIqpAppOverseeOrgDetailOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="biz01line/iqp/pub/admittance/IqpAppOverseeOrg/updateIqpAppOverseeOrgRecord.jsp" />
+		</outputViews>
+	</action>
+	<!-- 判断监管规模 shuffle版 -->
+	<action id="getOverseeOrgSizeOp" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.iqp.op.pub.oversee.iqpappoverseeorg.GetOverseeOrgSizeOp"/>
+			<transition dest="asyncPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jsonView class="com.yucheng.cmis.view.JSONView" id="asyncPage">
+				<output>
+					<field id="com_scale" />
+					<field id="out_flag" />
+					<field id="out_msg" />
+				</output>
+			</jsonView>
+		</outputViews>
+	</action>
+	<!-- 更新记录 -->
+	<action id="updateIqpAppOverseeOrgRecord" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.iqp.op.pub.oversee.iqpappoverseeorg.UpdateIqpAppOverseeOrgRecordOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<view id="retPage" class="com.yucheng.cmis.view.JSONView">
+				<output class="com.ecc.emp.data.KeyedCollection">
+					<field id="flag" />
+				</output>
+			</view>
+		</outputViews>
+	</action>
+	
+	<!-- 获得查看页面 -->
+	<action id="getIqpAppOverseeOrgViewPage" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.iqp.op.pub.oversee.iqpappoverseeorg.QueryIqpAppOverseeOrgDetailOp"/>
+			<transition dest="updatePage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="updatePage" url="biz01line/iqp/pub/admittance/IqpAppOverseeOrg/queryIqpAppOverseeOrgDetail.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 检查当前所选监管机构编号是否存在 -->
+	<action id="queryOverseeOrg" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.iqp.op.pub.oversee.iqpappoverseeorg.QueryOverseeOrgOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<view id="retPage" class="com.yucheng.cmis.view.JSONView">
+				<output class="com.ecc.emp.data.KeyedCollection">
+					<field id="flag" class="com.ecc.emp.data.DataField"/>
+				</output>
+			</view>
+		</outputViews>
+	</action>
+	
+	<!-- 通过客户模块接口获取需要的数值 -->
+	<action id="getOverseeOrgDetail4Cus" type="normal" checkSession="true">
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.iqp.op.pub.oversee.iqpoverseeorg.GetOverseeOrgDetail4Cus" />
+			<transition dest="queryDetailRes" />
+		</flowInvoker>
+		<outputViews>
+			<view id="queryDetailRes" class="com.yucheng.cmis.view.JSONView">
+				<output class="com.ecc.emp.data.KeyedCollection">
+					<iColl id="cusList" class="com.ecc.emp.data.IndexedCollection">
+						<kColl class="com.ecc.emp.data.KeyedCollection" />
+					</iColl>
+				</output>
+			</view>
+		</outputViews>
+	</action>
+	
+	<!-- 监管机构准入审查表 -->
+	<action id="queryOverseeOrgTable" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.iqp.op.pub.oversee.iqpappoverseeorg.QueryOverseeOrgTableOp"/>
+			<transition dest="showPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="showPage" url="biz01line/report/fnc/reportShowPage.jsp"/>
+		</outputViews>
+	</action>
+	
+	<!-- 监管机构评级审查表 -->
+	<action id="queryIqpCcrTable" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.iqp.op.pub.oversee.iqpappoverseeorg.QueryIqpCcrTableOp"/>
+			<transition dest="showPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="showPage" url="biz01line/report/fnc/reportShowPage.jsp"/>
+		</outputViews>
+	</action>
+	
+	
+	<!-- 新增记录 -->
+	<action id="addIqpAppOverseeOrgRecord" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.iqp.op.pub.oversee.iqpappoverseeorg.AddIqpAppOverseeOrgRecordOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<view id="retPage" class="com.yucheng.cmis.view.JSONView">
+				<output class="com.ecc.emp.data.KeyedCollection">
+					<field id="flag" />
+					<field id="serno" />
+				</output>
+			</view>
+		</outputViews>
+	</action>	
+	
+	<!-- 删除记录 -->
+	<action id="deleteIqpAppOverseeOrgRecord" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.iqp.op.pub.oversee.iqpappoverseeorg.DeleteIqpAppOverseeOrgRecordOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<view id="retPage" class="com.yucheng.cmis.view.JSONView">
+				<output class="com.ecc.emp.data.KeyedCollection">
+					<field id="flag" />
+				</output>
+			</view>
+		</outputViews>
+	</action>
+	
+	<!-- 分页查询记录列表 -->
+		<action id="pageIqpAppOverseeOrgQuery" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.iqp.op.pub.oversee.iqpappoverseeorg.QueryIqpAppOverseeOrgListOp"/>
+			<transition dest="queryListRes"/>
+		</flowInvoker>
+		<outputViews>
+			<jsonView class="com.yucheng.cmis.view.JSONView" id="queryListRes">
+				<output>
+					<iColl id="IqpAppOverseeOrgList">
+						<kColl>
+						</kColl>
+					</iColl>
+					<kColl id="pageInfo">
+						<field id="currentPage" />
+						<field id="maxLine" />
+						<field id="recordSize" />
+					</kColl>
+				</output>
+			</jsonView>
+		</outputViews>
+	</action>
+</actionDefines>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<IndPara.xml>
+	<TableModel id="IndPara" cnname="参数设置" dbTableName="ind_para">
+		<Field id="index_no" isPK="true" columnName="index_no" cnname="指标编号" length="8" JDBCType="CHAR" canBeNull="false"/>
+		<Field id="enname" isPK="true" columnName="para_enname" cnname="参数英文名" length="10" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="para_cnname" columnName="para_cnname" cnname="参数中文名" length="60" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="para_val_type" columnName="para_val_type" cnname="参数值类型" length="1" JDBCType="CHAR" canBeNull="true"/>
+		<Field id="para_val_way" columnName="para_val_way" cnname="参数值来源" length="1" JDBCType="CHAR" canBeNull="true"/>
+	</TableModel>
+</IndPara.xml>

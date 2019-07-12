@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<LmtFpayout.xml>
+	<TableModel id="LmtFpayout" cnname="家庭支出" dbTableName="lmt_fpayout">
+		<TableInfo/>
+		<Field id="cus_id" isPK="true" columnName="cus_id" cnname="客户码" length="30" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="cus_attr" dictname="STD_ZB_CUS_ATTR" columnName="cus_attr" cnname="客户属性" length="12" JSPTag="select" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="fpayout_type" dictname="STD_ZB_FPAYOUT_TYPE" columnName="fpayout_type" cnname="家庭支出类型" length="60" JSPTag="select" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="mpayout" dataType="Currency" columnName="mpayout" cnname="月支出" length="20" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="ypayout" dataType="Currency" columnName="ypayout" cnname="年支出" length="20" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="memo" columnName="memo" cnname="备注" length="60" JSPTag="textarea" canBeNull="true" JDBCType="VARCHAR2"/>
+		<OrderFields>cus_id[desc];</OrderFields>
+		<FilterFields>cus_id;cus_attr;fpayout_type;mpayout;ypayout;</FilterFields>
+		<RecordRestrict query="true"/>
+		<Field id="serno" isPK="true" columnName="serno" cnname="流水号" length="40" JSPTag="text" JDBCType="VARCHAR2"/>
+	</TableModel>
+</LmtFpayout.xml>

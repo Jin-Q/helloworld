@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<LmtAppFinSubpay.xml>
+	<TableModel id="LmtAppFinSubpay" cnname="融资性担保公司代偿" dbTableName="lmt_app_fin_subpay">
+		<Field id="serno" isPK="true" columnName="serno" cnname="业务编号" length="40" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="cus_id" columnName="cus_id" cnname="客户码" length="30" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="input_id" columnName="input_id" cnname="登记人" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="input_br_id" columnName="input_br_id" cnname="登记机构" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="manager_id" columnName="manager_id" cnname="责任人" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="manager_br_id" columnName="manager_br_id" cnname="责任机构" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="input_date" columnName="input_date" cnname="登记日期" length="10" JDBCType="CHAR" canBeNull="true"/>
+		<Field id="approve_status" columnName="approve_status" cnname="申请状态" length="4" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="subpay_cur_type" columnName="subpay_cur_type" cnname="代偿币种" length="10" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="subpay_totl_limit" columnName="subpay_totl_limit" cnname="代偿总额" length="16" JDBCType="number" canBeNull="true"/>
+		<Field id="subpay_times" columnName="subpay_times" cnname="本次代偿笔数" length="10" JDBCType="number" canBeNull="true"/>
+		<Field id="subpay_app_date" columnName="subpay_app_date" cnname="代偿申请日期" length="10" JDBCType="CHAR" canBeNull="true"/>
+		<Field id="subpay_end_date" columnName="subpay_end_date" cnname="代偿办结日期" length="10" JDBCType="CHAR" canBeNull="true"/>
+		<Field id="pyee_acct" columnName="pyee_acct" cnname="收款人账号" length="20" JDBCType="VARCHAR2"/>
+		<Field id="pyee_name" columnName="pyee_name" cnname="收款人账户名" length="100" JDBCType="VARCHAR2"/>
+		<Field id="paorg_no" columnName="paorg_no" cnname="收款人开户行行号" length="20" JDBCType="VARCHAR2"/>
+		<Field id="paorg_name" columnName="paorg_name" cnname="收款人开户行行名" length="100" JDBCType="VARCHAR2"/>
+	</TableModel>
+</LmtAppFinSubpay.xml>

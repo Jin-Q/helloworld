@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<CusManager.xml>
+	<TableModel id="CusManager" cnname="客户经理登记" dbTableName="cus_manager">
+		<Field id="cont_no" columnName="cont_no" cnname="合同编号" length="40" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="biz_type" columnName="biz_type" cnname="业务类型" length="10" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="manager_id" columnName="manager_id" cnname="客户经理" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="ser_rate" columnName="ser_rate" cnname="业务比例" length="10" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="input_id" columnName="input_id" cnname="登记人" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="input_org" columnName="input_org" cnname="登记机构" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="input_date" columnName="input_date" cnname="登记日期" length="10" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="update_date" columnName="update_date" cnname="变更日期" length="10" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="serno" isPK="true" columnName="serno" cnname="业务编号" length="40" JDBCType="VARCHAR2"/>
+		<Field id="is_main_manager" columnName="is_main_manager" cnname="是否主管客户经理" length="1" JDBCType="CHAR"/>
+	</TableModel>
+</CusManager.xml>

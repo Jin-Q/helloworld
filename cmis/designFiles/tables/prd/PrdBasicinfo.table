@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<PrdBasicinfo.xml>
+	<TableModel id="PrdBasicinfo" pageSize="15" cnname="产品配置表" isPaged="true" dbTableName="prd_basicinfo">
+		<TableInfo/>
+		<Field id="prdname" columnName="prdname" cnname="产品名称" length="40" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="prdowner" columnName="prdowner" cnname="产品归属" length="40" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="supcatalog" columnName="supcatalog" cnname="上级目录" length="100" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="prdid" JDBCType="VARCHAR2" length="6" columnName="prdid" canBeNull="false" isPK="true" isEncrypted="false" JSPTag="text" cnname="产品编号"/>
+		<Field id="prddescribe" columnName="prddescribe" cnname="产品描述" length="200" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="prdversion" columnName="prdversion" cnname="产品版本号" length="10" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="prdmanager" columnName="prdmanager" cnname="产品经理" length="30" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="startdate" columnName="startdate" cnname="生效日期" length="10" JSPTag="text" canBeNull="true" JDBCType="CHAR"/>
+		<Field id="enddate" columnName="enddate" cnname="结束日期" length="10" JSPTag="text" canBeNull="true" JDBCType="CHAR"/>
+		<Field id="prdstatus" columnName="prdstatus" cnname="产品状态" length="10" JSPTag="text" canBeNull="true" JDBCType="CHAR"/>
+		<Field id="guarway" columnName="guarway" cnname="可用担保方式" length="20" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="currency" columnName="currency" cnname="可用币种" length="20" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="preventtactics" columnName="preventtactics" cnname="拦截策略" length="40" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="loanform" columnName="loanform" cnname="申请表单" length="20" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="contform" columnName="contform" cnname="合同表单" length="20" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="pvpform" columnName="pvpform" cnname="出账表单" length="20" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="contmapping" columnName="contmapping" cnname="合同映射" length="20" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="pvpmapping" columnName="pvpmapping" cnname="出账映射" length="20" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="loanflow" columnName="loanflow" cnname="申请流程" length="20" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="pvpway" columnName="pvpway" cnname="出账方式" length="20" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="payflow" columnName="payflow" cnname="放款流程" length="20" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="repayway" columnName="repayway" cnname="还款方式设置" length="20" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="costset" columnName="costset" cnname="费用设置" length="20" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="businessrule" columnName="businessrule" cnname="业务规则" length="40" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="policytactics" columnName="policytactics" cnname="政策策略" length="20" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="datacollection" columnName="datacollection" cnname="资料收集" length="40" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="comments" columnName="comments" cnname="备注" length="100" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="inputid" columnName="inputid" cnname="登记人员" length="30" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="inputdate" columnName="inputdate" cnname="登记日期" length="10" JSPTag="text" canBeNull="true" JDBCType="CHAR"/>
+		<Field id="orgid" columnName="orgid" cnname="登记机构" length="20" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<OrderFields>prdname;prdid;startdate;enddate;prdstatus;</OrderFields>
+		<ConditionFields>prdname;prdid;prdmanager;</ConditionFields>
+		<FilterFields>prdname;prdowner;supcatalog;prdid;prddescribe;prdversion;prdmanager;startdate;enddate;prdstatus;guarway;currency;preventtactics;loanform;contform;pvpform;contmapping;pvpmapping;loanflow;pvpway;payflow;repayway;costset;businessrule;policytactics;datacollection;comments;inputid;inputdate;orgid;</FilterFields>
+		<RecordRestrict query="true" delete="true" update="true"/>
+		<Field id="prdkind" columnName="prdkind" cnname="产品类别" length="2" JSPTag="text" JDBCType="VARCHAR2"/>
+	</TableModel>
+</PrdBasicinfo.xml>

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<actionDefines>
+	<classMap>
+		<map id="action" class="com.yucheng.cmis.ad.mvc.ADRequestController"/>
+		<map id="flowInvoker" class="com.yucheng.cmis.ad.mvc.ADFlowInvoker"/>
+		<map id="outputViews" class="java.util.HashMap"/>
+		<map id="output" class="com.ecc.emp.data.KeyedCollection"/>
+		<map id="kColl" class="com.ecc.emp.data.KeyedCollection"/>
+		<map id="iColl" class="com.ecc.emp.data.IndexedCollection"/>
+		<map id="field" class="com.ecc.emp.data.DataField"/>
+	</classMap>
+	<action id="userPermissionFile" type="normal" checkSession="true">
+		<jspView id="platform/permission/userPermissionFile.jsp" url="platform/permission/userPermissionFile.jsp"/>
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.platform.permission.resource.op.CMISRolePermissionOperation" op="generateUserFile"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="platform/permission/userPermissionResult.jsp" />
+		</outputViews>
+	</action>
+	<action id="genUserPermissionFile" type="normal" checkSession="true">	
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.platform.permission.resource.op.CMISRolePermissionOperation" op="generateUserFile"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="operationResult.jsp?url=querySUserList.do" />
+		</outputViews>
+	</action>
+	<action id="userPermissionFileAll" type="normal" checkSession="true">
+		<jspView id="platform/permission/userPermissionFile.jsp" url="platform/permission/userPermissionFile.jsp"/>
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.platform.permission.resource.op.CMISAllRolePermissionOperation" op="generateUserFile"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="platform/permission/userPermissionResult.jsp" />
+		</outputViews>
+	</action>
+	<action id="userPermissionFileOrg" type="normal" checkSession="true">
+		<jspView id="platform/permission/userPermissionFile.jsp" url="platform/permission/userPermissionFile.jsp"/>
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.platform.permission.resource.op.CMISOrgPermissionOperation" op="generateUserFile"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="platform/permission/userPermissionResult.jsp" />
+		</outputViews>
+	</action>
+	<!-- 生成单个机构下的 全部用户的权限文件 -->
+	<action id="doMkProfiles" type="normal" checkSession="true">		
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.platform.permission.resource.op.CMISOrgPermissionOperation" op="doMkProfiles"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="operationResult.jsp?url=querySOrgList.do" />
+		</outputViews>
+	</action>
+	<!-- 级联生成机构及其子机构下的 全部用户的权限文件 -->
+	<action id="doCasMkProfiles" type="normal" checkSession="true">		
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.platform.permission.resource.op.CMISOrgPermissionCasOperation" />
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="operationResult.jsp?url=querySOrgList.do" />
+		</outputViews>
+	</action>
+	
+	<!-- 临时定义，需删除 -->
+	<action id="reloadSystemCache" label="用于重新加载缓存" type="normal" checkSession="true">
+		<jspView id="reloadSystemCache" url="/reloadSystemCache.jsp"/>
+	</action>
+</actionDefines>

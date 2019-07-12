@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<IqpAppDesbuyPlan.xml>
+	<TableModel id="IqpAppDesbuyPlan" pageSize="15" cnname="订货计划申请表" isPaged="true" dbTableName="iqp_app_desbuy_plan">
+		<TableInfo/>
+		<Field id="serno" columnName="serno" cnname="业务编号" length="40" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="desgoods_plan_no" isPK="true" columnName="desgoods_plan_no" cnname="订货流水号" length="40" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="cus_id" columnName="cus_id" cnname="客户码" length="30" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="commo_name" columnName="commo_name" cnname="商品名称" length="100" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="desbuy_qnt" columnName="desbuy_qnt" cnname="订购数量" length="16" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="desbuy_qnt_unit" columnName="desbuy_qnt_unit" cnname="订购数量单位" length="2" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="desbuy_unit_price" columnName="desbuy_unit_price" cnname="订购单价（元）" length="16" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="desbuy_total" columnName="desbuy_total" cnname="订购总价（元）" length="16" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="start_date" columnName="start_date" cnname="起始日期" length="10" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="end_date" columnName="end_date" cnname="到期日期" length="10" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="fore_disp_date" columnName="fore_disp_date" cnname="预计发货日期" length="10" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="memo" columnName="memo" cnname="备注" length="500" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="input_id" columnName="input_id" cnname="登记人" length="20" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="input_br_id" columnName="input_br_id" cnname="登记机构" length="20" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="input_date" columnName="input_date" cnname="登记日期" length="10" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<OrderFields>desgoods_plan_no[desc];</OrderFields>
+		<FilterFields>serno;desgoods_plan_no;cus_id;commo_name;input_id;input_br_id;input_date;</FilterFields>
+		<Field id="for_manuf" columnName="for_manuf" cnname="供货商客户码" JSPTag="text" length="30" canBeNull="true" JDBCType="VARCHAR2"/>
+	</TableModel>
+</IqpAppDesbuyPlan.xml>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<IqpBatchBillRel.xml>
+	<TableModel id="IqpBatchBillRel" cnname="批次和票据关系表" dbTableName="iqp_batch_bill_rel">
+		<TableInfo/>
+		<Field id="batch_no" isPK="true" columnName="batch_no" cnname="批次号" length="40" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="porder_no" isPK="true" columnName="porder_no" cnname="汇票号码" length="40" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+	</TableModel>
+</IqpBatchBillRel.xml>

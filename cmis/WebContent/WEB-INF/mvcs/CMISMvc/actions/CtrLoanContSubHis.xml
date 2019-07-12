@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actionDefines>
+	<classMap>
+		<map id="action" class="com.yucheng.cmis.ad.mvc.ADRequestController"/>
+		<map id="flowInvoker" class="com.yucheng.cmis.ad.mvc.ADFlowInvoker"/>
+		<map id="outputViews" class="java.util.HashMap"/>
+		<map id="output" class="com.ecc.emp.data.KeyedCollection"/>
+		<map id="kColl" class="com.ecc.emp.data.KeyedCollection"/>
+		<map id="iColl" class="com.ecc.emp.data.IndexedCollection"/>
+		<map id="field" class="com.ecc.emp.data.DataField"/>
+	</classMap>
+	
+	<!-- 获取操作主页面 -->
+	<!-- <action id="queryCtrLoanContSubHisList" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.ops.cont.ctrloancontsubhis.QueryCtrLoanContSubHisListOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="cont/CtrLoanContSubHis/queryCtrLoanContSubHisList.jsp" />
+		</outputViews>
+	</action> -->
+	
+	<!-- 获得编辑页面 -->
+	<!-- <action id="getCtrLoanContSubHisUpdatePage" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation updateCheck="false" class="com.yucheng.cmis.ops.cont.ctrloancontsubhis.QueryCtrLoanContSubHisDetailOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="cont/CtrLoanContSubHis/updateCtrLoanContSubHisRecord.jsp" />
+		</outputViews>
+	</action> -->
+	
+	<!-- 更新记录 -->
+	<!-- <action id="updateCtrLoanContSubHisRecord" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.ops.cont.ctrloancontsubhis.UpdateCtrLoanContSubHisRecordOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="operationResult.jsp?url=queryCtrLoanContSubHisList.do" />
+		</outputViews>
+	</action> -->
+	
+	<!-- 获得查看页面 -->
+	<!-- <action id="getCtrLoanContSubHisViewPage" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.ops.cont.ctrloancontsubhis.QueryCtrLoanContSubHisDetailOp"/>
+			<transition dest="updatePage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="updatePage" url="cont/CtrLoanContSubHis/queryCtrLoanContSubHisDetail.jsp" />
+		</outputViews>
+	</action> -->
+	
+	<!-- 获得新增页面 -->
+	<action id="getCtrLoanContSubHisAddPage" type="normal" checkSession="true" >
+		<jspView id="addPage" url="cont/CtrLoanContSubHis/addCtrLoanContSubHisRecord.jsp"/>
+	</action>
+	
+	<!-- 新增记录 -->
+	<!-- <action id="addCtrLoanContSubHisRecord" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.ops.cont.ctrloancontsubhis.AddCtrLoanContSubHisRecordOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="operationResult.jsp?url=queryCtrLoanContSubHisList.do" />
+		</outputViews>
+	</action> -->	
+	
+	<!-- 删除记录 -->
+	<!-- <action id="deleteCtrLoanContSubHisRecord" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.ops.cont.ctrloancontsubhis.DeleteCtrLoanContSubHisRecordOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="operationResult.jsp?url=queryCtrLoanContSubHisList.do" />
+		</outputViews>
+	</action> -->
+	
+	<!-- 分页查询记录列表 -->
+		<!-- <action id="pageCtrLoanContSubHisQuery" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.ops.cont.ctrloancontsubhis.QueryCtrLoanContSubHisListOp"/>
+			<transition dest="queryListRes"/>
+		</flowInvoker>
+		<outputViews>
+			<jsonView class="com.yucheng.cmis.view.JSONView" id="queryListRes">
+				<output>
+					<iColl id="CtrLoanContSubHisList">
+						<kColl>
+						</kColl>
+					</iColl>
+				</output>
+			</jsonView>
+		</outputViews>
+	</action> -->
+	
+</actionDefines>
+
+
+

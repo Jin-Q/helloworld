@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<WfiAgentLog.xml>
+	<TableModel id="WfiAgentLog" cnname="代办历史（实例未办结）" dbTableName="wfi_agent_log">
+		<TableInfo/>
+		<Field id="instanceid" columnName="instanceid" cnname="INSTANCEID" length="32" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="wfid" columnName="wfid" cnname="WFID" length="32" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="wfsign" columnName="wfsign" cnname="WFSIGN" length="32" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="nodeid" columnName="nodeid" cnname="NODEID" length="32" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="nodestarttime" columnName="nodestarttime" cnname="NODESTARTTIME" length="19" JSPTag="text" canBeNull="false" JDBCType="CHAR"/>
+		<Field id="originaluser" columnName="originaluser" cnname="ORIGINALUSER" length="100" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="replacer" columnName="replacer" cnname="REPLACER" length="100" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="sysid" columnName="sysid" cnname="SYSID" length="32" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="pk_value" columnName="pk_value" cnname="PK_VALUE" length="32" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="cus_id" columnName="cus_id" cnname="CUS_ID" length="30" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="cus_name" columnName="cus_name" cnname="CUS_NAME" length="80" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="appl_type" columnName="appl_type" cnname="APPL_TYPE" length="3" JSPTag="text" canBeNull="true" JDBCType="CHAR"/>
+		<Field id="wfi_end_org" columnName="wfi_end_org" cnname="WFI_END_ORG" length="20" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="wfi_status" columnName="wfi_status" cnname="WFI_STATUS" length="3" JSPTag="text" canBeNull="true" JDBCType="CHAR"/>
+	</TableModel>
+</WfiAgentLog.xml>

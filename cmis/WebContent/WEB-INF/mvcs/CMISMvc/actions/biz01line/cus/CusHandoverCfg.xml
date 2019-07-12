@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actionDefines>
+	<classMap>
+		<map id="action" class="com.yucheng.cmis.ad.mvc.ADRequestController"/>
+		<map id="flowInvoker" class="com.yucheng.cmis.ad.mvc.ADFlowInvoker"/>
+		<map id="outputViews" class="java.util.HashMap"/>
+		<map id="output" class="com.ecc.emp.data.KeyedCollection"/>
+		<map id="kColl" class="com.ecc.emp.data.KeyedCollection"/>
+		<map id="iColl" class="com.ecc.emp.data.IndexedCollection"/>
+		<map id="field" class="com.ecc.emp.data.DataField"/>
+	</classMap>
+	
+	<!-- 查询记录列表 -->
+	<action id="queryCusHandoverCfgList" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.cus.cushand.op.cushandovercfg.QueryCusHandoverCfgListOp"/>
+			<transition dest="queryListRes"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="queryListRes" url="biz01line/cus/cusbase/CusHandoverCfg/queryCusHandoverCfgList.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 获取新增页面 -->
+	<action id="getCusHandoverCfgAddPage" type="normal" checkSession="true" >
+		<jspView id="queryListRes" url="biz01line/cus/cusbase/CusHandoverCfg/addCusHandoverCfgRecord.jsp" />
+	</action>
+	
+	<!-- 新增信息 -->
+	<action id="addCusHandoverCfgRecord" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.cus.cushand.op.cushandovercfg.AddCusHandoverCfgRecordOp"/>
+			<transition dest="queryListRes"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="queryListRes" url="biz01line/cus/cusbase/CusHandoverCfg/updateCusHandoverCfgRecord.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 获得编辑页面 -->
+	<action id="getCusHandoverCfgUpdatePage" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation updateCheck="true" class="com.yucheng.cmis.biz01line.cus.cushand.op.cushandovercfg.QueryCusHandoverCfgDetailOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="biz01line/cus/cusbase/CusHandoverCfg/updateCusHandoverCfgRecord.jsp" />
+		</outputViews>
+	</action>
+
+	<!-- 修改信息 -->
+	<action id="updateCusHandoverCfgRecord" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.cus.cushand.op.cushandovercfg.UpdateCusHandoverCfgRecordOp"/>
+			<transition dest="queryListRes"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="queryListRes" url="operationResult.jsp?url=queryCusHandoverCfgList.do" />
+		</outputViews>
+	</action>
+	
+	<!-- 删除信息 -->
+	<action id="deleteCusHandoverCfgRecord" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.cus.cushand.op.cushandovercfg.DeleteCusHandoverCfgRecordOp"/>
+			<transition dest="queryListRes"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="queryListRes" url="operationResult.jsp?url=queryCusHandoverCfgList.do" />
+		</outputViews>
+	</action>
+	
+	<!-- 查询详情 -->
+	<action id="queryCusHandoverCfgDetail" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.cus.cushand.op.cushandovercfg.QueryCusHandoverCfgDetailOp"/>
+			<transition dest="queryDetailRes"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="queryDetailRes" url="biz01line/cus/cusbase/CusHandoverCfg/queryCusHandoverCfgDetail.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 分页查询记录列表 -->
+	<action id="pageCusHandoverCfgQuery" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.cus.cushand.op.cushandovercfg.QueryCusHandoverCfgListOp"/>
+			<transition dest="queryListRes"/>
+		</flowInvoker>
+		<outputViews>
+			<jsonView class="com.yucheng.cmis.view.JSONView" id="queryListRes">
+				<output>
+					<iColl id="CusHandoverCfgList">
+						<kColl>
+						    <field id="serno" />
+							<field id="table_mode" />
+							<field id="table_scope" />
+							<field id="ext_class" />
+							<field id="memo" />
+						</kColl>
+					</iColl>
+					<kColl id="pageInfo">
+						<field id="currentPage" />
+						<field id="maxLine" />
+						<field id="recordSize" />
+					</kColl>
+					
+				</output>
+			</jsonView>
+		</outputViews>
+	</action>
+	
+	
+	<!--*************************子表【客户移交配置信息表】*******************************-->
+	
+	<!-- 作为子表的列表页面 -->
+	<action id="queryCusHandoverCfgCusHandoverDetailList" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.cus.cushand.op.cushandovercfg.cushandoverdetail.QueryCusHandoverCfgCusHandoverDetailListOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="biz01line/cus/cusbase/CusHandoverCfg/CusHandoverDetail/queryCusHandoverCfgCusHandoverDetailList.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 获得作为子表的新增页面 -->
+	<action id="getCusHandoverCfgCusHandoverDetailAddPage" type="normal" checkSession="true" >
+		<jspView id="addPage" url="biz01line/cus/cusbase/CusHandoverCfg/CusHandoverDetail/addCusHandoverCfgCusHandoverDetailRecord.jsp"/>
+	</action>
+	
+	<!-- 获得子表编辑页面 -->
+	<action id="getCusHandoverCfgCusHandoverDetailUpdatePage" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.cus.cushand.op.cushandovercfg.cushandoverdetail.QueryCusHandoverCfgCusHandoverDetailDetailOp"/>
+			<transition dest="updatePage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="updatePage" url="biz01line/cus/cusbase/CusHandoverCfg/CusHandoverDetail/updateCusHandoverCfgCusHandoverDetailRecord.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 子表详情查询 -->
+	<action id="queryCusHandoverCfgCusHandoverDetailDetail" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.cus.cushand.op.cushandovercfg.cushandoverdetail.QueryCusHandoverCfgCusHandoverDetailDetailOp"/>
+			<transition dest="queryDetail"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="queryDetail" url="biz01line/cus/cusbase/CusHandoverCfg/CusHandoverDetail/queryCusHandoverCfgCusHandoverDetailDetail.jsp"/>
+		</outputViews>	
+	</action>
+	
+	<!-- 子表新增记录 -->
+	<action id="addCusHandoverCfgCusHandoverDetailRecord" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.cus.cushand.op.cushandovercfg.cushandoverdetail.AddCusHandoverCfgCusHandoverDetailRecordOp"/>
+			<transition dest="addRecordRes"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="addRecordRes" url="refreshList.jsp?method=refreshCusHandoverDetail()"/>
+		</outputViews>
+	</action>
+	
+	<!-- 子表更新记录 -->
+	<action id="updateCusHandoverCfgCusHandoverDetailRecord" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.cus.cushand.op.cushandovercfg.cushandoverdetail.UpdateCusHandoverCfgCusHandoverDetailRecordOp"/>
+			<transition dest="updateRecordRes"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="updateRecordRes" url="refreshList.jsp?method=refreshCusHandoverDetail()"/>
+		</outputViews>
+	</action>
+	
+	<!-- 子表删除记录 -->
+	<action id="deleteCusHandoverCfgCusHandoverDetailRecord" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.cus.cushand.op.cushandovercfg.cushandoverdetail.DeleteCusHandoverCfgCusHandoverDetailRecordOp"/>
+			<transition dest="deleteRecordRes"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="deleteRecordRes" url="refreshList.jsp?method=refreshCusHandoverDetail()"/>
+		</outputViews>
+	</action>
+	
+	<!-- 分页查询记录列表 -->
+		<action id="pageCusHandoverCfgCusHandoverDetailQuery" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.cus.cushand.op.cushandovercfg.cushandoverdetail.QueryCusHandoverCfgCusHandoverDetailListOp"/>
+			<transition dest="queryListRes"/>
+		</flowInvoker>
+		<outputViews>
+			<jsonView class="com.yucheng.cmis.view.JSONView" id="queryListRes">
+				<output>
+					<iColl id="CusHandoverDetailList">
+						<kColl>
+						</kColl>
+					</iColl>
+					<kColl id="pageInfo">
+						<field id="currentPage" />
+						<field id="maxLine" />
+						<field id="recordSize" />
+					</kColl>
+				</output>
+			</jsonView>
+		</outputViews>
+	</action>	
+	
+</actionDefines>

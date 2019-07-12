@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<CusOrgInfoMng.xml>
+	<TableModel id="CusOrgInfoMng" cnname="评估机构分部信息管理" dbTableName="CUS_ORG_INFO_MNG">
+		<Field id="cus_id" columnName="cus_id" cnname="客户号" length="30" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="branch_type" columnName="branch_type" cnname="类型" length="3" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="branch_addr" columnName="branch_addr" cnname="地址" length="60" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="duty_man" columnName="duty_man" cnname="负责人" length="30" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="serno" isPK="true" columnName="serno" pkGenerator="UNID" cnname="主键" length="30" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="street" columnName="street" cnname="街道" length="60" JDBCType="VARCHAR2"/>
+		<Field id="phone" columnName="phone" cnname="联系电话" length="30" JDBCType="VARCHAR2"/>
+	</TableModel>
+</CusOrgInfoMng.xml>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<EsbTradeInfo.xml>
+	<TableModel id="EsbTradeInfo" cnname="ESB交易信息" dbTableName="esb_trade_info">
+		<Field id="tx_date" isPK="true" columnName="tx_date" cnname="交易日期" length="30" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="time_stamp" columnName="time_stamp" cnname="时间戳" length="18" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="suss_flag" columnName="suss_flag" cnname="成功标志" length="1" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="request_report" columnName="request_report" cnname="请求报文" length="4000" JDBCType="CLOB" canBeNull="true"/>
+		<Field id="reponse_report" columnName="reponse_report" cnname="返回报文" length="4000" JDBCType="CLOB" canBeNull="true"/>
+		<Field id="msg_id"  isPK="true"  columnName="msg_id" cnname="全局流水" length="200" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="service_code" columnName="service_code" cnname="服务码" length="200" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="service_scene" columnName="service_scene" cnname="服务场景" length="200" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="source_sys_id" columnName="source_sys_id" cnname="服务方系统id" length="200" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="consumer_id" columnName="consumer_id" cnname="消费方系统id" length="200" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="times" columnName="times" cnname="耗时" length="22" JDBCType="NUMBER" canBeNull="true"/>
+	</TableModel>
+</EsbTradeInfo.xml>

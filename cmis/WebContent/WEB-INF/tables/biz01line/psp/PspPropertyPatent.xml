@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<PspPropertyPatent.xml>
+	<TableModel id="PspPropertyPatent" cnname="贷后检查固定资产分析-专利使用权" dbTableName="psp_property_patent">
+		<Field id="property_id" isPK="true" columnName="property_id" cnname="资产编号" length="32" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="patent_name" columnName="patent_name" cnname="专利证书名称" length="100" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="patent_owner" columnName="patent_owner" cnname="发明人" length="50" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="patent_no" columnName="patent_no" cnname="专利号" length="40" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="auth_date" columnName="auth_date" cnname="授权公告日" length="10" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="patent_unit" columnName="patent_unit" cnname="证书核发单位" length="100" JDBCType="VARCHAR2" canBeNull="true"/>
+	</TableModel>
+</PspPropertyPatent.xml>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<IqpPvRiskResult.xml>
+	<TableModel id="IqpPvRiskResult" cnname="风险拦截应用" dbTableName="iqp_pv_risk_result">
+		<Field id="result_id" isPK="true" columnName="result_id" pkGenerator="UNID" cnname="风险拦截应用ID" length="32" JDBCType="CHAR" canBeNull="false"/>
+		<Field id="serno" columnName="serno" cnname="业务流水号" length="40" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="item_id" columnName="item_id" cnname="项目编号" length="32" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="risk_level" columnName="risk_level" cnname="风险级别" length="1" JDBCType="CHAR" canBeNull="false"/>
+		<Field id="pass_state" columnName="pass_state" cnname="是否通过" length="1" JDBCType="CHAR" canBeNull="false"/>
+		<Field id="item_name" columnName="item_name" cnname="项目名称" length="100" JDBCType="VARCHAR2"/>
+		<Field id="wfid" columnName="wfid" cnname="流程ID" length="16" JDBCType="VARCHAR2"/>
+		<Field id="node_id" columnName="node_id" cnname="流程节点" length="3" JDBCType="CHAR"/>
+		<Field id="item_desc" columnName="item_desc" cnname="提示信息" length="200" JDBCType="VARCHAR2"/>
+		<Field id="link_url" columnName="link_url" cnname="外部链接" length="1000" JDBCType="VARCHAR2"/>
+	</TableModel>
+</IqpPvRiskResult.xml>

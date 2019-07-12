@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<MortCarCertification.xml>
+	<TableModel id="MortCarCertification" cnname="汽车合格证" dbTableName="mort_car_certification">
+		<TableInfo/>
+		<Field id="car_cert_id" isPK="true" columnName="car_cert_id" cnname="汽车合格证编号" length="40" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="guaranty_no" columnName="guaranty_no" cnname="押品编号" length="40" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="is_import" dictname="STD_ZX_YES_NO" columnName="is_import" cnname="是否进口车" length="1" JSPTag="select" canBeNull="true" JDBCType="CHAR"/>
+		<Field id="sys_update_time" columnName="sys_update_time" cnname="更新时间" length="10" JSPTag="date" canBeNull="true" JDBCType="CHAR"/>
+		<Field id="count" dataType="Int" columnName="count" cnname="张数" length="10" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="car_brand" columnName="car_brand" cnname="汽车品牌" length="100" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="car_model" columnName="car_model" cnname="汽车型号" length="100" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="car_flag_no" columnName="car_flag_no" cnname="车架号" length="100" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="leave_factory_date" columnName="leave_factory_date" cnname="出厂时间" length="10" JSPTag="date" canBeNull="true" JDBCType="CHAR"/>
+		<Field id="memo" columnName="memo" cnname="备注" length="1000" JSPTag="textarea" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="handling_user" columnName="handling_user" cnname="更新人" length="40" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="car_cert_no" columnName="car_cert_no" cnname="汽车合格证编号" length="40" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="cur_type" dictname="STD_ZX_CUR_TYPE" columnName="cur_type" cnname="币种" length="3" JSPTag="select" canBeNull="true" JDBCType="CHAR"/>
+		<Field id="amt" dataType="Currency" columnName="amt" cnname="金额" length="20" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<OrderFields>car_cert_id[desc];</OrderFields>
+	</TableModel>
+</MortCarCertification.xml>

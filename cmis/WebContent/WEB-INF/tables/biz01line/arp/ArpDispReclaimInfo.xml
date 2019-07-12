@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<ArpDispReclaimInfo.xml>
+	<TableModel id="ArpDispReclaimInfo" cnname="处置回收信息" dbTableName="arp_disp_reclaim_info">
+		<Field id="serno" isPK="true" columnName="serno" cnname="业务编号" length="40" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="asset_disp_no" columnName="asset_disp_no" cnname="资产处置编号" length="40" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="guaranty_no" isPK="false" columnName="guaranty_no" cnname="抵债资产编号" length="40" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="is_cash" columnName="is_cash" cnname="是否现金" length="5" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="disp_amt" columnName="disp_amt" cnname="处置金额" length="16" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="disp_date" columnName="disp_date" cnname="处置日期" length="10" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="input_id" columnName="input_id" cnname="登记人" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="input_br_id" columnName="input_br_id" cnname="登记机构" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="input_date" columnName="input_date" cnname="登记日期" length="10" JDBCType="VARCHAR2" canBeNull="true"/>
+	</TableModel>
+</ArpDispReclaimInfo.xml>

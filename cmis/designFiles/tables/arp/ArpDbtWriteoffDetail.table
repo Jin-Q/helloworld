@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<ArpDbtWriteoffDetail.xml>
+	<TableModel id="ArpDbtWriteoffDetail" pageSize="10" cnname="呆账核销明细表" isPaged="true" dbTableName="arp_dbt_writeoff_detail">
+		<TableInfo/>
+		<Field id="serno" columnName="serno" cnname="业务编号" length="40" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="pk_serno" isPK="true" columnName="pk_serno" cnname="流水号" length="40" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="bill_no" columnName="bill_no" cnname="借据编号" length="40" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="cont_no" columnName="cont_no" cnname="合同编号" length="40" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="distr_date" columnName="distr_date" cnname="起始日期" length="10" JSPTag="date" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="end_date" columnName="end_date" cnname="到期日期" length="10" JSPTag="date" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="loan_amt" dataType="Currency" columnName="loan_amt" cnname="借据金额" length="16" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="loan_balance" dataType="Currency" columnName="loan_balance" cnname="借据余额" length="16" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="owe_int" dataType="Currency" columnName="owe_int" cnname="欠息累计" length="16" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="inner_owe_int" dataType="Currency" columnName="inner_owe_int" cnname="表内欠息" length="16" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="out_owe_int" dataType="Currency" columnName="out_owe_int" cnname="表外欠息" length="16" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="writeoff_amt" dataType="Currency" columnName="writeoff_amt" cnname="核销总金额" length="16" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="writeoff_cap" dataType="Currency" columnName="writeoff_cap" cnname="核销本金" length="16" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="writeoff_int" dataType="Currency" columnName="writeoff_int" cnname="核销利息" length="16" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<OrderFields>pk_serno[desc];</OrderFields>
+		<ConditionFields>bill_no;</ConditionFields>
+		<FilterFields>bill_no;cont_no;writeoff_amt;writeoff_cap;writeoff_int;</FilterFields>
+		<RecordRestrict query="false" delete="false" update="false"/>
+	</TableModel>
+</ArpDbtWriteoffDetail.xml>

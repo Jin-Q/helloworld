@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<CusComResset.xml>
+	<TableModel id="CusComResset" cnname="对公资产信息表" dbTableName="cus_com_resset">
+		<Field id="cus_id" isPK="true" columnName="cus_id" cnname="客户代码" length="30" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="seq" isPK="true" columnName="seq" cnname="序号" length="38" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="com_ass_typ" columnName="com_ass_typ" cnname="资产类别" length="2" JDBCType="CHAR" canBeNull="true"/>
+		<Field id="com_ass_name" columnName="com_ass_name" cnname="资产名称" length="60" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="com_ass_fat_area" columnName="com_ass_fat_area" cnname="实际面积(平方米)" length="16" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="com_ass_reg_area" columnName="com_ass_reg_area" cnname="已办证面积(平方米)" length="16" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="com_ass_number" columnName="com_ass_number" cnname="数量" length="30" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="com_ass_eva_amt" columnName="com_ass_eva_amt" cnname="评估价值(元)" length="16" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="com_ass_coll_info" columnName="com_ass_coll_info" cnname="抵押状况" length="2" JDBCType="CHAR" canBeNull="true"/>
+		<Field id="remark" columnName="remark" cnname="备注" length="250" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="input_id" columnName="input_id" cnname="登记人" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="input_br_id" columnName="input_br_id" cnname="登记机构" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="input_date" columnName="input_date" cnname="登记日期" length="10" JDBCType="CHAR" canBeNull="true"/>
+		<Field id="last_upd_id" columnName="last_upd_id" cnname="更新人" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="last_upd_date" columnName="last_upd_date" cnname="更新日期" length="10" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="com_ass_buy_date" columnName="com_ass_buy_date" cnname="资产购置日期" length="10" JDBCType="VARCHAR2"/>
+		<Field id="com_ass_ori_amt" columnName="com_ass_ori_amt" cnname="资产购置原价" length="16" JDBCType="NUMBER"/>
+		<Field id="zmje" columnName="zmje" cnname="账面金额(元)" length="16" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="com_ass_addr" columnName="com_ass_addr" cnname="资产地址" length="60" JDBCType="VARCHAR2"/>
+		<Field id="street" columnName="street" cnname="街道" length="100" JDBCType="VARCHAR2"/>
+	</TableModel>
+</CusComResset.xml>

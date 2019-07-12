@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<IqpAccAccp.xml>
+	<TableModel id="IqpAccAccp" pageSize="10" cnname="银行承兑汇票" isPaged="true" dbTableName="iqp_acc_accp">
+		<TableInfo/>
+		<Field id="serno" isPK="true" columnName="serno" cnname="业务编号" length="40" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="opac_type" columnName="opac_type" cnname="签发类型" length="5" JSPTag="select" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="opac_org" columnName="opac_org" cnname="签发行" length="20" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="is_elec_bill" dictname="STD_ZX_YES_NO" columnName="is_elec_bill" cnname="是否电子票据" length="1" JSPTag="select" canBeNull="true" JDBCType="CHAR"/>
+		<Field id="bill_qty" columnName="bill_qty" cnname="汇票数量" length="38" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="adv_rate" dataType="Rate" columnName="adv_rate" cnname="垫款利率" length="10" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="acpt_org_type" columnName="acpt_org_type" cnname="承兑行类型" length="8" JSPTag="select" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="actp_org_no" columnName="actp_org_no" cnname="承兑行行号" length="20" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="actp_org_name" isPK="false" columnName="actp_org_name" cnname="承兑行名称" length="100" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="use" columnName="use" cnname="用途" length="250" JSPTag="textarea" canBeNull="true" JDBCType="VARCHAR2"/>
+		<OrderFields>serno;</OrderFields>
+		<ConditionFields>actp_org_no;actp_org_name;</ConditionFields>
+		<FilterFields>opac_org;is_elec_bill;bill_qty;actp_org_name;loan_use;</FilterFields>
+		<One2MultiRef toField="serno" refModelId="IqpAccpDetail" fromField="serno"/>
+		<Field id="chrg_rate" dataType="Rate" columnName="chrg_rate" cnname="手续费率" length="10" JSPTag="text" JDBCType="NUMBER"/>
+		<Field id="batch_no" columnName="batch_no" cnname="票据批次" JSPTag="text" length="40" JDBCType="VARCHAR2"/>
+	</TableModel>
+</IqpAccAccp.xml>

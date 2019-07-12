@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<PspTaskCheckExpert.xml>
+	<TableModel id="PspTaskCheckExpert" cnname="专项检查任务设置" dbTableName="psp_task_check_expert">
+		<TableInfo/>
+		<Field id="serno" isPK="true" columnName="serno" cnname="任务编号" length="60" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="task_name" columnName="task_name" cnname="任务名称" length="60" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="task_create_mode" columnName="task_create_mode" cnname="任务生成方式" length="2" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="task_create_date" columnName="task_create_date" cnname="任务生成日期" length="10" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="need_finish_date" columnName="need_finish_date" cnname="要求完成时间" length="10" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="is_grpmem" columnName="is_grpmem" cnname="是否属集团(关联)客户" length="1" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="is_gover_fin" columnName="is_gover_fin" cnname="是否属政府融资平台" length="1" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="is_biz_area" columnName="is_biz_area" cnname="是否属联保小组成员" length="1" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="biz_area_no" columnName="biz_area_no" cnname="联保编号" length="60" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="is_indus" columnName="is_indus" cnname="是否属行业成员" length="1" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="indus_no" columnName="indus_no" cnname="行业协议编号" length="60" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="is_biz_circle" columnName="is_biz_circle" cnname="是否属圈商成员" length="1" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="biz_circle_no" columnName="biz_circle_no" cnname="商圈编号" length="60" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="cus_id" columnName="cus_id" cnname="客户编码" length="60" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="grp_no" columnName="grp_no" cnname="集团编号" length="60" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="assure_main" columnName="assure_main" cnname="担保方式" length="40" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="indus_type" columnName="indus_type" cnname="行业分类" length="5" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="biz_type" columnName="biz_type" cnname="业务品种" length="10" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="loan_amt_begin" columnName="loan_amt_begin" cnname="区间开始金额" length="16" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="loan_amt_end" columnName="loan_amt_end" cnname="区间结束金额" length="16" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="coop_type" columnName="coop_type" cnname="合作方类型" length="5" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="agr_no" columnName="agr_no" cnname="合作方客户码" length="60" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="belg_branch" columnName="belg_branch" cnname="主管/办机构/责任机构" length="60" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="belg_manager_id" columnName="belg_manager_id" cnname="主管/办客户经理/责任人" length="60" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="memo" columnName="memo" cnname="备注" length="200" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="input_id" columnName="input_id" cnname="登记人" length="20" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="input_date" columnName="input_date" cnname="登记日期" length="10" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="input_br_id" columnName="input_br_id" cnname="登记机构" length="20" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="task_status" columnName="task_status" cnname="任务状态" length="5" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<OrderFields>serno[desc];</OrderFields>
+	</TableModel>
+</PspTaskCheckExpert.xml>

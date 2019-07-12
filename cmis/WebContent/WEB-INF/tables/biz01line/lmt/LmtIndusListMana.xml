@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<LmtIndusListMana.xml>
+	<TableModel id="LmtIndusListMana" cnname="行业名单管理表" dbTableName="lmt_indus_list_mana">
+		<Field id="agr_no" isPK="true" columnName="agr_no" cnname="协议编号" length="40" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="cus_id" isPK="true" columnName="cus_id" cnname="客户码" length="30" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="is_do_limit" columnName="is_do_limit" cnname="是否进行额度设置" length="5" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="memo" columnName="memo" cnname="备注" length="250" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="status" columnName="status" cnname="状态" length="5" JDBCType="VARCHAR2" canBeNull="true"/>
+	</TableModel>
+</LmtIndusListMana.xml>

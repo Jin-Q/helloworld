@@ -1,0 +1,59 @@
+<%@page language="java" contentType="text/html; charset=UTF-8"%>
+<%@taglib uri="/WEB-INF/emp.tld" prefix="emp" %>
+<emp:page>
+<html>
+<head>
+<title>详情查询页面</title>
+
+<jsp:include page="/include.jsp" flush="true"/>
+
+<%
+	request.setAttribute("canwrite","");
+%>
+
+<script type="text/javascript">
+	
+	function doReturn() {
+		//var url = '<emp:url action="queryPspWageContaccList.do"/>';
+		//url = EMPTools.encodeURI(url);
+		//window.location=url;
+		history.go(-1);
+	};
+	
+	/*--user code begin--*/
+			
+	/*--user code end--*/
+	
+</script>
+</head>
+<body class="page_content">
+	
+	<emp:gridLayout id="PspWageContaccGroup" title="工资对账单" maxColumn="2">
+			
+			<emp:text id="PspWageContacc.person_qnt" label="人数" maxlength="38" required="true" dataType="Int" colSpan="2" cssElementClass="emp_currency_text_readonly" />
+			<emp:text id="PspWageContacc.the_amt" label="应发金额" maxlength="16" required="true" dataType="Currency" cssElementClass="emp_currency_text_readonly" />
+			<emp:text id="PspWageContacc.act_amt" label="实发金额" maxlength="16" required="true" dataType="Currency" cssElementClass="emp_currency_text_readonly" />
+			<emp:date id="PspWageContacc.settl_start_date" label="工资结算起始日期" required="true" />
+			<emp:date id="PspWageContacc.settl_end_date" label="工资阶段结束日期" required="true" />
+			<emp:select id="PspWageContacc.check_freq" label="检查频率" required="true" dictname="STD_ZB_PSP_CHECK_UNIT" colSpan="2"/>
+			<emp:textarea id="PspWageContacc.remarks" label="备注" maxlength="250" required="false" colSpan="2"/>
+		</emp:gridLayout>
+		<emp:gridLayout id="PspWageContaccGroup" title="登记信息" maxColumn="2">
+			<emp:text id="PspWageContacc.input_id_displayname" label="登记人"   required="false" readonly="true"/>
+			<emp:text id="PspWageContacc.input_br_id_displayname" label="登记机构"  required="false" readonly="true"/>
+			<emp:date id="PspWageContacc.input_date" label="登记日期" required="false" readonly="true"/>
+			
+			<emp:text id="PspWageContacc.input_id" label="登记人" maxlength="40" required="false" hidden="true"/>
+			<emp:text id="PspWageContacc.input_br_id" label="登记机构" maxlength="20" required="false" hidden="true" />
+			<emp:text id="PspWageContacc.pk_id" label="主键" maxlength="32" readonly="true" required="false" hidden="true"/>
+			<emp:text id="PspWageContacc.task_id" label="任务编号" required="false" hidden="true"/>
+			<emp:text id="PspWageContacc.cus_id" label="客户码" maxlength="40" required="false" hidden="true"/>
+		</emp:gridLayout>
+	
+	<div align="center">
+		<br>
+		<emp:button id="return" label="返回到列表页面"/>
+	</div>
+</body>
+</html>
+</emp:page>

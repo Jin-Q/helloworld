@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<CtrAssetTransCont.xml>
+	<TableModel id="CtrAssetTransCont" cnname="资产流转协议" dbTableName="ctr_asset_trans_cont">
+		<Field id="cont_no" isPK="true" columnName="cont_no" cnname="合同编号" length="40" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="serno" columnName="serno" cnname="业务编号" length="40" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="toorg_no" columnName="toorg_no" cnname="交易对手" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="trans_type" columnName="trans_type" cnname="业务类型" length="10" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="loan_amt_totl" columnName="loan_amt_totl" cnname="贷款总金额" length="16" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="loan_balance_totl" columnName="loan_balance_totl" cnname="贷款总余额" length="16" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="trans_amt" columnName="trans_amt" cnname="转让金额" length="16" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="trans_rate" columnName="trans_rate" cnname="转让比率" length="16" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="trans_qnt" columnName="trans_qnt" cnname="转让笔数" length="38" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="trans_date" columnName="trans_date" cnname="转让日期" length="10" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="interest_type" columnName="interest_type" cnname="收息方式" length="1" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="remarks" columnName="remarks" cnname="备注" length="250" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="int_start_date" columnName="int_start_date" cnname="起息日" length="10" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="deliver_date" columnName="deliver_date" cnname="交割日" length="10" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="defray_date" columnName="defray_date" cnname="支付日" length="10" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="inure_date" columnName="inure_date" cnname="生效日期" length="10" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="end_date" columnName="end_date" cnname="到期日期" length="10" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="manager_br_id" columnName="manager_br_id" cnname="管理机构" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="cont_status" columnName="cont_status" cnname="项目状态" length="5" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="input_id" columnName="input_id" cnname="登记人" length="40" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="input_br_id" columnName="input_br_id" cnname="登记机构" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="input_date" columnName="input_date" cnname="登记日期" length="10" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="prd_id" columnName="prd_id" cnname="产品编码" length="6" JDBCType="VARCHAR2"/>
+		<Field id="cur_type" columnName="cur_type" cnname="币种" length="5" JDBCType="VARCHAR2"/>
+		<Field id="ser_date" columnName="ser_date" cnname="签订日期" length="10" JDBCType="VARCHAR2"/>
+		<Field id="cancel_date" columnName="cancel_date" cnname="合同注销日期" length="10" JDBCType="VARCHAR2"/>
+		<Field id="pro_name" columnName="pro_name" cnname="项目名称" length="80" JDBCType="VARCHAR2"/>
+		<Field id="pro_short_name" columnName="pro_short_name" cnname="项目简称" length="80" JDBCType="VARCHAR2"/>
+	</TableModel>
+</CtrAssetTransCont.xml>

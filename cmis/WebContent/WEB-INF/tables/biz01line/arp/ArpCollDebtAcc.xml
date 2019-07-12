@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<ArpCollDebtAcc.xml>
+	<TableModel id="ArpCollDebtAcc" cnname="以物抵债台账" dbTableName="arp_coll_debt_acc">
+		<Field id="serno" columnName="serno" cnname="业务编号" length="40" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="debt_acc_no" isPK="true" columnName="debt_acc_no" cnname="抵债台账编号" length="40" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="app_date" columnName="app_date" cnname="申请日期" length="10" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="end_date" columnName="end_date" cnname="办结日期" length="10" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="cus_id" columnName="cus_id" cnname="客户编号" length="40" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="approve_file_no" columnName="approve_file_no" cnname="批准文件号" length="40" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="debt_mode" columnName="debt_mode" cnname="抵债方式" length="5" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="debt_in_amt" columnName="debt_in_amt" cnname="抵入金额" length="16" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="debt_cap" columnName="debt_cap" cnname="抵债本金" length="16" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="inner_int" columnName="inner_int" cnname="抵债表内利息" length="16" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="off_int" columnName="off_int" cnname="抵债表外利息" length="16" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="debt_expense" columnName="debt_expense" cnname="抵债费用" length="16" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="coll_debt_resn" columnName="coll_debt_resn" cnname="以物抵债理由" length="200" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="collect_addr" columnName="collect_addr" cnname="收取地点" length="200" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="asset_status" columnName="asset_status" cnname="资产现状" length="200" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="debt_in_date" columnName="debt_in_date" cnname="抵入日期" length="10" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="is_handover" columnName="is_handover" cnname="是否移交管理" length="2" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="memo" columnName="memo" cnname="备注" length="200" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="manager_id" columnName="manager_id" cnname="责任人" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="manager_br_id" columnName="manager_br_id" cnname="责任机构" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="input_id" columnName="input_id" cnname="登记人" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="input_br_id" columnName="input_br_id" cnname="登记机构" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="input_date" columnName="input_date" cnname="登记日期" length="10" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="status" columnName="status" cnname="状态" length="5" JDBCType="VARCHAR2" canBeNull="true"/>
+	</TableModel>
+</ArpCollDebtAcc.xml>

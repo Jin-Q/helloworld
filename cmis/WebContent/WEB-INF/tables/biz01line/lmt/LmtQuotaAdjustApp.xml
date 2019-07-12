@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<LmtQuotaAdjustApp.xml>
+	<TableModel id="LmtQuotaAdjustApp" cnname="用信限额调整申请表" dbTableName="lmt_quota_adjust_app">
+		<Field id="fin_agr_no" columnName="fin_agr_no" cnname="融资协议编号" length="40" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="fin_totl_limit" columnName="fin_totl_limit" cnname="融资总额" length="16" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="single_quota_his" columnName="single_quota_his" cnname="单户限额(存量)" length="16" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="single_quota_new" columnName="single_quota_new" cnname="单户限额(新增)" length="16" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="inure_date" columnName="inure_date" cnname="生效日期" length="10" JDBCType="CHAR" canBeNull="true"/>
+		<Field id="end_date" columnName="end_date" cnname="到期日期" length="10" JDBCType="CHAR" canBeNull="true"/>
+		<Field id="status" columnName="status" cnname="状态" length="4" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="serno" isPK="true" pkGenerator="UNID" columnName="serno" cnname="主键" length="40" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="fin_totl_spac" columnName="fin_totl_spac" cnname="融资总敞口" length="16" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="fin_serno" columnName="fin_serno" cnname="申请流水" length="40" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="approve_status" columnName="approve_status" cnname="审批状态" length="5" JDBCType="VARCHAR2" canBeNull="true"/>
+	</TableModel>
+</LmtQuotaAdjustApp.xml>

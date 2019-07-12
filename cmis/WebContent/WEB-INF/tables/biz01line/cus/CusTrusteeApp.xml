@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<CusTrusteeApp.xml>
+	<TableModel id="CusTrusteeApp" cnname="委托托管表" dbTableName="cus_trustee_app">
+		<Field id="serno" isPK="true" columnName="serno" cnname="业务编号" length="40" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="consignor_type" columnName="consignor_type" cnname="委托类别" length="4" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="is_provid_accredit" columnName="is_provid_accredit" cnname="是否提供书面授权书" length="4" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="consignor_id" columnName="consignor_id" cnname="委托人" length="20" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="consignor_br_id" columnName="consignor_br_id" cnname="委托机构" length="20" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="trustee_id" columnName="trustee_id" cnname="托管人" length="20" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="trustee_br_id" columnName="trustee_br_id" cnname="托管机构" length="20" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="trustee_detail" columnName="trustee_detail" cnname="托管详情" length="250" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="trustee_date" columnName="trustee_date" cnname="托管日期" length="10" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="supervise_date" columnName="supervise_date" cnname="审批日期" length="10" JDBCType="CHAR" canBeNull="true"/>
+		<Field id="approve_status" columnName="approve_status" cnname="审批状态" length="3" JDBCType="CHAR" canBeNull="false"/>
+		<Field id="input_id" columnName="input_id" cnname="登记人" length="20" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="input_br_id" columnName="input_br_id" cnname="登记机构" length="20" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="input_date" columnName="input_date" cnname="登记日期" length="10" JDBCType="CHAR" canBeNull="false"/>
+	</TableModel>
+</CusTrusteeApp.xml>

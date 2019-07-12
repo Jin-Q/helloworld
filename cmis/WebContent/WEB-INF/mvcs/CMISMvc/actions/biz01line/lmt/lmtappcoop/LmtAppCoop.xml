@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actionDefines>
+	<classMap>
+		<map id="action" class="com.yucheng.cmis.ad.mvc.ADRequestController"/>
+		<map id="flowInvoker" class="com.yucheng.cmis.ad.mvc.ADFlowInvoker"/>
+		<map id="outputViews" class="java.util.HashMap"/>
+		<map id="output" class="com.ecc.emp.data.KeyedCollection"/>
+		<map id="kColl" class="com.ecc.emp.data.KeyedCollection"/>
+		<map id="iColl" class="com.ecc.emp.data.IndexedCollection"/>
+		<map id="field" class="com.ecc.emp.data.DataField"/>
+	</classMap>
+	
+	<!-- 合作方授信新增向导页 -->
+	<action id="getLmtJointCoopLeadPage" type="normal" checkSession="true" >
+		<jspView id="addPage" url="biz01line/lmt/LmtAppCoop/addLmtJointCoopLead.jsp"/>
+	</action>
+	
+	<!-- 获取操作主页面 -->
+	<action id="queryLmtAppJointCoopList" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.lmt.op.lmtappcoop.QueryLmtAppJointCoopListOp"/>
+			<transition dest="app"/>
+			<transition dest="his"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="app" url="biz01line/lmt/LmtAppCoop/queryLmtAppJointCoopList.jsp" />
+			<jspView id="his" url="biz01line/lmt/LmtAppCoop/queryLmtAppJointCoopList.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 异步查询合作方客户是否存在在途、未提交的申请信息 -->
+	<action id="searchLmtCoopInfo" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation updateCheck="false" class="com.yucheng.cmis.biz01line.lmt.op.lmtappcoop.SearchLmtCoopInfo" />
+			<transition dest="queryJsonRes" />
+		</flowInvoker>
+		<outputViews>
+			<jsonView class="com.yucheng.cmis.view.JSONView" id="queryJsonRes">
+				<output>
+					<field id="result" />
+				</output>
+			</jsonView>
+		</outputViews>
+	</action>
+	
+	
+	<!-- 获得新增页面 -->
+	<action id="getLmtAppJointCoopAddPage" type="normal" checkSession="true" >
+		<jspView id="retPage" url="biz01line/lmt/LmtAppCoop/addLmtAppJointCoopRecord.jsp" />
+	</action>
+	
+	<!-- 新增记录  --> 
+	<action id="addLmtAppJointCoopRecord" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.lmt.op.lmtappcoop.AddLmtAppJointCoopRecordOp"/>
+			<transition dest="queryJsonRes" />
+		</flowInvoker>
+		<outputViews>
+			<jsonView class="com.yucheng.cmis.view.JSONView" id="queryJsonRes">
+				<output>
+					<field id="msg"/>
+					<field id="flag"/>
+					<field id="serno"/>
+				</output>
+			</jsonView>
+		</outputViews>
+	</action>	
+	
+	<!-- 获得编辑页面 -->
+	<action id="getLmtAppJointCoopUpdatePage" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation updateCheck="false" class="com.yucheng.cmis.biz01line.lmt.op.lmtappcoop.QueryLmtAppJointCoopDetailOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="biz01line/lmt/LmtAppCoop/updateLmtAppJointCoopRecord.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 更新记录 -->
+	<action id="updateLmtAppJointCoopRecord" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.lmt.op.lmtappcoop.UpdateLmtAppJointCoopRecordOp"/>
+			<transition dest="queryJsonRes" />
+		</flowInvoker>
+		<outputViews>
+			<jsonView class="com.yucheng.cmis.view.JSONView" id="queryJsonRes">
+				<output>
+					<field id="msg" />
+					<field id="flag" />
+				</output>
+			</jsonView>
+		</outputViews>
+	</action>
+	
+	<!-- 获得查看页面 -->
+	<action id="getLmtAppJointCoopViewPage" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.lmt.op.lmtappcoop.QueryLmtAppJointCoopDetailOp"/>
+			<transition dest="updatePage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="updatePage" url="biz01line/lmt/LmtAppCoop/queryLmtAppJointCoopDetail.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 删除记录 -->
+	<action id="deleteLmtAppJointCoopRecord" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.lmt.op.lmtappcoop.DeleteLmtAppJointCoopRecordOp"/>
+				<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<view id="retPage" class="com.yucheng.cmis.view.JSONView">
+				<output class="com.ecc.emp.data.KeyedCollection">
+					<field id="flag" class="com.ecc.emp.data.DataField"/>
+				</output>
+			</view>
+		</outputViews>
+	</action>
+	
+	<!-- 分页查询记录列表 -->
+		<action id="pageLmtAppJointCoopQuery" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.lmt.op.lmtappcoop.QueryLmtAppJointCoopListOp"/>
+			<transition dest="queryListRes"/>
+		</flowInvoker>
+		<outputViews>
+			<jsonView class="com.yucheng.cmis.view.JSONView" id="queryListRes">
+				<output>
+					<iColl id="LmtAppJointCoopList">
+						<kColl>
+						</kColl>
+					</iColl>
+					<kColl id="pageInfo">
+						<field id="currentPage" />
+						<field id="maxLine" />
+						<field id="recordSize" />
+					</kColl>
+				</output>
+			</jsonView>
+		</outputViews>
+	</action>
+	
+	<!-- 将合作方授信申请过渡到协议账  暂时没有流程时处理方法，有流程时在流程审批通过中处理  -->
+	<action id="submitLmtCoopApply" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.lmt.op.lmtappcoop.SubmitLmtCoopApplyOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="operationResult.jsp?url=queryLmtAppJointCoopList.do" />
+		</outputViews>
+	</action>
+	
+	<!-- *************************************合作方冻结解冻******************************************************** -->
+	<!-- 获取冻结操作主页面 -->
+	<action id="queryLmtCoopFrozenList" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.lmt.op.lmtappcoop.QueryLmtAppJointCoopListOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="biz01line/lmt/LmtAppCoop/LmtAppCoopFroze/queryLmtCoopFrozeList.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 生成冻结页面 -->
+	<action id="getLmtCoopFrozenPage" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation updateCheck="false" class="com.yucheng.cmis.biz01line.lmt.op.lmtappcoop.lmtcoopfroze.GetLmtCoopFrozenAddPageOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="biz01line/lmt/LmtAppCoop/LmtAppCoopFroze/getLmtCoopAddPage.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 获得冻结解冻编辑页面 -->
+	<action id="getLmtCoopFrozenUpdatePage" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation updateCheck="false" class="com.yucheng.cmis.biz01line.lmt.op.lmtappcoop.QueryLmtAppJointCoopDetailOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="biz01line/lmt/LmtAppCoop/LmtAppCoopFroze/updateLmtCoopFrozeRecord.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 检查是否有在途的冻结申请 -->
+	<action id="checkLmtCoopFrozenApp" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation updateCheck="false" class="com.yucheng.cmis.biz01line.lmt.op.lmtappcoop.lmtcoopfroze.CheckLmtCoopFrozenOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<view id="retPage" class="com.yucheng.cmis.view.JSONView">
+				<output class="com.ecc.emp.data.KeyedCollection">
+					<field id="flag" class="com.ecc.emp.data.DataField"/>
+				<!--	<field id="serno" class="com.ecc.emp.data.DataField"/>
+					<field id="appStatus" class="com.ecc.emp.data.DataField"/>-->
+				</output>
+			</view>
+		</outputViews>
+	</action>
+</actionDefines>
+
+
+

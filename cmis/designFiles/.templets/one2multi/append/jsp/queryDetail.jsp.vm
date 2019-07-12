@@ -1,0 +1,41 @@
+#set ($tableModelName=${TableModel.tableId})
+<%@page language="java" contentType="text/html; charset=${jspEncode}"%>
+<%@taglib uri="/WEB-INF/emp.tld" prefix="emp" %>
+<emp:page>
+<html>
+<head>
+<title>详情查询页面</title>
+
+<jsp:include page="/include.jsp" flush="true"/>
+
+<%
+	request.setAttribute("canwrite","");
+%>
+
+<script type="text/javascript">
+	
+	function doReturn(){
+		window.close();
+	};
+	
+	/*--user code begin--*/
+			
+	/*--user code end--*/
+	
+</script>
+</head>
+<body class="page_content">
+	<emp:gridLayout id="${tableModelName}Group" title="${TableModel.tableCnname}" maxColumn="2">
+#foreach(${fieldWra} in ${TableModel.fieldsList})
+#set ($jspTagType=${fieldWra.getJSPTag()})
+			${JspBuilder.generateTag(${fieldWra},"${jspTagType}")}
+#end
+	</emp:gridLayout>
+		
+	<div align="center">
+		<br>
+		<emp:button id="return" label="关闭"/>
+	</div>
+</body>
+</html>
+</emp:page>

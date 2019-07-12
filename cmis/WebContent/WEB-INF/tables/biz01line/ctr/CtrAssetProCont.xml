@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<CtrAssetProCont.xml>
+	<TableModel id="CtrAssetProCont" cnname="资产项目管理" dbTableName="ctr_asset_pro_cont">
+		<Field id="cont_no" isPK="true" columnName="cont_no" cnname="项目编号" length="40" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="serno" columnName="serno" cnname="业务编号" length="40" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="pro_name" columnName="pro_name" cnname="项目名称" length="80" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="pro_short_name" columnName="pro_short_name" cnname="项目简称" length="80" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="pro_type" columnName="pro_type" cnname="项目类型" length="5" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="pro_org" columnName="pro_org" cnname="资产所属机构" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="pro_short_memo" columnName="pro_short_memo" cnname="项目简介" length="200" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="pro_amt" columnName="pro_amt" cnname="项目金额" length="16" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="pro_qnt" columnName="pro_qnt" cnname="笔数" length="38" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="pack_date" columnName="pack_date" cnname="封包日期" length="10" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="issue_qnt" columnName="issue_qnt" cnname="发行总量" length="16" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="issue_date" columnName="issue_date" cnname="发行日期" length="10" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="int_start_date" columnName="int_start_date" cnname="起息日" length="10" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="end_date" columnName="end_date" cnname="法定到期日" length="10" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="final_date" columnName="final_date" cnname="终结日期" length="10" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="cont_status" columnName="cont_status" cnname="项目状态" length="5" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="approve_date" columnName="approve_date" cnname="审批通过日期" length="10" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="input_id" columnName="input_id" cnname="登记人" length="40" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="input_br_id" columnName="input_br_id" cnname="登记机构" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="input_date" columnName="input_date" cnname="登记日期" length="10" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="prd_id" columnName="prd_id" cnname="产品编码" length="6" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="cur_type" columnName="cur_type" cnname="币种" length="5" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="manager_br_id" columnName="manager_br_id" cnname="管理机构" length="20" JDBCType="VARCHAR2"/>
+		<Field id="ser_date" columnName="ser_date" cnname="签订日期" length="10" JDBCType="VARCHAR2"/>
+		<Field id="cancel_date" columnName="cancel_date" cnname="合同注销日期" length="10" JDBCType="VARCHAR2"/>
+		<Field id="belg_line" columnName="belg_line" cnname="客户条线" length="10" JDBCType="VARCHAR2"/>
+		<Field id="is_rgt_res" columnName="is_rgt_res" cnname="是否有追索权" length="5" JDBCType="VARCHAR2"/>
+	</TableModel>
+</CtrAssetProCont.xml>

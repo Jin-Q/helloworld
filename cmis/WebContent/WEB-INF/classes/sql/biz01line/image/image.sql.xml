@@ -1,0 +1,311 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<S>
+
+<!--*************** 1.影像扫描、查看begin ****************-->
+<!--  取所有影像信息  -->
+<SQL id="getAllImageInfo" parameterClass="java.util.HashMap" resultClass="com.ecc.emp.data.KeyedCollection">
+    <SELECT>
+  <![CDATA[
+select * from image_crd_relation where info_type = ${info_type} and cus_type = ${cus_type} and prd_id =${prd_id}
+  ]]>
+    </SELECT>
+</SQL>
+
+<!--  取押品编号  -->
+<SQL id="GetGuarantyId" parameterClass="java.lang.String" resultClass="com.ecc.emp.data.KeyedCollection">
+    <SELECT>
+  <![CDATA[
+select *
+  from (select case
+                 when (guar_flag is not null) then
+                  d.cus_id
+                 else
+                  d.image_guaranty_no
+               end as guaranty_id,
+               c.guar_cont_no,
+               d.cus_id,
+               d.guar_flag,
+               (select decode(belg_line, 'BL300', 'NEW_JCZL', 'NEW_COMJCZL')
+                  from cus_base
+                 where cus_id = d.cus_id) as bus_line
+          from grt_guar_cont c,
+               grt_guaranty_re b,
+               (select cus_id, guaranty_no, '' guar_flag, image_guaranty_no
+                  from mort_guaranty_base_info
+                union
+                select cus_id,
+                       po_no guaranty_no,
+                       '' guar_flag,
+                       image_guaranty_no
+                  from iqp_actrecpo_mana
+                union
+                select cus_id,
+                       drfpo_no guaranty_no,
+                       '' guar_flag,
+                       image_guaranty_no
+                  from iqp_drfpo_mana
+                union
+                select cus_id,
+                       guar_id,
+                       case
+                         when (select belg_line
+                                 from cus_base
+                                where cus_id = g.cus_id) = 'BL300' then
+                          'NEW_JCZL'
+                         else
+                          'NEW_COMJCZL'
+                       end as guar_flag,
+                       '' image_guaranty_no
+                  from grt_guarantee g) d
+         where c.guar_cont_no in
+               (select guar_cont_no
+                  from GRT_LOAN_R_GUR
+                 where serno = ${_SIG_VALUE})
+           and c.guar_cont_no = b.guar_cont_no
+           and b.guaranty_id = d.guaranty_no
+        
+        union all
+        
+        select case
+                 when (guar_flag is not null) then
+                  d.cus_id
+                 else
+                  d.image_guaranty_no
+               end as guaranty_id,
+               c.guar_cont_no,
+               d.cus_id,
+               d.guar_flag,
+               (select decode(belg_line, 'BL300', 'NEW_JCZL', 'NEW_COMJCZL')
+                  from cus_base
+                 where cus_id = d.cus_id) as bus_line
+          from grt_guar_cont c,
+               grt_guaranty_re b,
+               (select cus_id, guaranty_no, '' guar_flag, image_guaranty_no
+                  from mort_guaranty_base_info
+                union
+                select cus_id,
+                       po_no guaranty_no,
+                       '' guar_flag,
+                       image_guaranty_no
+                  from iqp_actrecpo_mana
+                union
+                select cus_id,
+                       drfpo_no guaranty_no,
+                       '' guar_flag,
+                       image_guaranty_no
+                  from iqp_drfpo_mana
+                union
+                select cus_id,
+                       guar_id,
+                       case
+                         when (select belg_line
+                                 from cus_base
+                                where cus_id = g.cus_id) = 'BL300' then
+                          'NEW_JCZL'
+                         else
+                          'NEW_COMJCZL'
+                       end as guar_flag,
+                       '' image_guaranty_no
+                  from grt_guarantee g) d
+         where c.guar_cont_no in
+               (select guar_cont_no
+                  from GRT_LOAN_R_GUR
+                 where serno in
+                       (select clc.serno
+                          from ctr_loan_cont clc, iqp_extension_agr iea
+                         where clc.cont_no = iea.fount_cont_no
+                           and iea.serno = ${_SIG_VALUE}))
+           and c.guar_cont_no = b.guar_cont_no
+           and b.guaranty_id = d.guaranty_no)
+ where guaranty_id is not null
+  ]]>
+    </SELECT>
+</SQL>
+
+<!--*************** 1.影像扫描、查看end ****************-->
+
+<!--*************** 2.影像核对begin ********************-->
+
+<!--  影像核对取押品信息  -->
+<SQL id="GetGuarantyInfo" parameterClass="java.lang.String" resultClass="com.ecc.emp.data.KeyedCollection">
+    <SELECT>
+  <![CDATA[
+select m.guaranty_no,m.image_guaranty_no,m.guaranty_name,g.guar_way,m.guaranty_type,g.guar_cont_no,g.guar_cont_type,g.guar_cont_cn_no,
+ g.cus_id as grt_cus_id,(select cus_name from cus_base where cus_id = g.cus_id) as grt_cus_name ,
+ m.cus_id as mort_cus_id,(select cus_name from cus_base where cus_id = m.cus_id) as mort_cus_name ,
+ g.guar_amt,replace( g.guar_start_date ,'-','')guar_start_date ,  m.manager_id,m.manager_br_id,
+ replace( g.guar_end_date ,'-','')guar_end_date ,m.input_id,m.input_br_id,replace( m.input_date ,'-','')input_date
+ from Grt_Guar_Cont g , Mort_Guaranty_Base_Info m , grt_guaranty_re r 
+ where r.guaranty_id = m.guaranty_no and r.guar_cont_no = g.guar_cont_no and m.guaranty_no = ${_SIG_VALUE}
+  ]]>
+    </SELECT>
+</SQL>
+
+<!--  影像核对取保证人信息  -->
+<SQL id="GetGrtGuarantee" parameterClass="java.lang.String" resultClass="com.ecc.emp.data.KeyedCollection">
+    <SELECT>
+  <![CDATA[
+       select m.guar_id,
+       g.guar_way,
+       g.guar_model,
+       g.guar_cont_no,
+       g.guar_cont_type,
+       g.guar_cont_cn_no,
+       g.cus_id as grt_cus_id,
+       (select cus_name from cus_base where cus_id = g.cus_id) as grt_cus_name,
+       m.cus_id as guarantee_cus_id,
+       (select cus_name from cus_base where cus_id = m.cus_id) as guarantee_cus_name,
+       g.guar_amt,
+       replace(g.guar_start_date, '-', '') guar_start_date,
+       replace(g.guar_end_date, '-', '') guar_end_date,
+       g.input_id,
+       g.input_br_id,
+       replace(g.reg_date, '-', '') input_date,
+       g.manager_id,
+       g.manager_br_id
+       from Grt_Guar_Cont g, Grt_Guarantee m, grt_guaranty_re r
+       where r.guaranty_id = m.guar_id
+       and r.guar_cont_no = g.guar_cont_no
+       and m.guar_id =${_SIG_VALUE}
+  ]]>
+    </SELECT>
+</SQL>
+
+<!--  影像核对取公共业务信息  -->
+<SQL id="GetPubBusinessInfo" parameterClass="java.lang.String" resultClass="com.ecc.emp.data.KeyedCollection">
+    <SELECT>
+  <![CDATA[
+select h.cus_id,(select cus_name from cus_base where cus_id = h.cus_id ) as cus_name,
+ h.prd_id,h.serno,h.cont_no,h.cn_cont_no,replace( h.ser_date ,'-','')ser_date,
+ replace( h.cont_start_date ,'-','')cont_start_date,replace(h.cont_end_date ,'-','')cont_end_date,
+ h.cont_status,h.cont_amt,h.manager_br_id,h.input_id,h.security_rate,h.assure_main,
+ (select manager_id from cus_manager where is_main_manager = '1' and cont_no = h.cont_no ) as manager_id ,
+ case when ( s.five_classfiy > 20 ) then 'true' else 'false' end as ill_flag,replace( h.cancel_date ,'-','')cancel_date
+ from Ctr_Loan_Cont h , ctr_loan_cont_sub s where h.cont_no = s.cont_no and serno = ${_SIG_VALUE}
+  ]]>
+    </SELECT>
+</SQL>
+
+<!--  影像核对取贴现业务信息  -->
+<SQL id="GetCtrDiscInfo" parameterClass="java.lang.String" resultClass="com.ecc.emp.data.KeyedCollection">
+    <SELECT>
+  <![CDATA[
+select h.cus_id,(select cus_name from cus_base where cus_id = h.cus_id ) as cus_name,
+ h.prd_id,h.serno,h.cont_no,h.cn_cont_no,replace( h.ser_date ,'-','')ser_date,
+ replace( h.cont_start_date ,'-','')cont_start_date,replace(h.cont_end_date ,'-','')cont_end_date,
+ h.cont_status,h.cont_amt,h.manager_br_id,h.input_id,h.security_rate,h.assure_main,
+ (select manager_id from cus_manager where is_main_manager = '1' and cont_no = h.cont_no ) as manager_id ,
+ case when ( s.five_classfiy > 20 ) then 'true' else 'false' end as ill_flag,replace( h.cancel_date ,'-','')cancel_date
+ ,s.bill_type,s.bill_qty
+ from Ctr_Loan_Cont h , ctr_disc_cont s where h.cont_no = s.cont_no and serno = ${_SIG_VALUE}
+  ]]>
+    </SELECT>
+</SQL>
+
+<!--  影像核对取转贴现业务信息  -->
+<SQL id="GetRpddscntInfo" parameterClass="java.lang.String" resultClass="com.ecc.emp.data.KeyedCollection">
+    <SELECT>
+  <![CDATA[
+select c.this_acct_name,c.cont_no,c.cn_cont_no,replace( c.rpddscnt_date ,'-','')rpddscnt_date,
+ c.cont_status,c.bill_total_amt,c.manager_br_id,
+ (select manager_id from cus_manager where is_main_manager = '1' and cont_no = c.cont_no ) as manager_id ,
+ c.input_id,'false' as ill_flage,c.bill_type,c.bill_qnt  from ctr_rpddscnt_cont c where serno = ${_SIG_VALUE}
+  ]]>
+    </SELECT>
+</SQL>
+
+<!--  影像核对取资产转受让业务信息  -->
+<SQL id="GetAssetstrsfInfo" parameterClass="java.lang.String" resultClass="com.ecc.emp.data.KeyedCollection">
+    <SELECT>
+  <![CDATA[
+select c.this_acct_name ,c.cont_no,c.cn_cont_no,replace( c.takeover_date ,'-','')takeover_date
+ ,c.cont_status,c.asset_total_amt,
+ (select manager_id from cus_manager where is_main_manager = '1' and cont_no = c.cont_no ) as manager_id ,
+  c.manager_br_id,c.input_id,'false' as ill_flage ,c.takeover_total_amt,c.takeover_qnt,c.takeover_type
+ from ctr_assetstrsf_cont c where serno = ${_SIG_VALUE}
+  ]]>
+    </SELECT>
+</SQL>
+
+<!--  影像核对取展期业务信息  -->
+<SQL id="GetExtensionInfo" parameterClass="java.lang.String" resultClass="com.ecc.emp.data.KeyedCollection">
+    <SELECT>
+  <![CDATA[
+select (select cus_name from cus_base where cus_id = a.cus_id ) as cus_name, a.agr_no,a.cn_cont_no,
+ replace( a.sign_date ,'-','')sign_date,
+ a.status,a.extension_amt,a.manager_br_id,a.input_id,a.manager_id,'true' as ill_flag,'' as clearance_date,
+ (select assure_main from Ctr_Loan_Cont where cont_no = a.fount_cont_no )assure_main, a.fount_bill_no,a.fount_cont_no,
+ replace( a.fount_start_date ,'-','')fount_start_date,replace( a.fount_end_date ,'-','')fount_end_date,
+ a.extension_date from iqp_extension_agr a where serno = ${_SIG_VALUE}
+  ]]>
+    </SELECT>
+</SQL>
+<!-- add by yezm 2015-8-14  需求编号：【XD150303015】 增加对被放款审查岗打回的业务申请信息进行修改流程 begin-->
+<!--  影像核对票据池信息  -->
+<SQL id="GetDrfpoMana" parameterClass="java.lang.String" resultClass="com.ecc.emp.data.KeyedCollection">
+    <SELECT>
+  <![CDATA[
+select i.drfpo_no,
+       i.image_guaranty_no,
+       g.guar_way,
+       case when i.drfpo_type = '00' then
+       'DTPJ'
+       else 'JTPJ' end as guar_model,
+       g.guar_cont_no,
+       g.guar_cont_type,
+       g.guar_cont_cn_no,
+       g.cus_id as grt_cus_id,
+       (select cus_name from cus_base where cus_id = g.cus_id) as grt_cus_name,
+       i.cus_id as pj_cus_id,
+       (select cus_name from cus_base where cus_id = i.cus_id) as pj_cus_name,   
+       g.guar_amt,
+       replace(g.guar_start_date, '-', '') guar_start_date,
+       replace(g.guar_end_date, '-', '') guar_end_date,
+       g.input_id,
+       g.input_br_id,
+       replace(g.reg_date, '-', '') input_date,
+       g.manager_id,
+       g.manager_br_id
+        from Grt_Guaranty_Re r,Grt_Guar_Cont g, Iqp_Drfpo_Mana i
+      WHERE i.drfpo_no=r.guaranty_id AND r.guar_cont_no=g.guar_cont_no
+      and r.guaranty_id = ${_SIG_VALUE}
+  ]]>
+    </SELECT>
+</SQL>
+ 
+<!--  影像核对应收账款池/国内保理池信息  -->
+<SQL id="GetActrecpoMana" parameterClass="java.lang.String" resultClass="com.ecc.emp.data.KeyedCollection">
+    <SELECT>
+  <![CDATA[
+select i.po_no,
+       i.image_guaranty_no,
+       g.guar_way,
+       case when i.po_type = '1'
+       then 'YSCHI'
+       else 'BLCHI' end as guar_model,
+       g.guar_cont_no,
+       g.guar_cont_type,
+       g.guar_cont_cn_no,
+       g.cus_id as grt_cus_id,
+       (select cus_name from cus_base where cus_id = g.cus_id) as grt_cus_name,
+       i.cus_id as po_cus_id,
+       (select cus_name from cus_base where cus_id = i.cus_id) as po_cus_name,
+       g.guar_amt,
+       replace(g.guar_start_date, '-', '') guar_start_date,
+       replace(g.guar_end_date, '-', '') guar_end_date,
+       NVL(g.input_id,I.input_id) input_id,
+       NVL(g.input_br_id,I.input_br_id) input_br_id,
+       replace(NVL(g.reg_date,I.INPUT_DATE), '-', '') input_date,
+       NVL(g.manager_id,I.manager_id) manager_id,
+       NVL(g.manager_br_id,I.manager_br_id) manager_br_id
+  from Grt_Guaranty_Re r, Grt_Guar_Cont g, Iqp_Actrecpo_Mana i
+ WHERE i.po_no = r.guaranty_id(+)
+   AND r.guar_cont_no = g.guar_cont_no(+)
+   and i.po_no = ${_SIG_VALUE}
+  ]]>
+    </SELECT>
+</SQL>
+<!-- add by yezm 2015-8-14  需求编号：【XD150303015】 增加对被放款审查岗打回的业务申请信息进行修改流程 end-->
+<!--*************** 2.影像核对end **********************-->
+
+</S>

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<servletContext>
+	<classMap>
+		<map id="fmtDef" class="com.ecc.emp.format.FormatElement"/>
+		<map id="record" class="com.ecc.emp.format.KeyedFormat"/>
+		<map id="iColl" class="com.ecc.emp.format.IndexedFormat"/>
+		<map id="fString" class="com.ecc.emp.format.String.StringFormat"/>
+		<map id="nullCheck" class="com.ecc.emp.format.String.NullCheck"/>
+		<map id="delim" class="com.ecc.emp.format.String.Delimiter"/>
+		<map id="Map" class="java.util.HashMap"/>
+		<map id="MapEntry" class="com.ecc.emp.component.xml.MapEntry"/>
+		<map id="RequestHeadFormat" class="com.ecc.emp.format.FormatElement"/>
+		<map id="ResponseHeadFormat" class="com.ecc.emp.format.FormatElement"/>
+		<map id="TCPIPService" class="com.ecc.emp.access.tcpip.EMPTCPIPRequestService"/>
+		<map id="requestDataFormat" class="com.ecc.emp.format.FormatElement"/>
+		<map id="responseDataFormat" class="com.ecc.emp.format.FormatElement"/>
+	</classMap>
+	<sessionManager name="out0" sessionCheckInterval="120000" class="com.ecc.emp.session.EMPSessionManager" sessionTimeOut="600000"/>
+	<TCPIPServerService class="com.ecc.emp.tcpip.TCPIPServerService" keepAlive="false" dual="false">
+		<ListenPort name="ListenPort" port="6000" maxConnection="50" poolThread="true" class="com.ecc.emp.tcpip.ListenPort" poolSize="1" keepAlive="false"/>
+		<CommProcessor name="CommProcessor" class="com.ecc.emp.tcpip.EMPCommProcessor"/>
+	</TCPIPServerService>
+	<TCPIPRequestHandler appendReqHead="true" serviceIdField="serviceId" class="com.ecc.emp.access.tcpip.EMPTCPIPRequestHandler" appendRepHead="false">
+		<RequestHeadFormat id="headReqFmt">
+			<record>
+				<fString dataName="serviceId"/>
+				<delim delimChar="|"/>
+			</record>
+		</RequestHeadFormat>
+	</TCPIPRequestHandler>
+	<accessManager class="com.ecc.emp.accesscontrol.EMPAccessManager"/>
+	<TCPIPService id="myBiz_GetSystemTime" opId="GetSystemTime" bizId="myBiz" serviceType="normal" checkSession="false">
+		<requestDataFormat>
+			<record>
+				<fString dataName="userId">
+					<delim delimChar="|"/>
+				</fString>
+				<fString dataName="serviceId">
+					<delim delimChar="|"/>
+				</fString>
+			</record>
+		</requestDataFormat>
+		<responseDataFormat>
+			<record>
+				<fString dataName="userId">
+					<delim delimChar="|"/>
+				</fString>
+				<fString dataName="serviceId">
+					<delim delimChar="|"/>
+				</fString>
+			</record>
+		</responseDataFormat>
+	</TCPIPService>
+</servletContext>

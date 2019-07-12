@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<SRowright.xml>
+	<TableModel id="SRowright" cnname="记录集权限配置表" dbTableName="s_rowright">
+		<Field id="pk1" isPK="true" columnName="pk1" cnname="主键" length="32" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="resourceid" columnName="resourceid" cnname="资源ID" length="32" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="cnname" columnName="cnname" cnname="资源名称" length="60" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="readtemp" columnName="readtemp" cnname="读权限模板" length="1000" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="writetemp" columnName="writetemp" cnname="写权限模板" length="1000" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="memo" columnName="memo" cnname="描述" length="200" JDBCType="VARCHAR2" canBeNull="true"/>
+	</TableModel>
+</SRowright.xml>

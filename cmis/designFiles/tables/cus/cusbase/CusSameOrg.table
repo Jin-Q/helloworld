@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<CusSameOrg.xml>
+	<TableModel id="CusSameOrg" pageSize="10" cnname="金融同业客户 " isPaged="true" dbTableName="cus_same_org">
+		<TableInfo>金融同业客户</TableInfo>
+		<Field id="same_org_no" isPK="false" columnName="same_org_no" cnname="同业机构(行)号" length="40" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="same_org_cnname" columnName="same_org_cnname" cnname="同业机构(行)名称" length="80" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="same_org_type" columnName="same_org_type" cnname="同业机构(行)类型" length="5" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="same_org_enname" columnName="same_org_enname" cnname="同业机构(行)英文名称" length="40" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="org_nature" columnName="org_nature" cnname="机构性质" length="2" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="org_site" columnName="org_site" cnname="同业机构(行)网址" length="80" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="address" columnName="address" cnname="地址" length="10" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="same_org_est" columnName="same_org_est" cnname="同业机构(行)成立日" length="10" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="bank_pro_lic" columnName="bank_pro_lic" cnname="金融业务许可证" length="80" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="assets" columnName="assets" cnname="总资产" length="16" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="com_ins_no" columnName="com_ins_no" cnname="营业执照号码" length="80" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="reg_cur_type" columnName="reg_cur_type" cnname="注册/开办资金币种" length="3" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="reg_cap_amt" columnName="reg_cap_amt" cnname="注册/开办资金(万元)" length="16" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="paid_cap_amt" columnName="paid_cap_amt" cnname="实际到位资金(万元)" length="16" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="eval_maturity" columnName="eval_maturity" cnname="评级到期日期" length="10" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="mrk_flag" columnName="mrk_flag" cnname="上市标志" length="2" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="mrl_area" columnName="mrl_area" cnname="上市地" length="2" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="stock_no" columnName="stock_no" cnname="股票代码" length="32" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="linkman_name" columnName="linkman_name" cnname="主联系人姓名" length="40" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="linkman_duty" columnName="linkman_duty" cnname="主联系人职务" length="2" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="linkman_phone" columnName="linkman_phone" cnname="主联系人电话" length="20" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="linkman_mobile_no" columnName="linkman_mobile_no" cnname="主联系人手机号" length="20" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="linkman_email" columnName="linkman_email" cnname="电子邮箱" length="80" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="linkman_fax" columnName="linkman_fax" cnname="传真" length="20" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="rel_dgr" columnName="rel_dgr" cnname="与我行合作关系" length="2" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="input_id" columnName="input_id" cnname="登记人" length="20" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="input_br_id" columnName="input_br_id" cnname="登记机构" length="20" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="input_date" columnName="input_date" cnname="登记日期" length="10" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<RecordRestrict query="false" delete="false" update="false"/>
+		<ConditionFields>same_org_cnname;same_org_no;</ConditionFields>
+		<Field id="swift_no" columnName="swift_no" cnname="SWIFT编号" length="40" JSPTag="text" JDBCType="VARCHAR2"/>
+		<Field id="com_ins_code" columnName="com_ins_code" cnname="组织机构代码" length="40" JSPTag="text" JDBCType="VARCHAR2"/>
+		<Field id="crd_grade" columnName="crd_grade" cnname="信用等级" length="2" JSPTag="text" JDBCType="VARCHAR2"/>
+		<Field id="country" columnName="country" cnname="国别" length="20" JSPTag="text" JDBCType="VARCHAR2"/>
+		<Field id="street" columnName="street" cnname="街道" length="100" JSPTag="text" JDBCType="VARCHAR2"/>
+		<Field id="cust_level" columnName="cust_level" cnname="监管等级" length="5" JSPTag="text" JDBCType="VARCHAR2"/>
+		<Field id="up_org_no" columnName="up_org_no" cnname="上级行号" length="40" JSPTag="text" JDBCType="VARCHAR2"/>
+		<Field id="cus_id" isPK="true" columnName="cus_id" cnname="客户码" length="30" JSPTag="text" JDBCType="VARCHAR2"/>
+		<FilterFields>same_org_no;same_org_cnname;reg_cap_amt;</FilterFields>
+		<OrderFields>same_org_no[desc];</OrderFields>
+		<Field id="manager_br_id" columnName="manager_br_id" cnname="主管机构" length="30" JSPTag="text" JDBCType="VARCHAR2"/>
+		<Field id="manager_id" columnName="manager_id" cnname="主管客户经理" length="20" JSPTag="text" JDBCType="VARCHAR2"/>
+		<Field id="head_org_no" columnName="head_org_no" cnname="总行行号" JSPTag="text" length="40" JDBCType="VARCHAR2"/>
+	</TableModel>
+</CusSameOrg.xml>

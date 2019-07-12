@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<PspTaxDetail.xml>
+	<TableModel id="PspTaxDetail" cnname="税费明细" dbTableName="psp_tax_detail">
+		<Field id="pk_id" isPK="true" columnName="pk_id" pkGenerator="UNID" cnname="主键" length="32" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="task_id" columnName="task_id" cnname="任务编号" length="32" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="cus_id" columnName="cus_id" cnname="客户编码" length="40" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="tax_regi_no" columnName="tax_regi_no" cnname="税务登记证号" length="40" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="tax_type" columnName="tax_type" cnname="税费类型" length="10" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="tax_amt" columnName="tax_amt" cnname="缴费金额" length="16" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="paid_start_date" columnName="paid_start_date" cnname="税务缴纳起始日期" length="10" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="paid_end_date" columnName="paid_end_date" cnname="税务缴纳结束日期" length="10" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="remarks" columnName="remarks" cnname="备注" length="250" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="input_id" columnName="input_id" cnname="登记人" length="40" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="input_br_id" columnName="input_br_id" cnname="登记机构" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="input_date" columnName="input_date" cnname="登记日期" length="10" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="check_freq" columnName="check_freq" cnname="检查频率" length="10" JDBCType="VARCHAR2"/>
+	</TableModel>
+</PspTaxDetail.xml>

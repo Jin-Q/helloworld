@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<SDeptuser.xml>
+	<TableModel id="SDeptuser" cnname="机构用户表" dbTableName="s_deptuser">
+		<Field id="organno" isPK="true" columnName="organno" cnname="机构码" length="16" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="depno" columnName="depno" cnname="部门码" length="16" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="actorno" isPK="true" columnName="actorno" cnname="用户码" length="8" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="state" columnName="state" cnname="状态" length="38" JDBCType="NUMBER" canBeNull="false"/>
+		<Field id="orgid" columnName="orgid" cnname="组织号" length="16" JDBCType="VARCHAR2" canBeNull="true"/>
+	</TableModel>
+</SDeptuser.xml>

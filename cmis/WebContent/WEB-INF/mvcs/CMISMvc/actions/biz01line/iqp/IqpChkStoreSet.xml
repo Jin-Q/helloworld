@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actionDefines>
+	<classMap>
+		<map id="action" class="com.yucheng.cmis.ad.mvc.ADRequestController"/>
+		<map id="flowInvoker" class="com.yucheng.cmis.ad.mvc.ADFlowInvoker"/>
+		<map id="outputViews" class="java.util.HashMap"/>
+		<map id="output" class="com.ecc.emp.data.KeyedCollection"/>
+		<map id="kColl" class="com.ecc.emp.data.KeyedCollection"/>
+		<map id="iColl" class="com.ecc.emp.data.IndexedCollection"/>
+		<map id="field" class="com.ecc.emp.data.DataField"/>
+	</classMap>
+	
+	<!-- 获取操作主页面 -->
+	<action id="queryIqpChkStoreSetList" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.iqp.op.iqpchkstoreset.QueryIqpChkStoreSetListOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="biz01line/iqp/IqpChkStoreSet/queryIqpChkStoreSetList.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 获得编辑页面 -->
+	<action id="getIqpChkStoreSetUpdatePage" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation updateCheck="false" class="com.yucheng.cmis.biz01line.iqp.op.iqpchkstoreset.QueryIqpChkStoreSetDetailOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="biz01line/iqp/IqpChkStoreSet/updateIqpChkStoreSetRecord.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 更新记录 -->
+	<action id="updateIqpChkStoreSetRecord" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.iqp.op.iqpchkstoreset.UpdateIqpChkStoreSetRecordOp"/>
+			<transition dest="queryListRes"/>
+		</flowInvoker>
+		<outputViews>
+			
+			<view id="queryListRes" class="com.yucheng.cmis.view.JSONView">
+				<output class="com.ecc.emp.data.KeyedCollection">
+						<field id="flag" class="com.ecc.emp.data.DataField"/>
+				</output>
+			</view>
+		</outputViews>
+	</action>
+	<!-- 获得查看页面 -->
+	<action id="getIqpChkStoreSetViewPage" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.iqp.op.iqpchkstoreset.QueryIqpChkStoreSetDetailOp"/>
+			<transition dest="updatePage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="updatePage" url="biz01line/iqp/IqpChkStoreSet/queryIqpChkStoreSetDetail.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 获得新增页面 -->
+	<action id="getIqpChkStoreSetAddPage" type="normal" checkSession="true" >
+		<jspView id="addPage" url="biz01line/iqp/IqpChkStoreSet/addIqpChkStoreSetRecord.jsp"/>
+	</action>
+	
+	<!-- 获得出质人页面 -->
+	<action id="getIqpChkStoreSetAddPageForCus" type="normal" checkSession="true" >
+		<jspView id="addPage" url="biz01line/iqp/IqpChkStoreSet/addIqpChkStoreSetRecordForCus.jsp"/>
+	</action>
+	
+	<!-- 获得监管企业页面 -->
+	<action id="getIqpChkStoreSetAddPageForOversee" type="normal" checkSession="true" >
+		<jspView id="addPage" url="biz01line/iqp/IqpChkStoreSet/addIqpChkStoreSetRecordForOversee.jsp"/>
+	</action>
+	
+	<!-- 新增记录 -->
+	<action id="addIqpChkStoreSetRecord" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.iqp.op.iqpchkstoreset.AddIqpChkStoreSetRecordOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<view id="retPage" class="com.yucheng.cmis.view.JSONView">
+				<output class="com.ecc.emp.data.KeyedCollection">
+					<field id="flag" class="com.ecc.emp.data.DataField" />
+					<field id="task_set_id" class="com.ecc.emp.data.DataField" />
+				</output>
+			</view>
+		</outputViews>
+	</action>	
+	
+	<!-- 删除记录 -->
+	<action id="deleteIqpChkStoreSetRecord" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.iqp.op.iqpchkstoreset.DeleteIqpChkStoreSetRecordOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<view id="retPage" class="com.yucheng.cmis.view.JSONView">
+				<output class="com.ecc.emp.data.KeyedCollection">
+					<field id="flag" class="com.ecc.emp.data.DataField" />
+				</output>
+			</view>
+		</outputViews>
+	</action>
+	
+	<!-- 分页查询记录列表 -->
+		<action id="pageIqpChkStoreSetQuery" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.iqp.op.iqpchkstoreset.QueryIqpChkStoreSetListOp"/>
+			<transition dest="queryListRes"/>
+		</flowInvoker>
+		<outputViews>
+			<jsonView class="com.yucheng.cmis.view.JSONView" id="queryListRes">
+				<output>
+					<iColl id="IqpChkStoreSetList">
+						<kColl>
+						</kColl>
+					</iColl>
+					<kColl id="pageInfo">
+						<field id="currentPage" />
+						<field id="maxLine" />
+						<field id="recordSize" />
+					</kColl>
+				</output>
+			</jsonView>
+		</outputViews>
+	</action>
+	
+	<!-- 获取监管协议信息tab -->
+	<action id="queryIqpOverseeAgrTabForChkStoreList" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.iqp.op.iqpchkstoreset.QueryIqpOverseeAgrTabForChkStoreListOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="biz01line/iqp/IqpChkStoreSet/queryIqpOverseeAgrTabForChkStoreList.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 分页查询记录列表 -->
+	<action id="pageIqpOverseeAgrTabForChkStoreQuery" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.iqp.op.iqpchkstoreset.QueryIqpOverseeAgrTabForChkStoreListOp"/>
+			<transition dest="queryListRes"/>
+		</flowInvoker>
+		<outputViews>
+			<jsonView class="com.yucheng.cmis.view.JSONView" id="queryListRes">
+				<output>
+					<iColl id="IqpOverseeAgrList">
+						<kColl>
+						</kColl>
+					</iColl>
+					<kColl id="pageInfo">
+						<field id="currentPage" />
+						<field id="maxLine" />
+						<field id="recordSize" />
+					</kColl>
+				</output>
+			</jsonView>
+		</outputViews>
+	</action>
+	
+	<!-- 获取监管协议下押品信息tab -->
+	<action id="queryMortGuarantyBaseInfoTabForChkStoreList" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.iqp.op.iqpchkstoreset.QueryMortGuarantyBaseInfoTabForChkStoreListOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="biz01line/iqp/IqpChkStoreSet/queryMortGuarantyBaseInfoTabForChkStoreList.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 分页查询记录列表 -->
+	<action id="pageMortGuarantyBaseInfoTabForChkStoreQuery" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.iqp.op.iqpchkstoreset.QueryMortGuarantyBaseInfoTabForChkStoreListOp"/>
+			<transition dest="queryListRes"/>
+		</flowInvoker>
+		<outputViews>
+			<jsonView class="com.yucheng.cmis.view.JSONView" id="queryListRes">
+				<output>
+					<iColl id="MortGuarantyBaseInfoList">
+						<kColl>
+						</kColl>
+					</iColl>
+					<kColl id="pageInfo">
+						<field id="currentPage" />
+						<field id="maxLine" />
+						<field id="recordSize" />
+					</kColl>
+				</output>
+			</jsonView>
+		</outputViews>
+	</action>
+</actionDefines>
+
+
+

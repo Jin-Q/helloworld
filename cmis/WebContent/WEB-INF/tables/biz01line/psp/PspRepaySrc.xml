@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<PspRepaySrc.xml>
+	<TableModel id="PspRepaySrc" cnname="还款来源信息" dbTableName="psp_repay_src">
+		<Field id="pk_id" isPK="true" columnName="pk_id" pkGenerator="UNID" cnname="主键" length="32" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="task_id" columnName="task_id" cnname="任务编号" length="32" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="cus_id" columnName="cus_id" cnname="客户编号" length="40" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="bill_no" columnName="bill_no" cnname="借据编号" length="40" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="asgn_date" columnName="asgn_date" cnname="转入日期" length="10" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="asgn_amt" columnName="asgn_amt" cnname="转入金额" length="16" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="sour" columnName="sour" cnname="来源" length="10" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="asgn_acct_no" columnName="asgn_acct_no" cnname="转入方账号" length="40" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="asgn_acct_name" columnName="asgn_acct_name" cnname="转入方账户名" length="100" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="asgn_acctsvcr_no" columnName="asgn_acctsvcr_no" cnname="转入方开户行行号" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="asgn_acctsvcr_name" columnName="asgn_acctsvcr_name" cnname="转入方开户行行名" length="100" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="proof_type" columnName="proof_type" cnname="凭证种类和编号" length="40" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="asgn_acct_bal" columnName="asgn_acct_bal" cnname="转入后账户余额" length="16" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="cus_rela" columnName="cus_rela" cnname="转入方和借款人关系" length="10" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="memo" columnName="memo" cnname="补充说明" length="250" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="remarks" columnName="remarks" cnname="备注" length="250" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="input_id" columnName="input_id" cnname="登记人" length="40" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="input_br_id" columnName="input_br_id" cnname="登记机构" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="input_date" columnName="input_date" cnname="登记日期" length="10" JDBCType="VARCHAR2" canBeNull="true"/>
+	</TableModel>
+</PspRepaySrc.xml>

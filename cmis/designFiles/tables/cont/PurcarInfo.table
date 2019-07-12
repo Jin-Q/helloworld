@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<PurcarInfo.xml>
+	<TableModel id="PurcarInfo" pageSize="10" cnname="机构法人购车信息" isPaged="true" dbTableName="purcar_info">
+		<TableInfo/>
+		<Field id="serno" isPK="true" columnName="serno" cnname="业务编号" length="40" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="cont_no" columnName="cont_no" cnname="合同编号" length="40" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="car_brand" columnName="car_brand" cnname="汽车品牌" length="60" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="car_name" columnName="car_name" cnname="汽车名称" length="100" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="car_model" columnName="car_model" cnname="汽车型号" length="20" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="car_shelf_no" columnName="car_shelf_no" cnname="车架号" length="40" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="car_type" columnName="car_type" cnname="汽车种类" length="20" JSPTag="select" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="car_collect_type" columnName="car_collect_type" cnname="汽车取得方式" length="5" JSPTag="select" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="car_use" columnName="car_use" cnname="汽车用途" length="250" JSPTag="select" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="car_sale" columnName="car_sale" cnname="汽车销售商" length="100" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="pur_amt" dataType="Currency" columnName="pur_amt" cnname="购买金额" length="16" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="loan_perc" dataType="Percent" columnName="loan_perc" cnname="贷款比例" length="10" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="fst_pyr_perc" dataType="Percent" columnName="fst_pyr_perc" cnname="首付款比率" length="10" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<OrderFields>serno;cont_no;</OrderFields>
+		<ConditionFields>serno;cont_no;</ConditionFields>
+		<FilterFields>car_brand;car_name;car_model;car_type;pur_amt;loan_perc;fst_pyr_perc;</FilterFields>
+	</TableModel>
+</PurcarInfo.xml>

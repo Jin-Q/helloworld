@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<IqpOverseeAgr.xml>
+	<TableModel id="IqpOverseeAgr" cnname="监管协议" dbTableName="iqp_oversee_agr">
+		<Field id="oversee_agr_no" isPK="true" columnName="oversee_agr_no" cnname="监管协议号" length="40" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="mortgagor_id" columnName="mortgagor_id" cnname="出质人客户编号" length="30" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="bail_acct" columnName="bail_acct" cnname="保证金账号" length="40" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="bail_acct_name" columnName="bail_acct_name" cnname="保证金户名" length="80" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="oversee_con_id" columnName="oversee_con_id" cnname="监管企业客户编号" length="30" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="oversee_store" columnName="oversee_store" cnname="监管仓库" length="100" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="start_date" columnName="start_date" cnname="监管起始日期" length="10" JDBCType="CHAR" canBeNull="true"/>
+		<Field id="end_date" columnName="end_date" cnname="监管到期日期" length="10" JDBCType="CHAR" canBeNull="true"/>
+		<Field id="oversee_mode" columnName="oversee_mode" cnname="监管方式" length="2" JDBCType="CHAR" canBeNull="true"/>
+		<Field id="low_auth_value" columnName="low_auth_value" cnname="最低核准价值" length="32" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="vigi_line" columnName="vigi_line" cnname="警戒线" length="10" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="stor_line" columnName="stor_line" cnname="平仓线" length="10" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="froze_line" columnName="froze_line" cnname="冻结线" length="10" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="insure_mode" columnName="insure_mode" cnname="投保方式" length="2" JDBCType="CHAR" canBeNull="true"/>
+		<Field id="memo" columnName="memo" cnname="备注" length="500" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="status" columnName="status" cnname="状态" length="1" JDBCType="CHAR" canBeNull="true"/>
+		<Field id="input_id" columnName="input_id" cnname="登记人" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="input_br_id" columnName="input_br_id" cnname="登记机构" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="input_date" columnName="input_date" cnname="登记日期" length="10" JDBCType="CHAR" canBeNull="true"/>
+		<Field id="net_agr_no" columnName="net_agr_no" cnname="网络编号" length="40" JDBCType="VARCHAR2" canBeNull="true"/>
+	    <Field id="cfirm_date" columnName="cfirm_date" cnname="确认日期" length="10" JDBCType="VARCHAR2"/>
+		<Field id="removerec_date" columnName="removerec_date" cnname="解除监管日期" length="10" JDBCType="VARCHAR2"/>
+		<Field id="cfirm_removerec_date" columnName="cfirm_removerec_date" cnname="解除监管确认日期" length="10" JDBCType="VARCHAR2"/>
+	</TableModel>
+</IqpOverseeAgr.xml>

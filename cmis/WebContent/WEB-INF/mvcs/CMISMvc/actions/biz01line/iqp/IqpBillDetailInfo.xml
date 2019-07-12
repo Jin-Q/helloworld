@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actionDefines>
+	<classMap>
+		<map id="action" class="com.yucheng.cmis.ad.mvc.ADRequestController"/>
+		<map id="flowInvoker" class="com.yucheng.cmis.ad.mvc.ADFlowInvoker"/>
+		<map id="outputViews" class="java.util.HashMap"/>
+		<map id="output" class="com.ecc.emp.data.KeyedCollection"/>
+		<map id="kColl" class="com.ecc.emp.data.KeyedCollection"/>
+		<map id="iColl" class="com.ecc.emp.data.IndexedCollection"/>
+		<map id="field" class="com.ecc.emp.data.DataField"/>
+	</classMap>
+	
+	<!-- 获取操作主页面 -->
+	<action id="queryDpoBillDetailList" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.iqp.drfpo.op.dpobilldetail.QueryDpoBillDetailListOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="biz01line/dpo/DpoBillDetail/queryDpoBillDetailList.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 获得编辑页面 -->
+	<action id="getDpoBillDetailUpdatePage" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation updateCheck="false" class="com.yucheng.cmis.biz01line.iqp.drfpo.op.dpobilldetail.QueryDpoBillDetailDetailOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="biz01line/dpo/DpoBillDetail/updateDpoBillDetailRecord.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 更新记录 -->
+	<action id="updateDpoBillDetailRecord" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.iqp.drfpo.op.dpobilldetail.UpdateDpoBillDetailRecordOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<view id="retPage" class="com.yucheng.cmis.view.JSONView">
+				<output class="com.ecc.emp.data.KeyedCollection">
+					<field id="flag" class="com.ecc.emp.data.DataField" />
+				</output>
+			</view>
+		</outputViews>
+	</action>
+	
+	<!-- 获得查看页面 -->
+	<action id="getDpoBillDetailViewPage" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.iqp.drfpo.op.dpobilldetail.QueryDpoBillDetailDetailOp"/>
+			<transition dest="updatePage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="updatePage" url="biz01line/dpo/DpoBillDetail/queryDpoBillDetailDetail.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 获得新增页面 -->
+	<action id="getDpoBillDetailAddPage" type="normal" checkSession="true" >
+		<jspView id="addPage" url="biz01line/dpo/DpoBillDetail/addDpoBillDetailRecord.jsp"/>
+	</action>
+	
+	<!-- 新增记录 -->
+	<action id="addDpoBillDetailRecord" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.iqp.drfpo.op.dpobilldetail.AddDpoBillDetailRecordOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<view id="retPage" class="com.yucheng.cmis.view.JSONView">
+				<output class="com.ecc.emp.data.KeyedCollection">
+					<field id="flag" class="com.ecc.emp.data.DataField" />
+				</output>
+			</view>
+		</outputViews>
+	</action>	
+	
+	<!-- 删除记录 -->
+	<action id="deleteDpoBillDetailRecord" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.iqp.drfpo.op.dpobilldetail.DeleteDpoBillDetailRecordOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<view id="retPage" class="com.yucheng.cmis.view.JSONView">
+				<output class="com.ecc.emp.data.KeyedCollection">
+					<field id="flag" class="com.ecc.emp.data.DataField" />
+				</output>
+			</view>
+		</outputViews>
+	</action>
+	
+	<!-- 分页查询记录列表 -->
+		<action id="pageDpoBillDetailQuery" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.iqp.drfpo.op.dpobilldetail.QueryDpoBillDetailListOp"/>
+			<transition dest="queryListRes"/>
+		</flowInvoker>
+		<outputViews>
+			<jsonView class="com.yucheng.cmis.view.JSONView" id="queryListRes">
+				<output>
+					<iColl id="IqpBillDetailInfoList">
+						<kColl>
+						</kColl>
+					</iColl>
+					<kColl id="pageInfo">
+						<field id="currentPage" />
+						<field id="maxLine" />
+						<field id="recordSize" />
+					</kColl>
+				</output>
+			</jsonView>
+		</outputViews>
+	</action>
+	
+	<!-- 导入汇票明细excel页面 -->
+	<action id="importDpoBillDetailPage" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.arp.op.pubAction.ArpPubNullOp"/>
+			<transition dest="addPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="addPage" url="biz01line/dpo/DpoBillDetail/importIqpAccpDetailPage.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 导入EXCEL后台操作 -->
+	<action id="importDpoBillDetailOp" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.iqp.drfpo.op.dpobilldetail.ImportDpoBillDetailOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="biz01line/iqp/IqpBillDetail/importResult.jsp" />
+		</outputViews>
+	</action>
+		
+	<!-- 通过汇票编号获取汇票信息 -->
+	<action id="getPorderMsgByPorderNoDrfpo" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.iqp.drfpo.op.dpobilldetail.GetPorderMsgByPorderNoDrfpoOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<view id="retPage" class="com.yucheng.cmis.view.JSONView">
+				<output class="com.ecc.emp.data.KeyedCollection">
+					<field id="flag" class="com.ecc.emp.data.DataField" />
+					<field id="msg" class="com.ecc.emp.data.DataField" />
+					<field id="bill_type" class="com.ecc.emp.data.DataField" />
+					<field id="porder_no" class="com.ecc.emp.data.DataField" />
+					<field id="porder_curr" class="com.ecc.emp.data.DataField" />
+					<field id="drft_amt" class="com.ecc.emp.data.DataField" />
+					<field id="porder_addr" class="com.ecc.emp.data.DataField" />
+					<field id="is_ebill" class="com.ecc.emp.data.DataField" />
+					<field id="bill_isse_date" class="com.ecc.emp.data.DataField" />
+					<field id="porder_end_date" class="com.ecc.emp.data.DataField" />
+					<field id="utakeover_sign" class="com.ecc.emp.data.DataField" />
+					<field id="tcont_no" class="com.ecc.emp.data.DataField" />
+					<field id="tcont_amt" class="com.ecc.emp.data.DataField" />
+					<field id="tcont_content" class="com.ecc.emp.data.DataField" />
+					<field id="drwr_org_code" class="com.ecc.emp.data.DataField" />
+					<field id="isse_name" class="com.ecc.emp.data.DataField" />
+					<field id="daorg_no" class="com.ecc.emp.data.DataField" />
+					<field id="daorg_name" class="com.ecc.emp.data.DataField" />
+					<field id="daorg_acct" class="com.ecc.emp.data.DataField" />
+					<field id="pyee_name" class="com.ecc.emp.data.DataField" />
+					<field id="paorg_no" class="com.ecc.emp.data.DataField" />
+					<field id="paorg_name" class="com.ecc.emp.data.DataField" />
+					<field id="paorg_acct_no" class="com.ecc.emp.data.DataField" />
+					<field id="aaorg_type" class="com.ecc.emp.data.DataField" />
+					<field id="aaorg_no" class="com.ecc.emp.data.DataField" />
+					<field id="aaorg_name" class="com.ecc.emp.data.DataField" />
+					<field id="accptr_cmon_code" class="com.ecc.emp.data.DataField" />
+					<field id="aaorg_acct_no" class="com.ecc.emp.data.DataField" />
+					<field id="aorg_type" class="com.ecc.emp.data.DataField" />
+					<field id="aorg_no" class="com.ecc.emp.data.DataField" />
+					<field id="aorg_name" class="com.ecc.emp.data.DataField" />
+					<field id="status" class="com.ecc.emp.data.DataField" />
+				</output>
+			</view>
+		</outputViews>
+	</action>
+</actionDefines>
+
+
+

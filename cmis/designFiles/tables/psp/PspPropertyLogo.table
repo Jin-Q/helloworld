@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<PspPropertyLogo.xml>
+	<TableModel id="PspPropertyLogo" cnname="贷后检查固定资产分析-设备及器材" dbTableName="psp_property_logo">
+		<TableInfo/>
+		<Field id="property_id" isPK="true" columnName="property_id" cnname="资产编号" length="32" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="warrant_date" columnName="warrant_date" cnname="权利凭证期限" length="10" JSPTag="date" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="warrant_unit" columnName="warrant_unit" cnname="权利凭证核发单位" length="50" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="begin_date" columnName="begin_date" cnname="权利凭证核发时间" length="10" JSPTag="date" canBeNull="true" JDBCType="VARCHAR2"/>
+		<OrderFields>property_id[desc];</OrderFields>
+	</TableModel>
+</PspPropertyLogo.xml>

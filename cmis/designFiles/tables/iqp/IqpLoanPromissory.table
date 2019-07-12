@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<IqpLoanPromissory.xml>
+	<TableModel id="IqpLoanPromissory" pageSize="10" cnname="贷款承诺" isPaged="true" dbTableName="iqp_loan_promissory">
+		<TableInfo/>
+		<Field id="serno" isPK="true" columnName="serno" cnname="业务编号" length="40" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="receiver" columnName="receiver" cnname="接收方" length="40" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="other_cond_need" columnName="other_cond_need" cnname="其他条件和要求" length="100" JSPTag="textarea" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="item_name" columnName="item_name" cnname="项目名称" length="100" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="item_bground" columnName="item_bground" cnname="项目背景" length="250" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="busnes_bground" columnName="busnes_bground" cnname="贸易背景" length="250" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<OrderFields>serno;</OrderFields>
+		<ConditionFields>receiver;item_name;</ConditionFields>
+		<FilterFields>serno;receiver;other_cond_need;item_name;item_bground;busnes_bground;</FilterFields>
+		<Field id="chrg_rate" dataType="Rate" columnName="chrg_rate" cnname="手续费率" JSPTag="text" length="10" JDBCType="NUMBER"/>
+	</TableModel>
+</IqpLoanPromissory.xml>

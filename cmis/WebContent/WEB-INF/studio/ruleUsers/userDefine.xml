@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<userDefine.xml>
+	<user username="admin" password="admin">
+		<permission type="open" /><!-- open -->
+		<permission type="edit" /><!-- chechOut checkIn(createVersion) save -->
+		<permission type="create" /><!-- create -->
+		<permission type="delete" /><!-- delete -->
+		<permission type="history" /><!-- listHistory openVersion -->
+		<permission type="publish" /><!-- publish -->
+		<permission type="createApp" /><!-- createApp -->
+		<permission type="deleteApp" /><!-- deleteApp -->
+		<permission type="move" /><!-- move-->
+		<permission type="retrieve" /><!-- retrieve-->
+		<permission type="import" /><!-- import-->
+		<permission type="rename" /><!-- rename-->
+	</user>
+	<user username="test" password="test">
+		<permission type="open" /><!-- open -->
+		<permission type="edit" /><!-- chechOut checkIn(createVersion) save -->
+		<permission type="create" /><!-- create -->
+		<permission type="delete" /><!-- delete -->
+		<permission type="history" /><!-- listHistory openVersion -->
+		<permission type="publish" /><!-- publish -->
+		<permission type="createApp" /><!-- createApp -->
+		<permission type="deleteApp" /><!-- deleteApp -->
+		<permission type="move" /><!-- move-->
+		<permission type="retrieve" /><!-- retrieve-->
+		<permission type="import" /><!-- import-->
+		<permission type="rename" /><!-- rename-->
+	</user>
+</userDefine.xml>

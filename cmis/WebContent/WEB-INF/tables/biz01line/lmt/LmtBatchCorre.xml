@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<LmtBatchCorre.xml>
+	<TableModel id="LmtBatchCorre" cnname="批量客户名单关联表" dbTableName="lmt_batch_corre">
+		<Field id="batch_cus_no" isPK="true" columnName="batch_cus_no" cnname="批量客户编号" length="32" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="cus_id" isPK="true" columnName="cus_id" cnname="客户码" length="32" JDBCType="VARCHAR2" canBeNull="true"/>
+	</TableModel>
+</LmtBatchCorre.xml>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<IqpDelayCreditPur.xml>
+	<TableModel id="IqpDelayCreditPur" cnname="延期信用证项下应收款买入从表" dbTableName="iqp_delay_credit_pur">
+		<Field id="serno" isPK="true" columnName="serno" cnname="业务编号" length="40" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="is_replace" columnName="is_replace" cnname="是否置换" length="1" JDBCType="CHAR" canBeNull="true"/>
+		<Field id="rpled_serno" columnName="rpled_serno" cnname="被置换业务编号" length="40" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="fin_day" columnName="fin_day" cnname="融资天数" length="38" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="bank_bp_no" columnName="bank_bp_no" cnname="我行bp号" length="40" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="fount_fin_advice" columnName="fount_fin_advice" cnname="国业部融资意见" length="250" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="arrangr_deduct" columnName="arrangr_deduct" cnname="预扣款项" length="16" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="pay_amt" columnName="pay_amt" cnname="实付金额" length="16" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="rece_cur_type" columnName="rece_cur_type" cnname="应收款币种" length="3" JDBCType="CHAR" canBeNull="true"/>
+		<Field id="rece_amt" columnName="rece_amt" cnname="应收款金额" length="16" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="rece_end_date" columnName="rece_end_date" cnname="应收款到期日" length="10" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="promissory_pyr_name" columnName="promissory_pyr_name" cnname="承诺付款人名称" length="80" JDBCType="VARCHAR2" canBeNull="true"/>
+	</TableModel>
+</IqpDelayCreditPur.xml>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<RLmtGuarntrInfo.xml>
+	<TableModel id="RLmtGuarntrInfo" pageSize="10" cnname="保证人信息表" isPaged="true" dbTableName="r_lmt_guarntr_info">
+		<TableInfo/>
+		<Field id="serno" isPK="false" columnName="serno" cnname="业务编号" length="32" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<OrderFields>serno;</OrderFields>
+		<FilterFields>serno;cus_id;app_date;</FilterFields>
+		<RecordRestrict query="true" delete="true" update="true"/>
+		<Field id="limit_code" isPK="true" columnName="limit_code" cnname="授信编号" length="40" JSPTag="text" JDBCType="VARCHAR2"/>
+		<Field id="guar_id" isPK="true" columnName="guar_id" cnname="担保合同编号" JSPTag="text" length="30" JDBCType="VARCHAR2"/>
+		<Field id="app_date" columnName="app_date" cnname="建立关系日期" JSPTag="text" length="10" JDBCType="CHAR"/>
+	</TableModel>
+</RLmtGuarntrInfo.xml>

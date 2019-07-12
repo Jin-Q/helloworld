@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<MortDelivList.xml>
+	<TableModel id="MortDelivList" cnname="提货清单" dbTableName="mort_deliv_list">
+		<TableInfo/>
+		<Field id="serno" isPK="true" columnName="serno" cnname="业务编号" length="40" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="cargo_id" columnName="cargo_id" cnname="货物编号" length="40" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="guaranty_no" columnName="guaranty_no" cnname="押品编号" length="40" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="guaranty_catalog" columnName="guaranty_catalog" cnname="押品所属目录" length="60" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="storage_qnt" columnName="storage_qnt" cnname="库存数量" length="20" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="storage_value" columnName="storage_value" cnname="库存价值" length="20" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="deliv_qnt" columnName="deliv_qnt" cnname="提货数量" length="20" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="deliv_value" columnName="deliv_value" cnname="提货价值" length="20" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="memo" columnName="memo" cnname="备注" length="600" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="cargo_status" columnName="cargo_status" cnname="状态" length="2" JSPTag="text" canBeNull="true" JDBCType="CHAR"/>
+		<Field id="input_id" columnName="input_id" cnname="登记人" length="40" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="input_br_id" columnName="input_br_id" cnname="登记机构" length="40" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="reg_date" columnName="reg_date" cnname="登记日期" length="10" JSPTag="text" canBeNull="true" JDBCType="CHAR"/>
+		<Field id="surplus_qnt" columnName="surplus_qnt" cnname="剩余数量" length="20" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="surplus_value" columnName="surplus_value" cnname="剩余价值" length="20" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="deliv_date" columnName="deliv_date" cnname="提货日期" length="10" JSPTag="text" canBeNull="true" JDBCType="CHAR"/>
+		<OrderFields>serno[desc];</OrderFields>
+		<Field id="op_type" columnName="op_type" cnname="操作类型（1--货物置换，2--保证金提货）" length="2" JSPTag="text" JDBCType="VARCHAR2"/>
+		<Field id="re_serno" columnName="re_serno" cnname="关联业务流水号" JSPTag="text" length="40" JDBCType="VARCHAR2"/>
+	</TableModel>
+</MortDelivList.xml>

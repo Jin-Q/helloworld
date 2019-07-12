@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<SRole.xml>
+	<TableModel id="SRole" cnname="角色表" dbTableName="s_role">
+		<Field id="roleno" isPK="true" columnName="roleno" cnname="角色码" length="4" JDBCType="CHAR" canBeNull="false"/>
+		<Field id="rolename" columnName="rolename" cnname="角色名称" length="40" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="orderno" columnName="orderno" cnname="排序字段" length="38" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="type" columnName="type" cnname="类型" length="38" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="memo" columnName="memo" cnname="备注" length="60" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="orgid" columnName="orgid" cnname="组织号" length="16" JDBCType="VARCHAR2" canBeNull="true"/>
+	</TableModel>
+</SRole.xml>

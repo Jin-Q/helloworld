@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<IqpBailSubDis.xml>
+	<TableModel id="IqpBailSubDis" cnname="保证金追加/提取申请" dbTableName="iqp_bail_sub_dis">
+		<Field id="serno" isPK="true" columnName="serno" cnname="业务编号" length="60" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="cont_no" columnName="cont_no" cnname="合同编号" length="60" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="cus_id" columnName="cus_id" cnname="客户码" length="60" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="ori_bail_amt" columnName="ori_bail_amt" cnname="原保证金金额" length="20" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="ori_bail_perc" columnName="ori_bail_perc" cnname="原保证金比例" length="20" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="adjusted_bail_perc" columnName="adjusted_bail_perc" cnname="追加/提取后保证金比率" length="20" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="adjust_bail_amt" columnName="adjust_bail_amt" cnname="追加/提取保证金金额" length="20" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="adjusted_bail_amt" columnName="adjusted_bail_amt" cnname="追加/提取后保证金金额" length="20" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="manager_id" columnName="manager_id" cnname="责任人" length="30" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="manager_br_id" columnName="manager_br_id" cnname="责任机构" length="30" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="input_id" columnName="input_id" cnname="登记人" length="30" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="input_br_id" columnName="input_br_id" cnname="登记机构" length="30" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="input_date" columnName="input_date" cnname="登记日期" length="10" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="approve_status" columnName="approve_status" cnname="申请状态" length="6" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="flag" columnName="flag" cnname="申请类型（1--追加，2--提取）" length="6" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="addflag" columnName="addflag" cnname="申请类型（1--新增，2--追加）" length="6" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="security_exchange_rate" columnName="security_exchange_rate" cnname="原保证金汇率" length="16" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="adj_security_exchange_rate" columnName="adj_security_exchange_rate" cnname="追加/提取后保证金汇率" length="16" JDBCType="NUMBER" canBeNull="true"/>
+	</TableModel>
+</IqpBailSubDis.xml>

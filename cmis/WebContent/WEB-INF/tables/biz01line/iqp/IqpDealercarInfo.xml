@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<IqpDealercarInfo.xml>
+	<TableModel id="IqpDealercarInfo" cnname="经销商汽车信息" dbTableName="iqp_dealercar_info">
+		<Field id="serno" isPK="true" columnName="serno" cnname="业务编号" length="40" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="car_serno" isPK="true" columnName="car_serno" cnname="汽车信息" length="40" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="car_type" columnName="car_type" cnname="汽车类型" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="car_name" columnName="car_name" cnname="汽车名称" length="100" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="car_sign" columnName="car_sign" cnname="汽车品牌" length="40" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="car_num" columnName="car_num" cnname="汽车数量" length="38" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="car_amt" columnName="car_amt" cnname="车辆单价" length="16" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="cur_type" columnName="cur_type" cnname="币种" length="3" JDBCType="CHAR" canBeNull="true"/>
+	</TableModel>
+</IqpDealercarInfo.xml>

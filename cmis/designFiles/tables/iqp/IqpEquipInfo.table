@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<IqpEquipInfo.xml>
+	<TableModel id="IqpEquipInfo" pageSize="15" cnname="银租通设备信息" isPaged="true" dbTableName="iqp_equip_info">
+		<TableInfo/>
+		<Field id="serno" columnName="serno" cnname="业务编号" length="40" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="equip_name" columnName="equip_name" cnname="设备名称" length="150" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="produce_manuf" columnName="produce_manuf" cnname="生产厂商" length="150" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="produce_addr" columnName="produce_addr" cnname="产地" length="250" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="equip_brand" columnName="equip_brand" cnname="设备品牌" length="150" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="equip_model" columnName="equip_model" cnname="设备型号" length="100" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="cur_type" dictname="STD_ZX_CUR_TYPE" columnName="cur_type" cnname="购置币种" length="3" JSPTag="select" canBeNull="true" JDBCType="CHAR"/>
+		<Field id="equip_unit_price" dataType="Currency" columnName="equip_unit_price" cnname="设备单价" length="16" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="qnt" dataType="Int" columnName="qnt" cnname="数量" length="38" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="pur_total_amt" dataType="Currency" columnName="pur_total_amt" cnname="购置总价" length="16" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="produce_date" columnName="produce_date" cnname="出厂日期" length="10" JSPTag="date" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="pur_date" columnName="pur_date" cnname="购入日期" length="10" JSPTag="date" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="is_new" dictname="STD_ZX_YES_NO" columnName="is_new" cnname="是否全新" length="1" JSPTag="select" canBeNull="true" JDBCType="CHAR"/>
+		<Field id="memo" columnName="memo" cnname="备注" length="250" JSPTag="textarea" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="equip_pk" isPK="true" columnName="equip_pk" cnname="设备编号" length="40" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<OrderFields>equip_pk[desc];</OrderFields>
+		<FilterFields>equip_name;equip_model;equip_unit_price;qnt;pur_total_amt;produce_date;pur_date;</FilterFields>
+		<RecordRestrict query="true" delete="true" update="true"/>
+	</TableModel>
+</IqpEquipInfo.xml>

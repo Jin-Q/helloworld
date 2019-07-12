@@ -1,0 +1,794 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actionDefines>
+	<classMap>
+		<map id="action" class="com.yucheng.cmis.ad.mvc.ADRequestController"/>
+		<map id="flowInvoker" class="com.yucheng.cmis.ad.mvc.ADFlowInvoker"/>
+		<map id="outputViews" class="java.util.HashMap"/>
+		<map id="output" class="com.ecc.emp.data.KeyedCollection"/>
+		<map id="kColl" class="com.ecc.emp.data.KeyedCollection"/>
+		<map id="iColl" class="com.ecc.emp.data.IndexedCollection"/>
+		<map id="field" class="com.ecc.emp.data.DataField"/>
+	</classMap>
+	
+	<!-- 获取操作主页面 -->
+	<action id="queryMortGuarantyBaseInfoList" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.mort.mortguarantybaseinfo.QueryMortGuarantyBaseInfoListOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="biz01line/mort/MortGuarantyBaseInfo/queryMortGuarantyBaseInfoList.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 获取操作主页面 -->
+	<action id="queryMortGuarantyBaseInfoList4Query" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.mort.mortguarantybaseinfo.QueryMortGuarantyBaseInfoListOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="biz01line/mort/MortGuarantyBaseInfo/queryMortGuarantyBaseInfoList4Query.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 获取押品管理菜单所需要用到的押品 pop-->
+	<action id="getMortGuarantyBaseInfoPopList" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.mort.mortguarantybaseinfo.QueryMortGuarantyBaseInfoListPopOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="biz01line/mort/MortGuarantyBaseInfo/queryMortGuarantyBaseInfoPopList.jsp" />
+		</outputViews>
+	</action>
+	<!-- 获取供应链质押物时，新增页面 -->
+	<action id="addIqpCargoOverseeReRecord" type="normal" checkSession="true" >
+			<jspView id="retPage" url="biz01line/mort/MortGuarantyBaseInfo/addIqpCargoOverseeReRecord.jsp" />
+	</action>	
+	
+	<!-- 获取担保品引入Tab页 -->
+	<action id="queryMortGuarantyTabList" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.mort.mortguarantybaseinfo.QueryMortGuarantyTabOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="biz01line/mort/MortGuarantyBaseInfo/queryMortGuarantyTabList.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 获取担保品引入pop页 （以物抵债/业务办理/综合授信模块使用） -->
+	<action id="queryMortGuarantyPopList" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.mort.mortguarantybaseinfo.QueryMortGuarantyBaseInfoListOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="biz01line/mort/MortGuarantyBaseInfo/queryMortGuarantyBaseIntroList.jsp" />
+		</outputViews>
+	</action>
+	<!-- 获得编辑页面 -->
+	<action id="getMortGuarantyBaseInfoUpdatePage" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation updateCheck="false" class="com.yucheng.cmis.biz01line.mort.mortguarantybaseinfo.QueryMortGuarantyBaseInfoDetailOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="biz01line/mort/MortGuarantyBaseInfo/updateMortGuarantyBaseInfoRecord.jsp" />
+		</outputViews>
+	</action>
+	<!-- 更新记录 -->
+	<action id="updateMortGuarantyBaseInfoRecord" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.mort.mortguarantybaseinfo.UpdateMortGuarantyBaseInfoRecordOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jsonView class="com.yucheng.cmis.view.JSONView" id="retPage">
+				<output>
+					<field id="flag" />
+				</output>
+			</jsonView>
+		</outputViews>
+	</action>
+	
+	<!-- 获得查看页面 -->
+	<action id="getMortGuarantyBaseInfoViewPage" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.mort.mortguarantybaseinfo.QueryMortGuarantyBaseInfoDetailOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="biz01line/mort/MortGuarantyBaseInfo/queryMortGuarantyBaseInfoDetail.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 引入担保品操作-->
+	<action id="introGuaranty" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.mort.mortguarantybaseinfo.IntroGuarantyOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jsonView class="com.yucheng.cmis.view.JSONView" id="retPage">
+				<output>
+					<field id="flag" />
+					<field id="msg" />
+				</output>
+			</jsonView>
+		</outputViews>
+	</action>
+	<!--引入或者取消引入担保品（资产保全模块用）-->
+	<action id="introGuarantyArp" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.mort.mortguarantybaseinfo.IntroGuarantyArpOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jsonView class="com.yucheng.cmis.view.JSONView" id="retPage">
+				<output>
+					<field id="flag" />
+					<field id="msg" />
+				</output>
+			</jsonView>
+		</outputViews>
+	</action>
+	<!-- 获得新增页面 -->
+	<action id="getMortGuarantyBaseInfoAddPage" type="normal" checkSession="true" >
+	    <flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.mort.mortguarantybaseinfo.AddMortGuarantyBaseInfoLeadOp"/>
+			<transition dest="addPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="addPage" url="biz01line/mort/MortGuarantyBaseInfo/addMortGuarantyBaseInfoRecord.jsp"/>
+		</outputViews>
+	</action>
+	
+	<!-- 新增记录 -->
+	<action id="addMortGuarantyBaseInfoRecord" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.mort.mortguarantybaseinfo.AddMortGuarantyBaseInfoRecordOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jsonView class="com.yucheng.cmis.view.JSONView" id="retPage">
+				<output>
+					<field id="flag" />
+					<field id="msg" />
+					<field id="guaranty_no" />
+					<field id="agr_type" />
+					<field id="agr_no" />
+				</output>
+			</jsonView>
+		</outputViews>
+	</action>	
+	<!-- 异步校验权证编号的唯一性 -->
+	<action id="checkWarrantNo" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.mort.mortguarantybaseinfo.CheckWarrantNoOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jsonView class="com.yucheng.cmis.view.JSONView" id="retPage">
+				<output>   
+					<field id="check"/>
+				</output>
+			</jsonView>
+		</outputViews>
+	</action>	
+	<!-- 异步根据押品编号获取协议类型和协议号码（商链通部分） -->
+	<action id="getAgrInfoByGuarantyNo" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.mort.mortguarantybaseinfo.GetAgrInfoByGuarantyNoOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jsonView class="com.yucheng.cmis.view.JSONView" id="retPage">
+				<output>   
+					<field id="agr_type"/>
+					<field id="agr_no"/>
+				</output>
+			</jsonView>
+		</outputViews>
+	</action>
+	<!-- 异步删除共有人信息表中的共有人记录 -->
+	<action id="deleteCommenOwnerRecord" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.mort.mortguarantybaseinfo.DeleteMortCommenOwnerOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jsonView class="com.yucheng.cmis.view.JSONView" id="retPage">
+				<output>   
+					<field id="delet"/>
+				</output>
+			</jsonView>
+		</outputViews>
+	</action>	
+	<!-- 删除记录 -->
+	<action id="deleteMortGuarantyBaseInfoRecord" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.mort.mortguarantybaseinfo.DeleteMortGuarantyBaseInfoRecordOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jsonView class="com.yucheng.cmis.view.JSONView" id="retPage">
+				<output>   
+					<field id="delet"/>
+				</output>
+			</jsonView>
+		</outputViews>
+	</action>
+	
+	<!-- 通过客户码查询押品信息 -->
+	<action id="mortGuarantyBaseByCusId" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.mort.mortguarantybaseinfo.MortGuarantyBaseByCusIdOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="biz01line/mort/MortGuarantyBaseInfo/mortGuarantyBaseByCusId.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 通过客户码查询押品信息分页查询记录 -->
+	<action id="pageMortGuarantyBaseByCusId" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.mort.mortguarantybaseinfo.MortGuarantyBaseByCusIdOp"/>
+			<transition dest="queryListRes"/>
+		</flowInvoker>
+		<outputViews>
+			<jsonView class="com.yucheng.cmis.view.JSONView" id="queryListRes">
+				<output>
+					<iColl id="MortGuarantyBaseInfoList">
+						<kColl>
+						</kColl>
+					</iColl>
+					<kColl id="pageInfo">
+						<field id="currentPage" />
+						<field id="maxLine" />
+						<field id="recordSize" />
+					</kColl>
+				</output>
+			</jsonView>
+		</outputViews>
+	</action>
+	
+	<!-- 分页查询记录列表 -->
+		<action id="pageMortGuarantyBaseInfoQuery" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.mort.mortguarantybaseinfo.QueryMortGuarantyBaseInfoListOp"/>
+			<transition dest="queryListRes"/>
+		</flowInvoker>
+		<outputViews>
+			<jsonView class="com.yucheng.cmis.view.JSONView" id="queryListRes">
+				<output>
+					<iColl id="MortGuarantyBaseInfoList">
+						<kColl>
+							
+						</kColl>
+					</iColl>
+					<kColl id="pageInfo">
+						<field id="currentPage" />
+						<field id="maxLine" />
+						<field id="recordSize" />
+					</kColl>
+				</output>
+			</jsonView>
+		</outputViews>
+	</action>
+		<!-- 押品pop分页查询 -->
+		<action id="pageMortGuarantyBaseInfoQuery1" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.mort.mortguarantybaseinfo.QueryMortGuarantyBaseInfoListPopOp"/>
+			<transition dest="queryListRes"/>
+		</flowInvoker>
+		<outputViews>
+			<jsonView class="com.yucheng.cmis.view.JSONView" id="queryListRes">
+				<output>
+					<iColl id="MortGuarantyBaseInfoList">
+					   <kColl>
+						</kColl>
+					</iColl>
+					<kColl id="pageInfo">
+						<field id="currentPage" />
+						<field id="maxLine" />
+						<field id="recordSize" />
+					</kColl>
+				</output>
+			</jsonView>
+		</outputViews>
+	</action>
+		<!-- 获取详细信息页面 -->
+	<action id="getDetailInformationPage" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.mort.mortguarantybaseinfo.GetDetailInformationPageOp"/>
+			<transition dest="error" condition="$retValue='-1'"/>
+			<transition dest="errorMortType" condition="$retValue='-2'"/>
+			
+			
+			<!-- 住宅 -->
+
+			<!--C010101	普通商品用房  -->
+			<transition dest="real_house" condition="$retValue='C010101'"/>
+			<!-- C010102	别墅 -->
+			<transition dest="real_house" condition="$retValue='C010102'"/>
+			<!-- C010103	经济适用住房（限价房） -->
+			<transition dest="real_house" condition="$retValue='C010103'"/>
+			<!-- C010104	车库/车位（区分与住宅一起/独立） -->
+			<transition dest="car_barn" condition="$retValue='C010104'"/>	
+			<!-- C010105	城市自建房    -->
+			<transition dest="real_house" condition="$retValue='C010105'"/>			
+			<!-- C010106	农村自建房  2015-08-14 Edited by FCL 原自建房更改为城市自建房，新增农村自建房  -->
+			<transition dest="real_house" condition="$retValue='C010106'"/>			
+			<!-- C010199	其他居住用房 -->
+			<transition dest="real_house" condition="$retValue='C010199'"/>
+			
+			
+			
+
+			<!-- C020201	商铺、商场 -->
+			<transition dest="market_store" condition="$retValue='C020201'"/>
+
+
+			<!--C020301	标准工业厂房（含工业配套宿舍） -->
+			<transition dest="plant" condition="$retValue='C020301'"/>
+			<!-- C020302	非标准工业厂房（含工业配套宿舍）	 -->
+			<transition dest="plant" condition="$retValue='C020302'"/>
+			<!-- C020303	标准仓储 -->
+			<transition dest="plant" condition="$retValue='C020303'"/>
+			<!-- C020304	非标准仓储	 -->
+			<transition dest="plant" condition="$retValue='C020304'"/>
+			
+
+			<!--C020101	酒店、写字楼 -->
+
+			<!-- C020101	多层写字楼 -->
+			<transition dest="hotel_office" condition="$retValue='C020101'"/>
+			<!--  C020103	高层写字楼-->
+			<transition dest="hotel_office" condition="$retValue='C020103'"/>
+			<!-- C020105	公寓式写字楼-->
+			<transition dest="hotel_office" condition="$retValue='C020105'"/>
+			<!-- C020106	宾馆酒店 -->
+			<transition dest="hotel_office" condition="$retValue='C020106'"/>
+			<!-- C020107	其他商业用房-->
+			<transition dest="hotel_office" condition="$retValue='C020107'"/>
+
+			
+			
+			<!-- 土地使用权 -->
+
+			
+			<!--C030101	居住用地  -->
+			<transition dest="usufruct_land" condition="$retValue='C030101'"/>
+			<!--C040101	工业用地  -->
+			<transition dest="usufruct_land" condition="$retValue='C040101'"/>
+			<!-- C040201	商业用地 -->
+			<transition dest="usufruct_land" condition="$retValue='C040201'"/>
+			<!-- C040301	写字楼用地 -->
+			<transition dest="usufruct_land" condition="$retValue='C040301'"/>
+			<!--C040401	其他用地  -->
+			<transition dest="usufruct_land" condition="$retValue='C040401'"/>
+			
+			
+			<!-- 在建工程 -->
+			<transition dest="building_project" condition="$retValue='C050101'"/>
+			
+			
+			<!-- 机动车辆 -->
+
+			<!-- 客运汽车-->
+			<transition dest="traffic_car" condition="$retValue='Z040101'"/>
+			<!-- 货运汽车-->
+			<transition dest="traffic_car" condition="$retValue='Z040102'"/>
+			<!-- 专用汽车-->
+			<transition dest="traffic_car" condition="$retValue='Z040103'"/>
+			<!-- 自用汽车-->
+			<transition dest="traffic_car" condition="$retValue='Z040104'"/>
+			
+			
+	        <!-- 船舶 -->
+	                  
+	        <!--  Z040201	客运  -->
+			<transition dest="traffic_ship" condition="$retValue='Z040201'"/>
+			 <!-- Z040202	货运（含油轮、集装箱轮等） -->
+			<transition dest="traffic_ship" condition="$retValue='Z040202'"/>
+			 <!-- Z040203	渔船  -->
+			<transition dest="traffic_ship" condition="$retValue='Z040203'"/>
+			 <!-- Z040299	其他类型船舶  -->
+			<transition dest="traffic_ship" condition="$retValue='Z040299'"/>
+			
+			
+			 <!-- Z040301	客运飞机 -->
+            <transition dest="traffic_others" condition="$retValue='Z040301'"/>
+             <!-- Z040302	货运飞机 -->
+            <transition dest="traffic_others" condition="$retValue='Z040302'"/>
+             <!-- Z040303	飞机配套设备 -->
+            <transition dest="traffic_others" condition="$retValue='Z040303'"/>
+			
+			<!-- 森林使用权 -->
+			<transition dest="usufruct_forest" condition="$retValue='Z070201'"/>
+			
+			<!-- 海洋使用权 -->
+			<transition dest="usufruct_sea" condition="$retValue='Z070401'"/>
+			
+			<!-- 机器设备 -->
+
+			<!-- Z030101	锅炉及原动机 -->
+			<transition dest="machine_equipment" condition="$retValue='Z030101'"/>
+			<!--Z030102	金属加工机械  -->
+			<transition dest="machine_equipment" condition="$retValue='Z030102'"/>
+			<!-- Z030103	起重运输设备 -->
+			<transition dest="machine_equipment" condition="$retValue='Z030103'"/>
+			<!-- Z030104	泵、阀门、压缩机及类似机械 -->
+			<transition dest="machine_equipment" condition="$retValue='Z030104'"/>
+			<!-- Z030105	轴承、齿轮、传动和驱动部件 -->
+			<transition dest="machine_equipment" condition="$retValue='Z030105'"/>
+			<!-- Z030106	风机、衡器、包装设备等通用设备 -->
+			<transition dest="machine_equipment" condition="$retValue='Z030106'"/>			
+			<!-- Z030107	通用零部件制造设备 -->
+			<transition dest="machine_equipment" condition="$retValue='Z030107'"/>
+			<!--  Z030108	金属铸、锻加工设备-->
+			<transition dest="machine_equipment" condition="$retValue='Z030108'"/>
+			<!-- Z030199	其他通用设备 -->
+			<transition dest="machine_equipment" condition="$retValue='Z030199'"/>
+
+
+			<!--Z030201	矿山、冶金、建筑专用设备 -->
+			<transition dest="machine_equipment" condition="$retValue='Z030201'"/>
+			<!--Z030202	化工、木材、非金属加工专用设备 -->
+			<transition dest="machine_equipment" condition="$retValue='Z030202'"/>
+			<!-- Z030203	食品、饮料、烟草及饲料生产专用设备-->
+			<transition dest="machine_equipment" condition="$retValue='Z030203'"/>
+			<!-- Z030204	印刷、制药、日化生产专用设备-->
+			<transition dest="machine_equipment" condition="$retValue='Z030204'"/>
+			<!-- Z030205	纺织、服装和皮革工业专用设备-->
+			<transition dest="machine_equipment" condition="$retValue='Z030205'"/>
+			<!-- Z030206	电子和电工机械专用设备-->
+			<transition dest="machine_equipment" condition="$retValue='Z030206'"/>
+			<!-- Z030207	农、林、牧、渔专用机械-->
+			<transition dest="machine_equipment" condition="$retValue='Z030207'"/>
+			<!-- Z030208	医疗仪器设备及器械-->
+			<transition dest="machine_equipment" condition="$retValue='Z030208'"/>
+			<!--Z030209	环保、社会公共安全及其他专用设备 -->
+			<transition dest="machine_equipment" condition="$retValue='Z030209'"/>
+			<!--Z030299	其他行业专用设备 -->
+			<transition dest="machine_equipment" condition="$retValue='Z030299'"/>
+		
+			<!--  存单质押-->
+			
+			
+			<!-- A010101	存单(本行) -->
+			<transition dest="deposit_receipt" condition="$retValue='A010101'"/>
+			<!-- A010102	存单(他行) -->
+			<transition dest="deposit_receipt" condition="$retValue='A010102'"/>
+			<!-- A010201	保证金目前没有也没可以跳转 -->
+			<transition dest="deposit_receipt" condition="$retValue='A010201'"/>
+		
+		
+			
+			<!--A010301	账户冻结  -->
+			<transition dest="account_freeze" condition="$retValue='A010301'"/>
+			
+
+			
+			<!-- 贵金属 -->
+
+			<!-- A020101	黄金 -->
+			<transition dest="noble_metal" condition="$retValue='A020101'"/>
+			<!--A020201	标准银、铂金等其他贵金属  -->
+			<transition dest="noble_metal" condition="$retValue='A020201'"/>
+
+						
+			<!-- 债券抵押 -->
+			
+			<!--  	凭证式国债-->
+			<transition dest="bond_pledge" condition="$retValue='A030101'"/>
+			
+			<!-- 	记账式国债 -->
+			<transition dest="bond_pledge" condition="$retValue='A030102'"/>
+			<!-- 	储蓄国债 -->
+			<transition dest="bond_pledge" condition="$retValue='A030103'"/>
+			
+			<!--	境外AA-级及以上国家/地区政府债券  -->
+			<transition dest="bond_pledge" condition="$retValue='A030201'"/>
+			<!-- 	境外BB-及以上至AA-级以下级别国家/地区政府债券 -->
+			<transition dest="bond_pledge" condition="$retValue='A030202'"/>
+			
+			<!-- 	人民银行金融债券 -->
+			<transition dest="bond_pledge" condition="$retValue='A030301'"/>
+			<!--	中国政策性银行金融债券  -->
+			<transition dest="bond_pledge" condition="$retValue='A030302'"/>
+			
+			
+			<!--	中国商业银行金融债券  -->
+			<transition dest="bond_pledge" condition="$retValue='A030303'"/>
+			<!-- 	中国商业银行次级债 -->
+			<transition dest="bond_pledge" condition="$retValue='A030304'"/>
+
+			<!-- 	中央政府投资的金融资产管理公司为收购国有银行不良贷款而定向发行的债券 -->
+			<transition dest="bond_pledge" condition="$retValue='A030305'"/>
+			<!--	境内其他金融债券（农信社、非银行金融机构等）  -->
+			<transition dest="bond_pledge" condition="$retValue='A030306'"/>
+			
+			<!-- 	多边开发银行金融债券 -->
+			<transition dest="bond_pledge" condition="$retValue='A030401'"/>
+			
+			<!-- 	境外AA-级及以上国家/地区金融债 -->
+			<transition dest="bond_pledge" condition="$retValue='A030402'"/>
+			<!-- 	境外其他金融债券 -->
+			<transition dest="bond_pledge" condition="$retValue='A030403'"/>
+			<!-- 新增境外AA-级以上国家/地区央行债券 -->
+			<transition dest="bond_pledge" condition="$retValue='A030404'"/>
+			
+			<!--  	人民银行、中国政策性银行担保的企业债券-->
+			<transition dest="bond_pledge" condition="$retValue='A030501'"/>
+			<!--  中国商业银行担保的企业债券-->
+			<transition dest="bond_pledge" condition="$retValue='A030502'"/>
+			<!-- 	我国中央政府投资的公用企业债券或由其担保的企业债券 -->
+			<transition dest="bond_pledge" condition="$retValue='A030503'"/>
+			<!--	我国非中央政府投资的公用企业债券或由其担保的企业债券  -->
+			<transition dest="bond_pledge" condition="$retValue='A030504'"/>
+			<!--	境内其他类企业债券-->
+			<transition dest="bond_pledge" condition="$retValue='A030505'"/>
+			<!--	境外AA-级及以上国家或地区政府投资的公用企业债券或由其担保的企业债券-->
+			<transition dest="bond_pledge" condition="$retValue='A030601'"/>
+			<!--	境外其他类企业债券-->
+			<transition dest="bond_pledge" condition="$retValue='A030602'"/>
+			<!--	地方政府债券-->
+			<transition dest="bond_pledge" condition="$retValue='A030701'"/>
+			
+			
+			
+			<!-- 保单 -->
+			<transition dest="insurance_slip" condition="$retValue='A070101'"/>
+			
+			<!-- 票据 -->
+			
+
+			<!-- 	商业银行本票/银行汇票 -->
+			<transition dest="bill" condition="$retValue='A040101'"/>
+			<!-- 	银行承兑汇票 -->
+			<transition dest="bill" condition="$retValue='A040201'"/>
+			<!-- 	商业承兑汇票 -->
+			<transition dest="bill" condition="$retValue='A040301'"/>
+			
+			
+			<!-- 标准仓单-->
+			<transition dest="standard_depot_bill" condition="$retValue='Z010101'"/>
+			
+			
+            <!-- 	提单 -->
+            <transition dest="lading_bill" condition="$retValue='Z010201'"/>
+            
+            
+                
+            <!-- 	出口退税账户 -->
+            <transition dest="export_return_tax" condition="$retValue='B010101'"/>
+            
+            
+            <!-- 股权 -->
+            <!-- 	商业银行股权 -->
+			<transition dest="stock_right" condition="$retValue='A060101'"/>
+			<!-- 	非银行金融机构股权 -->
+			<transition dest="stock_right" condition="$retValue='A060201'"/>
+			<!-- 	公司股权 -->
+			<transition dest="stock_right" condition="$retValue='A060301'"/>
+
+			<!-- 股票/基金 -->
+			
+			<!--  	上市公司流通A股股票-->
+			<transition dest="stock_fund" condition="$retValue='A050101'"/>
+			<!-- 	上市公司可转换债 -->
+			<transition dest="bond_pledge" condition="$retValue='A050201'"/>
+			<!-- 	上市公司限售流通股 -->
+			<transition dest="stock_fund" condition="$retValue='A050301'"/>
+			<!-- 	证券投资基金券 -->
+			<transition dest="stock_fund" condition="$retValue='A050401'"/>
+
+
+            <!--其他金融产品质押  -->
+	
+             <!--信托产品受益权质押贷款  -->
+            <transition dest="finance_others" condition="$retValue='A080101'"/>
+             <!--理财产品受益权质押贷款（本行）  -->
+            <transition dest="finance_others" condition="$retValue='A080102'"/>
+             <!--其他金融产品受益权质押贷款  -->
+            <transition dest="finance_others" condition="$retValue='A080103'"/>
+             <!--理财产品受益权质押贷款（他行）  -->
+            <transition dest="finance_others" condition="$retValue='A080104'"/>
+            
+            
+            <!--应收账款其他可转让的权利 -->
+          
+			<!-- 	公路收费权 -->
+			<transition dest="accounts_receivable_others" condition="$retValue='B030101'"/>
+			<!--	桥梁收费权 -->
+			<transition dest="accounts_receivable_others" condition="$retValue='B030201'"/>
+			<!--	 渡口收费权  -->
+			<transition dest="accounts_receivable_others" condition="$retValue='B030301'"/>
+			<!--	涵洞收费权 -->
+			<transition dest="accounts_receivable_others" condition="$retValue='B030401'"/>
+			<!-- 	燃气收费权 -->
+			<transition dest="accounts_receivable_others" condition="$retValue='B040101'"/>
+			<!-- 	自来水收费权 -->
+			<transition dest="accounts_receivable_others" condition="$retValue='B040102'"/>
+			<!-- 	污水处理收费权 -->
+			<transition dest="accounts_receivable_others" condition="$retValue='B040103'"/>
+			<!-- 	供热收费权 -->
+			<transition dest="accounts_receivable_others" condition="$retValue='B040104'"/>
+			<!-- 	通信收费权 -->
+			<transition dest="accounts_receivable_others" condition="$retValue='B040201'"/>
+			<!-- 	网络收费权 -->
+			<transition dest="accounts_receivable_others" condition="$retValue='B040202'"/>
+			<!--	有线电视收费权 -->
+			<transition dest="accounts_receivable_others" condition="$retValue='B040203'"/>
+			<!-- 	农村电网建设与改造工程电费收费权 -->
+			<transition dest="accounts_receivable_others" condition="$retValue='B040301'"/>
+			<!--	提供其他公共服务产生的收费权 -->
+			<transition dest="accounts_receivable_others" condition="$retValue='B040401'"/>
+			<!--	应收租金 -->
+			<transition dest="accounts_receivable_others" condition="$retValue='B050101'"/>
+			<!--	高等院校学生学费收费权 -->
+			<transition dest="accounts_receivable_others" condition="$retValue='B060101'"/>
+			<!--	高等院校学生公寓收费权 -->
+			<transition dest="accounts_receivable_others" condition="$retValue='B060102'"/>
+			<!-- 	其他符合规定的学校 -->
+			<transition dest="accounts_receivable_others" condition="$retValue='B060201'"/>
+			<!-- 	医院收费权 -->
+			<transition dest="accounts_receivable_others" condition="$retValue='B060301'"/>
+			
+
+			<!-- 应收账款 -->
+			<!-- 交易类应收账款 -->
+
+			<transition dest="accounts_receivable" condition="$retValue='B020101'"/>
+
+			<!-- 其他质押品 -->
+
+            
+            <!-- 其他所有权 -->
+  
+             <!-- 	采矿权 -->
+            <transition dest="ownership_others" condition="$retValue='Z070301'"/>         
+             <!--	商标专用权 -->
+            <transition dest="ownership_others" condition="$retValue='Z080101'"/>
+             <!-- 	专利权 -->
+            <transition dest="ownership_others" condition="$retValue='Z080201'"/>
+             <!-- 	著作权 -->
+            <transition dest="ownership_others" condition="$retValue='Z080301'"/>
+            <!-- 	营运车牌 -->
+			<transition dest="ownership_others" condition="$retValue='Z070101'"/>
+			<!-- 	其他经营权 -->
+			<transition dest="ownership_others" condition="$retValue='Z079901'"/>
+			<!-- 	XD150714054 20150818 Edited by FCL 土地承包经营权 -->
+			<transition dest="land_ctr_mgr" condition="$retValue='Z079902'"/>
+			<!-- 	提货权 -->
+			<transition dest="ownership_others" condition="$retValue='Z080401'"/>
+			<!-- 	备用信用证-->
+            <transition dest="reserve_credit" condition="$retValue='Z080501'"/>
+            
+            <!-- 	保函 -->
+           <transition dest="backletter" condition="$retValue='Z080601'"/>
+           
+			<!--其他所有权质押 -->
+			<transition dest="ownership_others" condition="$retValue='Z089901'"/>
+	
+            <!-- 货物质押 -->
+            
+            <!-- 黑色金属 -->
+			<transition dest="cargo_pledge" condition="$retValue='Z090100'"/>
+			<!-- 有色金属-->
+			<transition dest="cargo_pledge" condition="$retValue='Z090100'"/>
+			<!-- 	煤炭 -->
+			<transition dest="cargo_pledge" condition="$retValue='Z090100'"/>
+			<!-- 	石油化工产品 -->
+			<transition dest="cargo_pledge" condition="$retValue='Z090100'"/>
+			<!-- 	有机化工产品 -->
+			<transition dest="cargo_pledge" condition="$retValue='Z090100'"/>
+			<!-- 	未上牌汽车 -->
+			<transition dest="cargo_pledge" condition="$retValue='Z090100'"/>
+			<!-- 	汽车零部件-->
+			<transition dest="cargo_pledge" condition="$retValue='Z090100'"/>
+			<!-- 	家电产品 -->
+			<transition dest="cargo_pledge" condition="$retValue='Z090100'"/>
+			<!-- 	建材 -->
+			<transition dest="cargo_pledge" condition="$retValue='Z090100'"/>
+			<!-- 	纺织类原材料 -->
+			<transition dest="cargo_pledge" condition="$retValue='Z090100'"/>
+			<!-- 	纸浆/纸品 -->
+			<transition dest="cargo_pledge" condition="$retValue='Z090100'"/>
+			
+			<!--	农产品 -->
+			<transition dest="cargo_pledge" condition="$retValue='Z090100'"/>
+			<!-- 	木材-->
+			<transition dest="cargo_pledge" condition="$retValue='Z090100'"/>
+			<!-- 	名烟/名酒 -->
+			<transition dest="cargo_pledge" condition="$retValue='Z090100'"/>
+			<!-- 	食品-->
+			<transition dest="cargo_pledge" condition="$retValue='Z090100'"/>
+			<!-- 	药-->
+			<transition dest="cargo_pledge" condition="$retValue='Z090100'"/>
+			<!-- 	其他-->
+			<transition dest="cargo_pledge" condition="$retValue='Z090100'"/>
+			
+
+
+            <!-- 	其他抵押品 (动产浮动)-->
+            <transition dest="mort_others" condition="$retValue='Z989999'"/>
+            <!-- 	其他抵押品 (动产)-->
+            <transition dest="mort_others" condition="$retValue='Z989998'"/>
+            
+             <!--	其他质押品 -->
+			<transition dest="impawn_others" condition="$retValue='Z999999'"/>
+			
+			
+			
+           <!--		 托管品 -->
+           <!-- 	汽车合格证 -->
+           <transition dest="car_certification" condition="$retValue='T010101'"/>
+           
+            <!--	汽车履约保证保险-->
+           <transition dest="insurance" condition="$retValue='T020101'"/>
+            <!-- 	出口信用保证保险 -->
+           <transition dest="insurance" condition="$retValue='T030101'"/>
+           
+            <!-- 	其他托管品-->
+           <transition dest="managed_product_others" condition="$retValue='T060101'"/>
+			
+		</flowInvoker>
+		<outputViews>
+			<jspView id="error" url="biz01line/mort/MortGuarantyBaseInfo/error.jsp" />
+			<jspView id="errorMortType" url="biz01line/mort/MortGuarantyBaseInfo/errorMortType.jsp" />
+			
+			<jspView id="real_house" url="biz01line/mort/MortGuarantyBaseInfo/operationResult.jsp?url=getMortRealHouseDetailAddPage.do" />
+			<jspView id="car_barn" url="biz01line/mort/MortGuarantyBaseInfo/operationResult.jsp?url=getMortCarBarnDetailAddPage.do" />
+			<jspView id="market_store" url="biz01line/mort/MortGuarantyBaseInfo/operationResult.jsp?url=getMortMarketStoreAddPage.do" />
+			<jspView id="plant" url="biz01line/mort/MortGuarantyBaseInfo/operationResult.jsp?url=getMortPlantAddPage.do" />
+			<jspView id="hotel_office" url="biz01line/mort/MortGuarantyBaseInfo/operationResult.jsp?url=getMortHotelOfficeAddPage.do" />
+			<jspView id="usufruct_land" url="biz01line/mort/MortGuarantyBaseInfo/operationResult.jsp?url=getMortUsufructLandAddPage.do" />
+			<jspView id="building_project" url="biz01line/mort/MortGuarantyBaseInfo/operationResult.jsp?url=getMortBuildingProjectAddPage.do" />
+			<jspView id="traffic_car" url="biz01line/mort/MortGuarantyBaseInfo/operationResult.jsp?url=getMortTrafficCarAddPage.do" />
+			<jspView id="traffic_ship" url="biz01line/mort/MortGuarantyBaseInfo/operationResult.jsp?url=getMortTrafficShipAddPage.do" />
+			<jspView id="traffic_others" url="biz01line/mort/MortGuarantyBaseInfo/operationResult.jsp?url=getMortTrafficOthersAddPage.do" />			
+			<jspView id="usufruct_forest" url="biz01line/mort/MortGuarantyBaseInfo/operationResult.jsp?url=getMortUsufructForestAddPage.do" />
+			<jspView id="usufruct_sea" url="biz01line/mort/MortGuarantyBaseInfo/operationResult.jsp?url=getMortUsufructSeaAddPage.do" />
+			<jspView id="machine_equipment" url="biz01line/mort/MortGuarantyBaseInfo/operationResult.jsp?url=getMortMachineEquipmentAddPage.do" />
+			<jspView id="mort_others" url="biz01line/mort/MortGuarantyBaseInfo/operationResult.jsp?url=getMortMortOthersAddPage.do" />
+			<jspView id="noble_metal" url="biz01line/mort/MortGuarantyBaseInfo/operationResult.jsp?url=getMortNobleMetalAddPage.do" />
+			<jspView id="bond_pledge" url="biz01line/mort/MortGuarantyBaseInfo/operationResult.jsp?url=getMortBondPledgeAddPage.do" />
+			<jspView id="insurance_slip" url="biz01line/mort/MortGuarantyBaseInfo/operationResult.jsp?url=getMortInsuranceSlipAddPage.do" />
+			<jspView id="bill" url="biz01line/mort/MortGuarantyBaseInfo/operationResult.jsp?url=getMortBillAddPage.do" />
+			<jspView id="standard_depot_bill" url="biz01line/mort/MortGuarantyBaseInfo/operationResult.jsp?url=getMortStandardDepotBillAddPage.do" />
+			<jspView id="stock_fund" url="biz01line/mort/MortGuarantyBaseInfo/operationResult.jsp?url=getMortStockFundAddPage.do" />
+			<jspView id="deposit_receipt" url="biz01line/mort/MortGuarantyBaseInfo/operationResult.jsp?url=getMortDepositReceiptAddPage.do" />
+		<!--	<jspView id="receivables" url="biz01line/mort/MortGuarantyBaseInfo/operationResult.jsp?url=getReceivablesDetailAddPage.do" />-->
+		<!--	<jspView id="usufruct_store" url="biz01line/mort/MortGuarantyBaseInfo/operationResult.jsp?url=getUsufructStoreUpdatePage.do" />-->
+			<jspView id="impawn_others" url="biz01line/mort/MortGuarantyBaseInfo/operationResult.jsp?url=getMortImpawnOthersAddPage.do" />
+			<jspView id="cash_exchange" url="biz01line/mort/MortGuarantyBaseInfo/operationResult.jsp?url=getMortCashExchangeAddPage.do" />
+		    <jspView id="stock_right" url="biz01line/mort/MortGuarantyBaseInfo/operationResult.jsp?url=getMortStockRightAddPage.do" />
+			<jspView id="finance_others" url="biz01line/mort/MortGuarantyBaseInfo/operationResult.jsp?url=getMortFinanceOthersAddPage.do" />
+			<jspView id="accounts_receivable_others" url="biz01line/mort/MortGuarantyBaseInfo/operationResult.jsp?url=getMortAccountsReceOthersAddPage.do" />
+			<jspView id="lading_bill" url="biz01line/mort/MortGuarantyBaseInfo/operationResult.jsp?url=getMortLadingBillAddPage.do" />
+			<jspView id="export_return_tax" url="biz01line/mort/MortGuarantyBaseInfo/operationResult.jsp?url=getMortExportReturnTaxAddPage.do" />
+			<jspView id="ownership_others" url="biz01line/mort/MortGuarantyBaseInfo/operationResult.jsp?url=getMortOwnershipOthersAddPage.do" />
+			<!-- XD150714054 2015-08-18 Edited by FCL 新增土地承包经营权 -->
+			<jspView id="land_ctr_mgr" url="biz01line/mort/MortGuarantyBaseInfo/operationResult.jsp?url=getMortLandMgrRightDetailAddPage.do" />
+			<jspView id="accounts_receivable" url="biz01line/mort/MortGuarantyBaseInfo/operationResult.jsp?url=queryMortAccountsReceivableList.do" />
+		<!--	<jspView id="account_freeze" url="biz01line/mort/MortGuarantyBaseInfo/operationResult.jsp?url=getAccountFreezeAddPage.do" />-->
+			<jspView id="cargo_pledge" url="biz01line/mort/MortGuarantyBaseInfo/operationResult.jsp?url=queryMortCargoPledgeList.do" />
+			<jspView id="car_certification" url="biz01line/mort/MortGuarantyBaseInfo/operationResult.jsp?url=getMortCarCertificationAddPage.do" />
+		    <jspView id="insurance" url="biz01line/mort/MortGuarantyBaseInfo/operationResult.jsp?url=getMortCarPledgeInsuranceAddPage.do" />
+
+		   <jspView id="backletter" url="biz01line/mort/MortGuarantyBaseInfo/operationResult.jsp?url=getMortBackletterAddPage.do" />
+		   <jspView id="reserve_credit" url="biz01line/mort/MortGuarantyBaseInfo/operationResult.jsp?url=getMortReserveCreditAddPage.do" />
+		   
+		   <jspView id="managed_product_others" url="biz01line/mort/MortGuarantyBaseInfo/operationResult.jsp?url=getMortManagedProductOthersAddPage.do" />
+		 
+		</outputViews>
+	</action>
+</actionDefines>
+
+
+

@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<dsesrvce.XML>
+	<DataSourceTransactionManager id="transactionManager"
+		implClass="com.ecc.emp.transaction.DataSourceTransactionManager" />
+	<SQLExecService id="sqlService" implClass="com.ecc.emp.jdbc.sql.SQLExecService" />
+	<JNDIDataSource id="dataSource" implClass="com.ecc.emp.jdbc.JNDIDataSource"
+		jndiName="java:comp/env/WFDataSource">
+		<document />
+	</JNDIDataSource>
+	<TableService id="tableService4JDBC" implClass="com.ecc.emp.jdbc.table.TableService">
+		<document />
+	</TableService>
+	<TableModelDAO id="tableModelDAO"
+		implClass="com.ecc.emp.dbmodel.service.TableModelDAO4Oracle">
+		<EncryptService implClass="com.ecc.emp.dbmodel.service.EncryptService" />
+	</TableModelDAO>
+	<TableModelLoader id="tableModelLoader"
+		implClass="com.ecc.emp.dbmodel.service.TableModelLoader" />
+	<RecordRestrict id="recordRestrict"
+		implClass="com.yucheng.cmis.platform.permission.SRowrightService" />
+	<PropertiesFileService id="propertiesFileService"
+		implClass="com.yucheng.cmis.service.PropertiesFileService">
+		<document />
+	</PropertiesFileService>
+	<!-- 资源不需要是EMP服务，现改为CMISRolePermissionComponent
+	<CMISRolePermissionService id="rolePermissionService"
+		implClass="com.yucheng.cmis.permission.CMISRolePermissionService">
+		<document />
+	</CMISRolePermissionService>
+	 -->
+	<CMISParamProviderService id="paramService"
+		implClass="com.yucheng.cmis.paramprovider.CMISParamProviderService">
+		<document />
+	</CMISParamProviderService>
+	<CMISDataDicService id="dataDicService"
+		implClass="com.yucheng.cmis.dic.CMISDataDicService" tableName="S_DIC"
+		orderByColumn="orderid" typeColumn="opttype">
+		<document />
+		<CMISDataDicMapService name="CMISDataDicMapService"
+			implClass="com.yucheng.cmis.dic.CMISDataDicMapService" tableName="S_ROLE"
+			enNameColumn="ROLENO" orderByColumn="ORDERNO" type="STD_ZB_S_ROLE"
+			cnNameColumn="ROLENAME" />
+	</CMISDataDicService>
+	
+	<!--  资源不需要定义成EMP级的服务，因为只有在资源配置一个模块内部使用，
+		<CMISResourceService id="resourceService"
+			implClass="com.yucheng.cmis.permission.CMISResourceService">
+			<document />
+		</CMISResourceService>
+	
+	-->
+	<CMISTreeDicService id="treeDicService" levelColumn="levels"
+		typeColumn="opttype" enNameColumn="enname" displaySeparator="-&gt;"
+		locateColumn="locate" cnNameColumn="cnname"
+		implClass="com.yucheng.cmis.dic.CMISTreeDicService" tableName="s_treedic"
+		orderByColumn="levels" parentColumn="abvenname">
+		<document />
+	</CMISTreeDicService>
+	<PkGeneratorSet id="pkGeneratorSet"
+		implClass="com.ecc.emp.dbmodel.service.pkgenerator.PkGeneratorSet">
+		<PkGenerator id="UNID"
+			implClass="com.ecc.emp.dbmodel.service.pkgenerator.UNIDGenerator" />
+	</PkGeneratorSet>
+
+	<TCPIPService id="tcpService" implClass="com.ecc.emp.tcpip.TCPIPService" keepAlive="false" dual="">
+		<ConnectToHost implClass="com.ecc.emp.tcpip.ConnectToHost" port="60000" hostAddr="127.0.0.1"></ConnectToHost>
+		<CommProcessor implClass="com.yucheng.cmis.tcpip.PKGProcessor"/>
+	</TCPIPService>
+	<!--流水号服务-->
+	<CMISSequenceService id="sequenceService"
+		implClass="com.yucheng.cmis.pub.sequence.CMISSequenceService4JXXD">
+	</CMISSequenceService>
+	<CMISSequenceService id="sequenceServicebs" implClass="com.yucheng.cmis.pub.sequence.CMISSequenceService4BSBXD"/>
+	
+	<!--定时调度 -->
+	<EMPQuartzScheduleManager id="empquartzschedulemanager0" implClass="com.ecc.emp.schedule.quartz.EMPQuartzScheduleManager">
+		<!--定时处理实时交易 
+		<CronTimerJob name="CronTimerJob" implClass="com.ecc.emp.schedule.EMPCronTimerScheduledJob">
+			<CronTimer name="CronTimer" onlyWorkingDay="false" implClass="com.ecc.emp.schedule.EMPCronTimerSchedule" cronType="0" cronExpression="0 15 24 * * ?" autoDelay="true"/>
+			<EMPFlowExecuteWork name="EMPFlowExecuteWork" implClass="com.ecc.emp.schedule.EMPFlowExecuteWork" opId="TestCron" flowId="WFTimedTaskBiz" factoryName="CMISBiz"/>
+		</CronTimerJob>-->
+		<!--定时处理企业规模认定 -->
+		<CronTimerJob name="CronTimerJob1" implClass="com.ecc.emp.schedule.EMPCronTimerScheduledJob">
+			<CronTimer name="CronTimer1" onlyWorkingDay="false" implClass="com.ecc.emp.schedule.EMPCronTimerSchedule" cronType="0" cronExpression="0 40 23 30 6 ?" autoDelay="true"/>
+			<EMPFlowExecuteWork name="EMPFlowExecuteWork" implClass="com.ecc.emp.schedule.EMPFlowExecuteWork" opId="GetEnterpriseSize" flowId="WFTimedTaskBiz" factoryName="CMISBiz"/>
+		</CronTimerJob>
+	</EMPQuartzScheduleManager>
+	
+	<!-- 定时调度 
+	<EMPQuartzScheduleManager id="empquartzschedulemanager0"
+		implClass="com.ecc.emp.schedule.quartz.EMPQuartzScheduleManager">
+		<document />
+		<CronTimerJob name="CronTimerJob"
+			implClass="com.ecc.emp.schedule.EMPCronTimerScheduledJob">
+			<CronTimer name="CronTimer" implClass="com.ecc.emp.schedule.EMPCronTimerSchedule"
+				onlyWorkingDay="false" cronType="0" autoDelay="true" cronExpression="0 0/1 4-4 * * ?" />
+			<EMPFlowExecuteWork name="EMPFlowExecuteWork"
+				implClass="com.ecc.emp.schedule.EMPFlowExecuteWork" opId="creditBusinessQuartzOp"
+				factoryName="CMISBiz" flowId="creditBusinessQuartz" />
+		</CronTimerJob>
+		<CronTimerJob name="CronTimerJob1"
+			implClass="com.ecc.emp.schedule.EMPCronTimerScheduledJob">
+			<CronTimer name="CronTimer1" implClass="com.ecc.emp.schedule.EMPCronTimerSchedule"
+				onlyWorkingDay="false" cronType="0" cronExpression="0 0/1 4-4 * * ?"
+				autoDelay="true" />
+			<EMPFlowExecuteWork name="EMPFlowExecuteWork1"
+				implClass="com.ecc.emp.schedule.EMPFlowExecuteWork" opId="tradeNoticeOp"
+				flowId="tradeNotice" factoryName="CMISBiz" />
+		</CronTimerJob>
+		  		
+		<CronTimerJob name="CronTimerJob2"
+			implClass="com.ecc.emp.schedule.EMPCronTimerScheduledJob">
+			<CronTimer name="CronTimer2" implClass="com.ecc.emp.schedule.EMPCronTimerSchedule"
+				onlyWorkingDay="false" cronType="0" cronExpression="*/30000 * * * * ?"
+				autoDelay="true" />
+			<EMPFlowExecuteWork name="EMPFlowExecuteWork2" implClass="com.ecc.emp.schedule.EMPFlowExecuteWork" opId="wfTimedTask" flowId="WFTimedTaskBiz" factoryName="CMISBiz"/>
+		</CronTimerJob>
+				
+	</EMPQuartzScheduleManager>
+	
+	-->
+	
+
+</dsesrvce.XML>

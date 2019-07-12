@@ -1,0 +1,733 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actionDefines>
+	<classMap>
+		<map id="action" class="com.yucheng.cmis.ad.mvc.ADRequestController"/>
+		<map id="flowInvoker" class="com.yucheng.cmis.ad.mvc.ADFlowInvoker"/>
+		<map id="outputViews" class="java.util.HashMap"/>
+		<map id="output" class="com.ecc.emp.data.KeyedCollection"/>
+		<map id="kColl" class="com.ecc.emp.data.KeyedCollection"/>
+		<map id="iColl" class="com.ecc.emp.data.IndexedCollection"/>
+		<map id="field" class="com.ecc.emp.data.DataField"/>
+	</classMap>
+	
+	<!-- 获取操作主页面 -->
+	<action id="queryAccLoanList" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.acc.op.accloan.QueryAccLoanListOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="biz01line/acc/AccLoan/queryAccLoanList.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 借据信息查看(所有台账)-->
+	<action id="getAccViewPage" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.acc.op.accloan.QueryAccAllListOp"/>
+			<transition dest="AccLoan" condition="$retValue='AccLoan'"/>
+			<transition dest="AccAccp" condition="$retValue='AccAccp'"/>
+			<transition dest="AccDrft" condition="$retValue='AccDrft'"/>
+			<transition dest="AccAssetstrsf" condition="$retValue='AccAssetstrsf'"/>
+			<transition dest="AccPad" condition="$retValue='AccPad'"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="AccLoan" url="biz01line/acc/AccLoan/queryAccLoanDetail.jsp" />
+			<jspView id="AccAccp" url="biz01line/acc/AccAccp/queryAccAccpDetail.jsp" />
+			<jspView id="AccDrft" url="biz01line/acc/AccDrft/queryAccDrftDetail.jsp" />
+			<jspView id="AccAssetstrsf" url="biz01line/acc/AccAssetstrsf/queryAccAssetstrsfDetail.jsp" />
+			<jspView id="AccPad" url="biz01line/acc/AccPad/queryAccPadDetail.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 贷后管理-台账管理-台账列表页面 -->
+	<action id="accLoanList" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.acc.op.accloan.AccLoanListOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="biz01line/acc/AccLoan/accLoanList.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- pop页面ByCus_id -->
+	<action id="queryAccPop" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.acc.op.accloan.QueryAccPopListOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="biz01line/acc/AccLoan/queryAccLoanPopList.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 为融资性担保公司提供pop页面 ByCus_id-->
+	<action id="queryAccPopList" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.acc.op.accloan.QueryAccListOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="biz01line/acc/AccLoan/queryAccPopList.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 获得编辑页面 -->
+	<action id="getAccLoanUpdatePage" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation updateCheck="false" class="com.yucheng.cmis.biz01line.acc.op.accloan.QueryAccLoanDetailOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="biz01line/acc/AccLoan/updateAccLoanRecord.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 更新记录 -->
+	<action id="updateAccLoanRecord" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.acc.op.accloan.UpdateAccLoanRecordOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="operationResult.jsp?url=queryAccLoanList.do" />
+		</outputViews>
+	</action>
+	
+	<!-- 获得查看页面 -->
+	<action id="getAccLoanViewPage" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.acc.op.accloan.QueryAccLoanDetailOp"/>
+			<transition dest="updatePage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="updatePage" url="biz01line/acc/AccLoan/queryAccLoanDetail.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 获得新增页面 -->
+	<action id="getAccLoanAddPage" type="normal" checkSession="true" >
+		<jspView id="addPage" url="biz01line/acc/AccLoan/addAccLoanRecord.jsp"/>
+	</action>
+	
+	<!-- 新增记录 -->
+	<action id="addAccLoanRecord" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.acc.op.accloan.AddAccLoanRecordOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="operationResult.jsp?url=queryAccLoanList.do" />
+		</outputViews>
+	</action>	
+	
+	<!-- 删除记录 -->
+	<action id="writeOffAccLoan" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.acc.op.accloan.WriteOffAccLoanOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<view id="retPage" class="com.yucheng.cmis.view.JSONView">
+				<output class="com.ecc.emp.data.KeyedCollection">
+					<field id="flag" class="com.ecc.emp.data.DataField" />
+					<field id="amt" class="com.ecc.emp.data.DataField" />
+				</output>
+			</view>
+		</outputViews>
+	</action>
+	
+	<!-- 还款计划（实时查询交易） -->
+	<action id="selectRepayPlay" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.acc.op.accloan.SelectRepayPlayOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="biz01line/acc/AccLoan/selectRepayPlayList.jsp"/>
+		</outputViews>
+	</action>
+	
+	<!-- 分页查询记录列表 -->
+		<action id="pageAccLoanQuery" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.acc.op.accloan.QueryAccLoanListOp"/>
+			<transition dest="queryListRes"/>
+		</flowInvoker>
+		<outputViews>
+			<jsonView class="com.yucheng.cmis.view.JSONView" id="queryListRes">
+				<output>
+					<iColl id="AccLoanList">
+						<kColl>
+						</kColl>
+					</iColl>
+					<kColl id="pageInfo">
+						<field id="currentPage" />
+						<field id="maxLine" />
+						<field id="recordSize" />
+					</kColl>
+				</output>
+			</jsonView>
+		</outputViews>
+	</action>
+	
+	<!-- 资产转受让pop页面 -->
+	<action id="queryAccLoanPopForAssetList" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.acc.op.accloan.QueryAccLoanForAssetListOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="biz01line/acc/AccLoan/queryAccLoanPopForAssetList.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 根据客户码查询客户的存量台账 -->
+	<action id="getAccViewByCusId" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.acc.op.accloan.GetAccViewByCusIdOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="biz01line/acc/AccLoan/getAccViewByCusId.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 根据客户码查询客户的未结清台账信息（对公客户管理一键查询功能）add by lisj 2014-11-25 需求编号：【XD141107075】-->
+	<action id="queryAccViewListByOneKey" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.acc.op.accloan.QueryAccViewListByOneKeyOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="biz01line/acc/AccLoan/queryAccViewListByOneKey.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 分页查询记录列表 -->
+		<action id="pageGetAccViewByCusId" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.acc.op.accloan.GetAccViewByCusIdOp"/>
+			<transition dest="queryListRes"/>
+		</flowInvoker>
+		<outputViews>
+			<jsonView class="com.yucheng.cmis.view.JSONView" id="queryListRes">
+				<output>
+					<iColl id="AccViewList">
+						<kColl>
+						</kColl>
+					</iColl>
+					<kColl id="pageInfo">
+						<field id="currentPage" />
+						<field id="maxLine" />
+						<field id="recordSize" />
+					</kColl>
+				</output>
+			</jsonView>
+		</outputViews>
+	</action>
+	
+	<!-- 分页查询记录列表（对公客户管理一键查询功能）add by lisj 2014-11-25 需求编号：【XD141107075】-->
+		<action id="pageQueryAccViewListByOneKey" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.acc.op.accloan.QueryAccViewListByOneKeyOp"/>
+			<transition dest="queryListRes"/>
+		</flowInvoker>
+		<outputViews>
+			<jsonView class="com.yucheng.cmis.view.JSONView" id="queryListRes">
+				<output>
+					<iColl id="AccViewList">
+						<kColl>
+						</kColl>
+					</iColl>
+					<kColl id="pageInfo">
+						<field id="currentPage" />
+						<field id="maxLine" />
+						<field id="recordSize" />
+					</kColl>
+				</output>
+			</jsonView>
+		</outputViews>
+	</action>
+	
+	<!-- 分页查询记录列表 -->
+		<action id="pageAccLoanForAssetQuery" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.acc.op.accloan.QueryAccLoanForAssetListOp"/>
+			<transition dest="queryListRes"/>
+		</flowInvoker>
+		<outputViews>
+			<jsonView class="com.yucheng.cmis.view.JSONView" id="queryListRes">
+				<output>
+					<iColl id="AccLoanList">
+						<kColl>
+						</kColl>
+					</iColl>
+					<kColl id="pageInfo">
+						<field id="currentPage" />
+						<field id="maxLine" />
+						<field id="recordSize" />
+					</kColl>
+				</output>
+			</jsonView>
+		</outputViews>
+	</action>
+	
+	<!-- Pop分页查询记录列表 -->
+		<action id="pageAccPop" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.acc.op.accloan.QueryAccListOp"/>
+			<transition dest="queryListRes"/>
+		</flowInvoker>
+		<outputViews>
+			<jsonView class="com.yucheng.cmis.view.JSONView" id="queryListRes">
+				<output>
+					<iColl id="AccViewList">
+						<kColl>
+						</kColl>
+					</iColl>
+					<kColl id="pageInfo">
+						<field id="currentPage" />
+						<field id="maxLine" />
+						<field id="recordSize" />
+					</kColl>
+				</output>
+			</jsonView>
+		</outputViews>
+	</action>
+	
+	<!-- 通用查询借据信息pop -->
+	<action id="queryAccLoanPop" type="normal" checkSession="true">
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.acc.op.accloan.QueryAccLoanPop" />
+			<transition dest="retPage" />
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="biz01line/acc/AccLoan/queryAccLoanPop.jsp" />
+		</outputViews>
+	</action>
+	
+	<action id="pageAccLoanPop" type="normal" checkSession="true">
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.acc.op.accloan.QueryAccLoanPop" />
+			<transition dest="queryListRes" />
+		</flowInvoker>
+		<outputViews>
+			<jsonView class="com.yucheng.cmis.view.JSONView" id="queryListRes">
+				<output>
+					<iColl id="AccLoanList">
+						<kColl>
+						</kColl>
+					</iColl>
+					<kColl id="pageInfo">
+						<field id="currentPage" />
+						<field id="maxLine" />
+						<field id="recordSize" />
+					</kColl>
+				</output>
+			</jsonView>
+		</outputViews>
+	</action>
+	
+	<!-- 台账视图pop -->
+	<action id="AccViewPop" type="normal" checkSession="true">
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.acc.op.accloan.QueryAccViewOp" />
+			<transition dest="retPage" />
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="biz01line/acc/AccLoan/queryAccViewPop.jsp" />
+		</outputViews>
+	</action>
+	
+	<action id="pageAccViewPop" type="normal" checkSession="true">
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.acc.op.accloan.QueryAccViewOp" />
+			<transition dest="queryListRes" />
+		</flowInvoker>
+		<outputViews>
+			<jsonView class="com.yucheng.cmis.view.JSONView" id="queryListRes">
+				<output>
+					<iColl id="AccViewPopList">
+						<kColl>
+						</kColl>
+					</iColl>
+					<kColl id="pageInfo">
+						<field id="currentPage" />
+						<field id="maxLine" />
+						<field id="recordSize" />
+					</kColl>
+				</output>
+			</jsonView>
+		</outputViews>
+	</action>
+	
+	
+	<!-- 台账视图列表 -->
+	<action id="AccViewList" type="normal" checkSession="true">
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.acc.op.accloan.QueryAccViewListOp" />
+			<transition dest="retPage" />
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="biz01line/acc/AccLoan/queryAccViewList.jsp" />
+		</outputViews>
+	</action>
+	
+	<action id="pageAccViewList" type="normal" checkSession="true">
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.acc.op.accloan.QueryAccViewListOp" />
+			<transition dest="queryListRes" />
+		</flowInvoker>
+		<outputViews>
+			<jsonView class="com.yucheng.cmis.view.JSONView" id="queryListRes">
+				<output>
+					<iColl id="AccViewPopList">
+						<kColl>
+						</kColl>
+					</iColl>
+					<kColl id="pageInfo">
+						<field id="currentPage" />
+						<field id="maxLine" />
+						<field id="recordSize" />
+					</kColl>
+				</output>
+			</jsonView>
+		</outputViews>
+	</action>
+	
+	<!-- 贷后管理-台账管理-台账列表分页 -->
+	<action id="pageAccLoanList" type="normal" checkSession="true">
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.acc.op.accloan.AccLoanListOp" />
+			<transition dest="queryListRes" />
+		</flowInvoker>
+		<outputViews>
+			<jsonView class="com.yucheng.cmis.view.JSONView" id="queryListRes">
+				<output>
+					<iColl id="AccLoanList">
+						<kColl>
+						</kColl>
+					</iColl>
+					<kColl id="pageInfo">
+						<field id="currentPage" />
+						<field id="maxLine" />
+						<field id="recordSize" />
+					</kColl>
+				</output>
+			</jsonView>
+		</outputViews>
+	</action>
+	
+	
+	<!-- 还款计划Tab列表分页 -->
+	<action id="PageSelectRepayPlay" type="normal" checkSession="true">
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.acc.op.accloan.SelectRepayPlayOp" />
+			<transition dest="queryListRes" />
+		</flowInvoker>
+		<outputViews>
+			<jsonView class="com.yucheng.cmis.view.JSONView" id="queryListRes">
+				<output>
+					<iColl id="RepayPlayList">
+						<kColl>
+						</kColl>
+					</iColl>
+					<kColl id="pageInfo">
+						<field id="currentPage" />
+						<field id="maxLine" />
+						<field id="recordSize" />
+					</kColl>
+				</output>
+			</jsonView>
+		</outputViews>
+	</action>
+	
+	<!-- 导出成生成excel -->                                                                                                                                     
+	<action id="accLoanExpBatchToExcel" type="normal" checkSession="true" >                                                                                           
+		<flowInvoker>                                                                                                                                            
+			<operation class="com.yucheng.cmis.biz01line.acc.op.accloan.ExpBatchToExcelOp"/>                                                                    
+			<transition dest="retPage"/>                                                                                                                           
+		</flowInvoker>                                                                                                                                           
+		<outputViews>                                                                                                                                            
+		   <view id="retPage" class="com.yucheng.cmis.view.ExcelView">                                                                                           
+ 				<excelWorkbook fileName="AccLoan.xls" class="com.yucheng.cmis.view.excel.ExcelWorkbook">                                                          
+ 					<excelSheet id="1" name="贷款台账" isTitle="true" iCollName="AccLoanList" class="com.yucheng.cmis.view.excel.ExcelSheet">                       
+ 						<!-- 添加合同编号、客户条线、币种      2014-08-07  邓亚辉 -->
+ 						<excelColumn dataName="bill_no" name="借据编号" cellType="string" class="com.yucheng.cmis.view.excel.ExcelColumn"/>  
+ 						<excelColumn dataName="cont_no" name="合同编号" cellType="string" class="com.yucheng.cmis.view.excel.ExcelColumn"/>                                
+ 						<excelColumn dataName="cus_id" name="客户码" class="com.yucheng.cmis.view.excel.ExcelColumn"/>      
+ 						<excelColumn dataName="cus_id_displayname" name="客户名称"  class="com.yucheng.cmis.view.excel.ExcelColumn"/>   
+ 						<excelColumn dataName="belg_line" name="客户条线" dictName="STD_ZB_BUSILINE" class="com.yucheng.cmis.view.excel.ExcelColumn"/>  
+ 						<excelColumn dataName="prd_id_displayname" name="产品名称"  class="com.yucheng.cmis.view.excel.ExcelColumn"/>  
+ 						<excelColumn dataName="cur_type" name="币种" dictName="STD_ZX_CUR_TYPE"  class="com.yucheng.cmis.view.excel.ExcelColumn"/>                                     
+ 						<excelColumn dataName="loan_amt" name="贷款金额" cellType='numeric' class="com.yucheng.cmis.view.excel.ExcelColumn"/>                          
+ 						<excelColumn dataName="loan_balance" name="贷款余额" cellType='numeric' class="com.yucheng.cmis.view.excel.ExcelColumn"/>                  
+ 						<excelColumn dataName="distr_date" name="起始日期"  class="com.yucheng.cmis.view.excel.ExcelColumn"/>     
+ 						<excelColumn dataName="end_date"  name="到期日期" class="com.yucheng.cmis.view.excel.ExcelColumn"/>   
+ 						<excelColumn dataName="five_class"  name="五级分类"  dictName="STD_ZB_FIVE_SORT" class="com.yucheng.cmis.view.excel.ExcelColumn"/> 
+ 						<excelColumn dataName="manager_br_id_displayname"  name="管理机构" class="com.yucheng.cmis.view.excel.ExcelColumn"/>                                      
+ 					 	<excelColumn dataName="acc_status" name="台账状态" dictName="STD_ZB_ACC_TYPE" class="com.yucheng.cmis.view.excel.ExcelColumn"/>                
+ 					</excelSheet>                                                                                                                                      
+ 				</excelWorkbook>                                                                                                                                     
+ 			</view>                                                                                                                                                
+		</outputViews>                                                                                                                                           
+	</action> 
+	
+	<!-- 导出成生成excel -->                                                                                                                                     
+	<action id="accLoanFlagExpBatchToExcel" type="normal" checkSession="true" >                                                                                           
+		<flowInvoker>                                                                                                                                            
+			<operation class="com.yucheng.cmis.biz01line.acc.op.accloan.AccLoanFlagExpBatchToExcelOp"/>                                                                    
+			<transition dest="ctrLimit" condition="($retValue='ctrLimitAcc')"/>   
+			<transition dest="guarant" condition="($retValue='guarantAcc')"/>     
+			<transition dest="csgnLoan" condition="($retValue='csgnLoanAcc')"/>   
+			<transition dest="interFact" condition="($retValue='interFactAcc')"/>   
+			<transition dest="prove" condition="($retValue='proveAcc')"/>   
+			<transition dest="promissory" condition="($retValue='promissoryAcc')"/>   
+			<transition dest="advice" condition="($retValue='adviceAcc')"/>   
+			<transition dest="isTrust" condition="($retValue='isTrustAcc')"/>   
+			<transition dest="overdue" condition="($retValue='overdueAcc')"/>                                                                                                                       
+		</flowInvoker>                                                                                                                                           
+		<outputViews>                                                                                                                                            
+		   <view id="ctrLimit" class="com.yucheng.cmis.view.ExcelView">                                                                                           
+ 				<excelWorkbook fileName="ctrLimitAcc.xls" class="com.yucheng.cmis.view.excel.ExcelWorkbook">                                                          
+ 					<excelSheet id="1" name="贸易融资台账" isTitle="true" iCollName="AccLoanList" class="com.yucheng.cmis.view.excel.ExcelSheet">                       
+ 						<!-- 添加合同编号、客户条线、币种      2014-08-07  邓亚辉 -->
+ 						<excelColumn dataName="bill_no" name="借据编号" cellType="string" class="com.yucheng.cmis.view.excel.ExcelColumn"/>  
+ 						<excelColumn dataName="cont_no" name="合同编号" cellType="string" class="com.yucheng.cmis.view.excel.ExcelColumn"/>                                
+ 						<excelColumn dataName="cus_id" name="客户码" class="com.yucheng.cmis.view.excel.ExcelColumn"/>      
+ 						<excelColumn dataName="cus_id_displayname" name="客户名称"  class="com.yucheng.cmis.view.excel.ExcelColumn"/>   
+ 						<excelColumn dataName="belg_line" name="客户条线" dictName="STD_ZB_BUSILINE" class="com.yucheng.cmis.view.excel.ExcelColumn"/>  
+ 						<excelColumn dataName="prd_id_displayname" name="产品名称"  class="com.yucheng.cmis.view.excel.ExcelColumn"/>  
+ 						<excelColumn dataName="cur_type" name="币种" dictName="STD_ZX_CUR_TYPE"  class="com.yucheng.cmis.view.excel.ExcelColumn"/>                                     
+ 						<excelColumn dataName="loan_amt" name="贷款金额" cellType='numeric' class="com.yucheng.cmis.view.excel.ExcelColumn"/>                          
+ 						<excelColumn dataName="loan_balance" name="贷款余额" cellType='numeric' class="com.yucheng.cmis.view.excel.ExcelColumn"/>                  
+ 						<excelColumn dataName="distr_date" name="起始日期"  class="com.yucheng.cmis.view.excel.ExcelColumn"/>     
+ 						<excelColumn dataName="end_date"  name="到期日期" class="com.yucheng.cmis.view.excel.ExcelColumn"/>   
+ 						<excelColumn dataName="five_class"  name="五级分类"  dictName="STD_ZB_FIVE_SORT" class="com.yucheng.cmis.view.excel.ExcelColumn"/> 
+ 						<excelColumn dataName="manager_br_id_displayname"  name="管理机构" class="com.yucheng.cmis.view.excel.ExcelColumn"/>                                      
+ 					 	<excelColumn dataName="acc_status" name="台账状态" dictName="STD_ZB_ACC_TYPE" class="com.yucheng.cmis.view.excel.ExcelColumn"/>               
+ 					</excelSheet>                                                                                                                                      
+ 				</excelWorkbook>                                                                                                                                     
+ 			</view>    
+ 			<view id="guarant" class="com.yucheng.cmis.view.ExcelView">                                                                                           
+ 				<excelWorkbook fileName="guarantAcc.xls" class="com.yucheng.cmis.view.excel.ExcelWorkbook">                                                          
+ 					<excelSheet id="1" name="保函台账" isTitle="true" iCollName="AccLoanList" class="com.yucheng.cmis.view.excel.ExcelSheet">                       
+ 						<!-- 添加合同编号、客户条线、币种      2014-08-07  邓亚辉 -->
+ 						<excelColumn dataName="bill_no" name="借据编号" cellType="string" class="com.yucheng.cmis.view.excel.ExcelColumn"/>                                 
+ 						<excelColumn dataName="cont_no" name="合同编号" cellType="string" class="com.yucheng.cmis.view.excel.ExcelColumn"/> 
+ 						<excelColumn dataName="cus_id" name="客户码" class="com.yucheng.cmis.view.excel.ExcelColumn"/>      
+ 						<excelColumn dataName="cus_id_displayname" name="客户名称"  class="com.yucheng.cmis.view.excel.ExcelColumn"/>   
+ 						<excelColumn dataName="belg_line" name="客户条线" dictName="STD_ZB_BUSILINE" class="com.yucheng.cmis.view.excel.ExcelColumn"/>  
+ 						<excelColumn dataName="prd_id_displayname" name="产品名称"  class="com.yucheng.cmis.view.excel.ExcelColumn"/>                                       
+ 						<excelColumn dataName="cur_type" name="币种" dictName="STD_ZX_CUR_TYPE"  class="com.yucheng.cmis.view.excel.ExcelColumn"/>  
+ 						<excelColumn dataName="loan_amt" name="贷款金额" cellType='numeric' class="com.yucheng.cmis.view.excel.ExcelColumn"/>                          
+ 						<excelColumn dataName="loan_balance" name="贷款余额" cellType='numeric' class="com.yucheng.cmis.view.excel.ExcelColumn"/>                  
+ 						<excelColumn dataName="distr_date" name="起始日期"  class="com.yucheng.cmis.view.excel.ExcelColumn"/>     
+ 						<excelColumn dataName="end_date"  name="到期日期" class="com.yucheng.cmis.view.excel.ExcelColumn"/>   
+ 						<excelColumn dataName="five_class"  name="五级分类"  dictName="STD_ZB_FIVE_SORT" class="com.yucheng.cmis.view.excel.ExcelColumn"/> 
+ 						<excelColumn dataName="manager_br_id_displayname"  name="管理机构" class="com.yucheng.cmis.view.excel.ExcelColumn"/>                                      
+ 					 	<excelColumn dataName="acc_status" name="台账状态" dictName="STD_ZB_ACC_TYPE" class="com.yucheng.cmis.view.excel.ExcelColumn"/>               
+ 					</excelSheet>                                                                                                                                      
+ 				</excelWorkbook>                                                                                                                                     
+ 			</view>     
+ 			<view id="csgnLoan" class="com.yucheng.cmis.view.ExcelView">                                                                                           
+ 				<excelWorkbook fileName="csgnLoanAcc.xls" class="com.yucheng.cmis.view.excel.ExcelWorkbook">                                                          
+ 					<excelSheet id="1" name="委托贷款台账" isTitle="true" iCollName="AccLoanList" class="com.yucheng.cmis.view.excel.ExcelSheet">                       
+ 						<!-- 添加合同编号、客户条线、币种  、委托贷款种类    2014-08-07  邓亚辉 -->
+ 						<excelColumn dataName="bill_no" name="借据编号" cellType="string" class="com.yucheng.cmis.view.excel.ExcelColumn"/>                                 
+ 						<excelColumn dataName="cont_no" name="合同编号" cellType="string" class="com.yucheng.cmis.view.excel.ExcelColumn"/> 
+ 						<excelColumn dataName="cus_id" name="客户码" class="com.yucheng.cmis.view.excel.ExcelColumn"/>      
+ 						<excelColumn dataName="cus_id_displayname" name="客户名称"  class="com.yucheng.cmis.view.excel.ExcelColumn"/>   
+ 						<excelColumn dataName="belg_line" name="客户条线" dictName="STD_ZB_BUSILINE" class="com.yucheng.cmis.view.excel.ExcelColumn"/>
+ 						<excelColumn dataName="prd_id_displayname" name="产品名称"  class="com.yucheng.cmis.view.excel.ExcelColumn"/>                                       
+ 						<excelColumn dataName="cur_type" name="币种" dictName="STD_ZX_CUR_TYPE"  class="com.yucheng.cmis.view.excel.ExcelColumn"/>
+ 						<excelColumn dataName="loan_amt" name="贷款金额" cellType='numeric' class="com.yucheng.cmis.view.excel.ExcelColumn"/>                          
+ 						<excelColumn dataName="loan_balance" name="贷款余额" cellType='numeric' class="com.yucheng.cmis.view.excel.ExcelColumn"/>
+ 						<!-- add by lisj 2015-10-19  需求编号：XD150409029 信贷保函及资产模块改造需求 begin -->
+ 						<excelColumn dataName="chrg_rate" name="手续费率"  class="com.yucheng.cmis.view.excel.ExcelColumn"/>
+ 						<excelColumn dataName="reality_ir_y" name="执行利率（年）"  class="com.yucheng.cmis.view.excel.ExcelColumn"/>
+ 						<excelColumn dataName="csgn_acct_name" name="信托项目名称"  class="com.yucheng.cmis.view.excel.ExcelColumn"/>
+ 						<excelColumn dataName="loan_direction_displayname" name="贷款投向"  class="com.yucheng.cmis.view.excel.ExcelColumn"/>
+ 						<!-- add by lisj 2015-10-19  需求编号：XD150409029 信贷保函及资产模块改造需求 end -->                    
+ 						<excelColumn dataName="distr_date" name="起始日期"  class="com.yucheng.cmis.view.excel.ExcelColumn"/>     
+ 						<excelColumn dataName="end_date"  name="到期日期" class="com.yucheng.cmis.view.excel.ExcelColumn"/>   
+ 						<excelColumn dataName="five_class"  name="五级分类"  dictName="STD_ZB_FIVE_SORT" class="com.yucheng.cmis.view.excel.ExcelColumn"/> 
+ 						<excelColumn dataName="principal_loan_typ" dictName="STD_ZB_COMMISS_TYPE" name="委托贷款种类" class="com.yucheng.cmis.view.excel.ExcelColumn"/>  
+ 						<excelColumn dataName="manager_br_id_displayname"  name="管理机构" class="com.yucheng.cmis.view.excel.ExcelColumn"/>                                      
+ 					 	<excelColumn dataName="acc_status" name="台账状态" dictName="STD_ZB_ACC_TYPE" class="com.yucheng.cmis.view.excel.ExcelColumn"/>               
+ 					</excelSheet>                                                                                                                                      
+ 				</excelWorkbook>                                                                                                                                     
+ 			</view> 
+ 			<view id="interFact" class="com.yucheng.cmis.view.ExcelView">                                                                                           
+ 				<excelWorkbook fileName="interFactAcc.xls" class="com.yucheng.cmis.view.excel.ExcelWorkbook">                                                          
+ 					<excelSheet id="1" name="国内保理台账" isTitle="true" iCollName="AccLoanList" class="com.yucheng.cmis.view.excel.ExcelSheet">                       
+ 						<!-- 添加合同编号、客户条线、币种      2014-08-07  邓亚辉 -->
+ 						<excelColumn dataName="bill_no" name="借据编号" cellType="string" class="com.yucheng.cmis.view.excel.ExcelColumn"/>                                 
+ 						<excelColumn dataName="cont_no" name="合同编号" cellType="string" class="com.yucheng.cmis.view.excel.ExcelColumn"/> 
+ 						<excelColumn dataName="cus_id" name="客户码" class="com.yucheng.cmis.view.excel.ExcelColumn"/>      
+ 						<excelColumn dataName="cus_id_displayname" name="客户名称"  class="com.yucheng.cmis.view.excel.ExcelColumn"/>   
+ 						<excelColumn dataName="belg_line" name="客户条线" dictName="STD_ZB_BUSILINE" class="com.yucheng.cmis.view.excel.ExcelColumn"/>
+ 						<excelColumn dataName="prd_id_displayname" name="产品名称"  class="com.yucheng.cmis.view.excel.ExcelColumn"/>                                       
+ 						<excelColumn dataName="cur_type" name="币种" dictName="STD_ZX_CUR_TYPE"  class="com.yucheng.cmis.view.excel.ExcelColumn"/>
+ 						<excelColumn dataName="loan_amt" name="贷款金额" cellType='numeric' class="com.yucheng.cmis.view.excel.ExcelColumn"/>                          
+ 						<excelColumn dataName="loan_balance" name="贷款余额" cellType='numeric' class="com.yucheng.cmis.view.excel.ExcelColumn"/>                  
+ 						<excelColumn dataName="distr_date" name="起始日期"  class="com.yucheng.cmis.view.excel.ExcelColumn"/>     
+ 						<excelColumn dataName="end_date"  name="到期日期" class="com.yucheng.cmis.view.excel.ExcelColumn"/>   
+ 						<excelColumn dataName="five_class"  name="五级分类"  dictName="STD_ZB_FIVE_SORT" class="com.yucheng.cmis.view.excel.ExcelColumn"/> 
+ 						<excelColumn dataName="manager_br_id_displayname"  name="管理机构" class="com.yucheng.cmis.view.excel.ExcelColumn"/>                                      
+ 					 	<excelColumn dataName="acc_status" name="台账状态" dictName="STD_ZB_ACC_TYPE" class="com.yucheng.cmis.view.excel.ExcelColumn"/>                
+ 					</excelSheet>                                                                                                                                      
+ 				</excelWorkbook>                                                                                                                                     
+ 			</view> 
+ 			<view id="prove" class="com.yucheng.cmis.view.ExcelView">                                                                                           
+ 				<excelWorkbook fileName="proveAcc.xls" class="com.yucheng.cmis.view.excel.ExcelWorkbook">                                                          
+ 					<excelSheet id="1" name="银行信贷证明台账" isTitle="true" iCollName="AccLoanList" class="com.yucheng.cmis.view.excel.ExcelSheet">                       
+ 						<!-- 添加合同编号、客户条线、币种      2014-08-07  邓亚辉 -->
+ 						<excelColumn dataName="bill_no" name="借据编号" cellType="string" class="com.yucheng.cmis.view.excel.ExcelColumn"/>                                 
+ 						<excelColumn dataName="cont_no" name="合同编号" cellType="string" class="com.yucheng.cmis.view.excel.ExcelColumn"/> 
+ 						<excelColumn dataName="cus_id" name="客户码" class="com.yucheng.cmis.view.excel.ExcelColumn"/>      
+ 						<excelColumn dataName="cus_id_displayname" name="客户名称"  class="com.yucheng.cmis.view.excel.ExcelColumn"/>   
+ 						<excelColumn dataName="belg_line" name="客户条线" dictName="STD_ZB_BUSILINE" class="com.yucheng.cmis.view.excel.ExcelColumn"/>
+ 						<excelColumn dataName="prd_id_displayname" name="产品名称"  class="com.yucheng.cmis.view.excel.ExcelColumn"/>                                       
+ 						<excelColumn dataName="cur_type" name="币种" dictName="STD_ZX_CUR_TYPE"  class="com.yucheng.cmis.view.excel.ExcelColumn"/>
+ 						<excelColumn dataName="loan_amt" name="贷款金额" cellType='numeric' class="com.yucheng.cmis.view.excel.ExcelColumn"/>                          
+ 						<excelColumn dataName="loan_balance" name="贷款余额" cellType='numeric' class="com.yucheng.cmis.view.excel.ExcelColumn"/>                  
+ 						<excelColumn dataName="distr_date" name="起始日期"  class="com.yucheng.cmis.view.excel.ExcelColumn"/>     
+ 						<excelColumn dataName="end_date"  name="到期日期" class="com.yucheng.cmis.view.excel.ExcelColumn"/>   
+ 						<excelColumn dataName="five_class"  name="五级分类"  dictName="STD_ZB_FIVE_SORT" class="com.yucheng.cmis.view.excel.ExcelColumn"/> 
+ 						<excelColumn dataName="manager_br_id_displayname"  name="管理机构" class="com.yucheng.cmis.view.excel.ExcelColumn"/>                                      
+ 					 	<excelColumn dataName="acc_status" name="台账状态" dictName="STD_ZB_ACC_TYPE" class="com.yucheng.cmis.view.excel.ExcelColumn"/>               
+ 					</excelSheet>                                                                                                                                      
+ 				</excelWorkbook>                                                                                                                                     
+ 			</view> 
+ 			<view id="promissory" class="com.yucheng.cmis.view.ExcelView">                                                                                           
+ 				<excelWorkbook fileName="promissoryAcc.xls" class="com.yucheng.cmis.view.excel.ExcelWorkbook">                                                          
+ 					<excelSheet id="1" name="贷款承诺台账" isTitle="true" iCollName="AccLoanList" class="com.yucheng.cmis.view.excel.ExcelSheet">                       
+ 						<!-- 添加合同编号、客户条线、币种      2014-08-07  邓亚辉 -->
+ 						<excelColumn dataName="bill_no" name="借据编号" cellType="string" class="com.yucheng.cmis.view.excel.ExcelColumn"/>                                 
+ 						<excelColumn dataName="cont_no" name="合同编号" cellType="string" class="com.yucheng.cmis.view.excel.ExcelColumn"/> 
+ 						<excelColumn dataName="cus_id" name="客户码" class="com.yucheng.cmis.view.excel.ExcelColumn"/>      
+ 						<excelColumn dataName="cus_id_displayname" name="客户名称"  class="com.yucheng.cmis.view.excel.ExcelColumn"/>   
+ 						<excelColumn dataName="belg_line" name="客户条线" dictName="STD_ZB_BUSILINE" class="com.yucheng.cmis.view.excel.ExcelColumn"/>
+ 						<excelColumn dataName="prd_id_displayname" name="产品名称"  class="com.yucheng.cmis.view.excel.ExcelColumn"/>                                       
+ 						<excelColumn dataName="cur_type" name="币种" dictName="STD_ZX_CUR_TYPE"  class="com.yucheng.cmis.view.excel.ExcelColumn"/>
+ 						<excelColumn dataName="loan_amt" name="贷款金额" cellType='numeric' class="com.yucheng.cmis.view.excel.ExcelColumn"/>                          
+ 						<excelColumn dataName="loan_balance" name="贷款余额" cellType='numeric' class="com.yucheng.cmis.view.excel.ExcelColumn"/>                  
+ 						<excelColumn dataName="distr_date" name="起始日期"  class="com.yucheng.cmis.view.excel.ExcelColumn"/>     
+ 						<excelColumn dataName="end_date"  name="到期日期" class="com.yucheng.cmis.view.excel.ExcelColumn"/>   
+ 						<excelColumn dataName="five_class"  name="五级分类"  dictName="STD_ZB_FIVE_SORT" class="com.yucheng.cmis.view.excel.ExcelColumn"/> 
+ 						<excelColumn dataName="manager_br_id_displayname"  name="管理机构" class="com.yucheng.cmis.view.excel.ExcelColumn"/>                                      
+ 					 	<excelColumn dataName="acc_status" name="台账状态" dictName="STD_ZB_ACC_TYPE" class="com.yucheng.cmis.view.excel.ExcelColumn"/>              
+ 					</excelSheet>                                                                                                                                      
+ 				</excelWorkbook>                                                                                                                                     
+ 			</view> 
+ 			<view id="advice" class="com.yucheng.cmis.view.ExcelView">                                                                                           
+ 				<excelWorkbook fileName="adviceAcc.xls" class="com.yucheng.cmis.view.excel.ExcelWorkbook">                                                          
+ 					<excelSheet id="1" name="贷款意向台账" isTitle="true" iCollName="AccLoanList" class="com.yucheng.cmis.view.excel.ExcelSheet">                       
+ 						<!-- 添加合同编号、客户条线、币种      2014-08-07  邓亚辉 -->
+ 						<excelColumn dataName="bill_no" name="借据编号" cellType="string" class="com.yucheng.cmis.view.excel.ExcelColumn"/>                                 
+ 						<excelColumn dataName="cont_no" name="合同编号" cellType="string" class="com.yucheng.cmis.view.excel.ExcelColumn"/> 
+ 						<excelColumn dataName="cus_id" name="客户码" class="com.yucheng.cmis.view.excel.ExcelColumn"/>      
+ 						<excelColumn dataName="cus_id_displayname" name="客户名称"  class="com.yucheng.cmis.view.excel.ExcelColumn"/>   
+ 						<excelColumn dataName="belg_line" name="客户条线" dictName="STD_ZB_BUSILINE" class="com.yucheng.cmis.view.excel.ExcelColumn"/>
+ 						<excelColumn dataName="prd_id_displayname" name="产品名称"  class="com.yucheng.cmis.view.excel.ExcelColumn"/>                                       
+ 						<excelColumn dataName="cur_type" name="币种" dictName="STD_ZX_CUR_TYPE"  class="com.yucheng.cmis.view.excel.ExcelColumn"/>
+ 						<excelColumn dataName="loan_amt" name="贷款金额" cellType='numeric' class="com.yucheng.cmis.view.excel.ExcelColumn"/>                          
+ 						<excelColumn dataName="loan_balance" name="贷款余额" cellType='numeric' class="com.yucheng.cmis.view.excel.ExcelColumn"/>                  
+ 						<excelColumn dataName="distr_date" name="起始日期"  class="com.yucheng.cmis.view.excel.ExcelColumn"/>     
+ 						<excelColumn dataName="end_date"  name="到期日期" class="com.yucheng.cmis.view.excel.ExcelColumn"/>   
+ 						<excelColumn dataName="five_class"  name="五级分类"  dictName="STD_ZB_FIVE_SORT" class="com.yucheng.cmis.view.excel.ExcelColumn"/> 
+ 						<excelColumn dataName="manager_br_id_displayname"  name="管理机构" class="com.yucheng.cmis.view.excel.ExcelColumn"/>                                      
+ 					 	<excelColumn dataName="acc_status" name="台账状态" dictName="STD_ZB_ACC_TYPE" class="com.yucheng.cmis.view.excel.ExcelColumn"/>              
+ 					</excelSheet>                                                                                                                                      
+ 				</excelWorkbook>                                                                                                                                     
+ 			</view> 
+ 			<view id="isTrust" class="com.yucheng.cmis.view.ExcelView">                                                                                           
+ 				<excelWorkbook fileName="isTrustAcc.xls" class="com.yucheng.cmis.view.excel.ExcelWorkbook">                                                          
+ 					<excelSheet id="1" name="信托公司贷款台账" isTitle="true" iCollName="AccLoanList" class="com.yucheng.cmis.view.excel.ExcelSheet">                      
+ 						<!-- 添加合同编号、客户条线、币种      2014-08-07  邓亚辉 -->
+ 						<excelColumn dataName="bill_no" name="借据编号" cellType="string" class="com.yucheng.cmis.view.excel.ExcelColumn"/>                                 
+ 						<excelColumn dataName="cont_no" name="合同编号" cellType="string" class="com.yucheng.cmis.view.excel.ExcelColumn"/> 
+ 						<excelColumn dataName="cus_id" name="客户码" class="com.yucheng.cmis.view.excel.ExcelColumn"/>      
+ 						<excelColumn dataName="cus_id_displayname" name="客户名称"  class="com.yucheng.cmis.view.excel.ExcelColumn"/>   
+ 						<excelColumn dataName="belg_line" name="客户条线" dictName="STD_ZB_BUSILINE" class="com.yucheng.cmis.view.excel.ExcelColumn"/>
+ 						<excelColumn dataName="prd_id_displayname" name="产品名称"  class="com.yucheng.cmis.view.excel.ExcelColumn"/>                                       
+ 						<excelColumn dataName="cur_type" name="币种" dictName="STD_ZX_CUR_TYPE"  class="com.yucheng.cmis.view.excel.ExcelColumn"/>
+ 						<excelColumn dataName="loan_amt" name="贷款金额" cellType='numeric' class="com.yucheng.cmis.view.excel.ExcelColumn"/>                          
+ 						<excelColumn dataName="loan_balance" name="贷款余额" cellType='numeric' class="com.yucheng.cmis.view.excel.ExcelColumn"/>
+ 						<!-- add by lisj 2015-10-19  需求编号：XD150409029 信贷保函及资产模块改造需求 begin -->
+ 						<excelColumn dataName="mm_fee_rate" name="委托管理费率"  class="com.yucheng.cmis.view.excel.ExcelColumn"/>
+ 						<excelColumn dataName="reality_ir_y" name="执行利率（年）"  class="com.yucheng.cmis.view.excel.ExcelColumn"/>
+ 						<excelColumn dataName="trust_pro_name" name="信托项目名称"  class="com.yucheng.cmis.view.excel.ExcelColumn"/>
+ 						<excelColumn dataName="loan_direction_displayname" name="贷款投向"  class="com.yucheng.cmis.view.excel.ExcelColumn"/>
+ 						<!-- add by lisj 2015-10-19  需求编号：XD150409029 信贷保函及资产模块改造需求 end -->  						                  
+ 						<excelColumn dataName="distr_date" name="起始日期"  class="com.yucheng.cmis.view.excel.ExcelColumn"/>     
+ 						<excelColumn dataName="end_date"  name="到期日期" class="com.yucheng.cmis.view.excel.ExcelColumn"/>   
+ 						<excelColumn dataName="five_class"  name="五级分类"  dictName="STD_ZB_FIVE_SORT" class="com.yucheng.cmis.view.excel.ExcelColumn"/> 
+ 						<excelColumn dataName="manager_br_id_displayname"  name="管理机构" class="com.yucheng.cmis.view.excel.ExcelColumn"/>                                      
+ 					 	<excelColumn dataName="acc_status" name="台账状态" dictName="STD_ZB_ACC_TYPE" class="com.yucheng.cmis.view.excel.ExcelColumn"/>              
+ 					</excelSheet>                                                                                                                                      
+ 				</excelWorkbook>                                                                                                                                     
+ 			</view> 
+ 			<view id="overdue" class="com.yucheng.cmis.view.ExcelView">                                                                                           
+ 				<excelWorkbook fileName="overdueAcc.xls" class="com.yucheng.cmis.view.excel.ExcelWorkbook">                                                          
+ 					<excelSheet id="1" name="逾期台账" isTitle="true" iCollName="AccLoanList" class="com.yucheng.cmis.view.excel.ExcelSheet">                       
+ 						<!-- 添加合同编号、客户条线、币种      2014-08-07  邓亚辉 -->
+ 						<excelColumn dataName="bill_no" name="借据编号" cellType="string" class="com.yucheng.cmis.view.excel.ExcelColumn"/>                                 
+ 						<excelColumn dataName="cont_no" name="合同编号" cellType="string" class="com.yucheng.cmis.view.excel.ExcelColumn"/> 
+ 						<excelColumn dataName="cus_id" name="客户码" class="com.yucheng.cmis.view.excel.ExcelColumn"/>      
+ 						<excelColumn dataName="cus_id_displayname" name="客户名称"  class="com.yucheng.cmis.view.excel.ExcelColumn"/>   
+ 						<excelColumn dataName="belg_line" name="客户条线" dictName="STD_ZB_BUSILINE" class="com.yucheng.cmis.view.excel.ExcelColumn"/>
+ 						<excelColumn dataName="prd_id_displayname" name="产品名称"  class="com.yucheng.cmis.view.excel.ExcelColumn"/>                                       
+ 						<excelColumn dataName="cur_type" name="币种" dictName="STD_ZX_CUR_TYPE"  class="com.yucheng.cmis.view.excel.ExcelColumn"/>
+ 						<excelColumn dataName="loan_amt" name="贷款金额" cellType='numeric' class="com.yucheng.cmis.view.excel.ExcelColumn"/>                          
+ 						<excelColumn dataName="loan_balance" name="贷款余额" cellType='numeric' class="com.yucheng.cmis.view.excel.ExcelColumn"/>                  
+ 						<excelColumn dataName="distr_date" name="起始日期"  class="com.yucheng.cmis.view.excel.ExcelColumn"/>     
+ 						<excelColumn dataName="end_date"  name="到期日期" class="com.yucheng.cmis.view.excel.ExcelColumn"/>   
+ 						<excelColumn dataName="five_class"  name="五级分类"  dictName="STD_ZB_FIVE_SORT" class="com.yucheng.cmis.view.excel.ExcelColumn"/> 
+ 						<excelColumn dataName="manager_br_id_displayname"  name="管理机构" class="com.yucheng.cmis.view.excel.ExcelColumn"/>                                      
+ 					 	<excelColumn dataName="acc_status" name="台账状态" dictName="STD_ZB_ACC_TYPE" class="com.yucheng.cmis.view.excel.ExcelColumn"/>              
+ 					</excelSheet>                                                                                                                                      
+ 				</excelWorkbook>                                                                                                                                     
+ 			</view>                                                                                                                                           
+		</outputViews>                                                                                                                                           
+	</action>      
+	
+	<!-- 通用查询贷后借据信息pop added by yangzy 2014/10/17 贷后改造  -->
+	<action id="queryPspAccViewPop" type="normal" checkSession="true">
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.acc.op.accloan.QueryPspAccViewPop" />
+			<transition dest="retPage" />
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="biz01line/acc/AccLoan/queryPspAccLoanPop.jsp" />
+		</outputViews>
+	</action>
+	
+	<action id="pagePspAccViewPop" type="normal" checkSession="true">
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.acc.op.accloan.QueryPspAccViewPop" />
+			<transition dest="queryListRes" />
+		</flowInvoker>
+		<outputViews>
+			<jsonView class="com.yucheng.cmis.view.JSONView" id="queryListRes">
+				<output>
+					<iColl id="AccLoanList">
+						<kColl>
+						</kColl>
+					</iColl>
+					<kColl id="pageInfo">
+						<field id="currentPage" />
+						<field id="maxLine" />
+						<field id="recordSize" />
+					</kColl>
+				</output>
+			</jsonView>
+		</outputViews>
+	</action>                                                                                                                                                    
+</actionDefines>
+
+
+

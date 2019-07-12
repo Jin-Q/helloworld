@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<CusComCont.xml>
+	<TableModel id="CusComCont" pageSize="15" cnname="对公联系信息表" isPaged="true" dbTableName="cus_com_cont">
+		<TableInfo/>
+		<Field id="cus_id" isPK="true" columnName="cus_id" cnname="客户码" length="30" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="seq" JDBCType="NUMBER" length="38" columnName="seq" canBeNull="false" isPK="true" JSPTag="text" dataType="Long" cnname="序号"/>
+		<Field id="com_addr_typ" dictname="STD_ZB_COM_ADDR_TYP" columnName="com_addr_typ" cnname="地址类型" length="2" JSPTag="select" canBeNull="true" JDBCType="CHAR"/>
+		<Field id="com_addr" columnName="com_addr" cnname="通讯地址" length="80" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="com_zip_code" dataType="Int" columnName="com_zip_code" cnname="邮政编码" length="6" JSPTag="text" canBeNull="true" JDBCType="CHAR"/>
+		<Field id="com_phn_code" dataType="Phone" columnName="com_phn_code" cnname="联系电话" length="35" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="com_fax_code" dataType="Phone" columnName="com_fax_code" cnname="传真电话" length="35" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="remark" columnName="remark" cnname="备注" length="250" JSPTag="textarea" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="input_id" columnName="input_id" cnname="登记人" length="20" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="input_br_id" columnName="input_br_id" cnname="登记机构" length="20" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="input_date" columnName="input_date" cnname="登记日期" length="10" JSPTag="date" canBeNull="true" JDBCType="CHAR"/>
+		<Field id="last_upd_id" columnName="last_upd_id" cnname="更新人" length="20" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="last_upd_date" columnName="last_upd_date" cnname="更新日期" length="10" JSPTag="date" canBeNull="true" JDBCType="VARCHAR2"/>
+		<OrderFields>cus_id[desc];seq[desc];</OrderFields>
+		<FilterFields>seq;com_addr_typ;com_addr;com_phn_code;com_zip_code;</FilterFields>
+		<Field id="street_addr" columnName="street_addr" cnname="街道（通讯）" length="100" JSPTag="text" JDBCType="VARCHAR2"/>
+	</TableModel>
+</CusComCont.xml>

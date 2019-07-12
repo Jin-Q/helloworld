@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<ArpBadassetHandoverRcv.xml>
+	<TableModel id="ArpBadassetHandoverRcv" cnname="不良资产移交接收表" dbTableName="arp_badasset_handover_rcv">
+		<Field id="serno" isPK="true" columnName="serno" cnname="业务编号" length="40" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="bill_no" columnName="bill_no" cnname="借据编号" length="40" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="fount_manager_br_id" columnName="fount_manager_br_id" cnname="原管理机构" length="20" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="fount_manager_id" columnName="fount_manager_id" cnname="原主管客户经理" length="20" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="handover_resn" columnName="handover_resn" cnname="移交原因" length="20" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="bad_resn" columnName="bad_resn" cnname="不良成因及分析" length="250" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="collect_measures" columnName="collect_measures" cnname="清收措施" length="250" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="rcv_org" columnName="rcv_org" cnname="接收机构" length="20" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="rcv_person" columnName="rcv_person" cnname="接收人员" length="20" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="memo" columnName="memo" cnname="备注" length="250" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="app_date" columnName="app_date" cnname="申请日期" length="10" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="over_date" columnName="over_date" cnname="办结日期" length="10" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="rcv_date" columnName="rcv_date" cnname="接收日期" length="10" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="rcv_status" columnName="rcv_status" cnname="接收状态" length="5" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="cus_id" columnName="cus_id" cnname="客户码" length="40" JDBCType="VARCHAR2"/>
+	</TableModel>
+</ArpBadassetHandoverRcv.xml>

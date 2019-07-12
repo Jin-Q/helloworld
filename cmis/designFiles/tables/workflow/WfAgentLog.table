@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<WfAgentLog.xml>
+	<TableModel id="WfAgentLog" cnname="WF_AGENT_LOG" dbTableName="wf_agent_log">
+		<TableInfo/>
+		<Field id="instanceid" isPK="true" columnName="instanceid" cnname="INSTANCEID" length="32" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="wfid" columnName="wfid" cnname="WFID" length="32" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="wfsign" columnName="wfsign" cnname="WFSIGN" length="32" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="nodeid" isPK="true" columnName="nodeid" cnname="NODEID" length="32" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="nodestarttime" isPK="true" columnName="nodestarttime" cnname="NODESTARTTIME" length="19" JSPTag="text" canBeNull="false" JDBCType="CHAR"/>
+		<Field id="originaluser" isPK="true" columnName="originaluser" cnname="ORIGINALUSER" length="100" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="replacer" columnName="replacer" cnname="REPLACER" length="100" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="sysid" columnName="sysid" cnname="SYSID" length="32" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<OrderFields>instanceid[desc];nodeid[desc];nodestarttime[desc];originaluser[desc];</OrderFields>
+	</TableModel>
+</WfAgentLog.xml>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<IqpAssetOrgRegi.xml>
+	<TableModel id="IqpAssetOrgRegi" cnname="机构登记" dbTableName="iqp_asset_org_regi">
+		<Field id="serno" isPK="true" columnName="serno" cnname="业务编号" length="40" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="asset_org_id" isPK="true" columnName="asset_org_id" cnname="机构代码" length="40" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="asset_org_type" columnName="asset_org_type" cnname="机构类型" length="10" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="acct_no" columnName="acct_no" cnname="账号" length="40" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="acct_name" columnName="acct_name" cnname="账户名" length="80" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="acctsvcr_no" columnName="acctsvcr_no" cnname="开户行行号" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="acctsvcr_name" columnName="acctsvcr_name" cnname="开户行行名" length="100" JDBCType="VARCHAR2" canBeNull="true"/>
+	</TableModel>
+</IqpAssetOrgRegi.xml>

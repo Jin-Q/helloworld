@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<ArpDbtWriteoffAcc.xml>
+	<TableModel id="ArpDbtWriteoffAcc" pageSize="10" cnname="呆账核销台账表" isPaged="true" dbTableName="arp_dbt_writeoff_acc">
+		<TableInfo/>
+		<Field id="serno" columnName="serno" cnname="业务编号" length="40" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="pk_serno" isPK="true" columnName="pk_serno" cnname="流水号" length="40" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="bill_no" columnName="bill_no" cnname="借据编号" length="40" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="cont_no" columnName="cont_no" cnname="合同编号" length="40" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="cus_id" columnName="cus_id" cnname="客户编号" length="30" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="writeoff_co_amt" columnName="writeoff_co_amt" cnname="核销总金额" length="16" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="writeoff_cap" columnName="writeoff_cap" cnname="核销本金" length="16" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="writeoff_cap_bal" columnName="writeoff_cap_bal" cnname="核销本金余额" length="16" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="writeoff_int" columnName="writeoff_int" cnname="核销利息" length="16" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="writeoff_int_bal" columnName="writeoff_int_bal" cnname="核销利息余额" length="16" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="writeoff_date" columnName="writeoff_date" cnname="核销日期" length="10" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="writeoff_org" columnName="writeoff_org" cnname="核销机构" length="20" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<OrderFields>pk_serno[desc];</OrderFields>
+		<ConditionFields>serno;bill_no;cont_no;cus_id;</ConditionFields>
+		<FilterFields>serno;bill_no;cont_no;cus_id;writeoff_cap;writeoff_date;writeoff_org;</FilterFields>
+		<RecordRestrict query="true" delete="true" update="true"/>
+	</TableModel>
+</ArpDbtWriteoffAcc.xml>

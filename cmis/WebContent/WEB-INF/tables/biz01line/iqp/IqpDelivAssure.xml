@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<IqpDelivAssure.xml>
+	<TableModel id="IqpDelivAssure" cnname="提货担保从表" dbTableName="iqp_deliv_assure">
+		<Field id="serno" isPK="true" columnName="serno" cnname="业务编号" length="40" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="is_replace" columnName="is_replace" cnname="是否置换" length="1" JDBCType="CHAR" canBeNull="true"/>
+		<Field id="rpled_serno" columnName="rpled_serno" cnname="被置换业务编号" length="40" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="cdt_cert_no" columnName="cdt_cert_no" cnname="信用证编号" length="40" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="cdt_approve_advice" columnName="cdt_approve_advice" cnname="国业部审查意见" length="250" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="reorder_no" columnName="reorder_no" cnname="提单号码" length="40" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="commo_name" columnName="commo_name" cnname="商品名称" length="100" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="chrg_rate" columnName="chrg_rate" cnname="手续费率" length="10" JDBCType="NUMBER"/>
+		<Field id="reorder_curtype" columnName="reorder_curtype" cnname="提单币种" length="3" JDBCType="VARCHAR2"/>
+		<Field id="reorder_amt" columnName="reorder_amt" cnname="提单金额" length="16" JDBCType="NUMBER"/>
+	</TableModel>
+</IqpDelivAssure.xml>

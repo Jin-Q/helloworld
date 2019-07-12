@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<GrtGuarCont.xml>
+	<TableModel id="GrtGuarCont" cnname="担保合同表" dbTableName="grt_guar_cont">
+		<Field id="guar_cont_no" isPK="true" columnName="guar_cont_no" cnname="担保合同编号   (PK) by xiaod" length="40" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="guar_cont_cn_no" columnName="guar_cont_cn_no" cnname="中文合同编号" length="60" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="guar_cont_type" columnName="guar_cont_type" cnname="担保合同类型" length="1" JDBCType="CHAR" canBeNull="true"/>
+		<Field id="guar_way" columnName="guar_way" cnname="担保方式" length="5" JDBCType="CHAR" canBeNull="true"/>
+		<Field id="cus_id" columnName="cus_id" cnname="客户码" length="30" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="guar_term_type" columnName="guar_term_type" cnname="担保期限类型" length="2" JDBCType="CHAR" canBeNull="true"/>
+		<Field id="cur_type" columnName="cur_type" cnname="币种" length="3" JDBCType="CHAR" canBeNull="true"/>
+		<Field id="guar_amt" columnName="guar_amt" cnname="担保金额" length="16" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="guar_model" columnName="guar_model" cnname="担保模式" length="16" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="guar_term" columnName="guar_term" cnname="担保期限" length="0" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="guar_start_date" columnName="guar_start_date" cnname="担保起始日" length="10" JDBCType="CHAR" canBeNull="true"/>
+		<Field id="guar_end_date" columnName="guar_end_date" cnname="担保终止日" length="10" JDBCType="CHAR" canBeNull="true"/>
+		<Field id="sign_date" columnName="sign_date" cnname="签订日期" length="10" JDBCType="CHAR" canBeNull="true"/>
+		<Field id="guar_cont_state" columnName="guar_cont_state" cnname="担保合同状态" length="3" JDBCType="CHAR" canBeNull="true"/>
+		<Field id="memo" columnName="memo" cnname="备注" length="200" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="input_id" columnName="input_id" cnname="责任人" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="manager_id" columnName="manager_id" cnname="登记人" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="input_br_id" columnName="input_br_id" cnname="责任机构" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="manager_br_id" columnName="manager_br_id" cnname="登记机构" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="reg_date" columnName="reg_date" cnname="登记日期" length="10" JDBCType="CHAR" canBeNull="true"/>
+		<Field id="lmt_grt_flag" columnName="lmt_grt_flag" cnname="是否授信项下" length="1" JDBCType="CHAR" canBeNull="true"/>
+		<Field id="agr_no" columnName="agr_no" cnname="授信协议编号" length="40" JDBCType="VARCHAR2"/>
+		<Field id="rel" columnName="rel" cnname="申请类型（1--担保合同管理进入，2--授信进入，3--业务进入）" length="5" JDBCType="VARCHAR2"/>
+		<Field id="actual_mort_rate" columnName="actual_mort_rate" cnname="实际抵押率" length="16" JDBCType="NUMBER"/>
+	</TableModel>
+</GrtGuarCont.xml>

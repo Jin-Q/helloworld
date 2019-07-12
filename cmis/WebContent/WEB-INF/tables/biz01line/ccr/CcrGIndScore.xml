@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<CcrGIndScore.xml>
+	<TableModel id="CcrGIndScore" cnname="组下指标的得分表" dbTableName="ccr_g_ind_score">
+		<Field id="serno" isPK="true" columnName="serno" cnname="业务编号" length="40" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="cus_id" isPK="true" columnName="cus_id" cnname="客户编号" length="40" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="ccr_date" columnName="ccr_date" cnname="日期" length="10" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="index_seq" columnName="index_seq" cnname="序号" length="32" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="group_no" isPK="true" columnName="group_no" cnname="组别编号" length="12" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="group_name" columnName="group_name" cnname="组别名称" length="60" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="index_no" isPK="true" columnName="index_no" cnname="指标编号" length="20" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="index_name" columnName="index_name" cnname="指标名称" length="60" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="index_value" columnName="index_value" cnname="指标值" length="10" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="ind_org_val" columnName="ind_org_val" cnname="指标原始值" length="10" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="index_score" columnName="index_score" cnname="指标值得分" length="10" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="scoring_manager" isPK="true" columnName="scoring_manager" cnname="评分人" length="20" JDBCType="VARCHAR2" canBeNull="false"/>
+	</TableModel>
+</CcrGIndScore.xml>

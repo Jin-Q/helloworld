@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<ArpDbtCongnizAcc.xml>
+	<TableModel id="ArpDbtCongnizAcc" cnname="呆账认定台账表" dbTableName="arp_dbt_congniz_acc">
+		<Field id="serno" columnName="serno" cnname="业务编号" length="40" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="pk_serno" isPK="true" columnName="pk_serno" cnname="流水号" length="40" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="cus_id" columnName="cus_id" cnname="客户编号" length="30" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="bill_no" columnName="bill_no" cnname="借据编号" length="40" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="cont_no" columnName="cont_no" cnname="合同编号" length="40" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="congniz_resn" columnName="congniz_resn" cnname="认定理由" length="250" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="congniz_date" columnName="congniz_date" cnname="认定日期" length="10" JDBCType="VARCHAR2" canBeNull="true"/>
+	</TableModel>
+</ArpDbtCongnizAcc.xml>

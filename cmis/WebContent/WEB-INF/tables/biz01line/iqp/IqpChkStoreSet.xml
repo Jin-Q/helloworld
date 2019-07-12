@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<IqpChkStoreSet.xml>
+	<TableModel id="IqpChkStoreSet" cnname="核/巡任务设定" dbTableName="iqp_chk_store_set">
+		<Field id="task_set_id" isPK="true" columnName="task_set_id" pkGenerator="UNID" cnname="任务编号" length="32" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="task_set_type" columnName="task_set_type" cnname="任务维度" length="2" JDBCType="CHAR" canBeNull="true"/>
+		<Field id="cus_id" columnName="cus_id" cnname="客户编号" length="40" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="task_exe_user" columnName="task_exe_user" cnname="任务执行人" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="task_request_time" columnName="task_request_time" cnname="要求完成时间" length="10" JDBCType="CHAR" canBeNull="true"/>
+		<Field id="remarks" columnName="remarks" cnname="备注" length="250" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="input_id" columnName="input_id" cnname="登记人" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="input_br_id" columnName="input_br_id" cnname="登记机构" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="input_date" columnName="input_date" cnname="登记日期" length="10" JDBCType="CHAR" canBeNull="true"/>
+		<Field id="is_task" columnName="is_task" cnname="是否生成任务" length="1" JDBCType="CHAR"/>
+	</TableModel>
+</IqpChkStoreSet.xml>

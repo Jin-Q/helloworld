@@ -1,0 +1,91 @@
+/**信贷管理系统
+ * @version  2014-05-16
+ * @author wangms2@yuchengtech.com
+ *blue
+ */ 
+ 
+@charset "utf-8";
+/**-- Document Css Start --**/
+body{font-size:12px;background-color:#fff;margin:0;color:#020000;line-height:140%;padding:0;
+font-family:SimSun,"Microsoft Yahei",Verdana, Geneva, Arial, Helvetica, sans-serif;}
+p,form,img,ul,li,ol,dl,dt,dd,table,td,th{margin:0;padding:0;}
+li{list-style:none;}
+img{border:none;}
+table{border-collapse:collapse;font-size:12px;}
+a{text-decoration:none;}
+a:link {font-size: 12px;color: #020000;text-decoration:underline;}
+a:visited {font-size: 12px;	color: #545454;text-decoration:underline;}
+a:hover {font-size: 12px; color: #ff0000;text-decoration:underline;}
+a:active {font-size: 12px; color: #222;text-decoration:underline;}
+input,select,option,textarea{font-size:12px;}
+select{border-color:#b7b7b7;}
+fieldset{border:1px solid #c2c2c2;}
+input,select,textarea{border:1px solid #c2c2c2;}
+legend{color:#020000;}
+/**-- Document Css end --**/
+
+/** #Container start **/
+#Container { width:100%; height:100%; }
+/*#Header start*/
+#Header {height:auto;background:#005cb9 url(../images/blue/QZ_topbg.png) repeat-x;border-bottom:1px solid #d9dff1;}
+.QZ_topBox{width:100%;height:55px;background:url(../images/blue/QZ_topBgPic.png) no-repeat right center;}
+#logo {width:338px;height:52px;float:left;background:url(../images/blue/QZ_logo.png) no-repeat left center;margin-left:20px;}
+#infotopr {width:auto;height:24px;float:right;margin-right:20px;margin-top:10px;line-height:24px;font-size:13px;
+background:url(../images/blue/exit.png) no-repeat right center;color:#fff;}
+#infotopr a{display:inline-block;height:24px;padding-right:20px;color:#fff;line-height:24px;}
+#infotopr .QZ_help{background:url(../images/blue/QZ_help.png) no-repeat right center;margin-right:10px;}
+#infotopr a:hover{color:#f3a06e;}
+/*#menu_lv1 start*/
+/*#mainMenu_Box{width:100%;position:absolute;top:55px;left:0;z-index:99999999;}*/
+#menu_lv1 {background-color:#dde9f7;padding:0 10px;}
+#menu_lv1 span{display:inline-block;height:78px;}
+#menu_lv1 span a{display:inline-block;padding:60px 5px 0 5px;width:72px;overflow:hidden;text-align:center;white-space:nowrap;
+background:url(../images/blue/nav012.png) no-repeat center 10px;text-decoration:none;}
+#menu_lv1 span a:link{color:#111;}
+#menu_lv1 span a:visited{color:#545454;}
+#menu_lv1 span a:hover{color:#ff0000;}
+#menu_lv1 span a:active{color:#222;}
+#menu_lv1 span #wdgzt_a{background:url(../images/blue/nav01.png) no-repeat center 10px;}
+#menu_lv1 span #President_Cockpit_a{background:url(../images/blue/nav02.png) no-repeat center 10px;}
+#menu_lv1 span #cus_a{background:url(../images/blue/nav03.png) no-repeat center 10px;}
+#menu_lv1 span #cuscrerating_a{background:url(../images/blue/nav04.png) no-repeat center 10px;}
+#menu_lv1 span #iqploanapp_a{background:url(../images/blue/nav05.png) no-repeat center 10px;}
+#menu_lv1 span #PvpLoanApp_a{background:url(../images/blue/nav06.png) no-repeat center 10px;}
+#menu_lv1 span #MORT_a{background:url(../images/blue/nav07.png) no-repeat center 10px;}
+#menu_lv1 span #AfterLoan_a{background:url(../images/blue/nav08.png) no-repeat center 10px;}
+#menu_lv1 span #AssetPreserve_a{background:url(../images/blue/nav09.png) no-repeat center 10px;}
+#menu_lv1 span #qrySetup_a{background:url(../images/blue/nav010.png) no-repeat center 10px;}
+#menu_lv1 span #riskmanage_a{background:url(../images/blue/nav011.png) no-repeat center 10px;}
+#menu_lv1 span #nNomalIndivAsset_a{background:url(../images/blue/nav05.png) no-repeat center 10px;}
+#menu_lv1 span #model_a{background:url(../images/blue/nav020.png) no-repeat center 10px;}
+#menu_lv1 span #bussiness_config_a{background:url(../images/blue/nav016.png) no-repeat center 10px;}
+#menu_lv1 span #xtpz_a{background:url(../images/blue/nav017.png) no-repeat center 10px;}
+#menu_lv1 span #tabResourceId_a{background:url(../images/blue/nav018.png) no-repeat center 10px;}
+#menu_lv1 span #demo_a{background:url(../images/blue/nav019.png) no-repeat center 10px;}
+.menu_on {background-color:#fff;}
+/*#mainMenu_btn{width:100%;height:7px;cursor:pointer;background:url(../images/mainMenu_btn.png) no-repeat center top;
+font-size:0px;line-height:0px;}
+#mainMenu_btn.mainMenu_btn_on{background:url(../images/mainMenu_btn.png) no-repeat center bottom;}*/
+/*#menu_lv1 end*/
+/*#Header end*/
+
+#center {width:100%;/*background-image:url(../images/center_bg.gif)*/background:#d2eec3 url(../images/welcomeBg.jpg) no-repeat right bottom;}
+#Page_left{width:200px;height:100%;border-right:1px solid #ecf2f7;/*background-color:#ecf2f7;*/}
+#right {float:left;height:100%;width:100%;}
+#userinfo{width:100%;height:27px;margin:15px 0px;color:#fff;text-indent:40px;line-height:34px;font-size:12px;
+background:url(../images/blue/QZ_adminBg.png) no-repeat 10px center;font-family:Microsoft Yahei;}
+#lift_line {margin:6px 6px 5px 6px;border: 1px solid #c2c2c2;}
+
+#mainframe{padding-left:3px;padding-right:3px;}
+
+/** other frames **/
+#Page_middle {float:left;background:url(../../images/default/d6e7fd.gif) left top repeat-y;width: 10px;height: 81px;}
+.slide_l {cursor:pointer;vertical-align:top;width:9px;height:81px;background: url(../images/cico.gif) no-repeat left top;}
+.slide_r {cursor:pointer;vertical-align:top;width:9px;height:81px;background: url(../images/oico.gif) no-repeat left top;}
+
+/*#footer*/
+#footer{width:100%;height:20px;background-color:#005cb9;text-align:center;color:#fff;line-height:20px;}	
+#Page_left_tree {width: 195px;height: 88%;padding-left: 16px;overflow: auto;}
+.form_unit{height:30px;line-height:30px;padding-top: 6px;padding-bottom: 2px;font-size: 14px;
+font-family: Microsoft Yahei;color: #020000;text-indent: 25px;width: 100%;text-align: left;
+background: url(../images/blue/QZ_titleBg.png) no-repeat left bottom;}

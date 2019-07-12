@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actionDefines>
+	<classMap>
+		<map id="action" class="com.yucheng.cmis.ad.mvc.ADRequestController"/>
+		<map id="flowInvoker" class="com.yucheng.cmis.ad.mvc.ADFlowInvoker"/>
+		<map id="outputViews" class="java.util.HashMap"/>
+		<map id="output" class="com.ecc.emp.data.KeyedCollection"/>
+		<map id="kColl" class="com.ecc.emp.data.KeyedCollection"/>
+		<map id="iColl" class="com.ecc.emp.data.IndexedCollection"/>
+		<map id="field" class="com.ecc.emp.data.DataField"/>
+	</classMap>
+	
+	<!-- 获取操作主页面 -->
+	<action id="queryIqpGuarChangeAppList" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.iqp.op.iqpguarchangeapp.QueryIqpGuarChangeAppListOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="biz01line/iqp/IqpGuarChangeApp/queryIqpGuarChangeAppList.jsp" />
+		</outputViews>  
+	</action>
+	
+	<!-- 获取历史查看页面 -->
+	<action id="queryIqpGuarChangeAppHisList" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.iqp.op.iqpguarchangeapp.QueryIqpGuarChangeAppHisListOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="biz01line/iqp/IqpGuarChangeApp/queryIqpGuarChangeAppHisList.jsp" />
+		</outputViews>  
+	</action>
+	
+	<!-- 获得编辑页面 -->
+	<action id="getIqpGuarChangeAppUpdatePage" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation updateCheck="true" class="com.yucheng.cmis.biz01line.iqp.op.iqpguarchangeapp.QueryIqpGuarChangeAppDetailOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="biz01line/iqp/IqpGuarChangeApp/updateIqpGuarChangeAppRecord.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 更新记录 -->
+	<action id="updateIqpGuarChangeAppRecord" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.iqp.op.iqpguarchangeapp.UpdateIqpGuarChangeAppRecordOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<view id="retPage" class="com.yucheng.cmis.view.JSONView">
+				<output class="com.ecc.emp.data.KeyedCollection">
+					<field id="flag" class="com.ecc.emp.data.DataField" />
+				</output>
+			</view> 
+		</outputViews>
+	</action>
+	
+	<!-- 获得查看页面 -->
+	<action id="getIqpGuarChangeAppViewPage" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.iqp.op.iqpguarchangeapp.QueryIqpGuarChangeAppDetailOp"/>
+			<transition dest="updatePage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="updatePage" url="biz01line/iqp/IqpGuarChangeApp/queryIqpGuarChangeAppDetail.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 获得新增下一步页面 --> 
+	<action id="getIqpGuarChangeAppAddPage" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.iqp.op.iqpguarchangeapp.AddIqpGuarChangeAppListOp"/>
+			<transition dest="addPage"/>  
+		</flowInvoker>
+		<outputViews>
+			<jspView id="addPage" url="biz01line/iqp/IqpGuarChangeApp/addIqpGuarChangeAppRecord.jsp"/>
+		</outputViews>
+	</action>
+	
+	<!-- 从向导页进入新增页面 -->
+	<action id="addIqpGuarChangeAppPage" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.iqp.op.iqpguarchangeapp.AddIqpGuarChangeAppPageOp"/>
+			<transition dest="retPage"/> 
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="biz01line/iqp/IqpGuarChangeApp/addIqpGuarChangeAppPage.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 检查是否已存在该笔担保修改信息 --> 
+	<action id="queryIsConfIqpGuarChange" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.iqp.op.iqpguarchangeapp.QueryIsConfIqpGuarChangeOp"/>
+			<transition dest="retPage"/> 
+		</flowInvoker>
+		<outputViews>
+			<view id="retPage" class="com.yucheng.cmis.view.JSONView">
+				<output class="com.ecc.emp.data.KeyedCollection">
+					<field id="flag" class="com.ecc.emp.data.DataField" />
+				</output>
+			</view>
+		</outputViews>
+	</action>
+		
+	<!-- 新增记录 -->
+	<action id="addIqpGuarChangeAppRecord" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.iqp.op.iqpguarchangeapp.AddIqpGuarChangeAppRecordOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews> 
+			<view id="retPage" class="com.yucheng.cmis.view.JSONView">
+				<output class="com.ecc.emp.data.KeyedCollection">
+					<field id="flag" class="com.ecc.emp.data.DataField" />
+					<field id="serno" class="com.ecc.emp.data.DataField" />
+				</output>
+			</view>  
+		</outputViews> 
+	</action>	
+	
+	<!-- 删除记录 -->
+	<action id="deleteIqpGuarChangeAppRecord" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.iqp.op.iqpguarchangeapp.DeleteIqpGuarChangeAppRecordOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<view id="retPage" class="com.yucheng.cmis.view.JSONView">
+				<output class="com.ecc.emp.data.KeyedCollection">
+					<field id="flag" class="com.ecc.emp.data.DataField" />
+				</output>
+			</view> 
+		</outputViews>
+	</action>
+	
+	<!-- 分页查询记录列表 -->
+		<action id="pageIqpGuarChangeAppQuery" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.iqp.op.iqpguarchangeapp.QueryIqpGuarChangeAppListOp"/>
+			<transition dest="queryListRes"/>
+		</flowInvoker>
+		<outputViews>
+			<jsonView class="com.yucheng.cmis.view.JSONView" id="queryListRes">
+				<output>
+					<iColl id="IqpGuarChangeAppList">
+						<kColl>
+						</kColl>
+					</iColl>
+					<kColl id="pageInfo">
+						<field id="currentPage" />
+						<field id="maxLine" />
+						<field id="recordSize" />
+					</kColl>
+				</output>
+			</jsonView>
+		</outputViews>
+	</action>
+	
+	<!-- 历史页面分页查询记录列表 -->
+		<action id="pageIqpGuarChangeAppHisQuery" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.iqp.op.iqpguarchangeapp.QueryIqpGuarChangeAppHisListOp"/>
+			<transition dest="queryListRes"/>
+		</flowInvoker>
+		<outputViews>
+			<jsonView class="com.yucheng.cmis.view.JSONView" id="queryListRes">
+				<output>
+					<iColl id="IqpGuarChangeAppList">
+						<kColl>
+						</kColl>
+					</iColl>
+					<kColl id="pageInfo">
+						<field id="currentPage" />
+						<field id="maxLine" />
+						<field id="recordSize" />
+					</kColl>
+				</output>
+			</jsonView>
+		</outputViews>
+	</action>
+	
+	<!-- 新增下一步分页查询记录列表 -->
+		<action id="pageAddIqpGuarChange" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.iqp.op.iqpguarchangeapp.AddIqpGuarChangeAppListOp"/>
+			<transition dest="queryListRes"/> 
+		</flowInvoker>
+		<outputViews>
+			<jsonView class="com.yucheng.cmis.view.JSONView" id="queryListRes">
+				<output>
+					<iColl id="CtrLoanContList">
+						<kColl>
+						</kColl>
+					</iColl>
+					<kColl id="pageInfo">
+						<field id="currentPage" />
+						<field id="maxLine" />
+						<field id="recordSize" />
+					</kColl>
+				</output>
+			</jsonView>
+		</outputViews>
+	</action>
+	
+</actionDefines>
+
+
+

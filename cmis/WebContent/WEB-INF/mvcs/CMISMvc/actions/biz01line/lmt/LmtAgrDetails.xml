@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actionDefines>
+	<classMap>
+		<map id="action" class="com.yucheng.cmis.ad.mvc.ADRequestController"/>
+		<map id="flowInvoker" class="com.yucheng.cmis.ad.mvc.ADFlowInvoker"/>
+		<map id="outputViews" class="java.util.HashMap"/>
+		<map id="output" class="com.ecc.emp.data.KeyedCollection"/>
+		<map id="kColl" class="com.ecc.emp.data.KeyedCollection"/>
+		<map id="iColl" class="com.ecc.emp.data.IndexedCollection"/>
+		<map id="field" class="com.ecc.emp.data.DataField"/>
+	</classMap>
+	
+	<!-- 获取操作主页面 -->
+	<action id="queryLmtAgrDetailsList" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.lmt.op.lmtagrdetails.QueryLmtAgrDetailsListOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="biz01line/lmt/LmtAgrDetails/queryLmtAgrDetailsList.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 获取个人非循环额度操作主页面 -->
+	<action id="queryLmtAgrIndivDetailsList" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.lmt.op.lmtagrdetails.QueryLmtAgrDetailsListOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="biz01line/lmt/LmtAgrDetails/queryLmtAgrIndivDetailsList.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 获得查看页面 -->
+	<action id="getLmtAgrDetailsViewPage" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.lmt.op.lmtagrdetails.QueryLmtAgrDetailsDetailOp"/>
+				<transition dest="accPage" condition="($retValue='accPage')"/>
+				<transition dest="appPage" condition="($retValue='appPage')"/>  <!-- 单一法人授信变更申请查看台账   -->
+		</flowInvoker>
+		<outputViews>
+			<jspView id="accPage" url="biz01line/lmt/LmtAgrDetails/queryLmtAgrDetailsDetail.jsp" />
+			<jspView id="appPage" url="biz01line/lmt/LmtAgrDetails/queryLmtAgrDetailsPage4App.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 一票否决台账 -->
+	<action id="disAgreeAgrDetails" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.lmt.op.lmtagrdetails.DisAgreeLmtAgrDetailsOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+            <view id="retPage" class="com.yucheng.cmis.view.JSONView">
+                <output class="com.ecc.emp.data.KeyedCollection">
+                    <field id="flag" class="com.ecc.emp.data.DataField"/>
+                </output>
+            </view>
+        </outputViews>
+	</action>
+	
+	<!-- 分页查询记录列表 -->
+		<action id="pageLmtAgrDetailsQuery" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.lmt.op.lmtagrdetails.QueryLmtAgrDetailsListOp"/>
+			<transition dest="queryListRes"/>
+		</flowInvoker>
+		<outputViews>
+			<jsonView class="com.yucheng.cmis.view.JSONView" id="queryListRes">
+				<output>
+					<iColl id="LmtAgrDetailsList">
+						<kColl>
+							
+						</kColl>
+					</iColl>
+					<kColl id="pageInfo">
+						<field id="currentPage" />
+						<field id="maxLine" />
+						<field id="recordSize" />
+					</kColl>
+				</output>
+			</jsonView>
+		</outputViews>
+	</action>
+	
+	<!-- 额度选择POP框   -->
+	<action id="selectLmtAgrDetails" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.lmt.op.lmtagrdetails.SelectLmtAgrDetailsOp"/>
+			<transition dest="signPage" condition="($retValue='signPage')"/>
+			<transition dest="thirdpartyPage" condition="($retValue='thirdpartyPage')"/>
+			<transition dest="coopPage" condition="($retValue='coopPage')"/>
+			<transition dest="bizAreaPage" condition="($retValue='bizAreaPage')"/>
+			<transition dest="indusPage" condition="($retValue='indusPage')"/>
+			<transition dest="intBankPage" condition="($retValue='intBankPage')"/>
+			<transition dest="samePage" condition="($retValue='samePage')"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="signPage" url="biz01line/lmt/LmtAgrDetails/selectLmt/selectLmtAgrDetails.jsp" />
+			<jspView id="thirdpartyPage" url="biz01line/lmt/LmtAgrDetails/selectLmt/tabLmtSelectInfo.jsp" />
+			<jspView id="coopPage" url="biz01line/lmt/LmtAgrDetails/selectLmt/selectCoopLmtInfo.jsp" />
+			<jspView id="bizAreaPage" url="biz01line/lmt/LmtAgrDetails/selectLmt/selectBizAreaLmtInfo.jsp" />
+			<jspView id="indusPage" url="biz01line/lmt/LmtAgrDetails/selectLmt/selectIndusLmtInfo.jsp" />
+			<jspView id="intBankPage" url="biz01line/lmt/LmtAgrDetails/selectLmt/selectIntBankLmtInfo.jsp" />
+			<jspView id="samePage" url="biz01line/lmt/LmtAgrDetails/selectLmt/selectLmtsamePage.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 业务模块选中授信页面 分页 -->
+	<action id="pageSelectLmtAgrDetails" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.lmt.op.lmtagrdetails.SelectLmtAgrDetailsOp"/>
+			<transition dest="queryListRes"/>
+		</flowInvoker>
+		<outputViews>
+			<jsonView class="com.yucheng.cmis.view.JSONView" id="queryListRes">
+				<output>
+					<iColl id="LmtAgrDetailsList">
+						<kColl>
+							
+						</kColl>
+					</iColl>
+					<kColl id="pageInfo">
+						<field id="currentPage" />
+						<field id="maxLine" />
+						<field id="recordSize" />
+					</kColl>
+				</output>
+			</jsonView>
+		</outputViews>
+	</action>
+	
+	
+	<!--  实时查询授信台账或授信协议下占用额度   -->
+	<action id="searchLmtAmt" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.lmt.op.lmtagrdetails.SearchLmtAmtOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+            <view id="retPage" class="com.yucheng.cmis.view.JSONView">
+                <output class="com.ecc.emp.data.KeyedCollection">
+                    <field id="flag" class="com.ecc.emp.data.DataField"/>
+                    <field id="msg" class="com.ecc.emp.data.DataField"/>
+                    <field id="lmt_amt" class="com.ecc.emp.data.DataField"/>  <!-- 占用额度  -->
+                    <field id="grp_lmt_amt" class="com.ecc.emp.data.DataField"/> <!-- 集团占用额度 -->
+                    <field id="is_grp" class="com.ecc.emp.data.DataField"/> <!-- 集团占用额度 -->
+                </output>
+            </view>
+        </outputViews>
+	</action>
+	
+	<!-- 授信台账POP-不加任何过滤 -->
+	<action id="queryLmtAgrDetailsPop" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.lmt.op.lmtagrdetails.QueryLmtAgrDetailsPopOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="biz01line/lmt/LmtAgrDetails/queryLmtAgrDetailsPop.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 授信台账POP-多选 -->
+	<action id="queryMultiLmtAgrDetailsPop" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.lmt.op.lmtagrdetails.QueryLmtAgrDetailsPopOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="biz01line/lmt/LmtAgrDetails/queryMultiLmtAgrDetailsPop.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 授信台账POP-不加任何过滤  分页 -->
+	<action id="pageLmtAgrDetailsPop" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.lmt.op.lmtagrdetails.QueryLmtAgrDetailsPopOp"/>
+			<transition dest="queryListRes"/>
+		</flowInvoker>
+		<outputViews>
+			<jsonView class="com.yucheng.cmis.view.JSONView" id="queryListRes">
+				<output>
+					<iColl id="LmtAgrDetailsList">
+						<kColl>
+							
+						</kColl>
+					</iColl>
+					<kColl id="pageInfo">
+						<field id="currentPage" />
+						<field id="maxLine" />
+						<field id="recordSize" />
+					</kColl>
+				</output>
+			</jsonView>
+		</outputViews>
+	</action>
+	
+</actionDefines>
+
+
+

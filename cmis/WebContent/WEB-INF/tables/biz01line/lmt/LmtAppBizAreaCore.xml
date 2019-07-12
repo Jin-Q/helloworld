@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<LmtAppBizAreaCore.xml>
+	<TableModel id="LmtAppBizAreaCore" cnname="目标客户群（核心企业）" dbTableName="lmt_app_biz_area_core">
+		<Field id="serno" isPK="true" columnName="serno" cnname="业务编号" length="40" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="core_con_type" columnName="core_con_type" cnname="核心企业类型" length="4" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="year_sale_amt" columnName="year_sale_amt" cnname="年供货销售额" length="16" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="fore_debt_bal" columnName="fore_debt_bal" cnname="平均应收(付)账款余额" length="16" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="coop_year" columnName="coop_year" cnname="合作年限" length="6" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="other_cond" columnName="other_cond" cnname="其他准入条件" length="200" JDBCType="VARCHAR2" canBeNull="true"/>
+	</TableModel>
+</LmtAppBizAreaCore.xml>

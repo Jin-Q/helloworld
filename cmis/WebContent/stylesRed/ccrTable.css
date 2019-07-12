@@ -1,0 +1,24 @@
+@charset "utf-8";
+
+
+.hidden{display:none;}
+
+table.ccrTable{border:1px solid #b7b7b7;border-collapse:collapse;border-spacing:0;width:100%;}
+table.ccrTable{border:1px solid #b7b7b7;border-collapse:collapse;border-spacing:0;width:100%;}
+table.indexTable{border:none;border-collapse:collapse;border-spacing:0;width:100%;}
+tr.tableTitle {background-color:#c2c2c2;border:1px solid #b7b7b7;color:#020000;padding:5px 10px;text-align:left;}
+th {border:1px solid #b7b7b7;padding: 5px 10px;background-color: #c2c2c2;color: #020000;text-align: left;}
+tr.tableBody{background-color: #FFF;	}
+.titleSerno,bodySerno{text-align:"center";width:7%;}
+.titleGroup,bodyGroup{text-align:"center";width:15%;}
+.titleWeight,bodyWeight{text-align:"center";width:7%;display:none;}
+.titleIndex{width:19%;}
+.titleSelection{text-align:"center";width:47%;}
+.titleScore{text-align:"center";width:6%;}
+td.bodySerno{border:1px solid #b7b7b7;padding: 0px 3px;overflow: visible;}
+td.bodySerno,td.bodyGroup,td.bodyWeight{border:1px solid #b7b7b7;padding: 0px 3px;overflow: visible;}
+td.bodyIndex,td.bodySelection,td.bodyScore{border:1px solid #b7b7b7;padding: 0px 3px;overflow: visible;}
+.indexGroup{width:"77%";margin:0;padding:0;text-align:"left";}
+.bodyIndex{width:"26%";text-align:"left";}
+.bodySelection{width:"63%";text-align:"left";}
+.bodyScore{width:"2%"}

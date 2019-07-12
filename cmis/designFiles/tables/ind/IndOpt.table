@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<IndOpt.xml>
+	<TableModel id="IndOpt" pageSize="10" cnname="指标选项值配置" isPaged="true" dbTableName="ind_opt">
+		<TableInfo/>
+		<Field id="index_no" isPK="true" columnName="index_no" cnname="指标编号" length="8" JSPTag="text" canBeNull="false" JDBCType="CHAR"/>
+		<Field id="ind_desc" columnName="ind_desc" cnname="指标描述" length="200" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="index_value" isPK="true" columnName="index_value" cnname="指标选项值" length="10" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="value_score" columnName="value_score" cnname="选项值得分" length="16" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<OrderFields>index_no[desc];index_value[desc];</OrderFields>
+	</TableModel>
+</IndOpt.xml>

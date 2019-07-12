@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<WfHumanstates.xml>
+	<TableModel id="WfHumanstates" cnname="人员代办设置表" dbTableName="wf_humanstates">
+		<TableInfo/>
+		<Field id="pkey" isPK="true" columnName="pkey" cnname="PKEY" length="32" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="userid" columnName="userid" cnname="USERID" length="32" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="username" columnName="username" cnname="USERNAME" length="50" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="vicar" columnName="vicar" cnname="VICAR" length="32" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="vicarname" columnName="vicarname" cnname="VICARNAME" length="50" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="vicarioustype" dictname="WF_VICARIOUSTYPE" columnName="vicarioustype" cnname="0：默认指定 1：特殊指定" length="1" JSPTag="text" canBeNull="true" JDBCType="CHAR"/>
+		<Field id="vicarmemo" columnName="vicarmemo" cnname="VICARMEMO" length="500" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="onoff" columnName="onoff" cnname="0：启用 1：停用" length="1" JSPTag="text" canBeNull="true" JDBCType="CHAR"/>
+		<Field id="appid" columnName="appid" cnname="APPID" length="32" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="appname" columnName="appname" cnname="APPNAME" length="50" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="wfid" columnName="wfid" cnname="WFID" length="32" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="wfname" columnName="wfname" cnname="WFNAME" length="50" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="begintime" columnName="begintime" cnname="BEGINTIME" length="19" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="endtime" columnName="endtime" cnname="ENDTIME" length="19" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="orgid" columnName="orgid" cnname="ORGID" length="32" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="sysid" columnName="sysid" cnname="SYSID" length="32" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<OrderFields>pkey[desc];</OrderFields>
+	</TableModel>
+</WfHumanstates.xml>

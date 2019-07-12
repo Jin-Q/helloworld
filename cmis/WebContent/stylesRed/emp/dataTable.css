@@ -1,0 +1,114 @@
+#tableListDiv {
+	width: 100%;
+}
+
+table.emp_table {
+	margin-right: 10px;
+	padding-right: 10px;
+	width: 100%;
+	border-collapse: collapse;
+	border-spacing: 0;
+	border-width: 1px;
+	border-color: #b7b7b7;
+	border-style: solid;
+}
+
+table.emp_table th {
+	border-width: 1px;
+	border-color: #b7b7b7;
+	border-style: solid;
+	padding: 5px 10px;
+	background-color: #CBE0FD;
+	color: #040404;
+	white-space: nowrap;
+	text-align: left;
+}
+
+table.emp_table td {
+	border-width: 1px;
+	border-color: #b7b7b7;
+	border-style: solid;
+	padding: 0px 3px;
+	cursor: pointer; *
+	cursor: hand;
+}
+
+table.emp_table tr {
+	height: 25px;
+	overflow-y: hidden;
+}
+
+table.emp_table tr.row1 {
+	background-color: #EEE;
+}
+
+table.emp_table tr.row2 {
+	background-color: #FFF;
+}
+
+table.emp_table tr.selected {
+	background-color: #99CCFF; *
+	background-color: #97CAFF;
+	color: #fff;
+}
+
+td.cantdo { /*	background-color: #FFCCCC;*/
+	background: #99CCFF url(cantdo_bg.png) no-repeat; *
+	background: #97CAFF url(cantdo_bg.png) no-repeat;
+}
+
+div.contextmenu {
+	position: absolute;
+	background-color: #FFFFFF;
+	border: solid 1px #99CCFF;
+	padding: 5px 10px;
+	color: #AAA;
+}
+
+a.contextmenuitem {
+	display: block;
+	font-size: 12px;
+	color: #222;
+	padding: 2px 20px;
+	text-decoration: none;
+}
+
+a.contextmenuitem:hover {
+	background-color: #AADDFF;
+}
+
+a.contextmenudefault {
+	font-weight: bold;
+}
+
+a.disabled {
+	color: #AAA;
+}
+
+input.disabled {
+	color: #AAA;
+}
+
+.classifyTreeTitle {
+	display: block;
+	padding: 5px 10px;
+	text-align: center;
+	background-color: #99CCFF;
+	color: #FFF;
+	text-decoration: none;
+	font-size: 14px;
+}
+
+.classifyTreeDiv {
+	background-color: #FFFFFF;
+	border: solid 1px #99CCFF;
+	padding: 20px;
+	position: absolute;
+	display: none;
+	overflow: auto;
+}
+
+.classifyTreeDiv a {
+	display: block;
+	padding: 3px 0 3px 15px;
+}

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<MortExportReturnTax.xml>
+	<TableModel id="MortExportReturnTax" cnname="出口退税账户" dbTableName="mort_export_return_tax">
+		<Field id="return_tax_id" isPK="true" columnName="return_tax_id" cnname="出口退税账户编号" length="40" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="guaranty_no" columnName="guaranty_no" cnname="押品编号" length="40" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="return_tax_account" columnName="return_tax_account" cnname="出口退税专户帐号" length="40" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="affirm_org_type" columnName="affirm_org_type" cnname="退税金额确认机构" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="memo" columnName="memo" cnname="备注" length="1000" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="return_tax_value" columnName="return_tax_value" cnname="可退税金额(元)" length="16" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="return_tax_curr" columnName="return_tax_curr" cnname="可退税币种" length="6" JDBCType="VARCHAR2"/>
+	</TableModel>
+</MortExportReturnTax.xml>

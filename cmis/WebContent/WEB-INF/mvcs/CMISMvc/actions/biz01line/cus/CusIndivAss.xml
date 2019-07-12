@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actionDefines>
+	<classMap>
+		<map id="action" class="com.yucheng.cmis.ad.mvc.ADRequestController"/>
+		<map id="flowInvoker" class="com.yucheng.cmis.ad.mvc.ADFlowInvoker"/>
+		<map id="outputViews" class="java.util.HashMap"/>
+		<map id="output" class="com.ecc.emp.data.KeyedCollection"/>
+		<map id="kColl" class="com.ecc.emp.data.KeyedCollection"/>
+		<map id="iColl" class="com.ecc.emp.data.IndexedCollection"/>
+		<map id="field" class="com.ecc.emp.data.DataField"/>
+	</classMap>
+	
+	<!-- 鑾峰彇鎿嶄綔涓婚〉闈� -->
+	<action id="queryCusIndivAssList" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.cus.op.cusindivass.QueryCusIndivAssListOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="biz01line/cus/cusindiv/CusIndivAss/queryCusIndivAssList.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 鑾峰緱缂栬緫椤甸潰 -->
+	<action id="getCusIndivAssUpdatePage" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation updateCheck="false" class="com.yucheng.cmis.biz01line.cus.op.cusindivass.QueryCusIndivAssDetailOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="biz01line/cus/cusindiv/CusIndivAss/updateCusIndivAssRecord.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 鏇存柊璁板綍 -->
+	<action id="updateCusIndivAssRecord" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.cus.op.cusindivass.UpdateCusIndivAssRecordOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<view id="retPage" class="com.yucheng.cmis.view.JSONView">
+				<output class="com.ecc.emp.data.KeyedCollection">
+					<field id="flag" class="com.ecc.emp.data.DataField"/>
+				</output>
+			</view>
+		</outputViews>
+	</action>
+	
+	<!-- 鑾峰緱鏌ョ湅椤甸潰 -->
+	<action id="getCusIndivAssViewPage" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.cus.op.cusindivass.QueryCusIndivAssDetailOp"/>
+			<transition dest="updatePage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="updatePage" url="biz01line/cus/cusindiv/CusIndivAss/queryCusIndivAssDetail.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 鑾峰緱鏂板椤甸潰 -->
+	<action id="getCusIndivAssAddPage" type="normal" checkSession="true" >
+		<jspView id="addPage" url="biz01line/cus/cusindiv/CusIndivAss/addCusIndivAssRecord.jsp"/>
+	</action>
+	
+	<!-- 鏂板璁板綍 -->
+	<action id="addCusIndivAssRecord" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.cus.op.cusindivass.AddCusIndivAssRecordOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<view id="retPage" class="com.yucheng.cmis.view.JSONView">
+				<output class="com.ecc.emp.data.KeyedCollection">
+					<field id="flag" class="com.ecc.emp.data.DataField"/>
+				</output>
+			</view>
+		</outputViews>
+	</action>	
+	
+	<!-- 鍒犻櫎璁板綍 -->
+	<action id="deleteCusIndivAssRecord" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.cus.op.cusindivass.DeleteCusIndivAssRecordOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<view id="retPage" class="com.yucheng.cmis.view.JSONView">
+				<output class="com.ecc.emp.data.KeyedCollection">
+					<field id="flag" class="com.ecc.emp.data.DataField"/>
+				</output>
+			</view>
+		</outputViews>
+	</action>
+	
+	<!-- 鍒嗛〉鏌ヨ璁板綍鍒楄〃 -->
+		<action id="pageCusIndivAssQuery" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.cus.op.cusindivass.QueryCusIndivAssListOp"/>
+			<transition dest="queryListRes"/>
+		</flowInvoker>
+		<outputViews>
+			<jsonView class="com.yucheng.cmis.view.JSONView" id="queryListRes">
+				<output>
+					<iColl id="CusIndivAssList">
+						<kColl>
+							<field id="cus_id" />
+							<field id="indiv_ass_id" />
+							<field id="indiv_ass_type" />
+							<field id="indiv_ass_name" />
+							<field id="indiv_ass_plr" />
+							<field id="indiv_ass_num" />
+							<field id="indiv_ass" />
+						</kColl>
+					</iColl>
+					<kColl id="pageInfo">
+						<field id="currentPage" />
+						<field id="maxLine" />
+						<field id="recordSize" />
+					</kColl>
+				</output>
+			</jsonView>
+		</outputViews>
+	</action>
+	
+</actionDefines>
+
+
+

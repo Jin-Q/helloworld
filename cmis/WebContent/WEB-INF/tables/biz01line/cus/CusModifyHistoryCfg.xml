@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<CusModifyHistoryCfg.xml>
+	<TableModel id="CusModifyHistoryCfg" cnname="客户修改历史配置" dbTableName="cus_modify_history_cfg">
+		<Field id="model_id" isPK="true" columnName="model_id" cnname="表名" length="30" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="input_id" columnName="input_id" cnname="登录人" length="30" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="input_br_id" columnName="input_br_id" cnname="登录机构" length="20" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="cfg_column" columnName="cfg_column" cnname="配置列" length="1500" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="input_date" columnName="input_date" cnname="登记日期" length="10" JDBCType="VARCHAR2"/>
+	</TableModel>
+</CusModifyHistoryCfg.xml>

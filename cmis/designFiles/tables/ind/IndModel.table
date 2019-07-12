@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<IndModel.xml>
+	<TableModel id="IndModel" pageSize="10" cnname="模型信息" isPaged="true" dbTableName="ind_model">
+		<TableInfo/>
+		<Field id="model_no" isPK="true" columnName="model_no" cnname="模型编号" length="8" JSPTag="text" canBeNull="false" JDBCType="CHAR"/>
+		<Field id="model_name" columnName="model_name" cnname="模型名称" length="60" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="rating_rules" columnName="rating_rules" cnname="模型评分规则" length="100" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="remark" columnName="remark" cnname="备注" length="20" JSPTag="textarea" canBeNull="true" JDBCType="VARCHAR2"/>
+		<OrderFields>model_no[desc];</OrderFields>
+		<One2MultiRef toField="model_no" refModelId="IndModelGroup" fromField="model_no"/>
+		<ConditionFields>model_no;model_name;</ConditionFields>
+		<FilterFields>model_no;model_name;com_biz_kind;com_opt_scale;cus_type;com_cus_kind;use_flag;</FilterFields>
+		<Field id="input_id" columnName="input_id" cnname="登记人" length="20" JSPTag="text" JDBCType="VARCHAR2"/>
+		<Field id="input_date" columnName="input_date" cnname="登记日期" length="10" JSPTag="text" JDBCType="VARCHAR2"/>
+		<Field id="input_br_id" columnName="input_br_id" cnname="登记机构" length="20" JSPTag="text" JDBCType="VARCHAR2"/>
+		<Field id="ceiling_limit" columnName="ceiling_limit" cnname="得分上限" length="16" JSPTag="text" JDBCType="NUMBER"/>
+		<Field id="lower_limit" columnName="lower_limit" cnname="得分下限" length="16" JSPTag="text" JDBCType="NUMBER"/>
+		<Field id="biz_belg" dictname="STD_ZB_BIZ_BELG" columnName="biz_belg" cnname="业务归属" JSPTag="select" length="5" JDBCType="VARCHAR2"/>
+	</TableModel>
+</IndModel.xml>

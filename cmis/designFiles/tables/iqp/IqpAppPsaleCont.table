@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<IqpAppPsaleCont.xml>
+	<TableModel id="IqpAppPsaleCont" pageSize="15" cnname="购销合同申请表" isPaged="true" dbTableName="iqp_app_psale_cont">
+		<TableInfo/>
+		<Field id="serno" columnName="serno" cnname="业务编号" length="40" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="psale_cont" isPK="true" columnName="psale_cont" cnname="购销合同编号" length="40" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="buyer_cus_id" columnName="buyer_cus_id" cnname="买方客户码" length="30" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="barg_cus_id" columnName="barg_cus_id" cnname="卖方客户码" length="30" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="cont_amt" columnName="cont_amt" cnname="合同金额" length="16" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="start_date" columnName="start_date" cnname="起始到期" length="10" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="end_date" columnName="end_date" cnname="到期日期" length="10" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="commo_name" columnName="commo_name" cnname="商品名称" length="100" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="qnt" columnName="qnt" cnname="数量" length="16" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="unit_price" columnName="unit_price" cnname="单价（元）" length="16" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="total" columnName="total" cnname="总价值（元）" length="16" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="memo" columnName="memo" cnname="备注" length="500" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="input_id" columnName="input_id" cnname="登记人" length="20" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="input_br_id" columnName="input_br_id" cnname="登记机构" length="20" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="input_date" columnName="input_date" cnname="登记日期" length="10" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="qnt_unit" columnName="qnt_unit" cnname="数量单位" length="2" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<OrderFields>psale_cont[desc];</OrderFields>
+		<FilterFields>serno;psale_cont;buyer_cus_id;barg_cus_id;cont_amt;input_id;input_br_id;input_date;</FilterFields>
+		<Field id="mem_cus_id" columnName="mem_cus_id" cnname="客户码" JSPTag="text" length="30" JDBCType="VARCHAR2"/>
+	</TableModel>
+</IqpAppPsaleCont.xml>

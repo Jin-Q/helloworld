@@ -1,0 +1,66 @@
+A{font-size:9pt; text-decoration: none}
+A:link {font-size:9pt; text-decoration: none; color:#0000ff;}
+A:visited {font-size:9pt; text-decoration: none; color:#0000ff;}
+A:hover {font-size:9pt; text-decoration: underline;}
+BODY{font-size:9pt;background:url(../../images/workflow/main_bg.jpg) repeat-x fixed;}
+.button2
+{
+    font-size: 9pt;
+    color: #000000;
+    padding: 2px 0px 0px 0px;
+	background-color:#F4F9FF;    
+    height: 19px;
+	BORDER: #B7BAC1 1pt solid;
+}
+.button {
+	FONT-SIZE:12px;
+	CURSOR:hand;
+	COLOR:#4B4B4B; 
+    BORDER: #A7A6AA 1px solid;
+	background: url(../../images/workflow/button_Bg.jpg) repeat-x; height:24px; padding:0 5px;	
+}
+.title{FONT-WEIGHT:bold;FONT-SIZE:22px;COLOR: #000066;LINE-HEIGHT:200%;FONT-FAMILY: '宋体';text-align: center;}
+.tablemain {background: #fff;width:100%; border:1px solid #d1d1d1; border-right:none;}
+.tablemain td { height: 31px; border:1px solid #d1d1d1; border-top:none; border-left:none;}
+.trtitle{FONT-WEIGHT: bold;FONT-SIZE: 12px;COLOR: #000;FONT-FAMILY: '宋体';BACKGROUND: url(../../images/workflow/table_title_bg.jpg) repeat-x;text-align: center;}
+.trclass {background-color: #ffffff;FONT-SIZE: 12px;COLOR: #555;FONT-FAMILY: 宋体;height:20px}
+.trclass2 {background-color: #f6f6f6;FONT-SIZE: 12px;COLOR: #555;FONT-FAMILY: 宋体;;height:20px}
+.trclass3 {background:#d6f2fd url(../../images/workflow/td_over_bg.jpg) repeat-x;FONT-SIZE: 12px;COLOR: #000;FONT-FAMILY: 宋体;cursor:pointer;}
+
+.tablemain2 {background: #fff;width:95%; border:1px solid #d1d1d1; border-right:none;}
+.tablemain2 td { height: 31px; border:1px solid #d1d1d1; border-top:none; border-left:none;}
+.tablemain2 .trtitle{FONT-WEIGHT: bold;FONT-SIZE: 12px;COLOR: #000;FONT-FAMILY: '宋体';BACKGROUND: url(../../images/workflow/table_title_bg.jpg) repeat-x;text-align: center;}
+
+.selectNextNodeStyle {
+	margin: 20px;
+}
+.selectNextNodeStyle1 {
+	margin-top: 20px;
+	margin-left: 20px;
+	margin-bottom: 2px;
+}
+.selectNextNodeStyle2 {
+	margin-top: 2px;
+	margin-left: 20px;
+	margin-bottom: 20px;
+}
+
+
+.tdtitle{
+	font-weight:700;
+	font-size: 9pt;
+    color: #000000;
+    padding: 5px 5px 5px 5px;
+	background-color:#e3e4e3;    
+    height: 20px;
+	BORDER: #B7BAC1 0pt solid;
+}
+.td{
+	font-size: 9pt;
+    color: #000000;
+    padding: 5px 5px 5px 5px;
+	background-color:#FFFFFF;    
+    height: 20px;
+	BORDER: #B7BAC1 0pt solid;
+}
+td{padding-top:3px;padding-left:5px;padding-right:2px;padding-bottom:2px;font-size:9pt;}

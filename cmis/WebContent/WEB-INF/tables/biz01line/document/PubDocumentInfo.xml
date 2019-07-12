@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<PubDocumentInfo.xml>
+	<TableModel id="PubDocumentInfo" cnname="PUB_DOCUMENT_INFO" dbTableName="pub_document_info">
+		<Field id="file_pk" isPK="true" columnName="file_pk" cnname="文件PK" length="32" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="file_name" columnName="file_name" cnname="文件名称" length="100" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="file_path" columnName="file_path" cnname="文件路径" length="1000" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="file_size" columnName="file_size" cnname="文件大小" length="0" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="file_unit" columnName="file_unit" cnname="文件大小单位" length="100" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="file_memo" columnName="file_memo" cnname="文件描述" length="2000" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="create_date" columnName="create_date" cnname="上传日期" length="10" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="create_man" columnName="create_man" cnname="上传人" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="create_org" columnName="create_org" cnname="上传机构" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="file_type" columnName="file_type" cnname="文档业务类型" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="serno" columnName="serno" cnname="业务流水号" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+	</TableModel>
+</PubDocumentInfo.xml>

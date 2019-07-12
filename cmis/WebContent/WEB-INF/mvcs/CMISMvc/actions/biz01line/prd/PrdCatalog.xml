@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actionDefines>
+	<classMap>
+		<map id="action" class="com.yucheng.cmis.ad.mvc.ADRequestController"/>
+		<map id="flowInvoker" class="com.yucheng.cmis.ad.mvc.ADFlowInvoker"/>
+		<map id="outputViews" class="java.util.HashMap"/>
+		<map id="output" class="com.ecc.emp.data.KeyedCollection"/>
+		<map id="kColl" class="com.ecc.emp.data.KeyedCollection"/>
+		<map id="iColl" class="com.ecc.emp.data.IndexedCollection"/>
+		<map id="field" class="com.ecc.emp.data.DataField"/>
+	</classMap>
+	
+	<!-- 获取操作主页面 -->
+	<action id="queryPrdCatalogList" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.prd.op.prdcatalog.QueryPrdCatalogListOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="biz01line/prd/PrdCatalog/queryPrdCatalogList.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 获得编辑页面 -->
+	<action id="getPrdCatalogUpdatePage" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation updateCheck="true" class="com.yucheng.cmis.biz01line.prd.op.prdcatalog.QueryPrdCatalogDetailOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="biz01line/prd/PrdCatalog/updatePrdCatalogRecord.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 更新记录 -->
+	<action id="updatePrdCatalogRecord" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.prd.op.prdcatalog.UpdatePrdCatalogRecordOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="operationResult.jsp?url=queryPrdCatalogList.do" />
+		</outputViews>
+	</action>
+	
+	<!-- 获得查看页面 -->
+	<action id="getPrdCatalogViewPage" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.prd.op.prdcatalog.QueryPrdCatalogDetailOp"/>
+			<transition dest="updatePage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="updatePage" url="biz01line/prd/PrdCatalog/queryPrdCatalogDetail.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 获得新增页面 -->
+	<action id="getPrdCatalogAddPage" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.prd.op.prdcatalog.GetPrdCatalogAddPageOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="biz01line/prd/PrdCatalog/addPrdCatalogRecord.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 新增记录 -->
+	<action id="addPrdCatalogRecord" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.prd.op.prdcatalog.AddPrdCatalogRecordOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="operationResult.jsp?url=queryPrdCatalogList.do" />
+		</outputViews>
+	</action>	
+	
+	<!-- 删除记录 -->
+	<action id="deletePrdCatalogRecord" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.prd.op.prdcatalog.DeletePrdCatalogRecordOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="operationResult.jsp?url=queryPrdCatalogList.do" />
+		</outputViews>
+	</action>
+	
+	<!-- 分页查询记录列表 -->
+		<action id="pagePrdCatalogQuery" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.prd.op.prdcatalog.QueryPrdCatalogListOp"/>
+			<transition dest="queryListRes"/>
+		</flowInvoker>
+		<outputViews>
+			<jsonView class="com.yucheng.cmis.view.JSONView" id="queryListRes">
+				<output>
+					<iColl id="PrdCatalogList">
+						<kColl>
+							<field id="catalogid" />
+							<field id="catalogname" />
+							<field id="cataloglevel" />
+							<field id="supcatalogid" />
+							<field id="comments" />
+							<field id="inputid" />
+							<field id="inputid_displayname" />
+							<field id="inputdate" />
+							<field id="orgid" />
+							<field id="orgid_displayname" />
+						</kColl>
+					</iColl>
+					<kColl id="pageInfo">
+						<field id="currentPage" />
+						<field id="maxLine" />
+						<field id="recordSize" />
+					</kColl>
+				</output>
+			</jsonView>
+		</outputViews>
+	</action>
+	
+	<!-- 获得产品目录层级页面 -->
+	<action id="getPrdCatalogLevelPage" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.prd.op.prdcatalog.GetPrdCatalogLevelPageOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="biz01line/prd/PrdCatalog/getPrdCatalogLevelPage.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 获得产品目录树结构 -->
+	<action id="showDicTree_PRD" type="normal" checkSession="false">
+		<jspView id="showTreeDic.jsp" url="biz01line/prd/PrdCatalog/showTreeDic_PRD.jsp"/>
+	</action>
+	
+	<action id="getPrdJSONTree" type="normal" checkSession="false">
+		
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.prd.prdtools.tree.CMISShowTreePrd"/>
+			<transition dest="getDPrdJSONTree"/>
+		</flowInvoker>
+		<outputViews class="java.util.HashMap">
+			<jspView id="getDPrdJSONTree" class="com.yucheng.cmis.view.ReturnDataView"/>
+		</outputViews>
+		<modelUpdater class="com.ecc.emp.ad.mvc.ADModelUpdater"/>
+	</action>
+	
+	<!-- 获得单选产品树形结构图-->
+	<!--
+	<action id="showPrdTreeDetails" type="normal" checkSession="true">
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.prd.op.prdcatalog.ShowPrdTreeDetailsOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="biz01line/prd/PrdCatalog/showPrdTree.jsp" />
+		</outputViews>
+	</action>
+	-->
+	<action id="getPrdDetailsJsonTree" type="normal" checkSession="false">		
+		<flowInvoker>         
+			<operation class="com.yucheng.cmis.biz01line.prd.prdtools.tree.CMISShowPrdTreeDetails"/>
+			<transition dest="getDPrdJSONTree"/>
+		</flowInvoker>
+		<outputViews class="java.util.HashMap" >
+			<jspView id="getDPrdJSONTree" class="com.yucheng.cmis.view.ReturnDataView"/>
+		</outputViews>
+		<modelUpdater class="com.ecc.emp.ad.mvc.ADModelUpdater"/>
+	</action>
+	
+	<!-- 获得多选产品树形结构图 -->
+	<action id="showPrdCheckTreeDetails" type="normal" checkSession="true">
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.prd.op.prdcatalog.ShowPrdTreeDetailsOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="biz01line/prd/PrdCatalog/showCheckTree.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 获得所有目录层级产品树json串 -->
+	<action id="showAllPrdTree" type="normal" checkSession="false">		
+		<flowInvoker>         
+			<operation class="com.yucheng.cmis.biz01line.prd.prdtools.tree.CMISShowPrdTreeOp"/>
+			<transition dest="getDPrdJSONTree"/>
+		</flowInvoker>
+		<outputViews class="java.util.HashMap" >
+			<jspView id="getDPrdJSONTree" class="com.yucheng.cmis.view.ReturnDataView"/>
+		</outputViews>
+		<modelUpdater class="com.ecc.emp.ad.mvc.ADModelUpdater"/>
+	</action>
+	<!-- 获得加载所有产品目录层级树形图-->
+	<action id="showPrdTreeDetails" type="normal" checkSession="true">
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.prd.op.prdcatalog.ShowPrdTreeDetailsOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="biz01line/prd/PrdCatalog/showAllPrdTree.jsp" />
+		</outputViews>
+	</action>
+</actionDefines>
+
+
+

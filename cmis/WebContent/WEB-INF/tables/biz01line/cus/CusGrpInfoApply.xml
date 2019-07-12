@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<CusGrpInfoApply.xml>
+	<TableModel id="CusGrpInfoApply" cnname="集团客户申请基本信息" dbTableName="cus_grp_info_apply">
+		<Field id="serno" isPK="true" columnName="serno" cnname="申请流水号" length="40" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="grp_no" isPK="false" columnName="grp_no" cnname="集团编号" length="30" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="grp_name" columnName="grp_name" cnname="集团名称" length="60" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="parent_cus_id" columnName="parent_cus_id" cnname="母公司客户号" length="30" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="grp_finance_type" columnName="grp_finance_type" cnname="集团融资形式" length="2" JDBCType="CHAR" canBeNull="true"/>
+		<Field id="grp_cus_type" isEncrypted="false" columnName="grp_cus_type" cnname="集团客户类型" length="10" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="grp_detail" columnName="grp_detail" cnname="集团情况说明" length="250" JDBCType="VARCHAR2" canBeNull="true"/>
+		<One2MultiRef toField="grp_no" refModelId="CusGrpMemberApply" fromField="grp_no"/>
+		<Field id="is_change" columnName="is_change" cnname="是否变更标志" length="10" JDBCType="CHAR" canBeNull="false"/>
+		<Field id="manager_br_id" columnName="manager_br_id" cnname="管理机构" length="20" JDBCType="VARCHAR2"/>
+		<Field id="manager_id" columnName="manager_id" cnname="责任人" length="20" JDBCType="VARCHAR2"/>
+		<Field id="input_id" columnName="input_id" cnname="登记人" length="20" JDBCType="VARCHAR2"/>
+		<Field id="input_br_id" columnName="input_br_id" cnname="申请机构" length="20" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="input_date" columnName="input_date" cnname="申请日期" length="10" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="approve_status" columnName="approve_status" cnname="审批状态" length="3" JDBCType="CHAR" canBeNull="true"/>
+	</TableModel>
+</CusGrpInfoApply.xml>

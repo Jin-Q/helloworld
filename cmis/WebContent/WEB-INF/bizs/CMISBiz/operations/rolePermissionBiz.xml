@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<SelfDefinedOp.xml id="rolePermissionBiz">
+	<EMPBusinessLogic id="rolePermissionBiz"
+		operationContext="rolePermissionBizSrvCtx">
+		<operation id="getRolePermission" name="获得特定角色、特定资源的权限信息"
+			op="getRolePermission" class="com.yucheng.cmis.permission.CMISRolePermissionOperation" />
+
+		<operation id="updateRolePermission" name="修改特定角色、特定资源的权限信息"
+			op="updateRolePermission" class="com.yucheng.cmis.permission.CMISRolePermissionOperation" />
+
+		<operation id="generateUserFile" name="生成特定用户的权限文件" op="generateUserFile"
+			class="com.yucheng.cmis.permission.CMISRolePermissionOperation" />
+
+	</EMPBusinessLogic>
+	<context id="rolePermissionBizSrvCtx" type="op">
+		<refKColl refId="rolePermissionBizSrvData" />
+	</context>
+	<kColl id="rolePermissionBizSrvData">
+		<field id="errorCode" />
+		<field id="errorMsg" />
+	</kColl>
+</SelfDefinedOp.xml>

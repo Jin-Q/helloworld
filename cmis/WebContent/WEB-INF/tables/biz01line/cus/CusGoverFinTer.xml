@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<CusGoverFinTer.xml>
+	<TableModel id="CusGoverFinTer" cnname="政府融资平台信息" dbTableName="Cus_gover_fin_ter">
+		<Field id="serno" isPK="true" columnName="serno" cnname="申请流水号" length="40" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="cus_id" columnName="cus_id" cnname="客户号" length="30" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="gover_fin_loan_type" columnName="gover_fin_loan_type" cnname="政府融资贷款类型" length="10" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="cash_cover_rate" columnName="cash_cover_rate" cnname="现金流覆盖率" length="16" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="cash_cover_degree" columnName="cash_cover_degree" cnname="现金流覆盖程度" length="50" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="secu_ln_bal" columnName="secu_ln_bal" cnname="担保贷款余额" length="16" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="crd_ln_bal" columnName="crd_ln_bal" cnname="信用贷款余额" length="16" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="land_property_usufruct_bal" columnName="land_property_usufruct_bal" cnname="土地收益权质押贷款余额" length="16" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="land_mortgage_bal" columnName="land_mortgage_bal" cnname="其中土地抵押贷款余额" length="16" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="guar_gap" columnName="guar_gap" cnname="担保缺口" length="16" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="crd_ln_guar_gap" columnName="crd_ln_guar_gap" cnname="对信用贷款的保证估值缺口" length="16" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="secu_ln_gap" columnName="secu_ln_gap" cnname="对担保贷款的缺口" length="16" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="fina_guar_gap" columnName="fina_guar_gap" cnname="其中增加财务政担保后的估值缺口" length="16" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="manager_br_id" columnName="manager_br_id" cnname="管理机构" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="manager_id" columnName="manager_id" cnname="责任人" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="input_id" columnName="input_id" cnname="登记人" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="input_date" columnName="input_date" cnname="登记日期" length="10" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="input_br_id" columnName="input_br_id" cnname="登记机构" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="approve_status" columnName="approve_status" cnname="审批状态" length="3" JDBCType="CHAR" canBeNull="true"/>
+		<Field id="gover_ter_type" columnName="gover_ter_type" cnname="平台类别" length="10" JDBCType="VARCHAR2"/>
+		<Field id="move_date" columnName="move_date" cnname="调出平台时间" length="10" JDBCType="VARCHAR2"/>
+	</TableModel>
+</CusGoverFinTer.xml>

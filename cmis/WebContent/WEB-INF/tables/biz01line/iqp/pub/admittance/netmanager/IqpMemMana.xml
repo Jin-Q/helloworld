@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<IqpMemMana.xml>
+	<TableModel id="IqpMemMana" cnname="成员管理" dbTableName="iqp_mem_mana">
+		<Field id="net_agr_no" isPK="true" columnName="net_agr_no" cnname="网络编号" length="40" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="mem_cus_id" isPK="true" columnName="mem_cus_id" cnname="成员客户码" length="30" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="mem_manuf_type" columnName="mem_manuf_type" cnname="成员厂商类别" length="2" JDBCType="CHAR" canBeNull="true"/>
+		<Field id="term" columnName="term" cnname="在途期限" length="10" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="lmt_type" columnName="lmt_type" cnname="授信业务种类" length="40" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="status" columnName="status" cnname="状态" length="1" JDBCType="CHAR" canBeNull="true"/>
+		<Field id="lmt_quota" columnName="lmt_quota" cnname="授信限额" length="16" JDBCType="NUMBER"/>
+	</TableModel>
+</IqpMemMana.xml>

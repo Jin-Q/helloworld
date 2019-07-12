@@ -1,0 +1,562 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<S>
+<!-- 获得系统中所有数据集合,快捷查询，字段间关系为and，查询方式为精确查询，需与前端like一致 -->
+<SQL id="queryRscTaskInfoLike" parameterClass="java.util.HashMap" resultClass="com.ecc.emp.data.KeyedCollection" onlyReturnFirst="false">
+  <SELECT>
+  <![CDATA[
+  	select 
+ 	(select s.cnname from s_dic s where s.opttype='STD_ZB_NINE_SORT' and s.enname = r.pre_class_rst)  as pre_class_rst_cname,
+  	 R.SERNO,
+               R.BILL_NO,
+               R.CUS_ID,
+               R.PRD_ID,
+               R.CUR_TYPE,
+               R.LOAN_AMT,
+               R.LOAN_BALANCE,
+               R.PRE_CLASS_RST,
+               R.MODEL_CLASS_RST,
+               R.CLASS_RST,
+               R.CLASS_DATE,
+               R.Input_Id,
+               R.Input_Br_Id,
+               R.RISK_CLS_STATUS,
+               R.MODEL_EVAL_MAC,
+               R.MODEL_CLASS_REA,
+               Y.CLASS_ADJUST_RST,
+               '' as REMARK from RSC_TASK_INFO r  LEFT JOIN (SELECT * FROM RSC_TASK_INFO_SUB WHERE 1=1 ${condition12}) Y ON y.serno = r.serno  where 1=1   ${condition1}  ${condition2}  ${condition3} ${condition4}  ${condition5}  ${condition6}   ${condition7}  ${condition8} ${condition9}   ${condition10}  ${condition11} ${condition13} ${condition14} 	 order by r.cus_id,r.class_date   ]]>
+  </SELECT>
+    <OPT_CONDITION id="condition1" relationType="and">
+	  <![CDATA[
+	  r.bill_no like ${bill_no} 
+	  ]]> 
+  </OPT_CONDITION>
+    <OPT_CONDITION id="condition2" relationType="and">
+	  <![CDATA[
+	  r.cus_id like ${cus_id} 
+	  ]]> 
+  </OPT_CONDITION>
+    <OPT_CONDITION id="condition3" relationType="and">
+	  <![CDATA[
+	  r.pre_class_rst like ${pre_class_rst} 
+	  ]]> 
+  </OPT_CONDITION>
+      <OPT_CONDITION id="condition4" relationType="and">
+	  <![CDATA[
+	  r.class_date like ${class_date} 
+	  ]]> 
+  </OPT_CONDITION>
+      <OPT_CONDITION id="condition5" relationType="and">
+	  <![CDATA[
+	  r.input_br_id in (${input_br_id}) 
+	  ]]> 
+  </OPT_CONDITION>
+        <OPT_CONDITION id="condition6" relationType="and">
+	  <![CDATA[
+	  r.risk_cls_status in (${risk_cls_status}) 
+	  ]]> 
+  </OPT_CONDITION>
+  <OPT_CONDITION id="condition7" relationType="and">
+	  <![CDATA[
+	${doubt} = '1' and EXISTS(SELECT 1 FROM rsc_task_info_sub t WHERE t.serno = r.serno GROUP BY  t.serno,t.class_adjust_rst
+           HAVING t.class_adjust_rst <> r.model_class_rst )
+	  ]]> 
+  </OPT_CONDITION>
+  <OPT_CONDITION id="condition8" relationType="and">
+	  <![CDATA[
+	${nodoubt} = '1' and  NOT EXISTS(SELECT 1 FROM rsc_task_info_sub t WHERE t.serno = r.serno GROUP BY  t.serno,t.class_adjust_rst
+           HAVING t.class_adjust_rst <> r.model_class_rst )
+	  ]]> 
+  </OPT_CONDITION>
+   <OPT_CONDITION id="condition9" relationType="and">
+	  <![CDATA[
+	  r.input_id like ${input_id} 
+	  ]]> 
+  </OPT_CONDITION>
+  <OPT_CONDITION id="condition10" relationType="and">
+	  <![CDATA[
+	  (r.input_id =  ${usr_cde} or r.input_br_id = ${bch_cde}  or r.input_br_id in (SELECT organno FROM S_ORG WHERE  suporganno = ${bch_cde} AND organno <> suporganno))
+	  ]]> 
+  </OPT_CONDITION>
+  <OPT_CONDITION  id="condition11" relationType="and">
+  	<![CDATA[
+  	  ${yesduty} = '1' and  NOT EXISTS (SELECT 1
+          FROM RSC_TASK_INFO K
+         WHERE  K.RISK_CLS_STATUS IN (${risk_cls_status})
+           		AND K.CUS_ID IN (SELECT y.CUS_ID
+  						FROM (SELECT sub.CLASS_ADJUST_RST, t.cus_id
+          						FROM (select *
+                  			FROM (SELECT x.*,
+                               ROW_NUMBER() OVER(PARTITION BY x.serno ORDER BY x.class_date DESC) RN
+                          FROM RSC_TASK_INFO_SUB x
+                         WHERE x.identy_duty <> ${identy_duty}) z where z.rn = 1  ) sub,RSC_TASK_INFO T WHERE sub.SERNO = T.SERNO
+          				AND (T.INPUT_ID = ${usr_cde} OR
+                  			T.INPUT_BR_ID = ${bch_cde} OR
+                  		T.INPUT_BR_ID IN
+                  		(SELECT organno FROM S_ORG
+                  		WHERE  suporganno = ${bch_cde}
+                		AND organno <> suporganno))
+           				AND t.RISK_CLS_STATUS IN (${risk_cls_status})
+         				GROUP BY sub.CLASS_ADJUST_RST, T.CUS_ID) y
+						HAVING count(1) > 1
+ 						GROUP BY y.CUS_ID)
+           		AND (K.input_br_id in (SELECT organno FROM S_ORG WHERE   suporganno = ${bch_cde} AND suporganno <> organno) or K.input_br_id = ${bch_cde} )                 
+           		AND K.CUS_ID = R.CUS_ID)
+           		   
+  	]]>
+  </OPT_CONDITION>
+  <OPT_CONDITION id="condition12" relationType="and">
+	  <![CDATA[
+	 identy_duty =  ${identy_duty} 
+	  ]]> 
+  </OPT_CONDITION>
+  <OPT_CONDITION id="condition13" relationType="and">
+	  <![CDATA[
+	  ${noduty} = '1' and  NOT EXISTS (SELECT 1
+          FROM RSC_TASK_INFO K
+         WHERE  K.RISK_CLS_STATUS IN (${risk_cls_status})
+           		AND K.CUS_ID IN (SELECT y.CUS_ID
+  						FROM (SELECT sub.CLASS_ADJUST_RST, t.cus_id
+          						FROM (select *
+                  			FROM (SELECT x.*,
+                               ROW_NUMBER() OVER(PARTITION BY x.serno ORDER BY x.class_date DESC) RN
+                          FROM RSC_TASK_INFO_SUB x
+                         WHERE x.identy_duty <> ${identy_duty}) z where z.rn = 1  ) sub,RSC_TASK_INFO T WHERE sub.SERNO = T.SERNO
+           				AND t.RISK_CLS_STATUS IN (${risk_cls_status})
+         				GROUP BY sub.CLASS_ADJUST_RST, T.CUS_ID) y
+						HAVING count(1) > 1
+ 						GROUP BY y.CUS_ID)
+           		AND K.CUS_ID = R.CUS_ID)
+	  ]]> 
+  </OPT_CONDITION>
+   <OPT_CONDITION id="condition14" relationType="and">
+	  <![CDATA[
+	 (r.input_br_id in (SELECT organno FROM s_org WHERE  suporganno = ${br_id} AND organno <> suporganno) or r.input_br_id = ${br_id}) 
+	  ]]> 
+  </OPT_CONDITION>
+  </SQL>
+  
+  
+  <!-- 获异常风险分类列表获取 -->
+<SQL id="queryRscTaskInfoAnomalyClass" parameterClass="java.util.HashMap" resultClass="com.ecc.emp.data.KeyedCollection" onlyReturnFirst="false">
+  <SELECT>
+  <![CDATA[
+  	select 
+ 	(select s.cnname from s_dic s where s.opttype='STD_ZB_NINE_SORT' and s.enname = r.pre_class_rst)  as pre_class_rst_cname, 
+  	 R.SERNO,
+               R.BILL_NO,
+               R.CUS_ID,
+               R.PRD_ID,
+               R.CUR_TYPE,
+               R.LOAN_AMT,
+               R.LOAN_BALANCE,
+               R.PRE_CLASS_RST,
+               R.MODEL_CLASS_RST,
+               R.PRE_CLASS_DATE,
+               R.CLASS_RST,
+               R.CLASS_DATE,
+               R.Input_Id,
+               R.Input_Br_Id,
+               R.RISK_CLS_STATUS,
+               R.MODEL_EVAL_MAC,
+               R.MODEL_CLASS_REA,
+               Y.CLASS_ADJUST_RST,
+               '' as REMARK from RSC_TASK_INFO r  LEFT JOIN (SELECT * FROM RSC_TASK_INFO_SUB WHERE identy_duty =  ${identy_duty} ) Y ON y.serno = r.serno where 1=1   ${condition1}  ${condition2}  ${condition3} ${condition4}  ${condition5}  ${condition6}   ${condition7}  ${condition8} ${condition9}  ${condition10} 	 order by r.cus_id,r.class_date   ]]>
+  </SELECT>
+    <OPT_CONDITION id="condition1" relationType="and">
+	  <![CDATA[
+	  r.bill_no like ${bill_no} 
+	  ]]> 
+  </OPT_CONDITION>
+    <OPT_CONDITION id="condition2" relationType="and">
+	  <![CDATA[
+	  r.cus_id like ${cus_id} 
+	  ]]> 
+  </OPT_CONDITION>
+    <OPT_CONDITION id="condition3" relationType="and">
+	  <![CDATA[
+	  r.pre_class_rst like ${pre_class_rst} 
+	  ]]> 
+  </OPT_CONDITION>
+      <OPT_CONDITION id="condition4" relationType="and">
+	  <![CDATA[
+	  r.class_date like ${class_date} 
+	  ]]> 
+  </OPT_CONDITION>
+      <OPT_CONDITION id="condition5" relationType="and">
+	  <![CDATA[
+	  r.input_br_id like ${input_br_id} 
+	  ]]> 
+  </OPT_CONDITION>
+        <OPT_CONDITION id="condition6" relationType="and">
+	  <![CDATA[
+	  r.risk_cls_status in (${risk_cls_status}) 
+	  ]]> 
+  </OPT_CONDITION>
+  <OPT_CONDITION id="condition7" relationType="and">
+	  <![CDATA[
+	${yesduty} = '1' and  r.cus_id in (SELECT y.CUS_ID
+  						FROM (SELECT sub.CLASS_ADJUST_RST, t.cus_id
+          						FROM (select *
+                  			FROM (SELECT x.*,
+                               ROW_NUMBER() OVER(PARTITION BY x.serno ORDER BY x.class_date DESC) RN
+                          FROM RSC_TASK_INFO_SUB x
+                         WHERE x.identy_duty <> ${identy_duty}) z where z.rn = 1  ) sub,RSC_TASK_INFO T WHERE sub.SERNO = T.SERNO
+          				AND (T.INPUT_ID = ${usr_cde} OR
+                  			T.INPUT_BR_ID = ${bch_cde} OR
+                  		T.INPUT_BR_ID IN
+                  		(SELECT organno FROM s_org
+                  		WHERE  suporganno = ${bch_cde}
+                		AND organno <> suporganno))
+           				AND t.RISK_CLS_STATUS IN (${risk_cls_status})
+         				GROUP BY sub.CLASS_ADJUST_RST, T.CUS_ID) y
+						HAVING count(1) > 1
+ 						GROUP BY y.CUS_ID)
+	  ]]> 
+  </OPT_CONDITION>
+  <OPT_CONDITION id="condition8" relationType="and">
+	  <![CDATA[
+	${noduty} = '1' and r.cus_id in (SELECT y.CUS_ID
+  						FROM (SELECT sub.CLASS_ADJUST_RST, t.cus_id
+          						FROM (select *
+                  			FROM (SELECT x.*,
+                               ROW_NUMBER() OVER(PARTITION BY x.serno ORDER BY x.class_date DESC) RN
+                          FROM RSC_TASK_INFO_SUB x
+                         WHERE x.identy_duty <> ${identy_duty}) z where z.rn = 1  ) sub,RSC_TASK_INFO T WHERE sub.SERNO = T.SERNO
+           				AND t.RISK_CLS_STATUS IN (${risk_cls_status})
+         				GROUP BY sub.CLASS_ADJUST_RST, T.CUS_ID) y
+						HAVING count(1) > 1
+ 						GROUP BY y.CUS_ID) 
+	  ]]> 
+  </OPT_CONDITION>
+   <OPT_CONDITION id="condition9" relationType="and">
+	  <![CDATA[
+	  r.input_id like ${input_id} 
+	  ]]> 
+  </OPT_CONDITION>
+   <OPT_CONDITION id="condition10" relationType="and">
+	  <![CDATA[
+	  (r.input_br_id = ${bch_cde} or r.input_br_id in (SELECT organno FROM s_org WHERE  suporganno = ${bch_cde} AND organno <> suporganno))
+	  ]]> 
+  </OPT_CONDITION>
+  </SQL>
+
+<!-- 列表的快捷查询，字段间的关系为OR，查询方式为模糊查询，需与前端like一致 -->
+<SQL id="queryRscTaskInfoLikeForQuick" parameterClass="java.util.HashMap" resultClass="com.ecc.emp.data.KeyedCollection" onlyReturnFirst="false">
+  <SELECT>
+  <![CDATA[
+  select 
+ 	(select s.cnname from s_dic s where s.opttype='STD_ZB_NINE_SORT' and s.enname = r.pre_class_rst)  as pre_class_rst_cname,
+  	r.* from RSC_TASK_INFO r where   (${condition1}  ${condition2}  ${condition3}) and (${condition4}  ${condition5}  ${condition6})  order by r.cus_id,r.class_date   ]]>
+  </SELECT>
+  <CONDI_GROUP defaultCondition='1=1'>
+  	  <OPT_CONDITION id="condition1" relationType="or">
+		  <![CDATA[
+		  bill_no like ${bill_no} 
+		  ]]> 
+	  </OPT_CONDITION>
+  	  <OPT_CONDITION id="condition2" relationType="or">
+		  <![CDATA[
+		  cus_id like ${cus_id} 
+		  ]]> 
+	  </OPT_CONDITION>
+  	  <OPT_CONDITION id="condition3" relationType="or">
+		  <![CDATA[
+		  pre_class_rst like ${pre_class_rst} 
+		  ]]> 
+	  </OPT_CONDITION>
+	  </CONDI_GROUP>
+	  <CONDI_GROUP defaultCondition='1=1'>
+        <OPT_CONDITION id="condition4" relationType="and">
+	  <![CDATA[
+	  r.risk_cls_status in (${risk_cls_status}) 
+	  ]]> 
+  	</OPT_CONDITION>
+   	<OPT_CONDITION id="condition5" relationType="and">
+	  <![CDATA[
+	  (r.input_id =  ${usr_cde} or r.input_br_id = ${bch_cde}  or r.input_br_id in (SELECT organno FROM s_org WHERE   suporganno = ${bch_cde} AND suporganno <> organno))
+	  ]]> 
+  	</OPT_CONDITION>
+  	 <OPT_CONDITION id="condition6" relationType="and">
+	  <![CDATA[
+	  r.input_id like ${input_id} 
+	  ]]> 
+  </OPT_CONDITION>
+    </CONDI_GROUP>
+</SQL>
+
+<!-- 分类未完成任务列表数据查询 -->
+<SQL id="queryClassifyUndoTaskInfoLike" parameterClass="com.ecc.emp.data.KeyedCollection" resultClass="com.ecc.emp.data.KeyedCollection" onlyReturnFirst="false">
+  <SELECT>
+  <![CDATA[
+select *
+  from (SELECT input_br_id,
+               nvl(totalqnt, 0) as totalqnt,
+               nvl(unqnt, 0) as unqnt,
+               (totalqnt-unqnt) AS qnt,
+               nvl(round((unqnt / totalqnt) * 100, 2), 0) as rate
+          FROM (SELECT input_br_id,
+                       max(totalqnt) as totalqnt,
+                       max(unqnt) as unqnt
+                  FROM (SELECT input_br_id, count(1) as totalqnt, null as unqnt
+                          FROM RSC_TASK_INFO t
+                         where t.input_br_id is not null
+                         group by t.input_br_id
+                        union
+                        SELECT info.input_br_id,
+                               null as totalqnt,
+                               count(1) as unqnt
+                          FROM RSC_TASK_INFO info
+                         where info.risk_cls_status ='01'
+                           and info.input_br_id is not null
+                         group by info.input_br_id) m
+                 group by input_br_id  ))  	 where unqnt <> '0'  and  1=1  
+                 ${condition1} 	 order by input_br_id   ]]>
+  </SELECT>
+    <OPT_CONDITION id="condition1" relationType="and">
+	  <![CDATA[
+	  input_br_id like ${input_br_id} 
+	  ]]> 
+  </OPT_CONDITION>
+   <OPT_CONDITION id="condition2" relationType="and">
+	  <![CDATA[
+	   (input_br_id = ${bch_cde}  OR input_br_id IN (SELECT organno FROM s_org WHERE   organno = ${bch_cde} AND organno <> suporganno))
+	  ]]> 
+  </OPT_CONDITION>
+  </SQL>
+  
+  
+<!-- 通过资源ID查询资源明细信息 -->
+<SQL id="queryRscTaskInfoDetail" parameterClass="java.lang.String"  resultClass="com.ecc.emp.data.KeyedCollection">
+  <SELECT>
+  <![CDATA[
+  SELECT * FROM RSC_TASK_INFO WHERE 1=1  ${condition1}  ]]>
+  </SELECT>
+      <OPT_CONDITION id="condition1" relationType="and">
+	  <![CDATA[
+	  serno = ${serno} 
+	  ]]> 
+  </OPT_CONDITION>
+  </SQL>
+  
+  <!-- 通过字典项内容去查找字典项CDE For风险分类认定Excel导入 -->
+<SQL id="querySComCdeByComDesc" parameterClass="java.lang.String"  resultClass="com.ecc.emp.data.KeyedCollection">
+  <SELECT>
+  <![CDATA[
+   select * from s_dic s where  1=1 and s.opttype='STD_ZB_NINE_SORT'  ${condition1}  ]]>
+  </SELECT>
+      <OPT_CONDITION id="condition1" relationType="and">
+	  <![CDATA[
+	  s.com_desc = ${_SIG_VALUE} 
+	  ]]> 
+  </OPT_CONDITION>
+  </SQL>
+<!-- 批量插入执行操作 -->
+<SQL id="batchInsertRscTaskInfo" parameterClass="java.util.HashMap">
+  <INSERT>
+  <![CDATA[
+  	insert into RSC_TASK_INFO(
+          serno,
+                bill_no,
+                cus_id,
+                prd_id,
+                cur_type,
+                loan_amt,
+                loan_balance,
+                start_date,
+                end_date,
+                pre_class_rst,
+                model_class_rst,
+                class_date,
+                class_rst,
+                remark,
+                input_id,
+                input_br_id,
+                input_date,
+                upd_id,
+                upd_br_id,
+                upd_date,
+                risk_cls_status,
+                class_end_date
+               )values(
+           ${serno},
+                ${bill_no},
+                ${cus_id},
+                ${prd_id},
+                ${cur_type},
+                ${loan_amt},
+                ${loan_balance},
+                ${start_date},
+                ${end_date},
+                ${pre_class_rst},
+                ${model_class_rst},
+                ${class_date},
+                ${class_rst},
+                ${remark},
+                ${input_id},
+                ${input_br_id},
+                ${input_date},
+                ${upd_id},
+                ${upd_br_id},
+                ${upd_date},
+                ${risk_cls_status},
+                ${class_end_date}
+              )]]>
+  </INSERT>
+</SQL>
+
+<!-- 统计贷款金额与不良贷款金额汇总 -->
+<SQL id="calSumOfAmtByClassRst" parameterClass="java.util.HashMap" resultClass="com.ecc.emp.data.KeyedCollection" onlyReturnFirst="false">
+  <SELECT>
+  <![CDATA[
+  	select
+ (select sum(r.loan_amt) from RSC_TASK_INFO r where 1=1  ${condition1}${condition2}) as loanAmt,
+  (SELECT SUM(LOAN_AMT) FROM (
+ 
+SELECT Rr.LOAN_AMT
+           FROM RSC_TASK_INFO RR
+          WHERE 1 = 1
+           ${condition1} ${condition3} ${condition4}   
+         AND  rr.cus_id  NOT in (SELECT y.CUS_ID
+  						FROM (SELECT sub.CLASS_ADJUST_RST, t.cus_id
+          						FROM (select *
+                  			FROM (SELECT x.*,
+                               ROW_NUMBER() OVER(PARTITION BY x.serno ORDER BY x.class_date DESC) RN
+                          FROM RSC_TASK_INFO_SUB x
+                         WHERE x.identy_duty <> ${identy_duty}) z where z.rn = 1  ) sub,RSC_TASK_INFO T WHERE sub.SERNO = T.SERNO
+          				${condition5} 
+           				AND t.RISK_CLS_STATUS IN (${risk_cls_status})
+         				GROUP BY sub.CLASS_ADJUST_RST, T.CUS_ID) y
+						HAVING count(1) > 1
+ 						GROUP BY y.CUS_ID)
+   UNION ALL          
+     SELECT Rr.LOAN_AMT
+           FROM RSC_TASK_INFO RR
+          WHERE 1 = 1 ${condition1}
+         AND  rr.cus_id  IN (SELECT y.CUS_ID
+  						FROM (SELECT sub.CLASS_ADJUST_RST, t.cus_id
+          						FROM (select *
+                  			FROM (SELECT x.*,
+                               ROW_NUMBER() OVER(PARTITION BY x.serno ORDER BY x.class_date DESC) RN
+                          FROM RSC_TASK_INFO_SUB x
+                         WHERE x.identy_duty <> ${identy_duty}) z where z.rn = 1  ) sub,RSC_TASK_INFO T WHERE sub.SERNO = T.SERNO
+          				${condition5} 
+           				AND t.RISK_CLS_STATUS IN (${risk_cls_status})
+         				GROUP BY sub.CLASS_ADJUST_RST, T.CUS_ID) y
+						HAVING count(1) > 1
+ 						GROUP BY y.CUS_ID)
+            
+      )  ) as loanBalance
+ from RSC_TASK_INFO 
+]]>
+  </SELECT>
+    <OPT_CONDITION id="condition1" relationType="and">
+	  <![CDATA[
+	  risk_cls_status in (${risk_cls_status})  
+	  ]]> 
+  </OPT_CONDITION> 
+  <OPT_CONDITION id="condition2" relationType="and">
+	  <![CDATA[
+	  (r.input_id =  ${usr_cde} or r.input_br_id IN (SELECT organno FROM s_org WHERE   organno = ${bch_cde} AND organno <> suporganno)) 
+	  ]]> 
+  </OPT_CONDITION>  
+  <OPT_CONDITION id="condition3" relationType="and">
+	  <![CDATA[
+	  (rr.input_id =  ${usr_cde} or rr.input_br_id IN
+   (SELECT organno FROM s_org WHERE  suporganno = ${bch_cde} AND organno <> suporganno)) 
+	  ]]> 
+  </OPT_CONDITION> 
+  <OPT_CONDITION id="condition4" relationType="and">
+	  <![CDATA[
+	  EXISTS(SELECT 1 FROM rsc_task_info_sub t WHERE t.serno = rr.serno GROUP BY  t.serno,t.class_adjust_rst
+           HAVING t.class_adjust_rst <> rr.model_class_rst)
+	  ]]> 
+  </OPT_CONDITION>
+  <OPT_CONDITION id="condition5" relationType="and">
+	  <![CDATA[
+	  	(T.INPUT_ID = ${usr_cde} OR
+                  			T.INPUT_BR_ID = ${bch_cde} OR
+                  		T.INPUT_BR_ID IN
+                  		(SELECT organno FROM s_org
+                  		WHERE   suporganno = ${bch_cde}
+                		AND organno <> suporganno))
+	  ]]> 
+  </OPT_CONDITION>   
+  </SQL>
+  
+  
+  <!-- 认定同步更新操作 -->
+<SQL id="updateRscTaskInfoSynchr" parameterClass="java.util.HashMap" valueClass ="java.util.HashMap">
+  <UPDATE>
+  <![CDATA[
+  	 UPDATE rsc_task_info r SET r.class_rst = ${class_rst} and  r.remark = ${remark} WHERE r.cus_id = ${cus_id} ${condition1}
+          ]]>
+  </UPDATE>
+   <OPT_CONDITION id="condition1" relationType="and">
+	  <![CDATA[
+	   (r.input_id =  ${usr_cde} OR r.input_br_id = ${bch_cde} OR  r.input_br_id in (SELECT organno FROM s_org WHERE   suporganno = ${bch_cde} AND organno <> suporganno))
+	  ]]> 
+  </OPT_CONDITION>  
+  </SQL>
+  <!-- 客户经理提交更新操作 -->
+  <SQL id="updateRscTaskInfoMgr" parameterClass="java.util.HashMap" valueClass ="java.util.HashMap">
+ <UPDATE>
+  <![CDATA[
+   UPDATE RSC_TASK_INFO SET risk_cls_status = ${risk_cls_status} , upd_id = ${upd_id} , upd_date = ${upd_date} , upd_br_id = ${upd_br_id}  WHERE 1 > 0  AND cus_id = ${cus_id} and risk_cls_status = '01'
+        ]]>
+    </UPDATE>
+  </SQL>
+  
+  <!-- 查询同用户岗位下数据 -->
+<SQL id="queryRscTaskInfoSynchr" parameterClass="java.util.HashMap" resultClass="com.ecc.emp.data.KeyedCollection" onlyReturnFirst="false">
+  <SELECT>
+  <![CDATA[
+  	 SELECT * FROM rsc_task_info r WHERE r.cus_id = ${cus_id} ${condition1}  ${condition2} 
+           ]]>
+  </SELECT>
+   <OPT_CONDITION id="condition1" relationType="and">
+	  <![CDATA[
+	  risk_cls_status in (${risk_cls_status})  
+	  ]]> 
+  </OPT_CONDITION> 
+  <OPT_CONDITION id="condition2" relationType="and">
+	  <![CDATA[
+	  (r.input_id =  ${usr_cde} OR r.input_br_id = ${bch_cde} OR r.input_br_id IN (SELECT  organno FROM s_org WHERE   suporganno = ${bch_cde} AND  organno <> suporganno))
+	  ]]> 
+  </OPT_CONDITION> 
+  </SQL>
+  
+  <SQL id="queryRscTaskInfoDownLike" parameterClass="java.util.HashMap" resultClass="com.ecc.emp.data.KeyedCollection" onlyReturnFirst="false">
+  <SELECT>
+  <![CDATA[
+  	select 
+ 	(select s.cnname from s_dic s where s.opttype='STD_ZB_NINE_SORT' and s.enname = r.pre_class_rst)  as pre_class_rst_cname,
+  	 R.SERNO,
+               R.BILL_NO,
+               R.CUS_ID,
+               R.PRD_ID,
+               R.CUR_TYPE,
+               R.LOAN_AMT,
+               R.LOAN_BALANCE,
+               R.PRE_CLASS_RST,
+               R.MODEL_CLASS_RST,
+               R.CLASS_RST,
+               R.CLASS_DATE,
+               R.Input_Id,
+               R.Input_Br_Id,
+               R.RISK_CLS_STATUS,
+               Y.CLASS_ADJUST_RST,
+               '' as REMARK from RSC_TASK_INFO r  LEFT JOIN (SELECT * FROM RSC_TASK_INFO_SUB WHERE identy_duty =  ${identy_duty} ) Y ON y.serno = r.serno  where 1=1   ${condition1}  ${condition2}   order by r.cus_id,r.class_date   ]]>
+  </SELECT>
+   <OPT_CONDITION id="condition1" relationType="and">
+	  <![CDATA[
+	  (r.input_id =  ${usr_cde} or r.input_br_id = ${bch_cde}  or r.input_br_id in (SELECT organno FROM s_org WHERE   suporganno = ${bch_cde} AND suporganno <> organno))
+	  ]]> 
+  </OPT_CONDITION>
+  <OPT_CONDITION id="condition2" relationType="and">
+	  <![CDATA[
+	  r.risk_cls_status in (${risk_cls_status}) 
+	  ]]> 
+  </OPT_CONDITION>
+  </SQL>
+  
+</S>

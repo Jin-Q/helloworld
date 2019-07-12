@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<IndGroupIndex.xml>
+	<TableModel id="IndGroupIndex" cnname="设置指标组与指标关联" dbTableName="ind_group_index">
+		<Field id="group_no" isPK="true" columnName="group_no" cnname="组别编号" length="8" JDBCType="CHAR" canBeNull="false"/>
+		<Field id="index_no" isPK="true" columnName="index_no" cnname="指标编号" length="8" JDBCType="CHAR" canBeNull="false"/>
+		<Field id="ind_std_score" columnName="ind_std_score" cnname="标准分" length="16" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="weight" columnName="weight" cnname="权重" length="9" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="rule_classpath" columnName="rule_classpath" cnname="指标评分规则" length="100" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="category" columnName="category" cnname="指标大类" length="1" JDBCType="CHAR" canBeNull="true"/>
+		<Field id="sub_category" columnName="sub_category" cnname="指标小类" length="1" JDBCType="CHAR" canBeNull="true"/>
+		<Field id="dis_property" columnName="dis_property" cnname="显示属性" length="1" JDBCType="CHAR" canBeNull="true"/>
+		<Field id="ind_dis_type" columnName="ind_dis_type" cnname="指标显示类型" length="1" JDBCType="CHAR" canBeNull="true"/>
+		<Field id="seq_no" columnName="seq_no" cnname="顺序号" length="38" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="index_name" columnName="index_name" cnname="指标名称" length="60" JDBCType="VARCHAR2"/>
+		<Field id="full_score" columnName="full_score" cnname="满分值" length="20" JDBCType="VARCHAR2"/>
+		<Field id="reference_value" columnName="reference_value" cnname="参照值" length="16" JDBCType="NUMBER"/>
+		<Field id="limit_value" columnName="limit_value" cnname="极限值" length="16" JDBCType="NUMBER"/>
+		<Field id="memo" columnName="memo" cnname="评分标准" length="200" JDBCType="VARCHAR2"/>
+		<Field id="limit_flag" columnName="limit_flag" cnname="极限值符号" length="1" JDBCType="CHAR"/>
+		<Field id="memo_cal" columnName="memo_cal" cnname="评分计算公式" length="500" JDBCType="VARCHAR2"/>
+		<Field id="score_way" columnName="score_way" cnname="评分方式" length="1" JDBCType="CHAR"/>
+	</TableModel>
+</IndGroupIndex.xml>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<IqpEquipInfo.xml>
+	<TableModel id="IqpEquipInfo" cnname="银租通设备信息" dbTableName="iqp_equip_info">
+		<Field id="serno" columnName="serno" cnname="业务编号" length="40" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="equip_name" columnName="equip_name" cnname="设备名称" length="150" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="produce_manuf" columnName="produce_manuf" cnname="生产厂商" length="150" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="produce_addr" columnName="produce_addr" cnname="产地" length="250" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="equip_brand" columnName="equip_brand" cnname="设备品牌" length="150" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="equip_model" columnName="equip_model" cnname="设备型号" length="100" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="cur_type" columnName="cur_type" cnname="购置币种" length="3" JDBCType="CHAR" canBeNull="true"/>
+		<Field id="equip_unit_price" columnName="equip_unit_price" cnname="设备单价" length="16" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="qnt" columnName="qnt" cnname="数量" length="38" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="pur_total_amt" columnName="pur_total_amt" cnname="购置总价" length="16" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="produce_date" columnName="produce_date" cnname="出厂日期" length="10" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="pur_date" columnName="pur_date" cnname="购入日期" length="10" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="is_new" columnName="is_new" cnname="是否全新" length="1" JDBCType="CHAR" canBeNull="true"/>
+		<Field id="memo" columnName="memo" cnname="备注" length="250" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="equip_pk" isPK="true" columnName="equip_pk" cnname="设备编号" length="40" JDBCType="VARCHAR2" canBeNull="false"/>
+	</TableModel>
+</IqpEquipInfo.xml>

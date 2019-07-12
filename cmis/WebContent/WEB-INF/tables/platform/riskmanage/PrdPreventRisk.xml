@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<PrdPreventRisk.xml>
+	<TableModel id="PrdPreventRisk" cnname="风险拦截方案" dbTableName="prd_prevent_risk">
+		<Field id="prevent_id" isPK="true" columnName="prevent_id" pkGenerator="UNID" cnname="方案编号" length="32" JDBCType="CHAR" canBeNull="false"/>
+		<Field id="prevent_desc" columnName="prevent_desc" cnname="方案名称" length="40" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="used_ind" columnName="used_ind" cnname="是否使用" length="1" JDBCType="CHAR" canBeNull="false"/>
+		<One2MultiRef toField="prevent_id" refModelId="PrdPvRiskScene" fromField="prevent_id"/>
+		<Field id="memo" columnName="memo" cnname="备注" length="200" JDBCType="VARCHAR2"/>
+		<Field id="input_id" columnName="input_id" cnname="登记人" length="20" JDBCType="VARCHAR2"/>
+		<Field id="input_br_id" columnName="input_br_id" cnname="登记机构" length="20" JDBCType="VARCHAR2"/>
+		<Field id="input_date" columnName="input_date" cnname="登记日期" length="10" JDBCType="CHAR"/>
+		<Field id="used_flow" columnName="used_flow" cnname="是否适用流程" length="1" JDBCType="CHAR"/>
+	</TableModel>
+</PrdPreventRisk.xml>

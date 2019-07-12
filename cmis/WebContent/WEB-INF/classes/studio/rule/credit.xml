@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding='ISO-8859-1'?>
+<rule-set name="credit">
+<!--ÐÅÓÃ¿¨µÈ¼¶¼°Í¸Ö§¶î¶È¶¨Òå¹æÔò·¶Àý-->
+<java:import>java.lang.Object</java:import>
+<java:import>java.lang.String</java:import>
+<java:import>java.util.*</java:import>
+<java:import>com.ecc.shuffle.test.User</java:import>
+<!--
+ÏÂÃæ¶¨Òå¹æÔòÒýÇæÖÐÓÃµ½µÄÊý¾Ý¿â×Ö¶Î£¬ÓÃÓ¢ÎÄµÄ·ÖºÅ";"¸ô¿ª£¬
+²¢·ÇÊý¾Ý¿â±íµÄËùÓÐ×Ö¶Î£¬¶øÊÇ¸ú¹æÔòÌõ¼þÅÐ¶ÏÏà¹ØµÄÄÇÐ©×Ö¶Î£¬
+Ò»°ãÕâÐ©×Ö¶ÎÓÉÓ¦ÓÃ³ÌÐò¶Á³öºó·ÅÈëparamMap´«µÝ¸ø¹æÔòÒýÇæ½øÐÐ½âÎö¡£
+-->
+<db:columns>duty;creator;othercolumn</db:columns>
+
+<!--ÏÂÃæ¶¨Òå¹æÔòÒýÇæÖÐÓÃµ½µÄ·½·¨-->
+<java:functions>
+	public static void printUser(com.ecc.shuffle.test.User user){
+	System.out.println("User is:"+user);
+	}
+</java:functions>
+<!--
+ ¹æÔòÊôÐÔËµÃ÷£º
+salience£º¹æÔòÓÅÏÈ¼¶£¬ÊýÖµÔ½µÍ£¬ËµÃ÷ÓÅÏÈ¼¶Ô½¸ß£»
+isolation£º»¥³âÐÔ£¬¸Ã¹æÔòÒ»µ©´¥·¢£¬Í¬¹æÔò¼¯ÄÚµÄÆäËû¹æÔò½«±»Ëø¶¨£¬²»»áÔÙ´¥·¢£»
+-->
+
+<!--×êÊ¯ÓÃ»§-->
+<rule name="zuanshi" salience="1" isolation="yes">
+<db:columns>duty2;creator2;othercolumn2</db:columns>
+<parameter identifier="user">
+	<class>com.ecc.shuffle.test.User</class>
+</parameter>
+<java:pretreatment>user.setCreditType("C");</java:pretreatment>
+<java:condition> user.getAge()>30&amp;&amp;true </java:condition>
+<java:condition> 60>user.getAge()</java:condition>
+<java:condition> user.getSex().equals("M") </java:condition>
+<java:condition> user.getIncome()>30000||user.getAssets()>1000000 </java:condition>
+<java:condition> user.getDegree()>=3 </java:condition>
+
+<java:consequence> 
+    System.out.println("=======match zuanshiUser=========");
+	user.setCreditType("A");
+	user.setOverdraft(300000);
+	printUser(user);
+</java:consequence>
+</rule>
+
+<!--°×½ðÓÃ»§-->
+<rule name="baijin" salience="2" isolation="yes">
+<db:columns>duty3;creator3;othercolumn3</db:columns>
+<parameter identifier="user">
+	<class>com.ecc.shuffle.test.User</class>
+</parameter>
+<java:condition> user.getAge()>25 </java:condition>
+<java:condition> 70>user.getAge()</java:condition>
+<java:condition> user.getSex().equals("F") </java:condition>
+<java:condition> user.getIncome()>20000||user.getAssets()>500000 </java:condition>
+<java:condition> user.getDegree()>=2 </java:condition>
+
+<java:consequence> 
+    System.out.println("=======match baijinUser=========");
+	user.setCreditType("B");
+	user.setOverdraft(100000);
+	printUser(user);
+</java:consequence>
+</rule>
+
+<!--½ð¿¨ÓÃ»§-->
+<rule name="jinka" salience="3" isolation="yes">
+<parameter identifier="user">
+	<class>com.ecc.shuffle.test.User</class>
+</parameter>
+<parameter identifier="list">
+	<class>java.util.ArrayList</class>
+</parameter>
+<java:condition> user.getAge()>20 </java:condition>
+<java:condition> 70>user.getAge()</java:condition>
+<java:condition> user.getIncome()>10000||user.getAssets()>300000 </java:condition>
+<java:condition> user.getDegree()>=2 </java:condition>
+
+<java:consequence> 
+    System.out.println("=======match jinkaUser=========");
+	user.setCreditType("C");
+	user.setOverdraft(50000);
+	printUser(user);
+</java:consequence>
+</rule>
+
+
+<!--Òø¿¨ÓÃ»§-->
+<rule name="yinka" salience="4" isolation="yes">
+<parameter identifier="user">
+	<class>com.ecc.shuffle.test.User</class>
+</parameter>
+<java:condition> user.getAge()>20 </java:condition>
+<java:condition> 70>user.getAge()</java:condition>
+<java:condition> user.getIncome()>5000||user.getAssets()>100000 </java:condition>
+<java:condition> user.getDegree()>=1 </java:condition>
+
+<java:consequence> 
+    System.out.println("=======match yinkaUser=========");
+	user.setCreditType("D");
+	user.setOverdraft(10000);
+	printUser(user);
+</java:consequence>
+</rule>
+
+<!--ÆÕÍ¨ÓÃ»§-->
+<rule name="putong" salience="5" isolation="yes">
+<parameter identifier="user">
+	<class>com.ecc.shuffle.test.User</class>
+</parameter>
+<java:condition> user.getAge()>10 </java:condition>
+<java:condition> user.getIncome()>1000||user.getAssets()>10000 </java:condition>
+
+<java:consequence> 
+    System.out.println("=======match putongUser=========");
+	user.setCreditType("E");
+	user.setOverdraft(5000);
+	printUser(user);
+</java:consequence>
+</rule>
+
+</rule-set>
+

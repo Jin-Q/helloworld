@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actionDefines>
+	<classMap>
+		<map id="action" class="com.yucheng.cmis.ad.mvc.ADRequestController"/>
+		<map id="flowInvoker" class="com.yucheng.cmis.ad.mvc.ADFlowInvoker"/>
+		<map id="outputViews" class="java.util.HashMap"/>
+		<map id="output" class="com.ecc.emp.data.KeyedCollection"/>
+		<map id="kColl" class="com.ecc.emp.data.KeyedCollection"/>
+		<map id="iColl" class="com.ecc.emp.data.IndexedCollection"/>
+		<map id="field" class="com.ecc.emp.data.DataField"/>
+	</classMap>
+	
+	<!-- 获取操作主页面 -->
+	<action id="queryPspSitecheckComList" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.psp.op.pspsitecheckcom.QueryPspSitecheckComListOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="biz01line/psp/PspSitecheckCom/queryPspSitecheckComList.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 获得编辑页面 -->
+	<action id="getPspSitecheckComUpdatePage" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation updateCheck="false" class="com.yucheng.cmis.biz01line.psp.op.pspsitecheckcom.QueryPspSitecheckComDetailOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="biz01line/psp/PspSitecheckCom/updatePspSitecheckComRecord.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 更新记录 -->
+	<action id="updatePspSitecheckComRecord" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.psp.op.pspsitecheckcom.UpdatePspSitecheckComRecordOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<view id="retPage" class="com.yucheng.cmis.view.JSONView">
+				<output class="com.ecc.emp.data.KeyedCollection">
+					<field id="flag" class="com.ecc.emp.data.DataField" />
+				</output>
+			</view>
+		</outputViews>
+	</action>
+	
+	<!-- 更新记录(弹出框） -->
+	<action id="updatePspSitecheckComRecordFortc" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.psp.op.pspsitecheckcom.UpdatePspSitecheckComRecordOpFortc"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<view id="retPage" class="com.yucheng.cmis.view.JSONView">
+				<output class="com.ecc.emp.data.KeyedCollection">
+					<field id="flag" class="com.ecc.emp.data.DataField" />
+				</output>
+			</view>
+		</outputViews>
+	</action>
+	
+	<!-- 获得查看页面 -->
+	<action id="getPspSitecheckComViewPage" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.psp.op.pspsitecheckcom.QueryPspSitecheckComDetailOp"/>
+			<transition dest="updatePage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="updatePage" url="biz01line/psp/PspSitecheckCom/queryPspSitecheckComDetail.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 获得新增页面 -->
+	<action id="getPspSitecheckComAddPage" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.psp.op.pspsitecheckcom.QueryPspSitecheckComForAddOp"/>
+			<transition dest="addPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="addPage" url="biz01line/psp/PspSitecheckCom/addPspSitecheckComRecord.jsp"/>
+		</outputViews>
+	</action>
+	
+	<!-- 获得新增页面 （抵（质）押品）-->
+	<action id="getPspSitecheckComAddPagedzy" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.psp.op.pspsitecheckcom.QueryPspSitecheckComForAddOpdzy"/>
+			<transition dest="addPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="addPage" url="biz01line/psp/PspSitecheckCom/addPspSitecheckComRecorddzy.jsp"/>
+		</outputViews>
+	</action>
+	
+	<!-- 获得新增页面 （抵（质）押品查看页面）-->
+	<action id="getPspSitecheckComAddPagedzyView" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.psp.op.pspsitecheckcom.QueryPspSitecheckComForAddOpdzy"/>
+			<transition dest="addPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="addPage" url="biz01line/psp/PspSitecheckCom/addPspSitecheckComRecorddzyView.jsp"/>
+		</outputViews>
+	</action>
+	
+	<!-- 获得新增页面（担保企业查看页面） -->
+	<action id="getPspSitecheckComAddPagedbqyView" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.psp.op.pspsitecheckcom.QueryPspSitecheckComForAddOpdbqy"/>
+			<transition dest="addPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="addPage" url="biz01line/psp/PspSitecheckCom/addPspSitecheckComRecorddbqyView.jsp"/>
+		</outputViews>
+	</action>
+	
+	
+	<!-- 获得新增页面（担保企业） -->
+	<action id="getPspSitecheckComAddPagedbqy" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.psp.op.pspsitecheckcom.QueryPspSitecheckComForAddOpdbqy"/>
+			<transition dest="addPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="addPage" url="biz01line/psp/PspSitecheckCom/addPspSitecheckComRecorddbqy.jsp"/>
+		</outputViews>
+	</action>
+	
+	
+	<!-- 新增记录 -->
+	<action id="addPspSitecheckComRecord" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.psp.op.pspsitecheckcom.AddPspSitecheckComRecordOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<view id="retPage" class="com.yucheng.cmis.view.JSONView">
+				<output class="com.ecc.emp.data.KeyedCollection">
+					<field id="flag" class="com.ecc.emp.data.DataField" />
+				</output>
+			</view>
+		</outputViews>
+	</action>	
+	
+	<!-- 删除记录 -->
+	<action id="deletePspSitecheckComRecord" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.psp.op.pspsitecheckcom.DeletePspSitecheckComRecordOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<view id="retPage" class="com.yucheng.cmis.view.JSONView">
+				<output class="com.ecc.emp.data.KeyedCollection">
+					<field id="flag" class="com.ecc.emp.data.DataField" />
+				</output>
+			</view>
+		</outputViews>
+	</action>
+	
+	<!-- 分页查询记录列表 -->
+		<action id="pagePspSitecheckComQuery" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.psp.op.pspsitecheckcom.QueryPspSitecheckComListOp"/>
+			<transition dest="queryListRes"/>
+		</flowInvoker>
+		<outputViews>
+			<jsonView class="com.yucheng.cmis.view.JSONView" id="queryListRes">
+				<output>
+					<iColl id="PspSitecheckComList">
+						<kColl>
+						</kColl>
+					</iColl>
+				</output>
+			</jsonView>
+		</outputViews>
+	</action>
+	
+</actionDefines>
+
+
+

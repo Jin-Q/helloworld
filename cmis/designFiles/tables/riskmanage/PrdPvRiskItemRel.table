@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<PrdPvRiskItemRel.xml>
+	<TableModel id="PrdPvRiskItemRel" cnname="风险拦截关联项目" dbTableName="prd_pv_risk_item_rel">
+		<TableInfo/>
+		<Field id="prevent_id" columnName="prevent_id" cnname="方案编号" length="40" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="item_id" columnName="item_id" cnname="项目编号" length="40" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+	</TableModel>
+</PrdPvRiskItemRel.xml>

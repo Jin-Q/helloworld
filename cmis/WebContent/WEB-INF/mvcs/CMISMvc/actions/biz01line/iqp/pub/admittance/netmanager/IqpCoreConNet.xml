@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actionDefines>
+	<classMap>
+		<map id="action" class="com.yucheng.cmis.ad.mvc.ADRequestController"/>
+		<map id="flowInvoker" class="com.yucheng.cmis.ad.mvc.ADFlowInvoker"/>
+		<map id="outputViews" class="java.util.HashMap"/>
+		<map id="output" class="com.ecc.emp.data.KeyedCollection"/>
+		<map id="kColl" class="com.ecc.emp.data.KeyedCollection"/>
+		<map id="iColl" class="com.ecc.emp.data.IndexedCollection"/>
+		<map id="field" class="com.ecc.emp.data.DataField"/>
+	</classMap>
+	
+	<!-- 获取操作主页面 -->
+	<action id="queryIqpCoreConNetList" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.iqp.op.pub.admittance.netmanager.iqpcoreconnet.QueryIqpCoreConNetListOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="biz01line/iqp/pub/admittance/netmanager/IqpCoreConNet/queryIqpCoreConNetList.jsp" />
+		</outputViews>
+	</action>
+	<!-- 获取网络建立历史页面 -->
+	<action id="queryIqpCoreConNetLs" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.iqp.op.pub.admittance.netmanager.iqpcoreconnet.QueryIqpCoreConNetLsOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="biz01line/iqp/pub/admittance/netmanager/IqpCoreConNet/queryIqpCoreConNetLs.jsp" />
+		</outputViews>
+	</action>
+	<!-- 获取网络变更历史查询页面 -->
+	<action id="queryIqpNetAppLs" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.iqp.op.pub.admittance.netmanager.iqpcoreconnet.QueryIqpNetAppLsOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="biz01line/iqp/pub/admittance/netmanager/IqpCoreConNet/queryIqpNetAppLs.jsp" />
+		</outputViews>
+	</action>
+	<!-- 获得编辑页面 -->
+	<action id="getIqpCoreConNetUpdatePage" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation updateCheck="false" class="com.yucheng.cmis.biz01line.iqp.op.pub.admittance.netmanager.iqpcoreconnet.QueryIqpCoreConNetDetailOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="biz01line/iqp/pub/admittance/netmanager/IqpCoreConNet/updateIqpCoreConNetRecord.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 更新记录 -->
+	<action id="updateIqpCoreConNetRecord" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.iqp.op.pub.admittance.netmanager.iqpcoreconnet.UpdateIqpCoreConNetRecordOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<view id="retPage" class="com.yucheng.cmis.view.JSONView">
+				<output class="com.ecc.emp.data.KeyedCollection">
+					<field id="flag" class="com.ecc.emp.data.DataField" />
+				</output>
+			</view>
+		</outputViews>
+	</action>
+	
+	<!-- 获得网络变更页面 -->
+	<action id="getIqpCoreConNetViewPage4Change" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.iqp.op.pub.admittance.netmanager.iqpcoreconnet.QueryIqpCoreConNetDetailOp"/>
+			<transition dest="updatePage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="updatePage" url="biz01line/iqp/pub/admittance/netmanager/IqpCoreConNet/updateIqpCoreConNetPage.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 获得查看页面 -->
+	<action id="getIqpCoreConNetViewPage" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.iqp.op.pub.admittance.netmanager.iqpcoreconnet.QueryIqpCoreConNetDetailOp"/>
+			<transition dest="updatePage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="updatePage" url="biz01line/iqp/pub/admittance/netmanager/IqpCoreConNet/queryIqpCoreConNetDetail.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 提交数据到网络管理 -->
+	 <action id="subData2NetManager" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.iqp.op.pub.admittance.netmanager.iqpcoreconnet.SubData2NetManagerOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<view id="retPage" class="com.yucheng.cmis.view.JSONView">
+				<output class="com.ecc.emp.data.KeyedCollection">
+					<field id="flag" class="com.ecc.emp.data.DataField" />
+				</output>
+			</view>
+		</outputViews>
+	</action>
+	
+	<!-- 获得下一步页面 -->
+	<action id="getIqpCoreConNetNextPage" type="normal" checkSession="true" >
+		<jspView id="addPage" url="biz01line/iqp/pub/admittance/netmanager/IqpCoreConNet/getIqpCoreConNetNextPage.jsp"/>
+	</action>
+	
+	<!-- 建网下一步到新增页面 -->
+	<action id="getIqpCoreConNetAddPage" type="normal" checkSession="true" >
+	    <flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.iqp.op.pub.admittance.netmanager.iqpcoreconnet.getIqpCoreConNetAddOp"/>
+			<transition dest="addPage"/>
+		</flowInvoker>
+		<outputViews>
+		<jspView id="addPage" url="biz01line/iqp/pub/admittance/netmanager/IqpCoreConNet/addIqpCoreConNetRecord.jsp"/>
+		</outputViews>
+	</action>
+	
+	<!-- 入网退网下一步到新增页面 -->
+	 <action id="getIqpCoreConNet4AddInNet" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.iqp.op.pub.admittance.netmanager.iqpcoreconnet.GetIqpCoreConNet4AddInNetOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<view id="retPage" class="com.yucheng.cmis.view.JSONView">
+				<output class="com.ecc.emp.data.KeyedCollection">
+					<field id="flag" class="com.ecc.emp.data.DataField" />
+					<field id="serno" class="com.ecc.emp.data.DataField" />
+				</output>
+			</view>
+		</outputViews>
+	</action>
+	
+	
+	<!-- 新增记录 -->
+	<action id="addIqpCoreConNetRecord" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.iqp.op.pub.admittance.netmanager.iqpcoreconnet.AddIqpCoreConNetRecordOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<view id="retPage" class="com.yucheng.cmis.view.JSONView">
+				<output class="com.ecc.emp.data.KeyedCollection">
+					<field id="flag" class="com.ecc.emp.data.DataField" />
+				</output>
+			</view>
+		</outputViews>
+	</action>
+	
+	<!-- 删除记录 -->
+	<action id="deleteIqpCoreConNetRecord" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.iqp.op.pub.admittance.netmanager.iqpcoreconnet.DeleteIqpCoreConNetRecordOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<view id="retPage" class="com.yucheng.cmis.view.JSONView">
+				<output class="com.ecc.emp.data.KeyedCollection">
+					<field id="flag" class="com.ecc.emp.data.DataField" />
+				</output>
+			</view>
+		</outputViews>
+	</action>
+	
+	<!-- 异步获取额度和行业分类 -->
+	<action id="getValuefromCus" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.iqp.op.pub.admittance.netmanager.iqpcoreconnet.GetValuefromCusOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<view id="retPage" class="com.yucheng.cmis.view.JSONView">
+				<output class="com.ecc.emp.data.KeyedCollection">
+					<field id="amt" class="com.ecc.emp.data.DataField" />
+					<field id="type" class="com.ecc.emp.data.DataField" />
+				</output>
+			</view>
+		</outputViews>
+	</action>
+	<!-- 判断客户是否在本行已有网络-->
+	<action id="checkCusExistNetRecord" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.iqp.op.pub.admittance.netmanager.iqpcoreconnet.CheckCusExistNetRecord"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<view id="retPage" class="com.yucheng.cmis.view.JSONView">
+				<output class="com.ecc.emp.data.KeyedCollection">
+					<field id="flag" class="com.ecc.emp.data.DataField" />
+				</output>
+			</view>
+		</outputViews>
+	</action>
+	<!-- 分页查询记录列表 -->
+	<action id="pageIqpCoreConNetQuery" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.iqp.op.pub.admittance.netmanager.iqpcoreconnet.QueryIqpCoreConNetListOp"/>
+			<transition dest="queryListRes"/>
+		</flowInvoker>
+		<outputViews>
+			<jsonView class="com.yucheng.cmis.view.JSONView" id="queryListRes">
+				<output>
+					<iColl id="IqpCoreConNetList">
+						<kColl>
+						</kColl>
+					</iColl>
+					<kColl id="pageInfo">
+						<field id="currentPage" />
+						<field id="maxLine" />
+						<field id="recordSize" />
+					</kColl>
+				</output>
+			</jsonView>
+		</outputViews>
+	</action>
+	<!-- 历史分页查询记录列表 -->
+	<action id="pageIqpCoreConNetLsQuery" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.iqp.op.pub.admittance.netmanager.iqpcoreconnet.QueryIqpCoreConNetLsOp"/>
+			<transition dest="queryListRes"/>
+		</flowInvoker>
+		<outputViews>
+			<jsonView class="com.yucheng.cmis.view.JSONView" id="queryListRes">
+				<output>
+					<iColl id="IqpCoreConNetList">
+						<kColl>
+						</kColl>
+					</iColl>
+					<kColl id="pageInfo">
+						<field id="currentPage" />
+						<field id="maxLine" />
+						<field id="recordSize" />
+					</kColl>
+				</output>
+			</jsonView>
+		</outputViews>
+	</action>
+	<!-- 入网/退网分页查询记录列表 -->
+	<action id="pageIqpCoreConNetAppQuery" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.iqp.op.pub.admittance.netmanager.iqpcoreconnet.QueryIqpNetAppLsOp"/>
+			<transition dest="queryListRes"/>
+		</flowInvoker>
+		<outputViews>
+			<jsonView class="com.yucheng.cmis.view.JSONView" id="queryListRes">
+				<output>
+					<iColl id="IqpCoreConNetList">
+						<kColl>
+						</kColl>
+					</iColl>
+					<kColl id="pageInfo">
+						<field id="currentPage" />
+						<field id="maxLine" />
+						<field id="recordSize" />
+					</kColl>
+				</output>
+			</jsonView>
+		</outputViews>
+	</action>
+</actionDefines>

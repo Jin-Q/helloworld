@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<IqpCusAcct.xml>
+	<TableModel id="IqpCusAcct" cnname="账户信息" dbTableName="iqp_cus_acct">
+		<Field id="serno" isPK="false" columnName="serno" cnname="业务编号" length="40" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="cont_no" columnName="cont_no" cnname="合同编号" length="40" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="acct_attr" columnName="acct_attr" cnname="账户属性" length="10" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="is_this_org_acct" columnName="is_this_org_acct" cnname="是否本行账户" length="1" JDBCType="CHAR" canBeNull="true"/>
+		<Field id="acct_no" columnName="acct_no" cnname="账号" length="40" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="acct_name" columnName="acct_name" cnname="户名" length="80" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="opac_org_no" columnName="opac_org_no" cnname="开户行行号" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="opan_org_name" columnName="opan_org_name" cnname="开户行行名" length="100" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="pay_amt" columnName="pay_amt" cnname="支付金额" length="16" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="pk_id" isPK="true" columnName="pk_id" cnname="PK_ID" length="40" JDBCType="VARCHAR2"/>
+		<Field id="acct_gl_code" columnName="acct_gl_code" cnname="科目号" length="20" JDBCType="VARCHAR2"/>
+		<Field id="cur_type" columnName="cur_type" cnname="币种" length="3" JDBCType="CHAR"/>
+		<Field id="interbank_id" columnName="interbank_id" cnname="银联行号" length="40" JDBCType="VARCHAR2" canBeNull="true"/>
+	</TableModel>
+</IqpCusAcct.xml>

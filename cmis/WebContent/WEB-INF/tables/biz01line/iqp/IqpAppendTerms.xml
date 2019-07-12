@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<IqpAppendTerms.xml>
+	<TableModel id="IqpAppendTerms" cnname="费用信息" dbTableName="iqp_append_terms">
+		<Field id="append_terms_pk" isPK="true" columnName="append_terms_pk" cnname="主键" length="40" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="serno" isPK="false" columnName="serno" cnname="业务编号" length="40" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="fee_code" isPK="false" columnName="fee_code" cnname="费用代码" length="20" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="fee_type" columnName="fee_type" cnname="费用类型" length="5" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="fee_amt" columnName="fee_amt" cnname="费用金额" length="16" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="fee_cur_type" columnName="fee_cur_type" cnname="币种" length="3" JDBCType="CHAR" canBeNull="true"/>
+		<Field id="fee_rate" columnName="fee_rate" cnname="费用比率" length="16" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="is_cycle_chrg" columnName="is_cycle_chrg" cnname="是否周期性收费" length="1" JDBCType="CHAR" canBeNull="true"/>
+		<Field id="chrg_date" columnName="chrg_date" cnname="收费日期" length="10" JDBCType="VARCHAR2" canBeNull="true"/>
+		
+		<Field id="collect_type" columnName="collect_type" cnname="收费方式" length="5" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="fee_acct_no" columnName="fee_acct_no" cnname="费用账号" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="chrg_freq" columnName="chrg_freq" cnname="收费频率" length="5" JDBCType="VARCHAR2"/>
+	</TableModel>
+</IqpAppendTerms.xml>

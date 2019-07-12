@@ -1,0 +1,58 @@
+package com.yucheng.cmis.biz01line.ind.op.indgroup.indgroupindex;
+
+import java.sql.Connection;
+
+import org.apache.log4j.Logger;
+
+import com.ecc.emp.core.Context;
+import com.ecc.emp.core.EMPException;
+import com.ecc.emp.data.KeyedCollection;
+import com.ecc.emp.dbmodel.service.TableModelDAO;
+import com.ecc.emp.jdbc.EMPJDBCException;
+import com.yucheng.cmis.operation.CMISOperation;
+
+public class UpdateIndGroupIndGroupIndexRecordOp extends CMISOperation {
+	
+	private static final Logger logger = Logger.getLogger(UpdateIndGroupIndGroupIndexRecordOp.class);
+	
+	//扄1�7要操作的表模垄1�7
+	private final String modelId = "IndGroupIndex";
+	
+	/**
+	 * 业务逻辑执行的具体实现方泄1�7
+	 */
+	public String doExecute(Context context) throws EMPException {
+		Connection connection = null;
+		try{
+			connection = this.getConnection(context);
+
+			//更新丄1�7条指定的记录
+			
+			KeyedCollection kColl = null;
+			try {
+				kColl = (KeyedCollection)context.getDataElement(modelId);
+			} catch (Exception e) 
+			{
+				logger.error(e.getMessage(), e);
+			}
+			if(kColl == null || kColl.size() == 0)
+				throw new EMPJDBCException("The values to update["+modelId+"] cannot be empty!");
+			
+			//修改指定记录
+			TableModelDAO dao = this.getTableModelDAO(context);
+			int count=dao.update(kColl, connection);
+			if(count!=1){
+				throw new EMPException("修改数据失败！操作影响了"+count+"条记彄1�7");
+			}
+
+		}catch (EMPException ee) {
+			throw ee;
+		} catch(Exception e){
+			throw new EMPException(e);
+		} finally {
+			if (connection != null)
+				this.releaseConnection(context, connection);
+		}
+		return "0";
+	}
+}

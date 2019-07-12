@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<CusGrpMember.xml>
+	<TableModel id="CusGrpMember" pageSize="15" cnname="集团客户成员" isPaged="true" dbTableName="cus_grp_member">
+		<TableInfo/>
+		<Field id="grp_no" isPK="true" columnName="grp_no" cnname="集团编号" length="30" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="cus_id" isPK="true" columnName="cus_id" cnname="成员客户号" length="30" JSPTag="pop" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="grp_corre_type" columnName="grp_corre_type" cnname="集团关联关系类型" length="1" JSPTag="select" canBeNull="false" JDBCType="CHAR"/>
+		<Field id="grp_corre_detail" columnName="grp_corre_detail" cnname="集团关联关系描述" length="250" JSPTag="textarea" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="input_date" columnName="input_date" cnname="登记日期" length="10" JSPTag="date" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="input_br_id" columnName="input_br_id" cnname="登记机构" length="20" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="gen_type" columnName="gen_type" cnname="生成类型" length="2" JSPTag="select" JDBCType="CHAR"/>
+		<Field id="input_id" columnName="input_id" cnname="登记人" length="20" JSPTag="text" JDBCType="VARCHAR2"/>
+		<FilterFields>cus_id;grp_corre_type;</FilterFields>
+		<OrderFields>grp_no[desc];cus_id[desc];</OrderFields>
+	</TableModel>
+</CusGrpMember.xml>

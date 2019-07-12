@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actionDefines>
+	<classMap>
+		<map id="action" class="com.yucheng.cmis.ad.mvc.ADRequestController"/>
+		<map id="flowInvoker" class="com.yucheng.cmis.ad.mvc.ADFlowInvoker"/>
+		<map id="outputViews" class="java.util.HashMap"/>
+		<map id="output" class="com.ecc.emp.data.KeyedCollection"/>
+		<map id="kColl" class="com.ecc.emp.data.KeyedCollection"/>
+		<map id="iColl" class="com.ecc.emp.data.IndexedCollection"/>
+		<map id="field" class="com.ecc.emp.data.DataField"/>
+	</classMap>
+	
+	<!-- 获取操作主页面 -->
+	<action id="queryAccAccpList" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.acc.op.accaccp.QueryAccAccpListOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="biz01line/acc/AccAccp/queryAccAccpList.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 获得编辑页面 -->
+	<action id="getAccAccpUpdatePage" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation updateCheck="false" class="com.yucheng.cmis.biz01line.acc.op.accaccp.QueryAccAccpDetailOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="biz01line/acc/AccAccp/updateAccAccpRecord.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 更新记录 -->
+	<action id="updateAccAccpRecord" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.acc.op.accaccp.UpdateAccAccpRecordOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="operationResult.jsp?url=queryAccAccpList.do" />
+		</outputViews>
+	</action>
+	
+	<!-- 获得查看页面 -->
+	<action id="getAccAccpViewPage" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.acc.op.accaccp.QueryAccAccpDetailOp"/>
+			<transition dest="updatePage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="updatePage" url="biz01line/acc/AccAccp/queryAccAccpDetail.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 获得新增页面 -->
+	<action id="getAccAccpAddPage" type="normal" checkSession="true" >
+		<jspView id="addPage" url="biz01line/acc/AccAccp/addAccAccpRecord.jsp"/>
+	</action>
+	
+	<!-- 新增记录 -->
+	<action id="addAccAccpRecord" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.acc.op.accaccp.AddAccAccpRecordOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="operationResult.jsp?url=queryAccAccpList.do" />
+		</outputViews>
+	</action>	
+	
+	<!-- 删除记录 -->
+	<action id="deleteAccAccpRecord" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.acc.op.accaccp.DeleteAccAccpRecordOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="operationResult.jsp?url=queryAccAccpList.do" />
+		</outputViews>
+	</action>
+	
+	<!-- 分页查询记录列表 -->
+		<action id="pageAccAccpQuery" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.acc.op.accaccp.QueryAccAccpListOp"/>
+			<transition dest="queryListRes"/>
+		</flowInvoker>
+		<outputViews>
+			<jsonView class="com.yucheng.cmis.view.JSONView" id="queryListRes">
+				<output>
+					<iColl id="AccAccpList">
+						<kColl>
+						</kColl>
+					</iColl>
+					<kColl id="pageInfo">
+						<field id="currentPage" />
+						<field id="maxLine" />
+						<field id="recordSize" />
+					</kColl>
+				</output>
+			</jsonView>
+		</outputViews>
+	</action>
+	
+	<!-- 导出成生成excel -->                                                                                                                                
+	<action id="accAccpExpBatchToExcel"  type="normal"  checkSession="true" >                                                                                           
+		<flowInvoker>                                                                                                                                            
+			<operation class="com.yucheng.cmis.biz01line.acc.op.accaccp.AccAccpExpBatchToExcelOp"/>                                                                    
+			<transition dest="retPage"/>                                                                                                                           
+		</flowInvoker>                                                                                                                                           
+		<outputViews>                                                                                                                                            
+		   <view id="retPage" class="com.yucheng.cmis.view.ExcelView">                                                                                           
+ 				<excelWorkbook fileName="AccAccp.xls" class="com.yucheng.cmis.view.excel.ExcelWorkbook">                                                          
+ 					<excelSheet id="1" name="银承台账" isTitle="true" iCollName="AccAccpList" class="com.yucheng.cmis.view.excel.ExcelSheet">                       
+ 						<!-- 添加合同编号、客户条线     2014-08-07  邓亚辉 -->
+ 						<excelColumn dataName="bill_no" name="借据编号" cellType="string" class="com.yucheng.cmis.view.excel.ExcelColumn"/> 
+ 						<excelColumn dataName="cont_no" name="合同编号" cellType="string" class="com.yucheng.cmis.view.excel.ExcelColumn"/>                                 
+ 						<excelColumn dataName="daorg_cusid" name="客户码" class="com.yucheng.cmis.view.excel.ExcelColumn"/>      
+ 						<excelColumn dataName="daorg_cusid_displayname" name="客户名称"  class="com.yucheng.cmis.view.excel.ExcelColumn"/> 
+ 						<excelColumn dataName="belg_line" name="客户条线" dictName="STD_ZB_BUSILINE" class="com.yucheng.cmis.view.excel.ExcelColumn"/>  
+ 						<excelColumn dataName="cur_type" name="币种" dictName="STD_ZX_CUR_TYPE" class="com.yucheng.cmis.view.excel.ExcelColumn"/>                                       
+ 						<excelColumn dataName="drft_amt" name="票面金额" cellType='numeric' class="com.yucheng.cmis.view.excel.ExcelColumn"/>                          
+ 						<excelColumn dataName="isse_date" name="出票日期"  class="com.yucheng.cmis.view.excel.ExcelColumn"/>     
+ 						<excelColumn dataName="porder_end_date"  name="到期日期" class="com.yucheng.cmis.view.excel.ExcelColumn"/>   
+ 						<excelColumn dataName="five_class"  name="五级分类"  dictName="STD_ZB_FIVE_SORT" class="com.yucheng.cmis.view.excel.ExcelColumn"/> 
+ 						<excelColumn dataName="manager_br_id_displayname"  name="管理机构" class="com.yucheng.cmis.view.excel.ExcelColumn"/>                                      
+ 					 	<excelColumn dataName="accp_status" name="台账状态" dictName="STD_ZB_ACC_TYPE" class="com.yucheng.cmis.view.excel.ExcelColumn"/>               
+ 					</excelSheet>                                                                                                                                      
+ 				</excelWorkbook>                                                                                                                                     
+ 			</view>                                                                                                                                                
+		</outputViews>                                                                                                                                           
+	</action>    
+	
+</actionDefines>
+
+
+

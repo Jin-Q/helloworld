@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actionDefines>
+	<classMap>
+		<map id="action" class="com.yucheng.cmis.ad.mvc.ADRequestController"/>
+		<map id="flowInvoker" class="com.yucheng.cmis.ad.mvc.ADFlowInvoker"/>
+		<map id="outputViews" class="java.util.HashMap"/>
+		<map id="output" class="com.ecc.emp.data.KeyedCollection"/>
+		<map id="kColl" class="com.ecc.emp.data.KeyedCollection"/>
+		<map id="iColl" class="com.ecc.emp.data.IndexedCollection"/>
+		<map id="field" class="com.ecc.emp.data.DataField"/>
+	</classMap>
+	
+	<!-- 报表展示页面 -->
+	<action id="getReportShowPage" type="normal" checkSession="true" >
+		<jspView id="showPage" url="biz01line/report/fnc/reportShowPage.jsp"/>
+	</action>
+	
+	<!-- 报表展示页面 -->
+	<action id="getReport2ShowPage" type="normal" checkSession="true" >
+		<jspView id="showPage" url="biz01line/report/fnc/report2ShowPage.jsp"/>
+	</action>
+	
+	<!-- tab页签报表展示 -->
+	<action id="getReportInfo" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.report.GetReportInfoRecordOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="biz01line/report/propertyResult.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- add by lisj 2015-7-14  需求编号：【XD150710050】信贷业务纸质档案封面的导出与打印功能变更 begin -->
+	<action id="getGuarantyInfo4CusBaseList" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.report.GetGuarantyInfo4CusBaseListOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="biz01line/report/fnc/queryGuarantyInfo4CusBase.jsp" />
+		</outputViews>
+	</action>
+	
+	<action id="pageGuarantyInfo4CusBaseList" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.report.GetGuarantyInfo4CusBaseListOp"/>
+			<transition dest="queryListRes"/>
+		</flowInvoker>
+		<outputViews>
+			<jsonView class="com.yucheng.cmis.view.JSONView" id="queryListRes">
+				<output>
+					<iColl id="GuarantyInfo4CusBaseList">
+						<kColl>
+						</kColl>
+					</iColl>
+					<kColl id="pageInfo">
+						<field id="currentPage" />
+						<field id="maxLine" />
+						<field id="recordSize" />
+					</kColl>
+				</output>
+			</jsonView>
+		</outputViews>
+	</action>
+	
+	<!--重置报表存储数据功能 -->
+	<action id="resetRcInfo" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.report.ResetRcInfoOp"/> 
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<view id="retPage" class="com.yucheng.cmis.view.JSONView">
+				<output class="com.ecc.emp.data.KeyedCollection">
+					<field id="flag" class="com.ecc.emp.data.DataField" />
+				</output>
+			</view>
+		</outputViews>
+	</action>
+
+	<!-- add by lisj 2015-7-14  需求编号：【XD150710050】信贷业务纸质档案封面的导出与打印功能变更 end -->
+</actionDefines>

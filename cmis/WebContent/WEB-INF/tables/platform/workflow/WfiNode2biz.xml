@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<WfiNode2biz.xml>
+	<TableModel id="WfiNode2biz" cnname="流程节点关联业务配置" dbTableName="wfi_node2biz">
+		<Field id="pk1" isPK="true" columnName="pk1" cnname="关联配置主键" length="40" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="nodeid" isPK="true" columnName="nodeid" cnname="节点ID" length="32" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="nodename" columnName="nodename" cnname="节点名称" length="50" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="app_url" columnName="app_url" cnname="节点自定义申请信息页面" length="100" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="biz_url" columnName="biz_url" cnname="节点自定义业务要素修改页面" length="100" JDBCType="VARCHAR2" canBeNull="true"/>
+	</TableModel>
+</WfiNode2biz.xml>

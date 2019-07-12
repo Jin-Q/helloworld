@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<CusIndivIncome.xml>
+	<TableModel id="CusIndivIncome" cnname="个人收入情况" dbTableName="cus_indiv_income">
+		<Field id="cus_id" isPK="true" columnName="cus_id" cnname="客户代码" length="30" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="indiv_deposits" isPK="true" columnName="indiv_deposits" cnname="收入来源" length="2" JDBCType="CHAR" canBeNull="true"/>
+		<Field id="indiv_ann_incm" columnName="indiv_ann_incm" cnname="年收入" length="16" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="indiv_sur_year" isPK="true" columnName="indiv_sur_year" cnname="调查年份" length="4" JDBCType="CHAR" canBeNull="false"/>
+		<Field id="remark" columnName="remark" cnname="备注" length="250" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="input_id" columnName="input_id" cnname="登记人" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="input_br_id" columnName="input_br_id" cnname="登记机构" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="input_date" columnName="input_date" cnname="登记日期" length="10" JDBCType="CHAR" canBeNull="true"/>
+		<Field id="last_upd_id" columnName="last_upd_id" cnname="更新人" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="last_upd_date" columnName="last_upd_date" cnname="更新日期" length="10" JDBCType="VARCHAR2" canBeNull="true"/>
+	</TableModel>
+</CusIndivIncome.xml>

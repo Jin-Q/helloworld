@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEMPLATE>
+   <MODEL modelId='LcAppl' BCHField='bch_cde' USRField='crt_usr'>
+    <QUERY>com.yucheng.cmis.permission.data.MySelfQueryTemplate</QUERY>
+    <QUERY duty='001,009'>com.yucheng.cmis.permission.data.MyOrgAndBranchQueryTemplate4Oracle</QUERY>
+    <UPDATE duty='001'>com.yucheng.cmis.permission.data.MyOrgUpdateTemplate</UPDATE>
+    <UPDATE duty='009'>com.yucheng.cmis.permission.data.MySelfUpdateTemplate</UPDATE>
+    <UPDATE >com.yucheng.cmis.permission.data.MyOrgUpdateTemplate</UPDATE>
+   </MODEL>
+</TEMPLATE>

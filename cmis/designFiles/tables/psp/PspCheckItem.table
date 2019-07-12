@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<PspCheckItem.xml>
+	<TableModel id="PspCheckItem" pageSize="10" cnname="检查项目表" isPaged="true" dbTableName="psp_check_item">
+		<TableInfo/>
+		<Field id="item_id" isPK="true" columnName="item_id" cnname="项目编号" length="40" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="item_name" columnName="item_name" cnname="项目名称" length="200" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="default_value" columnName="default_value" cnname="缺省值" length="40" JSPTag="text" JDBCType="VARCHAR2"/>
+		<Field id="tag_type" columnName="tag_type" cnname="标签类型" length="5" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="tag_attr" columnName="tag_attr" cnname="标签属性" length="30" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="msg" columnName="msg" cnname="提示信息" length="200" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="url" columnName="url" cnname="URL" length="300" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="url_desc" columnName="url_desc" cnname="URL说明" length="200" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="is_null" dictname="STD_ZX_YES_NO" columnName="is_null" cnname="是否不为空" length="1" JSPTag="select" canBeNull="true" JDBCType="CHAR"/>
+		<Field id="is_judge" dictname="STD_ZX_YES_NO" columnName="is_judge" cnname="是否自动判断" length="1" JSPTag="select" canBeNull="true" JDBCType="CHAR"/>
+		<Field id="rule" columnName="rule" cnname="业务规则" length="40" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="memo" columnName="memo" cnname="备注" length="200" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="input_id" columnName="input_id" cnname="登记人" length="20" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="input_date" columnName="input_date" cnname="登记日期" length="10" JSPTag="date" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="input_br_id" columnName="input_br_id" cnname="登记机构" length="20" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<OrderFields>item_id[desc];</OrderFields>
+		<ConditionFields>item_id;item_name;</ConditionFields>
+		<Field id="is_need_event" columnName="is_need_event" cnname="是否增加事件" length="1" JSPTag="text" JDBCType="CHAR"/>
+		<Field id="event_type" columnName="event_type" cnname="事件类型" length="5" JSPTag="text" JDBCType="VARCHAR2"/>
+		<Field id="hpp_cond" columnName="hpp_cond" cnname="成立条件" length="40" JSPTag="text" JDBCType="VARCHAR2"/>
+		<Field id="imp_item_id" columnName="imp_item_id" cnname="目标项目编号" length="40" JSPTag="text" JDBCType="VARCHAR2"/>
+		<Field id="is_hidden" columnName="is_hidden" cnname="是否隐藏" JSPTag="text" length="1" JDBCType="CHAR"/>
+	</TableModel>
+</PspCheckItem.xml>

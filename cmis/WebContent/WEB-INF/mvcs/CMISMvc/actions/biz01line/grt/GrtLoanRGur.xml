@@ -1,0 +1,312 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actionDefines>
+	<classMap>
+		<map id="action" class="com.yucheng.cmis.ad.mvc.ADRequestController"/>
+		<map id="flowInvoker" class="com.yucheng.cmis.ad.mvc.ADFlowInvoker"/>
+		<map id="outputViews" class="java.util.HashMap"/>
+		<map id="output" class="com.ecc.emp.data.KeyedCollection"/>
+		<map id="kColl" class="com.ecc.emp.data.KeyedCollection"/>
+		<map id="iColl" class="com.ecc.emp.data.IndexedCollection"/>
+		<map id="field" class="com.ecc.emp.data.DataField"/>
+	</classMap>
+	
+	<!-- 获取操作主页面 -->
+	<action id="queryGrtLoanRGurList" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.grt.op.grtloanrgur.QueryGrtLoanRGurListOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="biz01line/grt/GrtLoanRGur/queryGrtLoanRGurList.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 信用证变更获取业务担保合同操作主页面 --> 
+	<action id="creditChangeQueryGrtLoanRGurList" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.grt.op.grtloanrgur.CreditChangeQueryGrtLoanRGurListOp"/> 
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="biz01line/grt/GrtLoanRGur/creditChangeQueryGrtLoanRGurList.jsp" />  
+		</outputViews>
+	</action>
+	
+	<!-- 获得编辑页面 -->
+	<action id="getGrtLoanRGurUpdatePage" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation updateCheck="false" class="com.yucheng.cmis.biz01line.grt.op.grtloanrgur.QueryGrtLoanRGurDetailOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="biz01line/grt/GrtGuarCont/updateGrtGuarContRecord.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 获得担保信息详情Tab页面 -->
+	<action id="getGrtGuarContTabUpdatePage" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation updateCheck="false" class="com.yucheng.cmis.biz01line.grt.op.grtguarcont.QueryGrtGuarContDetailOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="biz01line/grt/GrtGuarCont/updateGrtGuarContRecord.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 更新记录 -->
+	<action id="updateGrtLoanRGurRecord" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.grt.op.grtloanrgur.UpdateGrtLoanRGurRecordOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<view id="retPage" class="com.yucheng.cmis.view.JSONView">
+				<output class="com.ecc.emp.data.KeyedCollection">
+					<field id="flag" class="com.ecc.emp.data.DataField"/>
+				</output>
+			</view>
+		</outputViews>
+	</action>
+	
+	<!-- 获得查看页面 -->
+	<action id="getGrtLoanRGurViewPage" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.grt.op.grtloanrgur.QueryGrtLoanRGurDetailOp"/>
+			<transition dest="updatePage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="updatePage" url="biz01line/grt/GrtLoanRGur/queryGrtGuarRGur.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 获得业务担保合同关联查看页面 -->
+	<action id="getGrtLoanView" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.grt.op.grtloanrgur.QueryGrtDetailOp"/>
+			<transition dest="updatePage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="updatePage" url="biz01line/grt/GrtLoanRGur/updateGrtLoanRGurRecord.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 最高额新增页面 --> 
+	<action id="getGrtLoanRGurAddPage" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.grt.op.grtloanrgur.AddGrtZGEContOp"/>
+			<transition dest="addPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="addPage" url="biz01line/grt/GrtLoanRGur/addGrtLoanRGurRecord.jsp"/>
+		</outputViews>
+	</action>
+	
+	<!--一般担保合同新增页面 -->
+	<action id="getYBGrtLoanRGurAddPage" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.grt.op.grtloanrgur.AddGrtZGEContOp"/>
+			<transition dest="addPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="addPage" url="biz01line/grt/GrtLoanRGur/addYBGrtLoanRGurRecord.jsp"/>
+		</outputViews>
+	</action>
+	
+	<!-- 新增记录 -->
+	<action id="addGrtLoanRGurRecord" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.grt.op.grtloanrgur.AddGrtLoanRGurRecordOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<view id="retPage" class="com.yucheng.cmis.view.JSONView">
+				<output class="com.ecc.emp.data.KeyedCollection">
+					<field id="flag" class="com.ecc.emp.data.DataField"/>
+				</output>
+			</view>
+		</outputViews>
+	</action>	
+	
+	<!-- 过滤引用 -->
+	<action id="checkGrtLoanRGur" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.grt.op.grtloanrgur.CheckGrtLoanRGurOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<view id="retPage" class="com.yucheng.cmis.view.JSONView">
+				<output class="com.ecc.emp.data.KeyedCollection">
+					<field id="flag" class="com.ecc.emp.data.DataField"/>
+				</output>
+			</view>
+		</outputViews>
+	</action>	
+	
+	<!-- 检查担保金额是否够用 -->
+	<action id="checkGrtLoanCur" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.grt.op.grtloanrgur.CheckGrtLoanCurOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<view id="retPage" class="com.yucheng.cmis.view.JSONView">
+				<output class="com.ecc.emp.data.KeyedCollection">
+					<field id="flag" class="com.ecc.emp.data.DataField"/>
+					<field id="canAmt" class="com.ecc.emp.data.DataField"/>
+					<field id="Amt" class="com.ecc.emp.data.DataField"/>
+				</output>
+			</view>
+		</outputViews>
+	</action>	
+	
+	<!-- 删除一般担保合同记录 -->
+	<action id="deleteGrtLoanRGurRecord" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.grt.op.grtloanrgur.DeleteGrtLoanRGurRecordOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<view id="retPage" class="com.yucheng.cmis.view.JSONView">
+				<output class="com.ecc.emp.data.KeyedCollection">
+					<field id="flag" class="com.ecc.emp.data.DataField" />
+				</output>
+			</view>
+		</outputViews>
+	</action>
+	
+	<!-- 删除最高额担保关联关系记录 -->
+	<action id="deleteGrtLoanRGurZGE" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.grt.op.grtloanrgur.DeleteGrtLoanRGurZGEOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<view id="retPage" class="com.yucheng.cmis.view.JSONView">
+				<output class="com.ecc.emp.data.KeyedCollection">
+					<field id="flag" class="com.ecc.emp.data.DataField" />
+				</output>
+			</view>
+		</outputViews>
+	</action>
+	
+	<!-- 一般分页查询记录列表 -->
+		<action id="pageGrtLoanRGurQueryZB" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.grt.op.grtloanrgur.QueryGrtLoanRGurListOp"/>
+			<transition dest="queryListRes"/>
+		</flowInvoker>
+		<outputViews>
+			<jsonView class="com.yucheng.cmis.view.JSONView" id="queryListRes">
+				<output>
+					<iColl id="GrtLoanRGurListYb">
+						<kColl>
+						</kColl>
+					</iColl>
+					<kColl id="pageInfoYb">
+						<field id="currentPage" />
+						<field id="maxLine" />
+						<field id="recordSize" />
+					</kColl>
+				</output>
+			</jsonView>
+		</outputViews>
+	</action>
+	
+	<!-- 最高额分页查询记录列表 -->
+		<action id="pageGrtLoanRGurQueryZGE" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.grt.op.grtloanrgur.QueryGrtLoanRGurListOp"/>
+			<transition dest="queryListRes"/>
+		</flowInvoker>
+		<outputViews>
+			<jsonView class="com.yucheng.cmis.view.JSONView" id="queryListRes">
+				<output>
+					<iColl id="GrtLoanRGurListZge">
+						<kColl>
+						</kColl>
+					</iColl>
+					<kColl id="pageInfoZge">
+						<field id="currentPage" />
+						<field id="maxLine" />
+						<field id="recordSize" />
+					</kColl>
+				</output>
+			</jsonView>
+		</outputViews>
+	</action>
+	
+	<!-- 提升降低等级 -->
+	<action id="upLvl" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.grt.op.grtloanrgur.UpLvlGrtLoanRGurRecordOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<view id="retPage" class="com.yucheng.cmis.view.JSONView">
+				<output class="com.ecc.emp.data.KeyedCollection">
+					<field id="flag" class="com.ecc.emp.data.DataField"/>
+				</output>
+			</view>
+		</outputViews>
+	</action>
+	
+	<!-- 一般担保引入列表（从授信模块取值） --> 
+	<action id="grtGuarYbList" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.grt.op.grtloanrgur.GrtGuarListOp"/>
+			<transition dest="addPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="addPage" url="biz01line/grt/GrtLoanRGur/grtGuarYbList.jsp"/>
+		</outputViews>   
+	</action>
+	
+	<!-- 最高额引入列表（从授信模块取值） --> 
+	<action id="grtGuarZgeList" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.grt.op.grtloanrgur.GrtGuarListOp"/>
+			<transition dest="addPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="addPage" url="biz01line/grt/GrtLoanRGur/grtGuarZgeList.jsp"/>
+		</outputViews>   
+	</action>
+	
+	<!-- 贸易融资额度担保列表 --> 
+	<action id="queryGrtCtrLimitList" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.grt.op.grtloanrgur.QueryGrtCtrLimitListOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="biz01line/grt/GrtLoanRGur/queryGrtCtrLimitList.jsp"/>
+		</outputViews>   
+	</action>
+	
+	<!-- 贸易融资额度担保分页列表 --> 
+	<action id="pageQueryGrtCtrLimitList" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.grt.op.grtloanrgur.QueryGrtCtrLimitListOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jsonView class="com.yucheng.cmis.view.JSONView" id="queryListRes">
+				<output>
+					<iColl id="GrtLoanRGurListZge">
+						<kColl>
+						</kColl>
+					</iColl>
+					<kColl id="pageInfoZge">
+						<field id="currentPage" />
+						<field id="maxLine" />
+						<field id="recordSize" />
+					</kColl>
+				</output>
+			</jsonView>
+		</outputViews>   
+	</action>
+</actionDefines>
+
+
+

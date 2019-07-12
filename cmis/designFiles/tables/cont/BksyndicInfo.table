@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<BksyndicInfo.xml>
+	<TableModel id="BksyndicInfo" pageSize="10" cnname="银团信息" isPaged="true" dbTableName="bksyndic_info">
+		<TableInfo/>
+		<Field id="serno" isPK="true" columnName="serno" cnname="业务编号" length="40" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="cont_no" columnName="cont_no" cnname="合同编号" length="40" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="prtcpt_bank_no" columnName="prtcpt_bank_no" cnname="参与行行号" length="20" JSPTag="pop" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="prtcpt_bank_name" columnName="prtcpt_bank_name" cnname="参与行行名" length="100" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="is_bank" dictname="STD_ZX_YES_NO" columnName="is_bank" cnname="是否本行" length="1" JSPTag="select" canBeNull="true" JDBCType="CHAR"/>
+		<Field id="prtcpt_role" columnName="prtcpt_role" cnname="参与角色" length="40" JSPTag="select" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="prtcpt _cur_type" dictname="STD_ZX_CUR_TYPE" columnName="prtcpt _cur_type" cnname="参与币种" length="5" JSPTag="select" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="prtcpt_amt_rate" dataType="Percent" columnName="prtcpt_amt_rate" cnname="参与金额比例" length="10" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="prtcpt _amt" dataType="Currency" columnName="prtcpt _amt" cnname="参与金额" length="16" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="reaccept_int_no" columnName="reaccept_int_no" cnname="代收利息账号" length="40" JSPTag="pop" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="reaccept_int_name" columnName="reaccept_int_name" cnname="代收利息账户名" length="100" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="bank_acct_no" columnName="bank_acct_no" cnname="银行账号" length="40" JSPTag="pop" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="bank_acct_name" columnName="bank_acct_name" cnname="银行账户名" length="100" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<OrderFields>serno;cont_no;</OrderFields>
+		<ConditionFields>serno;cont_no;prtcpt_bank_no;</ConditionFields>
+		<FilterFields>prtcpt_bank_no;prtcpt_bank_name;prtcpt_role;prtcpt_amt_rate;prtcpt _cur_type;prtcpt _amt;</FilterFields>
+	</TableModel>
+</BksyndicInfo.xml>

@@ -1,0 +1,347 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actionDefines>
+	<classMap>
+		<map id="action" class="com.yucheng.cmis.ad.mvc.ADRequestController"/>
+		<map id="flowInvoker" class="com.yucheng.cmis.ad.mvc.ADFlowInvoker"/>
+		<map id="outputViews" class="java.util.HashMap"/>
+		<map id="output" class="com.ecc.emp.data.KeyedCollection"/>
+		<map id="kColl" class="com.ecc.emp.data.KeyedCollection"/>
+		<map id="iColl" class="com.ecc.emp.data.IndexedCollection"/>
+		<map id="field" class="com.ecc.emp.data.DataField"/>
+	</classMap>
+	
+	<!-- 小工具展示贷后检查 -->
+	<action id="queryPspCheckTask" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.psp.op.pspchecktask.QueryPspCheckTaskListOp1"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="biz01line/psp/PspCheckTask/queryPspCheckTaskList1.jsp" />
+		</outputViews>
+	</action>   
+	
+	<!-- 获取操作主页面 -->
+	<action id="queryPspCheckTaskList" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.psp.op.pspchecktask.QueryPspCheckTaskListOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="biz01line/psp/PspCheckTask/queryPspCheckTaskList.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 获取历史主页面 -->
+	<action id="queryPspCheckTaskHistoryList" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.psp.op.pspchecktask.QueryPspCheckTaskHistoryListOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="biz01line/psp/PspCheckTask/queryPspCheckTaskHistoryList.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 获取历史主页面 -->
+	<action id="queryPspCheckTaskHistoryListForTask" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.psp.op.pspchecktask.QueryPspCheckTaskHistoryListOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="biz01line/psp/PspCheckTask/queryPspCheckTaskHistoryListForTask.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 获得编辑页面 -->
+	<action id="getPspCheckTaskUpdatePage" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation updateCheck="true" class="com.yucheng.cmis.biz01line.psp.op.pspchecktask.QueryPspCheckTaskDetailOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="biz01line/psp/PspCheckTask/updatePspCheckTaskRecord.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 更新记录 -->
+	<action id="updatePspCheckTaskRecord" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.psp.op.pspchecktask.UpdatePspCheckTaskRecordOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<view id="retPage" class="com.yucheng.cmis.view.JSONView">
+				<output class="com.ecc.emp.data.KeyedCollection">
+					<field id="flag" class="com.ecc.emp.data.DataField" />
+				</output>
+			</view>
+		</outputViews>
+	</action>
+	
+	<!-- 获得查看页面 -->
+	<action id="getPspCheckTaskViewPage" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.psp.op.pspchecktask.QueryPspCheckTaskDetailOp"/>
+			<transition dest="updatePage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="updatePage" url="biz01line/psp/PspCheckTask/queryPspCheckTaskDetail.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 获得新增页面 -->
+	<action id="getPspCheckTaskAddPage" type="normal" checkSession="true" >
+		<jspView id="addPage" url="biz01line/psp/PspCheckTask/addPspCheckTaskRecord.jsp"/>
+	</action>
+	
+	<!-- 新增记录 -->
+	<action id="addPspCheckTaskRecord" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.psp.op.pspchecktask.AddPspCheckTaskRecordOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="biz01line/psp/PspCheckTask/operationResult.jsp?url=queryPspCheckTaskList.do" />
+		</outputViews>
+	</action>	
+	
+	<!-- 删除记录 -->
+	<action id="deletePspCheckTaskRecord" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.psp.op.pspchecktask.DeletePspCheckTaskRecordOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="biz01line/psp/PspCheckTask/operationResult.jsp?url=queryPspCheckTaskList.do" />
+		</outputViews>
+	</action>
+	
+	<!-- 分页查询记录列表 -->
+		<action id="pagePspCheckTaskQuery" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.psp.op.pspchecktask.QueryPspCheckTaskListOp"/>
+			<transition dest="queryListRes"/>
+		</flowInvoker>
+		<outputViews>
+			<jsonView class="com.yucheng.cmis.view.JSONView" id="queryListRes">
+				<output>
+					<iColl id="PspCheckTaskList">
+						<kColl>
+						</kColl>
+					</iColl>
+					<kColl id="pageInfo">
+						<field id="currentPage" />
+						<field id="maxLine" />
+						<field id="recordSize" />
+					</kColl>
+				</output>
+			</jsonView>
+		</outputViews>
+	</action>
+	
+	<!-- 历史分页查询记录列表 -->
+		<action id="pagePspCheckTaskHistoryQuery" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.psp.op.pspchecktask.QueryPspCheckTaskHistoryListOp"/>
+			<transition dest="queryListRes"/>
+		</flowInvoker>
+		<outputViews>
+			<jsonView class="com.yucheng.cmis.view.JSONView" id="queryListRes">
+				<output>
+					<iColl id="PspCheckTaskList">
+						<kColl>
+						</kColl>
+					</iColl>
+					<kColl id="pageInfo">
+						<field id="currentPage" />
+						<field id="maxLine" />
+						<field id="recordSize" />
+					</kColl>
+				</output>
+			</jsonView>
+		</outputViews>
+	</action>
+	
+	<!-- 获得客户下的借据信息（贷后检查） -->
+	<action id="queryAccListByCusIdForPsp" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.psp.op.pspchecktask.QueryAccListByCusIdForPspOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="biz01line/psp/PspCheckTask/queryAccListByCusIdForPsp.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 获得客户下的担保信息（贷后检查） -->
+	<action id="queryGrtListByCusIdForPsp" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.psp.op.pspchecktask.QueryGrtListByCusIdForPspOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="biz01line/psp/PspCheckTask/queryGrtListByCusIdForPsp.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 分析保证人（贷后检查） -->
+	<action id="analyGrtGuaranteeForPsp" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.psp.op.pspchecktask.AnalyGrtGuaranteeForPspOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="biz01line/psp/PspCheckTask/analyGrtGuaranteeForPsp.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 获得个人客户下的授信信息（贷后检查） -->
+	<action id="queryLmtIndivInfoByCusIdForPsp" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.psp.op.pspchecktask.QueryLmtIndivInfoByCusIdForPspOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="biz01line/psp/PspCheckTask/queryLmtIndivInfoByCusIdForPsp.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 获得集团任务下的子任务（贷后检查） -->
+	<action id="queryGrpListForPsp" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.psp.op.pspchecktask.QueryGrpListForPspOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="biz01line/psp/PspCheckTask/queryGrpListForPsp.jsp" />
+		</outputViews>
+	</action>
+	
+	
+	<!-- add by lisj 2015-5-20  需求编号：XD150504034 贷后管理常规检查任务改造 ,获得集团检查信息（贷后检查） -->
+	<action id="queryGrpInfoForPsp" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.psp.op.pspchecktask.QueryGrpInfoForPspOp"/>
+			<transition dest="retUpdatePage" condition="($retValue='0')"/>
+			<transition dest="retViewPage" condition="($retValue='1')"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retUpdatePage" url="biz01line/psp/PspCheckTask/updateGrpInfoForPsp.jsp" />
+			<jspView id="retViewPage" url="biz01line/psp/PspCheckTask/queryGrpInfoForPsp.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- add by lisj 2015-5-21  需求编号：XD150504034 贷后管理常规检查任务改造,保存集团信息记录 -->
+	<action id="updateGrpInfoRecord" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.psp.op.pspchecktask.UpdateGrpInfoRecordOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<view id="retPage" class="com.yucheng.cmis.view.JSONView">
+				<output class="com.ecc.emp.data.KeyedCollection">
+					<field id="flag" class="com.ecc.emp.data.DataField" />
+				</output>
+			</view>
+		</outputViews>
+	</action>
+
+	<!-- 获得成员检查 -->
+	<action id="getGrpCheckTabHelp" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation updateCheck="false" class="com.yucheng.cmis.biz01line.psp.op.pspchecktask.GetGrpCheckTabHelp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="biz01line/psp/PspCheckTask/grpCheckTabHelp.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 获得现场检查页面 -->
+	<action id="getCurCheckTabHelp" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation updateCheck="false" class="com.yucheng.cmis.biz01line.psp.op.pspchecktask.GetCurCheckTabHelp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="biz01line/psp/PspCheckTask/curCheckTabHelp.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 财务分析tab页面 -->
+	<action id="getPspFncAnalyTab" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation updateCheck="false" class="com.yucheng.cmis.biz01line.psp.op.pspchecktask.GetCurCheckTabHelp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="biz01line/psp/PspCheckTask/getPspFncAnalyTab.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- XD140718027：财务报表tab页面 (小微客户常规检查)-->
+	<action id="getPspFncReportTab" type="normal" checkSession="true">
+		<flowInvoker>
+			<operation updateCheck="false" class="com.yucheng.cmis.biz01line.psp.op.pspchecktask.GetCurCheckTabHelp"/>
+			<transition dest="retpage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retpage" url="biz01line/psp/PspCheckTask/getPspFncReportTab.jsp"/>
+		</outputViews>
+	</action>
+	
+	<!-- add by lisj 2015-5-19 需求编号：XD150504034 贷后管理常规检查任务改造 ,否决操作 -->
+	<action id="rejectPspCheckTaskRecord" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.psp.op.pspchecktask.RejectPspCheckTaskRecordOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<view id="retPage" class="com.yucheng.cmis.view.JSONView">
+				<output class="com.ecc.emp.data.KeyedCollection">
+					<field id="flag" class="com.ecc.emp.data.DataField" />
+				</output>
+			</view>
+		</outputViews>
+	</action>
+	
+	<!-- add by yezm 2015-7-23 需求编号：XD150625045 贷后管理常规检查任务改造（否决恢复操作） -->
+	<action id="batchPspCheckTaskRecord" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.psp.op.pspchecktask.BatchPspCheckTaskRecordOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<view id="retPage" class="com.yucheng.cmis.view.JSONView">
+				<output class="com.ecc.emp.data.KeyedCollection">
+					<field id="flag" class="com.ecc.emp.data.DataField" />
+				</output>
+			</view>
+		</outputViews>
+	</action>
+	
+	
+	
+	<!-- add by lisj 2015-5-19 需求编号：XD150504034 贷后管理常规检查任务改造 ,获取任务展期页面-->
+	<action id="getDeferPspCheckTaskRecordPage" type="normal" checkSession="true" >
+		<jspView id="retPage" url="biz01line/psp/PspCheckTask/deferPspCheckTaskRecord.jsp" />
+	</action>
+	
+	<!-- add by lisj 2015-5-19 需求编号：XD150504034 贷后管理常规检查任务改造,任务展期操作 -->
+	<action id="deferPspCheckTaskRecord" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.psp.op.pspchecktask.DeferPspCheckTaskRecordOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jsonView id="retPage" class="com.yucheng.cmis.view.JSONView" >
+				<output>
+					<field id="flag" class="com.ecc.emp.data.DataField"/>
+				</output>
+			</jsonView>
+		</outputViews>
+	</action>
+	
+</actionDefines>

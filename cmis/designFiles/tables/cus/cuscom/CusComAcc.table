@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<CusComAcc.xml>
+	<TableModel id="CusComAcc" pageSize="15" cnname="结算账户登记" isPaged="true" dbTableName="cus_com_acc">
+		<TableInfo>结算账户登记簿</TableInfo>
+		<Field id="cus_id" isPK="true" columnName="cus_id" cnname="客户代码" length="30" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="cus_name" columnName="cus_name" cnname="客户名称" length="80" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="acc_no" isPK="true" columnName="acc_no" cnname="一般结算账户帐号" length="32" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="acc_date" columnName="acc_date" cnname="一般账户开户日期" length="10" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="acc_open_org" columnName="acc_open_org" cnname="开户机构" length="20" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="acc_open_orgname" columnName="acc_open_orgname" cnname="开户机构名称" length="80" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="acc_org" columnName="acc_org" cnname="核算机构" length="20" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="acc_orgname" columnName="acc_orgname" cnname="核算机构名称" length="80" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<OrderFields>cus_id[desc];acc_no[desc];</OrderFields>
+		<FilterFields>cus_id;cus_name;acc_no;acc_date;acc_open_orgname;acc_orgname;</FilterFields>
+		<Field id="acc_name" columnName="acc_name" cnname="帐户名称 " length="90" JSPTag="text" JDBCType="VARCHAR2"/>
+		<Field id="acc_type" dictname="STD_ACC_TYPE" columnName="acc_type" cnname="账户类型" length="1" JSPTag="text" JDBCType="VARCHAR2"/>
+	</TableModel>
+</CusComAcc.xml>

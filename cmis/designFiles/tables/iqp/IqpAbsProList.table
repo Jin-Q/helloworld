@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<IqpAbsProList.xml>
+	<TableModel id="IqpAbsProList" cnname="证券化资产清单" dbTableName="iqp_abs_pro_list">
+		<TableInfo/>
+		<Field id="batch_no" columnName="batch_no" cnname="批次号" length="18" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="pre_package_serno" isPK="true" columnName="pre_package_serno" cnname="预封包流水号" length="80" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="bill_no" isPK="true" columnName="bill_no" cnname="贷款台账账号" length="40" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="cont_type" columnName="cont_type" cnname="合同类型" length="5" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="guar_type" columnName="guar_type" cnname="担保类型" length="5" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="cus_id" columnName="cus_id" cnname="客户编号" length="30" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="cus_name" columnName="cus_name" cnname="客户名称" length="80" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="bill_balance" columnName="bill_balance" cnname="借据余额" length="16" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="bill_amt" columnName="bill_amt" cnname="借据金额" length="16" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="repay_type" columnName="repay_type" cnname="还款方式" length="5" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="loan_start_date" columnName="loan_start_date" cnname="贷款起始日" length="10" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="loan_end_date" columnName="loan_end_date" cnname="贷款到期日" length="10" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="five_class" columnName="five_class" cnname="五级分类" length="10" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="manager_br_id" columnName="manager_br_id" cnname="管理机构" length="20" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="fina_br_id" columnName="fina_br_id" cnname="账务机构" length="20" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="acc_status" columnName="acc_status" cnname="台账状态" length="5" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="deal_status" columnName="deal_status" cnname="明显状态" length="2" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="error_msg" columnName="error_msg" cnname="错误信息" length="100" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<OrderFields>pre_package_serno[desc];bill_no[desc];</OrderFields>
+	</TableModel>
+</IqpAbsProList.xml>

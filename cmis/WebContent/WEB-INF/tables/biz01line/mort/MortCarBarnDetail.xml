@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<MortCarBarnDetail.xml>
+	<TableModel id="MortCarBarnDetail" cnname="车位/车库明细信息" dbTableName="mort_car_barn_detail">
+		<Field id="barn_detail_id" isPK="true" columnName="barn_detail_id" cnname="车位/车库编号" length="40" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="guaranty_no" columnName="guaranty_no" cnname="押品编号" length="40" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="is_barn" columnName="is_barn" cnname="是否车库" length="1" JDBCType="CHAR" canBeNull="true"/>
+		<Field id="build_area" columnName="build_area" cnname="建筑面积" length="16" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="building_num" columnName="building_num" cnname="所在楼座" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="floor" columnName="floor" cnname="所在楼层" length="8" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="building_structure_cd" columnName="building_structure_cd" cnname="建筑结构" length="2" JDBCType="CHAR" canBeNull="true"/>
+		<Field id="durable_years" columnName="durable_years" cnname="耐用年限" length="8" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="use_status" columnName="use_status" cnname="使用状态" length="2" JDBCType="CHAR" canBeNull="true"/>
+		<Field id="constructed_date" columnName="constructed_date" cnname="建成年代" length="10" JDBCType="CHAR" canBeNull="true"/>
+		<Field id="land_use_type" columnName="land_use_type" cnname="土地使用权类型" length="2" JDBCType="CHAR" canBeNull="true"/>
+		<Field id="land_use_begin_date" columnName="land_use_begin_date" cnname="土地使用起如日期" length="10" JDBCType="CHAR" canBeNull="true"/>
+		<Field id="land_use_end_date" columnName="land_use_end_date" cnname="土地使用终止日期" length="10" JDBCType="CHAR" canBeNull="true"/>
+		<Field id="land_character" columnName="land_character" cnname="土地所有制性质" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="buy_price" columnName="buy_price" cnname="购置价" length="16" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="buy_date" columnName="buy_date" cnname="购买时间" length="10" JDBCType="CHAR" canBeNull="true"/>
+		<Field id="is_notice_reg" columnName="is_notice_reg" cnname="是否处于预告登记阶段" length="1" JDBCType="CHAR" canBeNull="true"/>
+		<Field id="notice_reg_no" columnName="notice_reg_no" cnname="预告登记号" length="40" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="notice_reg_cert_no" columnName="notice_reg_cert_no" cnname="预告登记权利号" length="40" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="notice_reg_date" columnName="notice_reg_date" cnname="预告登记日期" length="10" JDBCType="CHAR" canBeNull="true"/>
+		<Field id="reg_begin_date" columnName="reg_begin_date" cnname="可办理所有权登记起始日期" length="10" JDBCType="CHAR" canBeNull="true"/>
+		<Field id="sys_update_time" columnName="sys_update_time" cnname="系统更新时间" length="10" JDBCType="CHAR" canBeNull="true"/>
+		<Field id="inhabit_no" columnName="inhabit_no" cnname="小区编号" length="100" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="design_use" columnName="design_use" cnname="设计用途" length="200" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="land_use_cert_no" columnName="land_use_cert_no" cnname="土地证号" length="40" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="locate_addr" columnName="locate_addr" cnname="座落地址" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="street" columnName="street" cnname="街道" length="100" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="memo" columnName="memo" cnname="备注" length="1000" JDBCType="VARCHAR2"/>
+		<Field id="guaranty_addr" columnName="guaranty_addr" cnname="押品座落地址" length="20" JDBCType="VARCHAR2"/>
+		<Field id="guaranty_street" columnName="guaranty_street" cnname="街道" length="100" JDBCType="VARCHAR2"/>
+	</TableModel>
+</MortCarBarnDetail.xml>

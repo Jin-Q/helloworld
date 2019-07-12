@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<PspCheckCatalog.xml>
+	<TableModel id="PspCheckCatalog" cnname="检查目录表" dbTableName="psp_check_catalog">
+		<Field id="catalog_id" isPK="true" columnName="catalog_id" cnname="目录编号" length="40" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="catalog_name" columnName="catalog_name" cnname="目录名称" length="100" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="memo" columnName="memo" cnname="备注" length="250" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="input_id" columnName="input_id" cnname="登记人" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="input_date" columnName="input_date" cnname="登记日期" length="10" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="input_br_id" columnName="input_br_id" cnname="登记机构" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+	</TableModel>
+</PspCheckCatalog.xml>

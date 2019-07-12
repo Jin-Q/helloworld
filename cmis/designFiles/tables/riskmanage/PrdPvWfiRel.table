@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<PrdPvWfiRel.xml>
+	<TableModel id="PrdPvWfiRel" cnname="风险拦截适用流程" dbTableName="prd_pv_wfi_rel">
+		<TableInfo/>
+		<Field id="prevent_id" columnName="prevent_id" cnname="方案编号" length="40" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="wfi_id" columnName="wfi_id" cnname="流程编号" length="40" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+	</TableModel>
+</PrdPvWfiRel.xml>

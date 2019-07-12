@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actionDefines>
+	<classMap>
+		<map id="action" class="com.yucheng.cmis.ad.mvc.ADRequestController"/>
+		<map id="flowInvoker" class="com.yucheng.cmis.ad.mvc.ADFlowInvoker"/>
+		<map id="outputViews" class="java.util.HashMap"/>
+		<map id="output" class="com.ecc.emp.data.KeyedCollection"/>
+		<map id="kColl" class="com.ecc.emp.data.KeyedCollection"/>
+		<map id="iColl" class="com.ecc.emp.data.IndexedCollection"/>
+		<map id="field" class="com.ecc.emp.data.DataField"/>
+	</classMap>
+	
+	<!-- 获取操作主页面 -->
+	<action id="queryCusTrusteeLstList" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.cus.op.custrusteelst.QueryCusTrusteeLstListOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="biz01line/cus/cusbase/CusTrusteeLst/queryCusTrusteeLstList.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 获得编辑页面 -->
+	<action id="getCusTrusteeLstUpdatePage" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation updateCheck="false" class="com.yucheng.cmis.biz01line.cus.op.custrusteelst.QueryCusTrusteeLstDetailOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="biz01line/cus/cusbase/CusTrusteeLst/updateCusTrusteeLstRecord.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 更新记录 -->
+	<action id="updateCusTrusteeLstRecord" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.cus.op.custrusteelst.UpdateCusTrusteeLstRecordOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="operationResult.jsp?url=queryCusTrusteeLstList.do" />
+		</outputViews>
+	</action>
+	
+	<!-- 获得查看页面 -->
+	<action id="getCusTrusteeLstViewPage" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.cus.op.custrusteelst.QueryCusTrusteeLstDetailOp"/>
+			<transition dest="updatePage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="updatePage" url="biz01line/cus/cusbase/CusTrusteeLst/queryCusTrusteeLstDetail.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 获得新增页面 -->
+	<action id="getCusTrusteeLstAddPage" type="normal" checkSession="true" >
+		<jspView id="addPage" url="biz01line/cus/cusbase/CusTrusteeLst/addCusTrusteeLstRecord.jsp"/>
+	</action>
+	
+	<!-- 新增记录 -->
+	<action id="addCusTrusteeLstRecord" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.cus.op.custrusteelst.AddCusTrusteeLstRecordOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="refreshList.jsp?method=refreshCusTrusteeLstGroup()" />
+		</outputViews>
+	</action>	
+	
+	<!-- 删除记录 -->
+	<action id="deleteCusTrusteeLstRecord" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.cus.op.custrusteelst.DeleteCusTrusteeLstRecordOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="refreshList.jsp?method=refreshCusTrusteeLstGroup()" />
+		</outputViews>
+	</action>
+	
+	<!-- 分页查询记录列表 -->
+		<action id="pageCusTrusteeLstQuery" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.cus.op.custrusteelst.QueryCusTrusteeLstListOp"/>
+			<transition dest="queryListRes"/>
+		</flowInvoker>
+		<outputViews>
+			<jsonView class="com.yucheng.cmis.view.JSONView" id="queryListRes">
+				<output>
+					<iColl id="CusTrusteeLstList">
+						<kColl>
+							<field id="serno" />
+							<field id="cus_id" />
+							<field id="cus_name" />
+						</kColl>
+					</iColl>
+					<kColl id="pageInfo">
+						<field id="currentPage" />
+						<field id="maxLine" />
+						<field id="recordSize" />
+					</kColl>
+				</output>
+			</jsonView>
+		</outputViews>
+	</action>
+	
+		<!-- 判断客户明细表中是否有记录 -->
+	<action id="checkExistInCusTrusteeLst" type="normal" checkSession="true" >
+		<flowInvoker>
+            <operation class="com.yucheng.cmis.biz01line.cus.op.custrusteelst.CheckExistInCusTrusteeLst" />
+            <transition dest="retPage" />
+        </flowInvoker>
+        <outputViews>
+            <view id="retPage" class="com.yucheng.cmis.view.JSONView">
+                <output class="com.ecc.emp.data.KeyedCollection">
+                    <field id="flag" class="com.ecc.emp.data.DataField" />
+                </output>
+            </view>
+        </outputViews>
+	</action>
+	<!-- 针对客户经理所管辖下的客户进行分页查询记录列表，用于托管使用 
+		<action id="getCusLoanRelListForCusTrusteeLst" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.cus.op.cusloanrel.GetCusLoanRelListOpForTrustee"/>
+			<transition dest="queryListRes"/>
+		</flowInvoker>
+		<outputViews>
+			<jsonView class="com.yucheng.cmis.view.JSONView" id="queryListRes">
+				<output>
+					<iColl id="CusLoanRelList">
+						<kColl>
+						
+						</kColl>
+					</iColl>
+					<kColl id="pageInfo">
+						<field id="currentPage" />
+						<field id="maxLine" />
+						<field id="recordSize" />
+					</kColl>
+				</output>
+			</jsonView>
+		</outputViews>
+	</action>-->
+</actionDefines>
+
+
+

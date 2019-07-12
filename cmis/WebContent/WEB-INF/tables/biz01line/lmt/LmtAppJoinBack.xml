@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<LmtAppJoinBack.xml>
+	<TableModel id="LmtAppJoinBack" cnname="入圈/退圈申请表" dbTableName="lmt_app_join_back">
+		<Field id="serno" isPK="true" columnName="serno" cnname="业务编号" length="40" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="app_flag" columnName="app_flag" cnname="申请标识" length="4" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="manager_id" columnName="manager_id" cnname="责任人" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="manager_br_id" columnName="manager_br_id" cnname="责任机构" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="input_id" columnName="input_id" cnname="登记人" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="input_br_id" columnName="input_br_id" cnname="登记机构" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="input_date" columnName="input_date" cnname="登记日期" length="10" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="approve_status" columnName="approve_status" cnname="申请状态" length="4" JDBCType="VARCHAR2"/>
+		<Field id="agr_no" columnName="agr_no" cnname="商圈协议编号" length="40" JDBCType="VARCHAR2"/>
+	</TableModel>
+</LmtAppJoinBack.xml>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<PrdPlocy.xml>
+	<TableModel id="PrdPlocy" pageSize="15" cnname="政策资料管理" isPaged="true" dbTableName="prd_plocy">
+		<TableInfo/>
+		<Field id="schemecode" isPK="true" columnName="schemecode" cnname="政策资料代码" length="30" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="schemedesc" columnName="schemedesc" cnname="政策资料描述" length="200" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="ifwarrant" columnName="ifwarrant" cnname="是否权证类" length="1" JSPTag="text" canBeNull="true" JDBCType="CHAR"/>
+		<Field id="schemetype" columnName="schemetype" cnname="政策资料类型" length="2" JSPTag="text" canBeNull="true" JDBCType="CHAR"/>
+		<Field id="outline" columnName="outline" cnname="外部链接" length="100" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="videocode" columnName="videocode" cnname="影像关联代码" length="30" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="comments" columnName="comments" cnname="备注" length="200" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="inputid" columnName="inputid" cnname="登记人员" length="20" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="inputdate" columnName="inputdate" cnname="登记日期" length="10" JSPTag="text" canBeNull="true" JDBCType="CHAR"/>
+		<Field id="orgid" columnName="orgid" cnname="登记机构" length="20" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<OrderFields>schemecode;ifwarrant;schemetype;inputid;inputdate;orgid;</OrderFields>
+		<ConditionFields>schemecode;ifwarrant;schemetype;inputid;</ConditionFields>
+		<FilterFields>schemecode;schemedesc;ifwarrant;schemetype;outline;videocode;comments;inputid;inputdate;orgid;</FilterFields>
+		<RecordRestrict query="true" delete="true" update="true"/>
+	</TableModel>
+</PrdPlocy.xml>

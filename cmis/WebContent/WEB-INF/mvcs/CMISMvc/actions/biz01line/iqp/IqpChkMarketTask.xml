@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actionDefines>
+	<classMap>
+		<map id="action" class="com.yucheng.cmis.ad.mvc.ADRequestController"/>
+		<map id="flowInvoker" class="com.yucheng.cmis.ad.mvc.ADFlowInvoker"/>
+		<map id="outputViews" class="java.util.HashMap"/>
+		<map id="output" class="com.ecc.emp.data.KeyedCollection"/>
+		<map id="kColl" class="com.ecc.emp.data.KeyedCollection"/>
+		<map id="iColl" class="com.ecc.emp.data.IndexedCollection"/>
+		<map id="field" class="com.ecc.emp.data.DataField"/>
+	</classMap>
+	
+	<!-- 获取操作主页面 -->
+	<action id="queryIqpChkMarketTaskList" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.iqp.op.iqpchkmarkettask.QueryIqpChkMarketTaskListOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="biz01line/iqp/IqpChkMarketTask/queryIqpChkMarketTaskList.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 分页查询记录列表 -->
+	<action id="pageIqpChkMarketTaskQuery" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.iqp.op.iqpchkmarkettask.QueryIqpChkMarketTaskListOp"/>
+			<transition dest="queryListRes"/>
+		</flowInvoker>
+		<outputViews>
+			<jsonView class="com.yucheng.cmis.view.JSONView" id="queryListRes">
+				<output>
+					<iColl id="IqpChkMarketTaskList">
+						<kColl>
+						</kColl>
+					</iColl>
+					<kColl id="pageInfo">
+						<field id="currentPage" />
+						<field id="maxLine" />
+						<field id="recordSize" />
+					</kColl>
+				</output>
+			</jsonView>
+		</outputViews>
+	</action>
+	
+	<!-- 价格调整页面 -->
+	<action id="getIqpChkMarketTaskUpdatePage" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation updateCheck="true" class="com.yucheng.cmis.biz01line.iqp.op.iqpchkmarkettask.QueryIqpChkMarketTaskDetailOp"/>
+			<transition dest="updatePage" />
+		</flowInvoker>
+		<outputViews>
+			<jspView id="updatePage" url="biz01line/iqp/IqpChkMarketTask/updateIqpChkMarketTaskRecord.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 价格变动历史分页  -->
+	<action id="pageIqpMortValueAdjQuery" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.iqp.op.iqpchkmarkettask.QueryIqpChkMarketTaskDetailOp"/>
+			<transition dest="queryListRes"/>
+		</flowInvoker>
+		<outputViews>
+			<jsonView class="com.yucheng.cmis.view.JSONView" id="queryListRes">
+				<output>
+					<iColl id="IqpMortValueAdjList">
+						<kColl>
+							<field id="org_valve" />
+							<field id="change_valve" />
+							<field id="info_sour" />
+							<field id="inure_date" />
+						</kColl>
+					</iColl>
+					<kColl id="pageInfo">
+						<field id="currentPage" />
+						<field id="maxLine" />
+						<field id="recordSize" />
+					</kColl>
+				</output>
+			</jsonView>
+		</outputViews>
+	</action>
+	
+	<!-- 更新记录 -->
+	<action id="updateIqpChkMarketTaskRecord" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.iqp.op.iqpchkmarkettask.UpdateIqpChkMarketTaskRecordOp"/>
+			<transition dest="queryJsonRes" />
+		</flowInvoker>
+		<outputViews>
+			<jsonView class="com.yucheng.cmis.view.JSONView" id="queryJsonRes">
+				<output>
+					<field id="msg" />
+					<field id="flag" />
+				</output>
+			</jsonView>
+		</outputViews>
+	</action>
+	
+	<!-- 生成流程申请数据  -->
+	<action id="initIqpChkMarketTaskApp" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.iqp.op.iqpchkmarkettask.InitIqpChkMarketTaskAppOp"/>
+			<transition dest="queryJsonRes" />
+		</flowInvoker>
+		<outputViews>
+			<jsonView class="com.yucheng.cmis.view.JSONView" id="queryJsonRes">
+				<output>
+					<field id="msg" />
+					<field id="serno" />
+					<field id="approve_status" />
+				</output>
+			</jsonView>
+		</outputViews>
+	</action>
+	
+	<!-- 获得查看页面 -->
+	<action id="getIqpChkMarketTaskViewPage" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.iqp.op.iqpchkmarkettask.QueryIqpChkMarketTaskDetailOp"/>
+			<transition dest="updatePage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="updatePage" url="biz01line/iqp/IqpChkMarketTask/queryIqpChkMarketTaskDetail.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 导出盯市任务 -->
+	<action id="IqpChkMarketTaskExcel" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.iqp.op.iqpchkmarkettask.ExportIqpChkMarketTaskListOp"/>
+			<transition dest="queryListRes"/>
+		</flowInvoker>
+		<outputViews>
+		   <view id="queryListRes" class="com.yucheng.cmis.view.ExcelView">
+ 				<excelWorkbook fileName="IqpChkMarketTask.xls" class="com.yucheng.cmis.view.excel.ExcelWorkbook">
+ 					<excelSheet id="1" name="盯市任务" isTitle="true" iCollName="IqpChkMarketTaskList" class="com.yucheng.cmis.view.excel.ExcelSheet">
+ 						<excelColumn dataName="catalog_name" name="目录名称" class="com.yucheng.cmis.view.excel.ExcelColumn"/>
+ 						<excelColumn dataName="catalog_lvl" name="押品目录层级" class="com.yucheng.cmis.view.excel.ExcelColumn"/>
+ 						<excelColumn dataName="attr_type" name="类型属性" dictName="STD_ZB_ATTR_TYPE" class="com.yucheng.cmis.view.excel.ExcelColumn"/>
+ 						<excelColumn dataName="unit" name="计价单位" dictName="STD_ZB_UNIT" class="com.yucheng.cmis.view.excel.ExcelColumn"/>
+ 					<!--	<excelColumn dataName="info_sour" name="单价信息来源" dictName="STD_ZB_INFO_SOUR" class="com.yucheng.cmis.view.excel.ExcelColumn"/>-->
+ 						<excelColumn dataName="org_valve" name="原有商品单价" cellType='numeric' class="com.yucheng.cmis.view.excel.ExcelColumn"/>
+ 						<excelColumn dataName="change_valve" name="此次商品核准单价" cellType='numeric' class="com.yucheng.cmis.view.excel.ExcelColumn"/>
+ 						<excelColumn dataName="change_resn" name="价格变动原因" class="com.yucheng.cmis.view.excel.ExcelColumn"/>
+ 						<excelColumn dataName="input_id_displayname" name="登记人" class="com.yucheng.cmis.view.excel.ExcelColumn"/>
+ 						<excelColumn dataName="input_br_id_displayname" name="登记机构" class="com.yucheng.cmis.view.excel.ExcelColumn"/>
+ 						<excelColumn dataName="input_date" name="登记日期" class="com.yucheng.cmis.view.excel.ExcelColumn"/>
+ 						<excelColumn dataName="status" name="状态" dictName="STD_CHKMARKET_TASK_STATUS" class="com.yucheng.cmis.view.excel.ExcelColumn"/>
+ 						<excelColumn dataName="pk_id" name="价格流水物理主键" class="com.yucheng.cmis.view.excel.ExcelColumn"/>
+ 					</excelSheet>
+ 				</excelWorkbook>
+ 			</view>
+		</outputViews>
+	</action>
+	
+	<!-- 导入页面 -->
+	<action id="queryIqpChkMarketImport" type="normal" checkSession="true" >
+		<jspView id="retPage" url="biz01line/iqp/IqpChkMarketTask/queryIqpChkMarketImport.jsp" />
+	</action>
+	
+	<!-- 导入EXCEL -->
+	<action id="importIqpChkMarketTask" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.iqp.op.iqpchkmarkettask.ImportIqpChkMarketTaskOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="biz01line/iqp/IqpChkMarketTask/importResult.jsp" />
+		</outputViews>
+	</action>
+</actionDefines>
+
+
+

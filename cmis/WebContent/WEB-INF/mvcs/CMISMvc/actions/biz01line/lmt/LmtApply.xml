@@ -1,0 +1,451 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actionDefines>
+	<classMap>
+		<map id="action" class="com.yucheng.cmis.ad.mvc.ADRequestController"/>
+		<map id="flowInvoker" class="com.yucheng.cmis.ad.mvc.ADFlowInvoker"/>
+		<map id="outputViews" class="java.util.HashMap"/>
+		<map id="output" class="com.ecc.emp.data.KeyedCollection"/>
+		<map id="kColl" class="com.ecc.emp.data.KeyedCollection"/>
+		<map id="iColl" class="com.ecc.emp.data.IndexedCollection"/>
+		<map id="field" class="com.ecc.emp.data.DataField"/>
+	</classMap>
+	
+	<!-- 授信新增向导页 -->
+	<action id="getLmtLeadPage" type="normal" checkSession="true" >
+		<jspView id="addPage" url="biz01line/lmt/LmtApply/addLmtLead.jsp"/>
+	</action>
+	
+	<!-- 获取操作主页面 -->
+	<action id="queryLmtApplyList" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.lmt.op.lmtapply.QueryLmtApplyListOp"/>
+			<transition dest="appPage" condition="($retValue='app')"/>
+			<transition dest="hisPage" condition="($retValue='his')"/>
+			<transition dest="cusHisPage" condition="($retValue='cusHis')"/>
+			<transition dest="guar" condition="($retValue='guar')"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="appPage" url="biz01line/lmt/LmtApply/queryLmtApplyList.jsp" />
+			<jspView id="hisPage" url="biz01line/lmt/LmtApply/queryLmtApplyHistoryList.jsp" />
+			<jspView id="cusHisPage" url="biz01line/lmt/LmtApply/queryLmtApplyHistoryList4Cus.jsp" />
+			<jspView id="guar" url="biz01line/lmt/LmtAppFinGuar/queryLmtAppFinGuarList.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 获取授信进度查询主页面 -->
+	<action id="queryLmtPlanList" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.lmt.op.lmtapply.QueryLmtPlanListOp"/>
+			<transition dest="hisPage" condition="($retValue='his')"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="hisPage" url="biz01line/lmt/LmtApply/queryLmtPlanHistoryList.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 分页查询记录列表 -->
+	<action id="pageLmtPlanQuery" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.lmt.op.lmtapply.QueryLmtPlanListOp"/>
+			<transition dest="queryListRes"/>
+		</flowInvoker>
+		<outputViews>
+			<jsonView class="com.yucheng.cmis.view.JSONView" id="queryListRes">
+				<output>
+					<iColl id="LmtApplyList">
+						<kColl>
+						
+						</kColl>
+					</iColl>
+					<kColl id="pageInfo">
+						<field id="currentPage" />
+						<field id="maxLine" />
+						<field id="recordSize" />
+					</kColl>
+				</output>
+			</jsonView>
+		</outputViews>
+	</action>
+	<!-- *****************************冻结解冻**************************************  开始 -->
+	<!-- 获取冻结解冻列表页面 -->
+	<action id="queryLmtFrozenApplyList" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.lmt.op.lmtapply.QueryLmtFrozenApplyListOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="biz01line/lmt/LmtApply/queryLmtFrozenApplyList.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 分页查询记录列表 -->
+	<action id="pageLmtFrozenApplyQuery" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.lmt.op.lmtapply.QueryLmtFrozenApplyListOp"/>
+			<transition dest="queryListRes"/>
+		</flowInvoker>
+		<outputViews>
+			<jsonView class="com.yucheng.cmis.view.JSONView" id="queryListRes">
+				<output>
+					<iColl id="LmtApplyList">
+						<kColl>
+						</kColl>
+					</iColl>
+					<kColl id="pageInfo">
+						<field id="currentPage" />
+						<field id="maxLine" />
+						<field id="recordSize" />
+					</kColl>
+				</output>
+			</jsonView>
+		</outputViews>
+	</action>
+	<!-- *****************************冻结解冻**************************************  结束  -->
+	<!-- 获得编辑页面 -->
+	<action id="getLmtApplyUpdatePage" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.lmt.op.lmtapply.QueryLmtApplyDetailOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="biz01line/lmt/LmtApply/updateLmtApplyRecord.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 更新记录 -->
+	<action id="updateLmtApplyRecord" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.lmt.op.lmtapply.UpdateLmtApplyRecordOp"/>
+			<transition dest="queryJsonRes" />
+		</flowInvoker>
+		<outputViews>
+			<jsonView class="com.yucheng.cmis.view.JSONView" id="queryJsonRes">
+				<output>
+					<field id="message"  class="com.ecc.emp.data.DataField"/>
+				</output>
+			</jsonView>
+		</outputViews>
+	</action>	
+	
+	<!-- 获得查看页面 -->
+	<action id="getLmtApplyViewPage" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.lmt.op.lmtapply.QueryLmtApplyDetailOp"/>
+			<transition dest="updatePage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="updatePage" url="biz01line/lmt/LmtApply/queryLmtApplyDetail.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 获取冻结/解冻金额 -->
+	<action id="searchAmt4wfi" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.lmt.op.lmtapply.QuerySearchAmt4WfiOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<view id="retPage" class="com.yucheng.cmis.view.JSONView">
+				<output class="com.ecc.emp.data.KeyedCollection">
+					<field id="flag" />
+					<field id="Amt" />
+				</output>
+			</view>
+		</outputViews>
+	</action>
+	
+	<!-- 获得新增页面 -->
+	<action id="getLmtApplyAddPage" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.lmt.op.lmtapply.GetLmtApplyAddPageOp"/>
+			<transition dest="addPage" condition="($retValue='addPage')"/>
+			<transition dest="updatePage" condition="($retValue='updatePage')"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="addPage" url="biz01line/lmt/LmtApply/addLmtApplyRecord.jsp"/>
+			<jspView id="updatePage" url="biz01line/lmt/LmtApply/updateLmtApplyRecord.jsp"/>
+		</outputViews>
+	</action>
+	
+	<!-- 校验单一法人授信客户是否存在关联客户信息 add by lisj 2014-11-26 需求编号：【XD141107075】-->
+	<action id="ckeckCusRelInfoOp" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.lmt.op.lmtapply.CkeckCusRelInfoOp"/> 
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<view id="retPage" class="com.yucheng.cmis.view.JSONView">
+				<output class="com.ecc.emp.data.KeyedCollection">
+					<field id="flag" class="com.ecc.emp.data.DataField" />
+				</output>
+			</view>
+		</outputViews>
+	</action>
+	
+	<!-- 新增记录 -->
+	<action id="addLmtApplyRecord" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.lmt.op.lmtapply.AddLmtApplyRecordOp"/>
+			<transition dest="retPage" />
+		</flowInvoker>
+		<outputViews>
+			<jsonView class="com.yucheng.cmis.view.JSONView" id="retPage">
+				<output>
+					<field id="flag" class="com.ecc.emp.data.DataField"/>
+					<field id="serno" class="com.ecc.emp.data.DataField"/>
+					<field id="message" class="com.ecc.emp.data.DataField"/>
+				</output>
+			</jsonView>
+		</outputViews>
+	</action>	
+	
+	<!-- 删除记录 -->
+	<action id="deleteLmtApplyRecord" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.lmt.op.lmtapply.DeleteLmtApplyRecordOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<!--<jspView id="retPage" url="operationResult.jsp?url=queryLmtApplyList.do" />-->
+			<view id="retPage" class="com.yucheng.cmis.view.JSONView">
+				<output class="com.ecc.emp.data.KeyedCollection">
+					<field id="flag" class="com.ecc.emp.data.DataField"/>
+					<field id="msg" class="com.ecc.emp.data.DataField" />
+				</output>
+			</view>
+		</outputViews>
+	</action>
+	
+	<!-- 分页查询记录列表 -->
+	<action id="pageLmtApplyQuery" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.lmt.op.lmtapply.QueryLmtApplyListOp"/>
+			<transition dest="queryListRes"/>
+		</flowInvoker>
+		<outputViews>
+			<jsonView class="com.yucheng.cmis.view.JSONView" id="queryListRes">
+				<output>
+					<iColl id="LmtApplyList">
+						<kColl>
+						
+						</kColl>
+					</iColl>
+					<kColl id="pageInfo">
+						<field id="currentPage" />
+						<field id="maxLine" />
+						<field id="recordSize" />
+					</kColl>
+				</output>
+			</jsonView>
+		</outputViews>
+	</action>
+	
+	<!-- 异步查询客户是否存在在途、未提交的申请信息 -->
+	<action id="searchLmtInfo" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation updateCheck="false" class="com.yucheng.cmis.biz01line.lmt.op.lmtapply.SearchLmtInfo" />
+			<transition dest="queryJsonRes" />
+		</flowInvoker>
+		<outputViews>
+			<jsonView class="com.yucheng.cmis.view.JSONView" id="queryJsonRes">
+				<output>
+					<field id="result" />
+				</output>
+			</jsonView>
+		</outputViews>
+	</action>
+	
+	<!-- 将申请跟分项数据过渡到协议跟台账  暂时没有流程时处理方法，有流程时在流程审批通过中处理  -->
+	<action id="submitLmtApply" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.lmt.op.lmtapply.submitLmtApply"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="operationResult.jsp?url=queryLmtApplyList.do" />
+		</outputViews>
+	</action>
+	<!-- 授信限额测算 -->
+	<action id="getLmtCurrentFundsMeasureAddPage" type="normal" checkSession="true" >
+	<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.lmt.op.lmtcurrentfundsmeasure.getAddLmtCurrentFundsMeasureDetailOp"/>
+			<transition dest="addPage"/>
+	</flowInvoker>
+	<outputViews>
+		<jspView id="addPage" url="biz01line/lmt/LmtCurrentFundsMeasure/addLmtCurrentFundsMeasureRecord.jsp"/>
+	</outputViews>
+	</action>
+	
+	<!-- 计算流动资金贷款额度，并新增记录 -->
+	<action id="calculateCurrentFundsAmt" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.lmt.op.lmtcurrentfundsmeasure.AddLmtCurrentFundsMeasureRecordOp"/>
+			<transition dest="asyncPage"/>
+		</flowInvoker>
+		<outputViews>
+			<view class="com.yucheng.cmis.view.JSONView" id="asyncPage">
+				<output  class="com.ecc.emp.data.KeyedCollection">
+					<field id="currentFundsAmt" class="com.ecc.emp.data.DataField"/>
+					<field id="operMsg" class="com.ecc.emp.data.DataField"/>
+				</output>
+			</view>
+		</outputViews>
+	</action>
+    <!-- 担保品信息 -->
+    <action id="queryRLmtGuarInfoList" type="normal" checkSession="true" >
+		  <flowInvoker>
+			  <operation class="com.yucheng.cmis.biz01line.lmt.op.lmtapply.QueryRLmtGuarInfoListOp"/>
+			  <transition dest="retPage"/>
+		 </flowInvoker>
+		 <outputViews>
+			  <jspView id="retPage" url="biz01line/lmt/LmtApply/queryRLmtGuarInfoList.jsp" />
+		 </outputViews>
+   </action>
+	<!-- 将引入获取的担保品数据插入表中 -->
+	<action id="insert2RLmtGuar" type="normal" checkSession="true" >
+		  <flowInvoker>
+			  <operation class="com.yucheng.cmis.biz01line.lmt.op.lmtapply.Insert2RLmtGuarOp"/>
+			  <transition dest="retPage"/>
+		 </flowInvoker>
+		 <outputViews>
+			<view id="retPage" class="com.yucheng.cmis.view.JSONView">
+				<output class="com.ecc.emp.data.KeyedCollection">
+					<field id="flag" class="com.ecc.emp.data.DataField" />
+					<field id="msg" class="com.ecc.emp.data.DataField" />
+				</output>
+			</view>
+		</outputViews>
+   </action>
+   <!-- 删除担保人关联关系表中数据 -->
+   <action id="deleteRLmtGuarInfoRecord" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.lmt.op.lmtapply.DeleteRLmtGuarInfoRecordOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<view id="retPage" class="com.yucheng.cmis.view.JSONView">
+				<output class="com.ecc.emp.data.KeyedCollection">
+					<field id="flag" class="com.ecc.emp.data.DataField" />
+				</output>
+			</view>
+		</outputViews>
+	</action>
+	
+   	<!-- 担保品分页查询记录列表 -->
+	<action id="pageRLmtGuarInfoQuery" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.lmt.op.lmtapply.QueryRLmtGuarInfoListOp"/>
+			<transition dest="queryListRes"/>
+		</flowInvoker>
+		<outputViews>
+			<jsonView class="com.yucheng.cmis.view.JSONView" id="queryListRes">
+				<output>
+					<iColl id="RLmtGuarInfoList">
+						<kColl>
+						</kColl>
+					</iColl>
+					<kColl id="pageInfo">
+						<field id="currentPage" />
+						<field id="maxLine" />
+						<field id="recordSize" />
+					</kColl>
+				</output>
+			</jsonView>
+		</outputViews>
+	</action>
+    <!-- 保证人信息 -->
+    <action id="queryRLmtGuarntrInfoList" type="normal" checkSession="true" >
+		  <flowInvoker>
+			  <operation class="com.yucheng.cmis.biz01line.lmt.op.lmtapply.QueryRLmtGuarntrInfoListOp"/>
+			  <transition dest="retPage"/>
+		 </flowInvoker>
+		 <outputViews>
+			  <jspView id="retPage" url="biz01line/lmt/LmtApply/queryRLmtGuarntrInfoList.jsp" />
+		 </outputViews>
+    </action>
+	<!-- 将引入获取的数据插入表中 -->
+	<action id="insert2RLmtGuarNtr" type="normal" checkSession="true" >
+		  <flowInvoker>
+			  <operation class="com.yucheng.cmis.biz01line.lmt.op.lmtapply.Insert2RLmtGuarNtrOp"/>
+			  <transition dest="retPage"/>
+		 </flowInvoker>
+		 <outputViews>
+			<view id="retPage" class="com.yucheng.cmis.view.JSONView">
+				<output class="com.ecc.emp.data.KeyedCollection">
+					<field id="flag" class="com.ecc.emp.data.DataField" />
+					<field id="msg" class="com.ecc.emp.data.DataField" />
+				</output>
+			</view>
+		</outputViews>
+   </action>
+   	<!-- 删除记录 -->
+ 	<action id="deleteRLmtGuarntrInfoRecord" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.lmt.op.lmtapply.DeleteRLmtGuarntrInfoRecordOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<view id="retPage" class="com.yucheng.cmis.view.JSONView">
+				<output class="com.ecc.emp.data.KeyedCollection">
+					<field id="flag" class="com.ecc.emp.data.DataField"/>
+				</output>
+			</view>
+		</outputViews>
+	</action>
+    <!-- 保证人分页查询记录列表 -->
+	<action id="pageRLmtGuarntrInfoQuery" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.lmt.op.lmtapply.QueryRLmtGuarntrInfoListOp"/>
+			<transition dest="queryListRes"/>
+		</flowInvoker>
+		<outputViews>
+			<jsonView class="com.yucheng.cmis.view.JSONView" id="queryListRes">
+				<output>
+					<iColl id="RLmtGuarntrInfoList">
+						<kColl>
+						</kColl>
+					</iColl>
+					<kColl id="pageInfo">
+						<field id="currentPage" />
+						<field id="maxLine" />
+						<field id="recordSize" />
+					</kColl>
+				</output>
+			</jsonView>
+		</outputViews>
+	</action>
+	
+	
+	<!-- 保存审批变更历史 -->
+ 	<action id="submitLmtVarRecord" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.lmt.op.flow.SubmitLmtVarRecord"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<view id="retPage" class="com.yucheng.cmis.view.JSONView">
+				<output class="com.ecc.emp.data.KeyedCollection">
+					<field id="flag" class="com.ecc.emp.data.DataField"/>
+				</output>
+			</view>
+		</outputViews>
+	</action>
+	<!--单一法人企业客户主动授信改造   modefied by zhaoxp  2015-02-08-->
+	<!-- 在lmt_ent_self_cus_info表中查找是否有对应的数据 -->
+	<action id="QueryLmtEntSelfCusInfoRecord" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.lmt.op.lmtapply.QueryLmtEntSelfCusInfoRecordOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<!--<jspView id="retPage" url="operationResult.jsp?url=queryLmtApplyList.do" />-->
+			<view id="retPage" class="com.yucheng.cmis.view.JSONView">
+				<output class="com.ecc.emp.data.KeyedCollection">
+					<field id="flag" class="com.ecc.emp.data.DataField"/>
+					<field id="msg" class="com.ecc.emp.data.DataField" />
+				</output>
+			</view>
+		</outputViews>
+	</action>
+	
+</actionDefines>

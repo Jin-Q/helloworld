@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<CusBlkCheckinapp.xml>
+	<TableModel id="CusBlkCheckinapp" cnname="黑名单客户进入申请" dbTableName="cus_blk_checkinapp">
+		<Field id="serno" isPK="true" columnName="serno" cnname="业务流水号" length="40" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="cert_code" columnName="cert_code" cnname="证件号码" length="20" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="cert_type" columnName="cert_type" cnname="证件类型" length="3" JDBCType="CHAR" canBeNull="false"/>
+		<Field id="black_type" columnName="black_type" cnname="黑名单类型" length="2" JDBCType="CHAR" canBeNull="false"/>
+		<Field id="black_level" columnName="black_level" cnname="黑名单级别" length="1" JDBCType="CHAR" canBeNull="false"/>
+		<Field id="legal_name" columnName="legal_name" cnname="法定代表人" length="30" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="legal_phone" columnName="legal_phone" cnname="联系电话" length="35" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="legal_addr" columnName="legal_addr" cnname="通信地址" length="60" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="black_reason" columnName="black_reason" cnname="进入黑名单原因" length="250" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="remarks" columnName="remarks" cnname="备注" length="250" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="approve_status" columnName="approve_status" cnname="审批状态" length="3" JDBCType="CHAR" canBeNull="false"/>
+		<Field id="input_id" columnName="input_id" cnname="登记(受理人)" length="20" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="input_br_id" columnName="input_br_id" cnname="受理机构" length="20" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="input_date" columnName="input_date" cnname="受理日期" length="10" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="cus_id" columnName="cus_id" cnname="客户编码" length="30" JDBCType="VARCHAR2"/>
+		<Field id="manager_id" columnName="manager_id" cnname="责任人" length="20" JDBCType="VARCHAR2"/>
+		<Field id="manager_br_id" columnName="manager_br_id" cnname="管理机构" length="20" JDBCType="VARCHAR2"/>
+		<Field id="street" columnName="street" cnname="街道" length="60" JDBCType="VARCHAR2"/>
+	</TableModel>
+</CusBlkCheckinapp.xml>

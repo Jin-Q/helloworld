@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<ArpLawFeeInfo.xml>
+	<TableModel id="ArpLawFeeInfo" cnname="费用信息表" dbTableName="arp_law_fee_info">
+		<Field id="serno" isPK="true" columnName="serno" cnname="流水号" length="40" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="case_no" columnName="case_no" cnname="案件编号" length="40" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="fee_phase" columnName="fee_phase" cnname="费用发生阶段" length="10" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="fee_type" columnName="fee_type" cnname="费用类型" length="10" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="fee_amt" columnName="fee_amt" cnname="费用金额" length="16" JDBCType="NUMBER" canBeNull="false"/>
+		<Field id="fee_date" columnName="fee_date" cnname="费用发生日期" length="10" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="memo" columnName="memo" cnname="备注" length="250" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="input_id" columnName="input_id" cnname="登记人" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="input_br_id" columnName="input_br_id" cnname="登记机构" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="input_date" columnName="input_date" cnname="登记日期" length="10" JDBCType="VARCHAR2" canBeNull="true"/>
+	</TableModel>
+</ArpLawFeeInfo.xml>

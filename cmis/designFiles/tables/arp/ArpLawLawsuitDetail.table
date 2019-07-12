@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<ArpLawLawsuitDetail.xml>
+	<TableModel id="ArpLawLawsuitDetail" pageSize="10" cnname="诉讼明细信息表" isPaged="true" dbTableName="arp_law_lawsuit_detail">
+		<TableInfo/>
+		<Field id="pk_serno" isPK="true" columnName="pk_serno" cnname="流水号" length="40" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="serno" columnName="serno" cnname="业务编号" length="40" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="cus_id" columnName="cus_id" cnname="客户码" length="30" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="bill_no" columnName="bill_no" cnname="借据编号" length="40" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="lawsuit_sub" dataType="Currency" columnName="lawsuit_sub" cnname="诉讼标的（元）" length="16" JSPTag="text" canBeNull="false" JDBCType="NUMBER"/>
+		<Field id="lawsuit_cap" dataType="Currency" columnName="lawsuit_cap" cnname="诉讼本金（元）" length="16" JSPTag="text" canBeNull="false" JDBCType="NUMBER"/>
+		<Field id="lawsuit_int" dataType="Currency" columnName="lawsuit_int" cnname="诉讼利息（元）" length="16" JSPTag="text" canBeNull="false" JDBCType="NUMBER"/>
+		<OrderFields>pk_serno[desc];</OrderFields>
+		<RecordRestrict query="true" delete="true" update="true"/>
+		<FilterFields>cus_id;bill_no;lawsuit_sub;lawsuit_cap;lawsuit_int;</FilterFields>
+	</TableModel>
+</ArpLawLawsuitDetail.xml>

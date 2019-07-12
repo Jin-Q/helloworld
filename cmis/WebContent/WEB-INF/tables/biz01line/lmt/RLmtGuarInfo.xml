@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<RLmtGuarInfo.xml>
+	<TableModel id="RLmtGuarInfo" cnname="担保信息表" dbTableName="r_lmt_guar_info">
+		<Field id="serno" isPK="false" columnName="serno" cnname="业务编号" length="32" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="guaranty_no" isPK="true" columnName="guaranty_no" cnname="押品编号" length="32" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="app_date" columnName="app_date" cnname="申请时间" length="10" JDBCType="CHAR" canBeNull="true"/>
+		<Field id="limit_code" isPK="true" columnName="limit_code" cnname="授信额度编码" length="40" JDBCType="VARCHAR2"/>
+	</TableModel>
+</RLmtGuarInfo.xml>

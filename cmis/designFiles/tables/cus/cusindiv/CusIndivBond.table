@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<CusIndivBond.xml>
+	<TableModel id="CusIndivBond" pageSize="10" cnname="持有金融债券" isPaged="true" dbTableName="cus_indiv_bond">
+		<TableInfo/>
+		<Field id="cus_id" isPK="true" columnName="cus_id" cnname="客户代码" length="30" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="indiv_bond_id" isPK="true" columnName="indiv_bond_id" cnname="债券编号" length="40" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="indiv_bond_typ" dictname="STD_ZB_INV_BON_TYP" columnName="indiv_bond_typ" cnname="债券类别" length="1" JSPTag="select" canBeNull="true" JDBCType="CHAR"/>
+		<Field id="indiv_bond_eva_amt" dataType="Currency" columnName="indiv_bond_eva_amt" cnname="债券估价总额" length="16" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="indiv_bond_pub" columnName="indiv_bond_pub" cnname="发行商" length="80" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="indiv_bond_str_dt" columnName="indiv_bond_str_dt" cnname="持有起始日期" length="10" JSPTag="date" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="indiv_bond_end_dt" columnName="indiv_bond_end_dt" cnname="持有终止日期" length="10" JSPTag="date" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="remark" columnName="remark" cnname="备注" length="250" JSPTag="textarea" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="input_id" columnName="input_id" cnname="登记人" length="20" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="input_br_id" columnName="input_br_id" cnname="登记机构" length="20" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="input_date" columnName="input_date" cnname="登记日期" length="10" JSPTag="date" canBeNull="true" JDBCType="CHAR"/>
+		<Field id="last_upd_id" columnName="last_upd_id" cnname="更新人" length="20" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="last_upd_date" columnName="last_upd_date" cnname="更新日期" length="10" JSPTag="date" canBeNull="true" JDBCType="VARCHAR2"/>
+		<OrderFields>cus_id[desc];indiv_bond_id[desc];</OrderFields>
+		<FilterFields>cus_id;indiv_bond_id;indiv_bond_typ;indiv_bond_eva_amt;indiv_bond_pub;indiv_bond_str_dt;indiv_bond_end_dt;</FilterFields>
+		<ConditionFields/>
+		<Field id="indiv_bond_name" columnName="indiv_bond_name" cnname="证券名称" length="80" JSPTag="text" JDBCType="VARCHAR2"/>
+		<Field id="indiv_bond_status" dictname="STD_ZX_YES_NO" columnName="indiv_bond_status" cnname="抵押状况" length="1" JSPTag="select" JDBCType="CHAR"/>
+	</TableModel>
+</CusIndivBond.xml>

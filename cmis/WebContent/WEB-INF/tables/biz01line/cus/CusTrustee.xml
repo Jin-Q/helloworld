@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<CusTrustee.xml>
+	<TableModel id="CusTrustee" cnname="委托托管关联表" dbTableName="cus_trustee">
+		<Field id="consignor_id" columnName="consignor_id" cnname="委托人" length="20" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="trustee_id" columnName="trustee_id" cnname="托管人" length="20" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="trustee_date" columnName="trustee_date" cnname="托管时间" length="10" JDBCType="VARCHAR2" canBeNull="false"/>
+	</TableModel>
+</CusTrustee.xml>

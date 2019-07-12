@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<PspCheckItemResult.xml>
+	<TableModel id="PspCheckItemResult" cnname="贷后检查项目信息结果表" dbTableName="psp_check_item_result">
+		<Field id="task_id" isPK="true" columnName="task_id" cnname="任务编号" length="40" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="scheme_id" isPK="true" columnName="scheme_id" cnname="方案编号" length="40" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="catalog_id" columnName="catalog_id" cnname="目录编号" length="40" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="item_id" isPK="true" columnName="item_id" cnname="项目编号" length="40" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="tag_type" columnName="tag_type" cnname="标签类型" length="5" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="check_result" columnName="check_result" cnname="检查结果" length="200" JDBCType="VARCHAR2" canBeNull="true"/>
+	</TableModel>
+</PspCheckItemResult.xml>

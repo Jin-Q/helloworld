@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<ArpLawReviewInfo.xml>
+	<TableModel id="ArpLawReviewInfo" cnname="再审情况表" dbTableName="arp_law_review_info">
+		<Field id="case_no" isPK="true" columnName="case_no" cnname="案件编号" length="40" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="proposer" columnName="proposer" cnname="申请人" length="80" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="review_reason" columnName="review_reason" cnname="再审原因" length="10" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="review_court" columnName="review_court" cnname="再审法院" length="80" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="main_judge" columnName="main_judge" cnname="主审法官" length="80" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="judgment_date" columnName="judgment_date" cnname="再审判决(裁定)日期" length="10" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="court_date" columnName="court_date" cnname="再审开庭日期" length="10" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="law_writ_inure_date" columnName="law_writ_inure_date" cnname="法律文书生效日期" length="10" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="law_writ_no" columnName="law_writ_no" cnname="法律文书编号" length="40" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="judgment_summary" columnName="judgment_summary" cnname="判决内容摘要" length="250" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="whether_appeal" columnName="whether_appeal" cnname="是否上诉" length="10" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="whether_final_judgment" columnName="whether_final_judgment" cnname="是否为终审判决(裁定)" length="10" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="memo" columnName="memo" cnname="备注" length="250" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="input_id" columnName="input_id" cnname="登记人" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="input_br_id" columnName="input_br_id" cnname="登记机构" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="input_date" columnName="input_date" cnname="登记日期" length="10" JDBCType="VARCHAR2" canBeNull="true"/>
+	</TableModel>
+</ArpLawReviewInfo.xml>

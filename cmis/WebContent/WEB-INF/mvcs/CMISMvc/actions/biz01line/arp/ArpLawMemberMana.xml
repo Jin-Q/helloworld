@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actionDefines>
+	<classMap>
+		<map id="action" class="com.yucheng.cmis.ad.mvc.ADRequestController"/>
+		<map id="flowInvoker" class="com.yucheng.cmis.ad.mvc.ADFlowInvoker"/>
+		<map id="outputViews" class="java.util.HashMap"/>
+		<map id="output" class="com.ecc.emp.data.KeyedCollection"/>
+		<map id="kColl" class="com.ecc.emp.data.KeyedCollection"/>
+		<map id="iColl" class="com.ecc.emp.data.IndexedCollection"/>
+		<map id="field" class="com.ecc.emp.data.DataField"/>
+	</classMap>
+	
+	<!-- 新增记录 -->
+	<action id="addArpLawMemberManaRecord" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.arp.op.arplawmembermana.AddArpLawMemberManaRecordOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<view id="retPage" class="com.yucheng.cmis.view.JSONView">
+				<output class="com.ecc.emp.data.KeyedCollection">
+						<field id="flag" class="com.ecc.emp.data.DataField"/>
+				</output>
+			</view>
+		</outputViews>
+	</action>	
+	
+	<!-- 删除记录 -->
+	<action id="deleteArpLawMemberManaRecord" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.arp.op.arplawmembermana.DeleteArpLawMemberManaRecordOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<view id="retPage" class="com.yucheng.cmis.view.JSONView">
+				<output class="com.ecc.emp.data.KeyedCollection">
+						<field id="flag" class="com.ecc.emp.data.DataField"/>
+				</output>
+			</view>
+		</outputViews>
+	</action>
+	
+	<!-- 分页查询记录列表 -->
+		<action id="pageArpLawMemberManaQuery" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.arp.op.arplawmembermana.QueryArpLawDebtorManaListOp"/>
+			<transition dest="queryListRes"/>
+		</flowInvoker>
+		<outputViews>
+			<jsonView class="com.yucheng.cmis.view.JSONView" id="queryListRes">
+				<output>
+					<iColl id="ArpLawMemberManaList">
+						<kColl>
+						</kColl>
+					</iColl>
+					<kColl id="pageInfo">
+						<field id="currentPage" />
+						<field id="maxLine" />
+						<field id="recordSize" />
+					</kColl>
+				</output>
+			</jsonView>
+		</outputViews>
+	</action>
+	
+	<!-- 债务人管理模块begin -->
+	<!-- 获取债务人主页面 -->
+	<action id="queryArpLawDebtorManaList" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.arp.op.arplawmembermana.QueryArpLawDebtorManaListOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="biz01line/arp/ArpLawMemberMana/queryArpLawDebtorManaList.jsp" />
+		</outputViews>
+	</action>
+		
+	<!-- 获得债务人查看页面 -->
+	<action id="getArpLawDebtorManaViewPage" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.arp.op.arplawmembermana.QueryArpLawDebtorManaDetailOp"/>
+			<transition dest="updatePage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="updatePage" url="biz01line/arp/ArpLawMemberMana/queryArpLawDebtorManaDetail.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 获得债务人新增页面 -->
+	<action id="getArpLawDebtorManaAddPage" type="normal" checkSession="true" >
+		<jspView id="addPage" url="biz01line/arp/ArpLawMemberMana/addArpLawDebtorManaRecord.jsp"/>
+	</action>
+	<!-- 债务人管理模块end -->
+	
+	<!-- 被告人管理模块begin -->
+	<!-- 获取被告人主页面 -->
+	<action id="queryArpLawDefendantManaList" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.arp.op.arplawmembermana.QueryArpLawDefendantManaListOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="biz01line/arp/ArpLawMemberMana/queryArpLawDefendantManaList.jsp" />
+		</outputViews>
+	</action>
+		
+	<!-- 获得被告人查看页面 -->
+	<action id="getArpLawDefendantManaViewPage" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.arp.op.arplawmembermana.QueryArpLawDefendantManaDetailOp"/>
+			<transition dest="updatePage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="updatePage" url="biz01line/arp/ArpLawMemberMana/queryArpLawDefendantManaDetail.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 获得被告人新增页面 -->
+	<action id="getArpLawDefendantManaAddPage" type="normal" checkSession="true" >
+		<jspView id="addPage" url="biz01line/arp/ArpLawMemberMana/addArpLawDefendantManaRecord.jsp"/>
+	</action>
+	<!--被告人管理模块end -->
+	
+	
+</actionDefines>

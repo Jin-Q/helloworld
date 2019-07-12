@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<IqpBillIncome.xml>
+	<TableModel id="IqpBillIncome" pageSize="10" cnname="票据收益计算表" isPaged="true" dbTableName="iqp_bill_income">
+		<TableInfo/>
+		<Field id="biz_type" columnName="biz_type" cnname="业务类型" length="5" JSPTag="select" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="batch_no" isPK="true" columnName="batch_no" cnname="批次号" length="40" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="porder_no" isPK="true" columnName="porder_no" cnname="汇票号码" length="40" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="fore_disc_date" columnName="fore_disc_date" cnname="预计转/贴现日期" length="10" JSPTag="date" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="drft_amt" dataType="Currency" columnName="drft_amt" cnname="票面金额" length="16" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="disc_days" columnName="disc_days" cnname="贴现天数" length="38" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="adj_days" columnName="adj_days" cnname="调整天数" length="38" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="disc_rate" dataType="Rate" columnName="disc_rate" cnname="转/贴现利率" length="10" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="int" dataType="Currency" columnName="int" cnname="利息" length="10" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="fore_rebuy_date" columnName="fore_rebuy_date" cnname="预计回购日期" length="10" JSPTag="date" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="rebuy_days" columnName="rebuy_days" cnname="回购天数" length="38" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="rebuy_int" dataType="Currency" columnName="rebuy_int" cnname="回购利息" length="16" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<OrderFields>batch_no;porder_no;</OrderFields>
+		<ConditionFields>biz_type;batch_no;porder_no;</ConditionFields>
+		<FilterFields>biz_type;batch_no;porder_no;fore_disc_date;drft_amt;disc_days;adj_days;disc_rate;due_rebuy_rate;</FilterFields>
+		<Field id="dscnt_int_pay_mode" columnName="dscnt_int_pay_mode" cnname="贴现利息支付方式" JSPTag="text" length="5" JDBCType="VARCHAR2"/>
+	</TableModel>
+</IqpBillIncome.xml>

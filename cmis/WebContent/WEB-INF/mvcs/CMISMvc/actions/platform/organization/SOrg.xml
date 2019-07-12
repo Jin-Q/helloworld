@@ -1,0 +1,411 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actionDefines>
+	<classMap>
+		<map id="action" class="com.yucheng.cmis.ad.mvc.ADRequestController"/>
+		<map id="flowInvoker" class="com.yucheng.cmis.ad.mvc.ADFlowInvoker"/>
+		<map id="outputViews" class="java.util.HashMap"/>
+		<map id="output" class="com.ecc.emp.data.KeyedCollection"/>
+		<map id="kColl" class="com.ecc.emp.data.KeyedCollection"/>
+		<map id="iColl" class="com.ecc.emp.data.IndexedCollection"/>
+		<map id="field" class="com.ecc.emp.data.DataField"/>
+	</classMap>
+	
+	<!-- 获取操作主页面 -->
+	<action id="querySOrgList" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.platform.organization.sorg.op.QuerySOrgListOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="platform/organization/SOrg/querySOrgList.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 获得编辑页面 -->
+	<action id="getSOrgUpdatePage" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation updateCheck="false" class="com.yucheng.cmis.platform.organization.sorg.op.QuerySOrgDetailOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="platform/organization/SOrg/updateSOrgRecord.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 更新记录 -->
+	<action id="updateSOrgRecord" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.platform.organization.sorg.op.UpdateSOrgRecordOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<view id="retPage" class="com.yucheng.cmis.view.JSONView">
+				<output class="com.ecc.emp.data.KeyedCollection">
+					<field id="flag" class="com.ecc.emp.data.DataField" />
+					<field id="msg" class="com.ecc.emp.data.DataField" />
+				</output>
+			</view>
+		</outputViews>
+	</action>
+	<!-- 按机构级联重置用户密码 -->
+	<action id="doCasResetPwd" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.platform.organization.sorg.op.ResetPasswordSUserByOrgOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<view id="retPage" class="com.yucheng.cmis.view.JSONView">
+				<output class="com.ecc.emp.data.KeyedCollection">
+					<field id="flag" class="com.ecc.emp.data.DataField" />
+					<field id="msg" class="com.ecc.emp.data.DataField" />
+				</output>
+			</view>
+		</outputViews>
+	</action>
+	<!-- 获得查看页面 -->
+	<action id="getSOrgViewPage" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.platform.organization.sorg.op.QuerySOrgDetailOp"/>
+			<transition dest="updatePage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="updatePage" url="platform/organization/SOrg/querySOrgDetail.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 获得新增页面 -->
+	<action id="getSOrgAddPage" type="normal" checkSession="true" >
+		<jspView id="addPage" url="platform/organization/SOrg/addSOrgRecord.jsp"/>
+	</action>
+	
+	<!-- 新增记录 -->
+	<action id="addSOrgRecord" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.platform.organization.sorg.op.AddSOrgRecordOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<view id="retPage" class="com.yucheng.cmis.view.JSONView">
+				<output class="com.ecc.emp.data.KeyedCollection">
+					<field id="flag" class="com.ecc.emp.data.DataField" />
+					<field id="msg" class="com.ecc.emp.data.DataField" />
+				</output>
+			</view>
+		</outputViews>
+	</action>	
+	
+	<!-- 删除记录 -->
+	<action id="deleteSOrgRecord" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.platform.organization.sorg.op.DeleteSOrgRecordOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<view id="retPage" class="com.yucheng.cmis.view.JSONView">
+				<output class="com.ecc.emp.data.KeyedCollection">
+					<field id="flag" class="com.ecc.emp.data.DataField" />
+					<field id="msg" class="com.ecc.emp.data.DataField" />
+				</output>
+			</view>
+		</outputViews>
+	</action>
+	
+	<!-- 机构列表POP界面 -->
+	<action id="querySOrgPop" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.platform.organization.sorg.op.QuerySOrgListOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="platform/organization/SOrg/querySOrgPop.jsp" />
+		</outputViews>
+	</action>
+	<!-- 机构列表POP界面 非记录级权限 -->
+	<action id="querySOrgUnDataPerPop" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.platform.organization.sorg.op.QuerySOrgUnDataPerListOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="platform/organization/SOrg/querySOrgUnDataPerPop.jsp" />
+		</outputViews>
+	</action>
+	<!-- 机构列表POP界面,农户贷款业务配置 -->
+	<action id="querySOrgConfigPop" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.platform.organization.sorg.op.QuerySOrgConfigListOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="platform/organization/SOrg/querySOrgConfigPop.jsp" />
+		</outputViews>
+	</action>
+	<!-- 机构多选列表POP界面 -->
+	<action id="queryMultiSOrgPop" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.platform.organization.sorg.op.QuerySOrgListPopOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="platform/organization/SOrg/queryMultiSOrgPop.jsp" />
+		</outputViews>
+	</action>
+	<!-- 多选分页查询记录列表 -->
+		<action id="pagesSOrgQuery" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.platform.organization.sorg.op.QuerySOrgListPopOp"/>
+			<transition dest="queryListRes"/>
+		</flowInvoker>
+		<outputViews>
+			<jsonView class="com.yucheng.cmis.view.JSONView" id="queryListRes">
+				<output>
+					<iColl id="SOrgList">
+						<kColl>
+						</kColl>
+					</iColl>
+					<kColl id="pageInfo">
+						<field id="currentPage" />
+						<field id="maxLine" />
+						<field id="recordSize" />
+					</kColl>
+				</output>
+			</jsonView>
+		</outputViews>
+	</action>
+	<!-- 分页查询记录列表 -->
+		<action id="pageSOrgQuery" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.platform.organization.sorg.op.QuerySOrgListOp"/>
+			<transition dest="queryListRes"/>
+		</flowInvoker>
+		<outputViews>
+			<jsonView class="com.yucheng.cmis.view.JSONView" id="queryListRes">
+				<output>
+					<iColl id="SOrgList">
+						<kColl>
+						</kColl>
+					</iColl>
+					<kColl id="pageInfo">
+						<field id="currentPage" />
+						<field id="maxLine" />
+						<field id="recordSize" />
+					</kColl>
+				</output>
+			</jsonView>
+		</outputViews>
+	</action>
+	<!-- 分页查询记录列表  非记录级权限 -->
+		<action id="pageSOrgUnDataPerQuery" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.platform.organization.sorg.op.QuerySOrgUnDataPerListOp"/>
+			<transition dest="queryListRes"/>
+		</flowInvoker>
+		<outputViews>
+			<jsonView class="com.yucheng.cmis.view.JSONView" id="queryListRes">
+				<output>
+					<iColl id="SOrgList">
+						<kColl>
+							<field id="organno" />
+							<field id="suporganno" />
+							<field id="arti_organno" />
+							<field id="organname" />
+							<field id="fincode" />
+							<field id="distno" />
+							<field id="area_dev_cate_type" />
+						</kColl>
+					</iColl>
+					<kColl id="pageInfo">
+						<field id="currentPage" />
+						<field id="maxLine" />
+						<field id="recordSize" />
+					</kColl>
+				</output>
+			</jsonView>
+		</outputViews>
+	</action>
+	<!-- 分页查询记录列表 -->
+		<action id="pageSOrgConfigQuery" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.platform.organization.sorg.op.QuerySOrgConfigListOp"/>
+			<transition dest="queryListRes"/>
+		</flowInvoker>
+		<outputViews>
+			<jsonView class="com.yucheng.cmis.view.JSONView" id="queryListRes">
+				<output>
+					<iColl id="SOrgList">
+						<kColl>
+							<field id="organno" />
+							<field id="suporganno" />
+							<field id="arti_organno" />
+							<field id="organname" />
+							<field id="fincode" />
+							<field id="distno" />
+							<field id="area_dev_cate_type" />
+						</kColl>
+					</iColl>
+					<kColl id="pageInfo">
+						<field id="currentPage" />
+						<field id="maxLine" />
+						<field id="recordSize" />
+					</kColl>
+				</output>
+			</jsonView>
+		</outputViews>
+	</action>
+	
+		<!-- 分页查询记录列表 -->
+		<action id="pageSOrgUnusulQuery" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.platform.organization.sorg.op.QuerySOrgUnusulListOp"/>
+			<transition dest="queryListRes"/>
+		</flowInvoker>
+		<outputViews>
+			<jsonView class="com.yucheng.cmis.view.JSONView" id="queryListRes">
+				<output>
+					<iColl id="SOrgList">
+						<kColl>
+							<field id="organno" />
+							<field id="suporganno" />
+							<field id="arti_organno" />
+							<field id="organname" />
+							<field id="fincode" />
+							<field id="distno" />
+							<field id="area_dev_cate_type" />
+						</kColl>
+					</iColl>
+					<kColl id="pageInfo">
+						<field id="currentPage" />
+						<field id="maxLine" />
+						<field id="recordSize" />
+					</kColl>
+				</output>
+			</jsonView>
+		</outputViews>
+	</action>
+	<action id="pageSOrgInnerQuery" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.platform.organization.sorg.op.QuerySOrgInnerListOp"/>
+			<transition dest="queryListRes"/>
+		</flowInvoker>
+		<outputViews>
+			<jsonView class="com.yucheng.cmis.view.JSONView" id="queryListRes">
+				<output>
+					<iColl id="SOrgList">
+						<kColl>
+							<field id="organno" />
+							<field id="suporganno" />
+							<field id="arti_organno" />
+							<field id="organname" />
+							<field id="fincode" />
+							<field id="distno" />
+							<field id="area_dev_cate_type" />
+						</kColl>
+					</iColl>
+					<kColl id="pageInfo">
+						<field id="currentPage" />
+						<field id="maxLine" />
+						<field id="recordSize" />
+					</kColl>
+				</output>
+			</jsonView>
+		</outputViews>
+	</action>
+	<!-- 条件 机构列表POP界面 -->
+	<action id="querySOrgPopByCondition" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.platform.organization.sorg.op.QuerySOrgListPopForConditionOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="platform/organization/SOrg/querySOrgPopForCondition.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 条件 机构列表POP 分页查询记录列表 -->
+		<action id="pageSOrgQueryByCondition" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.platform.organization.sorg.op.QuerySOrgListPopForConditionOp"/>
+			<transition dest="queryListRes"/>
+		</flowInvoker>
+		<outputViews>
+			<jsonView class="com.yucheng.cmis.view.JSONView" id="queryListRes">
+				<output>
+					<iColl id="SOrgList">
+						<kColl>
+							<field id="organno" />
+							<field id="suporganno" />
+							<field id="arti_organno" />
+							<field id="organname" />
+							<field id="fincode" />
+							<field id="distno" />
+							<field id="area_dev_cate_type" />
+						</kColl>
+					</iColl>
+					<kColl id="pageInfo">
+						<field id="currentPage" />
+						<field id="maxLine" />
+						<field id="recordSize" />
+					</kColl>
+				</output>
+			</jsonView>
+		</outputViews>
+	</action>
+	
+	
+	
+	
+	
+	<!-- 查询所有的法人机构  列表POP界面 -->
+	<action id="queryQuerySOrgArtiPop" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.platform.organization.sorg.op.QuerySOrgArtiListPopOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="platform/organization/SOrg/querySOrgArtiListPop.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 查询所有的法人机构  POP 分页查询记录列表 -->
+		<action id="pageSOrgArtiQueryPop" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.platform.organization.sorg.op.QuerySOrgArtiListPopOp"/>
+			<transition dest="queryListRes"/>
+		</flowInvoker>
+		<outputViews>
+			<jsonView class="com.yucheng.cmis.view.JSONView" id="queryListRes">
+				<output>
+					<iColl id="SOrgList">
+						<kColl>
+							<field id="organno" />
+							<field id="suporganno" />
+							<field id="arti_organno" />
+							<field id="organname" />
+							<field id="fincode" />
+							<field id="distno" />
+							<field id="area_dev_cate_type" />
+						</kColl>
+					</iColl>
+					<kColl id="pageInfo">
+						<field id="currentPage" />
+						<field id="maxLine" />
+						<field id="recordSize" />
+					</kColl>
+				</output>
+			</jsonView>
+		</outputViews>
+	</action>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+</actionDefines>
+
+
+

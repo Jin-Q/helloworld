@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<IqpOverseeManager.xml>
+	<TableModel id="IqpOverseeManager" cnname="主要管理人员" dbTableName="iqp_oversee_manager">
+		<Field id="manager_id" isPK="true" columnName="manager_id" cnname="主要管理人员信息编号" length="40" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="name" columnName="name" cnname="姓名" length="30" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="duty" columnName="duty" cnname="职务" length="10" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="edu" columnName="edu" cnname="学历" length="10" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="term" columnName="term" cnname="年限" length="16" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="serno" columnName="serno" cnname="业务流水号" length="40" JDBCType="VARCHAR2" canBeNull="false"/>
+	</TableModel>
+</IqpOverseeManager.xml>

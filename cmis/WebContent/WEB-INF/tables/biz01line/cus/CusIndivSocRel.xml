@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<CusIndivSocRel.xml>
+	<TableModel id="CusIndivSocRel" cnname="个人社会关系" dbTableName="cus_indiv_soc_rel">
+		<Field id="cus_id" isPK="true" columnName="cus_id" cnname="客户代码" length="30" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="indiv_cus_rel" isPK="false" columnName="indiv_cus_rel" cnname="与客户关系" length="1" JDBCType="CHAR" canBeNull="true"/>
+		<Field id="remark" columnName="remark" cnname="备注" length="250" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="input_id" columnName="input_id" cnname="登记人" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="input_br_id" columnName="input_br_id" cnname="登记机构" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="input_date" columnName="input_date" cnname="登记日期" length="10" JDBCType="CHAR" canBeNull="true"/>
+		<Field id="last_upd_id" columnName="last_upd_id" cnname="更新人" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="last_upd_date" columnName="last_upd_date" cnname="更新日期" length="10" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="indiv_family_flg" columnName="indiv_family_flg" cnname="是否家庭成员" length="1" JDBCType="CHAR"/>
+		<Field id="cus_id_rel" isPK="true" columnName="cus_id_rel" cnname="关联客户客户码" length="30" JDBCType="VARCHAR2"/>
+	</TableModel>
+</CusIndivSocRel.xml>

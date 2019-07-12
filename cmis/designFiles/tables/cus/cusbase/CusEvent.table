@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<CusEvent.xml>
+	<TableModel id="CusEvent" pageSize="15" cnname="客户大事记表" isPaged="true" dbTableName="cus_event">
+		<TableInfo/>
+		<Field id="serno" isPK="true" columnName="serno" cnname="登记流水号" length="40" JSPTag="text" JDBCType="VARCHAR2"/>
+		<Field id="cus_id" isPK="true" columnName="cus_id" cnname="客户代码" length="20" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="event_dt" columnName="event_dt" cnname="发生日期" length="10" JSPTag="date" canBeNull="false" JDBCType="CHAR"/>
+		<Field id="event_name" columnName="event_name" cnname="事件名称" length="60" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="event_typ" dictname="STD_ZB_EVENT_TYP" columnName="event_typ" cnname="事件类型" length="2" JSPTag="select" canBeNull="false" JDBCType="CHAR"/>
+		<Field id="event_imp_deg" dictname="STD_ZB_EVENT_IMP_DEG" columnName="event_imp_deg" cnname="事件影响程度" length="1" JSPTag="select" canBeNull="false" JDBCType="CHAR"/>
+		<Field id="event_desc" columnName="event_desc" cnname="事件描述" length="200" JSPTag="textarea" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="event_amt" dataType="Currency" columnName="event_amt" cnname="涉及金额" length="16" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="event_exps_com" columnName="event_exps_com" cnname="曝光单位" length="60" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="event_bank_flg" dictname="STD_ZX_YES_NO" columnName="event_bank_flg" cnname="是否本行发生" length="1" JSPTag="select" canBeNull="false" JDBCType="CHAR"/>
+		<Field id="event_bch_name" columnName="event_bch_name" cnname="发生机构" length="60" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<OrderFields>serno;cus_id[desc];</OrderFields>
+		<ConditionFields/>
+		<FilterFields>event_dt;event_typ;serno;event_imp_deg;event_kind;event_bch_name;input_id;input_date;</FilterFields>
+		<Field id="event_classify" columnName="event_classify" cnname="事件分类" length="2" JSPTag="text" JDBCType="VARCHAR2"/>
+		<Field id="status" columnName="status" cnname="状态" JSPTag="text" length="1" JDBCType="CHAR"/>
+		<Field id="input_br_id" columnName="input_br_id" cnname="登记机构" JSPTag="text" length="20" JDBCType="VARCHAR2"/>
+		<Field id="input_id" columnName="input_id" cnname="登记人" JSPTag="text" length="20" JDBCType="VARCHAR2"/>
+		<Field id="last_upd_date" columnName="last_upd_date" cnname="更新人" JSPTag="text" length="10" JDBCType="VARCHAR2"/>
+		<Field id="input_date" columnName="input_date" cnname="登记日期" JSPTag="text" length="10" JDBCType="CHAR"/>
+		<Field id="logout_br_id" columnName="logout_br_id" cnname="注销机构" JSPTag="text" length="20" JDBCType="VARCHAR2"/>
+		<Field id="last_upd_id" columnName="last_upd_id" cnname="更新日期" JSPTag="text" length="20" JDBCType="VARCHAR2"/>
+		<Field id="logout_id" columnName="logout_id" cnname="注销人" JSPTag="text" length="20" JDBCType="VARCHAR2"/>
+	</TableModel>
+</CusEvent.xml>

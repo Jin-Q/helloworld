@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<WfiBizCommentRecord.xml>
+	<TableModel id="WfiBizCommentRecord" cnname="审批业务要素记录表" dbTableName="wfi_biz_comment_record">
+		<TableInfo/>
+		<Field id="pk1" isPK="true" columnName="pk1" cnname="审批修改ID" length="40" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="instanceid" columnName="instanceid" cnname="流程实例号" length="32" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="nodeid" columnName="nodeid" cnname="节点ID" length="32" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="nodename" columnName="nodename" cnname="节点名称" length="50" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="commentcontent" columnName="commentcontent" cnname="审批意见" length="4000" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="fldvalue01" columnName="fldvalue01" cnname="变量1" length="4000" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="fldvalue02" columnName="fldvalue02" cnname="变量2" length="4000" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="fldvalue03" columnName="fldvalue03" cnname="变量3" length="4000" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="fldvalue04" columnName="fldvalue04" cnname="变量4" length="4000" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="fldvalue05" columnName="fldvalue05" cnname="变量5" length="4000" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="op_time" columnName="op_time" cnname="操作时间" length="19" JSPTag="text" canBeNull="true" JDBCType="CHAR"/>
+		<Field id="input_id" columnName="input_id" cnname="操作人" length="20" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="input_br_id" columnName="input_br_id" cnname="操作机构" length="20" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="commentid" columnName="commentid" cnname="流程意见ID" length="32" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="remark" columnName="remark" cnname="备注" length="100" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<OrderFields>pk1[desc];</OrderFields>
+	</TableModel>
+</WfiBizCommentRecord.xml>

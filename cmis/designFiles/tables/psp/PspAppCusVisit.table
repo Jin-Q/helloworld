@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<PspAppCusVisit.xml>
+	<TableModel id="PspAppCusVisit" pageSize="15" cnname="客户走访登记" isPaged="true" dbTableName="psp_app_cus_visit">
+		<TableInfo/>
+		<Field id="serno" isPK="true" columnName="serno" cnname="业务编号" length="40" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="cus_id" columnName="cus_id" cnname="受访客户编码" length="30" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="visit_time" columnName="visit_time" cnname="访客时间" length="10" JSPTag="date" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="visit_addr" columnName="visit_addr" cnname="访客地点" length="80" JSPTag="pop" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="visit_street" columnName="visit_street" cnname="街道" length="80" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="visit_obj" columnName="visit_obj" cnname="访谈对象" length="80" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="visit_obj_duty" dictname="STD_ZX_DUTY" columnName="visit_obj_duty" cnname="访谈对象职务" length="80" JSPTag="select" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="visit_obj_phone" dataType="Phone" columnName="visit_obj_phone" cnname="访谈对象电话" length="80" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="is_cret_need" dictname="STD_ZX_YES_NO" columnName="is_cret_need" cnname="是否存在信贷需求" length="5" JSPTag="select" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="is_advice_sale" dictname="STD_ZX_YES_NO" columnName="is_advice_sale" cnname="是否建议再次营销" length="5" JSPTag="select" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="visit_dest" columnName="visit_dest" cnname="本次访客目的" length="500" JSPTag="textarea" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="visit_record" columnName="visit_record" cnname="本次访谈记录" length="500" JSPTag="textarea" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="visit_res" columnName="visit_res" cnname="本次访谈结论" length="500" JSPTag="textarea" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="memo" columnName="memo" cnname="备注" length="500" JSPTag="textarea" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="input_id" columnName="input_id" cnname="登记人" length="20" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="input_br_id" columnName="input_br_id" cnname="登记机构" length="20" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="input_date" columnName="input_date" cnname="登记日期" length="10" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="approve_status" dictname="WF_APP_STATUS" columnName="approve_status" cnname="申请状态" length="3" JSPTag="select" canBeNull="false" JDBCType="VARCHAR2"/>
+		<OrderFields>serno[desc];</OrderFields>
+		<ConditionFields>cus_id;serno;approve_status;</ConditionFields>
+		<FilterFields>serno;cus_id;visit_time;is_cret_need;is_advice_sale;input_id;input_br_id;input_date;approve_status;</FilterFields>
+		<RecordRestrict query="true" delete="true" update="true"/>
+		<Field id="manager_id" columnName="manager_id" cnname="责任人" JSPTag="text" length="20" JDBCType="VARCHAR2"/>
+		<Field id="manager_br_id" columnName="manager_br_id" cnname="管理机构" JSPTag="text" length="20" JDBCType="VARCHAR2"/>
+	</TableModel>
+</PspAppCusVisit.xml>

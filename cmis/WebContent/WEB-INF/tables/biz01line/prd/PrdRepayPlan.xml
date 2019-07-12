@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<PrdRepayPlan.xml>
+	<TableModel id="PrdRepayPlan" cnname="还款方式策略" dbTableName="prd_repay_plan">
+		<Field id="serno" isPK="true" columnName="serno" cnname="序号" length="30" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="repay_mode_id" isPK="true" columnName="repay_mode_id" cnname="还款方式代码" length="10" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="exe_times" columnName="exe_times" cnname="执行期数" length="3" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="cap_perc" columnName="cap_perc" cnname="本金比例" length="16" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="cal_term" columnName="cal_term" cnname="计算期限" length="3" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="repay_mode" columnName="repay_mode" cnname="还款方式" length="10" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="repay_type" columnName="repay_type" cnname="还款类型" length="10" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="int_cal_basic" columnName="int_cal_basic" cnname="利息计算基础" length="10" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="is_update" columnName="is_update" cnname="是否允许修改" length="1" JDBCType="CHAR" canBeNull="true"/>
+		<Field id="rate_type" columnName="rate_type" cnname="利率类型" length="10" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="rate_mode" columnName="rate_mode" cnname="利率模式" length="10" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="rate_sprd" columnName="rate_sprd" cnname="利差" length="16" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="rate_pefloat" columnName="rate_pefloat" cnname="利率浮动比例" length="16" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="rate_cal_basic" columnName="rate_cal_basic" cnname="利率计算基础" length="10" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="new_change_time" columnName="new_change_time" cnname="最新变更时间" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="new_change_user" columnName="new_change_user" cnname="最新变更用户" length="10" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="repay_trem" columnName="repay_trem" cnname="还款间隔周期" length="10" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="repay_interval" columnName="repay_interval" cnname="还款间隔" length="3" JDBCType="NUMBER" canBeNull="true"/>
+	</TableModel>
+</PrdRepayPlan.xml>

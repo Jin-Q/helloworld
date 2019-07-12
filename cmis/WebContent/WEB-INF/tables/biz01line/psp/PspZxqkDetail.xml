@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<PspZxqkDetail.xml>
+	<TableModel id="PspZxqkDetail" cnname="征信记录明细" dbTableName="psp_zxqk_detail">
+		<Field id="task_id" isPK="true" columnName="task_id" cnname="任务编号" length="32" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="cus_id" columnName="cus_id" cnname="客户编码" length="40" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="dwrz_amt" columnName="dwrz_amt" cnname="对外融资总额" length="16" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="credit_bank_num" columnName="credit_bank_num" cnname="授信合作银行数量" length="0" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="dwdb_amt" columnName="dwdb_amt" cnname="对外担保总额" length="16" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="lawsuit_enp" columnName="lawsuit_enp" cnname="诉讼环保情况" length="250" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="sfsxdybacl" columnName="sfsxdybacl" cnname="客户在我行及他行授信是否出现贷款逾期、不能按时偿还利息等情况" length="5" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="sfsxdybacl_sm" columnName="sfsxdybacl_sm" cnname="客户在我行及他行授信是否出现贷款逾期、不能按时偿还利息等情况_说明" length="250" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="sfzybhgjbtz" columnName="sfzybhgjbtz" cnname="是否因信贷资金使用或用途不合规进行级别调整" length="5" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="sfzybhgjbtz_sm" columnName="sfzybhgjbtz_sm" cnname="是否因信贷资金使用或用途不合规进行级别调整_说明" length="250" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="jkrsfzqtdyzhj" columnName="jkrsfzqtdyzhj" cnname="借款人是否在其他金融机构贷款余额大幅增加或减少" length="5" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="jkrsfzqtdyzhj_sm" columnName="jkrsfzqtdyzhj_sm" cnname="借款人是否在其他金融机构贷款余额大幅增加或减少_说明" length="250" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="jkrsfzwtwyjl" columnName="jkrsfzwtwyjl" cnname="借款人在我行或他行是否存在违约历史记录" length="5" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="jkrsfzwtwyjl_sm" columnName="jkrsfzwtwyjl_sm" cnname="借款人在我行或他行是否存在违约历史记录_说明" length="250" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="jkrzwtdkfxxj" columnName="jkrzwtdkfxxj" cnname="借款人在我行和他行的贷款风险分类等级是否下降" length="5" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="jkrzwtdkfxxj_sm" columnName="jkrzwtdkfxxj_sm" cnname="借款人在我行和他行的贷款风险分类等级是否下降_说明" length="250" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="jkrddyzffdx" columnName="jkrddyzffdx" cnname="借款人对外担保余额是否大幅增加，对外担保的贷款客户风险分类等级是否下降" length="5" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="jkrddyzffdx_sm" columnName="jkrddyzffdx_sm" cnname="借款人对外担保余额是否大幅增加，对外担保的贷款客户风险分类等级是否下降_说明" length="250" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="jkrzxbccdqs" columnName="jkrzxbccdqs" cnname="借款人征信被查询次数是否在短期内骤升" length="5" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="jkrzxbccdqs_sm" columnName="jkrzxbccdqs_sm" cnname="借款人征信被查询次数是否在短期内骤升_说明" length="250" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="sfjkryqtzwhdb" columnName="sfjkryqtzwhdb" cnname="是否发现借款人有银行之外的其他债务或担保信息" length="5" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="sfjkryqtzwhdb_sm" columnName="sfjkryqtzwhdb_sm" cnname="是否发现借款人有银行之外的其他债务或担保信息_说明" length="250" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="other_sm" columnName="other_sm" cnname="其他情况说明" length="1000" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="dwrz_sfyqb" columnName="dwrz_sfyqb" cnname="是否逾期、欠息或不良" length="5" JDBCType="VARCHAR2"/>
+		<Field id="dwrz_jsqzje" columnName="dwrz_jsqzje" cnname="对外融资较上期增加（或减少）额" length="16" JDBCType="NUMBER"/>
+		<Field id="dwdb_sfyqb" columnName="dwdb_sfyqb" cnname="是否逾期、欠息或不良" length="5" JDBCType="VARCHAR2"/>
+		<Field id="dwdb_jsqzje" columnName="dwdb_jsqzje" cnname="对外担保较上期增加（或减少）额" length="16" JDBCType="NUMBER"/>
+	</TableModel>
+</PspZxqkDetail.xml>

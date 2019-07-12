@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actionDefines>
+	<classMap>
+		<map id="action" class="com.yucheng.cmis.ad.mvc.ADRequestController"/>
+		<map id="flowInvoker" class="com.yucheng.cmis.ad.mvc.ADFlowInvoker"/>
+		<map id="outputViews" class="java.util.HashMap"/>
+		<map id="output" class="com.ecc.emp.data.KeyedCollection"/>
+		<map id="kColl" class="com.ecc.emp.data.KeyedCollection"/>
+		<map id="iColl" class="com.ecc.emp.data.IndexedCollection"/>
+		<map id="field" class="com.ecc.emp.data.DataField"/>
+	</classMap>
+	
+	<!-- 获取操作主页面 -->
+	<action id="queryLmtAgrInfoList" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.lmt.op.lmtagrinfo.QueryLmtAgrInfoListOp"/>
+			<transition dest="retPage" condition="($retValue='0')" />
+			<transition dest="guar" condition="($retValue='guar')" />
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="biz01line/lmt/LmtAgrInfo/queryLmtAgrInfoList.jsp" />
+			<jspView id="guar" url="biz01line/lmt/LmtAgrFinGuar/queryLmtAgrFinGuarList.jsp" />
+		</outputViews>
+	</action>
+	
+	<!--获取封面打印页面-->
+	<action id="getPrintPage" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.report.CoverPrintOp"/>
+			<transition dest="printPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="printPage" url="biz01line/report/fnc/coverPrint.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 获得编辑页面 -->
+	<action id="getLmtAgrInfoUpdatePage" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation updateCheck="false" class="com.yucheng.cmis.biz01line.lmt.op.lmtagrinfo.QueryLmtAgrInfoDetailOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="biz01line/lmt/LmtAgrInfo/updateLmtAgrInfoRecord.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 生成冻结页面 -->
+	<action id="getLmtAgrInfoFrozenPage" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation updateCheck="false" class="com.yucheng.cmis.biz01line.lmt.op.lmtagrinfo.GetLmtFrozenApplyAddPageOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="biz01line/lmt/LmtAgrInfo/getLmtFrozenAppRecord.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 保存冻结申请 -->
+	<action id="addLmtAgrFrozenApp" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation updateCheck="false" class="com.yucheng.cmis.biz01line.lmt.op.lmtagrinfo.AddLmtAgrFrozenAppOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<!-- <jspView id="retPage" url="biz01line/lmt/LmtAgrInfo/getLmtFrozenAppRecord.jsp" /> -->
+			<view id="retPage" class="com.yucheng.cmis.view.JSONView">
+				<output class="com.ecc.emp.data.KeyedCollection">
+						<field id="flag" class="com.ecc.emp.data.DataField"/>
+				</output>
+			</view>
+		</outputViews>
+	</action>
+	
+	<!-- 保存冻结申请 -->
+	<action id="updateLmtAgrFrozenApp" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation updateCheck="false" class="com.yucheng.cmis.biz01line.lmt.op.lmtagrinfo.UpdateLmtAgrFrozenAppOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<view id="retPage" class="com.yucheng.cmis.view.JSONView">
+				<output class="com.ecc.emp.data.KeyedCollection">
+						<field id="flag" class="com.ecc.emp.data.DataField"/>
+				</output>
+			</view>
+		</outputViews>
+	</action>
+	
+	<!-- 保存冻结申请 -->
+	<action id="addLmtAgrFrozenIndivApp" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation updateCheck="false" class="com.yucheng.cmis.biz01line.lmt.op.lmtagrinfo.AddLmtAgrFrozenIndivAppOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<view id="retPage" class="com.yucheng.cmis.view.JSONView">
+				<output class="com.ecc.emp.data.KeyedCollection">
+						<field id="flag" class="com.ecc.emp.data.DataField"/>
+				</output>
+			</view>
+		</outputViews>
+	</action>
+	
+	<!-- 保存冻结申请 -->
+	<action id="updateLmtAgrFrozenIndivApp" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation updateCheck="false" class="com.yucheng.cmis.biz01line.lmt.op.lmtagrinfo.UpdateLmtAgrFrozenIndivAppOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<view id="retPage" class="com.yucheng.cmis.view.JSONView">
+				<output class="com.ecc.emp.data.KeyedCollection">
+						<field id="flag" class="com.ecc.emp.data.DataField"/>
+				</output>
+			</view>
+		</outputViews>
+	</action>
+	
+	<!-- 生成冻结申请 -->
+	<action id="getLmtFrozenUpdateRecord" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation updateCheck="false" class="com.yucheng.cmis.biz01line.lmt.op.lmtapply.QueryLmtApplyDetailOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="biz01line/lmt/LmtAgrInfo/getLmtFrozenUpdateRecord.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 检查是否有在途的冻结申请 -->
+	<action id="checkLmtAgrFrozenApp" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation updateCheck="false" class="com.yucheng.cmis.biz01line.lmt.op.lmtagrinfo.CheckLmtAgrFrozenOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<!-- <jspView id="retPage" url="biz01line/lmt/LmtAgrInfo/getLmtFrozenAppRecord.jsp" /> -->
+			<view id="retPage" class="com.yucheng.cmis.view.JSONView">
+				<output class="com.ecc.emp.data.KeyedCollection">
+						<field id="serno" class="com.ecc.emp.data.DataField"/>
+						<field id="appStatus" class="com.ecc.emp.data.DataField"/>
+				</output>
+			</view>
+		</outputViews>
+	</action>
+	
+	<!-- 获得查看页面 -->
+	<action id="getLmtAgrInfoViewPage" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.lmt.op.lmtagrinfo.QueryLmtAgrInfoDetailOp"/>
+			<transition dest="updatePage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="updatePage" url="biz01line/lmt/LmtAgrInfo/queryLmtAgrInfoDetail.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 授信使用情况  -->
+	<action id="searchLmtUseInfoDetails" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.lmt.op.lmtagrinfo.SearchLmtUseInfoDetails"/>
+			<transition dest="updatePage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="updatePage" url="biz01line/lmt/LmtAgrInfo/serachLmtUseInfo.jsp" />
+		</outputViews>
+	</action>
+	<!-- 授信使用情况分页  -->
+	<action id="pageSearchLmtUseInfoDetails" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.lmt.op.lmtagrinfo.SearchLmtUseInfoDetails"/>
+			<transition dest="queryListRes"/>
+		</flowInvoker>
+		<outputViews>
+			<jsonView class="com.yucheng.cmis.view.JSONView" id="queryListRes">
+				<output>
+					<iColl id="LmtUseContList">
+						<kColl>
+						</kColl>
+					</iColl>
+					<kColl id="pageInfo">
+						<field id="currentPage" />
+						<field id="maxLine" />
+						<field id="recordSize" />
+					</kColl>
+				</output>
+			</jsonView>
+		</outputViews>
+	</action>
+	
+	
+	<!-- 获得查看页面不挂接Tab页 -->
+	<action id="getLmtAgrInfoViewPageNoTab" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.lmt.op.lmtagrinfo.QueryLmtAgrInfoDetailOp"/>
+			<transition dest="updatePage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="updatePage" url="biz01line/lmt/LmtAgrInfo/queryLmtAgrInfoDetailNoTab.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 分页查询记录列表 -->
+	<action id="pageLmtAgrInfoQuery" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.lmt.op.lmtagrinfo.QueryLmtAgrInfoListOp"/>
+			<transition dest="queryListRes"/>
+		</flowInvoker>
+		<outputViews>
+			<jsonView class="com.yucheng.cmis.view.JSONView" id="queryListRes">
+				<output>
+					<iColl id="LmtAgrInfoList">
+						<kColl>
+						
+						</kColl>
+					</iColl>
+					<kColl id="pageInfo">
+						<field id="currentPage" />
+						<field id="maxLine" />
+						<field id="recordSize" />
+					</kColl>
+				</output>
+			</jsonView>
+		</outputViews>
+	</action>
+	
+	<!-- 查看授信台账或授信协议信息  -->
+	<action id="viewLmtAgrInfo" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.lmt.op.ViewLmtAgrInfoOp"/>
+			<transition dest="comAgrInfo" condition="$retValue='comAgrInfo'"/>
+			<transition dest="indivAgrInfo" condition="$retValue='indivAgrInfo'"/>
+			<transition dest="jointAgrInfo" condition="$retValue='jointAgrInfo'"/>
+			
+			<transition dest="indusAgrInfo" condition="$retValue='indusAgrInfo'"/>
+			<transition dest="bizAreaAgrInfo" condition="$retValue='bizAreaAgrInfo'"/>
+			<transition dest="coopAgrInfo" condition="$retValue='coopAgrInfo'"/>
+			
+			<transition dest="LmtIntbankAcc" condition="$retValue='LmtIntbankAcc'"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="comAgrInfo" url="biz01line/lmt/LmtAgrDetails/queryLmtAgrDetailsDetail.jsp" />
+			<jspView id="indivAgrInfo" url="biz01line/lmt/LmtAgrDetails/queryLmtAgrDetailsDetail.jsp" />
+			<jspView id="jointAgrInfo" url="biz01line/lmt/LmtAgrDetails/queryLmtAgrDetailsDetail.jsp" />
+			
+			<jspView id="indusAgrInfo" url="biz01line/lmt/LmtIndus/LmtIndusAgr/queryLmtIndusAgrDetail.jsp" />
+			<jspView id="bizAreaAgrInfo"  url="biz01line/lmt/bizarea/LmtAgrBizArea/queryLmtAgrBizArea.jsp"/>
+			<jspView id="coopAgrInfo" url="biz01line/lmt/LmtAgrCoop/queryLmtAgrCoopDetail.jsp" />
+			
+			<jspView id="LmtIntbankAcc" url="biz01line/lmt/intbank/LmtIntbankAcc/queryLmtIntbankAccDetail.jsp" />
+		</outputViews>
+	</action>
+	
+</actionDefines>
+
+
+

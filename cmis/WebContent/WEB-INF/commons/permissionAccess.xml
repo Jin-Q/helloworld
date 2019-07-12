@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<permissionAccess.xml>
+	<classMap>
+		<map id="accessItem" class="com.ecc.emp.accesscontrol.AccessItem"/>
+	</classMap>
+	
+	<accessItem id="permissionFile"/>
+	
+</permissionAccess.xml>

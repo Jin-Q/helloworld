@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<TestComm.xml>
+	<TableModel id="TestComm" cnname="对公贷款申请测试" dbTableName="test_comm">
+		<TableInfo/>
+		<Field id="commid" isPK="true" columnName="commid" cnname="申请流水号" length="0" JSPTag="text" canBeNull="false" JDBCType="NUMBER"/>
+		<Field id="cusid" columnName="cusid" cnname="客户ID" length="100" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="cusname" columnName="cusname" cnname="客户名称" length="100" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="sqje" columnName="sqje" cnname="申请金额" length="10" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="dkqx" columnName="dkqx" cnname="贷款期限" length="0" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="sqrq" columnName="sqrq" cnname="申请日期" length="10" JSPTag="text" canBeNull="true" JDBCType="CHAR"/>
+		<OrderFields>commid[desc];</OrderFields>
+		<Field id="approve_status" columnName="approve_status" cnname="APPROVE_STATUS" JSPTag="text" length="3" JDBCType="CHAR"/>
+		<Field id="apprv_usr" columnName="apprv_usr" cnname="APPRV_USR" JSPTag="text" length="100" JDBCType="VARCHAR2"/>
+		<Field id="apprv_level" columnName="apprv_level" cnname="APPRV_LEVEL" JSPTag="text" length="100" JDBCType="VARCHAR2"/>
+		<Field id="p_apprv_level" columnName="p_apprv_level" cnname="P_APPRV_LEVEL" JSPTag="text" length="100" JDBCType="VARCHAR2"/>
+		<Field id="org_id" columnName="org_id" cnname="ORG_ID" JSPTag="text" length="100" JDBCType="VARCHAR2"/>
+	</TableModel>
+</TestComm.xml>

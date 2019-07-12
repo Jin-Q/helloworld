@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<LmtIndusAuthMana.xml>
+	<TableModel id="LmtIndusAuthMana" pageSize="10" cnname="行业授权管理表" isPaged="true" dbTableName="lmt_indus_auth_mana">
+		<TableInfo/>
+		<Field id="agr_no" isPK="true" columnName="agr_no" cnname="协议编号" length="40" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="input_br_id" isPK="true" columnName="input_br_id" cnname="申请机构" length="20" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="guar_type" JDBCType="VARCHAR2" length="3" columnName="guar_type" canBeNull="false" dictname="STD_ZB_ASSURE_MEANS" isPK="true" JSPTag="select" cnname="担保方式"/>
+		<Field id="single_auth_amt" columnName="single_auth_amt" cnname="单户授权金额" length="16" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="status" dictname="STD_DRFPO_STATUS" columnName="status" cnname="状态" length="5" JSPTag="select" canBeNull="true" JDBCType="VARCHAR2"/>
+		<OrderFields>agr_no[desc];input_br_id[desc];guar_type[desc];</OrderFields>
+		<ConditionFields>agr_no;input_br_id;guar_type;</ConditionFields>
+		<RecordRestrict query="false" delete="false" update="false"/>
+		<FilterFields>agr_no;input_br_id;guar_type;single_auth_amt;status;</FilterFields>
+	</TableModel>
+</LmtIndusAuthMana.xml>

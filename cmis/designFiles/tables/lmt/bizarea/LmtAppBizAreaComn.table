@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<LmtAppBizAreaComn.xml>
+	<TableModel id="LmtAppBizAreaComn" cnname="目标客户群（一般商圈）" dbTableName="lmt_app_biz_area_comn">
+		<TableInfo>目标客户群（一般商圈）申请表</TableInfo>
+		<Field id="shop_type" dictname="STD_LMT_BIZ_TYPE" columnName="shop_type" cnname="商户类型" length="2" JSPTag="select" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="main_prd" columnName="main_prd" cnname="主要产品" length="200" JSPTag="textarea" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="oper_model" dictname="STD_LMT_BIZ_SIZE" columnName="oper_model" cnname="经营规模" length="10" JSPTag="select" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="other_cond" columnName="other_cond" cnname="其他准入条件" length="200" JSPTag="textarea" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="serno" isPK="true" columnName="serno" cnname="业务编号" length="40" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<OrderFields>serno[desc];</OrderFields>
+	</TableModel>
+</LmtAppBizAreaComn.xml>

@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="gb2312"?>
+<externalResources>
+<externalResource name="COM资源" type="COM">
+<property name="com.url" value="liujy:4060" />
+</externalResource>
+<externalResource name="Java类库" type="JCL">
+<property name="FILE" value="eChainEJB.jar" />
+<property name="jcl.versionable" value="false" />
+</externalResource>
+<externalResource name=".net资源" type=".NET">
+<property name="dotnet.port" value="5050" />
+<property name="dotnet.host" value="localhost" />
+</externalResource>
+<externalResource name="bsf" type="JCL">
+<property name="FILE" value="bsf.jar" />
+</externalResource>
+<externalResource name="j2ee" type="JCL">
+<property name="FILE" value="j2ee.jar" />
+</externalResource>
+<externalResource name="WebService1" type="WebService">
+<property name="path" value="http://192.168.0.7/echain/services/WorkList?wsdl" />
+</externalResource>
+<externalResource name="WSTest" type="WebService">
+<property name="path" value="http://192.168.0.7/echain/services/WSTest?wsdl" />
+</externalResource>
+<externalResource name="WorkFlowClientWS" type="WebService">
+<property name="path" value="http://192.168.0.7/echain/services/WorkFlowClient?wsdl" />
+</externalResource>
+<externalResource name="163" type="Mail">
+<property name="password" value="123456" />
+<property name="username" value="newbies" />
+<property name="pop3" value="pop3.163.com" />
+</externalResource>
+<externalResource name="短信中心连接" type="SQL">
+<property name="ConType" value="ManualConnection" />
+<property name="driverclass" value="oracle.jdbc.driver.OracleDriver" />
+<property name="DBUser" value="sa" />
+<property name="url" value="jdbc:oracle:thin:@192.168.0.6:1521:echain" />
+<property name="pwd" value="123456" />
+</externalResource>
+<externalResource name="defaultCon" type="SQL">
+<property name="ConType" value="SystemDefault" />
+</externalResource>
+<externalResource name="outDS" type="SQL">
+<property name="ConType" value="OutDataSource" />
+<property name="jndi_name" value="testds" />
+</externalResource>
+<externalResource name="asdfadf" type="COM">
+<property name="ProgID" value="asfsdfdf" />
+</externalResource>
+<externalResource name="Meth" type="COM">
+<property name="ProgID" value="Newbies.Meth" />
+</externalResource>
+<externalResource name="sdsdsd" type="WebService">
+<property name="path" value="http://127.0.0.1/echain/services/WorkList?wsdl" />
+</externalResource>
+<externalResource name="StatUserTodoBiz" type="EMPBiz">
+<property name="OP" value="StatUserTodo" />
+<property name="EMPFlow" value="stat" />
+<property name="EMPBiz" value="userinfo" />
+</externalResource>
+<externalResource name="WorkFlowClient127" type="WebService">
+<property name="path" value="http://127.0.0.1/echain/services/WorkFlowClient?wsdl" />
+</externalResource>
+<externalResource name="saveRecord" type="EMPBiz">
+<property name="OP" value="saveRecord" />
+<property name="EMPFlow" value="commonBiz" />
+<property name="EMPBiz" value="CMISBiz" />
+</externalResource>
+<externalResource name="deleteRecord" type="EMPBiz">
+<property name="OP" value="deleteRecord" />
+<property name="EMPFlow" value="commonBiz" />
+<property name="EMPBiz" value="CMISBiz" />
+</externalResource>
+<externalResource name="updateRecord" type="EMPBiz">
+<property name="OP" value="updateRecord" />
+<property name="EMPFlow" value="commonBiz" />
+<property name="EMPBiz" value="CMISBiz" />
+</externalResource>
+<externalResource name="initFlow_crd_cz_yc" type="EMPBiz">
+<property name="OP" value="initFlow" />
+<property name="EMPFlow" value="AcceptAccountBiz" />
+<property name="EMPBiz" value="CMISBiz" />
+</externalResource>
+<externalResource name="initFlow_crd_cz_yc_ljy" type="EMPBiz">
+<property name="OP" value="initFlow" />
+<property name="EMPFlow" value="AcceptAccountLJYBiz" />
+<property name="EMPBiz" value="CMISBiz" />
+</externalResource>
+<externalResource name="initFlow_crd_cz_yc_csh" type="EMPBiz">
+<property name="OP" value="initFlow" />
+<property name="EMPFlow" value="AcceptAccountcshBiz" />
+<property name="EMPBiz" value="CMISBiz" />
+</externalResource>
+<externalResource name="initFlow_crd_cs_yc_tw" type="EMPBiz">
+<property name="OP" value="initFlow" />
+<property name="EMPFlow" value="AcceptAccountTWBiz" />
+<property name="EMPBiz" value="EMPBiz" />
+</externalResource>
+<externalResource name="initFlow_crd_cz_yc_tsw" type="EMPBiz">
+<property name="OP" value="initFlow" />
+<property name="EMPFlow" value="AcceptAccountTSWBiz" />
+<property name="EMPBiz" value="CMISBiz" />
+</externalResource>
+<externalResource name="initFlow_crd_cz_yc_gxy" type="EMPBiz">
+<property name="OP" value="initFlow" />
+<property name="EMPFlow" value="AcceptAccountGXYBiz" />
+<property name="EMPBiz" value="CMISBiz" />
+</externalResource>
+<externalResource name="initFlow_crd_cz_yc_ql" type="EMPBiz">
+<property name="OP" value="initflow" />
+<property name="EMPFlow" value="AcceptAccountQLBiz" />
+<property name="EMPBiz" value="CMISBiz" />
+</externalResource>
+<externalResource name="addRecord" type="EMPBiz">
+<property name="OP" value="addRecord" />
+<property name="EMPFlow" value="commonBiz" />
+<property name="EMPBiz" value="CMISBiz" />
+</externalResource>
+<externalResource name="生产额度类台帐" type="EMPBiz">
+<property name="OP" value="createEDAccount" />
+<property name="EMPFlow" value="teamBiz" />
+<property name="EMPBiz" value="EMPBiz" />
+</externalResource>
+<externalResource name="生成额度类台帐" type="EMPBiz">
+<property name="OP" value="createEDAccount" />
+<property name="EMPFlow" value="teamBiz" />
+<property name="EMPBiz" value="CMISBiz" />
+</externalResource>
+<externalResource name="获得金融机构授信总体信息" type="EMPBiz">
+<property name="EMPFlow" value="team_jrjgBiz" />
+<property name="OP" value="getSxsqZtxx" />
+<property name="EMPBiz" value="EMPBiz" />
+</externalResource>
+<externalResource name="获得金融机构授信总体信息" type="EMPBiz">
+<property name="EMPFlow" value="getSxsqZtxx" />
+<property name="OP" value="CMISBiz" />
+<property name="EMPBiz" value="EMPBiz" />
+</externalResource>
+<externalResource name="获得金融机构授信总体信息" type="EMPBiz">
+<property name="EMPFlow" value="team_jrjgBiz" />
+<property name="OP" value="getSxsqZtxx" />
+<property name="EMPBiz" value="CMISBiz" />
+</externalResource>
+<externalResource name="金融机构生成台帐信息" type="EMPBiz">
+<property name="OP" value="saveAccount" />
+<property name="EMPFlow" value="teamJrjgBiz" />
+<property name="EMPBiz" value="CMISBiz" />
+</externalResource>
+<externalResource name="公司人民币一般贷款获得单户金额" type="EMPBiz">
+<property name="OP" value="getDhje" />
+<property name="EMPFlow" value="ybdkBiz" />
+<property name="EMPBiz" value="CMISBiz" />
+</externalResource>
+<externalResource name="公司人民币获得最高额担保金额" type="EMPBiz">
+<property name="OP" value="getZgedbje" />
+<property name="EMPFlow" value="ybdkBiz" />
+<property name="EMPBiz" value="CMISBiz" />
+</externalResource>
+<externalResource name="queryDetail" type="EMPBiz">
+<property name="OP" value="queryDetail" />
+<property name="EMPFlow" value="commonBiz" />
+<property name="EMPBiz" value="CMISBiz" />
+</externalResource>
+<externalResource name="获得所有的权限金额" type="EMPBiz">
+<property name="OP" value="getQxje" />
+<property name="EMPFlow" value="ybdkBiz" />
+<property name="EMPBiz" value="CMISBiz" />
+</externalResource>
+</externalResources>
+

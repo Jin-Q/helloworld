@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<DaybatTrandInfo.xml>
+	<TableModel id="DaybatTrandInfo" cnname="实时交易信息表" dbTableName="daybat_trand_info">
+		<Field id="pk1" isPK="true" columnName="pk1" cnname="主键" length="40" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="consumer_seq_no" columnName="consumer_seq_no" cnname="交易流水" length="40" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="service_code" columnName="service_code" cnname="服务码" length="40" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="service_scene" columnName="service_scene" cnname="服务场景" length="40" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="tran_date" columnName="tran_date" cnname="TRAN_DATE" length="8" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="locate_file" columnName="locate_file" cnname="报文文件路径" length="500" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="is_succ" columnName="is_succ" cnname="是否成功标志" length="1" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="error_res" columnName="error_res" cnname="错误来源" length="1" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="resolve_type" columnName="resolve_type" cnname="解决方式" length="1" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="trand_msg" columnName="trand_msg" cnname="错误信息" length="2000" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="deal_flag" columnName="deal_flag" cnname="是否需要处理" length="1" JDBCType="VARCHAR2" canBeNull="true"/>
+	</TableModel>
+</DaybatTrandInfo.xml>

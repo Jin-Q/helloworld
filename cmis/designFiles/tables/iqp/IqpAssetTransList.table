@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<IqpAssetTransList.xml>
+	<TableModel id="IqpAssetTransList" cnname="资产清单（资产流转使用）" dbTableName="iqp_asset_trans_list">
+		<TableInfo/>
+		<Field id="serno" isPK="true" columnName="serno" cnname="业务编号" length="40" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="bill_no" isPK="true" columnName="bill_no" cnname="原借据编号" length="40" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="trans_rate" columnName="trans_rate" cnname="转让比率" length="16" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="trans_amt" columnName="trans_amt" cnname="转让金额" length="16" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<OrderFields>serno[desc];bill_no[desc];</OrderFields>
+		<Field id="cont_no" columnName="cont_no" cnname="合同编号" length="40" JSPTag="text" JDBCType="VARCHAR2"/>
+		<Field id="agent_asset_acct" columnName="agent_asset_acct" cnname="代理资产资金账号" length="40" JSPTag="text" JDBCType="VARCHAR2"/>
+		<Field id="manager_br_id" columnName="manager_br_id" cnname="管理机构" JSPTag="text" length="20" JDBCType="VARCHAR2"/>
+		<Field id="fina_br_id" columnName="fina_br_id" cnname="账务机构" JSPTag="text" length="20" JDBCType="VARCHAR2"/>
+	</TableModel>
+</IqpAssetTransList.xml>

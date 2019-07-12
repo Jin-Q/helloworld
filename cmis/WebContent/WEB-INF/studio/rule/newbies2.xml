@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding='ISO-8859-1'?>
+<rule-set name="BusinessRulesSample2">
+<java:import>java.lang.Object</java:import>
+<java:import> java.lang.String </java:import>
+<java:import> java.util.HashMap </java:import>
+<java:import> java.util.Map </java:import>
+
+<java:functions>
+	public static void printMap(java.util.HashMap paramMap){
+	System.out.println("paramMap is:"+paramMap);
+	}
+	public static void printMap22(java.util.HashMap paramMap){
+	System.out.println("paramMap is:"+paramMap);
+	System.out.println("paramMap is222:"+paramMap);
+	}
+</java:functions>
+
+
+<rule name="USSTSchoole2" salience="-1">
+<parameter identifier="evo">
+	<class>java.util.HashMap</class>
+</parameter>
+<parameter identifier="sign">
+	<class>java.lang.String</class>
+</parameter>
+<java:condition> evo.get("name").equals("newbies") </java:condition> 
+<java:condition> evo.get("tip").equals("USST") </java:condition>
+<java:condition> sign.equals("ecc") </java:condition>
+
+<!-- What happens when the business rule is activated -->
+<java:consequence> 
+    System.out.println("=======match USSTSchoole2=========");
+	evo.put("school","USSTSchoole");
+	printMap(evo);
+</java:consequence>
+</rule>
+
+<rule name="NewbiesSchoole2" salience="-1">
+	<parameter identifier="evo">
+	<class>java.util.HashMap</class>
+</parameter>
+
+<java:condition> evo.get("name").equals("whz") </java:condition> 
+<java:condition> evo.get("tip").equals("USST") </java:condition>
+
+<!-- What happens when the business rule is activated -->
+<java:consequence> 	
+    System.out.println("=======match NewbiesSchoole2=========");
+	evo.put("school","NewbiesSchoole");
+	printMap(evo);
+	evo.put("test","adadfladjflajdf");
+</java:consequence>
+
+</rule>
+
+<rule name="WHZSchoole2" salience="-1">
+	<parameter identifier="evo">
+	<class>java.util.HashMap</class>
+</parameter>
+
+<java:condition> evo.get("name").equals("whz") </java:condition> 
+<java:condition> evo.get("tip").equals("USST") </java:condition>
+<java:condition> evo.get("wife").equals("yes") </java:condition>
+
+<!-- What happens when the business rule is activated -->
+<java:consequence> 	
+    System.out.println("=======match WHZSchoole2=========");
+	evo.put("school","WHZSchoole");
+	printMap(evo);
+	evo.put("wife","yes");
+</java:consequence>
+
+</rule>
+
+</rule-set>
+

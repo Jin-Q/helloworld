@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<MortCargoPledge.xml>
+	<TableModel id="MortCargoPledge" cnname="货物质押" dbTableName="mort_cargo_pledge">
+		<Field id="cargo_id" isPK="true" columnName="cargo_id" cnname="货物质押编号" length="40" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="guaranty_no" columnName="guaranty_no" cnname="押品编号" length="40" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="cargo_name" columnName="cargo_name" cnname="货物名称" length="60" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="guaranty_catalog" columnName="guaranty_catalog" cnname="押品所属目录" length="60" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="at_store" columnName="at_store" cnname="所属仓库" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="disp_bill_no" columnName="disp_bill_no" cnname="发货单号" length="40" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="produce_area" columnName="produce_area" cnname="产地" length="40" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="produce_vender" columnName="produce_vender" cnname="生产厂家" length="40" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="sale_area" columnName="sale_area" cnname="销售区域" length="40" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="model" columnName="model" cnname="型号" length="40" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="value_unit" columnName="value_unit" cnname="计价单位" length="2" JDBCType="CHAR" canBeNull="true"/>
+		<Field id="qnt" columnName="qnt" cnname="数量" length="20" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="identy_unit_price" columnName="identy_unit_price" cnname="银行认定单价" length="20" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="identy_total" columnName="identy_total" cnname="银行认定总价" length="20" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="storage_date" columnName="storage_date" cnname="入库日期" length="10" JDBCType="CHAR" canBeNull="true"/>
+		<Field id="exware_date" columnName="exware_date" cnname="出库日期" length="10" JDBCType="CHAR" canBeNull="true"/>
+		<Field id="memo" columnName="memo" cnname="备注" length="600" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="cargo_status" columnName="cargo_status" cnname="状态" length="2" JDBCType="CHAR" canBeNull="true"/>
+		<Field id="input_id" columnName="input_id" cnname="登记人" length="40" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="input_br_id" columnName="input_br_id" cnname="登记机构" length="40" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="reg_date" columnName="reg_date" cnname="登记日期" length="10" JDBCType="CHAR" canBeNull="true"/>
+		<Field id="value_no" columnName="value_no" cnname="价格编号" length="40" JDBCType="VARCHAR2"/>
+	</TableModel>
+</MortCargoPledge.xml>

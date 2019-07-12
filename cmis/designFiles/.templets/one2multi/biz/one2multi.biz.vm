@@ -1,0 +1,282 @@
+#set ($tableModelName=${TableModel.tableId})
+#set ($conSize=${TableModel.getConditionFieldsSize()})
+#set ($orderStr=${TableModel.getOrderFieldStr()})
+#set ($filterStr=${TableModel.getFilterFieldStr()})
+#set ($query=${TableModel.getRecordRestrict("query")})
+#set ($delete=${TableModel.getRecordRestrict("delete")})
+#set ($update=${TableModel.getRecordRestrict("update")})
+#set ($isPaged=${TableModel.isPaged()})
+#set ($dataSourceId="dataSource")
+#set ($daoId="tableModelDAO")
+#set ($modelLoaderId="tableModelLoader")
+<?xml version="1.0" encoding="${xmlEncode}" ?>
+<MCITransaction nonSessionTrx="true" trxName="${tableModelName}" trxCode="${tableModelName}" chainedChannelId="Root">
+	<datas>
+		<refData access="private" refId="errorCode"/>
+		<refData access="private" refId="errorMsg"/>
+	</datas>
+	<document/>
+	<services/>
+	<formats/>
+	
+	<operation id="queryList" name="主表列表查询操作">
+		<document/>
+		<flow name="flow1" x="10" height="400" width="500" y="10">
+			<StartAction name="StartAction0" x="29" height="40" width="100" y="21">
+#if(${conSize}>0)
+				<transition name="transition0" dest="ConditionQueryAction0"/>
+#elseif(${query}==true)
+				<transition name="transition1" dest="RecordRestrictAction0"/>
+#elseif(${orderStr.length()}>0)
+				<transition name="transition2" dest="OrderAction0"/>
+#else
+				<transition name="transition3" dest="QueryListAction0"/>
+#end
+			</StartAction>
+			<QueryListAction name="QueryListAction0" width="100" daoId="${daoId}" dataSourceId="${dataSourceId}" y="330" filterFieldStr="${filterStr}" x="38" isPaged="${isPaged}" modelLoaderId="${modelLoaderId}" modelId="${tableModelName}" height="40" #if(${isPaged}==true)size="${TableModel.pageSize}"#end>
+				<transition id="0" name="transition4" dest="EndAction2"/>
+			</QueryListAction>
+#if(${orderStr.length()}>0)
+			<OrderAction name="OrderAction0" x="213" height="40" width="100" y="219" orderFieldStr="${orderStr}">
+				<transition id="0" name="transition5" dest="QueryListAction0"/>
+			</OrderAction>
+#end
+#if(${conSize}>0)
+			<ConditionQueryAction name="ConditionQueryAction0" x="213" height="40" width="100" y="62" modelId="${tableModelName}">
+#if(${query}==true)
+				<transition id="0" name="transition6" dest="RecordRestrictAction0"/>
+#elseif(${orderStr.length()}>0)
+				<transition id="0" name="transition7" dest="OrderAction0"/>
+#else
+				<transition id="0" name="transition8" dest="QueryListAction0"/>				
+#end				
+			</ConditionQueryAction>
+#end
+#if(${query}==true)
+			<RecordRestrictAction name="RecordRestrictAction0" width="100" daoId="${daoId}" dataSourceId="${dataSourceId}" y="134" restrictType="query" x="30" modelLoaderId="${modelLoaderId}" modelId="${tableModelName}" height="40">
+#if(${orderStr.length()}>0)
+				<transition id="0" name="transition9" dest="OrderAction0"/>
+#else
+				<transition id="0" name="transition10" dest="QueryListAction0"/>
+#end
+				<transition id="-1" name="transition11" dest="EndAction0"/>
+			</RecordRestrictAction>
+			<EndAction name="EndAction0" x="31" result="failed" height="40" width="100" y="227"/>
+#end			
+			
+			<EndAction name="EndAction2" x="210" result="success" height="40" width="100" y="330"/>
+		</flow>
+		<input/>
+		<output/>
+	</operation>
+	
+	<operation id="addRecord" name="主表插入操作">
+		<document/>
+		<flow name="flow1" x="10" height="400" width="500" y="10">
+			<StartAction name="StartAction0" x="69" height="40" width="100" y="33">
+				<transition name="transition3" dest="AddRecordAction0"/>
+			</StartAction>
+			<EndAction name="EndAction0" x="71" result="success" height="40" width="100" y="264"/>
+			<AddRecordAction name="AddRecordAction0" x="70" height="40" dataSourceId="${dataSourceId}" width="100" daoId="${daoId}" y="140" modelId="${tableModelName}">
+				<transition id="0" name="transition4" dest="EndAction0"/>
+			</AddRecordAction>
+		</flow>
+		<input/>
+		<output/>
+	</operation>
+	<operation id="deleteRecord" name="主表删除操作">
+		<document/>
+		<flow name="flow1" x="10" height="400" width="500" y="10">
+			<StartAction name="StartAction0" x="46" height="40" width="100" y="33">
+#if(${delete}==true)
+				<transition name="transition1" dest="RecordRestrictAction0"/>
+#else
+				<transition name="transition2" dest="DeleteRecordAction0"/>
+#end
+			</StartAction>
+			<EndAction name="EndAction0" x="45" result="success" height="40" width="100" y="249"/>
+			<DeleteRecordAction name="DeleteRecordAction0" width="100" daoId="${daoId}" dataSourceId="${dataSourceId}" cascade="false" y="146" x="46" modelLoaderId="${modelLoaderId}" modelId="${tableModelName}" height="40">
+				<transition id="0" name="transition3" dest="EndAction0"/>
+			</DeleteRecordAction>
+#if(${delete}==true)
+			<RecordRestrictAction name="RecordRestrictAction0" width="100" daoId="${daoId}" dataSourceId="${dataSourceId}" y="89" restrictType="delete" x="226" modelLoaderId="${modelLoaderId}" modelId="${tableModelName}" height="40">
+				<transition id="0" name="transition4" dest="DeleteRecordAction0"/>
+				<transition id="-1" name="transition5" dest="EndAction1"/>
+			</RecordRestrictAction>
+			<EndAction name="EndAction1" x="234" result="failed" height="40" width="100" y="249"/>
+#end
+		</flow>
+		<input/>
+		<output/>
+	</operation>
+	<operation id="updateRecord" name="主表更新操作">
+		<document/>
+		<flow name="flow1" x="10" height="400" width="500" y="10">
+			<StartAction name="StartAction0" x="42" height="40" width="100" y="28">
+#if(${update}==true)
+			<transition name="transition1" dest="RecordRestrictAction0"/>
+#else
+			<transition name="transition2" dest="UpdateRecordAction0"/>
+#end
+			</StartAction>
+			<EndAction name="EndAction0" x="42" result="success" height="40" width="100" y="259"/>
+			<UpdateRecordAction name="UpdateRecordAction0" x="41" height="40" dataSourceId="${dataSourceId}" width="100" daoId="${daoId}" y="152" modelId="${tableModelName}">
+				<transition id="0" name="transition3" dest="EndAction0"/>
+			</UpdateRecordAction>
+#if(${update}==true)
+			<RecordRestrictAction name="RecordRestrictAction0" width="100" daoId="${daoId}" dataSourceId="${dataSourceId}" y="89" restrictType="update" x="211" modelLoaderId="${modelLoaderId}" modelId="${tableModelName}" height="40">
+				<transition id="0" name="transition4" dest="UpdateRecordAction0"/>
+				<transition id="-1" name="transition5" dest="EndAction1"/>
+			</RecordRestrictAction>
+			<EndAction name="EndAction1" x="219" result="failed" height="40" width="100" y="259"/>
+#end
+		</flow>
+		<input/>
+		<output/>
+	</operation>
+	<operation id="queryDetail" name="主表详情查询操作">
+		<document/>
+		<flow name="flow1" x="10" height="400" width="500" y="10">
+			<StartAction name="StartAction0" x="74" height="40" width="100" y="30">
+				<transition name="transition0" dest="QueryDetailAction0"/>
+			</StartAction>
+			<EndAction name="EndAction0" x="76" result="success" height="40" width="100" y="236"/>
+			<QueryDetailAction name="QueryDetailAction0" width="100" daoId="${daoId}" dataSourceId="${dataSourceId}" cascade="true" y="130" x="75" modelLoaderId="${modelLoaderId}" modelId="${tableModelName}" height="40">
+				<transition id="0" name="transition1" dest="EndAction0"/>
+			</QueryDetailAction>
+		</flow>
+		<input/>
+		<output/>
+	</operation>
+	
+#foreach(${multiWra} in ${TableModel.one2multiList})
+#set($childModelWra=${multiWra.modelWra})
+#set($childModelName=${childModelWra.tableId})
+#set($toFieldWra=${childModelWra.getFieldById(${multiWra.toField})})
+#set($toField=${toFieldWra.columnName})
+#set($childIsPaged=${childModelWra.isPaged()})
+#set($orderFieldStr=${childModelWra.orderFieldStr})
+#set ($childFilterStr=${childModelWra.getFilterFieldStr()})
+#set ($childQuery=${childModelWra.getRecordRestrict("query")})
+#set ($childDelete=${childModelWra.getRecordRestrict("delete")})
+#set ($childUpdate=${childModelWra.getRecordRestrict("update")})
+<operation id="query${childModelName}List" name="子表列表查询_${childModelWra.tableCnname}">
+		<document/>
+		<flow name="flow1" x="10" height="400" width="500" y="10">
+			<StartAction name="StartAction0" x="66" height="40" width="100" y="14">
+				<transition name="transition0" dest="RefConditionAction0"/>
+			</StartAction>
+			<EndAction name="EndAction0" result="success" x="62" height="40" width="100" y="347"/>
+			<RefConditionAction name="RefConditionAction0" width="100" toFieldId="${toField}" fromFieldId="${tableModelName}.${multiWra.fromField}" y="105" modelLoaderId="${modelLoaderId}" x="65" modelId="${childModelName}" height="40">
+#if(${childQuery}==true)
+				<transition id="0" name="transition1" dest="RecordRestrictAction0"/>
+#elseif(${orderFieldStr.length()}>0)
+				<transition id="0" name="transition2" dest="OrderAction0"/>
+#else
+				<transition id="0" name="transition3" dest="QueryListAction0"/>
+#end				
+				
+			</RefConditionAction>
+			<QueryListAction name="QueryListAction0" width="100" daoId="${daoId}" dataSourceId="${dataSourceId}" y="260" x="62" isPaged="${childIsPaged}" modelLoaderId="${modelLoaderId}" modelId="${childModelName}" height="40" #if(${childIsPaged}==true)size="${childModelWra.pageSize}"#end filterFieldStr="${childFilterStr}">
+				<transition id="0" name="transition4" dest="EndAction0"/>
+			</QueryListAction>
+#if(${orderFieldStr.length()}>0)
+			<OrderAction name="OrderAction0" x="62" height="40" width="100" y="180" orderFieldStr="${orderFieldStr}">
+				<transition id="0" name="transition5" dest="QueryListAction0"/>
+			</OrderAction>
+#end
+#if(${childQuery}==true)
+			<RecordRestrictAction name="RecordRestrictAction0" width="100" daoId="${daoId}" dataSourceId="${dataSourceId}" y="139" restrictType="query" x="253" modelLoaderId="${modelLoaderId}" modelId="${childModelName}" height="40">
+#if(${orderFieldStr.length()}>0)
+				<transition id="0" name="transition6" dest="OrderAction0"/>
+#else
+				<transition id="0" name="transition7" dest="QueryListAction0"/>
+#end			
+				<transition id="-1" name="transition8" dest="EndAction1"/>
+			</RecordRestrictAction>
+			<EndAction name="EndAction1" x="258" result="failed" height="40" width="100" y="309"/>
+#end
+		</flow>
+		<input/>
+		<output/>
+	</operation>
+	<operation id="add${childModelName}Record" name="子表新增记录_${childModelWra.tableCnname}">
+		<document/>
+		<flow name="flow1" x="10" height="400" width="500" y="10">
+			<StartAction name="StartAction0" x="86" height="40" width="100" y="49">
+				<transition name="transition0" dest="AddRecordAction0"/>
+			</StartAction>
+			<EndAction name="EndAction0" result="success" x="86" height="40" width="100" y="291"/>
+			<AddRecordAction name="AddRecordAction0" x="85" height="40" dataSourceId="${dataSourceId}" width="100" daoId="${daoId}" y="165" modelId="${childModelName}">
+				<transition id="0" name="transition1" dest="EndAction0"/>
+			</AddRecordAction>
+		</flow>
+		<input/>
+		<output/>
+	</operation>
+	<operation id="delete${childModelName}Record" name="子表删除记录_${childModelWra.tableCnname}">
+		<document/>
+		<flow name="flow2" x="10" height="400" width="500" y="10">
+			<StartAction name="StartAction0" x="56" height="40" width="100" y="49">
+#if(${childDelete}==true)
+				<transition name="transition0" dest="RecordRestrictAction0"/>
+#else
+				<transition id="0" name="transition1" dest="DeleteRecordAction0"/>
+#end
+			</StartAction>
+			<EndAction name="EndAction0" result="success" x="53" height="40" width="100" y="315"/>
+#if(${childDelete}==true)
+			<RecordRestrictAction name="RecordRestrictAction0" width="100" daoId="${daoId}" dataSourceId="${dataSourceId}" y="127" restrictType="delete" x="240" modelLoaderId="${modelLoaderId}" modelId="${childModelName}" height="40">
+				<transition id="0" name="transition1" dest="DeleteRecordAction0"/>
+				<transition id="-1" name="transition3" dest="EndAction1"/>
+			</RecordRestrictAction>
+#end
+			<DeleteRecordAction name="DeleteRecordAction0" width="100" daoId="${daoId}" dataSourceId="${dataSourceId}" cascade="false" y="199" x="54" modelLoaderId="${modelLoaderId}" modelId="${childModelName}" height="40">
+				<transition id="0" name="transition2" dest="EndAction0"/>
+			</DeleteRecordAction>
+			<EndAction name="EndAction1" x="246" result="failed" height="40" width="100" y="310"/>
+		</flow>
+		<input/>
+		<output/>
+	</operation>
+	<operation id="update${childModelName}Record" name="子表更新记录_${childModelWra.tableCnname}">
+		<document/>
+		<flow name="flow4" x="10" height="400" width="500" y="10">
+			<StartAction name="StartAction0" x="59" height="40" width="100" y="49">
+#if(${childUpdate}==true)
+				<transition name="transition0" dest="RecordRestrictAction0"/>
+#else
+				<transition id="0" name="transition1" dest="UpdateRecordAction0"/>
+#end
+			</StartAction>
+			<EndAction name="EndAction0" result="success" x="61" height="40" width="100" y="300"/>
+#if(${childUpdate}==true)
+			<RecordRestrictAction name="RecordRestrictAction0" width="100" daoId="${daoId}" dataSourceId="${dataSourceId}" y="107" restrictType="update" x="238" modelLoaderId="${modelLoaderId}" modelId="${childModelName}" height="40">
+				<transition id="0" name="transition1" dest="UpdateRecordAction0"/>
+				<transition id="-1" name="transition3" dest="EndAction1"/>
+			</RecordRestrictAction>
+#end
+			<UpdateRecordAction name="UpdateRecordAction0" x="62" height="40" dataSourceId="${dataSourceId}" width="100" daoId="${daoId}" y="173" modelId="${childModelName}">
+				<transition id="0" name="transition2" dest="EndAction0"/>
+			</UpdateRecordAction>
+			<EndAction name="EndAction1" x="250" result="failed" height="40" width="100" y="299"/>
+		</flow>
+		<input/>
+		<output/>
+	</operation>
+	<operation id="query${childModelName}Detail" name="子表详情查询_${childModelWra.tableCnname}">
+		<document/>
+		<flow name="flow3" x="10" height="400" width="500" y="10">
+			<StartAction name="StartAction0" x="85" height="40" width="100" y="49">
+				<transition name="transition0" dest="QueryDetailAction0"/>
+			</StartAction>
+			<EndAction name="EndAction0" result="success" x="87" height="40" width="100" y="285"/>
+			<QueryDetailAction name="QueryDetailAction0" width="100" daoId="${daoId}" dataSourceId="${dataSourceId}" cascade="false" y="180" x="86" modelLoaderId="${modelLoaderId}" modelId="${childModelName}" height="40">
+				<transition id="0" name="transition1" dest="EndAction0"/>
+			</QueryDetailAction>
+		</flow>
+		<input/>
+		<output/>
+	</operation>
+#end
+</MCITransaction>

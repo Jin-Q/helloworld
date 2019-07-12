@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<PspTaskCheckSet.xml>
+	<TableModel id="PspTaskCheckSet" cnname="贷后检查任务设置" dbTableName="psp_task_check_set">
+		<Field id="serno" isPK="true" columnName="serno" cnname="任务编号" length="60" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="task_name" columnName="task_name" cnname="任务名称" length="60" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="cus_type" columnName="cus_type" cnname="客户类型" length="2" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="risk_type" columnName="risk_type" cnname="风险分类" length="40" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="cdt_eval" columnName="cdt_eval" cnname="信用评级" length="40" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="trade_ter" columnName="trade_ter" cnname="担保方式" length="40" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="check_mode" columnName="check_mode" cnname="检查方式" length="2" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="task_freq_unit" columnName="task_freq_unit" cnname="任务频率单位" length="2" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="task_freq" columnName="task_freq" cnname="任务频率" length="10" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="task_status" columnName="task_status" cnname="任务状态" length="2" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="memo" columnName="memo" cnname="备注" length="200" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="input_id" columnName="input_id" cnname="登记人" length="10" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="input_br_id" columnName="input_br_id" cnname="登记机构" length="10" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="input_date" columnName="input_date" cnname="登记日期" length="10" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="finish_term" columnName="finish_term" cnname="完成期限" length="6" JDBCType="VARCHAR2"/>
+		<Field id="is_special" columnName="is_special" cnname="是否特殊检查设置" length="2" JDBCType="VARCHAR2"/>
+		<Field id="cus_id" columnName="cus_id" cnname="客户码" length="40" JDBCType="VARCHAR2"/>
+		<Field id="amt_area" columnName="amt_area" cnname="金额范围" length="2" JDBCType="VARCHAR2"/>
+		<Field id="loan_bal" columnName="loan_bal" cnname="贷款余额" length="16" JDBCType="NUMBER"/>
+		<Field id="prd_id" columnName="prd_id" cnname="业务品种" length="1000" JDBCType="VARCHAR2"/>
+	</TableModel>
+</PspTaskCheckSet.xml>

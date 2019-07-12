@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actionDefines>
+	<classMap>
+		<map id="action" class="com.yucheng.cmis.ad.mvc.ADRequestController"/>
+		<map id="flowInvoker" class="com.yucheng.cmis.ad.mvc.ADFlowInvoker"/>
+		<map id="outputViews" class="java.util.HashMap"/>
+		<map id="output" class="com.ecc.emp.data.KeyedCollection"/>
+		<map id="kColl" class="com.ecc.emp.data.KeyedCollection"/>
+		<map id="iColl" class="com.ecc.emp.data.IndexedCollection"/>
+		<map id="field" class="com.ecc.emp.data.DataField"/>
+	</classMap>
+	
+	<!-- 获取操作主页面 -->
+	<action id="queryMortBailDelivList" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.mort.cargo.mortbaildeliv.QueryMortBailDelivListOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="biz01line/mort/cargo/MortBailDeliv/queryMortBailDelivList.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 获得编辑页面 -->
+	<action id="getMortBailDelivUpdatePage" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation updateCheck="true" class="com.yucheng.cmis.biz01line.mort.cargo.mortbaildeliv.QueryMortBailDelivDetailOp"/>
+			<transition dest="retPage"/> 
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="biz01line/mort/cargo/MortBailDeliv/updateMortBailDelivRecord.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 更新记录 -->
+	<action id="updateMortBailDelivRecord" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.mort.cargo.mortbaildeliv.UpdateMortBailDelivRecordOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="operationResult.jsp?url=queryMortBailDelivList.do" />
+		</outputViews>
+	</action>
+	
+	<!-- 获得查看页面 -->
+	<action id="getMortBailDelivViewPage" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.mort.cargo.mortbaildeliv.QueryMortBailDelivDetailOp"/>
+			<transition dest="updatePage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="updatePage" url="biz01line/mort/cargo/MortBailDeliv/queryMortBailDelivDetail.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 获得新增页面 -->
+	<action id="getMortBailDelivAddPage" type="normal" checkSession="true" >
+	    <flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.mort.cargo.mortbaildeliv.AddMortBailDelivLeadRecordOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+		    <jspView id="retPage" url="biz01line/mort/cargo/MortBailDeliv/addMortBailDelivRecord.jsp"/>
+		</outputViews>
+	</action>
+	
+	<!-- 新增记录 -->
+	<action id="addMortBailDelivRecord" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.mort.cargo.mortbaildeliv.AddMortBailDelivRecordOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jsonView class="com.yucheng.cmis.view.JSONView" id="retPage">
+				<output>
+					<field id="flag" />
+				</output>
+			</jsonView>
+		</outputViews>
+	</action>
+	<!-- 提货记账 -->
+	<action id="tallyMortBailDelivRecord" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.mort.cargo.mortbaildeliv.TallyMortBailDelivRecordOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jsonView class="com.yucheng.cmis.view.JSONView" id="retPage">
+				<output>
+					<field id="flag" />
+				</output>
+			</jsonView>
+		</outputViews>
+	</action>	
+	<!-- 质押物清单保存按钮 -->
+	<action id="saveCargoPledge" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.mort.cargo.mortbaildeliv.SaveCargoPledgeOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jsonView class="com.yucheng.cmis.view.JSONView" id="retPage">
+				<output>
+					<field id="flag" />
+				</output>
+			</jsonView>
+		</outputViews>
+	</action>	
+	<!-- 删除记录 -->
+	<action id="deleteMortBailDelivRecord" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.mort.cargo.mortbaildeliv.DeleteMortBailDelivRecordOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jsonView class="com.yucheng.cmis.view.JSONView" id="retPage">
+				<output>
+					<field id="flag" />
+				</output>
+			</jsonView>
+		</outputViews>
+	</action>
+	
+	<!-- 分页查询记录列表 -->
+		<action id="pageMortBailDelivQuery" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.mort.cargo.mortbaildeliv.QueryMortBailDelivListOp"/>
+			<transition dest="queryListRes"/>
+		</flowInvoker>
+		<outputViews>
+			<jsonView class="com.yucheng.cmis.view.JSONView" id="queryListRes">
+				<output>
+					<iColl id="MortBailDelivList">
+						<kColl>
+							<field id="cus_id" />
+							<field id="guaranty_no" />
+							<field id="oversee_agr_no" />
+							<field id="storage_total" />
+							<field id="status" />
+							<field id="input_id" />
+						</kColl>
+					</iColl>
+					<kColl id="pageInfo">
+						<field id="currentPage" />
+						<field id="maxLine" />
+						<field id="recordSize" />
+					</kColl>
+				</output>
+			</jsonView>
+		</outputViews>
+	</action>
+	
+</actionDefines>
+
+
+

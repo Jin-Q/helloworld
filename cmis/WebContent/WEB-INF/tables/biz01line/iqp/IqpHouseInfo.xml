@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<IqpHouseInfo.xml>
+	<TableModel id="IqpHouseInfo" cnname="厂房信息" dbTableName="iqp_house_info">
+		<Field id="serno" isPK="true" columnName="serno" cnname="业务编号" length="40" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="house_addr" columnName="house_addr" cnname="厂房位置" length="100" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="pur_amt" columnName="pur_amt" cnname="购买金额" length="16" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="pur_time" columnName="pur_time" cnname="购买时间" length="10" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="fst_pyr_perc" columnName="fst_pyr_perc" cnname="首付款比例" length="10" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="house_squ" columnName="house_squ" cnname="建筑面积" length="10" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="occup_squ" columnName="occup_squ" cnname="占地面积" length="10" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="building_structure_cd" columnName="building_structure_cd" cnname="建筑结构" length="10" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="fitment_degree" columnName="fitment_degree" cnname="装修程度" length="10" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="house_build_year" columnName="house_build_year" cnname="房屋建成年份" length="10" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="durable_years" columnName="durable_years" cnname="耐用年限" length="10" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="street_situation" columnName="street_situation" cnname="临街状况" length="10" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="use_status" columnName="use_status" cnname="使用状态" length="10" JDBCType="VARCHAR2" canBeNull="true"/>
+	</TableModel>
+</IqpHouseInfo.xml>

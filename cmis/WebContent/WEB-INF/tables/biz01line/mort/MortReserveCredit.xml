@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<MortReserveCredit.xml>
+	<TableModel id="MortReserveCredit" cnname="备用信用证" dbTableName="mort_reserve_credit">
+		<Field id="credit_id" isPK="true" columnName="credit_id" cnname="信用证编号" length="40" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="guaranty_no" columnName="guaranty_no" cnname="押品编号" length="40" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="credit_currency_cd" columnName="credit_currency_cd" cnname="信用证币种" length="3" JDBCType="CHAR" canBeNull="true"/>
+		<Field id="credit_value" columnName="credit_value" cnname="信用证金额" length="16" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="apply_user" columnName="apply_user" cnname="开证申请人名称" length="100" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="apply_area" columnName="apply_area" cnname="开证申请人国家或地区" length="100" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="beneficiary_bank" columnName="beneficiary_bank" cnname="受益人行名" length="100" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="issue_date" columnName="issue_date" cnname="开证日期" length="10" JDBCType="CHAR" canBeNull="true"/>
+		<Field id="expire_date" columnName="expire_date" cnname="到期日期" length="10" JDBCType="CHAR" canBeNull="true"/>
+		<Field id="issue_bank" columnName="issue_bank" cnname="开证行" length="100" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="issue_area" columnName="issue_area" cnname="开证行所在国家或地区" length="100" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="remark" columnName="remark" cnname="备注" length="1000" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="sys_update_date" columnName="sys_update_date" cnname="更新日期" length="10" JDBCType="CHAR" canBeNull="true"/>
+		<Field id="handling_user" columnName="handling_user" cnname="更新人" length="40" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="issue_amt" columnName="issue_amt" cnname="开证金额（元）" length="16" JDBCType="NUMBER" canBeNull="true"/>
+	</TableModel>
+</MortReserveCredit.xml>

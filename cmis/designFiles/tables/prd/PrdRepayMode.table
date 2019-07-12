@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<PrdRepayMode.xml>
+	<TableModel id="PrdRepayMode" pageSize="10" cnname="还款方式" isPaged="true" dbTableName="prd_repay_mode">
+		<TableInfo/>
+		<Field id="repay_mode_id" isPK="true" columnName="repay_mode_id" cnname="还款方式代码" length="60" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="repay_mode_dec" columnName="repay_mode_dec" cnname="还款方式描述" length="250" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="repay_mode_type" columnName="repay_mode_type" cnname="还款方式种类" length="10" JSPTag="select" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="min_term" columnName="min_term" cnname="支持最小期限(月)" length="3" JSPTag="text" canBeNull="false" JDBCType="NUMBER"/>
+		<Field id="max_term" columnName="max_term" cnname="支持最大期限(月)" length="3" JSPTag="text" canBeNull="false" JDBCType="NUMBER"/>
+		<Field id="incr_decl_basic" columnName="incr_decl_basic" cnname="递增递减基础" length="10" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="cap_interval" columnName="cap_interval" cnname="本金间隔" length="10" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="incr_repay_cycle" columnName="incr_repay_cycle" cnname="递增还款周期" length="10" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="cap_incr_decl_perc" dataType="Percent" columnName="cap_incr_decl_perc" cnname="本金递增递减比例" length="16" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="cap_incr_decl_amt" dataType="Currency" columnName="cap_incr_decl_amt" cnname="本金递增递减金额" length="16" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="repay_interval" columnName="repay_interval" cnname="还款间隔" length="10" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="perc_phase" columnName="perc_phase" cnname="按比例设定阶段期数" length="1" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="cap_perc_unit" columnName="cap_perc_unit" cnname="本金比例单位" length="10" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="firstpay_perc" dataType="Percent" columnName="firstpay_perc" cnname="首付比例" length="16" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="lastpay_perc" dataType="Percent" columnName="lastpay_perc" cnname="尾付比例" length="16" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="param_status" columnName="param_status" cnname="参数使用状态" length="1" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="change_time" columnName="change_time" cnname="最新变更时间" length="20" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="change_user" columnName="change_user" cnname="最新变更用户" length="10" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="is_instm" dictname="STD_ZX_YES_NO" columnName="is_instm" cnname="是否期供类" length="10" JSPTag="select" canBeNull="true" JDBCType="VARCHAR2"/>
+		<OrderFields>repay_mode_id;</OrderFields>
+		<ConditionFields>repay_mode_type;</ConditionFields>
+		<FilterFields>repay_mode_id;repay_mode_type;min_term;max_term;repay_interval;firstpay_perc;lastpay_perc;is_instm;</FilterFields>
+		<RecordRestrict query="true" delete="true" update="true"/>
+	</TableModel>
+</PrdRepayMode.xml>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<MCITransaction trxName="signOn" trxCode="signOn">
+	<datas>
+		<refData access="private" refId="errorCode"/>
+		<refData access="private" refId="errorMsg"/>
+		<refData access="private" refId="password"/>
+		<refData access="session" refId="currentuserid"/>
+		<refData access="session" refId="S_organno"/>
+	</datas>
+	<document/>
+	<services/>
+	<formats/>
+	<operation id="signOn" name="登陆">
+		<document/>
+		<flow name="flow1" x="10" height="400" width="500" y="10">
+			<StartAction name="StartAction0" x="160" height="40" width="100" y="55">
+				<transition name="transition0" dest="CMISUserCheckAction0"/>
+			</StartAction>
+			<EndAction name="EndAction0" x="87" result="success" height="55" label="成功" width="100" y="260"/>
+			<CMISUserCheckAction name="CMISUserCheckAction0" dataSource="dataSource" width="100" orgDataName="S_organno" userDataName="currentuserid" passwordDataName="password" y="147" x="162" height="40">
+				<transition name="transition1" dest="EndAction0"/>
+				<transition name="transition2" dest="EndAction1" condition="exception:CMISUserCheckException"/>
+			</CMISUserCheckAction>
+			<EndAction name="EndAction1" x="262" result="fail" height="51" label="失败" width="100" y="257"/>
+		</flow>
+		<input>
+			<refData refId="currentuserid"/>
+			<refData refId="password"/>
+			<refData refId="S_organno"/>
+		</input>
+		<output/>
+	</operation>
+</MCITransaction>

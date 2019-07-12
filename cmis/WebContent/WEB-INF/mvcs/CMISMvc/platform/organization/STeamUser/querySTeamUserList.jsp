@@ -1,0 +1,176 @@
+<%@page language="java" contentType="text/html; charset=UTF-8"%>
+<%@taglib uri="/WEB-INF/emp.tld" prefix="emp" %>
+<%@page import="com.ecc.emp.core.Context"%>
+<%@page import="com.ecc.emp.core.EMPConstance"%>
+
+<% 
+	//request = (HttpServletRequest) pageContext.getRequest();
+	Context context = (Context) request.getAttribute(EMPConstance.ATTR_CONTEXT);
+	String team_no = (String)context.getDataValue("team_no");
+	String act = "";
+	if(context.containsKey("act")){
+		act = (String)context.getDataValue("act");
+	}
+%>
+<emp:page>
+<html>
+<head>
+<title>新增页面</title>
+
+<jsp:include page="/include.jsp" flush="true"/>
+
+<script type="text/javascript">
+
+	/*--user code begin--*/
+	function doQuery(){
+		var form = document.getElementById('queryForm');
+		STeam._toForm(form);
+		STeamList._obj.ajaxQuery(null,form);
+	};
+	
+	function doGetUpdateSTeamUserPage() {
+		var data = STeamUserList._obj.getSelectedData();
+		if (data.length==1) {
+			var mem_no = data[0].mem_no._getValue();
+			var team_no=data[0].team_no._getValue();
+			var url = '<emp:url action="getSTeamUserUpdatePage.do"/>?mem_no='+mem_no+'&team_no='+team_no;
+			url = EMPTools.encodeURI(url);
+			var param = 'height=300, width=600, top=80, left=80, toolbar=no, menubar=no, scrollbars=yes, resizable=no, location=no, status=no';
+			window.open(url,'IntroSTeamUser',param);
+		} else {
+			alert('请先选择一条记录！');
+		}
+	};
+	
+	function doViewSTeamUser() {
+		var data = STeamUserList._obj.getSelectedData();
+		if (data.length==1) {
+			var mem_no = data[0].mem_no._getValue();
+			var team_no=data[0].team_no._getValue();
+			var url = '<emp:url action="getSTeamUserViewPage.do"/>?mem_no='+mem_no+'&team_no='+team_no;
+			url = EMPTools.encodeURI(url);
+			var param = 'height=300, width=600, top=80, left=80, toolbar=no, menubar=no, scrollbars=yes, resizable=no, location=no, status=no';
+			window.open(url,'IntroSTeamUser',param);
+		} else {
+			alert('请先选择一条记录！');
+		}
+	};
+	
+	function doGetAddSTeamUserPage() {
+		var url = '<emp:url action="getSTeamUserAddPage.do"/>?team_no='+'<%=team_no%>';
+		url = EMPTools.encodeURI(url);
+		var param = 'height=800, width=1200, top=80, left=80, toolbar=no, menubar=no, scrollbars=yes, resizable=no, location=no, status=no';
+		window.open(url,'IntroSTeamUser',param);
+	};
+	function doIntroSTeamUser() {
+		var url = '<emp:url action="querySTeamUserIntroList.do"/>&returnMethod=getTeamUser&team_no='+'<%=team_no%>';
+		url = EMPTools.encodeURI(url);
+		var param = 'height=538,width=1024,top=170,left=200,toolbar=no,menubar=no,scrollbars=yes,resizable=yes,location=no,status=no';
+		window.open(url,'IntroSTeamUser',param);
+	};
+	function getTeamUser(data){
+		var mem_no = new Array();
+		for(var i=0;i<data.length;i++){
+			mem_no.push(data[i].actorno._getValue());
+		}
+		var handleSuccess = function(o) {
+			if (o.responseText !== undefined) {
+				try {
+					var jsonstr = eval("(" + o.responseText + ")");
+				} catch (e) {
+					alert("Parse jsonstr define error!" + e.message);
+					return;
+				}
+				var flag = jsonstr.flag;
+				var msg = jsonstr.msg;
+				if("success" == flag){
+					alert(msg);
+					var url = '<emp:url action="querySTeamUserList.do"/>?team_no='+'<%=team_no%>';
+					url = EMPTools.encodeURI(url);
+					window.location=url;
+				}else{
+					alert(msg);
+				}
+			}
+		};
+		var handleFailure = function(o) {
+		};
+		var callback = {
+			success :handleSuccess,
+			failure :handleFailure
+		};
+		var url = '<emp:url action="introTeamUser.do"/>?mem_no='+mem_no+'&team_no='+'<%=team_no%>';
+		url = EMPTools.encodeURI(url);
+ 		var obj1 = YAHOO.util.Connect.asyncRequest('POST',url,callback);
+		
+	}
+	
+	function doDeleteSTeamUser() {
+		var paramStr = STeamUserList._obj.getSelectedData();
+		var mem_no = new Array();
+		var team_no="";
+		for(var i=0;i<paramStr.length;i++){
+			mem_no.push(paramStr[i].mem_no._getValue());
+			team_no=paramStr[i].team_no._getValue();
+		}
+		if (paramStr.length != 0) {
+			if(confirm("是否确认要删除？")){
+				var handleSuccess = function(o) {
+					if (o.responseText !== undefined) {
+						try {
+							var jsonstr = eval("(" + o.responseText + ")");
+						} catch (e) {
+							alert("Parse jsonstr define error!" + e.message);
+							return;
+						}
+						var flag = jsonstr.flag;
+						if("success" == flag){
+							alert("已成功删除！");
+							window.location.reload();
+						}else{
+							alert("删除失败！");
+						}
+					}
+				};
+				var handleFailure = function(o) {
+				};
+				var callback = {
+					success :handleSuccess,
+					failure :handleFailure
+				};
+				var url = '<emp:url action="deleteSTeamUserRecord.do"/>?mem_no='+mem_no+'&team_no='+team_no;
+				url = EMPTools.encodeURI(url);
+		 		var obj1 = YAHOO.util.Connect.asyncRequest('POST',url,callback);
+			}
+		} else {
+			alert('请先选择一条记录！');
+		}
+	};
+			
+	/*--user code end--*/
+	
+</script>
+</head>
+<body class="page_content">
+	<div align="left">
+	  <%if (!act.equals("view")){ %>
+		<emp:button id="IntroSTeamUser" label="引入" op="add"/>
+		<emp:button id="getUpdateSTeamUserPage" label="修改" op="update"/>
+		<emp:button id="deleteSTeamUser" label="删除" op="remove"/>
+		<emp:button id="viewSTeamUser" label="查看" op="view"/>
+		<%}else{ %>
+		<emp:button id="viewSTeamUser" label="查看" op="view"/>
+		<%} %>
+	</div>
+		<emp:table icollName="STeamUserList" pageMode="true" url="pageSTeamUserQuery.do?team_no=${context.team_no}" selectType="2">
+			<emp:text id="team_no" label="团队编号" maxlength="20" required="false" />
+			<emp:text id="mem_no" label="成员编号" maxlength="20" required="false" />
+			<emp:text id="mem_no_displayname" label="成员名称" required="false" />
+			<emp:text id="team_role" label="团队角色" maxlength="2" required="false" dictname="STD_TEAM_ROLE" />
+		</emp:table>
+
+	
+</body>
+</html>
+</emp:page>
+

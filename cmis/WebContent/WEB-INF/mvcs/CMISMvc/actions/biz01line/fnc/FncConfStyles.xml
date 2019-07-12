@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actionDefines>
+	<classMap>
+		<map id="action" class="com.yucheng.cmis.ad.mvc.ADRequestController"/>
+		<map id="flowInvoker" class="com.yucheng.cmis.ad.mvc.ADFlowInvoker"/>
+		<map id="outputViews" class="java.util.HashMap"/>
+		<map id="output" class="com.ecc.emp.data.KeyedCollection"/>
+		<map id="kColl" class="com.ecc.emp.data.KeyedCollection"/>
+		<map id="iColl" class="com.ecc.emp.data.IndexedCollection"/>
+		<map id="field" class="com.ecc.emp.data.DataField"/>
+	</classMap>
+	
+	<!-- 获取操作主页面 -->
+	<action id="queryFncConfStylesList" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.fnc.op.fncconfstyles.QueryFncConfStylesListOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="biz01line/fnc/config/FncConfStyles/queryFncConfStylesList.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 获得编辑页面 -->
+	<action id="getFncConfStylesUpdatePage" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation updateCheck="false" class="com.yucheng.cmis.biz01line.fnc.op.fncconfstyles.QueryFncConfStylesDetailOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="biz01line/fnc/config/FncConfStyles/updateFncConfStylesRecord.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 更新记录 -->
+	<action id="updateFncConfStylesRecord" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.fnc.op.fncconfstyles.UpdateFncConfStylesRecordOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="operationResult.jsp?url=queryFncConfStylesList.do" />
+		</outputViews>
+	</action>
+	
+	<!-- 获得查看页面 -->
+	<action id="getFncConfStylesViewPage" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.fnc.op.fncconfstyles.QueryFncConfStylesDetailOp"/>
+			<transition dest="updatePage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="updatePage" url="biz01line/fnc/config/FncConfStyles/queryFncConfStylesDetail.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 获得克隆页面 -->
+	<action id="getFncConfStylesClonePage" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.fnc.op.fncconfstyles.CloneFncConfStyleRecordOp"/>
+			<transition dest="clonePage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="clonePage" url="biz01line/fnc/config/FncConfStyles/cloneFncConfStyles.jsp" />
+		</outputViews>
+	</action>
+	<!-- 新增克隆记录 -->
+	<action id="addCloneFncConfStylesRecord" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.fnc.op.fncconfstyles.AddCloneFncConfStyleRecordOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="operationResult.jsp?url=queryFncConfStylesList.do" />
+		</outputViews>
+	</action>
+	
+	<!-- 获得新增页面 -->
+	<action id="getFncConfStylesAddPage" type="normal" checkSession="true" >
+		<jspView id="addPage" url="biz01line/fnc/config/FncConfStyles/addFncConfStylesRecord.jsp"/>
+	</action>
+	
+	<!-- 新增记录 -->
+	<action id="addFncConfStylesRecord" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.fnc.op.fncconfstyles.AddFncConfStylesRecordOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="operationResult.jsp?url=queryFncConfStylesList.do" />
+		</outputViews>
+	</action>	
+	
+	<!-- 删除记录 -->
+	<action id="deleteFncConfStylesRecord" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.fnc.op.fncconfstyles.DeleteFncConfStylesRecordOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="operationResult.jsp?url=queryFncConfStylesList.do" />
+		</outputViews>
+	</action>
+	
+	<!-- 分页查询记录列表 -->
+		<action id="pageFncConfStylesQuery" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.fnc.op.fncconfstyles.QueryFncConfStylesListOp"/>
+			<transition dest="queryListRes"/>
+		</flowInvoker>
+		<outputViews>
+			<jsonView class="com.yucheng.cmis.view.JSONView" id="queryListRes">
+				<output>
+					<iColl id="FncConfStylesList">
+						<kColl>
+							<field id="style_id" />
+							<field id="fnc_name" />
+							<field id="fnc_conf_dis_name" />
+							<field id="fnc_conf_typ" />
+							<field id="fnc_conf_data_col" />
+							<field id="fnc_conf_cotes" />
+						</kColl>
+					</iColl>
+					<kColl id="pageInfo">
+						<field id="currentPage" />
+						<field id="maxLine" />
+						<field id="recordSize" />
+					</kColl>
+				</output>
+			</jsonView>
+		</outputViews>
+	</action>
+	
+</actionDefines>
+
+
+

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<IqpRateChangeApp.xml>
+	<TableModel id="IqpRateChangeApp" cnname="利率调整" dbTableName="iqp_rate_change_app">
+		<Field id="serno" isPK="true" columnName="serno" cnname="业务流水号" length="40" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="bill_no" columnName="bill_no" cnname="借据编号" length="40" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="cus_id" columnName="cus_id" cnname="客户码" length="40" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="cur_type" columnName="cur_type" cnname="币种" length="5" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="loan_amt" columnName="loan_amt" cnname="贷款金额" length="16" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="loan_balance" columnName="loan_balance" cnname="贷款余额" length="16" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="distr_date" columnName="distr_date" cnname="发放日期" length="10" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="end_date" columnName="end_date" cnname="到期日期" length="10" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="ir_accord_type" columnName="ir_accord_type" cnname="利率依据方式 STD_ZB_IR_ACCORD_TYPE" length="5" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="ir_type" columnName="ir_type" cnname="利率种类 STD_ZB_RATE_TYPE" length="5" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="ruling_ir" columnName="ruling_ir" cnname="基准利率（年）" length="16" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="pad_rate_y" columnName="pad_rate_y" cnname="垫款利率（年）" length="16" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="ir_adjust_type" columnName="ir_adjust_type" cnname="利率调整方式 STD_IR_ADJUST_TYPE" length="5" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="ir_float_type" columnName="ir_float_type" cnname="利率浮动方式 STD_RATE_FLOAT_TYPE" length="5" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="ir_float_rate" columnName="ir_float_rate" cnname="利率浮动比" length="16" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="ir_float_point" columnName="ir_float_point" cnname="贷款利率浮动点数" length="10" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="reality_ir_y" columnName="reality_ir_y" cnname="执行利率（年）" length="16" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="overdue_float_type" columnName="overdue_float_type" cnname="逾期利率浮动方式 STD_RATE_FLOAT_TYPE" length="5" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="overdue_rate" columnName="overdue_rate" cnname="逾期利率浮动比" length="16" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="overdue_rate_y" columnName="overdue_rate_y" cnname="逾期利率（年）" length="16" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="default_float_type" columnName="default_float_type" cnname="违约利率浮动方式 STD_RATE_FLOAT_TYPE" length="5" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="default_rate" columnName="default_rate" cnname="违约利率浮动比" length="16" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="default_rate_y" columnName="default_rate_y" cnname="违约利率（年）" length="16" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="new_ir_float_rate" columnName="new_ir_float_rate" cnname="调整后利率浮动比" length="16" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="new_ir_float_point" columnName="new_ir_float_point" cnname="调整后利率浮动点数" length="10" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="new_reality_ir_y" columnName="new_reality_ir_y" cnname="调整后执行利率" length="16" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="new_overdue_rate" columnName="new_overdue_rate" cnname="调整后逾期利率浮动比" length="16" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="new_overdue_rate_y" columnName="new_overdue_rate_y" cnname="调整后逾期利率" length="16" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="new_inure_date" columnName="new_inure_date" cnname="调整后利率生效日期" length="10" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="change_rate_res" columnName="change_rate_res" cnname="利率变更原因" length="250" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="approve_status" columnName="approve_status" cnname="申请状态" length="5" JDBCType="VARCHAR2"/>
+		<Field id="manager_br_id" columnName="manager_br_id" cnname="主管机构" length="20" JDBCType="VARCHAR2"/>
+		<Field id="input_id" columnName="input_id" cnname="登记人" length="40" JDBCType="VARCHAR2"/>
+		<Field id="input_br_id" columnName="input_br_id" cnname="登记机构" length="20" JDBCType="VARCHAR2"/>
+		<Field id="input_date" columnName="input_date" cnname="登记时间" length="10" JDBCType="VARCHAR2"/>
+		<Field id="new_ir_accord_type" columnName="new_ir_accord_type" cnname="NEW_IR_ACCORD_TYPE" length="5" JDBCType="VARCHAR2"/>
+		<Field id="new_ir_type" columnName="new_ir_type" cnname="NEW_IR_TYPE" length="5" JDBCType="VARCHAR2"/>
+		<Field id="new_ruling_ir" columnName="new_ruling_ir" cnname="NEW_RULING_IR" length="16" JDBCType="NUMBER"/>
+		<Field id="new_pad_rate_y" columnName="new_pad_rate_y" cnname="NEW_PAD_RATE_Y" length="16" JDBCType="NUMBER"/>
+		<Field id="new_ir_adjust_type" columnName="new_ir_adjust_type" cnname="NEW_IR_ADJUST_TYPE" length="5" JDBCType="VARCHAR2"/>
+		<Field id="new_ir_float_type" columnName="new_ir_float_type" cnname="NEW_IR_FLOAT_TYPE" length="5" JDBCType="VARCHAR2"/>
+		<Field id="new_overdue_float_type" columnName="new_overdue_float_type" cnname="NEW_OVERDUE_FLOAT_TYPE" length="5" JDBCType="VARCHAR2"/>
+		<Field id="new_default_float_type" columnName="new_default_float_type" cnname="NEW_DEFAULT_FLOAT_TYPE" length="5" JDBCType="VARCHAR2"/>
+		<Field id="new_default_rate" columnName="new_default_rate" cnname="NEW_DEFAULT_RATE" length="16" JDBCType="NUMBER"/>
+		<Field id="new_default_rate_y" columnName="new_default_rate_y" cnname="NEW_DEFAULT_RATE_Y" length="16" JDBCType="NUMBER"/>
+		<Field id="ruling_ir_code" columnName="ruling_ir_code" cnname="RULING_IR_CODE" length="40" JDBCType="VARCHAR2"/>
+		<Field id="new_ruling_ir_code" columnName="new_ruling_ir_code" cnname="NEW_RULING_IR_CODE" length="40" JDBCType="VARCHAR2"/>
+		<Field id="new_rate_change_reason" columnName="new_rate_change_reason" cnname="申请利率调整事由" length="2" JDBCType="VARCHAR2"/>
+	</TableModel>
+</IqpRateChangeApp.xml>

@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actionDefines>
+	<classMap>
+		<map id="action" class="com.yucheng.cmis.ad.mvc.ADRequestController"/>
+		<map id="flowInvoker" class="com.yucheng.cmis.ad.mvc.ADFlowInvoker"/>
+		<map id="outputViews" class="java.util.HashMap"/>
+		<map id="output" class="com.ecc.emp.data.KeyedCollection"/>
+		<map id="kColl" class="com.ecc.emp.data.KeyedCollection"/>
+		<map id="iColl" class="com.ecc.emp.data.IndexedCollection"/>
+		<map id="field" class="com.ecc.emp.data.DataField"/>
+	</classMap>
+	
+	<!-- 客户移交申请 获取操作主页面  remark by wuming bsbcmis -->
+	<action id="queryCusHandoverAppList" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.cus.cushand.op.cushandoverapp.QueryCusHandoverAppListOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="biz01line/cus/cusbase/CusHandoverApp/queryCusHandoverAppList.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 获取审批操作主页面 -->
+	<action id="queryCusHandoverAppListApp" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.cus.cushand.op.cushandoverapp.QueryCusHandoverAppListOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="biz01line/cus/cusbase/CusHandoverApp/queryCusHandoverAppListApp.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 获取接收操作主页面 -->
+	<action id="queryCusHandoverAppListRec" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.cus.cushand.op.cushandoverapp.QueryCusHandoverAppListOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="biz01line/cus/cusbase/CusHandoverApp/queryCusHandoverAppListRec.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 获得编辑页面 -->
+	<action id="getCusHandoverAppUpdatePage" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation updateCheck="false" class="com.yucheng.cmis.biz01line.cus.cushand.op.cushandoverapp.QueryCusHandoverAppDetailOp"/>
+			   <transition dest="update" condition="($retValue='update')"/>
+			   <transition dest="app" condition="($retValue='App')"/>
+			   <transition dest="rec" condition="($retValue='Rec')"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="update" url="biz01line/cus/cusbase/CusHandoverApp/updateCusHandoverAppRecord.jsp" />
+			<jspView id="app" url="biz01line/cus/cusbase/CusHandoverApp/updateCusHandoverAppRecordToApp.jsp" />
+			<jspView id="rec" url="biz01line/cus/cusbase/CusHandoverApp/updateCusHandoverAppRecordToRec.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 客户移交申请更新记录op -->
+	<action id="updateCusHandoverAppRecord" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.cus.cushand.op.cushandoverapp.UpdateCusHandoverAppRecordOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<view id="retPage" class="com.yucheng.cmis.view.JSONView">
+				<output class="com.ecc.emp.data.KeyedCollection">
+					<field id="flag" class="com.ecc.emp.data.DataField"/>		
+				</output>
+			</view>
+		</outputViews>
+	</action>
+	
+	<!-- 获得查看页面 -->
+	<action id="getCusHandoverAppViewPage" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.cus.cushand.op.cushandoverapp.QueryCusHandoverAppDetailOp"/>
+			   <transition dest="newView" condition="($retValue='newView')"/>
+			   <transition dest="appView" condition="($retValue='appView')"/>
+			   <transition dest="recView" condition="($retValue='recView')"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="newView" url="biz01line/cus/cusbase/CusHandoverApp/queryCusHandoverAppDetail.jsp" />
+			<jspView id="appView" url="biz01line/cus/cusbase/CusHandoverApp/queryCusHandoverAppDetailToApp.jsp" />
+			<jspView id="recView" url="biz01line/cus/cusbase/CusHandoverApp/queryCusHandoverAppDetailToRec.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 客户移交申请 获得新增页面  remark by wuming  bsbcmis-->
+	<action id="getCusHandoverAppAddPage" type="normal" checkSession="true" >
+		<jspView id="addPage" url="biz01line/cus/cusbase/CusHandoverApp/addCusHandoverAppRecord.jsp"/>
+	</action>
+	
+	<!-- 新增记录 -->
+	<action id="addCusHandoverAppRecord" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.cus.cushand.op.cushandoverapp.AddCusHandoverAppRecordOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="biz01line/cus/cusbase/CusHandoverApp/updateCusHandoverAppRecord.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 删除记录 -->
+	<action id="deleteCusHandoverAppRecord" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.cus.cushand.op.cushandoverapp.DeleteCusHandoverAppRecordOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<view id="retPage" class="com.yucheng.cmis.view.JSONView">
+                <output class="com.ecc.emp.data.KeyedCollection">
+					<field id="flag" class="com.ecc.emp.data.DataField"/>
+                </output>
+            </view>
+		</outputViews>
+	</action>
+	
+	<!-- 分页查询记录列表 -->
+		<action id="pageCusHandoverAppQuery" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.cus.cushand.op.cushandoverapp.QueryCusHandoverAppListOp"/>
+			<transition dest="queryListRes"/>
+		</flowInvoker>
+		<outputViews>
+			<jsonView class="com.yucheng.cmis.view.JSONView" id="queryListRes">
+				<output>
+					<iColl id="CusHandoverAppList">
+						<kColl>
+						 
+						</kColl>
+					</iColl>
+					<kColl id="pageInfo">
+						<field id="currentPage" />
+						<field id="maxLine" />
+						<field id="recordSize" />
+					</kColl>
+				</output>
+			</jsonView>
+		</outputViews>
+	</action>
+	
+	<action id="getCusListForHandover" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.cus.cushand.op.cushandoverapp.GetCusListForHandoverOp"/>
+			<!-- <transition dest="one" condition="($retValue='one')"/>
+			 <transition dest="many" condition="($retValue='many')"/>-->
+			 <transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="biz01line/cus/cusbase/CusHandoverApp/queryCusListForHandOver.jsp" />
+			<!--<jspView id="one" url="biz01line/cus/cusbase/CusLoanRel/queryCusLoanRelListForHandOver.jsp" />
+			<jspView id="many" url="biz01line/cus/cusbase/CusLoanRel/queryCusLoanRelListForHandOverMany.jsp" />-->
+		</outputViews>		
+	</action>
+	
+	<action id="updateCusHandoverAppStatus" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.cus.cushand.op.cushandoverapp.UpdateCusHandoverAppStatusOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<view id="retPage" class="com.yucheng.cmis.view.JSONView">
+				<output class="com.ecc.emp.data.KeyedCollection">
+					<field id="flag" class="com.ecc.emp.data.DataField"/>
+					<field id="msg" class="com.ecc.emp.data.DataField"/>
+				</output>
+			</view>
+		</outputViews>
+	</action>
+	<!-- 拒绝接收 -->
+	<action id="denyCusHandoverApp" type="normal" checkSession="true">
+	<flowInvoker>
+		<operation class="com.yucheng.cmis.biz01line.cus.cushand.op.cushandoverapp.UpdateCusHandoverAppStatusOp"/>
+		<transition dest="retPage"/>
+	</flowInvoker>
+	<outputViews>
+	<view id="retPage" class="com.yucheng.cmis.view.JSONView">
+		<output class="com.ecc.emp.data.KeyedCollection">
+		<field id="flag" class="com.ecc.emp.data.DataField"/>
+		</output>
+	</view>
+	</outputViews>
+	</action>
+	
+	<action id="updateCusHandoverAppStatusApp" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.cus.cushand.op.cushandoverapp.UpdateCusHandoverAppStatusOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="operationResult.jsp?url=queryCusHandoverAppListApp.do" />
+		</outputViews>
+	</action>
+	
+	
+	<action id="updateCusHandoverAppStatusRec" type="normal" checkSession="true" >
+		<flowInvoker>
+			<!--  operation class="com.yucheng.cmis.biz01line.cus.cushand.op.cushandoverapp.UpdateCusHandoverAppStatusOp"/> -->
+			<operation class="com.yucheng.cmis.biz01line.cus.cushand.op.CushandoverReceiveOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="biz01line/cus/cusbase/CusHandoverApp/operationResult.jsp?url=queryCusHandoverAppListRec.do" />
+		</outputViews>
+	</action>
+    
+    <!-- 针对客户经理所管辖下的客户进行分页查询记录列表，用于移交使用 -->
+	<action id="getCusBaseList4HandOver" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.cus.cushand.op.cushandoverapp.GetCusListForHandoverOp"/>
+			<transition dest="queryListRes"/>
+		</flowInvoker>
+		<outputViews>
+			<jsonView class="com.yucheng.cmis.view.JSONView" id="queryListRes">
+				<output>
+					<iColl id="CusBaseList">
+						<kColl>
+						
+						</kColl>
+					</iColl>
+					<kColl id="pageInfo">
+						<field id="currentPage" />
+						<field id="maxLine" />
+						<field id="recordSize" />
+					</kColl>
+				</output>
+			</jsonView>
+		</outputViews>
+	</action>
+</actionDefines>
+
+
+

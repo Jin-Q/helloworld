@@ -1,0 +1,29 @@
+/**中文名称加长**/
+.emp_field_cnname_input {
+  border:1px solid #b7b7b7;
+  text-align:left;
+  width:450px;
+};
+
+.emp_field_cnname_input2 {
+  border:1px solid #b7b7b7;
+  text-align:left;
+  width:405px;
+};
+
+/**标题对输入款右对齐**/
+ .emp_field_label { 
+   text-align:right;
+};
+ 
+
+/**textarea长度限制**/
+.emp_field_textarea_textarea  { 
+   width:450; 
+   height:80;
+};
+
+/**数值型输入款右对齐**/
+.emp_field_long_input  { 
+  text-align:right;
+};

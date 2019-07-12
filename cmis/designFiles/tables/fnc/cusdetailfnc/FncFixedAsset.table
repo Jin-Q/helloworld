@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<FncFixedAsset.xml>
+	<TableModel id="FncFixedAsset" pageSize="10" cnname="主要固定资产明细表" isPaged="true" dbTableName="fnc_fixed_asset">
+		<TableInfo/>
+		<Field id="pk_id" JDBCType="VARCHAR2" length="32" columnName="pk_id" canBeNull="true" pkGenerator="UNID" isPK="true" JSPTag="text" cnname="主键"/>
+		<Field id="cus_id" columnName="cus_id" cnname="客户编号" length="30" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="cus_name" columnName="cus_name" cnname="客户姓名" length="80" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="fnc_ym" columnName="fnc_ym" cnname="年月" length="6" JSPTag="text" canBeNull="false" JDBCType="CHAR"/>
+		<Field id="fnc_asset_name" columnName="fnc_asset_name" cnname="名称" length="60" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="fnc_asset_amt" columnName="fnc_asset_amt" cnname="数量" length="38" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="fnc_asset_place" columnName="fnc_asset_place" cnname="位置" length="200" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="fnc_asset_wrr_id" columnName="fnc_asset_wrr_id" cnname="权利证书" length="60" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="fnc_asset_net_val" columnName="fnc_asset_net_val" cnname="净值" length="16" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="fnc_asset_ori_val" columnName="fnc_asset_ori_val" cnname="原值" length="16" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="fnc_asset_obt_mth" columnName="fnc_asset_obt_mth" cnname="占用方式" length="1" JSPTag="text" canBeNull="true" JDBCType="CHAR"/>
+		<Field id="fnc_asset_pld_desc" columnName="fnc_asset_pld_desc" cnname="抵质押情况" length="1" JSPTag="text" canBeNull="true" JDBCType="CHAR"/>
+		<Field id="fnc_asset_unit" columnName="fnc_asset_unit" cnname="单位" length="2" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="remark" columnName="remark" cnname="备注" length="100" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="input_id" columnName="input_id" cnname="登记人" length="20" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="input_br_id" columnName="input_br_id" cnname="登记机构" length="20" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="input_date" columnName="input_date" cnname="登记日期" length="10" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="last_upd_id" columnName="last_upd_id" cnname="更新人" length="20" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="last_upd_date" columnName="last_upd_date" cnname="更新日期" length="10" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<OrderFields>pk_id[desc];</OrderFields>
+		<ConditionFields>cus_id;fnc_asset_pld_desc;fnc_asset_obt_mth;</ConditionFields>
+		<FilterFields>cus_id;cus_name;fnc_asset_obt_mth;fnc_asset_pld_desc;input_id;input_br_id;</FilterFields>
+		<RecordRestrict query="true" delete="true" update="true"/>
+	</TableModel>
+</FncFixedAsset.xml>

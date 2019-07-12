@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<AccDrfpoRemind.xml>
+	<TableModel id="AccDrfpoRemind" cnname="票据到期提醒" dbTableName="acc_drfpo_remind">
+		<Field id="drfpo_no" columnName="drfpo_no" cnname="DRFPO_NO" length="30" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="bill_type" columnName="bill_type" cnname="BILL_TYPE" length="5" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="porder_no" columnName="porder_no" cnname="PORDER_NO" length="40" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="is_ebill" columnName="is_ebill" cnname="IS_EBILL" length="1" JDBCType="CHAR" canBeNull="true"/>
+		<Field id="bill_isse_date" columnName="bill_isse_date" cnname="BILL_ISSE_DATE" length="10" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="porder_end_date" columnName="porder_end_date" cnname="PORDER_END_DATE" length="10" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="porder_curr" columnName="porder_curr" cnname="PORDER_CURR" length="3" JDBCType="CHAR" canBeNull="true"/>
+		<Field id="drft_amt" columnName="drft_amt" cnname="DRFT_AMT" length="16" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="status" columnName="status" cnname="STATUS" length="5" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="isse_name" columnName="isse_name" cnname="ISSE_NAME" length="80" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="pyee_name" columnName="pyee_name" cnname="PYEE_NAME" length="80" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="aorg_name" columnName="aorg_name" cnname="AORG_NAME" length="100" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="aorg_no" columnName="aorg_no" cnname="AORG_NO" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="manager_id" columnName="manager_id" cnname="MANAGER_ID" length="30" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="manager_br_id" columnName="manager_br_id" cnname="MANAGER_BR_ID" length="30" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="input_id" columnName="input_id" cnname="INPUT_ID" length="30" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="input_br_id" columnName="input_br_id" cnname="INPUT_BR_ID" length="30" JDBCType="VARCHAR2" canBeNull="true"/>
+	</TableModel>
+</AccDrfpoRemind.xml>

@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actionDefines>
+	<classMap>
+		<map id="action" class="com.yucheng.cmis.ad.mvc.ADRequestController"/>
+		<map id="flowInvoker" class="com.yucheng.cmis.ad.mvc.ADFlowInvoker"/>
+		<map id="outputViews" class="java.util.HashMap"/>
+		<map id="output" class="com.ecc.emp.data.KeyedCollection"/>
+		<map id="kColl" class="com.ecc.emp.data.KeyedCollection"/>
+		<map id="iColl" class="com.ecc.emp.data.IndexedCollection"/>
+		<map id="field" class="com.ecc.emp.data.DataField"/>
+	</classMap>
+	
+	<!-- 获取操作主页面 -->
+	<action id="queryPubBailInfo_jointList" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.lmt.op.jointguar.pubbailinfo_joint.QueryPubBailInfo_jointListOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="biz01line/lmt/LmtAppJointGuar/PubBailInfo_joint/queryPubBailInfo_jointList.jsp" />
+		</outputViews>
+	</action>
+	<!-- 获取操作主页面（保证金台账） -->
+	<action id="queryPubBailInfoList" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.lmt.op.jointguar.pubbailinfo_joint.QueryPubBailInfoOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="biz01line/lmt/LmtAppJointGuar/PubBailInfo_joint/queryPubBailInfoList.jsp" />
+		</outputViews>
+	</action>
+	<!-- 获取保证金台账pop -->
+	<action id="queryPubBailInfoPopList" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.lmt.op.jointguar.pubbailinfo_joint.QueryPubBailInfoOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="biz01line/lmt/LmtAppJointGuar/PubBailInfo_joint/queryPubBailInfoPopList.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 获得新增页面 -->
+	<action id="getPubBailInfo_jointAddPage" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.lmt.op.jointguar.pubbailinfo_joint.AddPubBailInfo_jointDataOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="biz01line/lmt/LmtAppJointGuar/PubBailInfo_joint/addPubBailInfo_jointRecord.jsp"/>
+		</outputViews>
+	</action>
+	
+	<!-- 新增记录 -->
+	<action id="addPubBailInfo_jointRecord" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.lmt.op.jointguar.pubbailinfo_joint.AddPubBailInfo_jointRecordOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+            <view id="retPage" class="com.yucheng.cmis.view.JSONView">
+                <output class="com.ecc.emp.data.KeyedCollection">
+                    <field id="flag" class="com.ecc.emp.data.DataField"/>
+                </output>
+            </view>
+        </outputViews>
+	</action>
+		
+	<!-- 检查保证金账号是否已存在 -->
+	<action id="checkPubBailInfo" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.lmt.op.jointguar.pubbailinfo_joint.CkeckPubBailInfoOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+            <view id="retPage" class="com.yucheng.cmis.view.JSONView">
+                <output class="com.ecc.emp.data.KeyedCollection">
+                    <field id="flag" class="com.ecc.emp.data.DataField"/>
+                </output>
+            </view>
+        </outputViews>
+	</action>	
+	
+	<!-- 获得编辑页面 -->
+	<action id="getPubBailInfo_jointUpdatePage" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation updateCheck="false" class="com.yucheng.cmis.biz01line.lmt.op.jointguar.pubbailinfo_joint.QueryPubBailInfo_jointDetailOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="biz01line/lmt/LmtAppJointGuar/PubBailInfo_joint/updatePubBailInfo_jointRecord.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 更新记录 -->
+	<action id="updatePubBailInfo_jointRecord" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.lmt.op.jointguar.pubbailinfo_joint.UpdatePubBailInfo_jointRecordOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+            <view id="retPage" class="com.yucheng.cmis.view.JSONView">
+                <output class="com.ecc.emp.data.KeyedCollection">
+                    <field id="flag" class="com.ecc.emp.data.DataField"/>
+                </output>
+            </view>
+        </outputViews>
+	</action>
+	
+	<!-- 查询保证金账户信息 -->
+	<action id="getPubBailInfoForEsb" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.lmt.op.jointguar.pubbailinfo_joint.GetPubBailInfoForEsbOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+            <view id="retPage" class="com.yucheng.cmis.view.JSONView">
+                <output class="com.ecc.emp.data.KeyedCollection">
+                    <field id="flag" class="com.ecc.emp.data.DataField"/>
+                    <field id="mes" class="com.ecc.emp.data.DataField"/>
+                    <kColl id="BODY" />
+                </output>
+            </view>
+        </outputViews>
+	</action>
+	
+	<!-- 获得查看页面 -->
+	<action id="getPubBailInfo_jointViewPage" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.lmt.op.jointguar.pubbailinfo_joint.QueryPubBailInfo_jointDetailOp"/>
+			<transition dest="updatePage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="updatePage" url="biz01line/lmt/LmtAppJointGuar/PubBailInfo_joint/queryPubBailInfo_jointDetail.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 获得查看页面 (保证金台账)-->
+	<action id="getPubBailInfoViewPage" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.lmt.op.jointguar.pubbailinfo_joint.QueryPubBailInfo_jointDetailOp"/>
+			<transition dest="updatePage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="updatePage" url="biz01line/lmt/LmtAppJointGuar/PubBailInfo_joint/queryPubBailInfoDetail.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 删除记录 -->
+	<action id="deletePubBailInfo_jointRecord" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.lmt.op.jointguar.pubbailinfo_joint.DeletePubBailInfo_jointRecordOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+            <view id="retPage" class="com.yucheng.cmis.view.JSONView">
+                <output class="com.ecc.emp.data.KeyedCollection">
+                    <field id="flag" class="com.ecc.emp.data.DataField"/>
+                </output>
+            </view>
+        </outputViews>
+	</action>
+	
+	<!-- 分页查询记录列表 -->
+		<action id="pagePubBailInfo_jointQuery" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.lmt.op.jointguar.pubbailinfo_joint.QueryPubBailInfo_jointListOp"/>
+			<transition dest="queryListRes"/>
+		</flowInvoker>
+		<outputViews>
+			<jsonView class="com.yucheng.cmis.view.JSONView" id="queryListRes">
+				<output>
+					<iColl id="PubBailInfoList">
+						<kColl>
+						</kColl>
+					</iColl>
+					<kColl id="pageInfo">
+						<field id="currentPage" />
+						<field id="maxLine" />
+						<field id="recordSize" />
+					</kColl>
+				</output>
+			</jsonView>
+		</outputViews>
+	</action>
+	<!-- 分页查询记录列表（保证金台账） -->
+		<action id="pagePubBailInfoQuery" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.lmt.op.jointguar.pubbailinfo_joint.QueryPubBailInfoOp"/>
+			<transition dest="queryListRes"/>
+		</flowInvoker>
+		<outputViews>
+			<jsonView class="com.yucheng.cmis.view.JSONView" id="queryListRes">
+				<output>
+					<iColl id="PubBailInfoList">
+						<kColl>
+						</kColl>
+					</iColl>
+					<kColl id="pageInfo">
+						<field id="currentPage" />
+						<field id="maxLine" />
+						<field id="recordSize" />
+					</kColl>
+				</output>
+			</jsonView>
+		</outputViews>
+	</action>
+	
+</actionDefines>
+
+
+

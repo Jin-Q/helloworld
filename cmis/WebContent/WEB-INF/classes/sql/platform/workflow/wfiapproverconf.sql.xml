@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<S>
+
+<!-- 根据主键流程实例号查询流程中间表信息         2014-09-15 唐顺岩： 不通过日期过滤，按总数计算，并且需通过有效标志过滤    需求编号：XD140812045  -->
+<SQL id="getWfiApproverCount" parameterClass="com.ecc.emp.data.KeyedCollection" resultClass="com.ecc.emp.data.KeyedCollection" onlyReturnFirst="true">
+  <SELECT>
+  <![CDATA[
+  SELECT ACTORNO FROM WFI_APPROVE_COUNT WHERE APPL_TYPE=${appl_type} AND NODEID=${nodeid} AND ORGID=${orgid} AND STATUS='1' order by approve_qnt
+  ]]>
+  </SELECT> 
+</SQL>
+
+<!-- 查询类型为“机构业务审批人员”数据 -->
+<SQL id="getWfiApproverConfAct" parameterClass="com.ecc.emp.data.KeyedCollection" resultClass="com.ecc.emp.data.KeyedCollection" onlyReturnFirst="false">
+  <SELECT>
+  <![CDATA[
+  SELECT ACTORNO FROM WFI_APPROVER_USER WHERE CONFID IN (SELECT CONFID FROM WFI_APPROVER_CONF WHERE CONF_TYPE='3' AND APPL_TYPE=${appl_type} AND NODEID=${nodeid} AND ORGID=${orgid})
+  ]]>
+  </SELECT> 
+</SQL>
+
+<!-- 新增流程审批计数表记录    2014-09-15 唐顺岩： 加状态标志位  需求编号：XD140812045  -->
+<SQL id="insertWfiApproveCount" valueClass="com.yucheng.cmis.platform.workflow.domain.WfiApproveCountVO" >
+  <INSERT>
+  <![CDATA[
+  INSERT INTO WFI_APPROVE_COUNT(APPL_TYPE,NODEID,ORGID,ACTORNO,APPROVE_DATE,APPROVE_QNT,STATUS) 
+  VALUES(${applType},${nodeid},${orgid},${actorno},${approveDate},${approveQnt},${status})
+  ]]>
+  </INSERT>	
+</SQL>
+
+<!-- 查询非“机构业务审批人员”的记录信息     2014-09-15 唐顺岩： 不通过日期过滤，按总数计算，并且需通过有效标志过滤   需求编号：XD140812045   -->
+<SQL id="getWfiApproverCountNotOrg" parameterClass="com.ecc.emp.data.KeyedCollection" resultClass="com.ecc.emp.data.KeyedCollection" onlyReturnFirst="true">
+  <SELECT>
+  <![CDATA[
+  SELECT ACTORNO FROM WFI_APPROVE_COUNT WHERE APPL_TYPE=${appl_type} AND NODEID=${nodeid} AND STATUS='1' AND ORGID IS NULL order by approve_qnt
+  ]]>
+  </SELECT> 
+</SQL>
+
+<!-- 查询类型为非“机构业务审批人员”数据 -->
+<SQL id="getWfiApproverConfActNotOrg" parameterClass="java.util.HashMap" resultClass="com.ecc.emp.data.KeyedCollection" onlyReturnFirst="false">
+  <SELECT>
+  <![CDATA[
+  SELECT ACTORNO
+  FROM (SELECT ACTORNO
+          FROM WFI_APPROVER_USER
+         WHERE CONFID IN (SELECT CONFID
+                            FROM WFI_APPROVER_CONF
+                           WHERE CONF_TYPE = '2'
+                             AND APPL_TYPE = ${appl_type}
+                             AND NODEID = ${nodeid}
+                             AND ORGID IS NULL)
+        UNION
+        SELECT actorno FROM S_DUTYUSER WHERE DUTYNO in ${dutyno}) a
+ WHERE a.ACTORNO NOT IN
+       (SELECT ACTORNO
+          FROM WFI_APPROVER_USER
+         WHERE CONFID IN (SELECT CONFID
+                            FROM WFI_APPROVER_CONF
+                           WHERE CONF_TYPE = '1'
+                             AND APPL_TYPE = ${appl_type}
+                             AND NODEID = ${nodeid}
+                             AND ORGID IS NULL))
+  ]]>
+  </SELECT> 
+</SQL>
+
+<!-- 更新类型为“机构业务审批人员”流程审批计数信息中审批数量    2014-09-15 唐顺岩： 不通过日期过滤，计算总数    需求编号：XD140812045 -->
+<SQL id="updateWfiApproverCountAddOne" parameterClass="com.ecc.emp.data.KeyedCollection" valueClass="com.yucheng.cmis.platform.workflow.domain.WfiMsgQueue" >
+  <UPDATE>
+  <![CDATA[
+     UPDATE WFI_APPROVE_COUNT SET APPROVE_QNT=APPROVE_QNT+1 WHERE APPL_TYPE=${appl_type} AND NODEID=${nodeid} AND ORGID=${orgid} AND ACTORNO=${actorno}
+  ]]>
+  </UPDATE> 
+</SQL>
+
+<!-- 更新类型为非“机构业务审批人员”流程审批计数信息中审批数量        2014-09-15 唐顺岩： 不通过日期过滤，计算总数    需求编号：XD140812045-->
+<SQL id="updateWfiApproverCountAddOneNotOrg" parameterClass="com.ecc.emp.data.KeyedCollection" valueClass="com.yucheng.cmis.platform.workflow.domain.WfiMsgQueue" >
+  <UPDATE>
+  <![CDATA[
+     UPDATE WFI_APPROVE_COUNT SET APPROVE_QNT=APPROVE_QNT+1 WHERE APPL_TYPE=${appl_type} AND NODEID=${nodeid} AND ORGID IS NULL AND ACTORNO=${actorno}
+  ]]>
+  </UPDATE> 
+</SQL>
+
+
+<!--  查询同流程同节点下生效用户的最小审批记录数  需求编号：XD140812045  2014-09-15 唐顺岩    -->
+<SQL id="queryMinApproveQnt" parameterClass="com.ecc.emp.data.KeyedCollection" resultClass="java.lang.String" >
+  <UPDATE>
+  <![CDATA[
+     SELECT NVL(MIN(APPROVE_QNT),0) FROM WFI_APPROVE_COUNT WHERE STATUS='1' AND APPL_TYPE=${appl_type} AND NODEID=${nodeid} AND ORGID IS NULL
+  ]]>
+  </UPDATE> 
+</SQL>
+
+<!--  查询同流程同节点同机构下生效用户的最小审批记录数   需求编号：XD140812045  2014-09-15 唐顺岩    -->
+<SQL id="queryMinApproveQntByOrgId" parameterClass="com.ecc.emp.data.KeyedCollection" resultClass="java.lang.String" >
+  <UPDATE>
+  <![CDATA[
+     SELECT NVL(MIN(APPROVE_QNT),0) FROM WFI_APPROVE_COUNT WHERE STATUS='1' AND APPL_TYPE=${appl_type} AND NODEID=${nodeid} AND ORGID=${orgid} 
+  ]]>
+  </UPDATE> 
+</SQL>
+
+<!-- 修改非机构人员计算表记录状态     需求编号：XD140812045  2014-09-16 唐顺岩  -->
+<SQL id="updateApproveStatus" parameterClass="com.ecc.emp.data.KeyedCollection" valueClass="java.lang.String" >
+  <UPDATE>
+  <![CDATA[
+     UPDATE WFI_APPROVE_COUNT SET STATUS=${_SIG_VALUE} WHERE APPL_TYPE=${appl_type} AND NODEID=${nodeid} AND ACTORNO=${actorno} AND ORGID IS NULL 
+  ]]>
+  </UPDATE>
+</SQL>
+
+<!-- 修改机构人员计算表记录状态     需求编号：XD140812045  2014-09-16 唐顺岩-->
+<SQL id="updateApproveStatusByOrgId" parameterClass="com.ecc.emp.data.KeyedCollection"  valueClass="java.lang.String">
+  <UPDATE>
+  <![CDATA[
+     UPDATE WFI_APPROVE_COUNT SET STATUS=${_SIG_VALUE} WHERE APPL_TYPE=${appl_type} AND NODEID=${nodeid} AND ACTORNO=${actorno} AND ORGID=${orgid}
+  ]]>
+  </UPDATE> 
+</SQL>
+
+<!--  根据流程类型、节点、人员编号修改人员计数表中非机构下用户的审批数量及状态    需求编号：XD140812045  2014-09-19  唐顺岩 -->
+<SQL id="updateWfiApproveCount" parameterClass="com.ecc.emp.data.KeyedCollection" valueClass="com.ecc.emp.data.KeyedCollection" >
+  <UPDATE>
+  <![CDATA[
+     UPDATE WFI_APPROVE_COUNT SET APPROVE_QNT=${approve_qnt},status=${status} WHERE APPL_TYPE=${appl_type} AND NODEID=${nodeid} AND ACTORNO=${actorno}  AND ORGID IS NULL
+  ]]>
+  </UPDATE> 
+</SQL>
+
+<!-- 根据流程类型、节点、人员编号、机构修改人员计数表中非机构下用户的审批数量及状态    需求编号：XD140812045  2014-09-19  唐顺岩 -->
+<SQL id="updateWfiApproveCountByOrgId" parameterClass="com.ecc.emp.data.KeyedCollection" valueClass="com.ecc.emp.data.KeyedCollection" >
+  <UPDATE>
+  <![CDATA[
+     UPDATE WFI_APPROVE_COUNT SET APPROVE_QNT=${approve_qnt},status=${status} WHERE APPL_TYPE=${appl_type} AND NODEID=${nodeid} AND ORGID=${orgid} AND ACTORNO=${actorno}
+  ]]>
+  </UPDATE> 
+</SQL>
+
+</S>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<actionDefines>
+	
+	<action id="showDicTree" type="normal" checkSession="false">
+		<jspView id="showTreeDic.jsp" url="core/showTreeDic.jsp"/>
+	</action>
+	
+	<action id="showDicTree__DQBM" type="normal" checkSession="false">
+		<jspView id="showTreeDic.jsp" url="core/showTreeDic_dqbm.jsp"/>
+	</action>
+	
+	<action id="showDicTree__HYFL" type="normal" checkSession="false">
+		<jspView id="showTreeDic.jsp" url="core/showTreeDic_hyfl.jsp"/>
+	</action>
+
+	<action id="showDicTreeNoLim" type="normal" checkSession="false">
+		<jspView id="showTreeDic.jsp" url="core/showTreeDicNoLim.jsp"/>
+	</action>
+	
+	<action id="getDicJSONTree" type="normal" checkSession="false">
+		<refFlow flowId="dictree" op="getDicJSONTree">
+			<transition dest="getDicJSONTree"/>
+		</refFlow>
+		<outputViews class="java.util.HashMap">
+			<jspView id="getDicJSONTree" class="com.yucheng.cmis.view.ReturnDataView"/>
+		</outputViews>
+		<modelUpdater class="com.ecc.emp.ad.mvc.ADModelUpdater"/>
+	</action>
+	
+</actionDefines>

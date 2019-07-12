@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<CusIndiv.xml>
+	<TableModel id="CusIndiv" cnname="个人客户基本信息" dbTableName="cus_indiv">
+		<Field id="cus_id" isPK="true" columnName="cus_id" cnname="客户代码" length="30" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="indiv_sex" columnName="indiv_sex" cnname="性别" length="1" JDBCType="CHAR" canBeNull="true"/>
+		<Field id="indiv_id_exp_dt" columnName="indiv_id_exp_dt" cnname="证件到期日" length="16" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="agri_flg" columnName="agri_flg" cnname="是否农户" length="1" JDBCType="CHAR" canBeNull="true"/>
+		<Field id="com_hold_stk_amt" columnName="com_hold_stk_amt" cnname="拥有我行股份金额" length="16" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="indiv_ntn" columnName="indiv_ntn" cnname="民族" length="2" JDBCType="CHAR" canBeNull="true"/>
+		<Field id="indiv_brt_place" columnName="indiv_brt_place" cnname="籍贯" length="80" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="indiv_houh_reg_add" columnName="indiv_houh_reg_add" cnname="户籍地址" length="80" JDBCType="VARCHAR2"/>
+		<Field id="indiv_dt_of_birth" columnName="indiv_dt_of_birth" cnname="出生年月日" length="10" JDBCType="CHAR" canBeNull="true"/>
+		<Field id="indiv_pol_st" columnName="indiv_pol_st" cnname="政治面貌" length="2" JDBCType="CHAR" canBeNull="true"/>
+		<Field id="indiv_edt" columnName="indiv_edt" cnname="文化程度（最高学历）" length="2" JDBCType="CHAR" canBeNull="true"/>
+		<Field id="indiv_dgr" columnName="indiv_dgr" cnname="最高学位" length="1" JDBCType="CHAR" canBeNull="true"/>
+		<Field id="post_addr" columnName="post_addr" cnname="通讯地址" length="80" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="post_code" columnName="post_code" cnname="邮政编码" length="6" JDBCType="CHAR" canBeNull="true"/>
+		<Field id="phone" columnName="phone" cnname="联系电话" length="35" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="fphone" columnName="fphone" cnname="家庭电话" length="35" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="mobile" columnName="mobile" cnname="手机" length="35" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="fax_code" columnName="fax_code" cnname="传真" length="35" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="email" columnName="email" cnname="Email地址" length="80" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="indiv_rsd_addr" columnName="indiv_rsd_addr" cnname="居住地址" length="80" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="indiv_zip_code" columnName="indiv_zip_code" cnname="居住地邮政编码" length="6" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="indiv_rsd_st" columnName="indiv_rsd_st" cnname="居住状况" length="1" JDBCType="CHAR" canBeNull="true"/>
+		<Field id="indiv_hobby" columnName="indiv_hobby" cnname="爱好" length="200" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="indiv_occ" columnName="indiv_occ" cnname="从事职业" length="1" JDBCType="CHAR" canBeNull="true"/>
+		<Field id="indiv_com_name" columnName="indiv_com_name" cnname="工作单位" length="60" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="indiv_com_typ" columnName="indiv_com_typ" cnname="单位性质" length="3" JDBCType="CHAR" canBeNull="true"/>
+		<Field id="indiv_com_fld" columnName="indiv_com_fld" cnname="单位所属行业" length="5" JDBCType="CHAR" canBeNull="true"/>
+		<Field id="indiv_com_phn" columnName="indiv_com_phn" cnname="单位电话" length="25" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="indiv_com_fax" columnName="indiv_com_fax" cnname="单位传真" length="25" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="indiv_com_addr" columnName="indiv_com_addr" cnname="单位地址" length="80" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="indiv_com_zip_code" columnName="indiv_com_zip_code" cnname="单位邮编" length="6" JDBCType="CHAR" canBeNull="true"/>
+		<Field id="indiv_com_cnt_name" columnName="indiv_com_cnt_name" cnname="单位联系人" length="30" JDBCType="VARCHAR2"/>
+		<Field id="indiv_work_job_y" columnName="indiv_work_job_y" cnname="单位工作起始年" length="10" JDBCType="VARCHAR2"/>
+		<Field id="indiv_com_job_ttl" columnName="indiv_com_job_ttl" cnname="职务" length="1" JDBCType="CHAR" canBeNull="true"/>
+		<Field id="indiv_crtfctn" columnName="indiv_crtfctn" cnname="职称" length="1" JDBCType="CHAR"/>
+		<Field id="indiv_ann_incm" columnName="indiv_ann_incm" cnname="年收入情况" length="16" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="indiv_sal_acc_bank" columnName="indiv_sal_acc_bank" cnname="工资账户开户行" length="80" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="indiv_sal_acc_no" columnName="indiv_sal_acc_no" cnname="工资账号" length="32" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="indiv_hld_acnt" columnName="indiv_hld_acnt" cnname="在我行开立账户情况" length="1" JDBCType="CHAR" canBeNull="true"/>
+		<Field id="remark" columnName="remark" cnname="备注" length="250" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="bank_duty" columnName="bank_duty" cnname="在我行职务" length="1" JDBCType="CHAR"/>
+		<Field id="area_code" columnName="area_code" cnname="区域编码" length="12" JDBCType="VARCHAR2"/>
+		<Field id="com_init_loan_date" columnName="com_init_loan_date" cnname="建立信贷关系时间" length="10" JDBCType="CHAR"/>
+		<Field id="hold_card" columnName="hold_card" cnname="持卡情况" length="1" JDBCType="CHAR"/>
+		<Field id="passport_flg" columnName="passport_flg" cnname="是否拥有外国护照或居住权" length="1" JDBCType="CHAR"/>
+		<Field id="work_resume" columnName="work_resume" cnname="个人简历" length="250" JDBCType="VARCHAR2"/>
+		<Field id="stockhold_code" columnName="stockhold_code" cnname="股权证号码" length="30" JDBCType="VARCHAR2"/>
+		<Field id="is_rela_cust" columnName="is_rela_cust" cnname="是否为我行关联客户" length="1" JDBCType="CHAR"/>
+		<Field id="cus_bank_rel" columnName="cus_bank_rel" cnname="客户与我行关系" length="4" JDBCType="VARCHAR2"/>
+		<Field id="street" columnName="street" cnname="街道" length="60" JDBCType="VARCHAR2"/>
+		<Field id="street2" columnName="street2" cnname="街道" length="60" JDBCType="VARCHAR2"/>
+		<Field id="street3" columnName="street3" cnname="街道" length="60" JDBCType="VARCHAR2"/>
+		<Field id="street_unit" columnName="street_unit" cnname="街道" length="60" JDBCType="VARCHAR2"/>
+		<Field id="is_long_indiv" columnName="is_long_indiv" cnname="是否为长期证件" length="2" JDBCType="VARCHAR2"/>
+		<Field id="indiv_id_start_dt" columnName="indiv_id_start_dt" cnname="签发证件日期" length="16" JDBCType="VARCHAR2"/>
+	</TableModel>
+</CusIndiv.xml>

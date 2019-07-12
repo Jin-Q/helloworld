@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<PspAltSignal.xml>
+	<TableModel id="PspAltSignal" cnname="预警信号" dbTableName="psp_alt_signal">
+		<Field id="pk_id" isPK="true" columnName="pk_id" cnname="主键" length="32" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="task_id" columnName="task_id" cnname="任务编号" length="40" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="cus_id" columnName="cus_id" cnname="客户编码" length="40" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="signal_info" columnName="signal_info" cnname="风险预警信息内容及影响" length="500" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="signal_type" columnName="signal_type" cnname="类型" length="5" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="last_date" columnName="last_date" cnname="预计持续时间（天）" length="10" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="disp_mode" columnName="disp_mode" cnname="处置措施及进展情况" length="50" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="input_id" columnName="input_id" cnname="登记人" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="input_br_id" columnName="input_br_id" cnname="登记机构" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="input_date" columnName="input_date" cnname="登记日期" length="10" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="signal_status" columnName="signal_status" cnname="预警信号状态" length="5" JDBCType="VARCHAR2"/>
+	</TableModel>
+</PspAltSignal.xml>

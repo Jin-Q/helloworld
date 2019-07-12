@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<MortGuarantySuddenInfo.xml>
+	<TableModel id="MortGuarantySuddenInfo" cnname="记录抵质押品意外情况" dbTableName="mort_guaranty_sudden_info">
+		<TableInfo/>
+		<Field id="accident_no" isPK="true" columnName="accident_no" cnname="意外情况编码" length="40" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="guaranty_no" columnName="guaranty_no" cnname="押品编号" length="40" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="accident_resn" columnName="accident_resn" cnname="意外原因" length="2000" JSPTag="textarea" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="occur_date" columnName="occur_date" cnname="发生日期" length="10" JSPTag="date" canBeNull="true" JDBCType="CHAR"/>
+		<Field id="other_note" columnName="other_note" cnname="其他说明" length="1000" JSPTag="textarea" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="sys_update_time" columnName="sys_update_time" cnname="系统更新时间" length="10" JSPTag="date" canBeNull="true" JDBCType="CHAR"/>
+		<RecordRestrict query="true" delete="true" update="true"/>
+		<Field id="accident_type" dictname="STD_ACCIDENT_INSU_TYPE" columnName="accident_type" cnname="意外情况类型" JSPTag="select" length="1" canBeNull="true" JDBCType="char"/>
+	</TableModel>
+</MortGuarantySuddenInfo.xml>

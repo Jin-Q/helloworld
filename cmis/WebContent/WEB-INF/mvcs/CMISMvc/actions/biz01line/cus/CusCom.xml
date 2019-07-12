@@ -1,0 +1,411 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actionDefines>
+	<classMap>
+		<map id="action" class="com.yucheng.cmis.ad.mvc.ADRequestController"/>
+		<map id="flowInvoker" class="com.yucheng.cmis.ad.mvc.ADFlowInvoker"/>
+		<map id="outputViews" class="java.util.HashMap"/>
+		<map id="output" class="com.ecc.emp.data.KeyedCollection"/>
+		<map id="kColl" class="com.ecc.emp.data.KeyedCollection"/>
+		<map id="iColl" class="com.ecc.emp.data.IndexedCollection"/>
+		<map id="field" class="com.ecc.emp.data.DataField"/>
+	</classMap>
+
+	<!-- 获取操作主页面 -->
+	<action id="queryCusComList" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.cus.op.cuscom.QueryCusComListOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="biz01line/cus/cuscom/CusCom/queryCusComList.jsp" />
+		</outputViews>
+	</action>
+
+	<!-- 获取对公客户树 -->
+	<action id="getCusComTree" type="normal" checkSession="true" >
+		<jspView id="addPage"  url="biz01line/cus/cuscom/CusCom/queryCusComTree.jsp" />
+	</action>
+
+	<!-- 获得查看页面 -->
+	<action id="getCusComViewPage" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.cus.op.cuscom.QueryCusComDetailOp"/>
+			<transition dest="com" />
+		</flowInvoker>
+		<outputViews>
+			<jspView id="com" url="biz01line/cus/cuscom/CusCom/queryCusComRecord_com.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 查询获得编辑页面 -->
+	<action id="getCusComUpdatePage" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation updateCheck="false" class="com.yucheng.cmis.biz01line.cus.op.cuscom.QueryCusComDetailOp"/>
+			<transition dest="com" />
+		</flowInvoker>
+		<outputViews>
+			<jspView id="com" url="biz01line/cus/cuscom/CusCom/updateCusComRecord_com.jsp" />
+		</outputViews>
+	</action>
+
+	<!-- 开户跳转获得编辑页面
+	<action id="getCusComUpdatePageTwo" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation updateCheck="false" class="com.yucheng.cmis.biz01line.cus.op.cusbase.GetCusInfoOp"/>
+				  <transition dest="com" condition="($retValue='com')"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="com" url="biz01line/cus/cuscom/CusCom/updateCusComRecord_com.jsp" />
+		</outputViews>
+	</action> -->
+
+	<!-- 补录完成 -->
+	<action id="UpdateCusComRepRecord" type="normal" checkSession="true">
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.cus.op.cuscom.UpdateCusComRepRecordOp" />
+			<transition dest="retPage" />
+		</flowInvoker>
+		<outputViews>
+			<view id="retPage" class="com.yucheng.cmis.view.JSONView">
+				<output class="com.ecc.emp.data.KeyedCollection">
+					<field id="flag" class="com.ecc.emp.data.DataField" />
+					<field id="message" class="com.ecc.emp.data.DataField" />
+				</output>
+			</view>
+		</outputViews>
+	</action>
+
+	<!-- 获取操作主页面 -->
+	<action id="queryCusComPopList" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.cus.op.cuscom.QueryCusComListOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="biz01line/cus/cuscom/CusCom/queryCusComPopList.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 用于关联集团客户新增客户弹出页面 -->
+	<action id="queryCusComPopListforGrp" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.cus.op.cuscom.QueryCusComListOpforGrp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="biz01line/cus/cuscom/CusCom/queryCusComPopListforGrp.jsp" />
+		</outputViews>
+	</action>
+
+	<!-- 更新记录 -->
+	<action id="updateCusComRecord" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.cus.op.cuscom.UpdateCusComRecordOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<view id="retPage" class="com.yucheng.cmis.view.JSONView">
+				<output class="com.ecc.emp.data.KeyedCollection">
+					<field id="flag" class="com.ecc.emp.data.DataField"/>
+				</output>
+			</view>
+		</outputViews>
+	</action>
+	
+	<!-- 强制变更正式客户 -->
+	<action id="coerceChangeCus" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.cus.op.cuscom.CoerceChangeCusOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<view id="retPage" class="com.yucheng.cmis.view.JSONView">
+				<output class="com.ecc.emp.data.KeyedCollection">
+					<field id="flag" class="com.ecc.emp.data.DataField"/>
+					<field id="msg" class="com.ecc.emp.data.DataField"/>
+				</output>
+			</view>
+		</outputViews>
+	</action>
+
+	<!-- 暂存时更新记录 -->
+	<action id="tempUpdateCusComRecord" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation updateCheck="false"  class="com.yucheng.cmis.biz01line.cus.op.cuscom.TempUpdateCusComRecordOp"/>
+			<transition dest="com" />
+		</flowInvoker>
+		<outputViews>
+			<jspView id="com" url="biz01line/cus/cuscom/CusCom/updateCusComRecord_com.jsp" />
+		</outputViews>
+	</action>
+
+	<!-- 分页查询记录列表 -->
+		<action id="pageCusComQuery" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.cus.op.cuscom.QueryCusComListOp"/>
+			<transition dest="queryListRes"/>
+		</flowInvoker>
+		<outputViews>
+			<jsonView class="com.yucheng.cmis.view.JSONView" id="queryListRes">
+				<output>
+					<iColl id="CusBaseList">
+						<kColl>
+						</kColl>
+					</iColl>
+					<kColl id="pageInfo">
+						<field id="currentPage" />
+						<field id="maxLine" />
+						<field id="recordSize" />
+					</kColl>
+				</output>
+			</jsonView>
+		</outputViews>
+	</action>
+	
+	<!-- 用于关联集团客户新增客户弹出页面 -->
+	<action id="pageCusComQueryforGrp" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.cus.op.cuscom.QueryCusComListOpforGrp"/>
+			<transition dest="queryListRes"/>
+		</flowInvoker>
+		<outputViews>
+			<jsonView class="com.yucheng.cmis.view.JSONView" id="queryListRes">
+				<output>
+					<iColl id="CusComList">
+						<kColl>
+						</kColl>
+					</iColl>
+					<kColl id="pageInfo">
+						<field id="currentPage" />
+						<field id="maxLine" />
+						<field id="recordSize" />
+					</kColl>
+				</output>
+			</jsonView>
+		</outputViews>
+	</action>
+
+	<!-- 异步查询对公客户的基本信息! -->
+	<action id="getCusComByCert" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.cus.op.cuscom.QueryCusComByCertOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<view id="retPage" class="com.yucheng.cmis.view.JSONView">
+				<output class="com.ecc.emp.data.KeyedCollection">
+					<field id="cus_name" />
+					<field id="cus_id" />
+					<field id="com_hold_stk_amt" />
+					<field id="reg_code" />
+					<field id="loan_card_id" />
+					<field id="reg_cur_type" />
+					<field id="reg_cap_amt" />
+					<field id="com_main_opt_scp" />
+					<field id="post_addr" />
+					<field id="phone" />
+
+					<field id="reg_start_date" />
+					<field id="reg_end_date" />
+					<field id="reg_addr" />
+					<field id="nat_tax_reg_code" />
+					<field id="loc_tax_reg_code" />
+					<field id="com_scale" />
+
+					<field id="com_part_opt_scp" />
+					<field id="com_employee" />
+					<field id="reg_audit_end_date" />
+					<field id="cust_mgr" />
+					<field id="main_br_id" />
+				</output>
+			</view>
+		</outputViews>
+	</action>
+	
+	<!-- 判断企业规模 shuffle版 -->
+	<action id="getEnterpriseSizeOp" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.cus.op.cuscom.GetEnterpriseSizeOp"/>
+			<transition dest="asyncPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jsonView class="com.yucheng.cmis.view.JSONView" id="asyncPage">
+				<output>
+					<field id="com_scale" />
+					<field id="out_flag" />
+					<field id="out_msg" />
+				</output>
+			</jsonView>
+		</outputViews>
+	</action>
+	
+	<!-- 新增校验  by GC -->
+	<action id="checkCusidApplyed" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.cus.op.cuscom.CheckCusidApplyedOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<view id="retPage" class="com.yucheng.cmis.view.JSONView">
+				<output class="com.ecc.emp.data.KeyedCollection">
+					<field id="flag" class="com.ecc.emp.data.DataField" />
+				</output>
+			</view>
+		</outputViews>
+	</action>
+	
+	<!--获取相应的邮政编码 -->
+	<action id="getRegStateCode2Pcode" type="normal" checkSession="true">
+		<flowInvoker>
+			<operation
+				class="com.yucheng.cmis.biz01line.cus.op.cuscom.GetPcodebyRegStateCodeOp" />
+			<transition dest="retPage" />
+		</flowInvoker>
+		<outputViews>
+			<view id="retPage" class="com.yucheng.cmis.view.JSONView">
+				<output class="com.ecc.emp.data.KeyedCollection">
+					<field id="flag" />
+					<field id="post_code" />
+					<field id="addSort" />
+				</output>
+			</view>
+		</outputViews>
+	</action>
+	
+	<!-- 获得一键查询结果页面 add by lisj 2014-11-20 需求编号：【XD141107075】-->
+	<action id="queryCusComByOneKey" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.cus.op.cuscom.QueryCusComByOneKeyOp"/>
+			<transition dest="queryResult" />
+		</flowInvoker>
+		<outputViews>
+			<jspView id="queryResult" url="biz01line/cus/cuscom/CusCom/queryCusComByOneKey.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 对公客户管理一键查询导出功能 add by lisj 2014-11-25 需求编号：【XD141107075】-->                                                                                                                                     
+	<action id="queryCusComByOneKeyToExcel" type="normal" checkSession="true" >                                                                                           
+		<flowInvoker>                                                                                                                                            
+			<operation class="com.yucheng.cmis.biz01line.cus.op.cuscom.QueryCusComByOneKeyToExcelOp"/>                                                                    
+			<transition dest="retPage"/>                                                                                                                           
+		</flowInvoker>                                                                                                                                           
+		<outputViews>   	                                                                                                                                        
+		   <view id="retPage" class="com.yucheng.cmis.view.ExcelView">                                                                                           
+ 				<excelWorkbook fileName="CusComInfo.xls" class="com.yucheng.cmis.view.excel.ExcelWorkbook">   
+ 				<excelSheet id="1" name="对公客户基本信息" isTitle="true" iCollName="cusBaseInfo" class="com.yucheng.cmis.view.excel.ExcelSheet">
+ 						<excelColumn dataName="cus_name" name="客户名称" cellType="string" class="com.yucheng.cmis.view.excel.ExcelColumn"/> 
+ 						<excelColumn dataName="reg_addr_displayname" name="注册地址" cellType="string" class="com.yucheng.cmis.view.excel.ExcelColumn"/>
+ 						<excelColumn dataName="ceo_name" name="法人代表" cellType="string" class="com.yucheng.cmis.view.excel.ExcelColumn"/>
+ 						<excelColumn dataName="reg_cap_amt" name="注册资金（万元）" cellType='numeric' class="com.yucheng.cmis.view.excel.ExcelColumn"/>
+ 						<excelColumn dataName="reg_code" name="登记注册号" cellType="string" class="com.yucheng.cmis.view.excel.ExcelColumn"/>
+						<excelColumn dataName="cert_code" name="组织机构代码" cellType="string" class="com.yucheng.cmis.view.excel.ExcelColumn"/> 
+						<excelColumn dataName="nat_tax_reg_code" name="国税税务登记号" cellType="string" class="com.yucheng.cmis.view.excel.ExcelColumn"/>
+						<excelColumn dataName="loc_tax_reg_code" name="地税税务登记号" cellType="string" class="com.yucheng.cmis.view.excel.ExcelColumn"/>
+						<excelColumn dataName="loan_card_id" name="贷款卡号" cellType="string" class="com.yucheng.cmis.view.excel.ExcelColumn"/>                    
+ 					</excelSheet> 
+ 					      
+ 					<excelSheet id="2" name="企业关联关系" isTitle="true" iCollName="CusRelInfoList" class="com.yucheng.cmis.view.excel.ExcelSheet">
+ 						<excelColumn dataName="rel_cus_name" name="相关联关系名称" cellType="string" class="com.yucheng.cmis.view.excel.ExcelColumn"/>                      
+ 					</excelSheet> 
+ 					                                                       
+ 					<excelSheet id="3" name="资本构成" isTitle="true" iCollName="CusComRelApitalList" class="com.yucheng.cmis.view.excel.ExcelSheet">
+ 						<excelColumn dataName="cus_id_rel" name="出资人客户码" cellType="string" class="com.yucheng.cmis.view.excel.ExcelColumn"/> 
+ 						<excelColumn dataName="invt_name" name="出资人名称" cellType="string" class="com.yucheng.cmis.view.excel.ExcelColumn"/>
+ 						<excelColumn dataName="cert_typ" name="证件类型" dictName="STD_ZB_CERT_TYP" class="com.yucheng.cmis.view.excel.ExcelColumn"/>
+ 						<excelColumn dataName="cert_code" name="证件号码" cellType="string" class="com.yucheng.cmis.view.excel.ExcelColumn"/>
+ 						<excelColumn dataName="invt_amt" name="出资金额(万元)" cellType='numeric' class="com.yucheng.cmis.view.excel.ExcelColumn"/>
+						<excelColumn dataName="invt_perc" name="所占比例" cellType="percent" class="com.yucheng.cmis.view.excel.ExcelColumn"/>                     
+ 					</excelSheet> 
+ 					
+ 					<excelSheet id="4" name="所在关联集团" isTitle="true" iCollName="CusGrpInfoList" class="com.yucheng.cmis.view.excel.ExcelSheet">                       
+ 						<excelColumn dataName="grp_no" name="关联(集团)编号" cellType="string" class="com.yucheng.cmis.view.excel.ExcelColumn"/>  
+ 						<excelColumn dataName="grp_name" name="关联(集团)名称"  cellType="string" class="com.yucheng.cmis.view.excel.ExcelColumn"/>  
+ 						<excelColumn dataName="parent_cus_id" name="主关联(集团)公司客户码" cellType="string" class="com.yucheng.cmis.view.excel.ExcelColumn"/>
+						<excelColumn dataName="parent_cus_id_displayname" name="主关联(集团)公司名称" cellType="string" class="com.yucheng.cmis.view.excel.ExcelColumn"/>
+						<excelColumn dataName="manager_id_displayname" name="主办客户经理" cellType="string" class="com.yucheng.cmis.view.excel.ExcelColumn"/>
+						<excelColumn dataName="manager_br_id_displayname" name="主办行" cellType="string" class="com.yucheng.cmis.view.excel.ExcelColumn"/>                              
+ 					</excelSheet>
+ 					
+ 					<excelSheet id="5" name="授信审批历史" isTitle="true" iCollName="LmtApplyList" class="com.yucheng.cmis.view.excel.ExcelSheet">                       
+ 						<excelColumn dataName="serno" name="业务编号" cellType="string" class="com.yucheng.cmis.view.excel.ExcelColumn"/>
+						<excelColumn dataName="cus_id" name="客户码" cellType="string" class="com.yucheng.cmis.view.excel.ExcelColumn"/>
+						<excelColumn dataName="cus_id_displayname" name="客户名称" cellType="string" class="com.yucheng.cmis.view.excel.ExcelColumn"/>
+						<excelColumn dataName="lrisk_type" name="低风险业务类型" dictName="STD_ZB_LRISK_TYPE"  class="com.yucheng.cmis.view.excel.ExcelColumn"/>
+						<excelColumn dataName="app_type" name="申请类型" dictName="STD_ZB_APP_TYPE"  class="com.yucheng.cmis.view.excel.ExcelColumn"/>
+						<excelColumn dataName="cur_type" name="币种" dictName="STD_ZX_CUR_TYPE" class="com.yucheng.cmis.view.excel.ExcelColumn"/>
+						<excelColumn dataName="crd_totl_amt" name="授信总额" cellType='numeric' class="com.yucheng.cmis.view.excel.ExcelColumn"/>
+						<excelColumn dataName="crd_cir_amt" name="循环授信敞口" cellType='numeric' class="com.yucheng.cmis.view.excel.ExcelColumn"/>
+						<excelColumn dataName="crd_one_amt" name="一次性授信敞口" cellType='numeric' class="com.yucheng.cmis.view.excel.ExcelColumn"/>
+						<excelColumn dataName="app_date" name="申请日期"  cellType="string" class="com.yucheng.cmis.view.excel.ExcelColumn"/>
+						<excelColumn dataName="manager_id_displayname" name="责任人" cellType="string" class="com.yucheng.cmis.view.excel.ExcelColumn"/>
+						<excelColumn dataName="manager_br_id_displayname" name="责任机构" cellType="string" class="com.yucheng.cmis.view.excel.ExcelColumn"/>
+						<excelColumn dataName="input_date" name="登记日期" cellType="string" class="com.yucheng.cmis.view.excel.ExcelColumn"/>
+						<excelColumn dataName="approve_status" name="申请状态" dictName="WF_APP_STATUS" class="com.yucheng.cmis.view.excel.ExcelColumn"/>                              
+ 					</excelSheet>
+ 					<!-- /**modified by wangj XD150114003_信贷系统联保和集团关联授信审批意见查询需求修改 begin */ -->
+ 					 <excelSheet id="6" name="联保授信审批历史" isTitle="true" iCollName="LmtAppJointCoopList" class="com.yucheng.cmis.view.excel.ExcelSheet">                       
+ 						<excelColumn dataName="serno" name="业务编号" cellType="string" class="com.yucheng.cmis.view.excel.ExcelColumn"/>
+						<excelColumn dataName="cus_id" name="组长客户码" cellType="string" class="com.yucheng.cmis.view.excel.ExcelColumn"/>
+						<excelColumn dataName="cus_id_displayname" name="组长客户名称" cellType="string" class="com.yucheng.cmis.view.excel.ExcelColumn"/>
+						<excelColumn dataName="coop_type" name="类别" dictName="STD_ZB_COOP_TYPE"  class="com.yucheng.cmis.view.excel.ExcelColumn"/>
+						<excelColumn dataName="lmt_totl_amt" name="授信总额" cellType='numeric' class="com.yucheng.cmis.view.excel.ExcelColumn"/>
+						<excelColumn dataName="single_max_amt" name="单户限额" cellType='numeric' class="com.yucheng.cmis.view.excel.ExcelColumn"/>
+						<excelColumn dataName="app_date" name="申请日期"  cellType="string" class="com.yucheng.cmis.view.excel.ExcelColumn"/>
+						<excelColumn dataName="manager_id_displayname" name="责任人" cellType="string" class="com.yucheng.cmis.view.excel.ExcelColumn"/>
+						<excelColumn dataName="manager_br_id_displayname" name="责任机构" cellType="string" class="com.yucheng.cmis.view.excel.ExcelColumn"/>
+						<excelColumn dataName="approve_status" name="申请状态" dictName="WF_APP_STATUS" class="com.yucheng.cmis.view.excel.ExcelColumn"/>                              
+ 					</excelSheet>
+ 					
+ 					 <excelSheet id="7" name="集团（关联）授信审批历史" isTitle="true" iCollName="LmtGrpApplyList" class="com.yucheng.cmis.view.excel.ExcelSheet">                       
+ 						<excelColumn dataName="serno" name="业务编号" cellType="string" class="com.yucheng.cmis.view.excel.ExcelColumn"/>
+						<excelColumn dataName="grp_no" name="集团编号" cellType="string" class="com.yucheng.cmis.view.excel.ExcelColumn"/>
+						<excelColumn dataName="grp_no_displayname" name="集团名称" cellType="string" class="com.yucheng.cmis.view.excel.ExcelColumn"/>
+						<excelColumn dataName="app_type" name="申请类型" dictName="STD_ZB_APP_TYPE"  class="com.yucheng.cmis.view.excel.ExcelColumn"/>
+						<excelColumn dataName="cur_type" name="币种" dictName="STD_ZX_CUR_TYPE" class="com.yucheng.cmis.view.excel.ExcelColumn"/>
+						<excelColumn dataName="crd_totl_amt" name="授信总额" cellType='numeric' class="com.yucheng.cmis.view.excel.ExcelColumn"/>
+						<excelColumn dataName="app_date" name="申请日期"  cellType="string" class="com.yucheng.cmis.view.excel.ExcelColumn"/>
+						<excelColumn dataName="manager_id_displayname" name="责任人" cellType="string" class="com.yucheng.cmis.view.excel.ExcelColumn"/>
+						<excelColumn dataName="manager_br_id_displayname" name="责任机构" cellType="string" class="com.yucheng.cmis.view.excel.ExcelColumn"/>
+						<excelColumn dataName="input_date" name="登记日期" cellType="string" class="com.yucheng.cmis.view.excel.ExcelColumn"/>
+						<excelColumn dataName="approve_status" name="申请状态" dictName="WF_APP_STATUS" class="com.yucheng.cmis.view.excel.ExcelColumn"/>                              
+ 					</excelSheet>
+ 					
+ 					<excelSheet id="8" name="授信额度信息" isTitle="true" iCollName="LmtAgrInfoList" class="com.yucheng.cmis.view.excel.ExcelSheet">                       
+ 						<excelColumn dataName="serno" name="业务编号" cellType="string" class="com.yucheng.cmis.view.excel.ExcelColumn"/>
+						<excelColumn dataName="agr_no" name="协议编号" cellType="string" class="com.yucheng.cmis.view.excel.ExcelColumn"/>
+						<excelColumn dataName="cus_id" name="客户码" cellType="string" class="com.yucheng.cmis.view.excel.ExcelColumn"/>
+						<excelColumn dataName="cus_id_displayname" name="客户名称" cellType="string" class="com.yucheng.cmis.view.excel.ExcelColumn"/>
+						<excelColumn dataName="cur_type" name="币种" dictName="STD_ZX_CUR_TYPE" class="com.yucheng.cmis.view.excel.ExcelColumn"/>
+						<excelColumn dataName="crd_amt" name="授信额度（元）" cellType='numeric' class="com.yucheng.cmis.view.excel.ExcelColumn"/>
+						<excelColumn dataName="enable_amt" name="已用额度（元）" cellType='numeric' class="com.yucheng.cmis.view.excel.ExcelColumn"/>
+						<excelColumn dataName="start_date" name="授信起始日" cellType="string" class="com.yucheng.cmis.view.excel.ExcelColumn"/>
+						<excelColumn dataName="end_date" name="授信到期日" cellType="string" class="com.yucheng.cmis.view.excel.ExcelColumn"/>
+						<excelColumn dataName="lmt_status" name="额度状态" dictName="STD_LMT_STATUS" class="com.yucheng.cmis.view.excel.ExcelColumn"/>
+						<excelColumn dataName="manager_id_displayname" name="责任人" cellType="string" class="com.yucheng.cmis.view.excel.ExcelColumn"/>
+						<excelColumn dataName="manager_br_id_displayname" name="责任机构" cellType="string" class="com.yucheng.cmis.view.excel.ExcelColumn"/>                              
+ 					</excelSheet>
+ 					
+ 					<excelSheet id="9" name="台账信息" isTitle="true" iCollName="AccViewList" class="com.yucheng.cmis.view.excel.ExcelSheet">                       
+ 						<excelColumn dataName="cus_id" name="客户码" cellType="string" class="com.yucheng.cmis.view.excel.ExcelColumn"/>
+						<excelColumn dataName="table_name" name="台账业务类型" cellType="string" class="com.yucheng.cmis.view.excel.ExcelColumn"/>
+						<excelColumn dataName="bill_bal" name="贷款余额总计（万元）" cellType='numeric' class="com.yucheng.cmis.view.excel.ExcelColumn"/>                             
+ 					</excelSheet>
+ 					
+ 					<excelSheet id="10" name="在我行担保情况" isTitle="true" iCollName="GrtGuaranteeList" class="com.yucheng.cmis.view.excel.ExcelSheet">                       
+	 					<excelColumn dataName="guar_cont_no" name="担保合同编号" cellType="string" class="com.yucheng.cmis.view.excel.ExcelColumn"/>
+						<excelColumn dataName="cus_id_displayname" name="借款人名称" cellType="string" class="com.yucheng.cmis.view.excel.ExcelColumn"/>
+					    <excelColumn dataName="guar_cus_id_displayname" name="担保人名称" cellType="string" class="com.yucheng.cmis.view.excel.ExcelColumn"/>
+						<excelColumn dataName="guar_amt" name="担保金额" cellType='numeric' class="com.yucheng.cmis.view.excel.ExcelColumn"/>
+						<excelColumn dataName="occupy_amt" name="占用金额" cellType='numeric' class="com.yucheng.cmis.view.excel.ExcelColumn"/>
+						<excelColumn dataName="guar_way" name="业务类型" dictName="STD_GUAR_TYPE" class="com.yucheng.cmis.view.excel.ExcelColumn"/>
+						<excelColumn dataName="guar_start_date" name="担保起始日期" cellType="string" class="com.yucheng.cmis.view.excel.ExcelColumn"/>
+						<excelColumn dataName="guar_end_date" name="担保到期日期" cellType="string" class="com.yucheng.cmis.view.excel.ExcelColumn"/>
+						<excelColumn dataName="guar_cont_state" name="合同状态" dictName="STD_CONT_STATUS" class="com.yucheng.cmis.view.excel.ExcelColumn"/>                             
+ 					</excelSheet>	
+ 					<!-- /**modified by wangj XD150114003_信贷系统联保和集团关联授信审批意见查询需求修改  end */ -->		                                                                                                                                      
+ 				</excelWorkbook>                                                                                                                                    
+ 			</view>                                                                                                                              
+		</outputViews>                                                                                                                                           
+	</action>
+	
+</actionDefines>

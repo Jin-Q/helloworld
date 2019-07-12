@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<IqpCusAcctTmp.xml>
+	<TableModel id="IqpCusAcctTmp" cnname="账户信息缓存表" dbTableName="iqp_cus_acct_tmp">
+		<Field id="modify_rel_serno" columnName="modify_rel_serno" cnname="打回业务修改流水号" length="40" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="serno" columnName="serno" cnname="业务编号" length="40" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="cont_no" columnName="cont_no" cnname="合同编号" length="40" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="acct_attr" columnName="acct_attr" cnname="账户属性" length="10" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="is_this_org_acct" columnName="is_this_org_acct" cnname="是否本行账户" length="1" JDBCType="CHAR" canBeNull="true"/>
+		<Field id="acct_no" columnName="acct_no" cnname="账号" length="40" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="acct_name" columnName="acct_name" cnname="户名" length="80" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="opac_org_no" columnName="opac_org_no" cnname="开户行行号/开户机构码（本行）" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="opan_org_name" columnName="opan_org_name" cnname="开户行行名/开户机构名称（本行）" length="100" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="pay_amt" columnName="pay_amt" cnname="支付金额" length="16" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="pk_id" isPK="true" columnName="pk_id" cnname="PKID" length="40" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="acct_gl_code" columnName="acct_gl_code" cnname="科目号" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="cur_type" columnName="cur_type" cnname="币种" length="3" JDBCType="CHAR" canBeNull="true"/>
+		<Field id="interbank_id" columnName="interbank_id" cnname="银联行号" length="40" JDBCType="VARCHAR2" canBeNull="true"/>
+	</TableModel>
+</IqpCusAcctTmp.xml>

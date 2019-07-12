@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<MortLandMgrRightDetail.xml>
+	<TableModel id="MortLandMgrRightDetail" cnname="土地经营权登记表" dbTableName="mort_land_mgr_right_detail">
+		<TableInfo/>
+		<Field id="land_id" isPK="true" columnName="land_id" cnname="主键" length="30" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="guaranty_no" columnName="guaranty_no" cnname="押品编号" length="30" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="main_land_name" columnName="main_land_name" cnname="发包方全称" length="500" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="ctr_land_name" columnName="ctr_land_name" cnname="承包方姓名" length="100" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="cert_no" columnName="cert_no" cnname="身份证号码" length="20" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="ctr_land_addr" columnName="ctr_land_addr" cnname="承包方住址" length="500" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="ctr_land_con_no" columnName="ctr_land_con_no" cnname="土地承包合同编号" length="30" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="start_date" columnName="start_date" cnname="开始日期" length="10" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="end_date" columnName="end_date" cnname="截止日期" length="10" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="ctr_method" columnName="ctr_method" cnname="承包方式" length="50" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="ctr_use" columnName="ctr_use" cnname="承包土地用途" length="100" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="memo" columnName="memo" cnname="备注" length="1000" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="land_dtl" columnName="land_dtl" cnname="LAND_DTL" JSPTag="text" length="1000" JDBCType="VARCHAR2"/>
+	</TableModel>
+</MortLandMgrRightDetail.xml>

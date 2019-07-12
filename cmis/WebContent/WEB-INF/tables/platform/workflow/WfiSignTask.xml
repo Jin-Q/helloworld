@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<WfiSignTask.xml>
+	<TableModel id="WfiSignTask" cnname="会签任务主表" dbTableName="wfi_sign_task">
+		<Field id="st_task_id" isPK="true" columnName="st_task_id" pkGenerator="UNID" cnname="会签任务ID" length="40" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="st_task_name" columnName="st_task_name" cnname="任务名称" length="60" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="st_exe_user" columnName="st_exe_user" cnname="会签安排人" length="10" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="st_exe_org" columnName="st_exe_org" cnname="执行机构" length="10" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="st_config" columnName="st_config" cnname="会签策略" length="40" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="st_advice" columnName="st_advice" cnname="会签意见" length="1000" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="st_members" columnName="st_members" cnname="会签成员" length="500" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="st_leader" columnName="st_leader" cnname="牵头人" length="10" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="st_agree_count" columnName="st_agree_count" cnname="同意票数" length="0" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="st_reject_count" columnName="st_reject_count" cnname="否决票数" length="0" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="st_noidea_count" columnName="st_noidea_count" cnname="复议票数" length="0" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="st_result" columnName="st_result" cnname="会签结果" length="3" JDBCType="CHAR" canBeNull="true"/>
+		<Field id="st_task_status" columnName="st_task_status" cnname="会签状态" length="3" JDBCType="CHAR" canBeNull="true"/>
+		<Field id="serno" columnName="serno" cnname="业务流水号" length="40" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="biz_type" columnName="biz_type" cnname="业务类型" length="3" JDBCType="CHAR" canBeNull="true"/>
+		<Field id="st_start_time" columnName="st_start_time" cnname="开始时间" length="10" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="st_end_time" columnName="st_end_time" cnname="结束时间" length="10" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="st_task_times" columnName="st_task_times" cnname="会签次数" length="0" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="wfi_node_id" columnName="wfi_node_id" cnname="流程节点ID" length="40" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="wfi_instance_id" columnName="wfi_instance_id" cnname="流程实例号" length="40" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="wfi_advice_id" columnName="wfi_advice_id" cnname="审批意见ID" length="40" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="st_request_day" columnName="st_request_day" cnname="要求办理天数" length="0" JDBCType="NUMBER"/>
+		<Field id="st_duty" columnName="st_duty" cnname="会签成员岗位" length="40" JDBCType="VARCHAR2"/>
+		<One2MultiRef toField="st_task_id" refModelId="WfiSignVote" fromField="st_task_id"/>
+		<Field id="st_total_count" columnName="st_total_count" cnname="贷审会参与人数" length="10" JDBCType="NUMBER"/>
+		<Field id="st_vote_count" columnName="st_vote_count" cnname="贷审会投票数" length="10" JDBCType="NUMBER"/>
+		<Field id="wfi_scene_id" columnName="wfi_scene_id" cnname="场景ID" length="10" JDBCType="VARCHAR2"/>
+		<Field id="wfi_sign" columnName="wfi_sign" cnname="物理流程标识" length="40" JDBCType="VARCHAR2"/>
+		<Field id="wfi_biz_page" columnName="wfi_biz_page" cnname="申请页面" length="100" JDBCType="VARCHAR2"/>
+	</TableModel>
+</WfiSignTask.xml>

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actionDefines>
+	<classMap>
+		<map id="action" class="com.yucheng.cmis.ad.mvc.ADRequestController"/>
+		<map id="flowInvoker" class="com.yucheng.cmis.ad.mvc.ADFlowInvoker"/>
+		<map id="outputViews" class="java.util.HashMap"/>
+		<map id="output" class="com.ecc.emp.data.KeyedCollection"/>
+		<map id="kColl" class="com.ecc.emp.data.KeyedCollection"/>
+		<map id="iColl" class="com.ecc.emp.data.IndexedCollection"/>
+		<map id="field" class="com.ecc.emp.data.DataField"/>
+	</classMap>
+	
+	<!-- 贷款出账授权交易 -->
+	<action id="sendEsbTrade" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.esb.op.SendEsbTradeOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<view id="retPage" class="com.yucheng.cmis.view.JSONView">
+				<output class="com.ecc.emp.data.KeyedCollection">
+					<field id="flag" class="com.ecc.emp.data.DataField" />
+					<field id="retMsg" class="com.ecc.emp.data.DataField" />
+				</output>
+			</view>
+		</outputViews>
+	</action>
+	<!-- 出账授权类发送交易 -->
+	<action id="clientTrade4Esb" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.esb.op.ClientTrade4EsbOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<view id="retPage" class="com.yucheng.cmis.view.JSONView">
+				<output>
+					<field id="flag" class="com.ecc.emp.data.DataField" />
+					<field id="RetInf" class="com.ecc.emp.data.DataField" />
+					<kColl id="BODY">
+					</kColl>
+				</output>
+			</view>
+		</outputViews>
+	</action>
+	
+	<!-- 出账授权类发送交易 （担保品出入库专用）-->
+	<action id="clientTrade4EsbMulti" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.esb.op.ClientTrade4EsbMultiOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<view id="retPage" class="com.yucheng.cmis.view.JSONView">
+				<output>
+					<field id="flag" class="com.ecc.emp.data.DataField" />
+					<field id="retMsg" class="com.ecc.emp.data.DataField" />
+					<kColl id="BODY">
+					</kColl>
+				</output>
+			</view>
+		</outputViews>
+	</action>
+	<!-- 账户信息获取发送交易 -->
+	<action id="clientTrade4GetAcctNo" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.esb.op.trade.ClientTrade4GetAcctNoOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<view id="retPage" class="com.yucheng.cmis.view.JSONView">
+				<output class="com.ecc.emp.data.KeyedCollection">
+					<field id="flag" class="com.ecc.emp.data.DataField" />
+					<field id="retMsg" class="com.ecc.emp.data.DataField" />
+					<field id="ACCT_NO" class="com.ecc.emp.data.DataField" />
+					<field id="ACCT_NAME" class="com.ecc.emp.data.DataField" />
+					<field id="ACCT_TYPE" class="com.ecc.emp.data.DataField" />
+					<field id="OPEN_ACCT_BRANCH_ID" class="com.ecc.emp.data.DataField" />
+					<field id="OPEN_ACCT_BRANCH_NAME" class="com.ecc.emp.data.DataField" />
+					<field id="ORG_NO" class="com.ecc.emp.data.DataField" />
+				</output>
+			</view>
+		</outputViews>
+	</action>
+	
+</actionDefines>

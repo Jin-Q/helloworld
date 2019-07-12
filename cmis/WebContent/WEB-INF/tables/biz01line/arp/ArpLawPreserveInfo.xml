@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<ArpLawPreserveInfo.xml>
+	<TableModel id="ArpLawPreserveInfo" cnname="保全信息表" dbTableName="arp_law_preserve_info">
+		<Field id="case_no" columnName="case_no" cnname="案件编号" length="40" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="serno" isPK="true" columnName="serno" cnname="流水号" length="40" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="preserve_writ_no" columnName="preserve_writ_no" cnname="保全裁定文书号" length="80" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="preserve_asset_name" columnName="preserve_asset_name" cnname="保全资产名称" length="80" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="preserve_asset_type" columnName="preserve_asset_type" cnname="保全资产类型" length="10" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="seal_type" columnName="seal_type" cnname="查封类型" length="10" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="preserve_asset_unit" columnName="preserve_asset_unit" cnname="保全资产计量单位" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="preserve_asset_amount" columnName="preserve_asset_amount" cnname="保全资产数量" length="16" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="seal_start_date" columnName="seal_start_date" cnname="查封起始日期" length="10" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="seal_end_date" columnName="seal_end_date" cnname="查封到期日期" length="10" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="seal_status" columnName="seal_status" cnname="查封状态" length="10" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="waiting_amt" columnName="waiting_amt" cnname="轮候金额" length="16" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="other_seal_case" columnName="other_seal_case" cnname="其他债权人查封情况" length="250" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="deblocking_case" columnName="deblocking_case" cnname="解封情况" length="250" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="seal_writ_signer" columnName="seal_writ_signer" cnname="查封文书签发人" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="seal_writ_poster" columnName="seal_writ_poster" cnname="查封文书送达人" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="seal_writ_content" columnName="seal_writ_content" cnname="查封文书内容" length="250" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="seal_rcv_org" columnName="seal_rcv_org" cnname="查封受理机构" length="100" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="seal_rcv_person" columnName="seal_rcv_person" cnname="查封受理机构签收人" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="seal_rcv_case" columnName="seal_rcv_case" cnname="查封受理机构签收情况" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="preserve_asset_status" columnName="preserve_asset_status" cnname="保全资产状态" length="10" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="memo" columnName="memo" cnname="备注" length="250" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="manager_id" columnName="manager_id" cnname="主管客户经理" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="manager_br_id" columnName="manager_br_id" cnname="管理机构" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="input_id" columnName="input_id" cnname="登记人" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="input_br_id" columnName="input_br_id" cnname="登记机构" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="input_date" columnName="input_date" cnname="登记日期" length="10" JDBCType="VARCHAR2" canBeNull="true"/>
+	</TableModel>
+</ArpLawPreserveInfo.xml>

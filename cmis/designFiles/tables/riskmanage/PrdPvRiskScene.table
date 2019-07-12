@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<PrdPvRiskScene.xml>
+	<TableModel id="PrdPvRiskScene" pageSize="10" cnname="风险拦截场景" isPaged="true" dbTableName="prd_pv_risk_scene">
+		<TableInfo/>
+		<Field id="scene_id" JDBCType="CHAR" length="32" columnName="scene_id" canBeNull="false" pkGenerator="UNID" isPK="true" JSPTag="text" cnname="场景编号"/>
+		<Field id="prevent_id" JDBCType="CHAR" length="32" columnName="prevent_id" canBeNull="false" isPK="true" isEncrypted="false" JSPTag="text" cnname="方案编号"/>
+		<Field id="item_id" isPK="true" columnName="item_id" cnname="项目编号" length="32" JSPTag="text" canBeNull="false" JDBCType="CHAR"/>
+		<OrderFields>scene_id[desc];</OrderFields>
+		<Field id="wfid" isPK="true" columnName="wfid" cnname="物理流程id" length="32" JSPTag="text" JDBCType="VARCHAR2"/>
+		<Field id="risk_level" dictname="STD_ZB_RISK_LEVEL" columnName="risk_level" cnname="拦截类型" length="1" JSPTag="select" JDBCType="CHAR"/>
+		<FilterFields>scene_id;prevent_id;item_id;wfid;risk_level;</FilterFields>
+		<Field id="item_name" columnName="item_name" cnname="项目名称" length="20" JSPTag="text" JDBCType="VARCHAR2"/>
+	</TableModel>
+</PrdPvRiskScene.xml>

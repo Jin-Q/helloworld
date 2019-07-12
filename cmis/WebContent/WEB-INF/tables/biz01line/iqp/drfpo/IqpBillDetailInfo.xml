@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<IqpBillDetailInfo.xml>
+	<TableModel id="IqpBillDetailInfo" cnname="票据质押明细表（票据池）" dbTableName="iqp_bill_detail_info">
+		<Field id="bill_type" columnName="bill_type" cnname="票据种类" length="5" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="porder_no" isPK="true" columnName="porder_no" cnname="汇票号码" length="40" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="porder_curr" columnName="porder_curr" cnname="汇票币种" length="3" JDBCType="CHAR" canBeNull="true"/>
+		<Field id="drft_amt" columnName="drft_amt" cnname="票面金额" length="16" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="porder_addr" columnName="porder_addr" cnname="汇票签发地" length="5" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="is_ebill" columnName="is_ebill" cnname="是否电票" length="1" JDBCType="CHAR" canBeNull="true"/>
+		<Field id="bill_isse_date" columnName="bill_isse_date" cnname="票据签发日" length="10" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="porder_end_date" columnName="porder_end_date" cnname="汇票到期日" length="10" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="utakeover_sign" columnName="utakeover_sign" cnname="不得转让标记" length="5" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="tcont_no" columnName="tcont_no" cnname="贸易合同编号" length="40" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="tcont_amt" columnName="tcont_amt" cnname="贸易合同金额" length="16" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="tcont_content" columnName="tcont_content" cnname="贸易合同内容" length="500" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="drwr_org_code" columnName="drwr_org_code" cnname="出票人组织机构代码" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="isse_name" columnName="isse_name" cnname="出票/付款人名称" length="80" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="daorg_no" columnName="daorg_no" cnname="出票人开户行行号" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="daorg_name" columnName="daorg_name" cnname="出票人开户行行名" length="100" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="daorg_acct" columnName="daorg_acct" cnname="出票人开户行账号" length="40" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="pyee_name" columnName="pyee_name" cnname="收款人名称" length="80" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="paorg_no" columnName="paorg_no" cnname="收款人开户行行号" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="paorg_name" columnName="paorg_name" cnname="收款人开户行行名" length="100" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="paorg_acct_no" columnName="paorg_acct_no" cnname="收款人开户行账号" length="40" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="aaorg_type" columnName="aaorg_type" cnname="承兑人开户行类型" length="5" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="aaorg_no" columnName="aaorg_no" cnname="承兑人开户行行号" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="aaorg_name" columnName="aaorg_name" cnname="承兑人开户行名称" length="100" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="accptr_cmon_code" columnName="accptr_cmon_code" cnname="承兑人组织机构代码" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="aaorg_acct_no" columnName="aaorg_acct_no" cnname="承兑人开户行账号" length="40" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="aorg_type" columnName="aorg_type" cnname="承兑行类型" length="5" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="aorg_no" columnName="aorg_no" cnname="承兑行行号" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="aorg_name" columnName="aorg_name" cnname="承兑行名称" length="100" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="status" columnName="status" cnname="票据状态" length="5" JDBCType="VARCHAR2" canBeNull="true"/>
+	</TableModel>
+</IqpBillDetailInfo.xml>

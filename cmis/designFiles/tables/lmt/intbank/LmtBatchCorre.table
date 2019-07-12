@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<LmtBatchCorre.xml>
+	<TableModel id="LmtBatchCorre" pageSize="10" cnname="批量客户名单关联表" isPaged="true" dbTableName="lmt_batch_corre">
+		<TableInfo/>
+		<Field id="batch_cus_no" isPK="true" columnName="batch_cus_no" cnname="批量客户编号" length="32" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="cus_id" isPK="true" columnName="cus_id" cnname="客户码" length="32" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<FilterFields>batch_cus_no;cus_id;</FilterFields>
+		<OrderFields>batch_cus_no;</OrderFields>
+		<RecordRestrict query="true" delete="true" update="true"/>
+	</TableModel>
+</LmtBatchCorre.xml>

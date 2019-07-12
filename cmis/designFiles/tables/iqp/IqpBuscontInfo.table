@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<IqpBuscontInfo.xml>
+	<TableModel id="IqpBuscontInfo" cnname="贸易合同信息" dbTableName="iqp_buscont_info">
+		<TableInfo/>
+		<Field id="po_no" columnName="po_no" cnname="池编号" length="30" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="tcont_no" isPK="true" columnName="tcont_no" cnname="贸易合同编号" length="40" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="tcont_amt" columnName="tcont_amt" cnname="贸易合同金额" length="16" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="start_date" columnName="start_date" cnname="合同起始日期" length="10" JSPTag="text" canBeNull="true" JDBCType="CHAR"/>
+		<Field id="end_date" columnName="end_date" cnname="合同到期日期" length="10" JSPTag="text" canBeNull="true" JDBCType="CHAR"/>
+		<Field id="sup_mat_cprt" columnName="sup_mat_cprt" cnname="供货单位" length="40" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="trade_detail" columnName="trade_detail" cnname="交易内容" length="40" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="memo" columnName="memo" cnname="备注" length="250" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="input_id" columnName="input_id" cnname="登记人" length="30" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="input_br_id" columnName="input_br_id" cnname="登记机构" length="30" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="input_date" columnName="input_date" cnname="登记日期" length="10" JSPTag="text" canBeNull="true" JDBCType="CHAR"/>
+		<OrderFields>tcont_no[desc];</OrderFields>
+		<Field id="type" columnName="type" cnname="操作类型（1--应收账款，2--保理）" JSPTag="text" length="2" JDBCType="VARCHAR2"/>
+	</TableModel>
+</IqpBuscontInfo.xml>

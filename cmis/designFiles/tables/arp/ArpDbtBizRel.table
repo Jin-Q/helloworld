@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<ArpDbtBizRel.xml>
+	<TableModel id="ArpDbtBizRel" pageSize="10" cnname="呆账业务关系表" isPaged="true" dbTableName="arp_dbt_biz_rel">
+		<TableInfo/>
+		<Field id="serno" columnName="serno" cnname="业务编号" length="40" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="pk_serno" isPK="true" columnName="pk_serno" cnname="流水号" length="40" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="bill_no" columnName="bill_no" cnname="借据编号" length="40" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="cont_no" columnName="cont_no" cnname="合同编号" length="40" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="distr_date" columnName="distr_date" cnname="起始日期" length="10" JSPTag="date" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="end_date" columnName="end_date" cnname="到期日期" length="10" JSPTag="date" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="loan_amt" dataType="Currency" columnName="loan_amt" cnname="借据金额" length="16" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="loan_balance" dataType="Currency" columnName="loan_balance" cnname="借据余额" length="16" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="owe_int" dataType="Currency" columnName="owe_int" cnname="欠息累计" length="16" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="rec_int_accum" dataType="Currency" columnName="rec_int_accum" cnname="应收利息累计" length="16" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="recv_int_accum" dataType="Currency" columnName="recv_int_accum" cnname="实收利息累计" length="16" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="four_class" dictname="STD_ZB_FOUR_SORT" columnName="four_class" cnname="四级分类" length="10" JSPTag="select" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="five_class" dictname="STD_ZB_FIVE_SORT" columnName="five_class" cnname="五级分类" length="10" JSPTag="select" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="twelve_class" dictname="STD_ZB_TWELVE_CLASS" columnName="twelve_class" cnname="十二级分类" length="5" JSPTag="select" canBeNull="true" JDBCType="VARCHAR2"/>
+		<OrderFields>pk_serno[desc];</OrderFields>
+		<ConditionFields>bill_no;cont_no;</ConditionFields>
+		<FilterFields>bill_no;cont_no;loan_amt;loan_balance;owe_int;distr_date;end_date;</FilterFields>
+	</TableModel>
+</ArpDbtBizRel.xml>

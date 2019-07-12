@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<CusObisDeposit.xml>
+	<TableModel id="CusObisDeposit" pageSize="15" cnname="他行交易－他行存款" isPaged="true" dbTableName="cus_obis_deposit">
+		<TableInfo/>
+		<Field id="cus_id" isPK="true" columnName="cus_id" cnname="客户代码" length="30" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="seq" isPK="true" columnName="seq" cnname="序号" length="38" JSPTag="text" canBeNull="false" JDBCType="NUMBER"/>
+		<Field id="org_name" columnName="org_name" cnname="开户机构名称" length="80" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="dep_typ" dictname="STD_ZB_DEP_TYP" columnName="dep_typ" cnname="存款类型" length="1" JSPTag="select" canBeNull="true" JDBCType="CHAR"/>
+		<Field id="dep_per" dataType="Int" columnName="dep_per" cnname="存款期限" length="38" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="acc_no" columnName="acc_no" cnname="帐号" length="40" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="acc_cur_typ" dictname="STD_ZX_CUR_TYPE" columnName="acc_cur_typ" cnname="币种" length="3" JSPTag="select" canBeNull="true" JDBCType="CHAR"/>
+		<Field id="acc_typ" dictname="STD_ZB_CUS_ACC_TYP" columnName="acc_typ" cnname="账户类型" length="2" JSPTag="select" canBeNull="true" JDBCType="CHAR"/>
+		<Field id="acc_st" dictname="STD_ZB_CUS_ACC_ST" columnName="acc_st" cnname="账户状态" length="2" JSPTag="select" canBeNull="true" JDBCType="CHAR"/>
+		<Field id="acc_blc" dataType="Currency" columnName="acc_blc" cnname="存款余额" length="16" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="crt_usr_id" columnName="crt_usr_id" cnname="登记人" length="20" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<OrderFields>cus_id[desc];seq[desc];</OrderFields>
+		<FilterFields>cus_typ;cus_bch_id;dep_typ;dep_per;acc_blc;</FilterFields>
+		<ConditionFields/>
+		<Field id="input_br_id" columnName="input_br_id" cnname="登记机构" length="20" JSPTag="text" JDBCType="VARCHAR2"/>
+		<Field id="input_date" columnName="input_date" cnname="登记日期" length="10" JSPTag="text" JDBCType="CHAR"/>
+		<Field id="last_upd_id" columnName="last_upd_id" cnname="更新人" length="20" JSPTag="text" JDBCType="VARCHAR2"/>
+		<Field id="last_upd_date" columnName="last_upd_date" cnname="更新日期" length="10" JSPTag="text" JDBCType="VARCHAR2"/>
+		<Field id="cus_typ" columnName="cus_typ" cnname="客户类型" JSPTag="text" length="1" JDBCType="CHAR"/>
+		<Field id="cus_bch_id" columnName="cus_bch_id" cnname="开户机构代码" JSPTag="text" length="20" JDBCType="VARCHAR2"/>
+	</TableModel>
+</CusObisDeposit.xml>

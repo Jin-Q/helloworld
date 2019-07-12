@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<CusOrgInfo.xml>
+	<TableModel id="CusOrgInfo" pageSize="10" cnname="评估机构分部信息" isPaged="true" dbTableName="CUS_ORG_INFO">
+		<TableInfo/>
+		<Field id="serno" JDBCType="VARCHAR2" length="40" columnName="serno" canBeNull="false" pkGenerator="UNID" isPK="true" JSPTag="text" cnname="申请流水号"/>
+		<Field id="cus_id" columnName="cus_id" cnname="客户号" length="30" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="branch_type" dictname="STD_ZB_BRANCH_TYPE" columnName="branch_type" cnname="类型" length="3" JSPTag="select" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="branch_addr" columnName="branch_addr" cnname="地址" length="60" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="duty_man" columnName="duty_man" cnname="负责人" length="30" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<OrderFields>serno[desc];</OrderFields>
+		<RecordRestrict query="true"/>
+		<Field id="app_serno" columnName="app_serno" cnname="申请关联流水号" length="40" JSPTag="text" JDBCType="VARCHAR2"/>
+		<Field id="street" columnName="street" cnname="街道" length="60" JSPTag="text" JDBCType="VARCHAR2"/>
+		<Field id="phone" columnName="phone" cnname="联系电话" JSPTag="text" length="30" JDBCType="VARCHAR2"/>
+		<FilterFields>serno;cus_id;branch_type;branch_addr;</FilterFields>
+		<ConditionFields>serno;cus_id;</ConditionFields>
+	</TableModel>
+</CusOrgInfo.xml>

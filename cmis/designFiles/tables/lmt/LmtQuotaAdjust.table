@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<LmtQuotaAdjust.xml>
+	<TableModel id="LmtQuotaAdjust" pageSize="10" cnname="用信限额调整" isPaged="true" dbTableName="lmt_quota_adjust">
+		<TableInfo/>
+		<Field id="fin_agr_no" isPK="false" columnName="fin_agr_no" cnname="融资协议编号" length="40" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="fin_totl_limit" columnName="fin_totl_limit" cnname="融资总额" length="16" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="single_quota_his" columnName="single_quota_his" cnname="单户限额(存量)" length="16" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="single_quota_new" columnName="single_quota_new" cnname="单户限额(新增)" length="16" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="inure_date" columnName="inure_date" cnname="生效日期" length="10" JSPTag="text" canBeNull="true" JDBCType="CHAR"/>
+		<Field id="end_date" columnName="end_date" cnname="到期日期" length="10" JSPTag="text" canBeNull="true" JDBCType="CHAR"/>
+		<OrderFields>fin_agr_no[desc];</OrderFields>
+		<RecordRestrict query="true"/>
+		<FilterFields>fin_totl_limit;single_quota_his;single_quota_new;inure_date;end_date;approve_status;</FilterFields>
+		<Field id="status" columnName="status" cnname="状态" length="4" JSPTag="text" JDBCType="VARCHAR2"/>
+		<Field id="serno" isPK="true" columnName="serno" pkGenerator="UNID" cnname="主键" length="40" JSPTag="text" JDBCType="VARCHAR2"/>
+		<Field id="fin_totl_spac" columnName="fin_totl_spac" cnname="融资总敞口" length="16" JSPTag="text" JDBCType="NUMBER"/>
+	</TableModel>
+</LmtQuotaAdjust.xml>

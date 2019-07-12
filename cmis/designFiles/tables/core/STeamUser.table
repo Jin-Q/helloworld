@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<STeamUser.xml>
+	<TableModel id="STeamUser" cnname="团队成员表" dbTableName="s_team_user">
+		<TableInfo/>
+		<Field id="team_no" columnName="team_no" cnname="团队编号" length="20" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="mem_no" columnName="mem_no" cnname="成员编号" length="20" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="team_role" columnName="team_role" cnname="团队角色" length="2" JSPTag="text" canBeNull="true" JDBCType="CHAR"/>
+	</TableModel>
+</STeamUser.xml>

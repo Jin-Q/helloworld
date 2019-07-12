@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<PspRejectBatchLog.xml>
+	<TableModel id="PspRejectBatchLog" pageSize="10" cnname="贷后检查否决启用" isPaged="true" dbTableName="psp_reject_batch_log">
+		<TableInfo/>
+		<Field id="task_log_id" JDBCType="VARCHAR2" length="40" columnName="task_log_id" canBeNull="false" pkGenerator="UNID" isPK="true" JSPTag="text" cnname="log编码"/>
+		<Field id="task_id" columnName="task_id" cnname="任务编号" length="40" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="input_id" columnName="input_id" cnname="操作人" length="40" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="approve_status_ori" dictname="WF_APP_STATUS" columnName="approve_status_ori" cnname="审批原状态" length="5" JSPTag="select" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="update_type" columnName="update_type" cnname="操作类型（否决、启用）" length="5" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="input_time" columnName="input_time" cnname="修改时间" length="40" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<ConditionFields>task_id;</ConditionFields>
+		<OrderFields>input_time;</OrderFields>
+	</TableModel>
+</PspRejectBatchLog.xml>

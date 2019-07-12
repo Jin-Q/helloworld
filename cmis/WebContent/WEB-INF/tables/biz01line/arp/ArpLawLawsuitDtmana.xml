@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<ArpLawLawsuitDtmana.xml>
+	<TableModel id="ArpLawLawsuitDtmana" cnname="诉讼明细管理表" dbTableName="arp_law_lawsuit_dtmana">
+		<Field id="pk_serno" isPK="true" columnName="pk_serno" cnname="流水号" length="40" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="case_no" columnName="case_no" cnname="案件编号" length="40" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="cus_id" columnName="cus_id" cnname="客户码" length="30" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="bill_no" columnName="bill_no" cnname="借据编号" length="40" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="lawsuit_sub" columnName="lawsuit_sub" cnname="诉讼标的（元）" length="16" JDBCType="NUMBER" canBeNull="false"/>
+		<Field id="lawsuit_cap" columnName="lawsuit_cap" cnname="诉讼本金（元）" length="16" JDBCType="NUMBER" canBeNull="false"/>
+		<Field id="lawsuit_int" columnName="lawsuit_int" cnname="诉讼利息（元）" length="16" JDBCType="NUMBER" canBeNull="false"/>
+	</TableModel>
+</ArpLawLawsuitDtmana.xml>

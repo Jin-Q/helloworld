@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<IqpAccpDetail.xml>
+	<TableModel id="IqpAccpDetail" cnname="承兑汇票申请明细" dbTableName="iqp_accp_detail">
+		<Field id="serno" isPK="false" columnName="serno" cnname="业务编号" length="40" JDBCType="VARCHAR2"/>
+		<Field id="clt_person" columnName="clt_person" cnname="收款人" length="80" JDBCType="VARCHAR2"/>
+		<Field id="clt_acct_no" columnName="clt_acct_no" cnname="收款人账号" length="40" JDBCType="VARCHAR2"/>
+		<Field id="paorg_no" columnName="paorg_no" cnname="收款人开户行行号" length="20" JDBCType="VARCHAR2"/>
+		<Field id="paorg_name" columnName="paorg_name" cnname="收款人开户行行名" length="100" JDBCType="VARCHAR2"/>
+		<Field id="drft_amt" columnName="drft_amt" cnname="票面金额" length="16" JDBCType="NUMBER"/>
+		<Field id="term_type" columnName="term_type" cnname="期限类型" length="5" JDBCType="VARCHAR2"/>
+		<Field id="term" columnName="term" cnname="期限" length="38" JDBCType="NUMBER"/>
+		<Field id="pk1" isPK="true" columnName="pk1" pkGenerator="UNID" cnname="承兑汇票申请明细流水号" length="40" JDBCType="VARCHAR2"/>
+	    <Field id="bill_isse_date" columnName="bill_isse_date" cnname="出票日期" length="10" JDBCType="VARCHAR2"/>
+		<Field id="bill_expiry_date" columnName="bill_expiry_date" cnname="票据到期日期" length="10" JDBCType="VARCHAR2"/>
+		<Field id="porder_no" columnName="porder_no" cnname="票据号" length="40" JDBCType="VARCHAR2"/>
+		<Field id="batch_no" columnName="batch_no" cnname="票据批次" length="40" JDBCType="VARCHAR2"/>
+	</TableModel>
+</IqpAccpDetail.xml>

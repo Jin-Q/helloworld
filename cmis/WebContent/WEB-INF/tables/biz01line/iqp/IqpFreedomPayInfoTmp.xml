@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<IqpFreedomPayInfoTmp.xml>
+	<TableModel id="IqpFreedomPayInfoTmp" cnname="自由还款缓存信息" dbTableName="iqp_freedom_pay_info_tmp">
+		<Field id="modify_rel_serno" columnName="modify_rel_serno" cnname="打回业务修改流水号" length="40" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="serno" isPK="true" columnName="serno" cnname="业务流水号" length="40" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="dateno" isPK="true" columnName="dateno" cnname="期号" length="40" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="suppose_pay_amt" columnName="suppose_pay_amt" cnname="应还款金额" length="16" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="suppose_pay_cap" columnName="suppose_pay_cap" cnname="应还款本金" length="16" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="suppose_pay_int" columnName="suppose_pay_int" cnname="应还款利息" length="16" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="rate" columnName="rate" cnname="利率" length="16" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="odint_rate" columnName="odint_rate" cnname="罚息利率" length="16" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="pay_date" columnName="pay_date" cnname="还款日期" length="10" JDBCType="VARCHAR2" canBeNull="true"/>
+	</TableModel>
+</IqpFreedomPayInfoTmp.xml>

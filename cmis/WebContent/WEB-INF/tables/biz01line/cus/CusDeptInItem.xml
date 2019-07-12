@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<CusDeptInItem.xml>
+	<TableModel id="CusDeptInItem" cnname="本行交易－本行存款" dbTableName="cus_dept_in_item">
+		<Field id="seq" isPK="true" columnName="seq" cnname="序号" length="38" JDBCType="NUMBER" canBeNull="false"/>
+		<Field id="cus_id" isPK="true" columnName="cus_id" cnname="客户代码" length="20" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="acc_no" columnName="acc_no" cnname="帐号" length="40" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="cus_typ" columnName="cus_typ" cnname="客户类型" length="1" JDBCType="CHAR" canBeNull="true"/>
+		<Field id="cus_bch_id" columnName="cus_bch_id" cnname="开户机构代码" length="20" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="cus_open_dt" columnName="cus_open_dt" cnname="开户时间" length="10" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="cus_close_dt" columnName="cus_close_dt" cnname="销户时间" length="10" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="cus_acc_cur_typ" columnName="cus_acc_cur_typ" cnname="币种" length="3" JDBCType="CHAR" canBeNull="true"/>
+		<Field id="cus_acc_typ" columnName="cus_acc_typ" cnname="账户类型" length="2" JDBCType="CHAR" canBeNull="true"/>
+		<Field id="cus_acc_cls" columnName="cus_acc_cls" cnname="科目" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="cus_acc_st" columnName="cus_acc_st" cnname="账户状态" length="2" JDBCType="CHAR" canBeNull="true"/>
+		<Field id="cus_deposit_typ" columnName="cus_deposit_typ" cnname="存款类型" length="1" JDBCType="CHAR" canBeNull="true"/>
+		<Field id="cus_acc_blc" columnName="cus_acc_blc" cnname="存款余额" length="16" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="cus_end_dt" columnName="cus_end_dt" cnname="到期日期" length="10" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="cus_data_no" columnName="cus_data_no" cnname="客户资料编号" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="cus_bank_no" columnName="cus_bank_no" cnname="建立行号" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="cert_typ" columnName="cert_typ" cnname="证件类型" length="2" JDBCType="CHAR" canBeNull="true"/>
+		<Field id="cert_code" columnName="cert_code" cnname="证件号码" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="cus_last_m_avg_day" columnName="cus_last_m_avg_day" cnname="账户上月日均存款余额" length="16" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="cus_high_amt" columnName="cus_high_amt" cnname="账户最高时点金额" length="16" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="cus_low_amt" columnName="cus_low_amt" cnname="账户最低时点金额" length="16" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="cus_blc" columnName="cus_blc" cnname="结算" length="16" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="cus_last_y_avg_day" columnName="cus_last_y_avg_day" cnname="上年日均余额" length="16" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="cus_plot" columnName="cus_plot" cnname="本年积数" length="16" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="cus_avg_day" columnName="cus_avg_day" cnname="本年日均余额" length="16" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="cus_last_plot" columnName="cus_last_plot" cnname="上年积数" length="16" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="cus_avg_day_cr" columnName="cus_avg_day_cr" cnname="年日均余额变化(%)" length="6" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="cus_happen_dt" columnName="cus_happen_dt" cnname="发生日期" length="10" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="cus_biz_typ" columnName="cus_biz_typ" cnname="交易类型" length="2" JDBCType="CHAR" canBeNull="true"/>
+		<Field id="cus_hpp_amt" columnName="cus_hpp_amt" cnname="发生金额" length="16" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="crt_usr_id" columnName="crt_usr_id" cnname="登记人" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="crt_dt" columnName="crt_dt" cnname="日期" length="10" JDBCType="VARCHAR2" canBeNull="true"/>
+	</TableModel>
+</CusDeptInItem.xml>

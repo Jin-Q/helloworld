@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<WfiOrgLifeloanRel.xml>
+	<TableModel id="WfiOrgLifeloanRel" cnname="责任机构是否开通生活贷关联表" dbTableName="wfi_org_lifeloan_rel">
+		<Field id="pk_id" isPK="true" columnName="pk_id" pkGenerator="UNID" cnname="主键" length="36" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="org_id" columnName="org_id" cnname="机构码" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="is_life_loan" columnName="is_life_loan" cnname="是否开通生活贷(STD_ZX_YES_NO)" length="2" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="life_loan_crd_amt" columnName="life_loan_crd_amt" cnname="生活贷授信审批金额(万元)" length="16" JDBCType="NUMBER" canBeNull="true"/>
+	</TableModel>
+</WfiOrgLifeloanRel.xml>

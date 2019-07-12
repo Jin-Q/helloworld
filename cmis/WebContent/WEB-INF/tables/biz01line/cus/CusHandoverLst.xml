@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<CusHandoverLst.xml>
+	<TableModel id="CusHandoverLst" cnname="客户移交明细" dbTableName="cus_handover_lst">
+		<Field id="serno" isPK="true" columnName="serno" cnname="申请流水号" length="40" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="handover_type" isPK="false" columnName="handover_type" cnname="业务类型" length="2" JDBCType="CHAR" canBeNull="false"/>
+		<Field id="business_detail" columnName="business_detail" cnname="移交业务说明" length="250" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="supervise_date" columnName="supervise_date" cnname="移交日期" length="10" JDBCType="VARCHAR2"/>
+		<Field id="receive_date" columnName="receive_date" cnname="接收日期" length="10" JDBCType="VARCHAR2"/>
+		<Field id="cus_id" isPK="true" columnName="cus_id" cnname="客户编号" length="30" JDBCType="VARCHAR2"/>
+		<Field id="belong_to" columnName="belong_to" cnname="BELONG_TO" length="10" JDBCType="VARCHAR2"/>
+	</TableModel>
+</CusHandoverLst.xml>

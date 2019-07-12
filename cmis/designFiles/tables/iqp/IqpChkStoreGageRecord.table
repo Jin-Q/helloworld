@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<IqpChkStoreGageRecord.xml>
+	<TableModel id="IqpChkStoreGageRecord" cnname="核/巡库押品记录" dbTableName="iqp_chk_store_gage_record">
+		<TableInfo/>
+		<Field id="task_id" isPK="true" columnName="task_id" cnname="任务执行编号" length="32" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="cus_id" columnName="cus_id" cnname="客户编号" length="40" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="catalog_no" isPK="true" columnName="catalog_no" cnname="押品目录编号" length="40" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="unit_price" columnName="unit_price" cnname="单价" length="16" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="qnt" columnName="qnt" cnname="数量" length="16" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="value" columnName="value" cnname="价值" length="16" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<OrderFields>task_id[desc];catalog_no[desc];</OrderFields>
+	</TableModel>
+</IqpChkStoreGageRecord.xml>

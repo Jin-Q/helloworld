@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<IqpAssetLawAdvicebook.xml>
+	<TableModel id="IqpAssetLawAdvicebook" cnname="法律意见书（资产证券化）" dbTableName="iqp_asset_law_advicebook">
+		<Field id="serno" isPK="true" columnName="serno" cnname="业务编号" length="40" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="law_office" columnName="law_office" cnname="律师事务所" length="80" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="lawer" columnName="lawer" cnname="律师" length="80" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="advice_date" columnName="advice_date" cnname="意见提供日期" length="10" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="advice_memo" columnName="advice_memo" cnname="意见摘要" length="200" JDBCType="VARCHAR2" canBeNull="true"/>
+	</TableModel>
+</IqpAssetLawAdvicebook.xml>

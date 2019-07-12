@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actionDefines>
+	<classMap>
+		<map id="action" class="com.yucheng.cmis.ad.mvc.ADRequestController"/>
+		<map id="flowInvoker" class="com.yucheng.cmis.ad.mvc.ADFlowInvoker"/>
+		<map id="outputViews" class="java.util.HashMap"/>
+		<map id="output" class="com.ecc.emp.data.KeyedCollection"/>
+		<map id="kColl" class="com.ecc.emp.data.KeyedCollection"/>
+		<map id="iColl" class="com.ecc.emp.data.IndexedCollection"/>
+		<map id="field" class="com.ecc.emp.data.DataField"/>
+	</classMap>
+	
+	<!--*************************子表【集团客户申请成员】*******************************-->
+	
+	<!-- 作为子表的列表页面 -->
+	<action id="queryCusGrpInfoApplyCusGrpMemberApplyList" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.cus.group.ops.cusgrpmemberapply.QueryCusGrpInfoApplyCusGrpMemberApplyListOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="biz01line/cus/group/CusGrpMemberApply/queryCusGrpMemberApplyList.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 获得作为子表的新增页面 -->
+	<action id="getCusGrpInfoApplyCusGrpMemberApplyAddPage" type="normal" checkSession="true" >
+		<jspView id="addPage" url="biz01line/cus/group/CusGrpMemberApply/addCusGrpMemberApplyRecord.jsp"/>
+	</action>
+	
+	<!-- 获得子表编辑页面 -->
+	<action id="getCusGrpInfoApplyCusGrpMemberApplyUpdatePage" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.cus.group.ops.cusgrpmemberapply.QueryCusGrpInfoApplyCusGrpMemberApplyDetailOp"/>
+			<transition dest="updatePage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="updatePage" url="biz01line/cus/group/CusGrpMemberApply/updateCusGrpMemberApplyRecord.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 子表详情查询 -->
+	<action id="queryCusGrpInfoApplyCusGrpMemberApplyDetail" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.cus.group.ops.cusgrpmemberapply.QueryCusGrpInfoApplyCusGrpMemberApplyDetailOp"/>
+			<transition dest="queryDetail"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="queryDetail" url="biz01line/cus/group/CusGrpMemberApply/queryCusGrpMemberApplyDetail.jsp"/>
+		</outputViews>	
+	</action>
+	
+	<!-- 子表新增记录 -->
+	<action id="addCusGrpInfoApplyCusGrpMemberApplyRecord" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.cus.group.ops.cusgrpmemberapply.AddCusGrpInfoApplyCusGrpMemberApplyRecordOp"/>
+			<transition dest="addRecordRes"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="addRecordRes" url="refreshList.jsp?method=refreshCusGrpMemberApply()"/>
+		</outputViews>
+	</action>
+	
+	<!-- 子表更新记录 -->
+	<action id="updateCusGrpInfoApplyCusGrpMemberApplyRecord" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.cus.group.ops.cusgrpmemberapply.UpdateCusGrpInfoApplyCusGrpMemberApplyRecordOp"/>
+			<transition dest="updateRecordRes"/>
+		</flowInvoker>
+		<outputViews>
+			<view id="updateRecordRes" class="com.yucheng.cmis.view.JSONView">
+				<output class="com.ecc.emp.data.KeyedCollection">
+						<field id="flag" class="com.ecc.emp.data.DataField"/>
+				</output>
+			</view>
+		</outputViews>
+	</action>
+	
+	<!-- 子表删除记录 -->
+	<action id="deleteCusGrpInfoApplyCusGrpMemberApplyRecord" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.cus.group.ops.cusgrpmemberapply.DeleteCusGrpInfoApplyCusGrpMemberApplyRecordOp"/>
+			<transition dest="deleteRecordRes"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="deleteRecordRes" url="refreshList.jsp?method=refreshCusGrpMemberApply()"/>
+		</outputViews>
+	</action>
+	<action id="checkExistInGrpMemberApply" type="normal" checkSession="true">
+	   <flowInvoker>
+            <operation class="com.yucheng.cmis.biz01line.cus.group.ops.cusgrpinfoapply.CheckExistInGrpMemberApply" />
+            <transition dest="retPage" />
+        </flowInvoker>
+        <outputViews>
+            <view id="retPage" class="com.yucheng.cmis.view.JSONView">
+                <output class="com.ecc.emp.data.KeyedCollection">
+                    <field id="flag" class="com.ecc.emp.data.DataField" />
+                    <field id="com_grp_mode" class="com.ecc.emp.data.DataField" />
+                </output>
+            </view>
+        </outputViews>
+	</action>
+	<!-- 分页查询记录列表 -->
+		<action id="pageCusGrpInfoApplyCusGrpMemberApplyQuery" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.cus.group.ops.cusgrpmemberapply.QueryCusGrpInfoApplyCusGrpMemberApplyListOp"/>
+			<transition dest="queryListRes"/>
+		</flowInvoker>
+		<outputViews>
+			<jsonView class="com.yucheng.cmis.view.JSONView" id="queryListRes">
+				<output>
+					<iColl id="CusGrpMemberApplyList">
+						<kColl>
+						</kColl>
+					</iColl>
+					<kColl id="pageInfo">
+						<field id="currentPage" />
+						<field id="maxLine" />
+						<field id="recordSize" />
+					</kColl>
+				</output>
+			</jsonView>
+		</outputViews>
+	</action>	
+	
+</actionDefines>

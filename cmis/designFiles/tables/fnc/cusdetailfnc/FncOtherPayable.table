@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<FncOtherPayable.xml>
+	<TableModel id="FncOtherPayable" pageSize="15" cnname="其他应付款项明细" isPaged="true" dbTableName="fnc_other_payable">
+		<TableInfo/>
+		<Field id="pk_id" JDBCType="VARCHAR2" length="32" columnName="pk_id" canBeNull="false" pkGenerator="UNID" isPK="true" JSPTag="text" cnname="主键"/>
+		<Field id="cus_id" columnName="cus_id" cnname="客户代码" length="30" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="fnc_ym" columnName="fnc_ym" cnname="年月" length="6" JSPTag="text" canBeNull="false" JDBCType="CHAR"/>
+		<Field id="fnc_con_cus_name" columnName="fnc_con_cus_name" cnname="对方客户名称" length="60" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="fnc_con_cus_id" columnName="fnc_con_cus_id" cnname="对方客户代码" length="30" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="fnc_cur_typ" columnName="fnc_cur_typ" cnname="货币种类" length="3" JSPTag="text" canBeNull="true" JDBCType="CHAR"/>
+		<Field id="fnc_sum_amt" columnName="fnc_sum_amt" cnname="应付款余额合计" length="16" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="fnc_imm_trm_amt" columnName="fnc_imm_trm_amt" cnname="即期应付款" length="16" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="fnc_short_trm_amt" columnName="fnc_short_trm_amt" cnname="短期应付款" length="16" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="fnc_inter_trm_amt" columnName="fnc_inter_trm_amt" cnname="中期应付款" length="16" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="fnc_long_trm_amt" columnName="fnc_long_trm_amt" cnname="长期应付款" length="16" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="rel_flg" columnName="rel_flg" cnname="是否关联企业" length="1" JSPTag="text" canBeNull="true" JDBCType="CHAR"/>
+		<Field id="input_id" columnName="input_id" cnname="登记人" length="20" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="input_br_id" columnName="input_br_id" cnname="登记机构" length="20" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="input_date" columnName="input_date" cnname="登记日期" length="10" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="last_upd_id" columnName="last_upd_id" cnname="更新人" length="20" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="last_upd_date" columnName="last_upd_date" cnname="更新日期" length="10" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="remark" columnName="remark" cnname="备注" length="100" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="cus_name" columnName="cus_name" cnname="客户姓名" length="80" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<OrderFields>pk_id[desc];</OrderFields>
+		<RecordRestrict query="true" delete="true" update="true"/>
+		<ConditionFields>fnc_con_cus_name;fnc_con_cus_id;</ConditionFields>
+		<Field id="guar_st" columnName="guar_st" cnname="GUAR_ST" JSPTag="text" length="2" JDBCType="VARCHAR2"/>
+	</TableModel>
+</FncOtherPayable.xml>

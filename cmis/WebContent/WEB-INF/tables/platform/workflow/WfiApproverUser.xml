@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<WfiApproverUser.xml>
+	<TableModel id="WfiApproverUser" cnname="WFI_APPROVER_USER" dbTableName="wfi_approver_user">
+		<Field id="confid" columnName="confid" cnname="CONFID" length="40" JDBCType="VARCHAR2" canBeNull="false" isPK="true"/>
+		<Field id="actorno" columnName="actorno" cnname="ACTORNO" length="20" JDBCType="VARCHAR2" canBeNull="false" isPK="true"/>
+	</TableModel>
+</WfiApproverUser.xml>

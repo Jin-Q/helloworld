@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<PrdOrgApply.xml>
+	<TableModel id="PrdOrgApply" cnname="产品使用机构关联表" dbTableName="prd_org_apply">
+		<TableInfo/>
+		<Field id="prd_id" isPK="true" columnName="prd_id" cnname="产品编号" length="30" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="org_id" isPK="true" columnName="org_id" cnname="机构编号" length="20" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="apply_range" columnName="apply_range" cnname="适用范围" length="2" JSPTag="text" canBeNull="true" JDBCType="CHAR"/>
+		<Field id="apply_type" columnName="apply_type" cnname="适用类型" length="2" JSPTag="text" canBeNull="true" JDBCType="CHAR"/>
+		<OrderFields>prd_id[desc];</OrderFields>
+	</TableModel>
+</PrdOrgApply.xml>

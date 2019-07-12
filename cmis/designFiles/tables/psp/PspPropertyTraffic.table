@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<PspPropertyTraffic.xml>
+	<TableModel id="PspPropertyTraffic" cnname="贷后检查固定资产分析-交通工具" dbTableName="psp_property_traffic">
+		<TableInfo/>
+		<Field id="property_id" isPK="true" columnName="property_id" cnname="资产编号" length="32" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="model_no" columnName="model_no" cnname="型号或品牌" length="16" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="pur_date" columnName="pur_date" cnname="购置时间" length="10" JSPTag="date" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="pur_price" dataType="Currency" columnName="pur_price" cnname="购置价格" length="16" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<OrderFields>property_id[desc];</OrderFields>
+	</TableModel>
+</PspPropertyTraffic.xml>

@@ -1,0 +1,354 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actionDefines>
+	<classMap>
+		<map id="action" class="com.yucheng.cmis.ad.mvc.ADRequestController" />
+		<map id="flowInvoker" class="com.yucheng.cmis.ad.mvc.ADFlowInvoker" />
+		<map id="outputViews" class="java.util.HashMap" />
+		<map id="output" class="com.ecc.emp.data.KeyedCollection" />
+		<map id="kColl" class="com.ecc.emp.data.KeyedCollection" />
+		<map id="iColl" class="com.ecc.emp.data.IndexedCollection" />
+		<map id="field" class="com.ecc.emp.data.DataField" />
+	</classMap>
+	<!-- 获得对公客户新增页面 -->
+	<action id="newCusComAddPage" type="normal" checkSession="true">
+		<jspView id="addPage" url="biz01line/cus/cusbase/CusBase/newCusComRecord.jsp" />
+	</action>
+	<!-- 获得对私客户新增页面 -->
+	<action id="newCusIndivAddPage" type="normal" checkSession="true">
+		<jspView id="addPage" url="biz01line/cus/cusbase/CusBase/newCusIndivRecord.jsp" />
+	</action>
+
+	<!-- 对私新增记录 -->
+	<action id="addCusBaseIndivRecord" type="normal" checkSession="true">
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.cus.op.cusbase.AddCusBaseRecordOp" />
+			<transition dest="retPage" />
+		</flowInvoker>
+		<outputViews>
+			<view id="retPage" class="com.yucheng.cmis.view.JSONView">
+				<output class="com.ecc.emp.data.KeyedCollection">
+					<field id="flag" class="com.ecc.emp.data.DataField" />
+					<field id="cus_id" class="com.ecc.emp.data.DataField" />
+					<field id="cusName" class="com.ecc.emp.data.DataField"/>
+					<field id="mainBrId" class="com.ecc.emp.data.DataField" />
+					<field id="custMgr" class="com.ecc.emp.data.DataField" />
+					<field id="custMgrName" class="com.ecc.emp.data.DataField" />
+					<field id="mainBrName" class="com.ecc.emp.data.DataField" />
+				</output>
+			</view>
+		</outputViews>
+	</action>
+
+	<!-- 对公新增记录 -->
+	<action id="addCusBaseComRecord" type="normal" checkSession="true">
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.cus.op.cusbase.AddCusBaseRecordOp" />
+			<transition dest="retPage" />
+		</flowInvoker>
+		<outputViews>
+			<view id="retPage" class="com.yucheng.cmis.view.JSONView">
+				<output class="com.ecc.emp.data.KeyedCollection">
+					<field id="flag" class="com.ecc.emp.data.DataField" />
+					<field id="cus_id" class="com.ecc.emp.data.DataField" />
+					<field id="mainBrId" class="com.ecc.emp.data.DataField" />
+					<field id="custMgr" class="com.ecc.emp.data.DataField" />
+					<field id="custMgrName" class="com.ecc.emp.data.DataField" />
+					<field id="mainBrName" class="com.ecc.emp.data.DataField" />
+					<field id="cusName" class="com.ecc.emp.data.DataField" />
+				</output>
+			</view>
+		</outputViews>
+	</action>
+
+	<!-- 客户信息pop -->
+	<action id="queryCusBasePop" type="normal" checkSession="true">
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.cus.op.cusbase.QueryCusBaseListOp" />
+			<transition dest="retPage" />
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="biz01line/cus/cusbase/CusBase/queryCusBaseListPop.jsp" />
+		</outputViews>
+	</action>
+
+	<!-- 所有客户信息pop -->
+	<action id="queryAllCusPop" type="normal" checkSession="true">
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.cus.op.cusbase.QueryAllCusListOp" />
+			<transition dest="retPage" />
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="biz01line/cus/cusbase/CusBase/queryAllCusListPop.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 查询关联客户POP框（个人额度申请专用，包含主借款人及配偶、共同债务人及配偶、保证人及配偶） -->
+	<action id="queryRelaCusByLmtSernoPop" type="normal" checkSession="true">
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.cus.op.cusbase.QueryRelaCusByLmtSernoListOp" />
+			<transition dest="retPage" />
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="biz01line/cus/cusbase/CusBase/queryRelaCusByLmtSernoListPop.jsp" />
+		</outputViews>
+	</action>
+
+	<!-- 分页查询记录列表 -->
+	<action id="pageCusBaseQuery" type="normal" checkSession="true">
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.cus.op.cusbase.QueryCusBaseListOp" />
+			<transition dest="queryListRes" />
+		</flowInvoker>
+		<outputViews>
+			<jsonView class="com.yucheng.cmis.view.JSONView" id="queryListRes">
+				<output>
+					<iColl id="CusBaseList">
+						<kColl>
+						</kColl>
+					</iColl>
+					<kColl id="pageInfo">
+						<field id="currentPage" />
+						<field id="maxLine" />
+						<field id="recordSize" />
+					</kColl>
+				</output>
+			</jsonView>
+		</outputViews>
+	</action>
+	
+	<action id="pageAllCusQuery" type="normal" checkSession="true">
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.cus.op.cusbase.QueryAllCusListOp" />
+			<transition dest="queryListRes" />
+		</flowInvoker>
+		<outputViews>
+			<jsonView class="com.yucheng.cmis.view.JSONView" id="queryListRes">
+				<output>
+					<iColl id="CusBaseList">
+						<kColl>
+						</kColl>
+					</iColl>
+					<kColl id="pageInfo">
+						<field id="currentPage" />
+						<field id="maxLine" />
+						<field id="recordSize" />
+					</kColl>
+				</output>
+			</jsonView>
+		</outputViews>
+	</action>
+	
+	<action id="pageRelaCusByLmtSernoQuery" type="normal" checkSession="true">
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.cus.op.cusbase.QueryRelaCusByLmtSernoListOp" />
+			<transition dest="queryListRes" />
+		</flowInvoker>
+		<outputViews>
+			<jsonView class="com.yucheng.cmis.view.JSONView" id="queryListRes">
+				<output>
+					<iColl id="CusBaseList">
+						<kColl>
+						</kColl>
+					</iColl>
+					<kColl id="pageInfo">
+						<field id="currentPage" />
+						<field id="maxLine" />
+						<field id="recordSize" />
+					</kColl>
+				</output>
+			</jsonView>
+		</outputViews>
+	</action>
+
+	<!-- 根据客户码获取客户名称
+	<action id="getCusBaseInfo" type="normal" checkSession="true">
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.cus.op.cusbase.getCusBaseByCusId" />
+			<transition dest="retPage" />
+		</flowInvoker>
+		<outputViews>
+			<view id="retPage" class="com.yucheng.cmis.view.JSONView">
+				<output class="com.ecc.emp.data.KeyedCollection">
+					<field id="cusName" class="com.ecc.emp.data.DataField" />
+				</output>
+			</view>
+		</outputViews>
+	</action> -->
+
+	<action id="getCusJsonByCert" type="normal" checkSession="true">
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.cus.op.custmp.QueryCusJsonByCertOpForDt" />
+			<transition dest="queryDetailRes" />
+		</flowInvoker>
+		<outputViews>
+			<view id="queryDetailRes" class="com.yucheng.cmis.view.JSONView">
+				<output class="com.ecc.emp.data.KeyedCollection">
+					<iColl id="cusList" class="com.ecc.emp.data.IndexedCollection">
+						<kColl class="com.ecc.emp.data.KeyedCollection" />
+					</iColl>
+				</output>
+			</view>
+		</outputViews>
+	</action>
+	<!-- 贷款卡号唯一性检查 -->
+	<action id="getCusLoanCardOnly" type="normal" checkSession="true">
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.cus.op.cuscom.QueryCusLoanCardOp" />
+			<transition dest="queryDetailRes" />
+		</flowInvoker>
+		<outputViews>
+			<view id="queryDetailRes" class="com.yucheng.cmis.view.JSONView">
+				<output class="com.ecc.emp.data.KeyedCollection">
+					<field id="loanCardIdFlag" />
+				</output>
+			</view>
+		</outputViews>
+	</action>
+	<!-- 检查证件号码唯一性
+	<action id="getCusCertCodeOnly" type="normal" checkSession="true">
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.cus.op.cuscom.QueryCertCodeOp" />
+			<transition dest="queryDetailRes" />
+		</flowInvoker>
+		<outputViews>
+			<view id="queryDetailRes" class="com.yucheng.cmis.view.JSONView">
+				<output class="com.ecc.emp.data.KeyedCollection">
+					<field id="certCodeFlag" />
+				</output>
+			</view>
+		</outputViews>
+	</action> -->
+	<!-- 检查帐号唯一性 -->
+	<action id="getAccNoOnly" type="normal" checkSession="true">
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.cus.op.cuscom.QueryAccOp" />
+			<transition dest="queryDetailRes" />
+		</flowInvoker>
+		<outputViews>
+			<view id="queryDetailRes" class="com.yucheng.cmis.view.JSONView">
+				<output class="com.ecc.emp.data.KeyedCollection">
+					<field id="accNoFlag" />
+				</output>
+			</view>
+		</outputViews>
+	</action>
+
+	<!-- 客户信息关联搜索 -->
+	<action id="GetCusRelTreeOp" type="normal" checkSession="true">
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.cus.cusRelTree.op.GetCusRelTreeOp" />
+			<transition dest="retPage" />
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="biz01line/cus/cusbase/CusBase/queryCusRelTree.jsp" />
+		</outputViews>
+	</action>
+	<action id="GetIndivCusRelTreeOp" type="normal" checkSession="true">
+        <flowInvoker>
+            <operation class="com.yucheng.cmis.biz01line.cus.cusRelTree.op.GetIndivCusRelTreeOp" />
+            <transition dest="retPage" />
+        </flowInvoker>
+        <outputViews>
+            <jspView id="retPage" url="biz01line/cus/cusbase/CusBase/queryCusRelTree.jsp" />
+        </outputViews>
+    </action>
+
+	<!-- 获得查看页面 -->
+	<action id="getCusViewPage" type="normal" checkSession="true">
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.cus.op.cusbase.GetCusRecordOp" />
+			<transition dest="com" condition="($retValue='com')" />
+			<transition dest="indiv" condition="($retValue='indiv')" />
+		</flowInvoker>
+		<outputViews>
+			<jspView id="com" url="biz01line/cus/cuscom/CusCom/queryCusComTree.jsp" />
+			<jspView id="indiv" url="biz01line/cus/cusindiv/CusIndiv/queryCusIndivTree.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 开正式户时从Ecif查询客户信息 -->
+	<action id="GetCusFromEcif" type="normal" checkSession="true">
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.cus.op.conOtherSys.GetCusFromEcif" />
+			<transition dest="retPage" />
+		</flowInvoker>
+		<outputViews>
+			<view id="retPage" class="com.yucheng.cmis.view.JSONView">
+				<output class="com.ecc.emp.data.KeyedCollection">
+					<iColl id="cusList" class="com.ecc.emp.data.IndexedCollection">
+						<kColl class="com.ecc.emp.data.KeyedCollection" />
+					</iColl>
+				</output>
+			</view>
+		</outputViews>
+	</action>
+	
+	<!-- 开临时户时将客户信息发送Ecif并返回客户码 -->
+	<action id="SendCusMsg" type="normal" checkSession="true">
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.cus.op.conOtherSys.SendCusMsg" />
+			<transition dest="retPage" />
+		</flowInvoker>
+		<outputViews>
+			<view id="retPage" class="com.yucheng.cmis.view.JSONView">
+				<output class="com.ecc.emp.data.KeyedCollection">
+					<field id="flag" />
+					<field id="cusId" />
+					<field id="errorMsg" />
+				</output>
+			</view>
+		</outputViews>
+	</action>
+	
+	<!-- 从Ecif获取基本存款账户信息 -->
+	<action id="queryBasAccByCusId" type="normal" checkSession="true">
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.cus.op.conOtherSys.QueryBasAccByCusId" />
+			<transition dest="retPage"  />
+		</flowInvoker>
+		<outputViews>
+			<view id="retPage" class="com.yucheng.cmis.view.JSONView">
+				<output class="com.ecc.emp.data.KeyedCollection">
+					<iColl id="accList" class="com.ecc.emp.data.IndexedCollection">
+						<kColl class="com.ecc.emp.data.KeyedCollection" />
+					</iColl> 
+					<field id="msg" />
+				</output>
+			</view>
+		</outputViews>
+	</action>
+	
+	<!-- 获得客户类别 对公（com）对私（indiv） -->
+	<action id="checkCusTypeById" type="normal" checkSession="true">
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.cus.op.cusbase.GetCusRecordOp" />
+			<transition dest="retPage"  />
+		</flowInvoker>
+		<outputViews>
+			<view id="retPage" class="com.yucheng.cmis.view.JSONView">
+				<output class="com.ecc.emp.data.KeyedCollection">
+					<field id="flag" />
+				</output>
+			</view>
+		</outputViews>
+	</action>
+	
+	<!-- 获得客户类别 对公（com）对私（indiv） -->
+	<action id="queryCusTypeByCusId" type="normal" checkSession="true">
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.cus.op.cusbase.QueryCusTypeByCusIdOp" />
+			<transition dest="retPage"  />
+		</flowInvoker>
+		<outputViews>
+			<view id="retPage" class="com.yucheng.cmis.view.JSONView">
+				<output class="com.ecc.emp.data.KeyedCollection">
+					<field id="flag" />
+				</output>
+			</view>
+		</outputViews>
+	</action>
+	
+</actionDefines>
+
+
+

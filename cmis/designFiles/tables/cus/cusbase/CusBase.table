@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<CusBase.xml>
+  <TableModel id="CusBase" cnname="客户共用基表" dbTableName="cus_base" pageSize="10" isPaged="true">
+    <Field id="cus_id" JDBCType="VARCHAR2" length="30" columnName="cus_id" canBeNull="false" readonly="false" isPK="true" isEncrypted="false" JSPTag="text" dataType="" cnname="客户码"/>
+    <Field id="cus_name" JDBCType="VARCHAR2" length="80" columnName="cus_name" canBeNull="false" readonly="false" isPK="false" isEncrypted="false" JSPTag="text" dataType="" cnname="客户名称"/>
+    <Field id="cus_short_name" JDBCType="VARCHAR2" length="80" columnName="cus_short_name" canBeNull="false" readonly="false" isPK="false" isEncrypted="false" JSPTag="text" dataType="" cnname="客户简称"/>
+    <Field id="cus_type" JDBCType="CHAR" length="4" columnName="cus_type" canBeNull="false" readonly="false" isPK="false" isEncrypted="false" JSPTag="select" dataType="" cnname="客户类型"/>
+    <Field id="cert_type" JDBCType="VARCHAR2" length="3" columnName="cert_type" canBeNull="false" readonly="false" isPK="false" isEncrypted="false" JSPTag="text" dataType="" cnname="证件类型"/>
+    <Field id="cert_code" JDBCType="VARCHAR2" length="20" columnName="cert_code" canBeNull="false" readonly="false" isPK="false" isEncrypted="false" JSPTag="text" dataType="" cnname="证件号码"/>
+    <Field id="cus_country" JDBCType="CHAR" length="3" columnName="cus_country" canBeNull="false" readonly="false" isPK="false" isEncrypted="false" JSPTag="text" dataType="" cnname="国别"/>
+    <Field id="open_date" JDBCType="CHAR" length="10" columnName="open_date" canBeNull="false" readonly="false" isPK="false" isEncrypted="false" JSPTag="text" dataType="" cnname="开户日期"/>
+    <Field id="loan_card_flg" JDBCType="CHAR" length="1" columnName="loan_card_flg" canBeNull="false" readonly="false" isPK="false" isEncrypted="false" JSPTag="text" dataType="" cnname="是否有贷款卡"/>
+    <Field id="loan_card_id" JDBCType="VARCHAR2" length="16" columnName="loan_card_id" canBeNull="false" readonly="false" isPK="false" isEncrypted="false" JSPTag="text" dataType="" cnname="贷款卡编号"/>
+    <Field id="loan_card_pwd" JDBCType="VARCHAR2" length="20" columnName="loan_card_pwd" canBeNull="false" readonly="false" isPK="false" isEncrypted="false" JSPTag="text" dataType="" cnname="贷款卡密码"/>
+    <Field id="loan_card_eff_flg" JDBCType="CHAR" length="2" columnName="loan_card_eff_flg" canBeNull="false" readonly="false" isPK="false" isEncrypted="false" JSPTag="text" dataType="" cnname="贷款卡有效标志"/>
+    <Field id="loan_card_audit_dt" JDBCType="CHAR" length="10" columnName="loan_card_audit_dt" canBeNull="false" readonly="false" isPK="false" isEncrypted="false" JSPTag="text" dataType="" cnname="贷款卡最近年审日期"/>
+    <Field id="cus_crd_grade" JDBCType="CHAR" length="2" columnName="cus_crd_grade" canBeNull="false" readonly="false" isPK="false" isEncrypted="false" JSPTag="text" dataType="" cnname="信用等级"/>
+    <Field id="cus_crd_dt" JDBCType="CHAR" length="10" columnName="cus_crd_dt" canBeNull="false" readonly="false" isPK="false" isEncrypted="false" JSPTag="text" dataType="" cnname="信用评定日期"/>
+    <Field id="main_br_id" JDBCType="VARCHAR2" length="20" columnName="main_br_id" canBeNull="false" readonly="false" isPK="false" isEncrypted="false" JSPTag="text" dataType="" cnname="主管机构"/>
+    <Field id="cust_mgr" JDBCType="VARCHAR2" length="20" columnName="cust_mgr" canBeNull="false" readonly="false" isPK="false" isEncrypted="false" JSPTag="text" dataType="" cnname="客户经理"/>
+    <Field id="input_id" JDBCType="VARCHAR2" length="20" columnName="input_id" canBeNull="false" readonly="false" isPK="false" isEncrypted="false" JSPTag="text" dataType="" cnname="登记人"/>
+    <Field id="input_br_id" JDBCType="VARCHAR2" length="20" columnName="input_br_id" canBeNull="false" readonly="false" isPK="false" isEncrypted="false" JSPTag="text" dataType="" cnname="登记机构"/>
+    <Field id="input_date" JDBCType="CHAR" length="10" columnName="input_date" canBeNull="false" readonly="false" isPK="false" isEncrypted="false" JSPTag="text" dataType="" cnname="登记日期"/>
+    <Field id="cus_status" JDBCType="CHAR" length="2" columnName="cus_status" canBeNull="false" readonly="false" isPK="false" isEncrypted="false" JSPTag="text" dataType="" cnname="状态"/>
+    <Field id="belg_line" JDBCType="VARCHAR2" length="20" columnName="belg_line" canBeNull="false" readonly="false" isPK="false" isEncrypted="false" JSPTag="text" dataType="" cnname="所属条线"/>
+    <Field id="guar_crd_grade" JDBCType="VARCHAR2" length="2" columnName="guar_crd_grade" canBeNull="false" readonly="false" isPK="false" isEncrypted="false" JSPTag="text" dataType="" cnname="担保信用等级(内部)"/>
+    <Field id="last_update_date" JDBCType="VARCHAR2" length="10" columnName="last_update_date" canBeNull="false" readonly="false" isPK="false" isEncrypted="false" JSPTag="text" dataType="" cnname="最近更新日期"/>
+    <Field id="hx_cus_id" JDBCType="VARCHAR2" length="30" columnName="hx_cus_id" canBeNull="true" readonly="false" isPK="false" isEncrypted="false" JSPTag="text" dataType="null" cnname="核心客户号"/>
+    <OrderFields>cus_id[desc];</OrderFields>
+    <FilterFields>cus_id;cus_name;cus_short_name;cus_type;cert_type;cert_code;</FilterFields>
+    <TableInfo>本表作为公司客户、个人客户共用基表</TableInfo>
+  </TableModel>
+</CusBase.xml>

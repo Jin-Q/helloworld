@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<LmtAppDetails.xml>
+	<TableModel id="LmtAppDetails" pageSize="5" cnname="授信申请/变更分项表" isPaged="true" dbTableName="lmt_app_details">
+		<TableInfo/>
+		<Field id="serno" columnName="serno" cnname="业务编号" length="40" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="sub_type" dictname="STD_ZB_SUB_TYPE" columnName="sub_type" cnname="分项类别:一般授信/商圈/联保/行业/供应链/其他" length="2" JSPTag="select" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="core_corp_cus_id" columnName="core_corp_cus_id" cnname="核心企业客户码  供应链授信时需要" length="30" JSPTag="pop" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="core_corp_duty" dictname="STD_ZB_CORP_DUTY" columnName="core_corp_duty" cnname="核心企业责任：保证/回购  供应链授信时需要" length="2" JSPTag="select" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="limit_type" dictname="STD_ZB_LIMIT_TYPE" columnName="limit_type" cnname="额度类型：循环额度/临时额度" length="2" JSPTag="select" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="limit_code" isPK="true" columnName="limit_code" cnname="授信额度编号" length="32" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="limit_name" columnName="limit_name" cnname="额度品种名称" length="60" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="cur_type" dictname="STD_ZX_CUR_TYPE" columnName="cur_type" cnname="授信币种" length="3" JSPTag="select" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="ori_crd_amt" columnName="ori_crd_amt" cnname="原有授信金额" length="16" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="crd_amt" columnName="crd_amt" cnname="授信金额" length="16" JSPTag="text" canBeNull="false" JDBCType="NUMBER"/>
+		<Field id="froze_amt" columnName="froze_amt" cnname="冻结金额" length="16" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="unfroze_amt" columnName="unfroze_amt" cnname="解冻金额" length="16" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="guar_type" columnName="guar_type" cnname="担保方式" length="3" JSPTag="select" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="is_pre_crd" dictname="STD_ZX_YES_NO" columnName="is_pre_crd" cnname="是否预授信" length="2" JSPTag="select" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="start_date" columnName="start_date" cnname="授信起始日" length="10" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="end_date" columnName="end_date" cnname="授信到期日" length="10" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="update_flag" columnName="update_flag" cnname="修改类型" length="3" JSPTag="text" JDBCType="VARCHAR2"/>
+		<Field id="biz_circle_no" columnName="biz_circle_no" cnname="商圈编号" length="30" JSPTag="text" JDBCType="VARCHAR2"/>
+		<Field id="org_limit_code" columnName="org_limit_code" cnname="台账授信额度编号" length="32" JSPTag="text" JDBCType="VARCHAR2"/>
+		<Field id="term_type" dictname="STD_ZB_TERM_TYPE" columnName="term_type" cnname="授信期限类型" length="3" JSPTag="select" JDBCType="VARCHAR2"/>
+		<Field id="term" columnName="term" cnname="授信期限" length="3" JSPTag="text" JDBCType="NUMBER"/>
+		<FilterFields/>
+		<Field id="is_adj_term" dictname="STD_ZX_YES_NO" columnName="is_adj_term" cnname="是否调整期限" length="2" JSPTag="select" JDBCType="VARCHAR2"/>
+		<Field id="prd_id" columnName="prd_id" cnname="适用产品" length="400" JSPTag="text" JDBCType="VARCHAR2"/>
+		<Field id="cus_id" columnName="cus_id" cnname="客户码" length="30" JSPTag="text" JDBCType="VARCHAR2"/>
+		<Field id="lrisk_type" dictname="STD_ZB_LRISK_TYPE" columnName="lrisk_type" cnname="低风险业务类型" length="10" JSPTag="select" JDBCType="VARCHAR2"/>
+		<Field id="lmt_type" columnName="lmt_type" cnname="授信类别（区分授信条线）" length="10" JSPTag="text" JDBCType="VARCHAR2"/>
+		<Field id="green_indus" columnName="green_indus" url="showDicTree.do?dicTreeTypeId=STD_ZB_GREEN_INDUS" cnname="绿色行业类型" length="10" JSPTag="pop" returnmethod="greenIndusReturn" JDBCType="VARCHAR2"/>
+		<Field id="green_pro_type" columnName="green_pro_type" cnname="绿色授信项目类型" length="1" JSPTag="text" JDBCType="VARCHAR2"/>
+		<Field id="is_opn_mode" columnName="is_opn_mode" cnname="是否为1+N模式" JSPTag="text" length="2" canBeNull="true" JDBCType="VARCHAR2"/>
+	</TableModel>
+</LmtAppDetails.xml>

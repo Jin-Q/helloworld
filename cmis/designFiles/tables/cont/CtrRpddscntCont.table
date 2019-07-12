@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<CtrRpddscntCont.xml>
+	<TableModel id="CtrRpddscntCont" pageSize="10" cnname="转贴现合同表" isPaged="true" dbTableName="ctr_rpddscnt_cont">
+		<TableInfo/>
+		<Field id="serno" isPK="false" columnName="serno" cnname="业务编号" length="40" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="cont_no" isPK="true" columnName="cont_no" cnname="合同编号" length="40" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="batch_no" columnName="batch_no" cnname="批次号" length="40" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="prd_id" columnName="prd_id" cnname="产品编码" length="6" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="rpddscnt_type" dictname="STD_ZB_BUSI_TYPE" columnName="rpddscnt_type" cnname="转贴现方式" length="5" JSPTag="select" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="toorg_no" columnName="toorg_no" cnname="交易对手行号" length="20" JSPTag="pop" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="toorg_name" columnName="toorg_name" cnname="交易对手行名" length="100" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="topp_acct_name" columnName="topp_acct_name" cnname="交易对手户名" length="40" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="tooorg_no" columnName="tooorg_no" cnname="交易对手开户行行号" length="20" JSPTag="pop" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="tooorg_name" columnName="tooorg_name" cnname="交易对手开户行行名" length="100" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="this_acct_no" columnName="this_acct_no" cnname="本行账户" length="40" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="this_acct_name" columnName="this_acct_name" cnname="本行账户名" length="100" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="acctsvcr_no" columnName="acctsvcr_no" cnname="开户行行号" length="20" JSPTag="pop" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="acctsvcr_name" columnName="acctsvcr_name" cnname="开户行行名" length="100" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="bill_type" dictname="STD_DRFT_TYPE" columnName="bill_type" cnname="票据种类" length="5" JSPTag="select" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="bill_curr" dictname="STD_ZX_CUR_TYPE" columnName="bill_curr" cnname="票据币种" length="3" JSPTag="select" canBeNull="true" JDBCType="CHAR"/>
+		<Field id="bill_total_amt" dataType="Currency" columnName="bill_total_amt" cnname="票据总金额" length="16" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="bill_qnt" columnName="bill_qnt" cnname="票据数量" length="38" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="rpddscnt_date" columnName="rpddscnt_date" cnname="转贴现日期" length="10" JSPTag="date" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="rpddscnt_rate" dataType="Rate" columnName="rpddscnt_rate" cnname="转贴现利率" length="10" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="rpddscnt_int" dataType="Currency" columnName="rpddscnt_int" cnname="总贴现利息" length="16" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="rpay_amt" dataType="Currency" columnName="rpay_amt" cnname="总实付金额" length="16" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="rebuy_date" columnName="rebuy_date" cnname="回购日期" length="10" JSPTag="date" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="rebuy_rate" dataType="Rate" columnName="rebuy_rate" cnname="回购利率" length="10" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="rebuy_int" dataType="Currency" columnName="rebuy_int" cnname="总回购利息" length="16" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="rebuy_amt" dataType="Currency" columnName="rebuy_amt" cnname="总回购金额" length="16" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="memo" columnName="memo" cnname="备注" length="250" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="manager_br_id" columnName="manager_br_id" cnname="管理机构" length="20" JSPTag="pop" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="input_id" columnName="input_id" cnname="登记人" length="40" JSPTag="pop" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="input_br_id" columnName="input_br_id" cnname="登记机构" length="20" JSPTag="pop" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="input_date" columnName="input_date" cnname="登记日期" length="10" JSPTag="date" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="cont_status" dictname="STD_ZB_CTRLOANCONT_TYPE" columnName="cont_status" cnname="合同状态" length="5" JSPTag="select" canBeNull="true" JDBCType="VARCHAR2"/>
+		<OrderFields>serno;cont_no;input_date;</OrderFields>
+		<ConditionFields>serno;batch_no;</ConditionFields>
+		<FilterFields>serno;cont_no;batch_no;prd_id;rpddscnt_type;toorg_name;bill_type;bill_total_amt;bill_qnt;rpay_amt;manager_br_id;cont_status;</FilterFields>
+		<RecordRestrict query="true" delete="true" update="true"/>
+		<Field id="topp_acct_no" columnName="topp_acct_no" cnname="交易对手账号" length="40" JSPTag="text" JDBCType="VARCHAR2"/>
+		<Field id="limit_ind" columnName="limit_ind" cnname="授信额度使用标志" length="1" JSPTag="text" JDBCType="CHAR"/>
+		<Field id="limit_acc_no" columnName="limit_acc_no" cnname="授信台帐编号" length="40" JSPTag="text" JDBCType="VARCHAR2"/>
+		<Field id="cn_cont_no" columnName="cn_cont_no" cnname="中文合同编号" JSPTag="text" length="100" JDBCType="VARCHAR2"/>
+	</TableModel>
+</CtrRpddscntCont.xml>

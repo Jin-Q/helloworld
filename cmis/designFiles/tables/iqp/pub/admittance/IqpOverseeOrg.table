@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<IqpOverseeOrg.xml>
+	<TableModel id="IqpOverseeOrg" pageSize="15" cnname="监管机构信息" isPaged="true" dbTableName="iqp_oversee_org">
+		<TableInfo/>
+		<Field id="oversee_org_id" columnName="oversee_org_id" cnname="监管机构编号" length="30" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="is_busnes_con" columnName="is_busnes_con" cnname="是否为贸易企业" length="1" JSPTag="text" canBeNull="true" JDBCType="CHAR"/>
+		<Field id="other_oper_pro" columnName="other_oper_pro" cnname="其他经营项目" length="100" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="is_parmachin" columnName="is_parmachin" cnname="是否附带加工" length="1" JSPTag="text" canBeNull="true" JDBCType="CHAR"/>
+		<Field id="storage_volume" columnName="storage_volume" cnname="仓库容量" length="40" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="transfer_abi_y" columnName="transfer_abi_y" cnname="年吞吐量" length="40" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="openairsqu" columnName="openairsqu" cnname="露天面积（平方米）" length="10" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="storage_chrg_normal" columnName="storage_chrg_normal" cnname="仓储收费标准" length="500" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="place_util_case" columnName="place_util_case" cnname="场地使用权情况" length="10" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="trade_stand_status" columnName="trade_stand_status" cnname="行业信誉状况" length="10" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="oversee_biz_chief" columnName="oversee_biz_chief" cnname="监管业务负责人" length="30" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="link_mode" columnName="link_mode" cnname="联系方式" length="20" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="oper_range" columnName="oper_range" cnname="经营范围" length="500" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="now_main_biz_oper" columnName="now_main_biz_oper" cnname="现主要业务及经营状况" length="500" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="store_occlude_modal" columnName="store_occlude_modal" cnname="仓库封闭形式" length="500" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="person_iostore_proce" columnName="person_iostore_proce" cnname="人员出入库手续" length="500" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="goods_iostore_proce" columnName="goods_iostore_proce" cnname="货物出入库手续" length="500" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="goods_test_proce" columnName="goods_test_proce" cnname="货物检、化验手续" length="500" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="imn_is_espec_flow" columnName="imn_is_espec_flow" cnname="质押监管融资是否有特别流程" length="500" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="bkloan_outguar_case" columnName="bkloan_outguar_case" cnname="银行借款及对外担保情况" length="500" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="his_record" columnName="his_record" cnname="历史资信记录" length="500" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="alcoopbk_cpyear" columnName="alcoopbk_cpyear" cnname="已合作货押监管的银行及合作年限记录" length="500" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="his_coop_case" columnName="his_coop_case" cnname="我行历史合作情况" length="500" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="cpwish_advice" columnName="cpwish_advice" cnname="仓储单位监管能力、与我行的监管合作意愿及对我行动产融资业务的建议" length="500" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="other_indgt_case" columnName="other_indgt_case" cnname="其他调查情况" length="500" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="cdt_eval" columnName="cdt_eval" cnname="信用等级" length="6" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="eval_time" columnName="eval_time" cnname="评估日期" length="10" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="oversee_mode" columnName="oversee_mode" cnname="监管模式" length="40" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="opr_mode" columnName="opr_mode" cnname="操作模式" length="40" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="is_build_oslimit" columnName="is_build_oslimit" cnname="是否设立监管额度" length="1" JSPTag="text" canBeNull="true" JDBCType="CHAR"/>
+		<Field id="defray_limit" columnName="defray_limit" cnname="拟支用额度" length="16" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="limit_start_date" columnName="limit_start_date" cnname="额度开始日期" length="10" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="limit_over_date" columnName="limit_over_date" cnname="额度结束日期" length="10" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="oversee_way" columnName="oversee_way" cnname="监管方式" length="10" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="low_auth_value" columnName="low_auth_value" cnname="最低核准价值" length="16" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="input_id" columnName="input_id" cnname="登记人" length="20" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="input_br_id" columnName="input_br_id" cnname="登记机构" length="20" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="input_date" columnName="input_date" cnname="登记日期" length="10" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="manager_id" columnName="manager_id" cnname="责任人" length="20" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="manager_br_id" columnName="manager_br_id" cnname="责任机构" length="20" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="serno" isPK="true" columnName="serno" cnname="业务流水号" length="40" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="oversee_org_status" columnName="oversee_org_status" cnname="状态" length="2" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="begin_date" columnName="begin_date" cnname="准入起始日" length="10" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="end_date" columnName="end_date" cnname="准入到期日" length="10" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<OrderFields>serno[desc];</OrderFields>
+		<RecordRestrict query="true" delete="true" update="true"/>
+		<ConditionFields>oversee_org_id;oversee_org_status;</ConditionFields>
+		<FilterFields>oversee_org_id;input_id;input_br_id;input_date;oversee_org_status;</FilterFields>
+	</TableModel>
+</IqpOverseeOrg.xml>

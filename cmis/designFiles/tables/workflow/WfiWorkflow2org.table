@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<WfiWorkflow2org.xml>
+	<TableModel id="WfiWorkflow2org" pageSize="15" cnname="流程关联机构配置" isPaged="true" dbTableName="wfi_workflow2org">
+		<TableInfo/>
+		<Field id="wf2org_id" JDBCType="VARCHAR2" length="40" columnName="wf2org_id" canBeNull="false" pkGenerator="UNID" isPK="true" JSPTag="text" cnname="关联ID"/>
+		<Field id="org_id" columnName="org_id" cnname="机构ID" length="20" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="org_name" columnName="org_name" cnname="机构名称" length="40" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="appl_type" dictname="ZB_BIZ_CATE" columnName="appl_type" cnname="申请类型" length="3" JSPTag="select" canBeNull="true" JDBCType="CHAR"/>
+		<Field id="wfsign" columnName="wfsign" cnname="流程标识" length="32" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="wfname" readonly="true" columnName="wfname" cnname="流程名称" length="50" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="remark" columnName="remark" cnname="备注" length="100" JSPTag="textarea" canBeNull="true" JDBCType="VARCHAR2"/>
+		<OrderFields>org_id;appl_type;</OrderFields>
+		<ConditionFields>org_id;org_name;appl_type;wfname;</ConditionFields>
+		<FilterFields>org_id;org_name;appl_type;wfsign;wfname;</FilterFields>
+	</TableModel>
+</WfiWorkflow2org.xml>

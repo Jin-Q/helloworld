@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<STeamOrg.xml>
+	<TableModel id="STeamOrg" cnname="团队归属机构表" dbTableName="s_team_org">
+		<Field id="team_no" isPK="true" columnName="team_no" cnname="团队编号" length="20" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="team_org_id" isPK="true" columnName="team_org_id" cnname="机构码" length="20" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="status" columnName="status" cnname="状态" length="2" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="attr01" columnName="attr01" cnname="属性01" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="attr02" columnName="attr02" cnname="属性02" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="attr03" columnName="attr03" cnname="属性03" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+	</TableModel>
+</STeamOrg.xml>

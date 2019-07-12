@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<S>
+
+<!-- 取系统中所有定义的角色 -->
+<SQL id="queryAllRoles" parameterClass="java.lang.String" resultClass="com.yucheng.cmis.platform.organization.domains.SRole" onlyReturnFirst="false">
+  <SELECT>
+  <![CDATA[
+  	select roleno,rolename,orderno,type,memo,orgid from s_role
+  ]]>
+  </SELECT> 
+</SQL>
+
+<!-- 获得该用户拥有的角色集合 -->
+<SQL id="queryRolesByUserId" parameterClass="java.lang.String" resultClass="com.yucheng.cmis.platform.organization.domains.SRole" onlyReturnFirst="false">
+  <SELECT>
+  <![CDATA[
+  	select s.roleno,s.rolename,s.orderno,s.type,s.memo,s.orgid 
+  	from s_role s, s_roleuser u  
+  	where s.roleno = u.roleno and u.actorno=${_SIG_VALUE} 
+  ]]>
+  </SELECT> 
+</SQL>
+<!-- 根据机构号岗位获取对应的用户 -->
+<SQL id="queryUsersByOrgIdAndDutyId" parameterClass="java.util.HashMap" resultClass="com.yucheng.cmis.platform.organization.domains.SUser" onlyReturnFirst="false">
+  <SELECT>
+  <![CDATA[
+	 select d.ACTORNO from s_dutyuser d  left join s_user_org o on o.actorno = d.actorno   where d.dutyno=${dutyId}   and  o.orgid =${orgId}
+  ]]>
+  </SELECT>
+</SQL>
+
+<!-- 获得系统中所有用户集合 -->
+<SQL id="queryAllUsers" parameterClass="java.lang.String" resultClass="com.yucheng.cmis.platform.organization.domains.SUser" onlyReturnFirst="false">
+  <SELECT>
+  <![CDATA[
+  	select * from s_user
+  ]]>
+  </SELECT> 
+</SQL>
+
+<!-- 获得该机构下所有用户集合 -->
+<SQL id="queryUsersByOrgId" parameterClass="java.lang.String" resultClass="com.yucheng.cmis.platform.organization.domains.SUser" onlyReturnFirst="false">
+  <SELECT>
+  <![CDATA[
+  	select * from s_user a where a.actorno in (select b.actorno from s_deptuser b where b.organno = ${_SIG_VALUE})
+  ]]>
+  </SELECT> 
+</SQL>
+
+<!-- 获得该机构及其下属机构下所有用户集合  -->
+<SQL id="queryOrgAndSubOrgUsers" parameterClass="java.lang.String" resultClass="com.yucheng.cmis.platform.organization.domains.SUser" onlyReturnFirst="false">
+  <SELECT>
+  <![CDATA[
+  	select * from s_user where orgid in (select organno from s_org where  locate like ${_SIG_VALUE})
+  ]]>
+  </SELECT> 
+</SQL>
+
+<!-- 获得系统中所有机构集合 -->
+<SQL id="queryAllOrgs" parameterClass="java.lang.String" resultClass="com.yucheng.cmis.platform.organization.domains.SOrg" onlyReturnFirst="false">
+  <SELECT>
+  <![CDATA[
+  	SELECT * FROM S_ORG ORDER BY ORGANNO
+  ]]>
+  </SELECT> 
+</SQL>
+
+<!-- 根据机构号获得该机构信息 -->
+<SQL id="queryOrgByOrgId" parameterClass="java.lang.String" resultClass="com.yucheng.cmis.platform.organization.domains.SOrg" onlyReturnFirst="true">
+  <SELECT>
+  <![CDATA[
+  	select * from s_org where organno=${_SIG_VALUE} 
+  ]]>
+  </SELECT> 
+</SQL>
+
+<!-- 获得系统中所有岗位集合 -->
+<SQL id="queryAllDutys" parameterClass="java.lang.String" resultClass="com.yucheng.cmis.platform.organization.domains.SDuty" onlyReturnFirst="false">
+  <SELECT>
+  <![CDATA[
+  	select * from s_duty
+  ]]>
+  </SELECT> 
+</SQL>
+
+<!-- 获得该用户所有岗位信息-->
+<SQL id="queryDutysByuserId" parameterClass="java.lang.String" resultClass="com.yucheng.cmis.platform.organization.domains.SDuty" onlyReturnFirst="false">
+  <SELECT>
+  <![CDATA[
+  	select * from s_duty a ,s_dutyuser b where a.dutyno = b.dutyno and b.actorno=${_SIG_VALUE} 
+  ]]>
+  </SELECT> 
+</SQL>
+
+<!-- 根据用户号获得用户信息 -->
+<SQL id="queryUsersByUserId" parameterClass="java.lang.String" resultClass="com.yucheng.cmis.platform.organization.domains.SUser" onlyReturnFirst="true">
+  <SELECT>
+  <![CDATA[
+  	select * from s_user where actorno=${_SIG_VALUE} 
+  ]]>
+  </SELECT> 
+</SQL>
+
+<!-- 获得该岗位下所有用户信息 -->
+<SQL id="queryUsersByDutyId" parameterClass="java.lang.String" resultClass="com.yucheng.cmis.platform.organization.domains.SUser" onlyReturnFirst="false">
+  <SELECT>
+  <![CDATA[
+  	SELECT * FROM S_DUTY A ,S_DUTYUSER B ,S_USER C WHERE A.DUTYNO = B.DUTYNO AND B.ACTORNO=C.ACTORNO AND A.DUTYNO=${_SIG_VALUE} 
+  ]]>
+  </SELECT> 
+</SQL>
+
+<!-- 获得该角色下所有用户信息 -->
+<SQL id="queryUsersByRoleId" parameterClass="java.lang.String" resultClass="com.yucheng.cmis.platform.organization.domains.SUser" onlyReturnFirst="false">
+  <SELECT>
+  <![CDATA[
+  	 select * from s_user a, s_roleuser b where a.actorno = b.actorno and b.roleno=${_SIG_VALUE} 
+  ]]>
+  </SELECT> 
+</SQL>
+
+<!-- 机构下所有的直属子机构（不含多级子机构）-->
+<SQL id="queryDirectSubOrgs" parameterClass="java.lang.String" resultClass="com.yucheng.cmis.platform.organization.domains.SOrg" onlyReturnFirst="false">
+  <SELECT>
+  <![CDATA[
+  	SELECT * FROM S_ORG WHERE SUPORGANNO=${_SIG_VALUE}
+  ]]>
+  </SELECT> 
+</SQL>
+
+<!-- 返回机构下所有的子机构（包含多级子机构） -->
+<SQL id="getAllSubOrgs" parameterClass="java.lang.String" resultClass="com.yucheng.cmis.platform.organization.domains.SOrg" onlyReturnFirst="false">
+  <SELECT>
+  <![CDATA[
+  	SELECT * FROM (SELECT * FROM S_ORG START WITH ORGANNO=${_SIG_VALUE} CONNECT BY NOCYCLE PRIOR ORGANNO=SUPORGANNO) WHERE ORGANNO!=${_SIG_VALUE}
+  ]]>
+  </SELECT> 
+</SQL>
+
+<!-- 根据机构号查询上级机构号 -->
+<SQL id="getSupOrganNo" parameterClass="java.lang.String" resultClass="java.lang.String" onlyReturnFirst="true">
+  <SELECT>
+  <![CDATA[
+  SELECT SUPORGANNO FROM S_ORG WHERE ORGANNO=${_SIG_VALUE}
+  ]]>
+  </SELECT> 
+</SQL>
+
+<!-- 根据机构号查询同一机构线上的机构 -->
+<SQL id="getSameOrgLine" parameterClass="java.lang.String" resultClass="com.yucheng.cmis.platform.organization.domains.SOrg" onlyReturnFirst="false">
+  <SELECT>
+  <![CDATA[
+  SELECT * FROM S_ORG START WITH ORGANNO=${_SIG_VALUE} CONNECT BY NOCYCLE PRIOR SUPORGANNO=ORGANNO
+  ]]>
+  </SELECT> 
+</SQL>
+
+<!-- 根据角色名称模糊查询 -->
+<SQL id="getRolesByName" parameterClass="java.lang.String" resultClass="com.yucheng.cmis.platform.organization.domains.SRole" onlyReturnFirst="false">
+  <SELECT>
+  <![CDATA[
+  SELECT * FROM S_ROLE WHERE ROLENAME LIKE ${_SIG_VALUE}
+  ]]>
+  </SELECT> 
+</SQL>
+
+<!-- 根据用户名称模糊查询 -->
+<SQL id="getUsersByName" parameterClass="java.lang.String" resultClass="com.yucheng.cmis.platform.organization.domains.SUser" onlyReturnFirst="false">
+  <SELECT>
+  <![CDATA[
+  SELECT * FROM S_USER WHERE ACTORNAME LIKE ${_SIG_VALUE}
+  ]]>
+  </SELECT> 
+</SQL>
+
+<!-- 根据用户码查询所在机构 -->
+<SQL id="getDeptOrgByActno" parameterClass="java.lang.String" resultClass="com.yucheng.cmis.platform.organization.domains.SOrg" onlyReturnFirst="false">
+  <SELECT>
+  <![CDATA[
+  SELECT * FROM S_ORG WHERE ORGANNO IN (SELECT ORGANNO FROM S_DEPTUSER WHERE ACTORNO=${_SIG_VALUE})
+  ]]>
+  </SELECT> 
+</SQL>
+
+<!-- 根据用户码删除配置皮肤信息 add by tangzf 2014.05.15 -->
+<SQL id="deleteSkinByActno" parameterClass="java.lang.String" onlyReturnFirst="false">
+  <SELECT>
+  <![CDATA[
+  DELETE FROM PUB_SKIN WHERE ACTORNO=${_SIG_VALUE}
+  ]]>
+  </SELECT> 
+</SQL>
+
+</S>

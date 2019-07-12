@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<WfAgentLog.xml>
+	<TableModel id="WfAgentLog" cnname="WF_AGENT_LOG" dbTableName="wf_agent_log">
+		<Field id="instanceid" isPK="true" columnName="instanceid" cnname="INSTANCEID" length="32" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="wfid" columnName="wfid" cnname="WFID" length="32" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="wfsign" columnName="wfsign" cnname="WFSIGN" length="32" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="nodeid" isPK="true" columnName="nodeid" cnname="NODEID" length="32" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="nodestarttime" isPK="true" columnName="nodestarttime" cnname="NODESTARTTIME" length="19" JDBCType="CHAR" canBeNull="false"/>
+		<Field id="originaluser" isPK="true" columnName="originaluser" cnname="ORIGINALUSER" length="100" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="replacer" columnName="replacer" cnname="REPLACER" length="100" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="sysid" columnName="sysid" cnname="SYSID" length="32" JDBCType="VARCHAR2" canBeNull="true"/>
+	</TableModel>
+</WfAgentLog.xml>

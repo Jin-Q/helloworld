@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<S>
+
+<!-- Flash数据准备SQL 01 -->
+<SQL id="demo_flash_01" parameterClass="java.lang.String" resultClass="com.ecc.emp.data.KeyedCollection" onlyReturnFirst="false">
+  <SELECT>
+  <![CDATA[
+  	select * from demo_flash_product where product_id=${_SIG_VALUE} 
+  ]]>
+  </SELECT> 
+</SQL>
+
+</S>

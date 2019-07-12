@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<CusSocialProtection.xml>
+	<TableModel id="CusSocialProtection" cnname="社会保障信息表" dbTableName="cus_social_protection">
+		<Field id="cus_id" columnName="cus_id" cnname="客户号" length="30" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="time_interzone" columnName="time_interzone" cnname="时间区间" length="30" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="with_cust_rela" columnName="with_cust_rela" cnname="与客户关系" length="10" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="social_prot_id" columnName="social_prot_id" cnname="社会保障号码" length="40" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="provid_fund_id" columnName="provid_fund_id" cnname="公积金账号" length="40" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="ent_provid_fund_id" columnName="ent_provid_fund_id" cnname="单位公积金账号" length="40" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="provid_fund_pay_monthly" columnName="provid_fund_pay_monthly" cnname="公积金月缴额" length="16" JDBCType="NUMBER" canBeNull="false"/>
+		<Field id="provid_fund_bal" columnName="provid_fund_bal" cnname="公积金余额" length="16" JDBCType="NUMBER" canBeNull="false"/>
+		<Field id="supp_pay_monthly" columnName="supp_pay_monthly" cnname="补充月缴额" length="16" JDBCType="NUMBER" canBeNull="false"/>
+		<Field id="supp_provid_fund_bal" columnName="supp_provid_fund_bal" cnname="补充公积金余额" length="16" JDBCType="NUMBER" canBeNull="false"/>
+		<Field id="family_pay_monthly_total" columnName="family_pay_monthly_total" cnname="家庭月缴合计" length="16" JDBCType="NUMBER" canBeNull="false"/>
+		<Field id="join_insur" columnName="join_insur" cnname="参保情况" length="40" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="input_id" columnName="input_id" cnname="登记人" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="input_br_id" columnName="input_br_id" cnname="登记机构" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="input_date" columnName="input_date" cnname="登记日期" length="10" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="serno" isPK="true" columnName="serno" cnname="流水号" length="40" JDBCType="VARCHAR2" canBeNull="false"/>
+	</TableModel>
+</CusSocialProtection.xml>

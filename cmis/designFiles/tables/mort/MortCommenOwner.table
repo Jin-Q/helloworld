@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<MortCommenOwner.xml>
+	<TableModel id="MortCommenOwner" pageSize="10" cnname="共有人信息表" isPaged="true" dbTableName="mort_commen_owner">
+		<TableInfo/>
+		<Field id="commen_owner_no" isPK="true" columnName="commen_owner_no" cnname="共有人编号" length="40" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="guaranty_no" isPK="true" columnName="guaranty_no" cnname="押品编号" length="40" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<RecordRestrict query="true" delete="true" update="true"/>
+	</TableModel>
+</MortCommenOwner.xml>

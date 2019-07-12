@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actionDefines>
+	<classMap>
+		<map id="action" class="com.yucheng.cmis.ad.mvc.ADRequestController"/>
+		<map id="flowInvoker" class="com.yucheng.cmis.ad.mvc.ADFlowInvoker"/>
+		<map id="outputViews" class="java.util.HashMap"/>
+		<map id="output" class="com.ecc.emp.data.KeyedCollection"/>
+		<map id="kColl" class="com.ecc.emp.data.KeyedCollection"/>
+		<map id="iColl" class="com.ecc.emp.data.IndexedCollection"/>
+		<map id="field" class="com.ecc.emp.data.DataField"/>
+	</classMap>
+	
+	<!-- 获取操作主页面 -->
+	<action id="queryLmtRediApplyList" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.lmt.op.lmtrediapply.QueryLmtRediApplyListOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="biz01line/lmt/LmtRediApply/queryLmtRediApplyList.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 判断是否已经生成复议  -->
+	<action id="searchRediApply" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.lmt.op.lmtrediapply.SearchRediApplyOp"/>
+			 <transition dest="retPage"/>
+		 </flowInvoker>
+		 <outputViews>
+			<view id="retPage" class="com.yucheng.cmis.view.JSONView">
+				<output class="com.ecc.emp.data.KeyedCollection">
+					<field id="flag" />
+					<field id="msg" />
+				</output>
+			</view>
+		</outputViews>
+	</action>
+	
+	<!-- 生成对公复议申请  -->
+	<action id="getRediApplyPage" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.lmt.op.lmtrediapply.GetRediApplyPageOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="biz01line/lmt/LmtRediApply/rediLmtApplyRecord.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 生成个人复议申请 -->
+	<action id="getIndivRediApplyPage" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.lmt.op.lmtrediapply.GetIndivRediApplyPageOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="biz01line/lmt/LmtRediApply/rediIndivLmtApplyRecord.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 生成集团复议申请 -->
+	<action id="getLmtGrpAppRediPage" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.lmt.op.lmtrediapply.GetLmtGrpAppRediPageOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="biz01line/lmt/LmtRediApply/rediGrpLmtApplyRecord.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 生成联保复议申请 -->
+	<action id="getLmtAppCoopRediPage" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.lmt.op.lmtrediapply.GetLmtAppCoopRediPageOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="biz01line/lmt/LmtRediApply/rediCoopLmtApplyRecord.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 获得查看页面 -->
+	<action id="getLmtRediApplyViewPage" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.lmt.op.lmtrediapply.QueryLmtRediApplyDetailOp"/>
+			<transition dest="comPage" condition="($retValue='comPage')"/>
+			<transition dest="indivPage" condition="($retValue='indivPage')"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="comPage" url="biz01line/lmt/LmtRediApply/rediLmtApplyRecord.jsp" />
+			<jspView id="indivPage" url="biz01line/lmt/LmtRediApply/rediIndivLmtApplyRecord.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 删除记录 -->
+	<action id="deleteLmtRediApplyRecord" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.lmt.op.lmtrediapply.DeleteLmtRediApplyRecordOp"/>
+			 <transition dest="retPage"/>
+		 </flowInvoker>
+		 <outputViews>
+			<view id="retPage" class="com.yucheng.cmis.view.JSONView">
+				<output class="com.ecc.emp.data.KeyedCollection">
+					<field id="flag" />
+					<field id="msg" />
+				</output>
+			</view>
+		</outputViews>
+	</action>
+	
+	<!-- 分页查询记录列表 -->
+		<action id="pageLmtRediApplyQuery" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.lmt.op.lmtrediapply.QueryLmtRediApplyListOp"/>
+			<transition dest="queryListRes"/>
+		</flowInvoker>
+		<outputViews>
+			<jsonView class="com.yucheng.cmis.view.JSONView" id="queryListRes">
+				<output>
+					<iColl id="LmtRediApplyList">
+						<kColl>
+						</kColl>
+					</iColl>
+					<kColl id="pageInfo">
+						<field id="currentPage" />
+						<field id="maxLine" />
+						<field id="recordSize" />
+					</kColl>
+				</output>
+			</jsonView>
+		</outputViews>
+	</action>
+		<!-- 获取操作主页面 -->
+	<action id="queryLmtAppGrpRediList" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.lmt.op.lmtrediapply.QueryLmtAppGrpRediListOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="biz01line/lmt/LmtRediApply/queryLmtAppGrpRediList.jsp" />
+		</outputViews>
+	</action>
+	<!-- 分页查询记录列表 -->
+		<action id="pageLmtAppGrpRediQuery" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.lmt.op.lmtrediapply.QueryLmtAppGrpRediListOp"/>
+			<transition dest="queryListRes"/>
+		</flowInvoker>
+		<outputViews>
+			<jsonView class="com.yucheng.cmis.view.JSONView" id="queryListRes">
+				<output>
+					<iColl id="LmtAppGrpRediList">
+						<kColl>
+						</kColl>
+					</iColl>
+					<kColl id="pageInfo">
+						<field id="currentPage" />
+						<field id="maxLine" />
+						<field id="recordSize" />
+					</kColl>
+				</output>
+			</jsonView>
+		</outputViews>
+	</action>
+	
+	<action id="queryLmtAppJointCoopRediList" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.lmt.op.lmtrediapply.QueryLmtAppJointCoopRediListOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="biz01line/lmt/LmtRediApply/queryLmtAppJointCoopRediList.jsp" />
+		</outputViews>
+	</action>
+	<!-- 分页查询记录列表 -->
+		<action id="pageLmtAppJointCoopRediQuery" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.lmt.op.lmtrediapply.QueryLmtAppJointCoopRediListOp"/>
+			<transition dest="queryListRes"/>
+		</flowInvoker>
+		<outputViews>
+			<jsonView class="com.yucheng.cmis.view.JSONView" id="queryListRes">
+				<output>
+					<iColl id="LmtAppJointCoopRediList">
+						<kColl>
+						</kColl>
+					</iColl>
+					<kColl id="pageInfo">
+						<field id="currentPage" />
+						<field id="maxLine" />
+						<field id="recordSize" />
+					</kColl>
+				</output>
+			</jsonView>
+		</outputViews>
+	</action>
+</actionDefines>
+
+
+

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<MortCargoRepl.xml>
+	<TableModel id="MortCargoRepl" cnname="货物置换" dbTableName="mort_cargo_repl">
+		<Field id="serno" isPK="true" columnName="serno" cnname="业务编号" length="60" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="cus_id" columnName="cus_id" cnname="出质人客户编号" length="40" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="guaranty_no" columnName="guaranty_no" cnname="押品编号" length="40" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="oversee_agr_no" columnName="oversee_agr_no" cnname="监管协议编号" length="40" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="storage_total" columnName="storage_total" cnname="库存总价值" length="20" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="this_repl_total" columnName="this_repl_total" cnname="此次置换总价值" length="20" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="after_repl_total" columnName="after_repl_total" cnname="置换后总价值" length="20" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="tally_date" columnName="tally_date" cnname="记账日期" length="10" JDBCType="CHAR" canBeNull="true"/>
+		<Field id="memo" columnName="memo" cnname="备注" length="200" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="status" columnName="status" cnname="状态" length="3" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="input_id" columnName="input_id" cnname="登记人" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="input_br_id" columnName="input_br_id" cnname="登记机构" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="input_date" columnName="input_date" cnname="登记日期" length="10" JDBCType="CHAR" canBeNull="true"/>
+	</TableModel>
+</MortCargoRepl.xml>

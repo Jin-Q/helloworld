@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<RscTaskInfoSubHis.xml>
+	<TableModel id="RscTaskInfoSubHis" cnname="风险分类认定" dbTableName="rsc_task_info_sub_his"> 
+		<Field id="pk_id" isPK="true" columnName="pk_id"   cnname="主键" length="40" JDBCType="VARCHAR2" canBeNull="false"/>    
+		<Field id="serno"   columnName="serno"   cnname="主键" length="40" JDBCType="VARCHAR2" canBeNull="false"/>
+        <Field id="identy_duty"  columnName="identy_duty"   cnname="认定岗位" length="80" JDBCType="VARCHAR2" canBeNull="false"/>
+        <Field id="class_adjust_rst" columnName="class_adjust_rst"  cnname="分类调整结果" length="5" JDBCType="VARCHAR2" canBeNull="false"/>
+        <Field id="remark" columnName="remark"  cnname="调整理由" length="400" JDBCType="VARCHAR2" canBeNull="false"/>
+        <Field id="class_date" columnName="class_date"  cnname="分类日期" length="20" JDBCType="VARCHAR2" canBeNull="false"/>
+    </TableModel>
+</RscTaskInfoSubHis.xml>

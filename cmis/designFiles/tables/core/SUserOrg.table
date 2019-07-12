@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<SUserOrg.xml>
+	<TableModel id="SUserOrg" cnname="用户机构信息" dbTableName="s_user_org">
+		<TableInfo/>
+		<Field id="actorno" columnName="actorno" cnname="ACTORNO" length="8" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="actorname" columnName="actorname" cnname="ACTORNAME" length="20" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="telnum" columnName="telnum" cnname="TELNUM" length="20" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="idcardno" columnName="idcardno" cnname="IDCARDNO" length="20" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="orgid" columnName="orgid" cnname="ORGID" length="16" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+	</TableModel>
+</SUserOrg.xml>

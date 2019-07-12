@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<PvpAuthorizeSub.xml>
+	<TableModel id="PvpAuthorizeSub" cnname="授权信息从表" dbTableName="pvp_authorize_sub">
+		<Field id="auth_no" columnName="auth_no" cnname="授权编号" length="40" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="busi_cls" columnName="busi_cls" cnname="业务类别" length="10" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="fldvalue01" columnName="fldvalue01" cnname="FLDVALUE01" length="200" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="fldvalue02" columnName="fldvalue02" cnname="FLDVALUE02" length="200" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="fldvalue03" columnName="fldvalue03" cnname="FLDVALUE03" length="200" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="fldvalue04" columnName="fldvalue04" cnname="FLDVALUE04" length="200" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="fldvalue05" columnName="fldvalue05" cnname="FLDVALUE05" length="200" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="fldvalue06" columnName="fldvalue06" cnname="FLDVALUE06" length="200" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="fldvalue07" columnName="fldvalue07" cnname="FLDVALUE07" length="200" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="fldvalue08" columnName="fldvalue08" cnname="FLDVALUE08" length="200" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="fldvalue09" columnName="fldvalue09" cnname="FLDVALUE09" length="200" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="fldvalue10" columnName="fldvalue10" cnname="FLDVALUE10" length="200" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="fldvalue11" columnName="fldvalue11" cnname="FLDVALUE11" length="200" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="fldvalue12" columnName="fldvalue12" cnname="FLDVALUE12" length="200" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="fldvalue13" columnName="fldvalue13" cnname="FLDVALUE13" length="200" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="fldvalue14" columnName="fldvalue14" cnname="FLDVALUE14" length="200" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="fldvalue15" columnName="fldvalue15" cnname="FLDVALUE15" length="200" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="fldvalue16" columnName="fldvalue16" cnname="FLDVALUE16" length="200" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="fldvalue17" columnName="fldvalue17" cnname="FLDVALUE17" length="200" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="fldvalue18" columnName="fldvalue18" cnname="FLDVALUE18" length="200" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="fldvalue19" columnName="fldvalue19" cnname="FLDVALUE19" length="200" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="fldvalue20" columnName="fldvalue20" cnname="FLDVALUE20" length="200" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="fldvalue21" columnName="fldvalue21" cnname="FLDVALUE21" length="200" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="fldvalue22" columnName="fldvalue22" cnname="FLDVALUE22" length="200" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="fldvalue23" columnName="fldvalue23" cnname="FLDVALUE23" length="200" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="fldvalue24" columnName="fldvalue24" cnname="FLDVALUE24" length="200" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="fldvalue25" columnName="fldvalue25" cnname="FLDVALUE25" length="200" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="fldvalue26" columnName="fldvalue26" cnname="FLDVALUE26" length="200" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="fldvalue27" columnName="fldvalue27" cnname="FLDVALUE27" length="200" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="fldvalue28" columnName="fldvalue28" cnname="FLDVALUE28" length="200" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="fldvalue29" columnName="fldvalue29" cnname="FLDVALUE29" length="200" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="fldvalue30" columnName="fldvalue30" cnname="FLDVALUE30" length="200" JDBCType="VARCHAR2" canBeNull="true"/>
+	</TableModel>
+</PvpAuthorizeSub.xml>

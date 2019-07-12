@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<IndGroup.xml>
+	<TableModel id="IndGroup" pageSize="10" cnname="指标组别信息" isPaged="true" dbTableName="ind_group">
+		<TableInfo/>
+		<Field id="group_no" isPK="true" columnName="group_no" cnname="组别编号" length="8" JSPTag="text" canBeNull="false" JDBCType="CHAR"/>
+		<Field id="group_name" columnName="group_name" cnname="组别名称" length="60" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="group_kind" dictname="ZXZ" columnName="group_kind" cnname="组性质" length="1" JSPTag="select" canBeNull="true" JDBCType="CHAR"/>
+		<Field id="rating_rules" columnName="rating_rules" cnname="组评分规则" length="100" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="sup_group_no" columnName="sup_group_no" cnname="上级组编号" length="8" JSPTag="text" canBeNull="true" JDBCType="CHAR"/>
+		<Field id="memo" columnName="memo" cnname="备注" length="100" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<OrderFields>group_no[desc];</OrderFields>
+		<FilterFields>group_no;group_name;group_kind;rating_rules;</FilterFields>
+		<ConditionFields>group_no;group_name;</ConditionFields>
+		<One2MultiRef toField="group_no" refModelId="IndGroupIndex" fromField="group_no"/>
+		<Field id="trans_id" columnName="trans_id" cnname="交易ID" JSPTag="text" length="32" canBeNull="true" JDBCType="VARCHAR2"/>
+	</TableModel>
+</IndGroup.xml>

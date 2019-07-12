@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<PvpLoanApp.xml>
+	<TableModel id="PvpLoanApp" cnname="贷款出账表" dbTableName="pvp_loan_app">
+		<Field id="serno" isPK="true" columnName="serno" cnname="业务编号" length="40" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="prd_id" columnName="prd_id" cnname="产品编号" length="40" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="cus_id" columnName="cus_id" cnname="客户编码" length="40" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="cont_no" columnName="cont_no" cnname="合同编号" length="40" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="bill_no" columnName="bill_no" cnname="借据编号" length="40" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="cont_amt" columnName="cont_amt" cnname="合同金额" length="16" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="cont_balance" columnName="cont_balance" cnname="合同余额" length="16" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="pvp_amt" columnName="pvp_amt" cnname="出账金额" length="16" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="in_acct_br_id" columnName="in_acct_br_id" cnname="入账机构" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="manager_br_id" columnName="manager_br_id" cnname="管理机构" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="input_id" columnName="input_id" cnname="登记人" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="input_br_id" columnName="input_br_id" cnname="登记机构" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="input_date" columnName="input_date" cnname="登记日期" length="10" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="approve_status" columnName="approve_status" cnname="审批状态" length="5" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="flow_type" columnName="flow_type" cnname="流程类型" length="2" JDBCType="VARCHAR2"/>
+		<Field id="cur_type" columnName="cur_type" cnname="币种" length="5" JDBCType="VARCHAR2"/>
+		<Field id="is_delay" columnName="is_delay" cnname="是否节假日顺延" length="1" JDBCType="CHAR"/>
+		<Field id="approve_modify_right" columnName="approve_modify_right" cnname="审批退回修改权限" length="8" JDBCType="VARCHAR2"/>
+		<Field id="first_pay_date" columnName="first_pay_date" cnname="首次还款日" length="10" JDBCType="VARCHAR2"/>
+	</TableModel>
+</PvpLoanApp.xml>

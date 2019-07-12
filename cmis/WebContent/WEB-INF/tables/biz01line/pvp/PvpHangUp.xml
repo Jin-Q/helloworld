@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<PvpHangUp.xml>
+	<TableModel id="PvpHangUp" cnname="挂起操作表" dbTableName="pvp_hang_up">
+		<Field id="cont_no" isPK="true" columnName="cont_no" cnname="合同编号" length="40" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="hang_status" columnName="hang_status" cnname="挂起状态" length="5" JDBCType="VARCHAR2" canBeNull="false"/>
+	</TableModel>
+</PvpHangUp.xml>

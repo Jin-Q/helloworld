@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<FncConfItems.xml>
+	<TableModel id="FncConfItems" cnname="报表配置项目列表" dbTableName="fnc_conf_items">
+		<Field id="item_id" isPK="true" columnName="item_id" cnname="项目编号" length="9" JDBCType="CHAR" canBeNull="false"/>
+		<Field id="item_name" columnName="item_name" cnname="项目名称" length="200" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="fnc_conf_typ" columnName="fnc_conf_typ" cnname="所属报表种类" length="2" JDBCType="CHAR" canBeNull="true"/>
+		<Field id="fnc_no_flg" columnName="fnc_no_flg" cnname="新旧报表标志" length="1" JDBCType="CHAR" canBeNull="true"/>
+		<Field id="remark" columnName="remark" cnname="备注" length="200" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="formula" columnName="formula" cnname="公式" length="500" JDBCType="VARCHAR2"/>
+		<Field id="item_unit" columnName="item_unit" cnname="单位" length="60" JDBCType="VARCHAR2"/>
+		<Field id="def_item_id" columnName="def_item_id" cnname="映射条目id" length="9" JDBCType="VARCHAR2"/>
+	</TableModel>
+</FncConfItems.xml>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<CusHoldChrem.xml>
+	<TableModel id="CusHoldChrem" pageSize="15" cnname="持有理财表" isPaged="true" dbTableName="cus_hold_chrem">
+		<TableInfo/>
+		<Field id="cus_id" columnName="cus_id" cnname="客户码" length="30" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="cus_name" columnName="cus_name" cnname="客户名称" length="80" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="prod_name" columnName="prod_name" cnname="产品名称" length="80" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="chrem_type" columnName="chrem_type" cnname="理财类型" length="3" JSPTag="text" canBeNull="true" JDBCType="CHAR"/>
+		<Field id="subscr_date" columnName="subscr_date" cnname="认购时间" length="10" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="subscr_amt" columnName="subscr_amt" cnname="认购金额" length="16" JSPTag="text" canBeNull="false" JDBCType="NUMBER"/>
+		<Field id="start_date" columnName="start_date" cnname="开始时间" length="10" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="end_date" columnName="end_date" cnname="到期时间" length="10" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="expect_income_rate" columnName="expect_income_rate" cnname="预期收益率" length="16" JSPTag="text" canBeNull="false" JDBCType="NUMBER"/>
+		<Field id="input_id" columnName="input_id" cnname="登记人" length="20" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="input_br_id" columnName="input_br_id" cnname="登记机构" length="20" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="input_date" columnName="input_date" cnname="登记日期" length="10" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="serno" isPK="true" columnName="serno" cnname="流水号" length="40" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<OrderFields>cus_id[desc];</OrderFields>
+		<FilterFields>cus_id;cus_name;prod_name;subscr_date;subscr_amt;start_date;end_date;expect_income_rate;input_id;input_br_id;</FilterFields>
+	</TableModel>
+</CusHoldChrem.xml>

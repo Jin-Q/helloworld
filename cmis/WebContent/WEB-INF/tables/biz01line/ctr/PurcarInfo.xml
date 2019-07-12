@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<PurcarInfo.xml>
+	<TableModel id="PurcarInfo" cnname="机构法人购车信息" dbTableName="purcar_info">
+		<Field id="serno" isPK="true" columnName="serno" cnname="业务编号" length="40" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="cont_no" columnName="cont_no" cnname="合同编号" length="40" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="car_brand" columnName="car_brand" cnname="汽车品牌" length="60" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="car_name" columnName="car_name" cnname="汽车名称" length="100" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="car_model" columnName="car_model" cnname="汽车型号" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="car_shelf_no" columnName="car_shelf_no" cnname="车架号" length="40" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="car_type" columnName="car_type" cnname="汽车种类" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="car_collect_type" columnName="car_collect_type" cnname="汽车取得方式" length="5" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="car_use" columnName="car_use" cnname="汽车用途" length="250" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="car_sale" columnName="car_sale" cnname="汽车销售商" length="100" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="pur_amt" columnName="pur_amt" cnname="购买金额" length="16" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="loan_perc" columnName="loan_perc" cnname="贷款比例" length="10" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="fst_pyr_perc" columnName="fst_pyr_perc" cnname="首付款比率" length="10" JDBCType="NUMBER" canBeNull="true"/>
+	</TableModel>
+</PurcarInfo.xml>

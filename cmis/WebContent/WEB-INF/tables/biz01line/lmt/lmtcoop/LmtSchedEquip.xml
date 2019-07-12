@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<LmtSchedEquip.xml>
+	<TableModel id="LmtSchedEquip" cnname="合作方拟按揭设备" dbTableName="lmt_sched_equip">
+		<Field id="pro_no" columnName="pro_no" cnname="项目编号" length="40" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="equip_name" columnName="equip_name" cnname="设备名称" length="100" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="brand" columnName="brand" cnname="品牌" length="40" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="model" columnName="model" cnname="型号" length="40" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="sale_value" columnName="sale_value" cnname="销售价格" length="16" JDBCType="NUMBER" canBeNull="true"/>
+	</TableModel>
+</LmtSchedEquip.xml>

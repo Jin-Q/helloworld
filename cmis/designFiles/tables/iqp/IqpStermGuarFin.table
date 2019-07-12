@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<IqpStermGuarFin.xml>
+	<TableModel id="IqpStermGuarFin" pageSize="10" cnname="短期信保融资从表" isPaged="true" dbTableName="iqp_sterm_guar_fin">
+		<TableInfo/>
+		<Field id="serno" isPK="true" columnName="serno" cnname="业务编号" length="40" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="insettl_serno" columnName="insettl_serno" cnname="国结业务编号" length="40" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="invc_cur_type" dictname="STD_ZX_CUR_TYPE" columnName="invc_cur_type" cnname="发票币种" length="3" JSPTag="select" canBeNull="true" JDBCType="CHAR"/>
+		<Field id="invc_amt" dataType="Currency" columnName="invc_amt" cnname="发票金额" length="16" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="cdt_amt_cur_type" dictname="STD_ZX_CUR_TYPE" columnName="cdt_amt_cur_type" cnname="信用限额币种" length="3" JSPTag="select" canBeNull="true" JDBCType="CHAR"/>
+		<Field id="buyer_cdt_limit" columnName="buyer_cdt_limit" cnname="信保公司核定买方信用额度" length="16" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="insur_no" columnName="insur_no" cnname="保单号" length="40" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="biz_settl_mode" columnName="biz_settl_mode" cnname="原业务结算方式" length="5" JSPTag="select" canBeNull="true" JDBCType="VARCHAR2"/>
+		<OrderFields>serno;</OrderFields>
+		<ConditionFields>is_limit_cont_pay;limit_cont_no;insettl_serno;</ConditionFields>
+		<FilterFields>is_limit_cont_pay;limit_cont_no;insettl_serno;invc_cur_type;invc_amt;insur_no;</FilterFields>
+	</TableModel>
+</IqpStermGuarFin.xml>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<PspCheckAnaly.xml>
+	<TableModel id="PspCheckAnaly" cnname="检查分析" dbTableName="psp_check_analy">
+		<Field id="task_id" isPK="true" columnName="task_id" cnname="任务编号" length="32" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="cus_id" columnName="cus_id" cnname="客户编码" length="40" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="water_charge_analy" columnName="water_charge_analy" cnname="水电费分析说明" length="250" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="tax_charge_analy" columnName="tax_charge_analy" cnname="税费分析说明" length="250" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="paylist_analy" columnName="paylist_analy" cnname="工资单分析说明" length="250" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="bank_contacclist_analy" columnName="bank_contacclist_analy" cnname="银行对账单分析说明" length="250" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="iostorelist_analy" columnName="iostorelist_analy" cnname="出入库单据分析说明" length="250" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="property_analy" columnName="property_analy" cnname="固定资产分析说明" length="250" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="accounts_receivable_analy" columnName="accounts_receivable_analy" cnname="应收账款分析说明" length="250" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="is_cap_normal_back" columnName="is_cap_normal_back" cnname="资金是否正常回笼" length="5" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="cap_back_dec" columnName="cap_back_dec" cnname="资金回笼总结" length="250" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="last_lmt_scheme" columnName="last_lmt_scheme" cnname="上期授信策略" length="250" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="curt_lmt_scheme" columnName="curt_lmt_scheme" cnname="本期授信策略" length="250" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="next_lmt_scheme" columnName="next_lmt_scheme" cnname="详细说明下步授信计划" length="250" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="check_report" columnName="check_report" cnname="检查结论" length="250" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="change_resn" columnName="change_resn" cnname="变化原因及处置计划" length="250" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="cap_back_reason" columnName="cap_back_reason" cnname="资金没有正常回笼原因" length="250" JDBCType="VARCHAR2"/>
+		<Field id="order_analy" columnName="order_analy" cnname="订单明细说明" length="250" JDBCType="VARCHAR2"/>
+		<Field id="visit_analy" columnName="visit_analy" cnname="现场检查分析说明" length="2000" JDBCType="VARCHAR2"/>
+		<Field id="grp_member_infos" columnName="grp_member_infos" cnname="集团客户整体及各成员情况" length="2000" JDBCType="VARCHAR2"/>
+		<Field id="grp_intra_grouptrans" columnName="grp_intra_grouptrans" cnname="集团客户内部关联交易情况" length="2000" JDBCType="VARCHAR2"/>
+		<Field id="grp_major_events" columnName="grp_major_events" cnname="集团客户发展及内部重大事项" length="2000" JDBCType="VARCHAR2"/>
+		<Field id="grp_credit_actualsituation" columnName="grp_credit_actualsituation" cnname="集团客户各类授信及实际发生情况" length="2000" JDBCType="VARCHAR2"/>
+		<Field id="grp_biz_circumstance" columnName="grp_biz_circumstance" cnname="集团整体经营情况" length="2000" JDBCType="VARCHAR2"/>
+		<Field id="grp_compre_assessment" columnName="grp_compre_assessment" cnname="集团综合评价" length="2000" JDBCType="VARCHAR2"/>
+	</TableModel>
+</PspCheckAnaly.xml>

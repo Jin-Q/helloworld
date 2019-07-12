@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<WfiSignConf.xml>
+	<TableModel id="WfiSignConf" cnname="会签策略配置" dbTableName="wfi_sign_conf">
+		<Field id="sign_id" isPK="true" columnName="sign_id" pkGenerator="UNID" cnname="会签策略ID" length="40" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="sign_name" columnName="sign_name" cnname="会签策略名" length="50" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="sign_desc" columnName="sign_desc" cnname="会签策略描述" length="500" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="sign_class" columnName="sign_class" cnname="会签策略实现" length="100" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="sign_state" columnName="sign_state" cnname="会签策略状态" length="1" JDBCType="CHAR" canBeNull="true"/>
+	</TableModel>
+</WfiSignConf.xml>

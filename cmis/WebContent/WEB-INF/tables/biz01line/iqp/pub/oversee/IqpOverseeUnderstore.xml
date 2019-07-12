@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<IqpOverseeUnderstore.xml>
+	<TableModel id="IqpOverseeUnderstore" cnname="下属仓库" dbTableName="iqp_oversee_understore">
+		<Field id="serno" columnName="serno" cnname="业务流水号" length="40" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="store_id" isPK="true" columnName="store_id" cnname="仓库编号" length="40" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="store_name" columnName="store_name" cnname="仓库名称" length="80" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="store_addr" columnName="store_addr" cnname="仓库地址" length="100" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="store_cha" columnName="store_cha" cnname="仓库性质" length="2" JDBCType="CHAR" canBeNull="true"/>
+		<Field id="end_date" columnName="end_date" cnname="仓库使用到期日期" length="10" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="store_equip_status" columnName="store_equip_status" cnname="仓库设备状态" length="2" JDBCType="CHAR" canBeNull="true"/>
+		<Field id="store_chief" columnName="store_chief" cnname="仓库负责人" length="30" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="store_bend" columnName="store_bend" cnname="仓库容量" length="40" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="transfer_abi" columnName="transfer_abi" cnname="吞吐能力" length="40" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="open_squ" columnName="open_squ" cnname="露天面积（平方米）" length="10" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="no_util_squ" columnName="no_util_squ" cnname="未使用面积" length="10" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="is_break_opr" columnName="is_break_opr" cnname="是否有重大违规操作" length="1" JDBCType="CHAR" canBeNull="true"/>
+		<Field id="is_bank_oversee" columnName="is_bank_oversee" cnname="是否有我行监管人员" length="1" JDBCType="CHAR" canBeNull="true"/>
+		<Field id="oper_range" columnName="oper_range" cnname="经营范围" length="500" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="memo" columnName="memo" cnname="备注" length="500" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="input_id" columnName="input_id" cnname="登记人" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="input_br_id" columnName="input_br_id" cnname="登记机构" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="input_date" columnName="input_date" cnname="登记日期" length="10" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="street" columnName="street" cnname="街道" length="100" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="oversee_org_id" columnName="oversee_org_id" cnname="监管机构编号" length="30" JDBCType="VARCHAR2"/>
+	</TableModel>
+</IqpOverseeUnderstore.xml>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<MortCarPledgeInsurance.xml>
+	<TableModel id="MortCarPledgeInsurance" cnname="汽车履约保证保险、出口信用保证保险" dbTableName="mort_car_pledge_insurance">
+		<TableInfo/>
+		<Field id="car_insure_id" isPK="true" columnName="car_insure_id" cnname="汽车保险编号" length="20" JSPTag="text" canBeNull="false" JDBCType="NUMBER"/>
+		<Field id="guaranty_no" columnName="guaranty_no" cnname="押品编号" length="40" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="insure_org_name" columnName="insure_org_name" cnname="保险机构" length="100" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="insurance_type_cd" dictname="STD_ZB_INSU_TYPE" columnName="insurance_type_cd" cnname="险种" length="20" JSPTag="select" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="policy_holder" columnName="policy_holder" cnname="投保人" length="100" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="beneficiary_name" columnName="beneficiary_name" cnname="受益人" length="100" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="start_date" columnName="start_date" cnname="起始日期" length="10" JSPTag="date" canBeNull="true" JDBCType="CHAR"/>
+		<Field id="expire_date" columnName="expire_date" cnname="到期日期" length="10" JSPTag="date" canBeNull="true" JDBCType="CHAR"/>
+		<Field id="effective_date" columnName="effective_date" cnname="生效日期" length="10" JSPTag="date" canBeNull="true" JDBCType="CHAR"/>
+		<Field id="sys_update_time" columnName="sys_update_time" cnname="更新日期" length="10" JSPTag="date" canBeNull="true" JDBCType="CHAR"/>
+		<Field id="handling_user" columnName="handling_user" cnname="更新人" length="40" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="insur_no" columnName="insur_no" cnname="保险单号" length="100" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="insure_count" dataType="Int" columnName="insure_count" cnname="份数" length="38" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="insu_ccr" dictname="STD_ZX_CUR_TYPE" columnName="insu_ccr" cnname="投保币种" length="3" JSPTag="select" canBeNull="true" JDBCType="CHAR"/>
+		<Field id="insu_amt" dataType="Currency" columnName="insu_amt" cnname="投保金额" length="20" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<OrderFields>car_insure_id[desc];</OrderFields>
+		<Field id="memo" columnName="memo" cnname="备注" JSPTag="textarea" length="1000" JDBCType="VARCHAR2"/>
+	</TableModel>
+</MortCarPledgeInsurance.xml>

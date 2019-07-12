@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<CusBlkListTemp.xml>
+	<TableModel id="CusBlkListTemp" cnname="黑名单客户临时表" dbTableName="cus_blk_list_temp">
+		<Field id="serno" isPK="true" columnName="serno" cnname="业务流水号" length="40" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="black_date" columnName="black_date" cnname="列入日期" length="10" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="cus_name" columnName="cus_name" cnname="客户名称" length="80" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="cert_type" columnName="cert_type" cnname="证件类型" length="3" JDBCType="CHAR" canBeNull="true"/>
+		<Field id="cert_code" columnName="cert_code" cnname="证件号码" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="black_type" columnName="black_type" cnname="不宜贷款户类型" length="2" JDBCType="CHAR" canBeNull="true"/>
+		<Field id="black_level" columnName="black_level" cnname="不宜贷款户级别 STD_ZB_BLACKLIST_TYP" length="1" JDBCType="CHAR" canBeNull="true"/>
+		<Field id="data_source" columnName="data_source" cnname="数据来源" length="2" JDBCType="CHAR" canBeNull="true"/>
+		<Field id="legal_name" columnName="legal_name" cnname="法定代表人" length="30" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="legal_phone" columnName="legal_phone" cnname="联系电话" length="35" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="legal_addr" columnName="legal_addr" cnname="通讯地址" length="60" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="black_reason" columnName="black_reason" cnname="列入不宜贷款户原因描述" length="250" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="logout_reason" columnName="logout_reason" cnname="注销原因" length="250" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="logout_date" columnName="logout_date" cnname="注销日期" length="10" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="status" columnName="status" cnname="状态 STD_CUS_BLK_STATUS" length="3" JDBCType="CHAR" canBeNull="true"/>
+		<Field id="input_id" columnName="input_id" cnname="登记人" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="input_br_id" columnName="input_br_id" cnname="登记机构" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="input_date" columnName="input_date" cnname="登记日期" length="10" JDBCType="CHAR" canBeNull="true"/>
+		<Field id="cus_id" columnName="cus_id" cnname="客户编码" length="30" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="manager_id" columnName="manager_id" cnname="责任人" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="manager_br_id" columnName="manager_br_id" cnname="责任机构" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="street" columnName="street" cnname="街道" length="250" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="source" columnName="source" cnname="来源（1-导入，2--新增）" length="3" JDBCType="VARCHAR2" canBeNull="true"/>
+	</TableModel>
+</CusBlkListTemp.xml>

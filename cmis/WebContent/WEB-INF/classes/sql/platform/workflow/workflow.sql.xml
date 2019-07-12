@@ -1,0 +1,709 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<S>
+
+<!-- 根据主键流程实例号查询流程中间表信息 -->
+<SQL id="getWfiJoinByInstanceId" parameterClass="java.lang.String" resultClass="com.ecc.emp.data.KeyedCollection" onlyReturnFirst="true">
+  <SELECT>
+  <![CDATA[
+  SELECT * FROM WFI_JOIN WHERE INSTANCEID=${_SIG_VALUE}
+  ]]>
+  </SELECT> 
+</SQL>
+
+<!-- 根据主键流程实例号查询流程中间表历史信息 -->
+<SQL id="getWfiJoinHisByInstanceId" parameterClass="java.lang.String" resultClass="com.ecc.emp.data.KeyedCollection" onlyReturnFirst="true">
+  <SELECT>
+  <![CDATA[
+  SELECT * FROM WFI_JOIN_HIS WHERE INSTANCEID=${_SIG_VALUE}
+  ]]>
+  </SELECT> 
+</SQL>
+
+<!-- 根据主流程实例号查询子流程中间表列表信息 -->
+<SQL id="getSubWfiJoinByInstanceId" parameterClass="java.lang.String" resultClass="com.ecc.emp.data.KeyedCollection" onlyReturnFirst="false">
+  <SELECT>
+  <![CDATA[
+  SELECT * FROM WFI_JOIN WHERE MAIN_INSTANCEID=${_SIG_VALUE}
+  ]]>
+  </SELECT> 
+</SQL>
+
+<!-- 根据主流程实例号查询子流程中间表实例号列表信息 -->
+<SQL id="getSubInstanceidByInstanceId" parameterClass="java.lang.String" resultClass="com.ecc.emp.data.KeyedCollection" onlyReturnFirst="false">
+  <SELECT>
+  <![CDATA[
+  SELECT INSTANCEID FROM WFI_JOIN WHERE MAIN_INSTANCEID=${_SIG_VALUE}
+  ]]>
+  </SELECT> 
+</SQL>
+
+<!-- 根据主流程实例号查询子流程中间表列表历史信息 -->
+<SQL id="getSubWfiJoinHisByInstanceId" parameterClass="java.lang.String" resultClass="com.ecc.emp.data.KeyedCollection" onlyReturnFirst="false">
+  <SELECT>
+  <![CDATA[
+  SELECT * FROM WFI_JOIN_HIS WHERE MAIN_INSTANCEID=${_SIG_VALUE}
+  ]]>
+  </SELECT> 
+</SQL>
+
+<!-- 根据主流程实例号查询子流程中间表实例号列表历史信息 -->
+<SQL id="getSubInstanceidHisByInstanceId" parameterClass="java.lang.String" resultClass="com.ecc.emp.data.KeyedCollection" onlyReturnFirst="false">
+  <SELECT>
+  <![CDATA[
+  SELECT INSTANCEID FROM WFI_JOIN_HIS WHERE MAIN_INSTANCEID=${_SIG_VALUE}
+  ]]>
+  </SELECT> 
+</SQL>
+
+<!-- 根据业务表模型、主键值查询信贷流程中间表 -->
+<SQL id="getMainWfiJoinByBiz" parameterClass="com.ecc.emp.data.KeyedCollection" resultClass="com.ecc.emp.data.KeyedCollection" onlyReturnFirst="true">
+  <SELECT>
+  <![CDATA[
+  SELECT * FROM WFI_JOIN WHERE TABLE_NAME=${table_name} AND PK_VALUE=${pk_value} AND (MAIN_INSTANCEID=INSTANCEID OR MAIN_INSTANCEID IS NULL)
+  ]]>
+  </SELECT> 
+</SQL>
+
+<!-- 根据业务表模型、主键值查询信贷流程中间历史表 -->
+<SQL id="getMainWfiJoinHisByBiz" parameterClass="com.ecc.emp.data.KeyedCollection" resultClass="com.ecc.emp.data.KeyedCollection" onlyReturnFirst="true">
+  <SELECT>
+  <![CDATA[
+  SELECT * FROM WFI_JOIN_HIS WHERE TABLE_NAME=${table_name} AND PK_VALUE=${pk_value} AND (MAIN_INSTANCEID=INSTANCEID OR MAIN_INSTANCEID IS NULL)
+  ]]>
+  </SELECT> 
+</SQL>
+
+<!-- 根据申请类型查询流程关联业务配置，返回流程标识 -->
+<SQL id="getWfSignFromWF2biz" parameterClass="java.lang.String" resultClass="com.ecc.emp.data.KeyedCollection" onlyReturnFirst="false">
+  <SELECT>
+  <![CDATA[
+  SELECT WFSIGN FROM WFI_WORKFLOW2BIZ WHERE APPL_TYPE=${_SIG_VALUE}
+  ]]>
+  </SELECT> 
+</SQL>
+
+<!-- 根据申请类型、机构号查询流程关联机构配置，返回流程标识 -->
+<SQL id="getWfSignFromWF2org" parameterClass="com.ecc.emp.data.KeyedCollection" resultClass="java.lang.String" onlyReturnFirst="true">
+  <SELECT>
+  <![CDATA[
+  SELECT WFSIGN FROM WFI_WORKFLOW2ORG WHERE APPL_TYPE=${appl_type} AND ORG_ID=${org_id}
+  ]]>
+  </SELECT> 
+</SQL>
+
+<!-- 根据实例号删除审批业务要素记录 -->
+<SQL id="delWfiBizVarByInstanceId" parameterClass="java.lang.String" >
+  <DELETE>
+  <![CDATA[
+  DELETE FROM WFI_BIZ_VAR_RECORD WHERE INSTANCEID=${_SIG_VALUE}
+  ]]>
+  </DELETE>
+</SQL>
+
+<!-- 根据实例号删除审批业务要素历史记录 -->
+<SQL id="delWfiBizVarHisByInstanceId" parameterClass="java.lang.String" >
+  <DELETE>
+  <![CDATA[
+  DELETE FROM WFI_BIZ_VAR_RECORD_HIS WHERE INSTANCEID=${_SIG_VALUE}
+  ]]>
+  </DELETE>
+</SQL>
+
+<!-- 根据实例号删除信贷流程消息记录 -->
+<SQL id="delWfiMsgByInstanceId" parameterClass="java.lang.String" >
+  <DELETE>
+  <![CDATA[
+  DELETE FROM WFI_MSG_QUEUE WHERE INSTANCEID=${_SIG_VALUE}
+  ]]>
+  </DELETE>
+</SQL>
+
+<!-- 根据实例号删除信贷流程消息记录 -->
+<SQL id="delWfiMsgHisByInstanceId" parameterClass="java.lang.String" >
+  <DELETE>
+  <![CDATA[
+  DELETE FROM WFI_MSG_QUEUE_HIS WHERE INSTANCEID=${_SIG_VALUE}
+  ]]>
+  </DELETE>
+</SQL>
+
+<!-- 根据实例号删除信贷流程中间表记录 -->
+<SQL id="delWfiJoinByInstanceId" parameterClass="java.lang.String" >
+  <DELETE>
+  <![CDATA[
+  DELETE FROM WFI_JOIN WHERE INSTANCEID=${_SIG_VALUE}
+  ]]>
+  </DELETE>
+</SQL>
+
+<!-- 根据实例号删除信贷流程中间表历史记录 -->
+<SQL id="delWfiJoinHisByInstanceId" parameterClass="java.lang.String" >
+  <DELETE>
+  <![CDATA[
+  DELETE FROM WFI_JOIN_HIS WHERE INSTANCEID=${_SIG_VALUE}
+  ]]>
+  </DELETE>
+</SQL>
+
+<!-- 向流程接入中间表插入记录 -->
+<SQL id="insertWfiJoin" valueClass="com.ecc.emp.data.KeyedCollection" >
+  <INSERT updTableName="WFI_JOIN" />
+</SQL>
+
+<!-- 根据申请类型从流程关联业务配置中查询记录 -->
+<SQL id="getWorkFlow2BizByApplType" parameterClass="java.lang.String" resultClass="com.ecc.emp.data.KeyedCollection" onlyReturnFirst="true">
+  <SELECT>
+  <![CDATA[
+  SELECT * FROM WFI_WORKFLOW2BIZ WHERE APPL_TYPE=${_SIG_VALUE}
+  ]]>
+  </SELECT> 
+</SQL>
+
+<!-- 根据流程标志、业务类型从流程关联业务配置中查询记录 add by tangzf 2013.11.26 -->
+<SQL id="getWorkFlow2BizByWfSignApplType" parameterClass="java.util.HashMap" resultClass="com.ecc.emp.data.KeyedCollection" onlyReturnFirst="true">
+  <SELECT>
+  <![CDATA[
+  SELECT * FROM WFI_WORKFLOW2BIZ WHERE WFSIGN=${wfSign} AND APPL_TYPE=${applType}
+  ]]>
+  </SELECT> 
+</SQL>
+
+<!-- 新增流程审批中修改的业务要素记录 -->
+<SQL id="insertWfiBizVarRecord" valueClass="com.yucheng.cmis.platform.workflow.domain.WfiBizVarRecordVO" >
+  <INSERT>
+  <![CDATA[
+  INSERT INTO WFI_BIZ_VAR_RECORD(PK1,INSTANCEID,NODEID,NODENAME,VAR_KEY,VAR_NAME,VAR_VALUE,VAR_DISPVALUE,VAR_OLD_VALUE,VAR_OLD_DISPVALUE,VAR_TYPE,OP_TIME,INPUT_ID,INPUT_BR_ID,COMMENTID,REMARK) 
+  VALUES(${pk1},${instanceid},${nodeid},${nodename},${varKey},${varName},${varValue},${varDispvalue},${varOldValue},${varOldDispvalue},${varType},${opTime},${inputId},${inputBrId},${commentid},${remark})
+  ]]>
+  </INSERT>	
+</SQL>
+
+<!-- 清除修改的业务要素暂存记录   AND COMMENTID IS NULL-->
+<SQL id="deleteWfiBizVarRecord" parameterClass="com.ecc.emp.data.KeyedCollection" >
+  <DELETE>
+  <![CDATA[
+  DELETE FROM WFI_BIZ_VAR_RECORD W WHERE W.INSTANCEID=${instanceId} AND W.NODEID=${nodeId} AND W.INPUT_ID=${userId} AND W.COMMENTID=${commentId}
+  ]]>
+  </DELETE>
+</SQL>
+
+<!-- 根据申请类型及适用范围获取流程关联业务配置信息 -->
+<SQL id="getWf2bizConfByApplType" parameterClass="com.ecc.emp.data.KeyedCollection" resultClass="com.ecc.emp.data.KeyedCollection" onlyReturnFirst="true">
+  <SELECT>
+  <![CDATA[
+  SELECT A.PK1 PK1,A.APPL_TYPE APPL_TYPE,A.WFSIGN WFSIGN,A.APP_URL WF_APP_URL,A.BIZ_URL WF_BIZ_URL,A.PREVENT_LIST PREVENT_LIST,
+  A.SCENE_SCOPE SCENE_SCOPE FROM WFI_WORKFLOW2BIZ A WHERE A.APPL_TYPE=${appl_type} AND A.SCENE_SCOPE=${scene_scope}
+  ]]>
+  </SELECT> 
+</SQL>
+
+<!-- 根据申请类型、流程标识及适用范围获取流程关联业务配置信息 -->
+<SQL id="getWf2bizConfByApplTypeAndSign" parameterClass="com.ecc.emp.data.KeyedCollection" resultClass="com.ecc.emp.data.KeyedCollection" onlyReturnFirst="true">
+  <SELECT>
+  <![CDATA[
+  SELECT A.PK1 PK1,A.APPL_TYPE APPL_TYPE,A.WFSIGN WFSIGN,A.APP_URL WF_APP_URL,A.BIZ_URL WF_BIZ_URL,A.PREVENT_LIST PREVENT_LIST,
+  A.SCENE_SCOPE SCENE_SCOPE FROM WFI_WORKFLOW2BIZ A WHERE A.APPL_TYPE=${appl_type} AND A.WFSIGN=${wf_sign} AND A.SCENE_SCOPE=${scene_scope}
+  ]]>
+  </SELECT> 
+</SQL>
+
+<!-- 根据节申请类型、节点及适用范围获取流程关联业务配置信息 -->
+<SQL id="getWf2bizConfByNode" parameterClass="com.ecc.emp.data.KeyedCollection" resultClass="com.ecc.emp.data.KeyedCollection" onlyReturnFirst="true">
+  <SELECT>
+  <![CDATA[
+  SELECT A.PK1 PK1,A.APPL_TYPE APPL_TYPE,A.WFSIGN WFSIGN,A.APP_URL WF_APP_URL,A.BIZ_URL WF_BIZ_URL,A.PREVENT_LIST PREVENT_LIST,
+  A.SCENE_SCOPE SCENE_SCOPE,B.NODEID NODEID,B.NODENAME NODENAME,B.APP_URL NODE_APP_URL,B.BIZ_URL NODE_BIZ_URL
+  FROM WFI_WORKFLOW2BIZ A, WFI_NODE2BIZ B WHERE A.PK1 = B.PK1 AND A.APPL_TYPE=${appl_type} AND A.SCENE_SCOPE=${scene_scope} AND B.NODEID=${nodeid}
+  ]]>
+  </SELECT> 
+</SQL>
+
+<!-- 根据节申请类型、流程标识、节点及适用范围获取流程关联业务配置信息 -->
+<SQL id="getWf2bizConfByNodeAndSign" parameterClass="com.ecc.emp.data.KeyedCollection" resultClass="com.ecc.emp.data.KeyedCollection" onlyReturnFirst="true">
+  <SELECT>
+  <![CDATA[
+  SELECT A.PK1 PK1,A.APPL_TYPE APPL_TYPE,A.WFSIGN WFSIGN,A.APP_URL WF_APP_URL,A.BIZ_URL WF_BIZ_URL,A.PREVENT_LIST PREVENT_LIST,
+  A.SCENE_SCOPE SCENE_SCOPE,B.NODEID NODEID,B.NODENAME NODENAME,B.APP_URL NODE_APP_URL,B.BIZ_URL NODE_BIZ_URL
+  FROM WFI_WORKFLOW2BIZ A, WFI_NODE2BIZ B WHERE A.PK1 = B.PK1 AND A.APPL_TYPE=${appl_type} AND A.WFSIGN=${wf_sign} AND A.SCENE_SCOPE=${scene_scope} AND B.NODEID=${nodeid}
+  ]]>
+  </SELECT> 
+</SQL>
+
+<!-- 接入表数据迁移到历史 -->
+<SQL id="insertWfiJoinHis" parameterClass="java.lang.String" >
+  <INSERT>
+  <![CDATA[
+  INSERT INTO WFI_JOIN_HIS H SELECT * FROM WFI_JOIN W WHERE W.INSTANCEID=${_SIG_VALUE}
+  ]]>
+  </INSERT>	
+</SQL>
+<!-- 接入表数据迁移到历史表后，删除 -->
+<SQL id="deleteWfiJoin" parameterClass="java.lang.String" >
+  <DELETE>
+  <![CDATA[
+  DELETE FROM WFI_JOIN W WHERE W.INSTANCEID=${_SIG_VALUE}
+  ]]>
+  </DELETE>
+</SQL>
+
+<!-- 审批变更数据迁移到历史 -->
+<SQL id="insertWfiBizVarHis" parameterClass="java.lang.String" >
+  <INSERT>
+  <![CDATA[
+  INSERT INTO WFI_BIZ_VAR_RECORD_HIS H SELECT * FROM WFI_BIZ_VAR_RECORD W WHERE W.INSTANCEID=${_SIG_VALUE}
+  ]]>
+  </INSERT>	
+</SQL>
+<!-- 审批变更数据迁移到历史表后，删除 -->
+<SQL id="deletetWfiBizVar" parameterClass="java.lang.String" >
+  <DELETE>
+  <![CDATA[
+  DELETE FROM WFI_BIZ_VAR_RECORD W WHERE W.INSTANCEID=${_SIG_VALUE}
+  ]]>
+  </DELETE>
+</SQL>
+<!-- 流程消息数据迁移到历史 -->
+<SQL id="insertWfiMsgQueueHis" parameterClass="java.lang.String" >
+  <INSERT>
+  <![CDATA[
+  INSERT INTO WFI_MSG_QUEUE_HIS H SELECT * FROM WFI_MSG_QUEUE W WHERE W.INSTANCEID=${_SIG_VALUE}
+  ]]>
+  </INSERT>	
+</SQL>
+<!-- 流程消息数据迁移到历史表后，删除 -->
+<SQL id="deleteWfiMsgQueue" parameterClass="java.lang.String" >
+  <DELETE>
+  <![CDATA[
+  DELETE FROM WFI_MSG_QUEUE W WHERE W.INSTANCEID=${_SIG_VALUE}
+  ]]>
+  </DELETE>
+</SQL>
+
+<!-- 根据消息ID查询 -->
+<SQL id="queryWfiMsgQueueById" parameterClass="java.lang.String" resultClass="com.yucheng.cmis.platform.workflow.domain.WfiMsgQueue" onlyReturnFirst="false">
+  <SELECT>
+  <![CDATA[
+     SELECT * FROM WFI_MSG_QUEUE WHERE MSGID=${_SIG_VALUE} AND OPSTATUS ='90' FOR UPDATE  
+  ]]>
+  </SELECT> 
+</SQL>
+
+<!-- 根据消息ID查询历史 -->
+<SQL id="queryWfiMsgQueueHisById" parameterClass="java.lang.String" resultClass="com.yucheng.cmis.platform.workflow.domain.WfiMsgQueue" onlyReturnFirst="false">
+  <SELECT>
+  <![CDATA[
+     SELECT * FROM WFI_MSG_QUEUE_HIS WHERE MSGID=${_SIG_VALUE} AND OPSTATUS ='90' FOR UPDATE  
+  ]]>
+  </SELECT> 
+</SQL>
+
+<!-- 更新流程消息 -->
+<SQL id="updateWfiMsgQueue" parameterClass="java.lang.String" valueClass="com.yucheng.cmis.platform.workflow.domain.WfiMsgQueue" >
+  <UPDATE>
+  <![CDATA[
+     UPDATE WFI_MSG_QUEUE SET OPSTATUS=${opstatus},OPTIME=${optime} WHERE MSGID=${_SIG_VALUE} 
+  ]]>
+  </UPDATE> 
+</SQL>
+
+<!-- 更新流程消息 -->
+<SQL id="updateWfiMsgQueueHis" parameterClass="java.lang.String" valueClass="com.yucheng.cmis.platform.workflow.domain.WfiMsgQueue" >
+  <UPDATE>
+  <![CDATA[
+     UPDATE WFI_MSG_QUEUE_HIS SET OPSTATUS=${opstatus},OPTIME=${optime} WHERE MSGID=${_SIG_VALUE} 
+  ]]>
+  </UPDATE> 
+</SQL>
+
+<!-- 根据用户查询当前有效的工作委托设置 -->
+<SQL id="queryEntrustByUser" parameterClass="com.ecc.emp.data.KeyedCollection" resultClass="com.ecc.emp.data.KeyedCollection" onlyReturnFirst="false">
+  <SELECT>
+  <![CDATA[
+     SELECT * FROM WF_HUMANSTATES WHERE USERID=${userId} AND (${nowTime} BETWEEN BEGINTIME AND ENDTIME) AND (APPID IS NULL OR APPID=${applType})
+  ]]>
+  </SELECT> 
+</SQL>
+
+<!-- 查询跟踪记录表用于判断均衡审批节点是否已经审批过 -->
+<SQL id="queryWfNodeHisUser" parameterClass="com.ecc.emp.data.KeyedCollection" resultClass="com.ecc.emp.data.KeyedCollection" onlyReturnFirst="true">
+  <SELECT>
+  <![CDATA[
+     SELECT SENDTO FROM WF_NODE_ACTION_RECORD WHERE INSTANCEID=${instanceid} AND NEXTNODEID=${nextnodeid}
+  ]]>
+  </SELECT> 
+</SQL>
+
+<!-- 按节点、办理人分组查询审批变更列表 -->
+<SQL id="queryWfiBizVarByNode" parameterClass="java.lang.String" resultClass="com.yucheng.cmis.platform.workflow.domain.WfiBizVarRecordVO" onlyReturnFirst="false">
+  <SELECT>
+  <![CDATA[
+     SELECT INSTANCEID, NODEID,NODENAME,INPUT_ID,INPUT_BR_ID,OP_TIME FROM WFI_BIZ_VAR_RECORD WHERE INSTANCEID=${_SIG_VALUE} GROUP BY INSTANCEID, NODEID,NODENAME,INPUT_ID,INPUT_BR_ID,OP_TIME ORDER BY OP_TIME DESC
+  ]]>
+  </SELECT> 
+</SQL>
+
+<!-- 按节点、办理人分组查询审批变更历史列表 -->
+<SQL id="queryWfiBizVarByNodeHis" parameterClass="java.lang.String" resultClass="com.yucheng.cmis.platform.workflow.domain.WfiBizVarRecordVO" onlyReturnFirst="false">
+  <SELECT>
+  <![CDATA[
+     SELECT INSTANCEID, NODEID,NODENAME,INPUT_ID,INPUT_BR_ID,OP_TIME FROM WFI_BIZ_VAR_RECORD_HIS WHERE INSTANCEID=${_SIG_VALUE} GROUP BY INSTANCEID, NODEID,NODENAME,INPUT_ID,INPUT_BR_ID,OP_TIME ORDER BY OP_TIME DESC
+  ]]>
+  </SELECT> 
+</SQL>
+
+<!-- 按流程意见ID查询审批变更指定要素的结果 泉州需要所做的新增-->
+<SQL id="queryWfiBizVarByCommentId" parameterClass="com.ecc.emp.data.KeyedCollection" resultClass="com.yucheng.cmis.platform.workflow.domain.WfiBizVarRecordVO" onlyReturnFirst="true">
+  <SELECT>
+  <![CDATA[
+     SELECT * FROM WFI_BIZ_VAR_RECORD WHERE COMMENTID=${commentId} ORDER BY OP_TIME DESC
+  ]]>
+  </SELECT> 
+</SQL>
+
+<!-- 按流程意见ID查询审批变更指定要素的结果（历史表） 泉州需要所做的新增-->
+<SQL id="queryWfiBizVarByCommentIdHis" parameterClass="com.ecc.emp.data.KeyedCollection" resultClass="com.yucheng.cmis.platform.workflow.domain.WfiBizVarRecordVO" onlyReturnFirst="true">
+  <SELECT>
+  <![CDATA[
+     SELECT * FROM WFI_BIZ_VAR_RECORD_HIS WHERE COMMENTID=${commentId}  ORDER BY OP_TIME DESC
+  ]]>
+  </SELECT> 
+</SQL>
+
+<!-- 按业务流水号查询审批变更指定要素的结果 -->
+<SQL id="queryWfiBizVarByKey" parameterClass="com.ecc.emp.data.KeyedCollection" resultClass="com.yucheng.cmis.platform.workflow.domain.WfiBizVarRecordVO" onlyReturnFirst="true">
+  <SELECT>
+  <![CDATA[
+     SELECT * FROM WFI_BIZ_VAR_RECORD WHERE INSTANCEID=${instanceId} AND VAR_KEY=${var_key} ORDER BY OP_TIME DESC
+  ]]>
+  </SELECT> 
+</SQL>
+
+<!-- 按业务流水号查询审批变更指定要素的结果（历史表） -->
+<SQL id="queryWfiBizVarByKeyHis" parameterClass="com.ecc.emp.data.KeyedCollection" resultClass="com.yucheng.cmis.platform.workflow.domain.WfiBizVarRecordVO" onlyReturnFirst="true">
+  <SELECT>
+  <![CDATA[
+     SELECT * FROM WFI_BIZ_VAR_RECORD_HIS WHERE INSTANCEID=${instanceId} AND VAR_KEY=${var_key} ORDER BY OP_TIME DESC
+  ]]>
+  </SELECT> 
+</SQL>
+
+<!-- 按业务流水号查询最新审批变更结果 -->
+<SQL id="queryWfiBizVarByPkValue" parameterClass="com.ecc.emp.data.KeyedCollection" resultClass="com.yucheng.cmis.platform.workflow.domain.WfiBizVarRecordVO" onlyReturnFirst="false">
+  <SELECT>
+  <![CDATA[
+     SELECT * FROM WFI_BIZ_VAR_RECORD WHERE PK_VALUE=${pk_value} AND TABLE_NAME=${table_name} ORDER BY OP_TIME DESC
+  ]]>
+  </SELECT> 
+</SQL>
+
+<!-- 按业务流水号查询最新审批变更结果（历史表） -->
+<SQL id="queryWfiBizVarByPkValueHis" parameterClass="com.ecc.emp.data.KeyedCollection" resultClass="com.yucheng.cmis.platform.workflow.domain.WfiBizVarRecordVO" onlyReturnFirst="false">
+  <SELECT>
+  <![CDATA[
+     SELECT * FROM WFI_BIZ_VAR_RECORD_HIS WHERE PK_VALUE=${pk_value} AND TABLE_NAME=${table_name} ORDER BY OP_TIME DESC
+  ]]>
+  </SELECT> 
+</SQL>
+
+<!-- 获取审批变更的要素域名 -->
+<SQL id="selectWfiVarKey"  parameterClass="java.lang.String" resultClass="com.ecc.emp.data.KeyedCollection" onlyReturnFirst="false">
+  <SELECT>
+  <![CDATA[
+  SELECT DISTINCT VAR_KEY,VAR_TYPE FROM WFI_BIZ_VAR_RECORD WHERE INSTANCEID=${_SIG_VALUE}
+  ]]>
+  </SELECT>
+</SQL>
+
+<!-- 获取审批变更的要素域名(历史表) -->
+<SQL id="selectWfiVarKeyHis"  parameterClass="java.lang.String" resultClass="com.ecc.emp.data.KeyedCollection" onlyReturnFirst="false">
+  <SELECT>
+  <![CDATA[
+  SELECT DISTINCT VAR_KEY,VAR_TYPE FROM WFI_BIZ_VAR_RECORD_HIS WHERE INSTANCEID=${_SIG_VALUE}
+  ]]>
+  </SELECT>
+</SQL>
+
+<!-- 初始化会签任务 -->
+<SQL id="initWfiSignTask" valueClass="com.yucheng.cmis.platform.workflow.domain.WfiSignTask" >
+  <INSERT updTableName="WFI_SIGN_TASK">
+  </INSERT>	
+</SQL>
+
+<!-- 新增会签投票任务 -->
+<SQL id="insertWfiSignVote" valueClass="com.yucheng.cmis.platform.workflow.domain.WfiSignVote" >
+  <INSERT updTableName="WFI_SIGN_VOTE">
+  </INSERT>	
+</SQL>
+
+<!-- 获取会签任务信息 -->
+<SQL id="selectWfiSignTask"  parameterClass="java.lang.String" resultClass="com.yucheng.cmis.platform.workflow.domain.WfiSignTask" onlyReturnFirst="false">
+  <SELECT>
+  <![CDATA[
+  SELECT * FROM WFI_SIGN_TASK WHERE ST_TASK_ID=${_SIG_VALUE}
+  ]]>
+  </SELECT>
+</SQL>
+
+<!-- 更新会签任务信息  -->
+<SQL id="updateWfiSignTask" valueClass="com.yucheng.cmis.platform.workflow.domain.WfiSignTask" >
+  <UPDATE updTableName="WFI_SIGN_TASK" canUpdateAll="false"/>
+</SQL>
+
+<!-- 获取会签下投票任务 -->
+<SQL id="selectWfiSignVoteList"  parameterClass="java.lang.String" resultClass="com.yucheng.cmis.platform.workflow.domain.WfiSignVote" onlyReturnFirst="false">
+  <SELECT>
+  <![CDATA[
+  SELECT * FROM WFI_SIGN_VOTE WHERE ST_TASK_ID=${_SIG_VALUE}
+  ]]>
+  </SELECT>
+</SQL>
+
+<!-- 根据ID获取投票任务 -->
+<SQL id="selectWfiSignVote"  parameterClass="java.lang.String" resultClass="com.yucheng.cmis.platform.workflow.domain.WfiSignVote" onlyReturnFirst="false">
+  <SELECT>
+  <![CDATA[
+  SELECT * FROM WFI_SIGN_VOTE WHERE SV_VOTE_ID=${_SIG_VALUE}
+  ]]>
+  </SELECT>
+</SQL>
+
+<!-- 更新投票任务 -->
+<SQL id="updateWfiSignVote" valueClass="com.yucheng.cmis.platform.workflow.domain.WfiSignVote">
+  <UPDATE updTableName="WFI_SIGN_VOTE" canUpdateAll="false"/>
+</SQL>
+
+<!-- 会签更新流程表 -->
+<SQL id="updateWfNodeRecord" parameterClass="com.ecc.emp.data.KeyedCollection" valueClass="com.ecc.emp.data.KeyedCollection" >
+  <UPDATE>
+  <![CDATA[
+     UPDATE WF_NODE_RECORD t1 set t1.currentnodeusers=replace(t1.currentnodeusers,${exeUserCd}, ${toUserCd}), t1.currentnodeuser=replace(t1.currentnodeuser, ${exeUserCd}, ${toUserCd}) where t1.nodeid =${nodeid} and t1.instanceid =${instanceid}  and t1.nodeendtime is null
+  ]]>
+  </UPDATE> 
+</SQL>
+
+<SQL id="updateWfInstanceNodeProp" parameterClass="com.ecc.emp.data.KeyedCollection" valueClass="com.ecc.emp.data.KeyedCollection" >
+  <UPDATE>
+  <![CDATA[
+     UPDATE WF_INSTANCE_NODE_PROPERTY t1 set t1.currentnodeusers=replace(t1.currentnodeusers,${exeUserCd}, ${toUserCd}), t1.currentnodeuser=replace(t1.currentnodeuser, ${exeUserCd}, ${toUserCd}), t1.allreaderslist=replace(t1.allreaderslist,${exeUserCd}, ${toUserCd}) where t1.nodeid =${nodeid} and t1.instanceid =${instanceid}
+  ]]>
+  </UPDATE> 
+</SQL>
+
+<!-- 根据ID查询会签策略 -->
+<SQL id="queryWfiSignConfById" parameterClass="java.lang.String" resultClass="com.yucheng.cmis.platform.workflow.domain.WfiSignConf" >
+  <SELECT>
+  <![CDATA[
+     SELECT * FROM WFI_SIGN_CONF WHERE SIGN_ID=${_SIG_VALUE}
+  ]]>
+  </SELECT> 
+</SQL>
+
+<!-- 新增流程示例 -->
+<SQL id="insertWfiDemo" valueClass="com.yucheng.cmis.platform.workflow.domain.WfiDemo" >
+  <INSERT updTableName="WFI_DEMO">
+  </INSERT>	
+</SQL>
+
+<!-- 根据流程申请类型+办理人查询待办笔数 -->
+<SQL id="getToDoWorkListCount" parameterClass="com.ecc.emp.data.KeyedCollection" resultClass="java.lang.String" onlyReturnFirst="true">
+  <SELECT>
+  <![CDATA[
+     SELECT COUNT(1) C FROM WFI_WORKLIST_TODO A WHERE A.APPL_TYPE=${appl_type} AND A.CURRENTNODEUSER LIKE ${currentnodeuser} and (BDRAFT='0' OR ISPROCESSED='1') AND (WFSTATUS='0' OR WFSTATUS='5') AND WFI_STATUS!='000'
+  ]]>
+  </SELECT> 
+</SQL>
+
+<!-- 根据实例号查询最近的流程意见标识 -->
+<SQL id="getWfCommentSign" parameterClass="java.lang.String" resultClass="java.lang.String" onlyReturnFirst="true">
+  <SELECT>
+  <![CDATA[
+     SELECT COMMENTSIGN FROM WF_COMMENT A WHERE A.INSTANCEID=${_SIG_VALUE} AND NODEACTIONID IS NOT NULL ORDER BY A.COMMENTTIME DESC
+  ]]>
+  </SELECT> 
+</SQL>
+
+<!-- 更新流程审批调整表(保存审批变更信息时将COMMENTID赋值给wfi_biz_var_record表的COMMENTID字段 add by tangzf 2014-02-13) -->
+<SQL id="updateWfiBizVarRecord" parameterClass="com.ecc.emp.data.KeyedCollection" valueClass="java.lang.String" >
+  <UPDATE>
+  <![CDATA[
+     UPDATE WFI_BIZ_VAR_RECORD SET COMMENTID=${_SIG_VALUE} WHERE INSTANCEID=${instanceid} AND NODEID=${nodeid} AND COMMENTID IS NULL
+  ]]>
+  </UPDATE> 
+</SQL>
+<!-- 插入流程意见 added yangzy 2014/11/27 需求:XD141107075_关于新信贷系统中增加、修改部分查询信息等功能 -->
+<SQL id="insertWfiBizCommentRecord" parameterClass="java.lang.String" valueClass ="java.util.HashMap" >
+  <INSERT>
+  <![CDATA[
+    INSERT INTO wfi_biz_comment_record(pk1,instanceid,nodeid,commentcontent,op_time,input_id,input_br_id,commentid) VALUES (${pk1},${instanceid},${nodeid},${commentcontent},${op_time},${input_id},${input_br_id},${commentid})
+  ]]>
+  </INSERT> 
+</SQL>  
+<!-- 根据实例号删除信贷流程意见扩展表记录 added yangzy 2014/11/27 需求:XD141107075_关于新信贷系统中增加、修改部分查询信息等功能 -->
+<SQL id="delWfiBizCommentRecordByInstanceId" parameterClass="java.lang.String" >
+  <DELETE>
+  <![CDATA[
+  DELETE FROM WFI_BIZ_COMMENT_RECORD WHERE INSTANCEID=${_SIG_VALUE}
+  ]]>
+  </DELETE>
+</SQL>
+<!-- 查询贷流程意见扩展表记录  added yangzy 2014/11/27 需求:XD141107075_关于新信贷系统中增加、修改部分查询信息等功能 -->
+<SQL id="queryWfiBizCommentRecord" parameterClass="java.util.HashMap" resultClass="com.ecc.emp.data.KeyedCollection">
+  <SELECT>
+  <![CDATA[
+   SELECT COMMENTCONTENT FROM WFI_BIZ_COMMENT_RECORD WHERE INSTANCEID=${INSTANCEID} AND COMMENTID=${COMMENTID}
+  ]]>
+  </SELECT>
+</SQL>
+<!-- 删除分/支行授权配置信息 add by lisj 2015-3-24 需求编号：【XD150407025】分支机构授信审批权限配置 -->
+<SQL id="deleteWLCRByOrgId" parameterClass="java.lang.String">
+  <DELETE>
+  <![CDATA[
+  DELETE FROM WFI_LV_CREDIT_RIGHT WHERE ORG_ID =${_SIG_VALUE} AND RIGHT_TYPE = '02'
+  ]]>
+  </DELETE>
+</SQL>
+<!-- 删除所有社区支行授权配置信息 add by lisj 2015-5-6 需求编号：【XD150407025】分支机构授信审批权限配置 -->
+<SQL id="deleteAllCommBranchInfo" parameterClass="java.lang.String">
+  <DELETE>
+  <![CDATA[
+  DELETE FROM WFI_LV_CREDIT_RIGHT P1 WHERE P1.ORG_ID =${_SIG_VALUE}
+  ]]>
+  </DELETE>
+</SQL>
+<!-- modify by wangj 2015-05-28  需求编号:XD141222087,法人账户透支需求变更  begin   -->
+<!-- 根据客户号和机构号 查询所在机构除当前客户外所在机构的法人透支总额度 add by wangj 2015-5-15 需求编号：XD141222087_法人账户透支需求变更  查询分支机构的法人透支总额度 -->
+<SQL id="queryOrgOverdrawnCredAmt" parameterClass="com.ecc.emp.data.KeyedCollection" resultClass="com.ecc.emp.data.KeyedCollection" onlyReturnFirst="true">
+  <SELECT>
+  <![CDATA[
+  select nvl(sum(nvl(crd_amt, 0)),0) crdAmt from (select p0.cus_id,p0.crd_amt,p0.flag,(select cb.main_br_id from cus_base cb  where cb.cus_id = p0.cus_id) main_br_id, row_number() over(partition by cus_id order by flag desc) rn from (select t.cus_id, t.crd_amt, '1' flag from lmt_agr_details t where t.limit_name = '100051' and t.lmt_status not in ('00', '30') and not exists (select 1  from lmt_apply t1 where t.cus_id = t1.cus_id and t1.approve_status = '111') and not exists (select 1  from lmt_redi_apply t1 where t.cus_id = t1.cus_id and t1.approve_status = '111')
+  union all select t.cus_id, t.crd_amt, '2' flag from lmt_app_details t where t.limit_name = '100051' and (exists (select 1 from lmt_apply t1 where t.serno = t1.serno and t1.approve_status = '111') or exists (select 1 from lmt_redi_apply t1  where t.serno = t1.serno and t1.approve_status = '111'))
+  union all  select cus_id, to_number(var_value) crd_amt, '3' flag from (select p0.cus_id, p2.var_value,row_number() over(partition by p0.cus_id order by p2.op_time desc) rn from lmt_app_details p0,wfi_join  p1,wfi_biz_var_record p2  where p0.serno = p1.pk_value and p1.instanceid = p2.instanceid and instr(p2.var_key, p0.ORG_LIMIT_CODE) > 0 and p2.var_key like 'crdAmt%' and p0.limit_name = '100051' and (exists(select 1 from lmt_apply t1 where p0.serno = t1.serno and t1.approve_status = '111') or exists (select 1  from lmt_redi_apply t1 where p0.serno = t1.serno  and t1.approve_status = '111'))) where rn = 1) p0 )
+  where rn = 1 and main_br_id in (select organno from s_org where instr(locate, ${organno}) > 0) and cus_id <> ${cus_id}
+  ]]>
+  </SELECT> 
+</SQL>
+<!-- 根据业务编号 查询当前业务的法人透支额度 add by wangj 2015-5-18 需求编号：XD141222087_法人账户透支需求变更  查询当前业务的法人透支额度 -->
+<SQL id="queryCurOverdrawnCredAmt" parameterClass="com.ecc.emp.data.KeyedCollection" resultClass="com.ecc.emp.data.KeyedCollection" onlyReturnFirst="true">
+  <SELECT>
+  <![CDATA[
+  select nvl(crd_amt, 0) curcrdamt from ( select p0.serno,p0.crd_amt,p0.flag, row_number() over(partition by  serno order by flag desc) rn from (select t.serno, t.crd_amt, '1' flag from lmt_app_details t where t.limit_name = '100051' and  ( exists( select 1 from lmt_apply t1 where t.serno = t1.serno and t1.approve_status in ('000','992') ) or exists (select 1 from lmt_redi_apply t1 where t.serno = t1.serno and t1.approve_status in ('000','992') ))
+ union all select t.serno, t.crd_amt, '2' flag from lmt_app_details t  where t.limit_name = '100051' and (exists (select 1 from lmt_apply t1 where t.serno = t1.serno and t1.approve_status = '111') or exists (select 1 from lmt_redi_apply t1 where t.serno = t1.serno and t1.approve_status = '111'))        
+ union all select serno, to_number(var_value) crd_amt, '3' flag from ( select P0.serno, p2.var_value,row_number() over(partition by P0.serno order by p2.op_time desc) rn from lmt_app_details p0, wfi_join p1, wfi_biz_var_record p2 where p0.serno = p1.pk_value and p1.instanceid = p2.instanceid and instr(p2.var_key, p0.ORG_LIMIT_CODE) > 0 and p2.var_key like 'crdAmt%' and p0.limit_name = '100051' and (exists(select 1 from lmt_apply t1 where p0.serno = t1.serno and t1.approve_status = '111') or exists (select 1 from lmt_redi_apply t1 where p0.serno = t1.serno and t1.approve_status = '111'))) where rn = 1 ) p0 )
+   where rn = 1 and serno=${serno} ]]>
+  </SELECT> 
+</SQL>
+<!-- 查询客户是否存在审批中的法人透支额度 add by wangj 2015-5-15 需求编号：XD141222087_法人账户透支需求变更  查询客户是否存在审批中的法人透支额度 -->
+<SQL id="queryOtherCtrlmt" parameterClass="com.ecc.emp.data.KeyedCollection" resultClass="com.ecc.emp.data.KeyedCollection" >
+  <SELECT>
+  <![CDATA[
+   select t.serno from lmt_app_details t where t.cus_id = ${cus_id} and t.limit_name = '100051' and 
+   (exists (select 1 from lmt_apply t1  where t.serno = t1.serno and t1.approve_status = '111' and t1.lrisk_type <> (select t2.LRISK_TYPE from lmt_apply t2 where t2.serno = ${serno}) and t1.cus_id = ${cus_id}) or exists
+   (select 1 from lmt_redi_apply t1 where t.serno = t1.serno and t1.approve_status = '111' and t1.lrisk_type <> (select t2.LRISK_TYPE from lmt_apply t2 where t2.serno = ${serno}) and t1.cus_id = ${cus_id}))
+  ]]>
+  </SELECT> 
+</SQL>
+
+<!-- 检查是否存在有生效的合同或审批中的合同 add by wangj 2015-5-28 需求编号：XD141222087_法人账户透支需求变更   检查是否存在有生效的合同或审批中的合同 -->
+<SQL id="queryCtrloanContexistbyCusId" parameterClass="java.lang.String" resultClass="com.ecc.emp.data.KeyedCollection" >
+  <SELECT>
+  <![CDATA[
+ SELECT t.cus_id FROM ( SELECT  t1.cus_id,'1' flag FROM Ctr_Loan_Cont t1 WHERE t1.cont_status in ('100','200') and t1.prd_id='100051' union all 
+ SELECT t0.cus_id,'2' flag FROM Iqp_Loan_App t0 WHERE t0.approve_status='111' and t0.prd_id='100051') t WHERE t.cus_id=${_SIG_VALUE}  ]]>
+  </SELECT> 
+</SQL>
+
+<!-- modify by wangj 2015-05-28  需求编号:XD141222087,法人账户透支需求变更  end   -->
+
+<!-- 根据客户号和机构号 查询所在机构除当前客户外所在机构的小微自助循环贷总额度 add by lisj 2015-5-27 需求编号：XD150123005 小微自助循环贷款改造  -->
+<SQL id="queryOrgMicroBizCrdAmt" parameterClass="com.ecc.emp.data.KeyedCollection" resultClass="com.ecc.emp.data.KeyedCollection" onlyReturnFirst="true">
+  <SELECT>
+  <![CDATA[
+  select nvl(sum(nvl(crd_amt, 0)),0) crdAmt from (select p0.cus_id,p0.crd_amt,p0.flag,(select cb.main_br_id from cus_base cb  where cb.cus_id = p0.cus_id) main_br_id, row_number() over(partition by cus_id order by flag desc) rn from (select t.cus_id, t.crd_amt, '1' flag from lmt_agr_details t where t.limit_name = '100088' and t.lmt_status not in ('00', '30') and not exists (select 1  from lmt_apply t1 where t.cus_id = t1.cus_id and t1.approve_status = '111') and not exists (select 1  from lmt_redi_apply t1 where t.cus_id = t1.cus_id and t1.approve_status = '111')
+  union all select t.cus_id, t.crd_amt, '2' flag from lmt_app_details t where t.limit_name = '100088' and (exists (select 1 from lmt_apply t1 where t.serno = t1.serno and t1.approve_status = '111') or exists (select 1 from lmt_redi_apply t1  where t.serno = t1.serno and t1.approve_status = '111'))
+  union all  select cus_id, to_number(var_value) crd_amt, '3' flag from (select p0.cus_id, p2.var_value,row_number() over(partition by p0.cus_id order by p2.op_time desc) rn from lmt_app_details p0,wfi_join  p1,wfi_biz_var_record p2  where p0.serno = p1.pk_value and p1.instanceid = p2.instanceid and instr(p2.var_key, p0.ORG_LIMIT_CODE) > 0 and p2.var_key like 'crdAmt%' and p0.limit_name = '100088' and (exists(select 1 from lmt_apply t1 where p0.serno = t1.serno and t1.approve_status = '111') or exists (select 1  from lmt_redi_apply t1 where p0.serno = t1.serno  and t1.approve_status = '111'))) where rn = 1) p0 )
+  where rn = 1 and main_br_id in (select organno from s_org where instr(locate, ${organno}) > 0) and cus_id <> ${cus_id}
+  ]]>
+  </SELECT> 
+</SQL>
+
+<!-- 查询客户是否存在审批中的小微自助循环贷额度 add by lisj 2015-5-27 需求编号：XD150123005 小微自助循环贷款改造-->
+<SQL id="queryOtherMicroBizLmt" parameterClass="com.ecc.emp.data.KeyedCollection" resultClass="com.ecc.emp.data.KeyedCollection" >
+  <SELECT>
+  <![CDATA[
+   select t.serno from lmt_app_details t where t.cus_id = ${cus_id} and t.limit_name = '100088' and 
+   (exists (select 1 from lmt_apply t1  where t.serno = t1.serno and t1.approve_status = '111' and t1.lrisk_type <> (select t2.LRISK_TYPE from lmt_apply t2 where t2.serno = ${serno}) and t1.cus_id = ${cus_id}) or exists
+   (select 1 from lmt_redi_apply t1 where t.serno = t1.serno and t1.approve_status = '111' and t1.lrisk_type <> (select t2.LRISK_TYPE from lmt_apply t2 where t2.serno = ${serno}) and t1.cus_id = ${cus_id}))
+  ]]>
+  </SELECT> 
+</SQL>
+
+<!-- 根据业务编号 查询当前业务的小微自助循环贷额度 add by lisj 2015-5-27 需求编号：XD150123005 小微自助循环贷款改造 -->
+<SQL id="queryCurMicroBizCrdAmt" parameterClass="com.ecc.emp.data.KeyedCollection" resultClass="com.ecc.emp.data.KeyedCollection" onlyReturnFirst="true">
+  <SELECT>
+  <![CDATA[
+  select nvl(crd_amt, 0) curcrdamt from ( select p0.serno,p0.crd_amt,p0.flag, row_number() over(partition by  serno order by flag desc) rn from (select t.serno, t.crd_amt, '1' flag from lmt_app_details t where t.limit_name = '100088' and  ( exists( select 1 from lmt_apply t1 where t.serno = t1.serno and t1.approve_status in ('000','992') ) or exists (select 1 from lmt_redi_apply t1 where t.serno = t1.serno and t1.approve_status in ('000','992') ))
+ union all select t.serno, t.crd_amt, '2' flag from lmt_app_details t  where t.limit_name = '100088' and (exists (select 1 from lmt_apply t1 where t.serno = t1.serno and t1.approve_status = '111') or exists (select 1 from lmt_redi_apply t1 where t.serno = t1.serno and t1.approve_status = '111'))        
+ union all select serno, to_number(var_value) crd_amt, '3' flag from ( select P0.serno, p2.var_value,row_number() over(partition by P0.serno order by p2.op_time desc) rn from lmt_app_details p0, wfi_join p1, wfi_biz_var_record p2 where p0.serno = p1.pk_value and p1.instanceid = p2.instanceid and instr(p2.var_key, p0.ORG_LIMIT_CODE) > 0 and p2.var_key like 'crdAmt%' and p0.limit_name = '100088' and (exists(select 1 from lmt_apply t1 where p0.serno = t1.serno and t1.approve_status = '111') or exists (select 1 from lmt_redi_apply t1 where p0.serno = t1.serno and t1.approve_status = '111'))) where rn = 1 ) p0 )
+   where rn = 1 and serno=${serno} 
+  ]]>
+  </SELECT> 
+</SQL>
+
+<!-- 插入打回流程的打回原因 added wangj 2015/07/28 需求编号：XD150303016_关于放款审查岗增加打回原因选择框的需求 -->
+<SQL id="insertCallBackDiscWBCR" parameterClass="java.lang.String" valueClass ="java.util.HashMap" >
+  <INSERT>
+  <![CDATA[
+    INSERT INTO wfi_biz_comment_record(pk1,instanceid,nodeid,fldvalue01,op_time,input_id,input_br_id,commentid) VALUES (${pk1},${instanceid},${nodeid},${fldvalue01},${op_time},${input_id},${input_br_id},${commentid})
+  ]]>
+  </INSERT> 
+</SQL> 
+<!-- 查询当前流程节点的流程意见编号  added wangj 2015/07/28 需求编号：XD150303016_关于放款审查岗增加打回原因选择框的需求 -->
+<SQL id="selectCurrentCommId" parameterClass="java.util.HashMap" resultClass="com.ecc.emp.data.KeyedCollection"  >
+  <INSERT>
+  <![CDATA[
+    select commentid from wf_comment where instanceid=${instanceid} and nodeid=${nodeid} and userid=${userid} and nodeactionid is null order by commenttime desc
+  ]]>
+  </INSERT> 
+</SQL> 
+
+<!-- 查询手续流程节点的最后的节点  added wangj 2015/09/10 需求编号：XD141222087,法人账户透支需求变更 -->
+<SQL id="checkNodeRecordened" parameterClass="java.util.HashMap" resultClass="com.ecc.emp.data.KeyedCollection"  >
+  <INSERT>
+  <![CDATA[
+   SELECT case when  instr('zhi', flag) > 0 then 'zhi' when  instr('fen', flag) > 0 then 'fen' when instr(nodeid, 'fen') > 0 then 'zong1' else 'zong2' end as flag  FROM 
+(select case when  instr('95_13,95_a6,30_a4', nodeid) > 0 then 'zhi'  when  instr('95_a9', nodeid) > 0 then 'fen' else 'zong' end as flag,instanceid from ( select row_number() over(partition by t.instanceid order by t.nodeendtime desc) rn, t.* from wf_node_recordend t where exists (select 1  from wfi_join_his t1 where t.instanceid = t1.instanceid  and exists (select 1  from lmt_agr_info t2 where t1.pk_value = t2.serno  and t2.agr_no =${agr_no} ) and t1.wfsign in ('Lmt_Apply', 'Lmt_Apply_Other')) and t.nodeid not in ('30_e2', '95_e2'))
+ where rn = 1) aa, (SELECT  instanceid,LISTAGG(flag, ',') within group(order by rn) nodeid
+ FROM (SELECT rn,case when  instr('95_13,95_a6,30_a4', nodeid) > 0 then 'zhi' when  instr('95_a9', nodeid) > 0 then 'fen' else 'zong' end as flag,instanceid from (select row_number() over(partition by t.instanceid order by t.nodeendtime desc) rn, t.* from wf_node_recordend t where exists (select 1 from wfi_join_his t1 where t.instanceid = t1.instanceid and exists (select 1 from lmt_agr_info t2 where t1.pk_value = t2.serno and t2.agr_no =${agr_no} ) and t1.wfsign in ('Lmt_Apply', 'Lmt_Apply_Other')) and t.nodeid not in ('30_e2', '95_e2') ))
+group by instanceid)bb
+ WHERE aa.instanceid=bb.instanceid   ]]>
+  </INSERT> 
+</SQL> 
+
+<!-- 根据团队成员检索是否存在有效团队 added by yangzy 20150918 需求:XD150918069,丰泽鲤城区域团队业务流程改造 -->
+<SQL id="getSTeamInfoByMemNo" parameterClass="java.lang.String" resultClass="com.ecc.emp.data.KeyedCollection" onlyReturnFirst="true">
+  <SELECT>
+  <![CDATA[
+	select *
+	  from s_team_user t
+	 where exists (select 1
+	          from s_team t1
+	         where t.team_no = t1.team_no
+	           and t1.status = '1')
+	   and t.mem_no = ${_SIG_VALUE}
+  ]]>
+  </SELECT> 
+</SQL>
+
+<!-- 根据团队编号检索该团队的团队长 added by yangzy 20150918 需求:XD150918069,丰泽鲤城区域团队业务流程改造 -->
+<SQL id="getSTeamInfoByTeamNo" parameterClass="java.lang.String" resultClass="com.ecc.emp.data.KeyedCollection" onlyReturnFirst="true">
+  <SELECT>
+  <![CDATA[
+	select *
+	  from s_team_user
+	 where team_no = ${_SIG_VALUE}
+	   and team_role = '00'
+  ]]>
+  </SELECT> 
+</SQL>
+
+</S>

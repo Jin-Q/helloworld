@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<MortLadingBill.xml>
+	<TableModel id="MortLadingBill" cnname="提单" dbTableName="mort_lading_bill">
+		<TableInfo/>
+		<Field id="lading_id" isPK="true" columnName="lading_id" cnname="提单编号" length="40" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="guaranty_no" columnName="guaranty_no" cnname="押品编号" length="40" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="lading_bill_no" columnName="lading_bill_no" cnname="提单编号" length="40" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="cargo_model_no" columnName="cargo_model_no" cnname="货物规格型号" length="40" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="amount" columnName="amount" cnname="数量" length="8" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="cargo_unit" dictname="STD_AMOUNT_UNIT" columnName="cargo_unit" cnname="货物计量单位" length="2" JSPTag="select" canBeNull="true" JDBCType="CHAR"/>
+		<Field id="avail_expiration_date" columnName="avail_expiration_date" cnname="有效截止日" length="10" JSPTag="date" canBeNull="true" JDBCType="CHAR"/>
+		<Field id="carrier" columnName="carrier" cnname="承运人" length="20" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="cargo_name" columnName="cargo_name" cnname="货物名称" length="100" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="memo" columnName="memo" cnname="备注" length="1000" JSPTag="textarea" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="sys_update_time" columnName="sys_update_time" cnname="系统更新时间" length="10" JSPTag="date" canBeNull="true" JDBCType="CHAR"/>
+		<Field id="bill_type" dictname="STD_ZX_BILL_TYPE" columnName="bill_type" cnname="提单类型" length="2" JSPTag="select" canBeNull="true" JDBCType="CHAR"/>
+		<Field id="cargo_standard_no" columnName="cargo_standard_no" cnname="提单项下货物品种/规格" length="40" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="sell_consult" columnName="sell_consult" cnname="提单项下货物销售商名称" length="40" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="cargo_product_consult" columnName="cargo_product_consult" cnname="提单项下货物生产商名称" length="40" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="cargo_deposit_place" columnName="cargo_deposit_place" cnname="提单项下货物存放地点" length="100" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="cargo_checker" columnName="cargo_checker" cnname="提单托运人" length="40" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="cargo_consignee" columnName="cargo_consignee" cnname="收货人" length="40" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="is_import_permit" columnName="is_import_permit" cnname="是否有进口许可证" length="1" JSPTag="text" canBeNull="true" JDBCType="CHAR"/>
+		<Field id="permit_unit" columnName="permit_unit" cnname="进口许可单位" length="40" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="permit_date" columnName="permit_date" cnname="进口许可日期" length="10" JSPTag="date" canBeNull="true" JDBCType="CHAR"/>
+		<Field id="permit_no" columnName="permit_no" cnname="进口许可证号" length="40" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="cargo_sign_date" columnName="cargo_sign_date" cnname="提单签发日期" length="10" JSPTag="date" canBeNull="true" JDBCType="CHAR"/>
+		<OrderFields>lading_id[desc];</OrderFields>
+	</TableModel>
+</MortLadingBill.xml>

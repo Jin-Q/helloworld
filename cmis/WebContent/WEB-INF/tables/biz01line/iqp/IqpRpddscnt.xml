@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<IqpRpddscnt.xml>
+	<TableModel id="IqpRpddscnt" cnname="转贴现" dbTableName="iqp_rpddscnt">
+		<Field id="serno" isPK="true" columnName="serno" cnname="业务编号" length="40" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="batch_no" isPK="false" columnName="batch_no" cnname="批次号" length="40" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="prd_id" columnName="prd_id" cnname="产品编码" length="10" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="rpddscnt_type" columnName="rpddscnt_type" cnname="转贴现方式" length="5" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="toorg_no" columnName="toorg_no" cnname="交易对手行号" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="toorg_name" columnName="toorg_name" cnname="交易对手行名" length="100" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="topp_acct_name" columnName="topp_acct_name" cnname="交易对手户名" length="40" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="tooorg_no" columnName="tooorg_no" cnname="交易对手开户行行号" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="tooorg_name" columnName="tooorg_name" cnname="交易对手开户行行名" length="100" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="this_acct_no" columnName="this_acct_no" cnname="本行账号" length="40" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="this_acct_name" columnName="this_acct_name" cnname="本行账户名" length="100" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="acctsvcr_no" columnName="acctsvcr_no" cnname="本行开户行行号" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="acctsvcr_name" columnName="acctsvcr_name" cnname="本行开户行行名" length="100" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="bill_type" columnName="bill_type" cnname="票据种类" length="5" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="bill_curr" columnName="bill_curr" cnname="票据币种" length="3" JDBCType="CHAR" canBeNull="true"/>
+		<Field id="bill_total_amt" columnName="bill_total_amt" cnname="票据总金额" length="16" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="bill_qnt" columnName="bill_qnt" cnname="票据数量" length="38" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="rpddscnt_date" columnName="rpddscnt_date" cnname="转贴现日期" length="10" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="rpddscnt_rate" columnName="rpddscnt_rate" cnname="转贴现利率" length="10" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="rpddscnt_int" columnName="rpddscnt_int" cnname="总贴现利息" length="16" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="rpay_amt" columnName="rpay_amt" cnname="总实付金额" length="16" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="rebuy_date" columnName="rebuy_date" cnname="回购日期" length="10" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="rebuy_rate" columnName="rebuy_rate" cnname="回购利率" length="10" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="rebuy_int" columnName="rebuy_int" cnname="总回购利息" length="16" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="rebuy_amt" columnName="rebuy_amt" cnname="总回购金额" length="16" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="memo" columnName="memo" cnname="备注" length="250" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="manager_br_id" columnName="manager_br_id" cnname="管理机构" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="input_id" columnName="input_id" cnname="登记人" length="40" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="input_br_id" columnName="input_br_id" cnname="登记机构" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="input_date" columnName="input_date" cnname="登记日期" length="10" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="approve_status" columnName="approve_status" cnname="申请状态" length="5" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="topp_acct_no" columnName="topp_acct_no" cnname="交易对手账号" length="40" JDBCType="VARCHAR2"/>
+		<Field id="flow_type" columnName="flow_type" cnname="流程类型" length="2" JDBCType="VARCHAR2"/>
+		<Field id="limit_ind" columnName="limit_ind" cnname="授信额度使用标志" length="1" JDBCType="CHAR"/>
+		<Field id="limit_acc_no" columnName="limit_acc_no" cnname="授信台帐编号" length="40" JDBCType="VARCHAR2"/>
+	</TableModel>
+</IqpRpddscnt.xml>

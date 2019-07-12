@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<MortExportReturnTax.xml>
+	<TableModel id="MortExportReturnTax" cnname="出口退税账户" dbTableName="mort_export_return_tax">
+		<TableInfo/>
+		<Field id="return_tax_id" isPK="true" columnName="return_tax_id" cnname="出口退税账户编号" length="40" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="guaranty_no" columnName="guaranty_no" cnname="押品编号" length="40" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="return_tax_account" columnName="return_tax_account" cnname="出口退税专户帐号" length="40" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="affirm_org_type" columnName="affirm_org_type" cnname="退税金额确认机构" length="20" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="memo" columnName="memo" cnname="备注" length="1000" JSPTag="textarea" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="return_tax_value" columnName="return_tax_value" cnname="可退税金额(元)" length="16" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<OrderFields>return_tax_id[desc];</OrderFields>
+		<Field id="return_tax_curr" dictname="STD_ZX_CUR_TYPE" columnName="return_tax_curr" cnname="可退税币种" JSPTag="select" length="6" JDBCType="VARCHAR2"/>
+	</TableModel>
+</MortExportReturnTax.xml>

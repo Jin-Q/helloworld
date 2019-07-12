@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<MortImpawnOthers.xml>
+	<TableModel id="MortImpawnOthers" cnname="其他质押品" dbTableName="mort_impawn_others">
+		<TableInfo/>
+		<Field id="impawn_other_id" isPK="true" columnName="impawn_other_id" cnname="质押品编号" length="40" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="guaranty_no" columnName="guaranty_no" cnname="押品编号" length="40" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="guaranty_name" columnName="guaranty_name" cnname="质押物名称" length="100" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="impawn_quantity" columnName="impawn_quantity" cnname="数量及单位" length="16" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="buy_date" columnName="buy_date" cnname="购入/起始日期" length="10" JSPTag="date" canBeNull="true" JDBCType="CHAR"/>
+		<Field id="expire_date" columnName="expire_date" cnname="到期日期" length="10" JSPTag="date" canBeNull="true" JDBCType="CHAR"/>
+		<Field id="buy_sum" dataType="Currency" columnName="buy_sum" cnname="购入金额" length="16" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="memo" columnName="memo" cnname="备注" length="1000" JSPTag="textarea" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="sys_update_time" columnName="sys_update_time" cnname="系统更新时间" length="10" JSPTag="date" canBeNull="true" JDBCType="CHAR"/>
+		<Field id="buy_curr_cd" dictname="STD_ZX_CUR_TYPE" columnName="buy_curr_cd" cnname="币种" length="3" JSPTag="select" canBeNull="true" JDBCType="CHAR"/>
+		<OrderFields>impawn_other_id[desc];</OrderFields>
+	</TableModel>
+</MortImpawnOthers.xml>

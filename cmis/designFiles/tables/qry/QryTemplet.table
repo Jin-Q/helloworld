@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<QryTemplet.xml>
+	<TableModel id="QryTemplet" pageSize="10" cnname="查询信息配置模板" isPaged="true" dbTableName="qry_templet">
+		<TableInfo/>
+		<Field id="temp_no" isPK="true" columnName="temp_no" cnname="查询模板编号" length="20" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="temp_name" columnName="temp_name" cnname="查询名称" length="200" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="organlevel" columnName="organlevel" cnname="适用机构等级" length="20" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="templet_type" dictname="STD_ZB_TEMPLET_TYPE" columnName="templet_type" cnname="查询类型" length="1" JSPTag="select" canBeNull="true" JDBCType="CHAR"/>
+		<Field id="temp_pattern" dictname="STD_ZB_TEMP_PATTERN" columnName="temp_pattern" cnname="查询模式" length="1" JSPTag="select" canBeNull="true" JDBCType="CHAR"/>
+		<Field id="classpath" columnName="classpath" cnname="扩展类路径" length="250" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="temp_enable" dictname="STD_ZX_YES_NO" columnName="temp_enable" cnname="是否启用" length="1" JSPTag="select" canBeNull="true" JDBCType="CHAR"/>
+		<Field id="query_sql" columnName="query_sql" cnname="查询SQL语句" length="4000" JSPTag="textarea" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="jsp_file_name" columnName="jsp_file_name" cnname="查询页面文件名" length="250" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="order_id" dataType="Long" columnName="order_id" cnname="排序字段" length="20" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<One2MultiRef toField="temp_no" refModelId="QryParam" fromField="temp_no"/>
+		<One2MultiRef toField="temp_no" refModelId="QryResult" fromField="temp_no"/>
+		<OrderFields>order_id;</OrderFields>
+	</TableModel>
+</QryTemplet.xml>

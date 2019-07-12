@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<PspCheckTask.xml>
+	<TableModel id="PspCheckTask" cnname="贷后检查任务" dbTableName="psp_check_task">
+		<Field id="task_id" isPK="true" columnName="task_id" cnname="任务编号" length="40" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="cus_id" columnName="cus_id" cnname="客户编码" length="40" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="check_type" columnName="check_type" cnname="检查类型（STD_PSP_CHECK_TYPE）" length="2" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="task_create_date" columnName="task_create_date" cnname="任务生成日期" length="10" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="task_request_time" columnName="task_request_time" cnname="要求完成时间" length="10" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="qnt" columnName="qnt" cnname="笔数" length="38" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="loan_totl_amt" columnName="loan_totl_amt" cnname="贷款总金额" length="16" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="loan_balance" columnName="loan_balance" cnname="贷款余额" length="16" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="task_huser" columnName="task_huser" cnname="任务执行人" length="40" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="task_horg" columnName="task_horg" cnname="任务执行机构" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="task_divis_person" columnName="task_divis_person" cnname="任务分配人" length="40" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="task_divis_org" columnName="task_divis_org" cnname="任务分配机构" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="check_time" columnName="check_time" cnname="检查时间" length="10" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="check_addr" columnName="check_addr" cnname="检查地点" length="200" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="agreed_person" columnName="agreed_person" cnname="约见人员" length="40" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="remarks" columnName="remarks" cnname="备注" length="250" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="input_id" columnName="input_id" cnname="登记人" length="10" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="input_br_id" columnName="input_br_id" cnname="登记机构" length="10" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="input_date" columnName="input_date" cnname="登记日期" length="10" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="task_type" columnName="task_type" cnname="任务类型（STD_ZB_TASK_TYPE）" length="2" JDBCType="VARCHAR2"/>
+		<Field id="approve_status" columnName="approve_status" cnname="审批状态" length="5" JDBCType="VARCHAR2"/>
+		<Field id="grp_task_id" columnName="grp_task_id" cnname="所属集团任务编号" length="40" JDBCType="VARCHAR2"/>
+		<Field id="grp_no" columnName="grp_no" cnname="集团编号" length="40" JDBCType="VARCHAR2"/>
+		<Field id="manager_id" columnName="manager_id" cnname="主管客户经理" length="40" JDBCType="VARCHAR2"/>
+		<Field id="manager_br_id" columnName="manager_br_id" cnname="主管机构" length="20" JDBCType="VARCHAR2"/>
+		<Field id="psp_cus_type" columnName="psp_cus_type" cnname="客户类型" length="3" JDBCType="VARCHAR2"/>
+		<Field id="check_serno" columnName="check_serno" cnname="任务设置流水" length="40" JDBCType="VARCHAR2"/>
+		<Field id="check_freq" columnName="check_freq" cnname="检查频率" length="2" JDBCType="VARCHAR2"/>
+		<Field id="check_view" columnName="check_view" cnname="本次贷后检查综合评价及风险分类、下期贷后检查频率调整意见" length="1000" JDBCType="VARCHAR2"/>
+		<Field id="batch_task_type" columnName="batch_task_type" cnname="批量任务类型" length="2" JDBCType="VARCHAR2"/>
+	</TableModel>
+</PspCheckTask.xml>

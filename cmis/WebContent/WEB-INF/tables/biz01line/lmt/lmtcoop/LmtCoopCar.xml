@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<LmtCoopCar.xml>
+	<TableModel id="LmtCoopCar" cnname="合作方授信汽车信息" dbTableName="lmt_coop_car">
+		<Field id="pro_no" isPK="true" columnName="pro_no" cnname="项目编号" length="40" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="pro_name" columnName="pro_name" cnname="项目名称" length="60" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="sale_cus_id" columnName="sale_cus_id" cnname="销售商编号" length="30" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="sale_brh_num" columnName="sale_brh_num" cnname="销售网点数量" length="4" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="agency_addr1" columnName="agency_addr1" cnname="专卖店地址1" length="8" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="street1" columnName="street1" cnname="街道1" length="100" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="agency_addr2" columnName="agency_addr2" cnname="专卖店地址2" length="8" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="street2" columnName="street2" cnname="街道2" length="100" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="agency_addr3" columnName="agency_addr3" cnname="专卖店地址3" length="8" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="street3" columnName="street3" cnname="街道3" length="100" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="coop_brand" columnName="coop_brand" cnname="合作品牌" length="80" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="util_cls" columnName="util_cls" cnname="汽车使用类别" length="3" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="chief_name" columnName="chief_name" cnname="负责人姓名" length="60" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="cert_type" columnName="cert_type" cnname="证件类型" length="4" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="cert_code" columnName="cert_code" cnname="证件号码" length="20" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="link_mode" columnName="link_mode" cnname="联系方式" length="11" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="serno" columnName="serno" cnname="流水号" length="40" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="agr_no" columnName="agr_no" cnname="协议编号" length="40" JDBCType="VARCHAR2"/>
+		<Field id="remark" columnName="remark" cnname="备注" length="1000" JDBCType="VARCHAR2" canBeNull="true"/>
+	</TableModel>
+</LmtCoopCar.xml>

@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<empDataType.xml>
+	<dataType id="Byte" name="Byte" implClass="com.ecc.emp.datatype.ByteType">
+		<document>字节型类型数据</document>
+		<attributes>
+			<attr id="max" name="最大值" defaultValue="127" editable="true" />
+			<attr id="min" name="最小值" defaultValue="-128" editable="true" />
+			<attr id="keepStringValue" name="后台是否转化为字符串形式" defaultValue="false"
+				editable="true" attrType="boolean" />
+			<attr id="formatErrorMsg" name="格式错误时的提示信息" editable="true" />
+			<attr id="rangeErrorMsg" name="范围越界时的提示信息" editable="true" />
+		</attributes>
+		<validateJS
+			function="EMP.type.Number.check(displayValue, $max;, $min;, formatErrorMsg, rangeErrorMsg)" />
+		<convertorJS function="EMP.type.Number.display(realValue)" />
+	</dataType>
+	<dataType id="Short" name="Short" implClass="com.ecc.emp.datatype.ShortType">
+		<document>短整型类型数据</document>
+		<attributes>
+			<attr id="max" name="最大值" defaultValue="32767" editable="true" />
+			<attr id="min" name="最小值" defaultValue="-32768" editable="true" />
+			<attr id="keepStringValue" name="后台是否转化为字符串形式" defaultValue="false"
+				editable="true" attrType="boolean" />
+			<attr id="formatErrorMsg" name="格式错误时的提示信息" editable="true" />
+			<attr id="rangeErrorMsg" name="范围越界时的提示信息" editable="true" />
+		</attributes>
+		<validateJS
+			function="EMP.type.Number.check(displayValue, $max;, $min;, formatErrorMsg, rangeErrorMsg)" />
+		<convertorJS function="EMP.type.Number.display(realValue)" />
+	</dataType>
+	<dataType id="Int" name="Int" implClass="com.ecc.emp.datatype.IntegerType">
+		<document>整型类型数据</document>
+		<attributes>
+			<attr id="max" name="最大值" defaultValue="2147483647" editable="true" />
+			<attr id="min" name="最小值" defaultValue="-2147483648" editable="true" />
+			<attr id="keepStringValue" name="后台是否转化为字符串形式" defaultValue="false"
+				editable="true" attrType="boolean" />
+			<attr id="formatErrorMsg" name="格式错误时的提示信息" editable="true" />
+			<attr id="rangeErrorMsg" name="范围越界时的提示信息" editable="true" />
+		</attributes>
+		<validateJS
+			function="EMP.type.Number.check(displayValue, $max;, $min;, formatErrorMsg, rangeErrorMsg)" />
+		<convertorJS function="EMP.type.Number.display(realValue)" />
+	</dataType>
+	<dataType id="Long" name="Long" implClass="com.ecc.emp.datatype.LongType">
+		<document>长整型类型数据</document>
+		<attributes>
+			<attr id="max" name="最大值" defaultValue="2147483647" editable="true" />
+			<attr id="min" name="最小值" defaultValue="-2147483648" editable="true" />
+			<attr id="keepStringValue" name="后台是否转化为字符串形式" defaultValue="false"
+				editable="true" attrType="boolean" />
+			<attr id="formatErrorMsg" name="格式错误时的提示信息" editable="true" />
+			<attr id="rangeErrorMsg" name="范围越界时的提示信息" editable="true" />
+		</attributes>
+		<validateJS
+			function="EMP.type.Number.check(displayValue, $max;, $min;, formatErrorMsg, rangeErrorMsg)" />
+		<convertorJS function="EMP.type.Number.display(realValue)" />
+	</dataType>
+	<dataType id="Float" name="Float" implClass="com.ecc.emp.datatype.FloatType">
+		<document>浮点型类型数据</document>
+		<attributes>
+			<attr id="max" name="最大值" defaultValue="2147483647" editable="true" />
+			<attr id="min" name="最小值" defaultValue="-2147483648" editable="true" />
+			<attr id="keepStringValue" name="后台是否转化为字符串形式" defaultValue="false"
+				attrType="boolean" />
+			<attr id="formatErrorMsg" name="格式错误时的提示信息" editable="true" />
+			<attr id="rangeErrorMsg" name="范围越界时的提示信息" editable="true" />
+		</attributes>
+		<validateJS
+			function="EMP.type.Number.check(displayValue, $max;, $min;, formatErrorMsg, rangeErrorMsg)" />
+		<convertorJS function="EMP.type.Number.display(realValue" />
+	</dataType>
+	<dataType id="Double" name="Double" implClass="com.ecc.emp.datatype.DoubleType">
+		<document>双浮点型类型数据</document>
+		<attributes>
+			<attr id="max" name="最大值" defaultValue="2147483647" editable="true" />
+			<attr id="min" name="最小值" defaultValue="-2147483648" editable="true" />
+			<attr id="keepStringValue" name="后台是否转化为字符串形式" defaultValue="false"
+				attrType="boolean" />
+			<attr id="formatErrorMsg" name="格式错误时的提示信息" editable="true" />
+			<attr id="rangeErrorMsg" name="范围越界时的提示信息" editable="true" />
+		</attributes>
+		<validateJS
+			function="EMP.type.Number.check(displayValue, $max;, $min;, formatErrorMsg, rangeErrorMsg)" />
+		<convertorJS function="EMP.type.Number.display(realValue)" />
+	</dataType>
+	<dataType id="Decimal" name="Decimal" implClass="com.ecc.emp.datatype.DecimalType">
+		<document>高精度类型数据</document>
+		<attributes>
+			<attr id="scale" name="小数点后位数" />
+			<attr id="showComma" name="是否显示逗号分割符" attrType="boolean" />
+			<attr id="showSymbol" name="是否显示金额符号" attrType="boolean" />
+			<attr id="min" name="最小值" editable="true" />
+			<attr id="max" name="最大值" editable="true" />
+			<attr id="keepStringValue" name="后台是否转化为字符串形式" defaultValue="false"
+				attrType="boolean" />
+			<attr id="formatErrorMsg" name="格式错误时的提示信息" editable="true" />
+			<attr id="rangeErrorMsg" name="范围越界时的提示信息" editable="true" />
+		</attributes>
+		<validateJS
+			function="EMP.type.Decimal.check(displayValue, $scale;, $showSymbol;, $max;, $min;, formatErrorMsg, rangeErrorMsg)" />
+		<convertorJS
+			function="EMP.type.Decimal.display(realValue, $scale;, $showComma;, $showSymbol;)" />
+	</dataType>
+	<dataType id="Date" name="日期" implClass="com.ecc.emp.datatype.DateTimeType">
+		<document>年月日的日期型数据类型</document>
+		<attributes>
+			<attr id="dateTimeFormat" name="日期时间格式" dftValue="yyyy-MM-dd" />
+			<attr id="formatErrorMsg" name="格式错误时的提示信息" editable="true" />
+			<attr id="rangeErrorMsg" name="范围越界时的提示信息" editable="true" />
+		</attributes>
+		<validateJS
+			function="EMP.type.Date.check(displayValue, formatErrorMsg, rangeErrorMsg)">
+			<script />
+		</validateJS>
+		<convertorJS function="EMP.type.Date.display(realValue)">
+			<script />
+		</convertorJS>
+		<inputJS>
+			<script />
+		</inputJS>
+	</dataType>
+
+	<dataType id="DateMonDay" name="日期"
+		implClass="com.ecc.emp.datatype.DateTimeType">
+		<document>年月日的日期型数据类型</document>
+		<attributes>
+			<attr id="dateTimeFormat" name="日期时间格式" dftValue="MM-dd" />
+			<attr id="formatErrorMsg" name="格式错误时的提示信息" editable="true" />
+			<attr id="rangeErrorMsg" name="范围越界时的提示信息" editable="true" />
+		</attributes>
+		<validateJS
+			function="EMP.type.Date.checkMonDay(displayValue, formatErrorMsg, rangeErrorMsg)">
+			<script />
+		</validateJS>
+		<convertorJS function="EMP.type.Date.display(realValue)">
+			<script />
+		</convertorJS>
+		<inputJS>
+			<script />
+		</inputJS>
+	</dataType>
+
+	<dataType id="DateYearMon" name="日期"
+		implClass="com.ecc.emp.datatype.DateTimeType">
+		<document>年月日的日期型数据类型</document>
+		<attributes>
+			<attr id="dateTimeFormat" name="日期时间格式" dftValue="yyyy-MM" />
+			<attr id="formatErrorMsg" name="格式错误时的提示信息" editable="true" />
+			<attr id="rangeErrorMsg" name="范围越界时的提示信息" editable="true" />
+		</attributes>
+		<validateJS
+			function="EMP.type.Date.checkYearMon(displayValue, formatErrorMsg, rangeErrorMsg)">
+			<script />
+		</validateJS>
+		<convertorJS function="EMP.type.Date.display(realValue)">
+			<script />
+		</convertorJS>
+		<inputJS>
+			<script />
+		</inputJS>
+	</dataType>
+
+	<dataType id="Pattern" name="正则表达式" implClass="com.ecc.emp.datatype.PatternType">
+		<document>简单的正则表达式判断</document>
+		<attributes>
+			<attr id="regFormat" name="具体的正则表达式定义" editable="true" />
+			<attr id="formatErrorMsg" name="格式错误时的提示信息" editable="true" />
+			<attr id="rangeErrorMsg" name="范围越界时的提示信息" editable="true" />
+		</attributes>
+		<validateJS
+			function="EMP.type.Pattern.check(displayValue, '$regFormat;', formatErrorMsg, rangeErrorMsg)" />
+		<convertorJS function="EMP.type.Pattern.display(realValue)" />
+	</dataType>
+	<dataType id="Identity" name="身份证号校验"
+		implClass="com.ecc.emp.datatype.IdentityType">
+		<document>身份证号校验</document>
+		<attributes>
+			<attr id="formatErrorMsg" name="格式错误时的提示信息" editable="true" />
+			<attr id="rangeErrorMsg" name="范围越界时的提示信息" editable="true" />
+		</attributes>
+		<validateJS
+			function="EMP.type.Identity.check(displayValue, formatErrorMsg, rangeErrorMsg)" />
+		<convertorJS function="EMP.type.Identity.display(realValue)" />
+	</dataType>
+	<dataType id="Percent" name="百分率、千分率" implClass="com.ecc.emp.datatype.PercentType">
+		<document>百分率、千分率类型</document>
+		<attributes>
+			<attr id="scale" name="小数点后位数" />
+			<attr id="showComma" name="是否显示逗号分割符" attrType="boolean" />
+			<attr id="isPercent" name="是否是百分数" attrType="boolean" dftValue="true" />
+			<attr id="min" name="最小值" editable="true" />
+			<attr id="max" name="最大值" editable="true" />
+			<attr id="keepStringValue" name="后台是否转化为字符串形式" defaultValue="false"
+				attrType="boolean" />
+			<attr id="formatErrorMsg" name="格式错误时的提示信息" editable="true" />
+			<attr id="rangeErrorMsg" name="范围越界时的提示信息" editable="true" />
+			<attr id="isInput" name="前台输入标志" defaultValue="false" mustSet="false"
+				editable="true" attrType="boolean">
+				<document />
+			</attr>
+		</attributes>
+		<validateJS
+			function="EMP.type.Percent.check(displayValue, $scale;, $isPercent;, $max;, $min;, formatErrorMsg, rangeErrorMsg, isInput)">
+			<script />
+		</validateJS>
+		<convertorJS
+			function="EMP.type.Percent.display(realValue, $scale;, $isPercent;, $showComma;, isInput)">
+			<script />
+		</convertorJS>
+		<inputJS>
+			<script />
+		</inputJS>
+	</dataType>
+	<dataType id="Percent2" name="百分率、千分率"
+		implClass="com.ecc.emp.datatype.PercentType">
+		<document>百分率、千分率类型(可负)</document>
+		<attributes>
+			<attr id="scale" name="小数点后位数" />
+			<attr id="showComma" name="是否显示逗号分割符" attrType="boolean" />
+			<attr id="isPercent" name="是否是百分数" attrType="boolean" dftValue="true" />
+			<attr id="min" name="最小值" editable="true" />
+			<attr id="max" name="最大值" editable="true" />
+			<attr id="keepStringValue" name="后台是否转化为字符串形式" defaultValue="false"
+				attrType="boolean" />
+			<attr id="formatErrorMsg" name="格式错误时的提示信息" editable="true" />
+			<attr id="rangeErrorMsg" name="范围越界时的提示信息" editable="true" />
+		</attributes>
+		<validateJS
+			function="EMP.type.Percent.check(displayValue, $scale;, $isPercent;, $max;, $min;, formatErrorMsg, rangeErrorMsg, isInput)">
+			<script><![CDATA[]]>
+			</script>
+		</validateJS>
+		<convertorJS
+			function="EMP.type.Percent.display(realValue, $scale;, $isPercent;, $showComma;, isInput)">
+			<script><![CDATA[]]>
+			</script>
+		</convertorJS>
+		<inputJS>
+			<script><![CDATA[]]>
+			</script>
+		</inputJS>
+	</dataType>
+	<dataType id="Rate4Month" name="月利率"
+		implClass="com.ecc.emp.datatype.PercentType">
+		<document />
+		<attributes>
+			<attr id="scale" name="小数点后位数" />
+			<attr id="showComma" name="是否显示逗号分割符" attrType="boolean" />
+			<attr id="isPercent" name="是否是百分数" attrType="boolean" dftValue="false" />
+			<attr id="min" name="最小值" editable="true" />
+			<attr id="max" name="最大值" editable="true" />
+			<attr id="keepStringValue" name="后台是否转化为字符串形式" defaultValue="false"
+				attrType="boolean" />
+			<attr id="formatErrorMsg" name="格式错误时的提示信息" editable="true" />
+			<attr id="rangeErrorMsg" name="范围越界时的提示信息" editable="true" />
+			<attr id="isInput" name="前台输入标志" defaultValue="false" mustSet="false"
+				editable="true" attrType="boolean">
+				<document />
+			</attr>
+		</attributes>
+		<validateJS
+			function="EMP.type.Percent.check(displayValue, $scale;, $isPercent;, $max;, $min;, formatErrorMsg, rangeErrorMsg, isInput)">
+			<script><![CDATA[]]>
+			</script>
+		</validateJS>
+		<convertorJS
+			function="EMP.type.Rate4Month.display(realValue, $scale;, $isPercent;, $showComma;, isInput)">
+			<script><![CDATA[]]>
+			</script>
+		</convertorJS>
+		<inputJS>
+			<script><![CDATA[]]>
+			</script>
+		</inputJS>
+	</dataType>
+</empDataType.xml>

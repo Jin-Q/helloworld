@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<PspDunningTaskDivis.xml>
+	<TableModel id="PspDunningTaskDivis" pageSize="15" cnname="催收任务分配" isPaged="true" dbTableName="psp_dunning_task_divis">
+		<TableInfo/>
+		<Field id="serno" isPK="true" columnName="serno" cnname="业务编号" length="40" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="cus_id" columnName="cus_id" cnname="客户码" length="30" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="acc_no" columnName="acc_no" cnname="借据编号" length="40" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="cont_no" columnName="cont_no" cnname="合同编号" length="40" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="task_create_date" columnName="task_create_date" cnname="任务生成日期" length="10" JSPTag="date" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="need_end_date" columnName="need_end_date" cnname="要求完成日期" length="10" JSPTag="date" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="exe_id" columnName="exe_id" cnname="任务执行人" length="20" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="exe_br_id" columnName="exe_br_id" cnname="任务执行机构" length="20" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="divis_id" columnName="divis_id" cnname="任务分配人" length="20" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="divis_br_id" columnName="divis_br_id" cnname="任务分配机构" length="20" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="memo" columnName="memo" cnname="备注" length="500" JSPTag="textarea" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="input_id" columnName="input_id" cnname="登记人" length="20" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="input_br_id" columnName="input_br_id" cnname="登记机构" length="20" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="input_date" columnName="input_date" cnname="登记日期" length="10" JSPTag="date" canBeNull="false" JDBCType="VARCHAR2"/>
+		<OrderFields>serno[desc];</OrderFields>
+		<RecordRestrict query="true" delete="true" update="true"/>
+		<ConditionFields>serno;cus_id;acc_no;cont_no;</ConditionFields>
+		<FilterFields>serno;cus_id;acc_no;cont_no;task_create_date;need_end_date;exe_id;divis_id;input_date;</FilterFields>
+	</TableModel>
+</PspDunningTaskDivis.xml>

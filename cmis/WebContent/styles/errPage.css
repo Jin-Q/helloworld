@@ -1,0 +1,67 @@
+/**
+	报错信息页面css
+
+*/
+.err_page{
+	font-face: "宋体";
+	font-size: 15px;
+	position: absolute;
+ 	top: 55px;
+ 	left: 200px;
+	
+	padding:0px 0px 0px 0px;
+	background-position: left top;
+	background-color: white;
+	height: 400px;
+	width:300px;
+	
+}
+.err_page_content{
+	margin-top: 100px;
+	position:center center ;
+	background-color:#94C1D5;
+	height: 100px;
+	border: 1px solid #067EB2;
+	
+}
+.err_page_content_head{
+	margin-left:50px;
+	height:100 px;
+	width: 100 px;
+	float:left;
+	background-color:#94C1D5;
+	background-image: url(../images/errLogo.png);
+	background-repeat: no-repeat;
+
+}
+.err_page_hint{
+	height:100px;
+	color: #000;
+	text-align: center;
+}
+.err_page_title{
+	font: font-family: Georgia, Times, "Times New Roman", serif;
+ 	font-size: 2em;
+}
+.err_page_update{
+	text-indent:2em;
+	padding:4px 4px 4px 4px;
+	color: #111;
+	background-color:#CDECF3;
+	border-top: 1px solid #067EB2;
+}
+a{
+	text-indent:0px;
+		color:#195B8F;
+		width:80px;
+		height:22px;
+		display:inline,
+		cursor:pointer;
+		margin:50px 10px 1px 1px;
+		padding:6px 1px 1px 9px; 
+		font-size: 12px;
+		background-image: url(../images/button_6.gif);
+		border-width: 0px;
+		background-repeat: no-repeat;
+		text-decoration: none;
+}

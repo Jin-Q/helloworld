@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actionDefines>
+	<classMap>
+		<map id="action" class="com.yucheng.cmis.ad.mvc.ADRequestController"/>
+		<map id="flowInvoker" class="com.yucheng.cmis.ad.mvc.ADFlowInvoker"/>
+		<map id="outputViews" class="java.util.HashMap"/>
+		<map id="output" class="com.ecc.emp.data.KeyedCollection"/>
+		<map id="kColl" class="com.ecc.emp.data.KeyedCollection"/>
+		<map id="iColl" class="com.ecc.emp.data.IndexedCollection"/>
+		<map id="field" class="com.ecc.emp.data.DataField"/>
+	</classMap>
+	
+	<!-- 获取操作主页面 -->
+	<action id="queryPspPropertyAnalyList" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.psp.op.psppropertyanaly.QueryPspPropertyAnalyListOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="biz01line/psp/PspPropertyAnaly/queryPspPropertyAnalyList.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 获取操作主页面 -->
+	<action id="queryPspPropertyAnalyListForOper" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.psp.op.psppropertyanaly.QueryPspPropertyAnalyListForOperOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="biz01line/psp/PspPropertyAnaly/queryPspPropertyAnalyListForOper.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 获取操作主页面 -->
+	<action id="queryPspPropertyAnalyListForMon" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.psp.op.psppropertyanaly.QueryPspPropertyAnalyListForMonOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="biz01line/psp/PspPropertyAnaly/queryPspPropertyAnalyListForMon.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 获取操作主页面 （现场检查）-->
+	<action id="queryPspPropertyAnalyListForVisit" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.psp.op.psppropertyanaly.QueryPspPropertyAnalyListForVisitOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="biz01line/psp/PspPropertyAnaly/queryPspPropertyAnalyListForVisit.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 获取操作主页面 （个人客户现场检查）-->
+	<action id="queryPspPropertyAnalyListForVisitGr" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.psp.op.psppropertyanaly.QueryPspPropertyAnalyListForVisitOpGr"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="biz01line/psp/PspPropertyAnaly/queryPspPropertyAnalyListForVisitGr.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 获取操作主页面 （征信检查）-->
+	<action id="queryPspPropertyAnalyListForZx" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.psp.op.psppropertyanaly.QueryPspPropertyAnalyListForZxOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="biz01line/psp/PspPropertyAnaly/queryPspPropertyAnalyListForZx.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 获取操作主页面 （常规检查零售客户征信检查）-->
+	<action id="queryPspPropertyAnalyListForZxGr" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.psp.op.psppropertyanaly.QueryPspPropertyAnalyListForZxOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="biz01line/psp/PspPropertyAnaly/queryPspPropertyAnalyListForZxGr.jsp" />
+		</outputViews>
+	</action>
+	
+	
+	<!-- 获得编辑页面 -->
+	<action id="getPspPropertyAnalyUpdatePage" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation updateCheck="false" class="com.yucheng.cmis.biz01line.psp.op.psppropertyanaly.QueryPspPropertyAnalyDetailOp"/>
+			<transition dest="realProPage" condition="($retValue='realPro')"/>
+			<transition dest="equipPage" condition="($retValue='equip')"/>
+			<transition dest="trafficPage" condition="($retValue='traffic')"/>
+			<transition dest="logoPage" condition="($retValue='logo')"/>
+			<transition dest="patentPage" condition="($retValue='patent')"/>
+			<transition dest="stockPage" condition="($retValue='stock')"/>
+			<transition dest="seaPage" condition="($retValue='sea')"/>
+			<transition dest="forestPage" condition="($retValue='forest')"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="realProPage" url="biz01line/psp/PspPropertyAnaly/PspPropertyRealpro/updatePspPropertyRealproRecord.jsp" />
+			<jspView id="equipPage" url="biz01line/psp/PspPropertyAnaly/PspPropertyEquip/updatePspPropertyEquipRecord.jsp" />
+			<jspView id="trafficPage" url="biz01line/psp/PspPropertyAnaly/PspPropertyTraffic/updatePspPropertyTrafficRecord.jsp" />
+			<jspView id="logoPage" url="biz01line/psp/PspPropertyAnaly/PspPropertyLogo/updatePspPropertyLogoRecord.jsp" />
+			<jspView id="patentPage" url="biz01line/psp/PspPropertyAnaly/PspPropertyPatent/updatePspPropertyPatentRecord.jsp" />
+			<jspView id="stockPage" url="biz01line/psp/PspPropertyAnaly/PspPropertyStockright/updatePspPropertyStockrightRecord.jsp"/>
+			<jspView id="seaPage" url="biz01line/psp/PspPropertyAnaly/PspPropertySearight/updatePspPropertySearightRecord.jsp"/>
+			<jspView id="forestPage" url="biz01line/psp/PspPropertyAnaly/PspPropertyForestright/updatePspPropertyForestrightRecord.jsp"/>
+		</outputViews>
+	</action>
+	
+	<!-- 更新记录 -->
+	<action id="updatePspPropertyAnalyRecord" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.psp.op.psppropertyanaly.UpdatePspPropertyAnalyRecordOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<view id="retPage" class="com.yucheng.cmis.view.JSONView">
+				<output class="com.ecc.emp.data.KeyedCollection">
+					<field id="flag" class="com.ecc.emp.data.DataField" />
+				</output>
+			</view>
+		</outputViews>
+	</action>
+	
+	<!-- 获得查看页面 -->
+	<action id="getPspPropertyAnalyViewPage" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.psp.op.psppropertyanaly.QueryPspPropertyAnalyDetailOp"/>
+			<transition dest="realProPage" condition="($retValue='realPro')"/>
+			<transition dest="equipPage" condition="($retValue='equip')"/>
+			<transition dest="trafficPage" condition="($retValue='traffic')"/>
+			<transition dest="logoPage" condition="($retValue='logo')"/>
+			<transition dest="patentPage" condition="($retValue='patent')"/>
+			<transition dest="stockPage" condition="($retValue='stock')"/>
+			<transition dest="seaPage" condition="($retValue='sea')"/>
+			<transition dest="forestPage" condition="($retValue='forest')"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="realProPage" url="biz01line/psp/PspPropertyAnaly/PspPropertyRealpro/queryPspPropertyRealproDetail.jsp" />
+			<jspView id="equipPage" url="biz01line/psp/PspPropertyAnaly/PspPropertyEquip/queryPspPropertyEquipDetail.jsp" />
+			<jspView id="trafficPage" url="biz01line/psp/PspPropertyAnaly/PspPropertyTraffic/queryPspPropertyTrafficDetail.jsp" />
+			<jspView id="logoPage" url="biz01line/psp/PspPropertyAnaly/PspPropertyLogo/queryPspPropertyLogoDetail.jsp" />
+			<jspView id="patentPage" url="biz01line/psp/PspPropertyAnaly/PspPropertyPatent/queryPspPropertyPatentDetail.jsp" />
+			<jspView id="stockPage" url="biz01line/psp/PspPropertyAnaly/PspPropertyStockright/queryPspPropertyStockrightDetail.jsp"/>
+			<jspView id="seaPage" url="biz01line/psp/PspPropertyAnaly/PspPropertySearight/queryPspPropertySearightDetail.jsp"/>
+			<jspView id="forestPage" url="biz01line/psp/PspPropertyAnaly/PspPropertyForestright/queryPspPropertyForestrightDetail.jsp"/>
+		</outputViews>
+	</action>
+	
+	<!-- 获得新增页面 -->
+	<action id="getPspPropertyAnalyAddPage" type="normal" checkSession="true" >
+		<jspView id="addPage" url="biz01line/psp/PspPropertyAnaly/addPspPropertyAnalyRecord.jsp"/>
+	</action>
+	
+	<!-- 新增引导页 -->
+	<action id="addPspPropertyAnalyRecord" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.psp.op.psppropertyanaly.AddPspPropertyAnalyRecordOp"/>
+			<transition dest="realProPage" condition="($retValue='realPro')"/>
+			<transition dest="equipPage" condition="($retValue='equip')"/>
+			<transition dest="trafficPage" condition="($retValue='traffic')"/>
+			<transition dest="logoPage" condition="($retValue='logo')"/>
+			<transition dest="patentPage" condition="($retValue='patent')"/>
+			<transition dest="stockPage" condition="($retValue='stock')"/>
+			<transition dest="seaPage" condition="($retValue='sea')"/>
+			<transition dest="forestPage" condition="($retValue='forest')"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="realProPage" url="biz01line/psp/PspPropertyAnaly/PspPropertyRealpro/addPspPropertyRealproRecord.jsp"/>
+			<jspView id="equipPage" url="biz01line/psp/PspPropertyAnaly/PspPropertyEquip/addPspPropertyEquipRecord.jsp"/>
+			<jspView id="trafficPage" url="biz01line/psp/PspPropertyAnaly/PspPropertyTraffic/addPspPropertyTrafficRecord.jsp"/>
+			<jspView id="logoPage" url="biz01line/psp/PspPropertyAnaly/PspPropertyLogo/addPspPropertyLogoRecord.jsp"/>
+			<jspView id="patentPage" url="biz01line/psp/PspPropertyAnaly/PspPropertyPatent/addPspPropertyPatentRecord.jsp"/>
+			<jspView id="stockPage" url="biz01line/psp/PspPropertyAnaly/PspPropertyStockright/addPspPropertyStockrightRecord.jsp"/>
+			<jspView id="seaPage" url="biz01line/psp/PspPropertyAnaly/PspPropertySearight/addPspPropertySearightRecord.jsp"/>
+			<jspView id="forestPage" url="biz01line/psp/PspPropertyAnaly/PspPropertyForestright/addPspPropertyForestrightRecord.jsp"/>
+		</outputViews>
+	</action>
+	
+	<!-- 新增记录 -->
+	<action id="addPspPropertyAllRecord" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.psp.op.psppropertyanaly.AddPspPropertyAllRecordOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<view id="retPage" class="com.yucheng.cmis.view.JSONView">
+				<output class="com.ecc.emp.data.KeyedCollection">
+					<field id="flag" class="com.ecc.emp.data.DataField" />
+				</output>
+			</view>
+		</outputViews>
+	</action>
+	
+	<!-- 删除记录 -->
+	<action id="deletePspPropertyAnalyRecord" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.psp.op.psppropertyanaly.DeletePspPropertyAnalyRecordOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<view id="retPage" class="com.yucheng.cmis.view.JSONView">
+				<output class="com.ecc.emp.data.KeyedCollection">
+					<field id="flag" class="com.ecc.emp.data.DataField" />
+				</output>
+			</view>
+		</outputViews>
+	</action>
+	
+	<!-- 分页查询记录列表 -->
+		<action id="pagePspPropertyAnalyQuery" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.psp.op.psppropertyanaly.QueryPspPropertyAnalyListOp"/>
+			<transition dest="queryListRes"/>
+		</flowInvoker>
+		<outputViews>
+			<jsonView class="com.yucheng.cmis.view.JSONView" id="queryListRes">
+				<output>
+					<iColl id="PspPropertyAnalyList">
+						<kColl>
+						</kColl>
+					</iColl>
+				</output>
+			</jsonView>
+		</outputViews>
+	</action>
+	
+	<!-- 更新记录 -->
+	<action id="updatePspCheckAnalyRecord" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.psp.op.psppropertyanaly.UpdatePspCheckAnalyRecordOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<view id="retPage" class="com.yucheng.cmis.view.JSONView">
+				<output class="com.ecc.emp.data.KeyedCollection">
+					<field id="flag" class="com.ecc.emp.data.DataField" />
+				</output>
+			</view>
+		</outputViews>
+	</action>
+	
+	<!-- 征信记录分析 -->
+	<action id="updatePspZxqkDetailRecord" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.psp.op.psppropertyanaly.UpdatePspZxqkDetailRecordOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<view id="retPage" class="com.yucheng.cmis.view.JSONView">
+				<output class="com.ecc.emp.data.KeyedCollection">
+					<field id="flag" class="com.ecc.emp.data.DataField" />
+				</output>
+			</view>
+		</outputViews>
+	</action>
+	
+	
+	<!-- 水电费明细 -->
+	<action id="queryPspPropertyAnalyListForWater" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.psp.op.psppropertyanaly.QueryPspPropertyAnalyListForOperOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="biz01line/psp/PspPropertyAnaly/queryPspPropertyAnalyListForWater.jsp" />
+		</outputViews>
+	</action>
+	
+</actionDefines>
+
+
+

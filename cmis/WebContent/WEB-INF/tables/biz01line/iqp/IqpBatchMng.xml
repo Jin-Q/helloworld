@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<IqpBatchMng.xml>
+	<TableModel id="IqpBatchMng" cnname="批次管理表" dbTableName="iqp_batch_mng">
+		<Field id="batch_no" isPK="true" columnName="batch_no" cnname="批次号" length="40" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="bill_type" columnName="bill_type" cnname="票据种类" length="5" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="biz_type" columnName="biz_type" cnname="业务类型" length="5" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="fore_disc_date" columnName="fore_disc_date" cnname="转/贴现日期" length="10" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="opp_org_type" columnName="opp_org_type" cnname="对手行类型" length="5" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="opp_org_no" columnName="opp_org_no" cnname="对手行行号" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="opp_org_name" columnName="opp_org_name" cnname="对手行行名" length="100" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="bill_qnt" columnName="bill_qnt" cnname="票据数量" length="38" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="bill_total_amt" columnName="bill_total_amt" cnname="票据总金额" length="16" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="int_amt" columnName="int_amt" cnname="利息金额" length="16" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="rpay_amt" columnName="rpay_amt" cnname="实付金额" length="16" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="status" columnName="status" cnname="状态" length="5" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="manager_id" columnName="manager_id" cnname="责任人" length="40" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="manager_br_id" columnName="manager_br_id" cnname="责任机构" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="input_id" columnName="input_id" cnname="登记人" length="40" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="input_br_id" columnName="input_br_id" cnname="登记机构" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="input_date" columnName="input_date" cnname="登记日期" length="10" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="serno" columnName="serno" cnname="业务编号" length="40" JDBCType="VARCHAR2"/>
+		<Field id="cont_no" columnName="cont_no" cnname="合同编号" length="40" JDBCType="VARCHAR2"/>
+		<Field id="rate" columnName="rate" cnname="转/再贴现利率" length="10" JDBCType="NUMBER"/>
+		<Field id="rebuy_date" columnName="rebuy_date" cnname="回购日期" length="10" JDBCType="VARCHAR2"/>
+		<Field id="rebuy_int" columnName="rebuy_int" cnname="回购利息" length="16" JDBCType="NUMBER"/>
+		<Field id="rebuy_rate" columnName="rebuy_rate" cnname="回购利率" length="10" JDBCType="NUMBER"/>
+		<Field id="due_rebuy_rate" columnName="due_rebuy_rate" cnname="逾期回购利率" length="10" JDBCType="NUMBER"/>
+	</TableModel>
+</IqpBatchMng.xml>

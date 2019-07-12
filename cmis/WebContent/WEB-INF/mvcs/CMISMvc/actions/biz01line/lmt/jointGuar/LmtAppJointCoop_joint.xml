@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actionDefines>
+	<classMap>
+		<map id="action" class="com.yucheng.cmis.ad.mvc.ADRequestController"/>
+		<map id="flowInvoker" class="com.yucheng.cmis.ad.mvc.ADFlowInvoker"/>
+		<map id="outputViews" class="java.util.HashMap"/>
+		<map id="output" class="com.ecc.emp.data.KeyedCollection"/>
+		<map id="kColl" class="com.ecc.emp.data.KeyedCollection"/>
+		<map id="iColl" class="com.ecc.emp.data.IndexedCollection"/>
+		<map id="field" class="com.ecc.emp.data.DataField"/>
+	</classMap>
+	
+	<!-- 获取操作主页面 -->
+	<action id="queryLmtAppJointCoop_jointList" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.lmt.op.jointguar.lmtappjointcoop_joint.QueryLmtAppJointCoop_jointListOp"/>
+		<!--/**modified by wangj XD150114003_信贷系统联保和集团关联授信审批意见查询需求修改 begin */-->
+			<transition dest="retPage" condition="($retValue='0')"/>
+			<transition dest="cusHisPage" condition="($retValue='cusHis')"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="biz01line/lmt/LmtAppJointGuar/LmtAppJointCoop_joint/queryLmtAppJointCoop_jointList.jsp" />
+			<jspView id="cusHisPage" url="biz01line/lmt/LmtAppJointGuar/LmtAppJointCoop_joint/queryLmtAppJointCoop_jointList4Cus.jsp" />
+		<!--/**modified by wangj XD150114003_信贷系统联保和集团关联授信审批意见查询需求修改 end */-->
+		</outputViews>
+	</action>
+	<!-- 新增向导页 -->
+	<action id="getLmtJointGuarWizPage" type="normal" checkSession="true" >
+		<jspView id="addPage" url="biz01line/lmt/LmtAppJointGuar/LmtAppJointCoop_joint/addLmtAppJointCoop_jointRecord.jsp"/>
+	</action>
+	
+	<!-- 获得新增页面 -->
+	<action id="getLmtAppJointCoop_jointAddPage" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation updateCheck="false" class="com.yucheng.cmis.biz01line.lmt.op.jointguar.lmtappjointcoop_joint.GetLmtAppJointCoop_jointAddPage"/>
+			<transition dest="addPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="addPage" url="biz01line/lmt/LmtAppJointGuar/LmtAppJointCoop_joint/addLmtAppJointCoop_jointRecord.jsp"/>
+		</outputViews>
+	</action>
+	
+	<!-- 新增记录 -->
+	<action id="addLmtAppJointCoop_jointRecord" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.lmt.op.jointguar.lmtappjointcoop_joint.AddLmtAppJointCoop_jointRecordOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+            <view id="retPage" class="com.yucheng.cmis.view.JSONView">
+                <output class="com.ecc.emp.data.KeyedCollection">
+                    <field id="flag" class="com.ecc.emp.data.DataField"/>
+                    <field id="serno" class="com.ecc.emp.data.DataField"/>
+                </output>
+            </view>
+           <!-- <jspView id="retPage" url="biz01line/lmt/LmtAppJointGuar/LmtAppJointCoop_joint/addLmtAppJointCoop_jointRecord.jsp"/>-->
+        </outputViews>
+	</action>	
+	
+	<!-- 获得编辑页面 -->
+	<action id="getLmtAppJointCoop_jointUpdatePage" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation updateCheck="false" class="com.yucheng.cmis.biz01line.lmt.op.jointguar.lmtappjointcoop_joint.QueryLmtAppJointCoop_jointDetailOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="biz01line/lmt/LmtAppJointGuar/LmtAppJointCoop_joint/updateLmtAppJointCoop_jointRecord.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 更新记录 -->
+	<action id="updateLmtAppJointCoop_jointRecord" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.lmt.op.jointguar.lmtappjointcoop_joint.UpdateLmtAppJointCoop_jointRecordOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+            <view id="retPage" class="com.yucheng.cmis.view.JSONView">
+                <output class="com.ecc.emp.data.KeyedCollection">
+                    <field id="flag" class="com.ecc.emp.data.DataField"/>
+                </output>
+            </view>
+        </outputViews>
+	</action>
+	<!--Added By FCL 2015-07-16 联保小组授信查询导出成生成excel -->                                                                                                                                     
+	<action id="lmtAppJointExpBatchToExcel" type="normal" checkSession="true" >                                                                                           
+		<flowInvoker>                                                                                                                                            
+			<operation class="com.yucheng.cmis.biz01line.lmt.op.lmtappcoop.ExpLmtAppJointBatchToExcelOp"/>                                                                    
+			<transition dest="retPage"/>                                                                                                                           
+		</flowInvoker>                                                                                                                                           
+		<outputViews>                                                                                                                                            
+		   <view id="retPage" class="com.yucheng.cmis.view.ExcelView">                                                                                           
+ 				<excelWorkbook fileName="LmtAppJoint.xls" class="com.yucheng.cmis.view.excel.ExcelWorkbook">                                                          
+ 					<excelSheet id="1" name="联保小组授信查询" isTitle="true" iCollName="LmtAppJointList" class="com.yucheng.cmis.view.excel.ExcelSheet">                       
+ 						<excelColumn dataName="serno" name="业务编号" cellType="string" class="com.yucheng.cmis.view.excel.ExcelColumn"/>  
+ 						<excelColumn dataName="cus_id" name="组长客户码" cellType="string" class="com.yucheng.cmis.view.excel.ExcelColumn"/>      
+ 						<excelColumn dataName="cus_id_displayname" name="组长客户名称" cellType="string" class="com.yucheng.cmis.view.excel.ExcelColumn"/>   
+ 						<excelColumn dataName="coop_type" name="类别" dictName="STD_ZB_COOP_TYPE" class="com.yucheng.cmis.view.excel.ExcelColumn"/>  
+ 						<excelColumn dataName="lmt_totl_amt" name="授信总额"  cellType="numeric" class="com.yucheng.cmis.view.excel.ExcelColumn"/>  
+ 						<excelColumn dataName="single_max_amt" name="单户限额" cellType="numeric" class="com.yucheng.cmis.view.excel.ExcelColumn"/>                                     
+ 						<excelColumn dataName="app_date" name="申请日期" cellType='string' class="com.yucheng.cmis.view.excel.ExcelColumn"/>                          
+ 						<excelColumn dataName="manager_id_displayname" name="责任人" cellType="string" class="com.yucheng.cmis.view.excel.ExcelColumn"/>                  
+ 						<excelColumn dataName="manager_br_id_displayname" name="责任机构"  cellType="string" class="com.yucheng.cmis.view.excel.ExcelColumn"/>     
+ 					 	<excelColumn dataName="approve_status" name="申请状态" dictName="WF_APP_STATUS" cellType="string" class="com.yucheng.cmis.view.excel.ExcelColumn"/>                
+ 					</excelSheet>                                                                                                                                      
+ 				</excelWorkbook>                                                                                                                                     
+ 			</view>                                                                                                                                                
+		</outputViews>                                                                                                                                           
+	</action> 
+	<!-- 获得查看页面 -->
+	<action id="getLmtAppJointCoop_jointViewPage" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.lmt.op.jointguar.lmtappjointcoop_joint.QueryLmtAppJointCoop_jointDetailOp"/>
+			<transition dest="updatePage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="updatePage" url="biz01line/lmt/LmtAppJointGuar/LmtAppJointCoop_joint/queryLmtAppJointCoop_jointDetail.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 删除记录 -->
+	<action id="deleteLmtAppJointCoop_jointRecord" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.lmt.op.jointguar.lmtappjointcoop_joint.DeleteLmtAppJointCoop_jointRecordOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+            <view id="retPage" class="com.yucheng.cmis.view.JSONView">
+                <output class="com.ecc.emp.data.KeyedCollection">
+                    <field id="flag" class="com.ecc.emp.data.DataField"/>
+                </output>
+            </view>
+        </outputViews>
+	</action>
+	
+	<!-- 分页查询记录列表 -->
+		<action id="pageLmtAppJointCoop_jointQuery" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.lmt.op.jointguar.lmtappjointcoop_joint.QueryLmtAppJointCoop_jointListOp"/>
+			<transition dest="queryListRes"/>
+		</flowInvoker>
+		<outputViews>
+			<jsonView class="com.yucheng.cmis.view.JSONView" id="queryListRes">
+				<output>
+					<iColl id="LmtAppJointCoop_jointList">
+						<kColl>
+						</kColl>
+					</iColl>
+					<kColl id="pageInfo">
+						<field id="currentPage" />
+						<field id="maxLine" />
+						<field id="recordSize" />
+					</kColl>
+				</output>
+			</jsonView>
+		</outputViews>
+	</action>
+	
+	<!-- ***********************************冻结解冻申请**************************************************************** -->
+	<!-- 获取操作主页面 -->
+	<action id="queryLmtAppJointCoopFrozenList" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.lmt.op.jointguar.lmtappjointcoop_joint.QueryLmtAppJointCoop_jointListOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="biz01line/lmt/LmtAppJointGuar/LmtAppJointFrozen/queryLmtAppJointCoopFrozenList.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 新增向导页 -->
+	<action id="getLmtJointFrozenLeadPage" type="normal" checkSession="true" >
+		<jspView id="addPage" url="biz01line/lmt/LmtAppJointGuar/LmtAppJointFrozen/getLmtJointFrozenLeadPage.jsp"/>
+	</action>
+	
+	<!-- 冻结联保协议 -->
+	<action id="freezeOrUnfreezeJointCoop" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.lmt.op.lmtagrjointcoop.FreezeOrUnfreezeLmtAgrJointCoopOp"/>
+			<transition dest="retPage" />
+		</flowInvoker>
+		<outputViews>
+			<jsonView class="com.yucheng.cmis.view.JSONView" id="retPage">
+				<output>
+					<field id="flag" class="com.ecc.emp.data.DataField"/>
+					<field id="serno" class="com.ecc.emp.data.DataField"/>
+				</output>
+			</jsonView>
+		</outputViews>
+	</action>
+
+</actionDefines>
+
+
+

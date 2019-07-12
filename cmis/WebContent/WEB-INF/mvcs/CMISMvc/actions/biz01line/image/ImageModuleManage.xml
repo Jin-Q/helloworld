@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actionDefines>
+	<classMap>
+		<map id="action" class="com.yucheng.cmis.ad.mvc.ADRequestController"/>
+		<map id="flowInvoker" class="com.yucheng.cmis.ad.mvc.ADFlowInvoker"/>
+		<map id="outputViews" class="java.util.HashMap"/>
+		<map id="output" class="com.ecc.emp.data.KeyedCollection"/>
+		<map id="kColl" class="com.ecc.emp.data.KeyedCollection"/>
+		<map id="iColl" class="com.ecc.emp.data.IndexedCollection"/>
+		<map id="field" class="com.ecc.emp.data.DataField"/>
+	</classMap>
+	
+	<!-- 调用url类影像接口begin -->
+	<!-- 影像扫描(ImageScan)处理，flag是否成功标志，value备用参数，处理结果返回resultUrl -->
+	<action id="delImageScanAction" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.image.op.ImageModuleManage.DelImageScanActionOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<view id="retPage" class="com.yucheng.cmis.view.JSONView">
+				<output class="com.ecc.emp.data.KeyedCollection">
+					<field id="flag" class="com.ecc.emp.data.DataField" />
+					<field id="value" class="com.ecc.emp.data.DataField" />
+					<field id="resultUrl" class="com.ecc.emp.data.DataField" />
+				</output>
+			</view>
+		</outputViews>
+	</action>
+	
+	<!-- 影像查看(ImageView)处理，flag是否成功标志，value备用参数，处理结果返回resultUrl -->
+	<action id="delImageViewAction" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.image.op.ImageModuleManage.DelImageViewActionOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<view id="retPage" class="com.yucheng.cmis.view.JSONView">
+				<output class="com.ecc.emp.data.KeyedCollection">
+					<field id="flag" class="com.ecc.emp.data.DataField" />
+					<field id="value" class="com.ecc.emp.data.DataField" />
+					<field id="resultUrl" class="com.ecc.emp.data.DataField" />
+				</output>
+			</view>
+		</outputViews>
+	</action>
+		
+	<!-- 条码打印(ImagePrint)处理，flag是否成功标志，value备用参数，处理结果返回resultUrl -->
+	<action id="delImagePrintAction" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.image.op.ImageModuleManage.DelImagePrintActionOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<view id="retPage" class="com.yucheng.cmis.view.JSONView">
+				<output class="com.ecc.emp.data.KeyedCollection">
+					<field id="flag" class="com.ecc.emp.data.DataField" />
+					<field id="value" class="com.ecc.emp.data.DataField" />
+					<field id="resultUrl" class="com.ecc.emp.data.DataField" />
+				</output>
+			</view>
+		</outputViews>
+	</action>
+	<!-- 调用url类影像接口end -->
+	
+	<!-- 走ESB交易类影像接口begin -->
+	<!-- 通用归档(ImageCheck 影像核对)处理，flag是否成功标志，value备用参数，处理结果返回resultUrl -->
+	<action id="delImageCheckAction" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.image.op.ImageModuleManage.DelImageCheckActionOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<view id="retPage" class="com.yucheng.cmis.view.JSONView">
+				<output class="com.ecc.emp.data.KeyedCollection">
+					<field id="flag" class="com.ecc.emp.data.DataField" />
+					<field id="value" class="com.ecc.emp.data.DataField" />
+					<field id="resultUrl" class="com.ecc.emp.data.DataField" />
+				</output>
+			</view>
+		</outputViews>
+	</action>
+
+	<!-- 获取影像押品编号(ImageGuaranteeNo)处理，flag是否成功标志，value备用参数，处理结果返回resultUrl -->
+	<action id="delImageGuaranteeNoAction" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.image.op.ImageModuleManage.DelImageGuaranteeNoActionOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="biz01line/image/delImageGuaranteeAction.jsp" />
+		</outputViews>
+	</action>
+	
+	<action id="pageImageGuaranteeNoAction" type="normal" checkSession="true">
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.image.op.ImageModuleManage.DelImageGuaranteeNoActionOp" />
+			<transition dest="queryListRes" />
+		</flowInvoker>
+		<outputViews>
+			<jsonView class="com.yucheng.cmis.view.JSONView" id="queryListRes">
+				<output>
+					<iColl id="ImageGuaranteeNoList">
+						<kColl>
+						</kColl>
+					</iColl>
+				</output>
+			</jsonView>
+		</outputViews>
+	</action>
+	<!-- 走ESB交易类影像接口end -->
+	
+</actionDefines>

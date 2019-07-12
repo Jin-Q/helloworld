@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<CtrNumberImple.xml>
+	<TableModel id="CtrNumberImple" pageSize="10" cnname="零售合同评分配置表" isPaged="true" dbTableName="ctr_number_imple">
+		<TableInfo/>
+		<Field id="score_id" isPK="true" columnName="score_id" cnname="主键" length="40" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="score_type" columnName="score_type" cnname="评分类型" length="5" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="score_code" columnName="score_code" cnname="评分字段" length="10" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="score_name" columnName="score_name" cnname="评分字段名称" length="300" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="auto_score" columnName="auto_score" cnname="得分" length="16" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="update_date" columnName="update_date" cnname="修改日期" JSPTag="text" length="10" JDBCType="VARCHAR2"/>
+		<Field id="input_date" columnName="input_date" cnname="登记日期" JSPTag="text" length="10" JDBCType="VARCHAR2"/>
+		<OrderFields>score_id[desc];</OrderFields>
+	</TableModel>
+</CtrNumberImple.xml>

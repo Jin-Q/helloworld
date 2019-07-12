@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<PrdSubTabActivity.xml>
+	<TableModel id="PrdSubTabActivity" pageSize="10" cnname="Table标签页动态挂接" isPaged="true" dbTableName="prd_sub_tab_activity">
+		<TableInfo/>
+		<Field id="pkid" isPK="true" columnName="pkid" cnname="主键" length="20" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="mainid" columnName="mainid" cnname="主资源ID" length="80" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="mainmodel" columnName="mainmodel" cnname="主资源表模型" length="80" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="mainterm" columnName="mainterm" cnname="主资源表模型过滤条件" length="300" JSPTag="textarea" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="subid" columnName="subid" cnname="从资源ID" length="80" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="subnum" columnName="subnum" cnname="从资源标识" length="30" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="subterm" columnName="subterm" cnname="从资源过滤条件" length="300" JSPTag="textarea" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="num" columnName="num" cnname="序号" length="10" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="inputid" columnName="inputid" cnname="登记人员" length="20" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="inputdate" columnName="inputdate" cnname="登记日期" length="10" JSPTag="date" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="inputorg" columnName="inputorg" cnname="登记机构" length="10" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<ConditionFields>mainid;mainmodel;subid;</ConditionFields>
+		<OrderFields/>
+		<Field id="subname" columnName="subname" cnname="从资源名称" length="80" JSPTag="text" JDBCType="VARCHAR2"/>
+		<Field id="submodel" columnName="submodel" cnname="从资源表模型" JSPTag="text" length="80" canBeNull="true" JDBCType="VARCHAR2"/>
+	</TableModel>
+</PrdSubTabActivity.xml>

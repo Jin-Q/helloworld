@@ -1,0 +1,7 @@
+<CMIS>
+	<buildingElement name="msiview" modualName="MSI服务查看模块">
+        
+		<initializer class="com.yucheng.cmis.platform.msiview.initializer.MsiviewInitializer" desc="MSI服务查看模块初始化"/>
+          
+	</buildingElement>
+</CMIS>

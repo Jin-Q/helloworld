@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actionDefines>
+	<classMap>
+		<map id="action" class="com.yucheng.cmis.ad.mvc.ADRequestController"/>
+		<map id="flowInvoker" class="com.yucheng.cmis.ad.mvc.ADFlowInvoker"/>
+		<map id="outputViews" class="java.util.HashMap"/>
+		<map id="output" class="com.ecc.emp.data.KeyedCollection"/>
+		<map id="kColl" class="com.ecc.emp.data.KeyedCollection"/>
+		<map id="iColl" class="com.ecc.emp.data.IndexedCollection"/>
+		<map id="field" class="com.ecc.emp.data.DataField"/>
+	</classMap>
+	<!-- 表格数据获取，带Footer-->
+	<action id="getRscTaskInfoSubData" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.psp.op.rectask.QueryRscTaskInfoSubListOp" />
+			<transition dest="queryListRes"/>
+		</flowInvoker>
+		<outputViews>
+			<jsonView class="com.yucheng.cmis.view.JSONView" id="queryListRes">
+				<output>
+					<iColl id="RscTaskInfoSubList">
+						<kColl>
+						</kColl>
+					</iColl>
+					<kColl id="pageInfo">
+						<field id="currentPage" />
+						<field id="maxLine" />
+						<field id="recordSize" />
+					</kColl>
+				</output>
+			</jsonView>
+		</outputViews>
+	</action>
+	
+	<!-- 列表页面 -->
+	<action id="getRscTaskInfoSubListPage" type="normal" checkSession="true" >
+	     <flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.psp.op.rectask.QueryRscTaskInfoSubListOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+		    <jspView id="listPage" url="biz01line/psp/RecTask/RscTaskInfoSub/listRscTaskInfoSub.jsp"/>
+		</outputViews>
+	</action>
+	
+			<!-- 分类调整历史列表页面 -->
+	<action id="getRscTaskInfoHistListPage" type="normal" checkSession="true" >
+	  <flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.psp.op.rectask.QueryRscTaskInfoSubListOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+		    <jspView id="retPage" url="biz01line/psp/RecTask/RscTaskInfoSub/listRscTaskHisJudgeInfo.jsp"/>
+		</outputViews>
+	</action>
+	
+	<!-- 新增页面 -->
+	<action id="getRscTaskInfoSubAddPage" type="normal" checkSession="true" >
+		<jspView id="addPage" url="biz01line/psp/RecTask/RscTaskInfoSub/addRscTaskInfoSub.jsp"/>
+	</action>
+
+	<!-- 修改页面 -->
+	<action id="getRscTaskInfoSubUpdatePage" type="normal" checkSession="true" >
+		<jspView id="updatePage" url="biz01line/psp/RecTask/RscTaskInfoSub/modifyRscTaskInfoSub.jsp"/>
+	</action>
+
+	<!-- 详情页面 -->
+	<action id="getRscTaskInfoSubDetailPage" type="normal" checkSession="true" >
+		<jspView id="detailPage" url="biz01line/psp/RecTask/RscTaskInfoSub/detailRscTaskInfoSub.jsp"/>
+	</action>
+	
+	<!-- 新增记录 -->
+	 <action id="addRscTaskInfoSubData4kcoll" type="normal" checkSession="true">
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.psp.op.rectask.AddRscTaskInfoSubOp"/>
+			<transition dest="retPage" />
+		</flowInvoker>
+		<outputViews>
+			<view id="retPage" class="com.yucheng.cmis.view.JSONView">
+				<output class="com.ecc.emp.data.KeyedCollection">
+					<field id="flag" class="com.ecc.emp.data.DataField"/>
+				</output>
+			</view>
+		</outputViews>
+	</action>
+	
+	<!-- 删除记录 -->
+	<!-- <action id="deleteRscTaskInfoSubData" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.psp.rectask.op.RscTaskInfoSubCRUDOp" method="removeRscTaskInfoSub"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<view id="retPage" class="com.yucheng.cmis.view.JSONView">
+				<output class="com.ecc.emp.data.KeyedCollection">
+					<field id="flag" class="com.ecc.emp.data.DataField"/>
+				</output>
+			</view>
+		</outputViews>
+	</action> -->
+	
+	<!-- 更新记录兼容emp -->
+	<!-- <action id="updateRscTaskInfoSubData4kcoll" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.psp.rectask.op.RscTaskInfoSubCRUDOp" method="updateRscTaskInfoSub"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<view id="retPage" class="com.yucheng.cmis.view.JSONView">
+				<output class="com.ecc.emp.data.KeyedCollection">
+					<field id="flag" class="com.ecc.emp.data.DataField"/>
+				</output>
+			</view>
+		</outputViews>
+	</action> -->
+	
+	<!-- 获得明细信息 -->
+	<!-- <action id="getRscTaskInfoSubUpdateData" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.psp.rectask.op.RscTaskInfoSubCRUDOp" method="queryRscTaskInfoSubDetail"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jsonView id="retPage" class="com.yucheng.cmis.view.JSONView">
+				<output>
+					<kColl id="RscTaskInfoSub"></kColl>
+				</output>
+			</jsonView>
+		</outputViews>
+	</action> -->
+	
+	<!-- 导出excel -->
+	<!-- <action id="exportRscTaskInfoSubExcelData" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.psp.rectask.op.RscTaskInfoSubCRUDOp" method="queryRscTaskInfoSubList"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<view id="retPage" class="com.yucheng.cmis.view.ExcelView">
+ 				<excelWorkbook fileName="RscTaskInfoSubList.xls" class="com.yucheng.cmis.view.excel.ExcelWorkbook">
+ 					<excelSheet id="1" name="RscTaskInfoSub" isTitle="true" iCollName="rows" class="com.yucheng.cmis.view.excel.ExcelSheet">
+ 							<excelColumn dataName="pk_id" name="主键" dictName=""  class="com.yucheng.cmis.view.excel.ExcelColumn"/>
+ 							<excelColumn dataName="serno" name="风险分类认定编号" dictName=""  class="com.yucheng.cmis.view.excel.ExcelColumn"/>
+ 							<excelColumn dataName="identy_duty" name="认定岗位" dictName=""  class="com.yucheng.cmis.view.excel.ExcelColumn"/>
+ 							<excelColumn dataName="class_adjust_rst" name="分类调整结果  STD_ZB_NINE_SORT" dictName="STD_ZB_NINE_SORT"  class="com.yucheng.cmis.view.excel.ExcelColumn"/>
+ 							<excelColumn dataName="remark" name="调整理由" dictName=""  class="com.yucheng.cmis.view.excel.ExcelColumn"/>
+ 							<excelColumn dataName="class_date" name="分类日期" dictName=""  class="com.yucheng.cmis.view.excel.ExcelColumn"/>
+ 					</excelSheet>
+ 				</excelWorkbook>
+ 			</view>
+		</outputViews>
+	</action> -->
+	
+	<!-- 导出excel上传模版 -->
+	<!-- <action id="exportRscTaskInfoSubExcelTemplet" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.psp.rectask.op.RscTaskInfoSubCRUDOp" method="createRscTaskInfoSubExcel"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<view id="retPage" class="com.yucheng.cmis.view.ExcelTempletJSONView">
+ 				<excelWorkbook fileName="RscTaskInfoSubExcelTemplet.xls" class="com.yucheng.cmis.view.excel.ExcelWorkbook">
+ 					<excelSheet id="1" name="RscTaskInfoSub" isTitle="true" iCollName="rows" class="com.yucheng.cmis.view.excel.ExcelSheet">
+											 							<excelColumn dataName="pk_id" name="主键" dictName=""  class="com.yucheng.cmis.view.excel.ExcelColumn"/>
+																	 							<excelColumn dataName="serno" name="风险分类认定编号" dictName=""  class="com.yucheng.cmis.view.excel.ExcelColumn"/>
+																	 							<excelColumn dataName="identy_duty" name="认定岗位" dictName=""  class="com.yucheng.cmis.view.excel.ExcelColumn"/>
+																	 							<excelColumn dataName="class_adjust_rst" name="分类调整结果  STD_ZB_NINE_SORT" dictName="STD_ZB_NINE_SORT"  class="com.yucheng.cmis.view.excel.ExcelColumn"/>
+																	 							<excelColumn dataName="remark" name="调整理由" dictName=""  class="com.yucheng.cmis.view.excel.ExcelColumn"/>
+																	 							<excelColumn dataName="class_date" name="分类日期" dictName=""  class="com.yucheng.cmis.view.excel.ExcelColumn"/>
+											 					</excelSheet>
+ 				</excelWorkbook>
+ 			</view>
+		</outputViews>
+	</action> -->
+	
+	<!-- 导入Excel数据  -->
+	<!-- <action id="importRscTaskInfoSubExcelData" type="normal" checkSession="true">
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.psp.rectask.op.RscTaskInfoSubCRUDOp" method="importRscTaskInfoSubExcelData" />
+			<transition dest="retPage" />
+		</flowInvoker>
+		<outputViews>
+			<view id="retPage" class="com.yucheng.cmis.view.JSONView">
+				<output class="com.ecc.emp.data.KeyedCollection">
+					<field id="status" class="com.ecc.emp.data.DataField"/>
+					<field id="message" class="com.ecc.emp.data.DataField"/>
+					<field id="params" class="com.ecc.emp.data.DataField"/>
+				</output>
+			</view>
+		</outputViews>
+	</action> -->
+	
+</actionDefines>

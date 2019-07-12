@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<service version="2.0">
+<SYS_HEAD>
+<TRAN_DATE attr="s,8">20140530</TRAN_DATE>
+<SERVICE_SCENE attr="s,2">01</SERVICE_SCENE>
+<CONSUMER_ID attr="s,6">300013</CONSUMER_ID>
+<SERVICE_CODE attr="s,11">03002000002</SERVICE_CODE>
+<BRANCH_ID attr="s,20">9350501001          </BRANCH_ID>
+<CONSUMER_SEQ_NO attr="s,26">80000120140530115728100002</CONSUMER_SEQ_NO>
+<ESB_SEQ_NO attr="s,26">80000120140530115728100002</ESB_SEQ_NO>
+</SYS_HEAD>
+<BODY>
+<TRAN_CODE attr="s,30">610001</TRAN_CODE>
+<BILL_ARRAY attr="array">
+<struct>
+<DRAWER_ACCT_OPEN_BRANCH_ID attr="s,20">313397000252</DRAWER_ACCT_OPEN_BRANCH_ID>
+<PAYEE_NAME attr="s,150">泉州鲤城开元市政机械设备厂                                                                                              </PAYEE_NAME>
+<BILL_EXPIRY_DATE attr="s,10">2014-07-09</BILL_EXPIRY_DATE>
+<PAYEE_ACCT_OPEN_BRANCH_NAME attr="s,150">泉州银行股份有限公司开元支行                                                    </PAYEE_ACCT_OPEN_BRANCH_NAME>
+<DRAWER_ACCT_NAME attr="s,150">福建省泉州市鲤中企业总公司                                                                                                  </DRAWER_ACCT_NAME>
+<BILL_ISSUE_DATE attr="s,10">2014-05-30</BILL_ISSUE_DATE>
+<BILL_AMT attr="d,20,2">14053000.00</BILL_AMT>
+<PAYEE_ACCT_NO attr="s,50">0000000460048012                </PAYEE_ACCT_NO>
+<DRAWER_ORG_CODE attr="s,50">15618284-0</DRAWER_ORG_CODE>
+<PAYEE_ACCT_OPEN_BRANCH_ID attr="s,20">313397000068</PAYEE_ACCT_OPEN_BRANCH_ID>
+<BILL_NO attr="s,30">131339700025220140530006056386</BILL_NO>
+<CCY attr="s,3">01</CCY>
+<ACCEPTOR_BANK_NAME attr="s,150">泉州银行股份有限公司刺桐支行                                                                                            </ACCEPTOR_BANK_NAME>
+<ACCEPTOR_ACCT_OPEN_BRANCH_ID attr="s,20">313397000252</ACCEPTOR_ACCT_OPEN_BRANCH_ID>
+<ACCEPTOR_BANK_ACCT_NO attr="s,50">0                               </ACCEPTOR_BANK_ACCT_NO>
+<DRAWER_ACCT_NO attr="s,50">0000004022066012                </DRAWER_ACCT_NO>
+</struct>
+<struct>
+<DRAWER_ACCT_OPEN_BRANCH_ID attr="s,20">313397000252</DRAWER_ACCT_OPEN_BRANCH_ID>
+<PAYEE_NAME attr="s,150">泉州鲤城开元市政机械设备厂                                                                                              </PAYEE_NAME>
+<BILL_EXPIRY_DATE attr="s,10">2014-07-09</BILL_EXPIRY_DATE>
+<PAYEE_ACCT_OPEN_BRANCH_NAME attr="s,150">泉州银行股份有限公司开元支行                                                    </PAYEE_ACCT_OPEN_BRANCH_NAME>
+<DRAWER_ACCT_NAME attr="s,150">福建省泉州市鲤中企业总公司                                                                                                  </DRAWER_ACCT_NAME>
+<BILL_ISSUE_DATE attr="s,10">2014-05-30</BILL_ISSUE_DATE>
+<BILL_AMT attr="d,20,2">14053001.00</BILL_AMT>
+<PAYEE_ACCT_NO attr="s,50">0000000460048012                </PAYEE_ACCT_NO>
+<DRAWER_ORG_CODE attr="s,50">15618284-0</DRAWER_ORG_CODE>
+<PAYEE_ACCT_OPEN_BRANCH_ID attr="s,20">313397000068</PAYEE_ACCT_OPEN_BRANCH_ID>
+<BILL_NO attr="s,30">131339700025220140530006056378</BILL_NO>
+<CCY attr="s,3">01</CCY>
+<ACCEPTOR_BANK_NAME attr="s,150">泉州银行股份有限公司刺桐支行                                                                                            </ACCEPTOR_BANK_NAME>
+<ACCEPTOR_ACCT_OPEN_BRANCH_ID attr="s,20">313397000252</ACCEPTOR_ACCT_OPEN_BRANCH_ID>
+<ACCEPTOR_BANK_ACCT_NO attr="s,50">0                               </ACCEPTOR_BANK_ACCT_NO>
+<DRAWER_ACCT_NO attr="s,50">0000004022066012                </DRAWER_ACCT_NO>
+</struct>
+<struct>
+<DRAWER_ACCT_OPEN_BRANCH_ID attr="s,20">313397000252</DRAWER_ACCT_OPEN_BRANCH_ID>
+<PAYEE_NAME attr="s,150">泉州鲤城开元市政机械设备厂                                                                                              </PAYEE_NAME>
+<BILL_EXPIRY_DATE attr="s,10">2014-07-09</BILL_EXPIRY_DATE>
+<PAYEE_ACCT_OPEN_BRANCH_NAME attr="s,150">泉州银行股份有限公司开元支行                                                    </PAYEE_ACCT_OPEN_BRANCH_NAME>
+<DRAWER_ACCT_NAME attr="s,150">福建省泉州市鲤中企业总公司                                                                                                  </DRAWER_ACCT_NAME>
+<BILL_ISSUE_DATE attr="s,10">2014-05-30</BILL_ISSUE_DATE>
+<BILL_AMT attr="d,20,2">14053003.00</BILL_AMT>
+<PAYEE_ACCT_NO attr="s,50">0000000460048012                </PAYEE_ACCT_NO>
+<DRAWER_ORG_CODE attr="s,50">15618284-0</DRAWER_ORG_CODE>
+<PAYEE_ACCT_OPEN_BRANCH_ID attr="s,20">313397000068</PAYEE_ACCT_OPEN_BRANCH_ID>
+<BILL_NO attr="s,30">131339700025220140530006056394</BILL_NO>
+<CCY attr="s,3">01</CCY>
+<ACCEPTOR_BANK_NAME attr="s,150">泉州银行股份有限公司刺桐支行                                                                                            </ACCEPTOR_BANK_NAME>
+<ACCEPTOR_ACCT_OPEN_BRANCH_ID attr="s,20">313397000252</ACCEPTOR_ACCT_OPEN_BRANCH_ID>
+<ACCEPTOR_BANK_ACCT_NO attr="s,50">0                               </ACCEPTOR_BANK_ACCT_NO>
+<DRAWER_ACCT_NO attr="s,50">0000004022066012                </DRAWER_ACCT_NO>
+</struct>
+<struct>
+<DRAWER_ACCT_OPEN_BRANCH_ID attr="s,20">313397000252</DRAWER_ACCT_OPEN_BRANCH_ID>
+<PAYEE_NAME attr="s,150">泉州鲤城开元市政机械设备厂                                                                                              </PAYEE_NAME>
+<BILL_EXPIRY_DATE attr="s,10">2014-07-09</BILL_EXPIRY_DATE>
+<PAYEE_ACCT_OPEN_BRANCH_NAME attr="s,150">泉州银行股份有限公司开元支行                                                    </PAYEE_ACCT_OPEN_BRANCH_NAME>
+<DRAWER_ACCT_NAME attr="s,150">福建省泉州市鲤中企业总公司                                                                                                  </DRAWER_ACCT_NAME>
+<BILL_ISSUE_DATE attr="s,10">2014-05-30</BILL_ISSUE_DATE>
+<BILL_AMT attr="d,20,2">14053002.00</BILL_AMT>
+<PAYEE_ACCT_NO attr="s,50">0000000460048012                </PAYEE_ACCT_NO>
+<DRAWER_ORG_CODE attr="s,50">15618284-0</DRAWER_ORG_CODE>
+<PAYEE_ACCT_OPEN_BRANCH_ID attr="s,20">313397000068</PAYEE_ACCT_OPEN_BRANCH_ID>
+<BILL_NO attr="s,30">131339700025220140530006056360</BILL_NO>
+<CCY attr="s,3">01</CCY>
+<ACCEPTOR_BANK_NAME attr="s,150">泉州银行股份有限公司刺桐支行                                                                                            </ACCEPTOR_BANK_NAME>
+<ACCEPTOR_ACCT_OPEN_BRANCH_ID attr="s,20">313397000252</ACCEPTOR_ACCT_OPEN_BRANCH_ID>
+<ACCEPTOR_BANK_ACCT_NO attr="s,50">0                               </ACCEPTOR_BANK_ACCT_NO>
+<DRAWER_ACCT_NO attr="s,50">0000004022066012                </DRAWER_ACCT_NO>
+</struct>
+</BILL_ARRAY>
+<BATCH_NO attr="s,52">1405300003          </BATCH_NO>
+<DUTY_PERSON attr="s,50">1094                </DUTY_PERSON>
+</BODY>
+<APP_HEAD>
+<BUSS_SEQ_NO attr="s,26">80000120140530115728100002</BUSS_SEQ_NO>
+</APP_HEAD>
+</service>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<MortFinanceOthers.xml>
+	<TableModel id="MortFinanceOthers" cnname="其他金融产品质押" dbTableName="mort_finance_others">
+		<TableInfo/>
+		<Field id="finance_other_id" isPK="true" columnName="finance_other_id" cnname="其他金融产品质押编号" length="40" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="guaranty_no" columnName="guaranty_no" cnname="押品编号" length="40" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="usufruct_type" columnName="usufruct_type" cnname="//" length="20" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="usufruct_cert_no" columnName="usufruct_cert_no" cnname="受益权权证编号" length="40" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="currency_cd" dictname="STD_ZX_CUR_TYPE" columnName="currency_cd" cnname="币种" length="20" JSPTag="select" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="usufruct_amt" dataType="Currency" columnName="usufruct_amt" cnname="票面金额" length="20" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="buy_date" columnName="buy_date" cnname="购入日期" length="10" JSPTag="date" canBeNull="true" JDBCType="CHAR"/>
+		<Field id="mature_date" columnName="mature_date" cnname="到期日期" length="10" JSPTag="date" canBeNull="true" JDBCType="CHAR"/>
+		<Field id="entrust_user" columnName="entrust_user" cnname="委托人" length="100" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="beneficiary_name" columnName="beneficiary_name" cnname="受益人" length="100" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="memo" columnName="memo" cnname="备注" length="1000" JSPTag="textarea" canBeNull="true" JDBCType="VARCHAR2"/>
+		<OrderFields>finance_other_id[desc];</OrderFields>
+	</TableModel>
+</MortFinanceOthers.xml>

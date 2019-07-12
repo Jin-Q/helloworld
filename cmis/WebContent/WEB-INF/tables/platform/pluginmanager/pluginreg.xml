@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<pluginreg.xml>
+	<TableModel id="pluginreg" cnname="插件注册表" dbTableName="s_plugin_reg">
+		<Field id="plugin_modual_id" isEncrypted="false" isPK="true" columnName="plugin_modual_id" cnname="插件ID" length="32" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="plugin_modual_name" isEncrypted="false"  columnName="plugin_modual_name" cnname="插件名称" length="32" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="resource_path" columnName="resource_path" cnname="工程文件相对路径" length="200" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="db_path" columnName="db_path" cnname="数据库文件相对路径" length="200" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="res_java_path" columnName="res_java_path" cnname="JAVA文件相对路径" length="200" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="res_jsp_path" columnName="res_jsp_path" cnname="JSP文件相对路径" length="200" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="res_table_path" columnName="res_table_path" cnname="TABLE文件相对路径" length="200" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="res_action_path" columnName="res_action_path" cnname="ACTION文件相对路径" length="200" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="db_uninstall_sql" columnName="db_uninstall_sql" cnname="数据卸载文件" length="200" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="install_date" columnName="install_date" cnname="安装时间" length="10" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="plugin_version" columnName="plugin_version" cnname="插件版本" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="plugin_status" columnName="plugin_status" cnname="插件状态" length="3" JDBCType="CHAR" canBeNull="true"/>
+	</TableModel>
+</pluginreg.xml>

@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actionDefines>
+	<classMap>
+		<map id="action" class="com.yucheng.cmis.ad.mvc.ADRequestController"/>
+		<map id="flowInvoker" class="com.yucheng.cmis.ad.mvc.ADFlowInvoker"/>
+		<map id="outputViews" class="java.util.HashMap"/>
+		<map id="output" class="com.ecc.emp.data.KeyedCollection"/>
+		<map id="kColl" class="com.ecc.emp.data.KeyedCollection"/>
+		<map id="iColl" class="com.ecc.emp.data.IndexedCollection"/>
+		<map id="field" class="com.ecc.emp.data.DataField"/>
+	</classMap>
+	
+	<!-- 获取操作主页面 -->
+	<action id="queryGrtGuaranteeList" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.grt.op.grtguarantee.QueryGrtGuaranteeListOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="biz01line/grt/GrtGuarantee/queryGrtGuaranteeList.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 综合授信模块保证人信息引入接口调用.do -->
+	<action id="queryGrtGuaranteePopList" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.grt.op.grtguarantee.QueryGrtGuaranteeListPopOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="biz01line/grt/GrtGuarantee/queryGrtGuaranteePopList.jsp" />
+		</outputViews>
+	</action>
+	<!-- 获取所有保证人记录操作主页面 -->
+	<action id="queryGrtGuaranteeAllList" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.grt.op.grtguarantee.QueryGrtGuaranteeAllListOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="biz01line/grt/GrtGuarantee/queryGrtGuaranteeAllList.jsp" />
+		</outputViews>
+	</action>
+	<!-- 获得编辑页面 -->
+	<action id="getGrtGuaranteeUpdatePage" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation updateCheck="false" class="com.yucheng.cmis.biz01line.grt.op.grtguarantee.QueryGrtGuaranteeDetailOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="biz01line/grt/GrtGuarantee/updateGrtGuaranteeRecord.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 更新记录 -->
+	<action id="updateGrtGuaranteeRecord" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.grt.op.grtguarantee.UpdateGrtGuaranteeRecordOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jsonView class="com.yucheng.cmis.view.JSONView" id="retPage">
+				<output>
+					<field id="flag" />
+				</output>
+			</jsonView>
+		</outputViews>
+	</action>
+	
+	<!-- 获得查看页面 -->
+	<action id="getGrtGuaranteeViewPage" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.grt.op.grtguarantee.QueryGrtGuaranteeDetailOp"/>
+			<transition dest="updatePage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="updatePage" url="biz01line/grt/GrtGuarantee/queryGrtGuaranteeDetail.jsp" />
+		</outputViews>
+	</action>
+	<!-- 获得所有保证人信息查看页面 -->
+	<action id="getGrtGuaranteeAllViewPage" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.grt.op.grtguarantee.QueryGrtGuaranteeAllDetailOp"/>
+			<transition dest="updatePage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="updatePage" url="biz01line/grt/GrtGuarantee/queryGrtGuaranteeAllDetail.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 获得新增页面 -->
+	<action id="getGrtGuaranteeAddPage" type="normal" checkSession="true" >
+		<jspView id="addPage" url="biz01line/grt/GrtGuarantee/addGrtGuaranteeRecord.jsp"/>
+	</action>
+	
+	<!-- 新增记录 -->
+	<action id="addGrtGuaranteeRecord" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.grt.op.grtguarantee.AddGrtGuaranteeRecordOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jsonView class="com.yucheng.cmis.view.JSONView" id="retPage">
+				<output>
+					<field id="flag" />
+				</output>
+			</jsonView>
+		</outputViews>
+	</action>	
+	<!-- 检查指定的客户是否已经存在于保证人信息表中 -->
+	<action id="checkCusExist" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.grt.op.grtguarantee.GrtCheckCusExistOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<view id="retPage" class="com.yucheng.cmis.view.JSONView">
+				<output class="com.ecc.emp.data.KeyedCollection">
+					<field id="ccr_result"/>
+				    <field id="msg"/>
+				</output>
+			</view>
+		</outputViews>
+	</action>
+	<!-- 删除记录 -->
+	<action id="deleteGrtGuaranteeRecord" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.grt.op.grtguarantee.DeleteGrtGuaranteeRecordOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jsonView class="com.yucheng.cmis.view.JSONView" id="retPage">
+				<output>
+					<field id="flag" />
+				</output>
+			</jsonView>
+		</outputViews>
+	</action>
+	
+	<!-- 根据客户码获取保证人信息-->
+	<action id="getGrtGuaranteeByCusId" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.grt.op.grtguarantee.GetGrtGuaranteeByCusIdOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="biz01line/grt/GrtGuarantee/getGrtGuaranteeByCusId.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 根据客户码获取保证人信息分页查询记录列表 -->
+		<action id="pageGetGrtGuaranteeByCusId" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.grt.op.grtguarantee.GetGrtGuaranteeByCusIdOp"/>
+			<transition dest="queryListRes"/>
+		</flowInvoker>
+		<outputViews>
+			<jsonView class="com.yucheng.cmis.view.JSONView" id="queryListRes">
+				<output>
+					<iColl id="GrtGuaranteeList">
+						<kColl>
+						</kColl>
+					</iColl>
+					<kColl id="pageInfo">
+						<field id="currentPage" />
+						<field id="maxLine" />
+						<field id="recordSize" />
+					</kColl>
+				</output>
+			</jsonView>
+		</outputViews>
+	</action>
+	
+	<!-- 分页查询记录列表 -->
+		<action id="pageGrtGuaranteeQuery" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.grt.op.grtguarantee.QueryGrtGuaranteeListOp"/>
+			<transition dest="queryListRes"/>
+		</flowInvoker>
+		<outputViews>
+			<jsonView class="com.yucheng.cmis.view.JSONView" id="queryListRes">
+				<output>
+					<iColl id="GrtGuaranteeList">
+						<kColl>
+						</kColl>
+						<kColl id="pageInfo">
+							<field id="currentPage" />
+							<field id="maxLine" />
+							<field id="recordSize" />
+						</kColl>
+					</iColl>
+				</output>
+			</jsonView>
+		</outputViews>
+	</action>
+	<!-- 多表分页查询记录列表 -->
+		<action id="pageGrtGuaranteeAllQuery" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.grt.op.grtguarantee.QueryGrtGuaranteeAllListOp"/>
+			<transition dest="queryListRes"/>
+		</flowInvoker>
+		<outputViews>
+			<jsonView class="com.yucheng.cmis.view.JSONView" id="queryListRes">
+				<output>
+					<iColl id="GrtGuaranteeList">
+						<kColl>
+						</kColl>
+					</iColl>
+						<kColl id="pageInfo">
+							<field id="currentPage" />
+							<field id="maxLine" />
+							<field id="recordSize" />
+						</kColl>
+					
+				</output>
+			</jsonView>
+		</outputViews>
+	</action>
+	
+</actionDefines>
+
+
+

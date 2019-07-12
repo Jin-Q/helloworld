@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<CcrAppInfo.xml>
+	<TableModel id="CcrAppInfo" cnname="信用评级申请主表" dbTableName="ccr_app_info">
+		<Field id="serno" isPK="true" columnName="serno" cnname="业务编号" length="40" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="cus_id" columnName="cus_id" cnname="客户编号" length="30" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="app_begin_date" columnName="app_begin_date" cnname="申请日期" length="10" JDBCType="CHAR" canBeNull="false"/>
+		<Field id="app_end_date" columnName="app_end_date" cnname="办结日期" length="10" JDBCType="CHAR" canBeNull="true"/>
+		<Field id="start_date" columnName="start_date" cnname="开始日期" length="10" JDBCType="CHAR" canBeNull="true"/>
+		<Field id="expiring_date" columnName="expiring_date" cnname="到期日期" length="10" JDBCType="CHAR" canBeNull="true"/>
+		<Field id="input_br_id" columnName="input_br_id" cnname="登记机构" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="approve_status" columnName="approve_status" cnname="申请状态" length="3" JDBCType="CHAR"/>
+		<Field id="input_id" columnName="input_id" cnname="登记人" length="20" JDBCType="VARCHAR2"/>
+		<Field id="manager_id" columnName="manager_id" cnname="责任人" length="20" JDBCType="VARCHAR2"/>
+		<Field id="manager_br_id" columnName="manager_br_id" cnname="责任机构" length="20" JDBCType="VARCHAR2"/>
+		<Field id="reg_date" columnName="reg_date" cnname="登记日期" length="10" JDBCType="CHAR"/>
+		<Field id="flag" columnName="flag" cnname="申请类型" length="10" JDBCType="VARCHAR2"/>
+		<Field id="lmt_serno" columnName="lmt_serno" cnname="个人额度申请业务编号" length="40" JDBCType="VARCHAR2"/>
+	</TableModel>
+</CcrAppInfo.xml>

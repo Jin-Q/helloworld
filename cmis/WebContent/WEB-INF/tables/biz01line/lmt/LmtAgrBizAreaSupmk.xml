@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<LmtAgrBizAreaSupmk.xml>
+	<TableModel id="LmtAgrBizAreaSupmk" cnname="目标客户群（超市百货类）结果" dbTableName="lmt_agr_biz_area_supmk">
+		<Field id="supmk_serno" isPK="true" columnName="supmk_serno" cnname="流水号" length="40" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="oper_trade" columnName="oper_trade" cnname="经营行业" length="4" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="oper_model" columnName="oper_model" cnname="经营规模" length="4" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="trade_rank" columnName="trade_rank" cnname="行业排名" length="10" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="provid_year" columnName="provid_year" cnname="供货年限" length="10" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="net_asset" columnName="net_asset" cnname=" 净资产" length="16" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="other_cond" columnName="other_cond" cnname="其他准入条件" length="200" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="agr_no" columnName="agr_no" cnname="商圈协议编号" length="40" JDBCType="VARCHAR2"/>
+	</TableModel>
+</LmtAgrBizAreaSupmk.xml>

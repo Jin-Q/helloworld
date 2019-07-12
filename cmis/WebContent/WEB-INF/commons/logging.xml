@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+	<appender name="STDOUT" class="org.apache.log4j.ConsoleAppender">
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{yyyy-MM-dd HH:mm:ss} %-5p [%-20c{1}]%x %m%n" />
+		</layout>
+	</appender>
+	
+	<appender name="console" class="org.apache.log4j.DailyRollingFileAppender">
+        <param name="file" value="/app/appopt/cmislog/console.log" />
+        <param name="encoding" value="gbk" />
+        <param name="datePattern" value="yyyy-MM-dd'.log'" />
+        <param name="Threshold" value="console" />
+        <layout class="org.apache.log4j.PatternLayout">
+                <param name="ConversionPattern" value="%d{yyyy-MM-dd HH:mm:ss} %-5p (%F:%L) - %m%n" />
+        </layout>
+    </appender>
+	
+	<appender name="LOGFILE" class="org.apache.log4j.RollingFileAppender">
+		<param name="file" value="/app/appopt/cmislog/emp.log" />
+		<param name="encoding" value="utf-8" />
+		<param name="datePattern" value="yyyy-MM-dd'.log'" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{yyyy-MM-dd HH:mm:ss} %-5p %c{1} - %m%n" />
+		</layout>
+	</appender>
+	
+	<appender name="CMIS" class="org.apache.log4j.RollingFileAppender">
+		<param name="file" value="/app/appopt/cmislog/cmis.log" />
+		<param name="encoding" value="utf-8" />
+		<param name="datePattern" value="yyyy-MM-dd'.log'" />
+		<param name="MaxFileSize" value="10240" /> <!-- 设置文件大小 -->
+   		<param name="MaxBackupIndex" value="10" /> 
+		
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{yyyy-MM-dd HH:mm:ss} %-5p (%F:%L) - %m%n" />
+		</layout>
+	</appender>
+	
+	<appender name="ERROR" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="file" value="/app/appopt/cmislog/error.log" />
+		<param name="encoding" value="gbk" />
+		<param name="datePattern" value="yyyy-MM-dd'.log'" />
+		<param name="Threshold" value="ERROR" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{yyyy-MM-dd HH:mm:ss} %-5p (%F:%L) - %m%n" />
+		</layout>
+	</appender>	
+	
+	<appender name="trace" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="file" value="/app/appopt/cmislog/trace.log" />
+		<param name="encoding" value="utf-8" />
+		<param name="datePattern" value="yyyy-MM-dd'.log'" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d%m%n" />
+		</layout>
+	</appender>	
+	
+	<!-- 设置服务端报文日志 -->
+	<appender name="OUTREPORT" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="file" value="/app/appopt/cmislog/outReport.log" />
+		<param name="encoding" value="utf-8" />
+		<param name="datePattern" value="yyyy-MM-dd'.log'" />
+		<param name="MaxFileSize" value="10240" /> <!-- 设置文件大小 -->
+   		<param name="MaxBackupIndex" value="10" /> 
+		
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{yyyy-MM-dd HH:mm:ss} %-5p (%F:%L) - %m%n" />
+		</layout>
+	</appender>
+	
+	<!-- 设置接收端报文日志 -->
+	<appender name="INREPORT" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="file" value="/app/appopt/cmislog/inReport.log" />
+		<param name="encoding" value="utf-8" />
+		<param name="datePattern" value="yyyy-MM-dd'.log'" />
+		<param name="MaxFileSize" value="10240" /> <!-- 设置文件大小 -->
+   		<param name="MaxBackupIndex" value="10" /> 
+		
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{yyyy-MM-dd HH:mm:ss} %-5p (%F:%L) - %m%n" />
+		</layout>
+	</appender>
+	
+	<!-- 服务报文日志配置 -->
+	<category name="outReport">
+		<priority value="info" />
+		<appender-ref ref="OUTREPORT" />
+	</category>
+
+	<!-- 接收报文日志配置 -->
+	<category name="inReport">
+		<priority value="info" />
+		<appender-ref ref="INREPORT" />
+	</category>
+
+	<category name="CTP">
+		<priority value="warn" />
+	</category>
+	<category name="->CORE">
+		<priority value="warn" />
+	</category>
+	<category name="->CS">
+		<priority value="warn" />
+	</category>
+	<category name="->HTML">
+		<priority value="warn" />
+	</category>
+	<category name="->CICS">
+		<priority value="warn" />
+	</category>
+	<category name="->MQ">
+		<priority value="warn" />
+	</category>
+	<category name="->GUIB">
+		<priority value="warn" />
+	</category>
+	<category name="->DWESK">
+		<priority value="warn" />
+	</category>
+	<category name="->AUTO">
+		<priority value="warn" />
+	</category>
+	<category name="->EVMG">
+		<priority value="warn" />
+	</category>
+	<category name="->FPRT">
+		<priority value="warn" />
+	</category>
+	<category name="->SMPL">
+		<priority value="warn" />
+	</category>
+	<category name="->CSES">
+		<priority value="warn" />
+	</category>
+	<category name="->DBCON">
+		<priority value="warn" />
+	</category>
+	<category name="->EJBACC">
+		<priority value="warn" />
+	</category>
+	<category name="->JSPT">
+		<priority value="warn" />
+	</category>
+	<category name="->MONITOR">
+		<priority value="warn" />
+	</category>
+	<category name="->SESSCHECK">
+		<priority value="warn" />
+	</category>
+	<category name="->TCPIP">
+		<priority value="warn" />
+	</category>
+	<category name="->unAssigned">
+		<priority value="warn" />
+	</category>
+	<category name="unAssigned">
+		<priority value="info" />
+	</category>
+	
+	<category name="MESSAGE">
+		<priority value="debug" />
+		<appender-ref ref="LOGFILE" />
+	</category>
+	
+	<category name="FLOW">
+		<priority value="debug" />
+		<appender-ref ref="LOGFILE" />
+	</category>
+	
+	<category name="EMPJDBC"> <!--  将数据输出日志级别由debug调整为info  2014-07-03 -->
+		<priority value="info" />
+		<appender-ref ref="LOGFILE" />
+	</category> 
+	
+	<logger name="com.yucheng">  
+	   <level value="info" /> 
+	   <appender-ref ref="CMIS" /> 
+	</logger>
+	
+	<logger name="com.yucheng.cmis.operation">  
+	   <level value="info" /> 
+	   <appender-ref ref="trace" /> 
+	</logger>
+	
+	<root> 
+		<priority value="info" />
+		<appender-ref ref="console" /> 
+		<appender-ref ref="ERROR" /> 
+		<appender-ref ref="STDOUT" />
+	</root>
+</log4j:configuration>

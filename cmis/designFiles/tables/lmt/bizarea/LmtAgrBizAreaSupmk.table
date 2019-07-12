@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<LmtAgrBizAreaSupmk.xml>
+	<TableModel id="LmtAgrBizAreaSupmk" cnname="目标客户群（超市百货类）结果" dbTableName="lmt_agr_biz_area_supmk">
+		<TableInfo>目标客户群（超市百货类）结果表</TableInfo>
+		<Field id="supmk_serno" isPK="true" columnName="supmk_serno" cnname="流水号" length="40" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="oper_trade" dictname="STD_LMT_BIZ_INDUS" columnName="oper_trade" cnname="经营行业" length="4" JSPTag="select" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="oper_model" dictname="STD_LMT_BIZ_SIZE" columnName="oper_model" cnname="经营规模" length="4" JSPTag="select" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="trade_rank" columnName="trade_rank" cnname="行业排名" length="10" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="provid_year" columnName="provid_year" cnname="供货年限" length="10" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="net_asset" dataType="Currency" columnName="net_asset" cnname=" 净资产" length="16" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="other_cond" columnName="other_cond" cnname="其他准入条件" length="200" JSPTag="textarea" canBeNull="true" JDBCType="VARCHAR2"/>
+		<OrderFields>serno[desc];</OrderFields>
+		<Field id="agr_no" columnName="agr_no" cnname="商圈协议编号" JSPTag="text" length="40" JDBCType="VARCHAR2"/>
+	</TableModel>
+</LmtAgrBizAreaSupmk.xml>

@@ -1,0 +1,6 @@
+<CMIS>
+	<buildingElement name="prd" modualName="产品配置模块">
+        
+		<initializer class="com.yucheng.cmis.biz01line.prd.initializer.PrdInitializer" desc="产品配置初始化缓存"/>
+	</buildingElement>
+</CMIS>

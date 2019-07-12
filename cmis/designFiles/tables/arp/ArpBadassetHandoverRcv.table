@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<ArpBadassetHandoverRcv.xml>
+	<TableModel id="ArpBadassetHandoverRcv" pageSize="10" cnname="不良资产移交接收表" isPaged="true" dbTableName="arp_badasset_handover_rcv">
+		<TableInfo/>
+		<Field id="serno" isPK="true" columnName="serno" cnname="业务编号" length="40" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="bill_no" columnName="bill_no" cnname="借据编号" length="40" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="fount_manager_br_id" columnName="fount_manager_br_id" cnname="原管理机构" length="20" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="fount_manager_id" columnName="fount_manager_id" cnname="原主管客户经理" length="20" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="handover_resn" dictname="STD_ZB_HANDOVER_RESN" columnName="handover_resn" cnname="移交原因" length="20" JSPTag="select" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="bad_resn" columnName="bad_resn" cnname="不良成因及分析" length="250" JSPTag="textarea" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="collect_measures" columnName="collect_measures" cnname="清收措施" length="250" JSPTag="textarea" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="rcv_org" columnName="rcv_org" cnname="接收机构" length="20" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="rcv_person" columnName="rcv_person" cnname="接收人员" length="20" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="memo" columnName="memo" cnname="备注" length="250" JSPTag="textarea" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="app_date" columnName="app_date" cnname="申请日期" length="10" JSPTag="date" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="over_date" columnName="over_date" cnname="办结日期" length="10" JSPTag="date" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="rcv_date" columnName="rcv_date" cnname="接收日期" length="10" JSPTag="date" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="rcv_status" dictname="STD_ZB_RCV_STATUS" columnName="rcv_status" cnname="接收状态" length="5" JSPTag="select" canBeNull="true" JDBCType="VARCHAR2"/>
+		<OrderFields>serno[desc];</OrderFields>
+		<ConditionFields>serno;bill_no;handover_resn;rcv_status;</ConditionFields>
+		<RecordRestrict delete="true" update="true"/>
+		<FilterFields>serno;bill_no;handover_resn;fount_manager_id;rcv_person;fount_manager_br_id;rcv_org;rcv_status;</FilterFields>
+		<Field id="cus_id" columnName="cus_id" cnname="客户码" JSPTag="text" length="40" JDBCType="VARCHAR2"/>
+	</TableModel>
+</ArpBadassetHandoverRcv.xml>

@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actionDefines>
+	<classMap>
+		<map id="action" class="com.yucheng.cmis.ad.mvc.ADRequestController"/>
+		<map id="flowInvoker" class="com.yucheng.cmis.ad.mvc.ADFlowInvoker"/>
+		<map id="outputViews" class="java.util.HashMap"/>
+		<map id="output" class="com.ecc.emp.data.KeyedCollection"/>
+		<map id="kColl" class="com.ecc.emp.data.KeyedCollection"/>
+		<map id="iColl" class="com.ecc.emp.data.IndexedCollection"/>
+		<map id="field" class="com.ecc.emp.data.DataField"/>
+	</classMap>
+	
+	<!-- 获取操作主页面 -->
+	<action id="queryIqpCreditChangeAppList" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.iqp.op.iqpcreditchangeapp.QueryIqpCreditChangeAppListOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="biz01line/iqp/IqpCreditChangeApp/queryIqpCreditChangeAppList.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 获取查看历史主页面 --> 
+	<action id="queryIqpCreditChangeHisList" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.iqp.op.iqpcreditchangeapp.QueryIqpCreditChangeHisListOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews> 
+			<jspView id="retPage" url="biz01line/iqp/IqpCreditChangeApp/queryIqpCreditChangeHisList.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 获得编辑页面 -->
+	<action id="getIqpCreditChangeAppUpdatePage" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation updateCheck="false" class="com.yucheng.cmis.biz01line.iqp.op.iqpcreditchangeapp.QueryIqpCreditChangeAppDetailOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="biz01line/iqp/IqpCreditChangeApp/updateIqpCreditChangeAppRecord.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 检查是否已存在该笔修改信用证信息 --> 
+	<action id="queryIsConfIqpCreditChange" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.iqp.op.iqpcreditchangeapp.QueryIsConfIqpCreditChangeOp"/>
+			<transition dest="retPage"/> 
+		</flowInvoker>
+		<outputViews>
+			<view id="retPage" class="com.yucheng.cmis.view.JSONView">
+				<output class="com.ecc.emp.data.KeyedCollection">
+					<field id="flag" class="com.ecc.emp.data.DataField" />
+				</output>
+			</view>
+		</outputViews>
+	</action>
+	
+	<!-- 更新记录 -->
+	<action id="updateIqpCreditChangeAppRecord" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.iqp.op.iqpcreditchangeapp.UpdateIqpCreditChangeAppRecordOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<view id="retPage" class="com.yucheng.cmis.view.JSONView">
+				<output class="com.ecc.emp.data.KeyedCollection">
+					<field id="flag" class="com.ecc.emp.data.DataField" />
+				</output>
+			</view>   
+		</outputViews>
+	</action>
+	
+	<!-- 更新变更类型记录 --> 
+	<action id="updateCorreRelRecord" type="normal" checkSession="true" >   
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.iqp.op.iqpcreditchangeapp.UpdateCorreRelRecordOp"/>
+			<transition dest="retPage"/>  
+		</flowInvoker>
+		<outputViews>
+			<view id="retPage" class="com.yucheng.cmis.view.JSONView">
+				<output class="com.ecc.emp.data.KeyedCollection">
+					<field id="flag" class="com.ecc.emp.data.DataField" />
+				</output>
+			</view>   
+		</outputViews>
+	</action>
+	
+	<!-- 获得查看页面 -->
+	<action id="getIqpCreditChangeAppViewPage" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.iqp.op.iqpcreditchangeapp.QueryIqpCreditChangeAppDetailOp"/>
+			<transition dest="updatePage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="updatePage" url="biz01line/iqp/IqpCreditChangeApp/queryIqpCreditChangeAppDetail.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 获得新增下一步页面 -->  
+	<action id="getIqpCreditChangeAppAddPage" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.iqp.op.iqpcreditchangeapp.AddIqpCreditChangeAppListOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="biz01line/iqp/IqpCreditChangeApp/addIqpCreditChangeAppList.jsp"/>
+		</outputViews>
+	</action>
+	
+	<!-- 从向导页进入新增页面 -->
+	<action id="addIqpCreditChangeAppPage" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.iqp.op.iqpcreditchangeapp.AddIqpCreditChangeAppPageOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="biz01line/iqp/IqpCreditChangeApp/addIqpCreditChangeAppPage.jsp" />
+		</outputViews>
+	</action>	 
+	
+	<!-- 新增记录 -->
+	<action id="addIqpCreditChangeAppRecord" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.iqp.op.iqpcreditchangeapp.AddIqpCreditChangeAppRecordOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<view id="retPage" class="com.yucheng.cmis.view.JSONView">
+				<output class="com.ecc.emp.data.KeyedCollection">
+					<field id="flag" class="com.ecc.emp.data.DataField" />
+					<field id="serno" class="com.ecc.emp.data.DataField" />
+				</output>
+			</view> 
+		</outputViews>
+	</action>	
+	
+	<!-- 删除记录 -->
+	<action id="deleteIqpCreditChangeAppRecord" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.iqp.op.iqpcreditchangeapp.DeleteIqpCreditChangeAppRecordOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<view id="retPage" class="com.yucheng.cmis.view.JSONView">
+				<output class="com.ecc.emp.data.KeyedCollection">
+					<field id="flag" class="com.ecc.emp.data.DataField" />
+				</output>
+			</view>    
+		</outputViews>
+	</action>
+	
+	<!-- 分页查询记录列表 -->
+		<action id="pageIqpCreditChangeAppQuery" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.iqp.op.iqpcreditchangeapp.QueryIqpCreditChangeAppListOp"/>
+			<transition dest="queryListRes"/>
+		</flowInvoker>
+		<outputViews>
+			<jsonView class="com.yucheng.cmis.view.JSONView" id="queryListRes">
+				<output>
+					<iColl id="IqpCreditChangeAppList">
+						<kColl>
+							<field id="serno" />
+							<field id="cus_id" />
+							<field id="cus_id_displayname" />
+							<field id="bill_no" />
+							<field id="assure_main" />
+							<field id="cont_cur_type" />
+							<field id="cont_amt" />
+							<field id="new_apply_amt" />
+							<field id="apply_date" />
+							<field id="input_id_displayname" />
+							<field id="input_br_id_displayname" />
+							<field id="approve_status" />
+							<field id="end_date" />
+						</kColl>
+					</iColl>
+					<kColl id="pageInfo">
+						<field id="currentPage" />
+						<field id="maxLine" />
+						<field id="recordSize" />
+					</kColl>
+				</output>
+			</jsonView>
+		</outputViews>
+	</action>
+	
+	<!-- 历史查询分页查询记录列表 -->
+		<action id="pageIqpCreditChangeHisQuery" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.iqp.op.iqpcreditchangeapp.QueryIqpCreditChangeHisListOp"/>
+			<transition dest="queryListRes"/>  
+		</flowInvoker>
+		<outputViews>
+			<jsonView class="com.yucheng.cmis.view.JSONView" id="queryListRes">
+				<output>
+					<iColl id="IqpCreditChangeAppList">
+						<kColl>
+							<field id="serno" />
+							<field id="cus_id" />
+							<field id="cus_id_displayname" />
+							<field id="bill_no" />
+							<field id="assure_main" />
+							<field id="cont_cur_type" />
+							<field id="cont_amt" />
+							<field id="new_apply_amt" />
+							<field id="apply_date" />
+							<field id="input_id_displayname" />
+							<field id="input_br_id_displayname" />
+							<field id="approve_status" />
+							<field id="end_date" />
+						</kColl>
+					</iColl>
+					<kColl id="pageInfo">
+						<field id="currentPage" />
+						<field id="maxLine" />
+						<field id="recordSize" />
+					</kColl>
+				</output>
+			</jsonView>
+		</outputViews>
+	</action>
+	
+	<!-- 新增下一步分页查询列表 -->
+		<action id="pageAddIqpCreditQuery" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.iqp.op.iqpcreditchangeapp.AddIqpCreditChangeAppListOp"/>
+			<transition dest="queryListRes"/>
+		</flowInvoker>
+		<outputViews>
+			<jsonView class="com.yucheng.cmis.view.JSONView" id="queryListRes">
+				<output>
+					<iColl id="AccLoanList">
+						<kColl> 
+						</kColl>
+					</iColl>
+					<kColl id="pageInfo">
+						<field id="currentPage" />
+						<field id="maxLine" />
+						<field id="recordSize" />
+					</kColl>
+				</output>
+			</jsonView>
+		</outputViews>
+	</action>
+	
+</actionDefines>
+
+
+

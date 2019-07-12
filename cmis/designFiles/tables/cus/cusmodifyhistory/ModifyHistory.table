@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<ModifyHistory.xml>
+	<TableModel id="ModifyHistory" cnname="MODIFY_HISTORY" dbTableName="modify_history">
+		<TableInfo/>
+		<Field id="key_id" isPK="true" columnName="key_id" cnname="KEY_ID" length="30" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="table_name" columnName="table_name" cnname="TABLE_NAME" length="20" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="cus_id" columnName="cus_id" cnname="CUS_ID" length="30" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="modify_record" columnName="modify_record" cnname="MODIFY_RECORD" length="-1" JSPTag="text" canBeNull="true" JDBCType="BLOB"/>
+		<Field id="modify_time" columnName="modify_time" cnname="MODIFY_TIME" length="30" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="modify_user_id" columnName="modify_user_id" cnname="MODIFY_USER_ID" length="8" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="modify_user_br_id" columnName="modify_user_br_id" cnname="MODIFY_USER_BR_ID" length="20" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="modify_user_ip" columnName="modify_user_ip" cnname="MODIFY_USER_IP" length="20" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="modify_status" columnName="modify_status" cnname="MODIFY_STATUS" length="20" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+	</TableModel>
+</ModifyHistory.xml>

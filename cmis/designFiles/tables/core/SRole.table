@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<SRole.xml>
+	<TableModel id="SRole" pageSize="20" cnname="角色表" isPaged="true" dbTableName="s_role">
+		<TableInfo/>
+		<Field id="roleno" isPK="true" columnName="roleno" cnname="角色码" length="4" JSPTag="text" canBeNull="false" JDBCType="CHAR"/>
+		<Field id="rolename" columnName="rolename" cnname="角色名称" length="40" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="orderno" columnName="orderno" cnname="排序字段" length="38" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="type" columnName="type" cnname="类型" length="38" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="memo" columnName="memo" cnname="备注" length="60" JSPTag="textarea" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="orgid" columnName="orgid" extAttr="hidden=&quot;true&quot;" cnname="组织号" length="16" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<OrderFields>roleno[desc];</OrderFields>
+		<ConditionFields>roleno;rolename;</ConditionFields>
+		<FilterFields>roleno;rolename;type;</FilterFields>
+	</TableModel>
+</SRole.xml>

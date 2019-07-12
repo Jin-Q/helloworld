@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<FncConfDefFmt.xml>
+	<TableModel id="FncConfDefFmt" pageSize="15" cnname="报表配置定义表" isPaged="true" dbTableName="fnc_conf_def_fmt">
+		<TableInfo/>
+		<Field id="style_id" isPK="true" columnName="style_id" cnname="报表样式编号" length="6" JSPTag="text" canBeNull="false" JDBCType="CHAR"/>
+		<Field id="item_id" isPK="true" columnName="item_id" cnname="项目编号" length="9" JSPTag="select" canBeNull="false" JDBCType="CHAR"/>
+		<Field id="fnc_conf_order" columnName="fnc_conf_order" cnname="顺序编号" length="10" JSPTag="text" canBeNull="true" JDBCType="CHAR"/>
+		<Field id="fnc_conf_cotes" columnName="fnc_conf_cotes" cnname="栏位" length="38" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="fnc_conf_row_flg" dictname="STD_ZB_FNCCONFROW" columnName="fnc_conf_row_flg" cnname="行次标识" length="1" JSPTag="select" canBeNull="true" JDBCType="CHAR"/>
+		<Field id="fnc_conf_indent" columnName="fnc_conf_indent" cnname="层次" length="38" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="fnc_conf_prefix" columnName="fnc_conf_prefix" cnname="前缀" length="200" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="fnc_item_edit_typ" dictname="STD_ZB_FNCITEMEDT&#13;&#10;" columnName="fnc_item_edit_typ" cnname="项目编辑方式" length="1" JSPTag="select" canBeNull="true" JDBCType="CHAR"/>
+		<Field id="fnc_conf_disp_amt" columnName="fnc_conf_disp_amt" cnname="显示数值" length="16" JSPTag="text" JDBCType="NUMBER"/>
+		<Field id="fnc_conf_chk_frm" columnName="fnc_conf_chk_frm" cnname="检查公式" length="2000" JSPTag="text" JDBCType="VARCHAR2"/>
+		<Field id="fnc_conf_cal_frm" columnName="fnc_conf_cal_frm" cnname="计算公式" length="2000" JSPTag="text" JDBCType="VARCHAR2"/>
+		<Field id="fnc_cnf_app_row" dataType="Int" columnName="fnc_cnf_app_row" cnname="追加行数" length="38" JSPTag="text" JDBCType="NUMBER"/>
+		<Field id="fnc_conf_disp_tpy" columnName="fnc_conf_disp_tpy" cnname="默认现实类型" length="2" JSPTag="select" JDBCType="CHAR"/>
+		<ConditionFields>style_id;item_id;fnc_conf_order;fnc_conf_cotes;</ConditionFields>
+		<FilterFields>style_id;item_id;fnc_conf_order;fnc_conf_cotes;fnc_conf_row_flg;fnc_conf_indent;fnc_conf_prefix;fnc_item_edit_typ;fnc_conf_disp_amt;</FilterFields>
+		<OrderFields>style_id[desc];item_id[desc];</OrderFields>
+	</TableModel>
+</FncConfDefFmt.xml>

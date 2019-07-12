@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<SDicTest.xml>
+	<TableModel id="SDicTest" pageSize="10" cnname="单表维护测试" isPaged="true" dbTableName="s_dic_test">
+		<TableInfo/>
+		<Field id="enname" isPK="true" columnName="enname" cnname="ENNAME" length="50" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="cnname" columnName="cnname" cnname="CNNAME" length="200" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="opttype" isPK="true" columnName="opttype" cnname="OPTTYPE" length="50" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="memo" columnName="memo" cnname="MEMO" length="100" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="flag" columnName="flag" cnname="FLAG" length="3" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="levels" columnName="levels" cnname="LEVELS" length="2" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="orderid" columnName="orderid" cnname="ORDERID" length="38" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<OrderFields>opttype;</OrderFields>
+		<ConditionFields>cnname;</ConditionFields>
+	</TableModel>
+</SDicTest.xml>

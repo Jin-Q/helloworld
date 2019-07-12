@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<LmtFdebt.xml>
+	<TableModel id="LmtFdebt" cnname="家庭负债" dbTableName="lmt_fdebt">
+		<TableInfo/>
+		<Field id="cus_id" isPK="true" columnName="cus_id" cnname="客户码" length="30" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="cus_attr" dictname="STD_ZB_CUS_ATTR" columnName="cus_attr" cnname="客户属性" length="12" JSPTag="select" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="debt_type" dictname="STD_ZB_DEBT_TYPE" columnName="debt_type" cnname="负债类型" length="30" JSPTag="select" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="cur_type" dictname="STD_ZX_CUR_TYPE" columnName="cur_type" cnname="币种" length="3" JSPTag="select" canBeNull="true" JDBCType="CHAR"/>
+		<Field id="debt_amt" dataType="Currency" columnName="debt_amt" cnname="负债金额" length="20" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="debt_bal" dataType="Currency" columnName="debt_bal" cnname="负债余额" length="20" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="start_date" columnName="start_date" cnname="债务开始日期" length="20" JSPTag="date" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="over_date" columnName="over_date" cnname="债务结束日期" length="20" JSPTag="date" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="memo" columnName="memo" cnname="备注" length="60" JSPTag="textarea" canBeNull="true" JDBCType="VARCHAR2"/>
+		<OrderFields>cus_id[desc];</OrderFields>
+		<RecordRestrict query="true"/>
+		<ConditionFields/>
+		<FilterFields>cus_id;cus_attr;debt_type;debt_amt;debt_bal;</FilterFields>
+		<Field id="serno" isPK="true" columnName="serno" cnname="流水号" length="40" JSPTag="text" JDBCType="VARCHAR2"/>
+	</TableModel>
+</LmtFdebt.xml>

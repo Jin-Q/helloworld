@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<WfiLcrLog.xml>
+	<TableModel id="WfiLcrLog" cnname="授权等级授信审批权限配置操作记录表" dbTableName="wfi_lcr_log">
+		<TableInfo>记录授权等级授信审批权限配置操作信息</TableInfo>
+		<Field id="pk_id" JDBCType="VARCHAR2" length="36" columnName="pk_id" canBeNull="false" pkGenerator="UNID" isPK="true" JSPTag="text" cnname="主键"/>
+		<Field id="operation_id" columnName="operation_id" cnname="操作配置项编号" length="36" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="operation_org_id" columnName="operation_org_id" cnname="机构码" length="20" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="operation_staff" columnName="operation_staff" cnname="操作人员" length="20" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="operation_date" columnName="operation_date" cnname="操作时间" length="20" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="right_type" columnName="right_type" cnname="权限类型（STD_ZB_RIGHT_TYPE）" length="2" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="op_type" columnName="op_type" cnname="操作类型" JSPTag="text" length="10" canBeNull="true" JDBCType="VARCHAR2"/>
+	</TableModel>
+</WfiLcrLog.xml>

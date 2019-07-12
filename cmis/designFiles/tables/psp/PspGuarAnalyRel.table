@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<PspGuarAnalyRel.xml>
+	<TableModel id="PspGuarAnalyRel" cnname="贷后任务担保分析关联表" dbTableName="psp_guar_analy_rel">
+		<TableInfo/>
+		<Field id="task_id" columnName="task_id" cnname="任务编号" length="40" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="cus_id" columnName="cus_id" cnname="客户编号" length="30" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="cus_name" columnName="cus_name" cnname="客户名称" length="80" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="cus_type" columnName="cus_type" cnname="客户类型" length="10" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="cert_type" columnName="cert_type" cnname="证件类型" length="3" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="cert_code" columnName="cert_code" cnname="证件号码" length="20" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="belg_line" columnName="belg_line" cnname="所属条线" length="20" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="guaranty_no" columnName="guaranty_no" cnname="押品编号" length="40" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="guaranty_name" columnName="guaranty_name" cnname="押品名称" length="100" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="guaranty_cls" columnName="guaranty_cls" cnname="押品类别" length="2" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="guar_amt" columnName="guar_amt" cnname="担保金额（元）" length="16" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="grt_type" columnName="grt_type" cnname="担保分析类型(3-查询保证人客户信息/4-查询押品信息)" length="2" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="task_create_date" columnName="task_create_date" cnname="任务生成日期" length="10" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="pk_id" JDBCType="VARCHAR2" length="36" columnName="pk_id" canBeNull="false" pkGenerator="UNID" isPK="true" JSPTag="text" cnname="主键"/>
+	</TableModel>
+</PspGuarAnalyRel.xml>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<SUser.xml>
+	<TableModel id="SUser" cnname="用户表" dbTableName="s_user">
+		<Field id="actorno" isPK="true" columnName="actorno" cnname="用户码" length="8" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="actorname" columnName="actorname" cnname="姓名" length="20" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="nickname" columnName="nickname" cnname="昵称" length="40" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="state" columnName="state" cnname="状态" length="1" JDBCType="CHAR" canBeNull="false"/>
+		<Field id="password" columnName="password" cnname="密码" length="32" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="startdate" columnName="startdate" cnname="启用日期" length="10" JDBCType="CHAR" canBeNull="true"/>
+		<Field id="passwvalda" columnName="passwvalda" cnname="密码失效日期" length="10" JDBCType="CHAR" canBeNull="true"/>
+		<Field id="firedate" columnName="firedate" cnname="解雇日期" length="10" JDBCType="CHAR" canBeNull="true"/>
+		<Field id="birthday" columnName="birthday" cnname="生日" length="10" JDBCType="CHAR" canBeNull="true"/>
+		<Field id="telnum" columnName="telnum" cnname="联系电话" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="idcardno" columnName="idcardno" cnname="身份证号码" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="allowopersys" columnName="allowopersys" cnname="允许操作的系统" length="20" JDBCType="CHAR" canBeNull="true"/>
+		<Field id="lastlogdat" columnName="lastlogdat" cnname="最后登陆日期" length="10" JDBCType="CHAR" canBeNull="true"/>
+		<Field id="creater" columnName="creater" cnname="创建人" length="40" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="creattime" columnName="creattime" cnname="创建时间" length="10" JDBCType="CHAR" canBeNull="true"/>
+		<Field id="usermail" columnName="usermail" cnname="邮箱" length="50" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="wrongpinnum" columnName="wrongpinnum" cnname="密码输入错误次数" length="38" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="isadmin" columnName="isadmin" cnname="是否管理员" length="1" JDBCType="CHAR" canBeNull="true"/>
+		<Field id="memo" columnName="memo" cnname="备注" length="200" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="ipmask" columnName="ipmask" cnname="用户IP掩码" length="40" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="orderno" columnName="orderno" cnname="用户排序字段" length="38" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="question" columnName="question" cnname="用户防伪问题" length="200" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="answer" columnName="answer" cnname="用户防伪答案" length="200" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="orgid" columnName="orgid" cnname="组织号" length="16" JDBCType="VARCHAR2" canBeNull="true"/>
+	</TableModel>
+</SUser.xml>

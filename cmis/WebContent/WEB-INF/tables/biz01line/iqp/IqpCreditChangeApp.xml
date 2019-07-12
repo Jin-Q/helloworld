@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<IqpCreditChangeApp.xml>
+	<TableModel id="IqpCreditChangeApp" cnname="信用证修改申请表" dbTableName="iqp_credit_change_app">
+		<Field id="serno" isPK="true" columnName="serno" cnname="业务编号" length="40" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="apply_date" columnName="apply_date" cnname="申请日期" length="10" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="bill_no" columnName="bill_no" cnname="借据编号" length="40" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="old_serno" columnName="old_serno" cnname="原业务编号" length="40" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="cont_no" columnName="cont_no" cnname="合同编号" length="40" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="prd_id" columnName="prd_id" cnname="产品编号" length="6" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="cus_id" columnName="cus_id" cnname="客户码" length="40" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="assure_main" columnName="assure_main" cnname="担保方式" length="3" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="assure_main_details" columnName="assure_main_details" cnname="担保方式细分" length="10" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="cont_cur_type" columnName="cont_cur_type" cnname="币种" length="3" JDBCType="CHAR" canBeNull="true"/>
+		<Field id="exchange_rate" columnName="exchange_rate" cnname="汇率" length="16" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="cont_amt" columnName="cont_amt" cnname="开证金额" length="16" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="security_rate" columnName="security_rate" cnname="保证金比例" length="16" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="same_security_amt" columnName="same_security_amt" cnname="视同保证金" length="16" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="risk_open_amt" columnName="risk_open_amt" cnname="风险敞口金额" length="16" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="risk_open_rate" columnName="risk_open_rate" cnname="敞口比例" length="10" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="cont_start_date" columnName="cont_start_date" cnname="开证日期" length="10" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="cont_end_date" columnName="cont_end_date" cnname="到期日期" length="10" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="end_date" columnName="end_date" cnname="信用证效期" length="10" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="credit_type" columnName="credit_type" cnname="信用证类型" length="5" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="credit_term_type" columnName="credit_term_type" cnname="信用证期限类型" length="5" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="chrg_rate" columnName="chrg_rate" cnname="手续费率" length="10" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="fast_day" columnName="fast_day" cnname="远期天数" length="38" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="floodact_perc" columnName="floodact_perc" cnname="溢装比例" length="10" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="shortact_perc" columnName="shortact_perc" cnname="短装比例" length="10" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="is_revolv_credit" columnName="is_revolv_credit" cnname="是否循环信用证" length="1" JDBCType="CHAR" canBeNull="true"/>
+		<Field id="is_internal_cert" columnName="is_internal_cert" cnname="是否国内信用证" length="1" JDBCType="CHAR" canBeNull="true"/>
+		<Field id="is_ctrl_gclaim" columnName="is_ctrl_gclaim" cnname="是否可控货权" length="1" JDBCType="CHAR" canBeNull="true"/>
+		<Field id="busnes_cont" columnName="busnes_cont" cnname="商务合同编号" length="40" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="beneficiar" columnName="beneficiar" cnname="受益人" length="80" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="beneficiar_country" columnName="beneficiar_country" cnname="受益人所在国家" length="100" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="new_apply_amt" columnName="new_apply_amt" cnname="修改后信用证金额" length="16" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="new_security_rate" columnName="new_security_rate" cnname="修改后保证金比例" length="16" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="new_assure_main" columnName="new_assure_main" cnname="修改后担保方式" length="3" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="new_assure_main_details" columnName="new_assure_main_details" cnname="修改后担保方式细分" length="10" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="new_floodact_perc" columnName="new_floodact_perc" cnname="修改后溢装比例" length="10" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="new_shortact_perc" columnName="new_shortact_perc" cnname="修改后短装比例" length="10" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="new_credit_term_type" columnName="new_credit_term_type" cnname="修改后信用证期限类型" length="5" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="new_fast_day" columnName="new_fast_day" cnname="修改后远期天数" length="38" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="remarks" columnName="remarks" cnname="备注" length="250" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="manager_br_id" columnName="manager_br_id" cnname="管理机构" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="input_id" columnName="input_id" cnname="登记人" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="input_br_id" columnName="input_br_id" cnname="登记机构" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="input_date" columnName="input_date" cnname="登记日期" length="10" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="cdt_cert_no" columnName="cdt_cert_no" cnname="信用证编号" length="40" JDBCType="VARCHAR2"/>
+		<Field id="approve_status" columnName="approve_status" cnname="申请状态" length="5" JDBCType="VARCHAR2" canBeNull="true"/>
+	    <Field id="cdt_cert_no" columnName="cdt_cert_no" cnname="CDT_CERT_NO" length="40" JDBCType="VARCHAR2"/>
+	    <Field id="new_end_date" columnName="new_end_date" cnname="修改后信用证效期" length="10" JDBCType="VARCHAR2"/>
+	    <Field id="security_cur_type" columnName="security_cur_type" cnname="保证金币种" length="3" JDBCType="CHAR"/>
+		<Field id="security_exchange_rate" columnName="security_exchange_rate" cnname="保证金汇率" length="16" JDBCType="NUMBER"/>
+        <Field id="security_amt" columnName="security_amt" cnname="保证金金额" length="16" JDBCType="NUMBER"/>
+        <Field id="end_date" columnName="end_date" cnname="信用证效期" length="10" JDBCType="VARCHAR2"/>
+        <Field id="new_credit_type" columnName="new_credit_type" cnname="修改后信用证类型" length="5" JDBCType="VARCHAR2"/>
+		<Field id="new_cur_type" columnName="new_cur_type" cnname="修改后信用证币种" length="3" JDBCType="CHAR"/>
+		<Field id="new_exchange_rate" columnName="new_exchange_rate" cnname="修改后汇率" length="16" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="new_security_exchange_rate" columnName="new_security_exchange_rate" cnname="修改后保证金汇率" length="16" JDBCType="NUMBER" canBeNull="true"/>
+	</TableModel>
+</IqpCreditChangeApp.xml>

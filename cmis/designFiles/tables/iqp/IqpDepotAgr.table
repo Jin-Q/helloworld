@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<IqpDepotAgr.xml>
+	<TableModel id="IqpDepotAgr" pageSize="10" cnname="保兑仓协议" isPaged="true" dbTableName="iqp_depot_agr">
+		<TableInfo/>
+		<Field id="net_agr_no" columnName="net_agr_no" cnname="网络编号" length="32" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="depot_agr_no" isPK="true" columnName="depot_agr_no" cnname="协议编号" length="32" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="cus_id" columnName="cus_id" cnname="借款人客户码" length="32" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="desgoods_plan_no" columnName="desgoods_plan_no" cnname="订货计划" length="32" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="fst_bail_perc" dataType="Percent" columnName="fst_bail_perc" cnname="首次保证金比例" length="5" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="contacc_freq_unit" columnName="contacc_freq_unit" cnname="对账频率单位" length="32" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="contacc_freq" columnName="contacc_freq" cnname="对账频率" length="10" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="contacc_mode" dictname="STD_ZB_CONTACC_MODE" columnName="contacc_mode" cnname="对账方式" length="2" JSPTag="select" canBeNull="true" JDBCType="CHAR"/>
+		<Field id="start_date" columnName="start_date" cnname="协议起始日期" length="10" JSPTag="date" canBeNull="true" JDBCType="CHAR"/>
+		<Field id="end_date" columnName="end_date" cnname="协议到期日" length="10" JSPTag="date" canBeNull="true" JDBCType="CHAR"/>
+		<Field id="memo" columnName="memo" cnname="备注" length="100" JSPTag="textarea" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="status" dictname="STD_ZB_STATUS" columnName="status" cnname="状态" length="1" JSPTag="select" canBeNull="true" JDBCType="CHAR"/>
+		<Field id="input_id" columnName="input_id" cnname="登记人" length="32" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="input_br_id" columnName="input_br_id" cnname="登记机构" length="32" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="input_date" columnName="input_date" cnname="登记日期" length="10" JSPTag="date" canBeNull="true" JDBCType="CHAR"/>
+		<Field id="fst_deliv_agreed" columnName="fst_deliv_agreed" cnname="首次提货约定" length="2" JSPTag="text" canBeNull="true" JDBCType="CHAR"/>
+		<Field id="agreed_rate" dataType="Rate" columnName="agreed_rate" cnname="约定比率" length="10" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<OrderFields>depot_agr_no;</OrderFields>
+		<FilterFields>net_agr_no;depot_agr_no;cus_id;status;input_id;input_br_id;input_date;</FilterFields>
+		<Field id="psale_cont" columnName="psale_cont" cnname="购销合同" JSPTag="text" length="40" JDBCType="VARCHAR2"/>
+	</TableModel>
+</IqpDepotAgr.xml>

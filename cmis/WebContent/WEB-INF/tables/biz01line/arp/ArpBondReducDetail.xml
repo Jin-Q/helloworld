@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<ArpBondReducDetail.xml>
+	<TableModel id="ArpBondReducDetail" cnname="债权减免历史" dbTableName="arp_bond_reduc_detail">
+		<Field id="serno" columnName="serno" cnname="业务编号" length="40" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="pk_serno" isPK="true" columnName="pk_serno" cnname="流水号" length="40" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="bill_no" columnName="bill_no" cnname="借据编号" length="40" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="reduc_cap" columnName="reduc_cap" cnname="减免本金" length="16" JDBCType="NUMBER" canBeNull="false"/>
+		<Field id="reduc_inner_owe_int" columnName="reduc_inner_owe_int" cnname="减免表内利息" length="16" JDBCType="NUMBER" canBeNull="false"/>
+		<Field id="reduc_out_owe_int" columnName="reduc_out_owe_int" cnname="减免表外利息" length="16" JDBCType="NUMBER" canBeNull="false"/>
+	</TableModel>
+</ArpBondReducDetail.xml>

@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actionDefines>
+	<classMap>
+		<map id="action" class="com.yucheng.cmis.ad.mvc.ADRequestController"/>
+		<map id="flowInvoker" class="com.yucheng.cmis.ad.mvc.ADFlowInvoker"/>
+		<map id="outputViews" class="java.util.HashMap"/>
+		<map id="output" class="com.ecc.emp.data.KeyedCollection"/>
+		<map id="kColl" class="com.ecc.emp.data.KeyedCollection"/>
+		<map id="iColl" class="com.ecc.emp.data.IndexedCollection"/>
+		<map id="field" class="com.ecc.emp.data.DataField"/>
+	</classMap>
+	
+	<!-- 获取操作主页面 -->
+	<action id="queryIqpMortCatalogManaList" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.iqp.op.pub.admittance.iqpmortcatalogmana.QueryIqpMortCatalogManaListOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>					
+			<jspView id="retPage" url="biz01line/iqp/pub/admittance/IqpMortCatalogMana/queryIqpMortCatalogManaList.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 获得编辑页面 -->
+	<action id="getIqpMortCatalogManaUpdatePage" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation updateCheck="true" class="com.yucheng.cmis.biz01line.iqp.op.pub.admittance.iqpmortcatalogmana.QueryIqpMortCatalogManaDetailOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="biz01line/iqp/pub/admittance/IqpMortCatalogMana/updateIqpMortCatalogManaRecord.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 更新记录 -->
+	<action id="updateIqpMortCatalogManaRecord" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.iqp.op.pub.admittance.iqpmortcatalogmana.UpdateIqpMortCatalogManaRecordOp"/>
+			<transition dest="queryJsonRes" />
+		</flowInvoker>
+		<outputViews>
+			<jsonView class="com.yucheng.cmis.view.JSONView" id="queryJsonRes">
+				<output>
+					<field id="msg" />
+					<field id="flag" />
+					<field id="catalog_no" />
+				</output>
+			</jsonView>
+		</outputViews>
+	</action>
+	
+	<!-- 获得查看页面 -->
+	<action id="getIqpMortCatalogManaViewPage" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.iqp.op.pub.admittance.iqpmortcatalogmana.QueryIqpMortCatalogManaDetailOp"/>
+			<transition dest="updatePage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="updatePage" url="biz01line/iqp/pub/admittance/IqpMortCatalogMana/queryIqpMortCatalogManaDetail.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 获得新增页面 -->
+	<action id="getIqpMortCatalogManaAddPage" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.iqp.op.pub.admittance.iqpmortcatalogmana.GetIqpMortCatalogManaAddPageOp"/>
+			<transition dest="addPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="addPage" url="biz01line/iqp/pub/admittance/IqpMortCatalogMana/updateIqpMortCatalogManaRecord.jsp"/>
+		</outputViews>		
+	</action>
+	
+	<!-- 新增记录 -->
+	<action id="addIqpMortCatalogManaRecord" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.iqp.op.pub.admittance.iqpmortcatalogmana.AddIqpMortCatalogManaRecordOp"/>
+			<transition dest="queryJsonRes" />
+		</flowInvoker>
+		<outputViews>
+			<jsonView class="com.yucheng.cmis.view.JSONView" id="queryJsonRes">
+				<output>
+					<field id="msg" />
+					<field id="flag" />
+					<field id="catalog_no" />
+				</output>
+			</jsonView>
+		</outputViews>
+	</action>	
+	
+	<!-- 删除记录 -->
+	<action id="deleteIqpMortCatalogManaRecord" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.iqp.op.pub.admittance.iqpmortcatalogmana.DeleteIqpMortCatalogManaRecordOp"/>
+			<transition dest="queryJsonRes" />
+		</flowInvoker>
+		<outputViews>
+			<jsonView class="com.yucheng.cmis.view.JSONView" id="queryJsonRes">
+				<output>
+					<field id="msg" />
+					<field id="flag" />
+				</output>
+			</jsonView>
+		</outputViews>
+	</action>
+	
+	<!-- 修改押品目录状态  -->
+	<action id="updateCatalogManaStatus" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.iqp.op.pub.admittance.iqpmortcatalogmana.UpdateCatalogManaStatus"/>
+			<transition dest="queryJsonRes" />
+		</flowInvoker>
+		<outputViews>
+			<jsonView class="com.yucheng.cmis.view.JSONView" id="queryJsonRes">
+				<output>
+					<field id="msg" />
+					<field id="flag" />
+				</output>
+			</jsonView>
+		</outputViews>
+	</action>
+	
+	<!-- 分页查询记录列表 -->
+		<action id="pageIqpMortCatalogManaQuery" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.iqp.op.pub.admittance.iqpmortcatalogmana.QueryIqpMortCatalogManaListOp"/>
+			<transition dest="queryListRes"/>
+		</flowInvoker>
+		<outputViews>
+			<jsonView class="com.yucheng.cmis.view.JSONView" id="queryListRes">
+				<output>
+					<iColl id="IqpMortCatalogManaList">
+						<kColl>
+							<field id="catalog_no" />
+							<field id="catalog_name" />
+							<field id="attr_type" />
+							<field id="catalog_lvl" />
+							<field id="imn_rate" />
+							<field id="input_id" />
+							<field id="input_br_id" />
+							<field id="input_date" />
+							<field id="status" />
+							<field id="input_id_displayname" />
+							<field id="input_br_id_displayname" />
+						</kColl>
+					</iColl>
+					<kColl id="pageInfo">
+						<field id="currentPage" />
+						<field id="maxLine" />
+						<field id="recordSize" />
+					</kColl>
+				</output>
+			</jsonView>
+		</outputViews>
+	</action>
+	
+	
+	<!-- 获得押品目录树形结构图  -->
+	<action id="showCatalogManaTree" type="normal" checkSession="true">
+		<jspView id="retPage" url="biz01line/iqp/pub/admittance/IqpMortCatalogMana/showCatalogManaTree.jsp" />
+	</action>
+	
+	<!-- 查询产品树形数据   -->
+	<action id="getCatalogManaJsonTree" type="normal" checkSession="false">		
+		<flowInvoker>         
+			<operation class="com.yucheng.cmis.biz01line.iqp.op.pub.admittance.iqpmortcatalogmana.ShowCatalogManaTreeDetailsOp"/>
+			<transition dest="getDPrdJSONTree"/>
+		</flowInvoker>
+		<outputViews class="java.util.HashMap" >
+			<jspView id="getDPrdJSONTree" class="com.yucheng.cmis.view.ReturnDataView"/>
+		</outputViews>
+		<modelUpdater class="com.ecc.emp.ad.mvc.ADModelUpdater"/>
+	</action>
+	
+</actionDefines>
+
+
+

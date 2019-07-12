@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<MortUsufructLand.xml>
+	<TableModel id="MortUsufructLand" cnname="土地使用权" dbTableName="mort_usufruct_land">
+		<Field id="land_id" isPK="true" columnName="land_id" cnname="土地使用权编号" length="40" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="guaranty_no" columnName="guaranty_no" cnname="押品编号" length="40" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="land_license_owner" columnName="land_license_owner" cnname="土地权证人" length="100" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="land_area" columnName="land_area" cnname="土地面积(平方米)" length="16" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="use_purpose_type_cd" columnName="use_purpose_type_cd" cnname="土地用途" length="2" JDBCType="CHAR" canBeNull="true"/>
+		<Field id="land_user_type" columnName="land_user_type" cnname="土地使用权类型" length="2" JDBCType="CHAR" canBeNull="true"/>
+		<Field id="land_dev_level" columnName="land_dev_level" cnname="土地开发程度" length="2" JDBCType="CHAR" canBeNull="true"/>
+		<Field id="is_building" columnName="is_building" cnname="是否有地上建筑物" length="1" JDBCType="CHAR" canBeNull="true"/>
+		<Field id="sign_desc" columnName="sign_desc" cnname="地上情况说明" length="256" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="land_use_begin_date" columnName="land_use_begin_date" cnname="土地使用起始日期" length="10" JDBCType="CHAR" canBeNull="true"/>
+		<Field id="land_use_end_date" columnName="land_use_end_date" cnname="土地使用终止日期" length="10" JDBCType="CHAR" canBeNull="true"/>
+		<Field id="land_get_date" columnName="land_get_date" cnname="土地取得日期" length="10" JDBCType="CHAR" canBeNull="true"/>
+		<Field id="use_years" columnName="use_years" cnname="使用年限" length="8" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="land_license_num" columnName="land_license_num" cnname="土地权证号" length="80" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="land_character" columnName="land_character" cnname="土地所有制性质" length="2" JDBCType="CHAR" canBeNull="true"/>
+		<Field id="land_num" columnName="land_num" cnname="宗地号" length="80" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="project_plan_license_ind" columnName="project_plan_license_ind" cnname="是否取得建设用地规划许可证" length="1" JDBCType="CHAR" canBeNull="true"/>
+		<Field id="area_type_cd" columnName="area_type_cd" cnname="所处区域" length="2" JDBCType="CHAR" canBeNull="true"/>
+		<Field id="land_price" columnName="land_price" cnname="土地价款(元)" length="20" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="land_four" columnName="land_four" cnname="宗地四至" length="100" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="patch_land_money" columnName="patch_land_money" cnname="应补出让金金额" length="20" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="remise_pay_info" columnName="remise_pay_info" cnname="出让金交付情况" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="plot_ratio" columnName="plot_ratio" cnname="容积率" length="16" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="remark" columnName="remark" cnname="其他情况说明" length="1000" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="circle_status" columnName="circle_status" cnname="周边环境状况" length="100" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="land_license_ind" columnName="land_license_ind" cnname="是否有土地证" length="1" JDBCType="CHAR" canBeNull="true"/>
+		<Field id="building_density" columnName="building_density" cnname="BUILDING_DENSITY" length="16" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="sys_update_time" columnName="sys_update_time" cnname="系统更新时间" length="10" JDBCType="CHAR" canBeNull="true"/>
+		<Field id="use_status" columnName="use_status" cnname="使用状态" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="share_area" columnName="share_area" cnname="分摊面积(平方米)" length="16" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="land_map_num" columnName="land_map_num" cnname="宗地图图幅编号" length="40" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="guaranty_addr" columnName="guaranty_addr" cnname="押品座落地址" length="20" JDBCType="VARCHAR2"/>
+		<Field id="guaranty_street" columnName="guaranty_street" cnname="街道" length="100" JDBCType="VARCHAR2"/>
+	</TableModel>
+</MortUsufructLand.xml>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<IqpAssetTransApp.xml>
+	<TableModel id="IqpAssetTransApp" cnname="资产流转申请" dbTableName="iqp_asset_trans_app">
+		<TableInfo/>
+		<Field id="serno" isPK="true" columnName="serno" cnname="业务编号" length="40" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="toorg_no" columnName="toorg_no" cnname="交易对手" length="20" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="trans_type" columnName="trans_type" cnname="业务类型" length="10" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="loan_amt_totl" columnName="loan_amt_totl" cnname="贷款总金额" length="16" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="loan_balance_totl" columnName="loan_balance_totl" cnname="贷款总余额" length="16" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="trans_amt" columnName="trans_amt" cnname="转让金额" length="16" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="trans_rate" columnName="trans_rate" cnname="转让比率" length="16" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="trans_qnt" columnName="trans_qnt" cnname="转让笔数" length="38" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="trans_date" columnName="trans_date" cnname="转让日期" length="10" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="int_start_date" columnName="int_start_date" cnname="起息日" length="10" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="interest_type" columnName="interest_type" cnname="收息方式" length="1" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="remarks" columnName="remarks" cnname="备注" length="250" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="manager_br_id" columnName="manager_br_id" cnname="管理机构" length="20" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="input_id" columnName="input_id" cnname="登记人" length="40" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="input_br_id" columnName="input_br_id" cnname="登记机构" length="20" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="input_date" columnName="input_date" cnname="登记日期" length="10" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="approve_status" columnName="approve_status" cnname="审批状态" length="5" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<OrderFields>serno[desc];</OrderFields>
+		<Field id="prd_id" columnName="prd_id" cnname="产品编码" length="6" JSPTag="text" JDBCType="VARCHAR2"/>
+		<Field id="flow_type" columnName="flow_type" cnname="流程类型" length="2" JSPTag="text" JDBCType="VARCHAR2"/>
+		<Field id="cur_type" columnName="cur_type" cnname="币种" length="5" JSPTag="text" JDBCType="VARCHAR2"/>
+		<Field id="pro_name" columnName="pro_name" cnname="项目名称" JSPTag="text" length="80" JDBCType="VARCHAR2"/>
+		<Field id="pro_short_name" columnName="pro_short_name" cnname="项目简称" JSPTag="text" length="80" JDBCType="VARCHAR2"/>
+	</TableModel>
+</IqpAssetTransApp.xml>

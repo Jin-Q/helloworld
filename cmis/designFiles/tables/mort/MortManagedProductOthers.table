@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<MortManagedProductOthers.xml>
+	<TableModel id="MortManagedProductOthers" cnname="其他托管品" dbTableName="mort_managed_product_others">
+		<TableInfo/>
+		<Field id="mp_other_id" isPK="true" columnName="mp_other_id" cnname="其他托管品编号" length="40" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="guaranty_no" columnName="guaranty_no" cnname="押品编号" length="40" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="owner" columnName="owner" cnname="所有人" length="100" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="co_owner" columnName="co_owner" cnname="共有人" length="100" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="remark" columnName="remark" cnname="备注" length="1000" JSPTag="textarea" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="sys_update_time" columnName="sys_update_time" cnname="更新日期" length="10" JSPTag="date" canBeNull="true" JDBCType="CHAR"/>
+		<Field id="handling_user" columnName="handling_user" cnname="更新人" length="40" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="managed_product_name" columnName="managed_product_name" cnname="托管品名称" length="100" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="cur_type" dictname="STD_ZX_CUR_TYPE" columnName="cur_type" cnname="币种" length="3" JSPTag="select" canBeNull="true" JDBCType="CHAR"/>
+		<OrderFields>mp_other_id[desc];</OrderFields>
+	</TableModel>
+</MortManagedProductOthers.xml>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<PspPropertyStockright.xml>
+	<TableModel id="PspPropertyStockright" cnname="贷后检查固定资产分析-股权" dbTableName="psp_property_stockright">
+		<TableInfo/>
+		<Field id="property_id" isPK="true" columnName="property_id" cnname="资产编号" length="32" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="code_no" columnName="code_no" cnname="代码证书编号" length="40" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="unit_price" dataType="Currency" columnName="unit_price" cnname="每股面值" length="16" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="hold_stock" dataType="Int" columnName="hold_stock" cnname="持有股份" length="8" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="emit_date" columnName="emit_date" cnname="发行时间" length="10" JSPTag="date" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="emit_comp" columnName="emit_comp" cnname="发行公司" length="80" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="is_mrk" dictname="STD_ZX_YES_NO" columnName="is_mrk" cnname="是否上市" length="5" JSPTag="select" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="curt_price" dataType="Currency" columnName="curt_price" cnname="当前股价" length="16" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<OrderFields>property_id[desc];</OrderFields>
+	</TableModel>
+</PspPropertyStockright.xml>

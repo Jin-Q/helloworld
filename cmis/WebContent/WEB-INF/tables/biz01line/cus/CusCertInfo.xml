@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<CusCertInfo.xml>
+	<TableModel id="CusCertInfo" cnname="其他证件类型" dbTableName="cus_cert_info">
+		<Field id="cus_id" isPK="true" columnName="cus_id" cnname="客户码" length="30" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="cert_typ" isPK="true" columnName="cert_typ" cnname="证件类型" length="30" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="cert_code" isPK="true" columnName="cert_code" cnname="证件号码" length="80" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="crt_date" columnName="crt_date" cnname="签发日期" length="10" JDBCType="CHAR" canBeNull="false"/>
+		<Field id="crt_end_date" columnName="crt_end_date" cnname="签发到期日期" length="10" JDBCType="CHAR" canBeNull="false"/>
+		
+		<Field id="input_cli" columnName="input_cli" cnname="登记人" length="20" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="input_org" columnName="input_org" cnname="登记机构" length="80" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="input_date" columnName="input_date" cnname="登记日期" length="10" JDBCType="CHAR" canBeNull="false"/>
+	</TableModel>
+</CusCertInfo.xml>

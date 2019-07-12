@@ -1,0 +1,323 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actionDefines>
+	<classMap>
+		<map id="action" class="com.yucheng.cmis.ad.mvc.ADRequestController"/>
+		<map id="flowInvoker" class="com.yucheng.cmis.ad.mvc.ADFlowInvoker"/>
+		<map id="outputViews" class="java.util.HashMap"/>
+		<map id="output" class="com.ecc.emp.data.KeyedCollection"/>
+		<map id="kColl" class="com.ecc.emp.data.KeyedCollection"/>
+		<map id="iColl" class="com.ecc.emp.data.IndexedCollection"/>
+		<map id="field" class="com.ecc.emp.data.DataField"/>
+	</classMap>
+	
+	<!-- 查询记录列表 -->
+	<action id="queryLmtSigLmtList" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.lmt.op.intbank.lmtsiglmt.QueryLmtSigLmtListOp"/>
+			<transition dest="queryListRes"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="queryListRes" url="biz01line/lmt/intbank/LmtSigLmt/queryLmtSigLmtList.jsp" />
+		</outputViews>
+	</action>
+	<!-- 查询历史记录列表 -->
+	<action id="queryLmtSigLmtLs" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.lmt.op.intbank.lmtsiglmt.QueryLmtSigLmtLsOp"/>
+			<transition dest="queryListRes"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="queryListRes" url="biz01line/lmt/intbank/LmtSigLmt/queryLmtSigLmtLs.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 获取新增页面 -->
+	<action id="getLmtSigLmtAddPage" type="normal" checkSession="true" >	   
+		   <jspView id="addListRes" url="biz01line/lmt/intbank/LmtSigLmt/addLmtSigLmtRecord.jsp" />
+	</action>
+	
+	<!-- 新增信息 -->
+	<action id="addLmtSigLmtRecord" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.lmt.op.intbank.lmtsiglmt.AddLmtSigLmtRecordOp"/>
+			<transition dest="queryListRes"/>
+		</flowInvoker>
+		<outputViews>
+			<view id="queryListRes" class="com.yucheng.cmis.view.JSONView">
+				<output class="com.ecc.emp.data.KeyedCollection">
+					<field id="flag" class="com.ecc.emp.data.DataField" />
+				</output>
+			</view>
+		</outputViews>
+	</action>
+	<!-- 提交流程处理 
+	<action id="handleFlow" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.lmt.op.intbank.lmtsiglmt.HandleFlowOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<view id="retPage" class="com.yucheng.cmis.view.JSONView">
+				<output class="com.ecc.emp.data.KeyedCollection">
+					<field id="flag" class="com.ecc.emp.data.DataField" />
+				</output>
+			</view>
+		</outputViews>
+	</action>-->
+
+	<!-- 下一步 -->
+	<action id="getNextLmtSigPage" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.lmt.op.intbank.lmtsiglmt.QueryNextLmtSigPageOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="biz01line/lmt/intbank/LmtSigLmt/updateLmtSigLmtRecord.jsp" />
+		</outputViews>	
+	</action>
+	
+	<!-- 获得编辑页面 -->
+	<action id="getLmtSigLmtUpdatePage" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.lmt.op.intbank.lmtsiglmt.QueryLmtSigLmtDetailOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="biz01line/lmt/intbank/LmtSigLmt/updateLmtSigLmtRecord.jsp" />
+		</outputViews>	
+	</action>
+	<!-- 获得批量授信中的单个客户授信页面 -->
+	<action id="getLmtSigLmtUpdatePage4Batch" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.lmt.op.intbank.lmtsiglmt.QueryLmtSigLmtDetail4BatchOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="biz01line/lmt/intbank/LmtSigLmt/updateLmtSigLmt4BatchRecord.jsp" />
+		</outputViews>
+	</action>
+
+	<!-- 修改信息 -->
+	<action id="updateLmtSigLmtRecord" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.lmt.op.intbank.lmtsiglmt.UpdateLmtSigLmtRecordOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<view id="retPage" class="com.yucheng.cmis.view.JSONView">
+				<output class="com.ecc.emp.data.KeyedCollection">
+					<field id="flag" class="com.ecc.emp.data.DataField" />
+					<field id="serno" class="com.ecc.emp.data.DataField" />
+				</output>
+			</view>
+		</outputViews>
+	</action>
+	
+	<!-- 删除信息 -->
+	<action id="deleteLmtSigLmtRecord" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.lmt.op.intbank.lmtsiglmt.DeleteLmtSigLmtRecordOp"/>
+			<transition dest="queryListRes"/>
+		</flowInvoker>
+		<outputViews>
+			<view id="queryListRes" class="com.yucheng.cmis.view.JSONView">
+				<output class="com.ecc.emp.data.KeyedCollection">
+					<field id="flag" class="com.ecc.emp.data.DataField" />
+				</output>
+			</view>
+		</outputViews>
+	</action>
+	
+	<!-- 查询详情 -->
+	<action id="queryLmtSigLmtDetail" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.lmt.op.intbank.lmtsiglmt.QueryLmtSigLmtDetailOp"/>
+			<transition dest="queryDetailRes"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="queryDetailRes" url="biz01line/lmt/intbank/LmtSigLmt/queryLmtSigLmtDetail.jsp" />
+		</outputViews>
+	</action>
+	<!-- 保存授信分项 -->
+	<action id="saveLmtSubApp" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.lmt.op.intbank.lmtsiglmt.SaveLmtSubAppOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<view id="retPage" class="com.yucheng.cmis.view.JSONView">
+				<output class="com.ecc.emp.data.KeyedCollection">
+					<field id="flag" class="com.ecc.emp.data.DataField" />
+				</output>
+			</view>
+		</outputViews>
+	</action>
+	
+	
+	<!-- 分页查询记录列表 -->
+	<action id="pageLmtSigLmtQuery" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.lmt.op.intbank.lmtsiglmt.QueryLmtSigLmtListOp"/>
+			<transition dest="queryListRes"/>
+		</flowInvoker>
+		<outputViews>
+			<jsonView class="com.yucheng.cmis.view.JSONView" id="queryListRes">
+				<output>
+					<iColl id="LmtSigLmtList">
+						<kColl>
+						</kColl>
+					</iColl>
+					<kColl id="pageInfo">
+						<field id="currentPage" />
+						<field id="maxLine" />
+						<field id="recordSize" />
+					</kColl>
+					
+				</output>
+			</jsonView>
+		</outputViews>
+	</action>
+		<!-- 历史分页查询记录列表 -->
+	<action id="pageLmtSigLmtLsQuery" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.lmt.op.intbank.lmtsiglmt.QueryLmtSigLmtLsOp"/>
+			<transition dest="queryListRes"/>
+		</flowInvoker>
+		<outputViews>
+			<jsonView class="com.yucheng.cmis.view.JSONView" id="queryListRes">
+				<output>
+					<iColl id="LmtSigLmtList">
+						<kColl>
+						</kColl>
+					</iColl>
+					<kColl id="pageInfo">
+						<field id="currentPage" />
+						<field id="maxLine" />
+						<field id="recordSize" />
+					</kColl>
+					
+				</output>
+			</jsonView>
+		</outputViews>
+	</action>
+	
+	
+	<!--*************************子表【授信分项申请表】*******************************-->
+	
+	<!-- 作为子表的列表页面 -->
+	<action id="queryLmtSigLmtLmtSubAppList" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.lmt.op.intbank.lmtsiglmt.lmtsubapp.QueryLmtSigLmtLmtSubAppListOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="biz01line/lmt/intbank/LmtSigLmt/LmtSubApp/queryLmtSigLmtLmtSubAppList.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 获得作为子表的新增页面 -->
+	<action id="getLmtSigLmtLmtSubAppAddPage" type="normal" checkSession="true" >
+		<jspView id="addPage" url="biz01line/lmt/intbank/LmtSigLmt/LmtSubApp/addLmtSigLmtLmtSubAppRecord.jsp"/>
+	</action>
+	
+	<!-- 获得子表编辑页面 -->
+	<action id="getLmtSigLmtLmtSubAppUpdatePage" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.lmt.op.intbank.lmtsiglmt.lmtsubapp.QueryLmtSigLmtLmtSubAppDetailOp"/>
+			<transition dest="updatePage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="updatePage" url="biz01line/lmt/intbank/LmtSigLmt/LmtSubApp/updateLmtSigLmtLmtSubAppRecord.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 子表详情查询 -->
+	<action id="queryLmtSigLmtLmtSubAppDetail" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.lmt.op.intbank.lmtsiglmt.lmtsubapp.QueryLmtSigLmtLmtSubAppDetailOp"/>
+			<transition dest="queryDetail"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="queryDetail" url="biz01line/lmt/intbank/LmtSigLmt/LmtSubApp/queryLmtSigLmtLmtSubAppDetail.jsp"/>
+		</outputViews>	
+	</action>
+	
+	<!-- 子表新增记录 -->
+	<action id="addLmtSigLmtLmtSubAppRecord" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.lmt.op.intbank.lmtsiglmt.lmtsubapp.AddLmtSigLmtLmtSubAppRecordOp"/>
+			<transition dest="addRecordRes"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="addRecordRes" url="refreshList.jsp?method=refreshLmtSubApp()"/>
+		</outputViews>
+	</action>
+	
+	<!-- 子表更新记录 -->
+	<action id="updateLmtSigLmtLmtSubAppRecord" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.lmt.op.intbank.lmtsiglmt.lmtsubapp.UpdateLmtSigLmtLmtSubAppRecordOp"/>
+			<transition dest="updateRecordRes"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="updateRecordRes" url="refreshList.jsp?method=refreshLmtSubApp()"/>
+		</outputViews>
+	</action>
+	
+	<!-- 子表删除记录 -->
+	<action id="deleteLmtSigLmtLmtSubAppRecord" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.lmt.op.intbank.lmtsiglmt.lmtsubapp.DeleteLmtSigLmtLmtSubAppRecordOp"/>
+			<transition dest="deleteRecordRes"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="deleteRecordRes" url="refreshList.jsp?method=refreshLmtSubApp()"/>
+		</outputViews>
+	</action>
+	
+	<!-- 分页查询记录列表 -->
+		<action id="pageLmtSigLmtLmtSubAppQuery" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.lmt.op.intbank.lmtsiglmt.lmtsubapp.QueryLmtSigLmtLmtSubAppListOp"/>
+			<transition dest="queryListRes"/>
+		</flowInvoker>
+		<outputViews>
+			<jsonView class="com.yucheng.cmis.view.JSONView" id="queryListRes">
+				<output>
+					<iColl id="LmtSubAppList">
+						<kColl>
+						</kColl>
+					</iColl>
+					<kColl id="pageInfo">
+						<field id="currentPage" />
+						<field id="maxLine" />
+						<field id="recordSize" />
+					</kColl>
+				</output>
+			</jsonView>
+		</outputViews>
+	</action>
+		<!-- 详情分页查询记录列表 -->
+		<action id="pageLmtSubAppDetailQuery" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.lmt.op.intbank.lmtsiglmt.lmtsubapp.QueryLmtSigLmtLmtSubAppDetailOp"/>
+			<transition dest="queryListRes"/>
+		</flowInvoker>
+		<outputViews>
+			<jsonView class="com.yucheng.cmis.view.JSONView" id="queryListRes">
+				<output>
+					<iColl id="LmtSubAppList">
+						<kColl>
+						</kColl>
+					</iColl>
+					<kColl id="pageInfo">
+						<field id="currentPage" />
+						<field id="maxLine" />
+						<field id="recordSize" />
+					</kColl>
+				</output>
+			</jsonView>
+		</outputViews>
+	</action>		
+	
+</actionDefines>

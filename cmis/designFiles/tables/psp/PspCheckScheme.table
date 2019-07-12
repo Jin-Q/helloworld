@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<PspCheckScheme.xml>
+	<TableModel id="PspCheckScheme" pageSize="10" cnname="贷后检查项方案" isPaged="true" dbTableName="psp_check_scheme">
+		<TableInfo/>
+		<Field id="scheme_id" isPK="true" columnName="scheme_id" cnname="方案编号" length="40" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="scheme_name" columnName="scheme_name" cnname="方案名称" length="100" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="memo" columnName="memo" cnname="备注" length="250" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="input_id" columnName="input_id" cnname="登记人" length="20" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="input_date" columnName="input_date" cnname="登记日期" length="10" JSPTag="date" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="input_br_id" columnName="input_br_id" cnname="登记机构" length="20" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<OrderFields>scheme_id[desc];</OrderFields>
+		<ConditionFields>scheme_id;scheme_name;</ConditionFields>
+	</TableModel>
+</PspCheckScheme.xml>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<MortGuarantyBaseInfo.xml>
+	<TableModel id="MortGuarantyBaseInfo" cnname="记录抵质押物基本信息" dbTableName="mort_guaranty_base_info">
+		<Field id="guaranty_no" isPK="true" columnName="guaranty_no" cnname="押品编号" length="40" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="guaranty_cls" columnName="guaranty_cls" cnname="押品类别" length="1" JDBCType="CHAR" canBeNull="true"/>
+		<Field id="cus_id" columnName="cus_id" cnname="所有权人客户码" length="40" JDBCType="VARCHAR2"/>
+		<Field id="is_common_owner" columnName="is_common_owner" cnname="是否有共有人" length="1" JDBCType="CHAR" canBeNull="true"/>
+		<Field id="is_warrant_full" columnName="is_warrant_full" cnname="权证信息是否完整" length="1" JDBCType="CHAR" canBeNull="true"/>
+		<Field id="not_full_resn" columnName="not_full_resn" cnname="不完整原因" length="600" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="is_takeover" columnName="is_takeover" cnname="是否可转让" length="1" JDBCType="CHAR" canBeNull="true"/>
+		<Field id="other_memo" columnName="other_memo" cnname="其他说明" length="600" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="guaranty_info_status" columnName="guaranty_info_status" cnname="押品信息状态" length="2" JDBCType="CHAR" canBeNull="true"/>
+		<Field id="manager_id" columnName="manager_id" cnname="责任人" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="manager_br_id" columnName="manager_br_id" cnname="责任机构" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="input_id" columnName="input_id" cnname="登记人" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="input_br_id" columnName="input_br_id" cnname="登记机构" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="input_date" columnName="input_date" cnname="登记日期" length="10" JDBCType="CHAR" canBeNull="true"/>
+		<Field id="guaranty_cur_type" columnName="guaranty_cur_type" cnname="押品原值币种" length="3" JDBCType="CHAR" canBeNull="true"/>
+		<Field id="guaranty_score" columnName="guaranty_score" cnname="押品原值" length="16" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="guaranty_type" columnName="guaranty_type" cnname="押品类别" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="guaranty_name" columnName="guaranty_name" cnname="押品名称" length="100" JDBCType="VARCHAR2"/>
+		<Field id="image_guaranty_no" columnName="image_guaranty_no" cnname="影像押品编号" length="40" JDBCType="VARCHAR2"/>
+		<Field id="non_affi_third" columnName="non_affi_third" cnname="是否为非关联方第三人" length="2" JDBCType="VARCHAR2" canBeNull="false"/>
+	</TableModel>
+</MortGuarantyBaseInfo.xml>

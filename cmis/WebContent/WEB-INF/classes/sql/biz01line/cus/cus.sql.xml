@@ -1,0 +1,314 @@
+c<?xml version="1.0" encoding="UTF-8"?>
+<S>
+
+<!-- 更新客户评级信息信息CusBase表（融资性担保公司）  -->
+<SQL id="updateGuarCrdGrade" parameterClass="java.lang.String" valueClass ="java.util.HashMap" >
+   <UPDATE>
+  <![CDATA[
+  	update cus_base set guar_crd_grade=${grade},cus_crd_dt=${gradeDt} where cus_id=${_SIG_VALUE}
+  ]]>
+   </UPDATE>
+</SQL>
+
+<!-- 更新客户评级信息信息CusCom表（融资性担保公司）  -->
+<SQL id="updateGuarCrdGradeCusCom" parameterClass="java.lang.String" valueClass ="java.util.HashMap" >
+   <UPDATE>
+  <![CDATA[
+  	update cus_com set guar_bail_multiple=${guar_bail_multiple},guar_cls=${guar_cls} where cus_id=${_SIG_VALUE}
+  ]]>
+   </UPDATE>
+</SQL>
+
+<!-- 更新客户评级信息信息（非融资性担保公司）  -->
+<SQL id="updateCusCrdGrade" parameterClass="java.lang.String" valueClass ="java.util.HashMap" >
+   <UPDATE>
+  <![CDATA[
+  	update cus_base set cus_crd_grade=${grade},cus_crd_dt=${gradeDt} where cus_id=${_SIG_VALUE}
+  ]]>
+   </UPDATE>
+</SQL>
+
+<!-- 审批结束更新客户所属条线  -->
+<SQL id="updateCusBelgLine" parameterClass="java.lang.String" valueClass ="java.util.HashMap" >
+   <UPDATE>
+  <![CDATA[
+  	update cus_base set belg_line=${belgLine} where cus_id=${_SIG_VALUE}
+  ]]>
+   </UPDATE>
+</SQL>
+
+<!-- 评级直接认定更新客户信息（战略性客户、战略性客户到期日）  -->
+<SQL id="updateStrCusCrd" parameterClass="java.lang.String" valueClass ="java.lang.String" >
+   <UPDATE>
+  <![CDATA[
+  	update cus_com set str_cus_end_dt=${_SIG_VALUE},str_cus='1' where cus_id=${_SIG_VALUE}
+  ]]>
+   </UPDATE>
+</SQL>
+
+<!-- 更新客户评级信息信息（金融同业）  -->
+<SQL id="updateCusSameCrdGrade" parameterClass="java.lang.String" valueClass ="java.util.HashMap" >
+   <UPDATE>
+  <![CDATA[
+  	update cus_same_org set crd_grade=${grade},eval_maturity=${gradeDt} where cus_id=${_SIG_VALUE}
+  ]]>
+   </UPDATE>
+</SQL>
+
+<!-- 删除委托关联表中的相关数据  -->
+<SQL id="delCusTrustee" parameterClass="java.util.HashMap" >
+ <DELETE>
+  <![CDATA[
+  	DELETE FROM cus_trustee where consignor_id=${consignor_id} and trustee_id=${trustee_id}
+  ]]>
+  </DELETE>
+</SQL>
+
+<!-- 评估机构认定流程begin -->
+<SQL id="delCusOrgAppMng" parameterClass="java.lang.String" >
+ <DELETE>
+  <![CDATA[
+ delete from Cus_Org_App_Mng where cus_id in ( select cus_id from Cus_Org_App  where serno = ${_SIG_VALUE} )
+  ]]>
+  </DELETE>
+</SQL>
+
+<SQL id="delCusOrgInfoMng" parameterClass="java.lang.String" >
+ <DELETE>
+  <![CDATA[
+ delete from Cus_Org_Info_Mng where cus_id in ( select cus_id from Cus_Org_Info  where app_serno = ${_SIG_VALUE} )
+  ]]>
+  </DELETE>
+</SQL>
+
+<SQL id="submitCusOrgApp" parameterClass="java.lang.String"  >
+   <UPDATE>
+  <![CDATA[  	
+insert into Cus_Org_App_Mng(
+ select a.cus_id,a.extr_eval_org ,a.extr_eval_quali,a.extr_eval_addr,a.extr_eval_rng,a.fic_per,
+ a.real_oper_per,a.founded_date,a.reg_cap_amt,a.PHONE,(select openday from pub_sys_info ) as INURE_DATE ,
+ case when (a.EXTR_EVAL_EXP_TYPE = '001') then 
+ to_char(add_months(to_date((select openday from pub_sys_info ),'yyyy-mm-dd'), a.EXTR_EVAL_EXP_TERM*12),'yyyy-mm-dd')
+ when (a.EXTR_EVAL_EXP_TYPE = '002') then 
+ to_char(add_months(to_date((select openday from pub_sys_info ),'yyyy-mm-dd'), a.EXTR_EVAL_EXP_TERM),'yyyy-mm-dd')
+ when (a.EXTR_EVAL_EXP_TYPE = '003') then 
+ to_char(to_date((select openday from pub_sys_info ),'yyyy-mm-dd')+ a.EXTR_EVAL_EXP_TERM,'yyyy-mm-dd') end as end_date ,
+ a.realty_validation_lice_no,a.realty_validation_lice_name,a.land_extr_eval_reg_lice_no,
+ a.land_extr_eval_reg_lice_name , a.cap_eval_quali_lice_no,a.cap_eval_quali_lice_name,
+ a.reg_realty_estimater,a.reg_land_estimater,a.cap_realty_estimater,a.remarks,
+ a.manager_br_id,a.manager_id,a.input_id,a.input_date,a.input_br_id,a.STREET,a.cus_name
+ from Cus_Org_App a where serno = ${_SIG_VALUE} )
+  ]]>
+   </UPDATE>
+</SQL>
+
+<SQL id="submitCusOrgInfo" parameterClass="java.lang.String"  >
+   <UPDATE>
+  <![CDATA[
+insert into Cus_Org_Info_Mng(
+ select a.cus_id,a.branch_type,a.branch_addr,a.duty_man,a.phone,a.serno ,a.STREET
+ from Cus_Org_Info a where app_serno = ${_SIG_VALUE} )
+  ]]>
+   </UPDATE>
+</SQL>
+<!-- 评估机构认定流程end -->
+
+<!-- 集团认定流程begin -->
+<SQL id="submitCusGrpMember" parameterClass="java.lang.String"  >
+   <UPDATE>
+  <![CDATA[  	
+insert into CUS_GRP_MEMBER (
+ select a.grp_no,a.cus_id,a.grp_corre_type,a.grp_corre_detail,a.input_id,a.input_date,
+ a.input_br_id,a.gen_type
+ from CUS_GRP_MEMBER_APPLY a where serno = ${_SIG_VALUE})
+  ]]>
+   </UPDATE>
+</SQL>
+
+<SQL id="submitCusGrpInfo" parameterClass="java.lang.String"  >
+   <UPDATE>
+  <![CDATA[
+insert into CUS_GRP_INFO (
+ select a.grp_no , a.grp_name,a.parent_cus_id,a.grp_finance_type,a.grp_detail,a.manager_br_id,
+ a.manager_id,a.input_id,a.input_date,a.input_br_id
+ from CUS_GRP_INFO_APPLY a where serno = ${_SIG_VALUE})
+  ]]>
+   </UPDATE>
+</SQL>
+
+<SQL id="changeCusGrpMember" parameterClass="java.lang.String" valueClass ="java.lang.String" >
+   <UPDATE>
+  <![CDATA[
+insert into cus_grp_member_apply ( select a.*,${_SIG_VALUE} from  cus_grp_member a where grp_no = ${_SIG_VALUE} )
+  ]]>
+   </UPDATE>
+</SQL>
+
+<SQL id="addGrpCognizMember" parameterClass="java.lang.String" >
+   <UPDATE>
+  <![CDATA[
+insert into cus_grp_member_apply(
+ select a.grp_no,a.parent_cus_id,(select com_grp_mode from cus_com where cus_id = a.parent_cus_id),'',
+ a.input_id,a.input_date,a.input_br_id,'1',a.serno from cus_grp_info_apply a where serno = ${_SIG_VALUE} )
+  ]]>
+   </UPDATE>
+</SQL>
+
+<!-- 集团认定流程end -->
+
+<!-- 删除存储历史配置字典相关数据  -->
+<SQL id="delModifyHistoryCfg" parameterClass="java.lang.String" >
+ <DELETE>
+  <![CDATA[
+  	DELETE FROM MODIFY_HISTORY_CFG WHERE MODEL_ID=${_SIG_VALUE}
+  ]]>
+  </DELETE>
+</SQL>
+
+<!-- 根据集团编号，查询客户具体信息 -->
+<SQL id="findCusGrpMemberByGrpNo" parameterClass="java.lang.String" resultClass="com.ecc.emp.data.KeyedCollection" >
+    <SELECT>
+      <![CDATA[
+		select * from cus_grp_member where grp_no = ${_SIG_VALUE}
+      ]]>
+    </SELECT>
+</SQL>
+
+<!-- 更新申请状态信息（客户移交）  -->
+<SQL id="updateCusHandoverAppStatus" parameterClass="java.lang.String" valueClass ="java.lang.String" >
+   <UPDATE>
+  <![CDATA[
+  	update cus_handover_app set approve_status=${_SIG_VALUE} where serno=${_SIG_VALUE}
+  ]]>
+   </UPDATE>
+</SQL>
+
+<!-- 获取额度申请流水下的关系客户号（包含申请客户及配偶、共同债务人及配偶、保证人及配偶） -->
+<SQL id="queryRelaCusIdByLmtSerno" parameterClass="java.lang.String" resultClass="com.ecc.emp.data.KeyedCollection" >
+    <SELECT>
+      <![CDATA[
+           select cb.*,T.cus_attr
+  			from cus_base cb,((select cus_id,'01' cus_attr from lmt_app_indiv where serno = ${_SIG_VALUE})
+              union (select same_debtor_id,'03' cus_attr
+                       from lmt_app_indiv
+                      where serno = ${_SIG_VALUE}) 
+                  union (select d.cus_id,'05' cus_attr
+                     from lmt_app_details     a,
+                      r_lmt_app_guar_cont b,
+                      grt_guaranty_re     c,
+                      grt_guarantee       d
+                    where a.serno = ${_SIG_VALUE}
+                    and a.limit_code = b.limit_code
+                    and b.guar_cont_no = c.guar_cont_no
+                    and c.guaranty_id = d.guar_id) 
+                union (select cus_id_rel,'02' cus_attr
+                     from cus_indiv_soc_rel
+                    where indiv_cus_rel = '1'
+                    and cus_id in (select cus_id
+                             from lmt_app_indiv
+                            where serno = ${_SIG_VALUE})) 
+                    union (select cus_id_rel,'04' cus_attr
+                     from cus_indiv_soc_rel
+                    where indiv_cus_rel = '1'
+                    and cus_id in (select same_debtor_id
+                             from lmt_app_indiv
+                            where serno = ${_SIG_VALUE})) 
+                     union (select cus_id_rel,'06' cus_attr
+                     from cus_indiv_soc_rel
+                    where indiv_cus_rel = '1'
+                    and cus_id in
+                      (select d.cus_id
+                         from lmt_app_details     a,
+                          r_lmt_app_guar_cont b,
+                          grt_guaranty_re     c,
+                          grt_guarantee       d
+                    where a.serno = ${_SIG_VALUE}
+                    and a.limit_code = b.limit_code
+                    and b.guar_cont_no = c.guar_cont_no
+                    and c.guaranty_id = d.guar_id))) T
+ 			where cb.cus_id = T.cus_id
+         and cb.cus_status = '20'
+         and cb.cus_id not in (select cus_id
+                        from cus_blk_list
+                       where black_level = '3'
+                         and status in ('002', '004')
+                         and cus_id is not null)
+         and cb.belg_line = 'BL300'
+      ]]>
+    </SELECT>
+</SQL>
+<!-- 获取客户信息  -->
+<SQL id="queryCusInfo" parameterClass="java.lang.String" resultClass="com.ecc.emp.data.KeyedCollection" onlyReturnFirst="true" >
+   <SELECT>
+  <![CDATA[
+	select * from cus_base t where cert_code = ${_SIG_VALUE}
+  ]]>
+   </SELECT>
+</SQL>
+<!-- 根据用户码获取该用户托管用户集合  -->
+<SQL id="getCusTrusteeByUserId" parameterClass="java.lang.String" resultClass="com.ecc.emp.data.KeyedCollection" onlyReturnFirst="false">
+    <SELECT> 
+     <![CDATA[
+  	   select t.consignor_id,t.trustee_date,
+              (select s.actorname from s_user s where s.actorno = t.consignor_id) as consignor_name
+         from cus_trustee t
+        where t.trustee_id = ${_SIG_VALUE}
+     ]]>
+    </SELECT> 
+</SQL>
+<!-- 获取客户信息  -->
+<SQL id="queryCusSameInfo" parameterClass="java.lang.String" resultClass="java.lang.String" onlyReturnFirst="false" >
+   <SELECT>
+  <![CDATA[
+	select cus_id from cus_same_org where same_org_no = ${_SIG_VALUE}
+  ]]>
+   </SELECT>
+</SQL>
+
+<!-- 通过个人客户号查询该客户是否是经营性客户  -->
+<SQL id="isCusIndivBusiness" parameterClass="java.lang.String" resultClass="java.lang.String" onlyReturnFirst="false" >
+   <SELECT>
+  <![CDATA[
+	select count(*) as countFlag from cus_indiv_business where cus_id = ${_SIG_VALUE}
+  ]]>
+   </SELECT>
+</SQL>
+
+<!-- 通过个人客户号查询该客户关联客户  -->
+<SQL id="queryCusIndivSocRel" parameterClass="java.util.HashMap" resultClass="com.ecc.emp.data.KeyedCollection" onlyReturnFirst="false" >
+   <SELECT>
+  <![CDATA[
+	select * from cus_indiv_soc_rel where cus_id = ${cus_id} and indiv_cus_rel=${cus_rel}
+  ]]>
+   </SELECT>
+</SQL>
+<!-- 插入强制变更正式客户 记录信息 -->
+<SQL id="insertWriteCoerceChange" parameterClass="java.lang.String" valueClass ="java.util.HashMap" >
+  <INSERT>
+  <![CDATA[
+  	INSERT INTO CUS_WRITE_COERCE_CHANGE(PK_ID,CUS_ID,HANDLE_ID,HANDLE_BR_ID,CHANGE_DATE) VALUES (${pk_id},${cus_id},${handle_id},${handle_br_id},${change_date})
+  ]]>
+  </INSERT> 
+</SQL>
+
+<!-- 通过客户码查 客户地址、街道、法人（对公）  -->
+<SQL id="selectCusAddrByCusid" parameterClass="java.lang.String" resultClass="com.ecc.emp.data.KeyedCollection" onlyReturnFirst="true" >
+   <SELECT>
+  <![CDATA[
+    SELECT REG_ADDR ADDR,REG_STREET STREET,(SELECT CUS_NAME FROM CUS_BASE WHERE CUS_ID=(SELECT CUS_ID_REL FROM CUS_COM_MANAGER WHERE COM_MRG_TYP='02' AND CUS_ID=T.CUS_ID)) legal_name
+  	 FROM CUS_COM C LEFT JOIN CUS_BASE T ON T.CUS_ID=C.CUS_ID WHERE T.CUS_ID = ${_SIG_VALUE}
+ 	UNION ALL 
+	SELECT POST_ADDR ADDR,STREET2 STREET,'' legal_name FROM CUS_INDIV I LEFT JOIN CUS_BASE TT ON TT.CUS_ID=I.CUS_ID WHERE TT.CUS_ID = ${_SIG_VALUE}
+  ]]>
+   </SELECT>
+</SQL>
+
+<!--通过客户号查询是否存在信贷系统 add by lisj 2015-4-7 需求编号：【XD1503180523】关于信贷系统增加循环贷类个贷 产品需求  -->
+<SQL id="queryExistsCus" parameterClass="java.lang.String" resultClass="com.ecc.emp.data.KeyedCollection" onlyReturnFirst="true" >
+   <SELECT>
+  <![CDATA[
+    SELECT * FROM CUS_BASE C WHERE C.CUS_ID =${_SIG_VALUE}
+  ]]>
+   </SELECT>
+</SQL>
+</S>

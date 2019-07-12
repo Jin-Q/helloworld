@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<IqpLoanApp.xml>
+	<TableModel id="IqpLoanApp" pageSize="10" cnname="业务申请" isPaged="true" dbTableName="iqp_loan_app">
+		<TableInfo/>
+		<Field id="serno" isPK="true" columnName="serno" cnname="业务流水号" length="40" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="cus_id" columnName="cus_id" cnname="客户码" length="40" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="biz_type" columnName="biz_type" cnname="业务模式" length="8" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="rent_type" columnName="rent_type" cnname="租赁模式" length="8" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="prd_id" columnName="prd_id" cnname="产品编号" length="6" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="is_promissory_note" dictname="STD_ZX_YES_NO" columnName="is_promissory_note" cnname="是否承诺函下" length="1" JSPTag="select" canBeNull="true" JDBCType="CHAR"/>
+		<Field id="promissory_note" columnName="promissory_note" cnname="承诺函" length="80" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="assure_main" dictname="STD_ZB_ASSURE_MEANS" columnName="assure_main" cnname="担保方式" length="2" JSPTag="select" canBeNull="true" JDBCType="CHAR"/>
+		<Field id="assure_main_details" dictname="STD_ZB_ASSUREDET_TYPE" columnName="assure_main_details" cnname="担保方式细分" length="10" JSPTag="select" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="trust_company" columnName="trust_company" cnname="信托公司" length="100" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="apply_cur_type" dictname="STD_ZX_CUR_TYPE" columnName="apply_cur_type" cnname="申请币种" length="3" JSPTag="select" canBeNull="true" JDBCType="CHAR"/>
+		<Field id="apply_amount" dataType="Currency" columnName="apply_amount" cnname="申请金额" length="16" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="apply_date" columnName="apply_date" cnname="申请日期" length="10" JSPTag="date" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="end_date" columnName="end_date" cnname="办结日期" length="10" JSPTag="date" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="exchange_rate" dataType="Rate" columnName="exchange_rate" cnname="汇率" length="16" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="security_rate" dataType="Percent" columnName="security_rate" cnname="保证金比例" length="10" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="same_security_amt" dataType="Currency" columnName="same_security_amt" cnname="视同保证金" length="16" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="ass_sec_multiple" dataType="Percent" columnName="ass_sec_multiple" cnname="担保放大倍数" length="10" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="risk_open_amt" columnName="risk_open_amt" cnname="风险敞口" length="16" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="risk_open_rate" dataType="Permille" columnName="risk_open_rate" cnname="敞口比率" length="10" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="limit_ind" dictname="STD_LIMIT_IND" columnName="limit_ind" cnname="授信额度使用标志" length="1" JSPTag="select" canBeNull="true" JDBCType="CHAR"/>
+		<Field id="limit_acc_no" columnName="limit_acc_no" cnname="授信台帐编号" length="40" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="limit_credit_no" columnName="limit_credit_no" cnname="第三方授信编号" length="40" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="remarks" columnName="remarks" cnname="备注" length="250" JSPTag="textarea" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="manager_br_id" columnName="manager_br_id" cnname="管理机构" length="20" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="input_id" columnName="input_id" cnname="登记人" length="20" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="input_br_id" columnName="input_br_id" cnname="登记机构" length="20" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="input_date" columnName="input_date" cnname="登记日期" length="10" JSPTag="date" canBeNull="true" JDBCType="VARCHAR2"/>
+		<OrderFields>serno[desc];</OrderFields>
+		<FilterFields>serno;prd_id;cus_id;assure_main;apply_amount;apply_date;input_id;app_status;</FilterFields>
+		<Field id="belong_net" columnName="belong_net" cnname="所属网络" length="40" JSPTag="text" JDBCType="VARCHAR2"/>
+		<Field id="is_trust_loan" dictname="STD_ZX_YES_NO" columnName="is_trust_loan" cnname="是否信托贷款" length="1" JSPTag="select" JDBCType="CHAR"/>
+		<Field id="security_amt" dataType="Currency" columnName="security_amt" cnname="保证金金额" length="16" JSPTag="text" JDBCType="NUMBER"/>
+		<One2OneRef toField="serno" refModelId="IqpLoanAppSub" fromField="serno"/>
+		<Field id="approve_status" columnName="approve_status" cnname="申请状态" length="5" JSPTag="text" JDBCType="VARCHAR2"/>
+		<ConditionFields>serno;cus_id;prd_id;approve_status;</ConditionFields>
+		<Field id="is_rfu" dictname="STD_ZX_YES_NO" columnName="is_rfu" cnname="是否曾被拒绝" length="1" JSPTag="select" JDBCType="CHAR"/>
+		<Field id="is_spe_cus" columnName="is_spe_cus" cnname="是否特殊客户" length="1" JSPTag="select" JDBCType="CHAR"/>
+		<Field id="flow_type" columnName="flow_type" cnname="流程类型" length="2" JSPTag="text" JDBCType="VARCHAR2"/>
+		<One2OneRef toField="serno" refModelId="IqpDiscApp" fromField="serno"/>
+		<Field id="in_acct_br_id" columnName="in_acct_br_id" cnname="入账机构" length="20" JSPTag="text" JDBCType="VARCHAR2"/>
+		<Field id="is_limit_cont_pay" columnName="is_limit_cont_pay" cnname="是否额度合同项下支用" length="1" JSPTag="text" JDBCType="CHAR"/>
+		<Field id="limit_cont_no" columnName="limit_cont_no" cnname="额度合同编号" length="40" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="security_exchange_rate" columnName="security_exchange_rate" cnname="保证金汇率" length="16" JSPTag="text" JDBCType="NUMBER"/>
+		<Field id="security_cur_type" columnName="security_cur_type" cnname="保证金币种" length="3" JSPTag="text" JDBCType="CHAR"/>
+		<Field id="trust_pro_name" columnName="trust_pro_name" cnname="信托项目名称" length="100" JSPTag="text" JDBCType="VARCHAR2"/>
+		<Field id="is_structured_fin" columnName="is_structured_fin" cnname="是否结构化融资" JSPTag="text" length="2" JDBCType="VARCHAR2"/>
+	</TableModel>
+</IqpLoanApp.xml>

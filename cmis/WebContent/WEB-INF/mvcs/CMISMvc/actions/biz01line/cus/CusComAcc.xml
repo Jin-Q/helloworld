@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actionDefines>
+	<classMap>
+		<map id="action" class="com.yucheng.cmis.ad.mvc.ADRequestController" />
+		<map id="flowInvoker" class="com.yucheng.cmis.ad.mvc.ADFlowInvoker" />
+		<map id="outputViews" class="java.util.HashMap" />
+		<map id="output" class="com.ecc.emp.data.KeyedCollection" />
+		<map id="kColl" class="com.ecc.emp.data.KeyedCollection" />
+		<map id="iColl" class="com.ecc.emp.data.IndexedCollection" />
+		<map id="field" class="com.ecc.emp.data.DataField" />
+	</classMap>
+
+	<!-- 获取操作主页面 -->
+	<action id="queryCusComAccList" type="normal" checkSession="true">
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.cus.op.cuscomacc.QueryCusComAccListOp" />
+			<transition dest="retPage" />
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="biz01line/cus/cuscom/CusComAcc/queryCusComAccList.jsp" />
+		</outputViews>
+	</action>
+
+	<!-- 获得编辑页面 -->
+	<action id="getCusComAccUpdatePage" type="normal" checkSession="true">
+		<flowInvoker>
+			<operation updateCheck="false"
+				class="com.yucheng.cmis.biz01line.cus.op.cuscomacc.QueryCusComAccDetailOp" />
+			<transition dest="retPage" />
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="biz01line/cus/cuscom/CusComAcc/updateCusComAccRecord.jsp" />
+		</outputViews>
+	</action>
+
+	<!-- 更新记录 -->
+	<action id="updateCusComAccRecord" type="normal" checkSession="true">
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.cus.op.cuscomacc.UpdateCusComAccRecordOp" />
+			<transition dest="retPage" />
+		</flowInvoker>
+		<outputViews>
+            <view id="retPage" class="com.yucheng.cmis.view.JSONView">
+                <output class="com.ecc.emp.data.KeyedCollection">
+                    <field id="flag" class="com.ecc.emp.data.DataField"/>
+                </output>
+            </view>
+        </outputViews>
+	</action>
+	
+	
+	<action id="getAcctTxnHistInfListPage" type="normal" checkSession="true">
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.cus.op.cuscomacc.QueryAcctTxnHistInfListOp" />
+			<transition dest="queryListRes" />
+		</flowInvoker>
+		<outputViews>
+			<jsonView class="com.yucheng.cmis.view.JSONView" id="queryListRes">
+				<output>
+					<iColl id="AcctTxnHistInfList">
+						<kColl>
+							
+						</kColl>
+					</iColl>
+					<kColl id="pageInfo">
+						<field id="currentPage" />
+						<field id="maxLine" />
+						<field id="recordSize" />
+					</kColl>
+				</output>
+			</jsonView>
+		</outputViews>
+	</action>
+	
+	
+	<!-- 获得查看页面 -->
+	<action id="getCusComAccViewPage" type="normal" checkSession="true">
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.cus.op.cuscomacc.QueryCusComAccDetailOp" />
+			<transition dest="updatePage" />
+		</flowInvoker>
+		<outputViews>
+			<jspView id="updatePage" url="biz01line/cus/cuscom/CusComAcc/queryCusComAccDetail.jsp" />
+		</outputViews>
+	</action>
+
+	<!-- 获得新增页面 -->
+	<action id="getCusComAccAddPage" type="normal" checkSession="true">
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.cus.op.cuscomacc.GetCusComAccAddPageOp" />
+			<transition dest="addPage" />
+		</flowInvoker>
+		<outputViews>
+			<jspView id="addPage" url="biz01line/cus/cuscom/CusComAcc/addCusComAccRecord.jsp" />
+		</outputViews>
+	</action>
+
+	<!-- 新增记录 -->
+	<action id="addCusComAccRecord" type="normal" checkSession="true">
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.cus.op.cuscomacc.AddCusComAccRecordOp" />
+			<transition dest="retPage" />
+		</flowInvoker>
+		<outputViews>
+            <view id="retPage" class="com.yucheng.cmis.view.JSONView">
+                <output class="com.ecc.emp.data.KeyedCollection">
+                    <field id="flag" class="com.ecc.emp.data.DataField"/>
+                </output>
+            </view>
+        </outputViews>
+	</action>
+
+	<!-- 删除记录 -->
+	<action id="deleteCusComAccRecord" type="normal" checkSession="true">
+		<flowInvoker>
+			<operation
+				class="com.yucheng.cmis.biz01line.cus.op.cuscomacc.DeleteCusComAccRecordOp" />
+			<transition dest="retPage" />
+		</flowInvoker>
+		<outputViews>
+            <view id="retPage" class="com.yucheng.cmis.view.JSONView">
+                <output class="com.ecc.emp.data.KeyedCollection">
+                    <field id="flag" class="com.ecc.emp.data.DataField"/>
+                </output>
+            </view>
+        </outputViews>
+	</action>
+
+	<!-- 分页查询记录列表 -->
+	<action id="pageCusComAccQuery" type="normal" checkSession="true">
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.cus.op.cuscomacc.QueryCusComAccListOp" />
+			<transition dest="queryListRes" />
+		</flowInvoker>
+		<outputViews>
+			<jsonView class="com.yucheng.cmis.view.JSONView" id="queryListRes">
+				<output>
+					<iColl id="CusComAccList">
+						<kColl>
+							
+						</kColl>
+					</iColl>
+					<kColl id="pageInfo">
+						<field id="currentPage" />
+						<field id="maxLine" />
+						<field id="recordSize" />
+					</kColl>
+				</output>
+			</jsonView>
+		</outputViews>
+	</action>
+	<!-- 分页查询记录列表 -->
+	<action id="pageCusComAccAllQuery" type="normal" checkSession="true">
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.cus.op.cuscomacc.QueryCusComAccPopAllListOp" />
+			<transition dest="queryListRes" />
+		</flowInvoker>
+		<outputViews>
+			<jsonView class="com.yucheng.cmis.view.JSONView" id="queryListRes">
+				<output>
+					<iColl id="CusComAccList">
+						<kColl>
+							
+						</kColl>
+					</iColl>
+					<kColl id="pageInfo">
+						<field id="currentPage" />
+						<field id="maxLine" />
+						<field id="recordSize" />
+					</kColl>
+				</output>
+			</jsonView>
+		</outputViews>
+	</action>
+	
+	<!-- 异步根据客户ID获取帐户登记簿 -->
+	<action id="queryCusAccPopList" type="normal" checkSession="true">
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.cus.op.cuscomacc.QueryCusAccListByIdOp" />
+			<transition dest="retPage" />
+		</flowInvoker>
+		<outputViews>
+			<view id="queryListAjax" class="com.yucheng.cmis.view.JSONView">
+				<output class="com.ecc.emp.data.KeyedCollection">
+					<iColl id="CusComAccList" class="com.ecc.emp.data.IndexedCollection">
+						<kColl class="com.ecc.emp.data.KeyedCollection" />
+					</iColl>
+				</output>
+			</view>
+			<jspView id="retPage" url="biz01line/cus/cuscom/CusComAcc/queryCusAccPopList.jsp" />
+		</outputViews>
+	</action>
+	<!-- 异步根据客户ID获取帐户登记簿 -->
+	<action id="queryCusComAccPopList" type="normal" checkSession="true">
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.cus.op.cuscomacc.QueryCusComAccPopListOp" />
+			<transition dest="retPage" />
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="biz01line/cus/cuscom/CusComAcc/queryCusComAccPopList.jsp" />
+		</outputViews>
+	</action>
+	<!-- 查询所有获取帐户登记簿 -->
+	<action id="queryCusComAccPopAllList" type="normal" checkSession="true">
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.cus.op.cuscomacc.QueryCusComAccPopAllListOp" />
+			<transition dest="retPage" />
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="biz01line/cus/cuscom/CusComAcc/queryCusComAccPopAllList.jsp" />
+		</outputViews>
+	</action>
+</actionDefines>
+
+
+

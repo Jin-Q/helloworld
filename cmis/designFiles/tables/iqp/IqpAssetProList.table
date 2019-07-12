@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<IqpAssetProList.xml>
+	<TableModel id="IqpAssetProList" pageSize="10" cnname="资产清单（资产证券化使用）" isPaged="true" dbTableName="iqp_asset_pro_list">
+		<TableInfo/>
+		<Field id="serno" isPK="true" columnName="serno" cnname="业务编号" length="40" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="bill_no" isPK="true" columnName="bill_no" cnname="原借据编号" length="40" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="cont_no" columnName="cont_no" cnname="合同编号" length="40" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<OrderFields>serno[desc];bill_no[desc];</OrderFields>
+		<Field id="agent_asset_acct" columnName="agent_asset_acct" cnname="代理资产资金账号" length="40" JSPTag="text" JDBCType="VARCHAR2"/>
+		<Field id="manager_br_id" columnName="manager_br_id" cnname="管理机构" JSPTag="text" length="20" JDBCType="VARCHAR2"/>
+		<Field id="fina_br_id" columnName="fina_br_id" cnname="账务机构" JSPTag="text" length="20" JDBCType="VARCHAR2"/>
+	</TableModel>
+</IqpAssetProList.xml>

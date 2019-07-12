@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<WfiLvCreditRight.xml>
+	<TableModel id="WfiLvCreditRight" cnname="授权等级授信审批权限配置表" dbTableName="wfi_lv_credit_right">
+		<Field id="pk_id" isPK="true" columnName="pk_id" pkGenerator="UNID" cnname="主键" length="36" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="org_lvl" columnName="org_lvl" cnname="机构等级（STD_ZB_ORG_LVL）" length="2" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="belg_line" columnName="belg_line" cnname="机构条线（STD_ZB_BUSILINE）" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="assure_main" columnName="assure_main" cnname="担保方式（STD_ZB_ASSURE_MEANS）" length="3" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="new_crd_amt" columnName="new_crd_amt" cnname="新增授信审批金额（万元）" length="16" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="stock_crd_amt" columnName="stock_crd_amt" cnname="存量授信审批金额（万元）" length="16" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="right_type" columnName="right_type" cnname="权限类型" length="2" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="org_id" columnName="org_id" cnname="机构码" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="sub_new_crd_amt" columnName="sub_new_crd_amt" cnname="分/支行新增授信审批金额（万元）" length="16" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="sub_stock_crd_amt" columnName="sub_stock_crd_amt" cnname="分/支行存量授信审批金额（万元）" length="16" JDBCType="NUMBER" canBeNull="true"/>
+	</TableModel>
+</WfiLvCreditRight.xml>

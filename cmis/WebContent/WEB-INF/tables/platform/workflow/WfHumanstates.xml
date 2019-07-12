@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<WfHumanstates.xml>
+	<TableModel id="WfHumanstates" cnname="人员代办设置表" dbTableName="wf_humanstates">
+		<Field id="pkey" isPK="true" columnName="pkey" cnname="PKEY" length="32" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="userid" columnName="userid" cnname="USERID" length="32" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="username" columnName="username" cnname="USERNAME" length="50" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="vicar" columnName="vicar" cnname="VICAR" length="32" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="vicarname" columnName="vicarname" cnname="VICARNAME" length="50" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="vicarioustype" columnName="vicarioustype" cnname="0：默认指定 1：特殊指定" length="1" JDBCType="CHAR" canBeNull="true"/>
+		<Field id="vicarmemo" columnName="vicarmemo" cnname="VICARMEMO" length="500" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="onoff" columnName="onoff" cnname="0：启用 1：停用" length="1" JDBCType="CHAR" canBeNull="true"/>
+		<Field id="appid" columnName="appid" cnname="APPID" length="32" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="appname" columnName="appname" cnname="APPNAME" length="50" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="wfid" columnName="wfid" cnname="WFID" length="32" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="wfname" columnName="wfname" cnname="WFNAME" length="50" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="begintime" columnName="begintime" cnname="BEGINTIME" length="19" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="endtime" columnName="endtime" cnname="ENDTIME" length="19" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="orgid" columnName="orgid" cnname="ORGID" length="32" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="sysid" columnName="sysid" cnname="SYSID" length="32" JDBCType="VARCHAR2" canBeNull="true"/>
+	</TableModel>
+</WfHumanstates.xml>

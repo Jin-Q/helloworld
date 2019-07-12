@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<AccLoan.xml>
+  <TableModel id="AccLoan" cnname="贷款台账" dbTableName="acc_loan" pageSize="10" isPaged="true">
+    <Field id="serno" JDBCType="VARCHAR2" length="40" columnName="serno" canBeNull="false" readonly="false" isPK="false" isEncrypted="false" JSPTag="text" dataType="" cnname="业务编号"/>
+    <Field id="prd_id" JDBCType="VARCHAR2" length="40" columnName="prd_id" canBeNull="true" readonly="false" isPK="false" isEncrypted="false" JSPTag="text" dataType="" cnname="产品编号"/>
+    <Field id="cus_id" JDBCType="VARCHAR2" length="40" columnName="cus_id" canBeNull="true" readonly="false" isPK="false" isEncrypted="false" JSPTag="text" dataType="" cnname="客户编码"/>
+    <Field id="cont_no" JDBCType="VARCHAR2" length="40" columnName="cont_no" canBeNull="true" readonly="false" isPK="false" isEncrypted="false" JSPTag="text" dataType="" cnname="合同编号"/>
+    <Field id="bill_no" JDBCType="VARCHAR2" length="40" columnName="bill_no" canBeNull="false" readonly="false" isPK="true" isEncrypted="false" JSPTag="text" dataType="" cnname="借据编号"/>
+    <Field id="loan_amt" JDBCType="NUMBER" length="16" columnName="loan_amt" canBeNull="true" readonly="false" isPK="false" isEncrypted="false" JSPTag="text" dataType="Currency" cnname="贷款金额"/>
+    <Field id="loan_balance" JDBCType="NUMBER" length="16" columnName="loan_balance" canBeNull="true" readonly="false" isPK="false" isEncrypted="false" JSPTag="text" dataType="Currency" cnname="贷款余额"/>
+    <Field id="distr_date" JDBCType="VARCHAR2" length="10" columnName="distr_date" canBeNull="true" readonly="false" isPK="false" isEncrypted="false" JSPTag="date" dataType="" cnname="发放日期"/>
+    <Field id="end_date" JDBCType="VARCHAR2" length="10" columnName="end_date" canBeNull="true" readonly="false" isPK="false" isEncrypted="false" JSPTag="date" dataType="" cnname="到期日期"/>
+    <Field id="ori_end_date" JDBCType="VARCHAR2" length="10" columnName="ori_end_date" canBeNull="true" readonly="false" isPK="false" isEncrypted="false" JSPTag="date" dataType="" cnname="原到期日期"/>
+    <Field id="post_count" JDBCType="NUMBER" length="38" columnName="post_count" canBeNull="true" readonly="false" isPK="false" isEncrypted="false" JSPTag="text" dataType="" cnname="展期次数"/>
+    <Field id="overdue" JDBCType="NUMBER" length="38" columnName="overdue" canBeNull="true" readonly="false" isPK="false" isEncrypted="false" JSPTag="text" dataType="" cnname="逾期期数"/>
+    <Field id="ruling_ir" JDBCType="NUMBER" length="16" columnName="ruling_ir" canBeNull="true" readonly="false" isPK="false" isEncrypted="false" JSPTag="text" dataType="Percent" cnname="基准利率"/>
+    <Field id="ir_float_rate" JDBCType="NUMBER" length="10" columnName="ir_float_rate" canBeNull="true" readonly="false" isPK="false" isEncrypted="false" JSPTag="text" dataType="Percent" cnname="利率浮动比"/>
+    <Field id="ir_float_point" JDBCType="NUMBER" length="10" columnName="ir_float_point" canBeNull="true" readonly="false" isPK="false" isEncrypted="false" JSPTag="text" dataType="Double" cnname="利率浮动点数"/>
+    <Field id="reality_ir_y" JDBCType="NUMBER" length="16" columnName="reality_ir_y" canBeNull="true" readonly="false" isPK="false" isEncrypted="false" JSPTag="text" dataType="Rate" cnname="执行年利率（年）"/>
+    <Field id="comp_int_balance" JDBCType="NUMBER" length="16" columnName="comp_int_balance" canBeNull="true" readonly="false" isPK="false" isEncrypted="false" JSPTag="text" dataType="Currency" cnname="复利余额"/>
+    <Field id="inner_owe_int" JDBCType="NUMBER" length="16" columnName="inner_owe_int" canBeNull="true" readonly="false" isPK="false" isEncrypted="false" JSPTag="text" dataType="Currency" cnname="表内欠息"/>
+    <Field id="out_owe_int" JDBCType="NUMBER" length="16" columnName="out_owe_int" canBeNull="true" readonly="false" isPK="false" isEncrypted="false" JSPTag="text" dataType="Currency" cnname="表外欠息"/>
+    <Field id="rec_int_accum" JDBCType="NUMBER" length="16" columnName="rec_int_accum" canBeNull="true" readonly="false" isPK="false" isEncrypted="false" JSPTag="text" dataType="Currency" cnname="应收利息累计"/>
+    <Field id="recv_int_accum" JDBCType="NUMBER" length="16" columnName="recv_int_accum" canBeNull="true" readonly="false" isPK="false" isEncrypted="false" JSPTag="text" dataType="Currency" cnname="实收利息累计"/>
+    <Field id="normal_balance" JDBCType="NUMBER" length="16" columnName="normal_balance" canBeNull="true" readonly="false" isPK="false" isEncrypted="false" JSPTag="text" dataType="Currency" cnname="正常余额"/>
+    <Field id="overdue_balance" JDBCType="NUMBER" length="16" columnName="overdue_balance" canBeNull="true" readonly="false" isPK="false" isEncrypted="false" JSPTag="text" dataType="Currency" cnname="逾期余额"/>
+    <Field id="slack_balance" JDBCType="NUMBER" length="16" columnName="slack_balance" canBeNull="true" readonly="false" isPK="false" isEncrypted="false" JSPTag="text" dataType="Currency" cnname="呆滞余额"/>
+    <Field id="bad_dbt_balance" JDBCType="NUMBER" length="16" columnName="bad_dbt_balance" canBeNull="true" readonly="false" isPK="false" isEncrypted="false" JSPTag="text" dataType="Currency" cnname="呆账余额"/>
+    <Field id="twelve_cls_flg" JDBCType="VARCHAR2" length="5" columnName="twelve_cls_flg" canBeNull="true" readonly="false" isPK="false" isEncrypted="false" JSPTag="select" dataType="" cnname="十二级分类标志"/>
+    <Field id="manager_br_id" JDBCType="VARCHAR2" length="20" columnName="manager_br_id" canBeNull="true" readonly="false" isPK="false" isEncrypted="false" JSPTag="text" dataType="" cnname="管理机构"/>
+    <Field id="fina_br_id" JDBCType="VARCHAR2" length="20" columnName="fina_br_id" canBeNull="true" readonly="false" isPK="false" isEncrypted="false" JSPTag="text" dataType="" cnname="账务机构"/>
+    <Field id="acc_date" JDBCType="VARCHAR2" length="5" columnName="acc_date" canBeNull="false" readonly="false" isPK="false" isEncrypted="false" JSPTag="text" dataType="" cnname="日期"/>
+    <Field id="acc_year" JDBCType="VARCHAR2" length="5" columnName="acc_year" canBeNull="false" readonly="false" isPK="false" isEncrypted="false" JSPTag="text" dataType="" cnname="年份"/>
+    <Field id="acc_mon" JDBCType="VARCHAR2" length="5" columnName="acc_mon" canBeNull="false" readonly="false" isPK="false" isEncrypted="false" JSPTag="text" dataType="" cnname="月份"/>
+    <Field id="writeoff_date" JDBCType="VARCHAR2" length="10" columnName="writeoff_date" canBeNull="false" readonly="false" isPK="false" isEncrypted="false" JSPTag="date" dataType="" cnname="核销日期"/>
+    <Field id="paydate" JDBCType="VARCHAR2" length="10" columnName="paydate" canBeNull="false" readonly="false" isPK="false" isEncrypted="false" JSPTag="date" dataType="" cnname="转垫款日"/>
+    <Field id="five_class" JDBCType="VARCHAR2" length="10" columnName="five_class" dictname="STD_ZB_FIVE_SORT" canBeNull="false" readonly="false" isPK="false" isEncrypted="false" JSPTag="select" dataType="" cnname="五级分类"/>
+    <Field id="acc_status" JDBCType="VARCHAR2" length="5" columnName="acc_status" canBeNull="false" readonly="false" isPK="false" isEncrypted="false" JSPTag="text" dataType="" cnname="台账状态"/>
+    <Field id="separate_date" JDBCType="VARCHAR2" length="10" columnName="separate_date" canBeNull="false" readonly="false" isPK="false" isEncrypted="false" JSPTag="text" dataType="" cnname="清分日期"/>
+    <Field id="cur_type" JDBCType="VARCHAR2" length="5" columnName="cur_type" canBeNull="false" readonly="false" isPK="false" isEncrypted="false" JSPTag="text" dataType="" cnname="币种"/>
+    <Field id="overdue_date" JDBCType="VARCHAR2" length="10" columnName="overdue_date" canBeNull="false" readonly="false" isPK="false" isEncrypted="false" JSPTag="text" dataType="" cnname="逾期日期"/>
+    <Field id="settl_date" JDBCType="VARCHAR2" length="10" columnName="settl_date" canBeNull="false" readonly="false" isPK="false" isEncrypted="false" JSPTag="text" dataType="" cnname="结清日期"/>
+    <Field id="base_acct_no" JDBCType="VARCHAR2" length="40" columnName="base_acct_no" canBeNull="true" readonly="false" isPK="false" isEncrypted="false" JSPTag="text" dataType="null" cnname="账号/卡号"/>
+    <Field id="acct_seq_no" JDBCType="VARCHAR2" length="40" columnName="acct_seq_no" canBeNull="true" readonly="false" isPK="false" isEncrypted="false" JSPTag="text" dataType="null" cnname="账号序号"/>
+    <OrderFields>bill_no[desc];</OrderFields>
+    <ConditionFields>serno;*prd_id;cus_id;cont_no;*distr_date;*end_date;twelve_cls_flg;</ConditionFields>
+    <FilterFields>serno;cont_no;prd_id;cus_id;loan_balance;loan_amt;distr_date;end_date;status;</FilterFields>
+    <TableInfo></TableInfo>
+  </TableModel>
+</AccLoan.xml>

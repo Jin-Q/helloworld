@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<PspIostoreDoc.xml>
+	<TableModel id="PspIostoreDoc" cnname="出入库清单" dbTableName="psp_iostore_doc">
+		<Field id="pk_id" isPK="true" columnName="pk_id" pkGenerator="UNID" cnname="主键" length="32" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="task_id" columnName="task_id" cnname="任务编号" length="32" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="goods_name" columnName="goods_name" cnname="货物名称" length="100" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="qnt_unit" columnName="qnt_unit" cnname="数量单位" length="10" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="qnt" columnName="qnt" cnname="数量" length="38" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="remarks" columnName="remarks" cnname="备注" length="250" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="input_id" columnName="input_id" cnname="登记人" length="40" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="input_br_id" columnName="input_br_id" cnname="登记机构" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="input_date" columnName="input_date" cnname="登记日期" length="10" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="cus_id" columnName="cus_id" cnname="客户编码" length="40" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="total_price" columnName="total_price" cnname="总价值" length="16" JDBCType="NUMBER"/>
+		<Field id="doc_type" columnName="doc_type" cnname="类别" length="5" JDBCType="VARCHAR2"/>
+		<Field id="check_freq" columnName="check_freq" cnname="检查频率" length="10" JDBCType="VARCHAR2"/>
+	</TableModel>
+</PspIostoreDoc.xml>

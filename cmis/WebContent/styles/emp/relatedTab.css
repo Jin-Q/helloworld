@@ -1,0 +1,9 @@
+/*blue*/
+
+legend{color:#020000;}
+.relatedtabs_tabs {margin-top:10px;border-bottom:2px solid #4380db;}
+.relatedtabs_tabs a {display:inline-block;display:inline-block;padding:3px 20px 0px 20px;height:22px;text-align:center;
+text-decoration:none;line-height:24px;font-family:Microsoft Yahei;color:#4c4c4c;background-color:#e1e1e1;min-width:80px;}
+.relatedtabs_tabs a:hover,.relatedtabs_tabs a.activated {color:#fff;background-color:#4380db;}
+.relatedtabs_main {height:535px;padding:10px;border:1px solid #b7b7b7;overflow:auto;}
+.relatedtabs_main_iframe {width: 100%;border: 0px;height: 100%;}

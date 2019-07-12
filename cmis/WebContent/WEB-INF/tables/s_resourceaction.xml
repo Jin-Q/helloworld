@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<s_resourceaction.xml>
+	<TableModel id="s_resourceaction" cnname="资源操作表" dbTableName="s_resourceaction">
+		<Field id="resourceid" isPK="true" columnName="resourceid" cnname="资源ID" length="32" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="actid" isPK="true" columnName="actid" cnname="操作ID" length="32" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="descr" columnName="descr" cnname="描述" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="flag" columnName="flag" cnname="FLAG" length="50" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="confirmmsg" columnName="confirmmsg" cnname="提示确认信息" length="100" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="orgid" columnName="orgid" cnname="组织号" length="16" JDBCType="VARCHAR2" canBeNull="true"/>
+	</TableModel>
+</s_resourceaction.xml>

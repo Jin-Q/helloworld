@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<IqpExpInfo.xml>
+	<TableModel id="IqpExpInfo" cnname="快递信息" dbTableName="iqp_exp_info">
+		<TableInfo/>
+		<Field id="po_no" isPK="false" columnName="po_no" cnname="池编号" length="30" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="express_no" isPK="true" columnName="express_no" cnname="快递单号" length="40" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="express_cprt" columnName="express_cprt" cnname="快递公司" length="40" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="invc_no" isPK="true" columnName="invc_no" cnname="发票号" length="40" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="invc_amt" columnName="invc_amt" cnname="发票金额" length="16" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="invc_date" columnName="invc_date" cnname="开票日期" length="10" JSPTag="text" canBeNull="true" JDBCType="CHAR"/>
+		<Field id="start_date" columnName="start_date" cnname="快递发出时间" length="10" JSPTag="text" canBeNull="true" JDBCType="CHAR"/>
+		<Field id="receive_date" columnName="receive_date" cnname="快递接收时间" length="10" JSPTag="text" canBeNull="true" JDBCType="CHAR"/>
+		<Field id="memo" columnName="memo" cnname="备注" length="250" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="input_id" columnName="input_id" cnname="登记人" length="30" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="input_br_id" columnName="input_br_id" cnname="登记机构" length="30" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="input_date" columnName="input_date" cnname="登记日期" length="10" JSPTag="text" canBeNull="true" JDBCType="CHAR"/>
+		<OrderFields>po_no[desc];express_no[desc];invc_no[desc];</OrderFields>
+	</TableModel>
+</IqpExpInfo.xml>

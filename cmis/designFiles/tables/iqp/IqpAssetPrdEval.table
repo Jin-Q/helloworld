@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<IqpAssetPrdEval.xml>
+	<TableModel id="IqpAssetPrdEval" pageSize="10" cnname="产品评级信息（资产证券化）" isPaged="true" dbTableName="iqp_asset_prd_eval">
+		<TableInfo/>
+		<Field id="prd_id" isPK="true" columnName="prd_id" cnname="产品代码" length="40" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="serno" columnName="serno" cnname="业务编号" length="40" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="eval_org" columnName="eval_org" cnname="评级机构" length="20" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="cdt_eval" columnName="cdt_eval" cnname="信用评级" length="10" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="eval_date" columnName="eval_date" cnname="评级日期" length="10" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<OrderFields>prd_id[desc];</OrderFields>
+	</TableModel>
+</IqpAssetPrdEval.xml>

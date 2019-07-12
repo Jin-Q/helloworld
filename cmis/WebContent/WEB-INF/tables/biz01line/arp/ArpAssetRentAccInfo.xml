@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<ArpAssetRentAccInfo.xml>
+	<TableModel id="ArpAssetRentAccInfo" cnname="资产出租信息(台账)" dbTableName="arp_asset_rent_acc_info">
+		<Field id="serno" isPK="true" columnName="serno" cnname="业务编号" length="40" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="asset_disp_no" columnName="asset_disp_no" cnname="资产处置编号" length="40" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="guaranty_no" isPK="true" columnName="guaranty_no" cnname="抵债资产编号" length="40" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="debt_in_amt" columnName="debt_in_amt" cnname="抵入金额" length="16" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="renta_paid_mode" columnName="renta_paid_mode" cnname="租金收缴方式" length="8" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="rent_amt" columnName="rent_amt" cnname="租金" length="16" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="mort_amt" columnName="mort_amt" cnname="押金" length="16" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="lessee" columnName="lessee" cnname="承租人" length="40" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="lessee_phone" columnName="lessee_phone" cnname="承租人电话" length="40" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="lessee_addr" columnName="lessee_addr" cnname="承租人地址" length="40" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="lessee_cert_type" columnName="lessee_cert_type" cnname="承租人证件类型" length="40" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="lessee_cert_no" columnName="lessee_cert_no" cnname="承租人证件号码" length="40" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="lease_start_date" columnName="lease_start_date" cnname="租约起始日期" length="10" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="lease_end_date" columnName="lease_end_date" cnname="租约到期日期" length="10" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="memo" columnName="memo" cnname="备注" length="200" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="status" columnName="status" cnname="状态" length="5" JDBCType="VARCHAR2" canBeNull="true"/>
+	</TableModel>
+</ArpAssetRentAccInfo.xml>

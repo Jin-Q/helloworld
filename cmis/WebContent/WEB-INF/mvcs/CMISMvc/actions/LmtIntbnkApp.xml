@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actionDefines>
+	<classMap>
+		<map id="action" class="com.yucheng.cmis.ad.mvc.ADRequestController"/>
+		<map id="flowInvoker" class="com.yucheng.cmis.ad.mvc.ADFlowInvoker"/>
+		<map id="outputViews" class="java.util.HashMap"/>
+		<map id="output" class="com.ecc.emp.data.KeyedCollection"/>
+		<map id="kColl" class="com.ecc.emp.data.KeyedCollection"/>
+		<map id="iColl" class="com.ecc.emp.data.IndexedCollection"/>
+		<map id="field" class="com.ecc.emp.data.DataField"/>
+	</classMap>
+	
+	<!-- 鏌ヨ璁板綍鍒楄〃 -->
+	<action id="queryLmtIntbnkAppList" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.lmt.op.lmtintbnkapp.QueryLmtIntbnkAppListOp"/>
+			<transition dest="queryListRes"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="queryListRes" url="yjhtest/LmtIntbnkApp/queryLmtIntbnkAppList.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 鑾峰彇鏂板椤甸潰 -->
+	<action id="getLmtIntbnkAppAddPage" type="normal" checkSession="true" >
+		<jspView id="queryListRes" url="yjhtest/LmtIntbnkApp/addLmtIntbnkAppRecord.jsp" />
+	</action>
+	
+	<!-- 鏂板淇℃伅 -->
+	<action id="addLmtIntbnkAppRecord" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.lmt.op.lmtintbnkapp.AddLmtIntbnkAppRecordOp"/>
+			<transition dest="queryListRes"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="queryListRes" url="yjhtest/LmtIntbnkApp/updateLmtIntbnkAppRecord.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 鑾峰緱缂栬緫椤甸潰 -->
+	<action id="getLmtIntbnkAppUpdatePage" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation updateCheck="false" class="com.yucheng.cmis.biz01line.lmt.op.lmtintbnkapp.QueryLmtIntbnkAppDetailOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="yjhtest/LmtIntbnkApp/updateLmtIntbnkAppRecord.jsp" />
+		</outputViews>
+	</action>
+
+	<!-- 淇敼淇℃伅 -->
+	<action id="updateLmtIntbnkAppRecord" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.lmt.op.lmtintbnkapp.UpdateLmtIntbnkAppRecordOp"/>
+			<transition dest="queryListRes"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="queryListRes" url="operationResult.jsp?url=queryLmtIntbnkAppList.do" />
+		</outputViews>
+	</action>
+	
+	<!-- 鍒犻櫎淇℃伅 -->
+	<action id="deleteLmtIntbnkAppRecord" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.lmt.op.lmtintbnkapp.DeleteLmtIntbnkAppRecordOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<view id="retPage" class="com.yucheng.cmis.view.JSONView">
+				<output class="com.ecc.emp.data.KeyedCollection">
+					<field id="flag" class="com.ecc.emp.data.DataField" />
+				</output>
+			</view>
+		</outputViews>
+	</action>
+	
+	<!-- 鏌ヨ璇︽儏 -->
+	<action id="queryLmtIntbnkAppDetail" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.lmt.op.lmtintbnkapp.QueryLmtIntbnkAppDetailOp"/>
+			<transition dest="queryDetailRes"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="queryDetailRes" url="yjhtest/LmtIntbnkApp/queryLmtIntbnkAppDetail.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 鍒嗛〉鏌ヨ璁板綍鍒楄〃 -->
+	<action id="pageLmtIntbnkAppQuery" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.lmt.op.lmtintbnkapp.QueryLmtIntbnkAppListOp"/>
+			<transition dest="queryListRes"/>
+		</flowInvoker>
+		<outputViews>
+			<jsonView class="com.yucheng.cmis.view.JSONView" id="queryListRes">
+				<output>
+					<iColl id="LmtIntbnkAppList">
+						<kColl>
+						</kColl>
+					</iColl>
+					<kColl id="pageInfo">
+						<field id="currentPage" />
+						<field id="maxLine" />
+						<field id="recordSize" />
+					</kColl>
+					
+				</output>
+			</jsonView>
+		</outputViews>
+	</action>
+	
+	
+	<!--*************************瀛愯〃銆�同业授信申请明细銆�*******************************-->
+	
+	<!-- 浣滀负瀛愯〃鐨勫垪琛ㄩ〉闈� -->
+	<action id="queryLmtIntbnkAppLmtIntbnkAppDetailsList" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.lmt.op.lmtintbnkapp.lmtintbnkappdetails.QueryLmtIntbnkAppLmtIntbnkAppDetailsListOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="yjhtest/LmtIntbnkApp/LmtIntbnkAppDetails/queryLmtIntbnkAppLmtIntbnkAppDetailsList.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 鑾峰緱浣滀负瀛愯〃鐨勬柊澧為〉闈� -->
+	<action id="getLmtIntbnkAppLmtIntbnkAppDetailsAddPage" type="normal" checkSession="true" >
+		<jspView id="addPage" url="yjhtest/LmtIntbnkApp/LmtIntbnkAppDetails/addLmtIntbnkAppLmtIntbnkAppDetailsRecord.jsp"/>
+	</action>
+	
+	<!-- 鑾峰緱瀛愯〃缂栬緫椤甸潰 -->
+	<action id="getLmtIntbnkAppLmtIntbnkAppDetailsUpdatePage" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.lmt.op.lmtintbnkapp.lmtintbnkappdetails.QueryLmtIntbnkAppLmtIntbnkAppDetailsDetailOp"/>
+			<transition dest="updatePage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="updatePage" url="yjhtest/LmtIntbnkApp/LmtIntbnkAppDetails/updateLmtIntbnkAppLmtIntbnkAppDetailsRecord.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 瀛愯〃璇︽儏鏌ヨ -->
+	<action id="queryLmtIntbnkAppLmtIntbnkAppDetailsDetail" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.lmt.op.lmtintbnkapp.lmtintbnkappdetails.QueryLmtIntbnkAppLmtIntbnkAppDetailsDetailOp"/>
+			<transition dest="queryDetail"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="queryDetail" url="yjhtest/LmtIntbnkApp/LmtIntbnkAppDetails/queryLmtIntbnkAppLmtIntbnkAppDetailsDetail.jsp"/>
+		</outputViews>	
+	</action>
+	
+	<!-- 瀛愯〃鏂板璁板綍 -->
+	<action id="addLmtIntbnkAppLmtIntbnkAppDetailsRecord" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.lmt.op.lmtintbnkapp.lmtintbnkappdetails.AddLmtIntbnkAppLmtIntbnkAppDetailsRecordOp"/>
+			<transition dest="addRecordRes"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="addRecordRes" url="refreshList.jsp?method=refreshLmtIntbnkAppDetails()"/>
+		</outputViews>
+	</action>
+	
+	<!-- 瀛愯〃鏇存柊璁板綍 -->
+	<action id="updateLmtIntbnkAppLmtIntbnkAppDetailsRecord" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.lmt.op.lmtintbnkapp.lmtintbnkappdetails.UpdateLmtIntbnkAppLmtIntbnkAppDetailsRecordOp"/>
+			<transition dest="updateRecordRes"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="updateRecordRes" url="refreshList.jsp?method=refreshLmtIntbnkAppDetails()"/>
+		</outputViews>
+	</action>
+	
+	<!-- 瀛愯〃鍒犻櫎璁板綍 -->
+	<action id="deleteLmtIntbnkAppLmtIntbnkAppDetailsRecord" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.lmt.op.lmtintbnkapp.lmtintbnkappdetails.DeleteLmtIntbnkAppLmtIntbnkAppDetailsRecordOp"/>
+			<transition dest="deleteRecordRes"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="deleteRecordRes" url="refreshList.jsp?method=refreshLmtIntbnkAppDetails()"/>
+		</outputViews>
+	</action>
+	
+	<!-- 鍒嗛〉鏌ヨ璁板綍鍒楄〃 -->
+		<action id="pageLmtIntbnkAppLmtIntbnkAppDetailsQuery" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.lmt.op.lmtintbnkapp.lmtintbnkappdetails.QueryLmtIntbnkAppLmtIntbnkAppDetailsListOp"/>
+			<transition dest="queryListRes"/>
+		</flowInvoker>
+		<outputViews>
+			<jsonView class="com.yucheng.cmis.view.JSONView" id="queryListRes">
+				<output>
+					<iColl id="LmtIntbnkAppDetailsList">
+						<kColl>
+						</kColl>
+					</iColl>
+				</output>
+			</jsonView>
+		</outputViews>
+	</action>	
+	
+</actionDefines>

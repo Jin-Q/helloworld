@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<LmtEntSelfCusInfo.xml>
+	<TableModel id="LmtEntSelfCusInfo" cnname="企业自主客户信息" dbTableName="lmt_ent_self_cus_info">
+		<Field id="cus_id" isPK="true" columnName="cus_id" cnname="客户号" length="40" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="cus_name" columnName="cus_name" cnname="检查时间" length="100" JDBCType="VARCHAR2" canBeNull="true"/>
+	</TableModel>
+</LmtEntSelfCusInfo.xml>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<FncInvestment.xml>
+	<TableModel id="FncInvestment" cnname="主要长期投资明细表" dbTableName="fnc_investment">
+		<Field id="cus_id" columnName="cus_id" cnname="客户代码" length="30" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="fnc_ym" columnName="fnc_ym" cnname="年月" length="6" JDBCType="CHAR" canBeNull="false"/>
+		<Field id="fnc_invt_toward" columnName="fnc_invt_toward" cnname="投资资产名称" length="200" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="fnc_invt_amt" columnName="fnc_invt_amt" cnname="投资金额" length="16" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="fnc_cur_val" columnName="fnc_cur_val" cnname="现价值" length="16" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="fnc_last_invt_incm" columnName="fnc_last_invt_incm" cnname="上年投资收益" length="16" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="fnc_avg_invt_incm" columnName="fnc_avg_invt_incm" cnname="平均投资收益" length="16" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="fnc_invt_type" columnName="fnc_invt_type" cnname="投资性质" length="1" JDBCType="CHAR" canBeNull="true"/>
+		<Field id="fnc_price_typ" columnName="fnc_price_typ" cnname="计价方法" length="1" JDBCType="CHAR" canBeNull="true"/>
+		<Field id="fnc_invt_dt" columnName="fnc_invt_dt" cnname="投资日期" length="10" JDBCType="CHAR" canBeNull="true"/>
+		<Field id="input_id" columnName="input_id" cnname="登记人" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="input_br_id" columnName="input_br_id" cnname="登记机构" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="input_date" columnName="input_date" cnname="登记日期" length="10" JDBCType="CHAR" canBeNull="true"/>
+		<Field id="last_upd_id" columnName="last_upd_id" cnname="更新人" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="last_upd_date" columnName="last_upd_date" cnname="更新日期" length="10" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="cus_name" columnName="cus_name" cnname="客户名称" length="80" JDBCType="VARCHAR2"/>
+		<Field id="pk_id" isPK="true" columnName="pk_id" pkGenerator="UNID" cnname="主键" length="32" JDBCType="VARCHAR2"/>
+		<Field id="remark" columnName="remark" cnname="备注" length="100" JDBCType="VARCHAR2"/>
+	</TableModel>
+</FncInvestment.xml>

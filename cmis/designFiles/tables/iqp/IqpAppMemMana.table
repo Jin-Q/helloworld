@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<IqpAppMemMana.xml>
+	<TableModel id="IqpAppMemMana" pageSize="15" cnname="网络成员申请表" isPaged="true" dbTableName="iqp_app_mem_mana">
+		<TableInfo/>
+		<Field id="serno" isPK="true" columnName="serno" cnname="业务编号" length="40" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="mem_cus_id" isPK="true" columnName="mem_cus_id" cnname="成员企业客户码" length="30" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="mem_manuf_type" columnName="mem_manuf_type" cnname="成员企业类别" length="2" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="term" columnName="term" cnname="在途期限（天）" length="10" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="lmt_type" columnName="lmt_type" cnname="授信业务种类" length="40" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="status" columnName="status" cnname="成员变更状态：1-入网成员  2-退网成员 3-原有成员" length="1" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="lmt_quota" dataType="Currency" columnName="lmt_quota" cnname="授信限额（元）" length="16" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<OrderFields>serno[desc];mem_cus_id[desc];</OrderFields>
+		<FilterFields>serno;mem_cus_id;mem_manuf_type;term;lmt_type;status;lmt_quota;</FilterFields>
+	</TableModel>
+</IqpAppMemMana.xml>

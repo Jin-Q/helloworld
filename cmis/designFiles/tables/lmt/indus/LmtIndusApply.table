@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<LmtIndusApply.xml>
+	<TableModel id="LmtIndusApply" pageSize="10" cnname="行业授信申请表" isPaged="true" dbTableName="lmt_indus_apply">
+		<TableInfo/>
+		<Field id="serno" isPK="true" columnName="serno" cnname="业务编号" length="40" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="indus_type" dictname="STD_ZB_INDUS_TYPE" columnName="indus_type" cnname="行业分类" length="5" JSPTag="select" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="shared_scope" dictname="STD_SHARED_SCOPE" columnName="shared_scope" cnname="共享范围" length="2" JSPTag="select" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="belg_org" columnName="belg_org" cnname="所属机构" length="1000" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="suit_prd" columnName="suit_prd" cnname="适用产品" length="200" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="start_date" columnName="start_date" cnname="申请日期" length="10" JSPTag="date" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="end_date" columnName="end_date" cnname="办结日期" length="10" JSPTag="date" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="cur_type" dictname="STD_ZX_CUR_TYPE" columnName="cur_type" cnname="授信币种" length="5" JSPTag="select" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="indus_amt" dataType="Currency" columnName="indus_amt" cnname="行业总额" length="16" JSPTag="text" canBeNull="false" JDBCType="NUMBER"/>
+		<Field id="single_amt" dataType="Currency" columnName="single_amt" cnname="单户限额" length="16" JSPTag="text" canBeNull="false" JDBCType="NUMBER"/>
+		<Field id="crd_term_type" dictname="STD_ZB_TERM_TYPE" columnName="crd_term_type" cnname="授信期限类型" length="5" JSPTag="select" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="crd_term" columnName="crd_term" cnname="授信期限" length="5" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="memo" columnName="memo" cnname="备注" length="250" JSPTag="textarea" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="apply_type" dictname="STD_ZB_APP_TYPE" columnName="apply_type" cnname="申请类型" length="5" JSPTag="select" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="manager_br_id" columnName="manager_br_id" cnname="管理机构" length="20" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="manager_id" columnName="manager_id" cnname="责任人" length="20" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="input_id" columnName="input_id" cnname="登记人" length="20" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="input_date" columnName="input_date" cnname="登记日期" length="10" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="input_br_id" columnName="input_br_id" cnname="登记机构" length="20" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="approve_status" columnName="approve_status" cnname="审批状态" length="3" JSPTag="text" canBeNull="true" JDBCType="CHAR"/>
+		<Field id="flow_type" dictname="STD_ZB_FLOW_TYPE" columnName="flow_type" cnname="流程类型" length="2" JSPTag="select" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="is_list_mana" dictname="STD_ZX_YES_NO" columnName="is_list_mana" cnname="是否名单制管理" length="3" JSPTag="select" canBeNull="false" JDBCType="VARCHAR2"/>
+		<OrderFields>serno[desc];</OrderFields>
+		<ConditionFields>serno;indus_type;shared_scope;flow_type;</ConditionFields>
+		<FilterFields>serno;indus_type;cur_type;indus_amt;single_amt;input_id;input_br_id;approve_status;</FilterFields>
+		<RecordRestrict query="true" delete="true" update="true"/>
+		<Field id="change_list_flag" dictname="STD_ZX_YES_NO" columnName="change_list_flag" cnname="是否仅变更名单" JSPTag="select" length="3" canBeNull="true" JDBCType="VARCHAR2"/>
+	</TableModel>
+</LmtIndusApply.xml>

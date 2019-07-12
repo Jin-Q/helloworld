@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<PrdPvRiskScene.xml>
+	<TableModel id="PrdPvRiskScene" cnname="风险拦截场景" dbTableName="prd_pv_risk_scene">
+		<Field id="scene_id" isPK="false" columnName="scene_id"  cnname="场景编号" length="32" JDBCType="CHAR" />
+		<Field id="prevent_id" isEncrypted="false" isPK="true" columnName="prevent_id" cnname="方案编号" length="32" JDBCType="CHAR" canBeNull="false"/>
+		<Field id="item_id" isPK="true" columnName="item_id" cnname="项目编号" length="32" JDBCType="CHAR" canBeNull="false"/>
+		<Field id="wfid" isPK="false" columnName="wfid" cnname="物理流程id" length="32" JDBCType="VARCHAR2"/>
+		<Field id="risk_level" columnName="risk_level" cnname="拦截类型" length="1" JDBCType="CHAR"/>
+		<Field id="item_name" columnName="item_name" cnname="项目名称" length="20" JDBCType="VARCHAR2"/>
+	</TableModel>
+</PrdPvRiskScene.xml>

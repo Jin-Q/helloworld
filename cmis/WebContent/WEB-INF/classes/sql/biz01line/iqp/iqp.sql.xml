@@ -1,0 +1,1110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<S>
+<!-- 根据币种获取汇率-->
+<SQL id="getHLByCurrType" parameterClass="java.lang.String" resultClass="com.ecc.emp.data.KeyedCollection" onlyReturnFirst="false">
+  <SELECT>
+  <![CDATA[
+	 SELECT * FROM PRD_RATE_MAINTAIN WHERE FOUNT_CUR_TYPE = ${_SIG_VALUE} AND COMP_CUR_TYPE = 'CNY'
+  ]]>
+  </SELECT>
+</SQL>
+
+<!-- 根据客户号获取客户所属业务线-->
+<SQL id="getBelglineByKhm" parameterClass="java.lang.String" resultClass="com.ecc.emp.data.KeyedCollection" onlyReturnFirst="false">
+  <SELECT>
+  <![CDATA[
+	 SELECT belg_line FROM cus_base WHERE cus_id = ${_SIG_VALUE}
+  ]]>
+  </SELECT>
+</SQL>
+
+<!-- 新增客户经理信息 -->
+<SQL id="insertDoCusMangerByOptType"  parameterClass="com.ecc.emp.data.KeyedCollection" >
+  <DELETE>
+  <![CDATA[
+  	DELETE FROM cus_manager where serno=${serno} and manager_id=${manager_id}
+  ]]>
+  </DELETE>
+</SQL>
+<!-- 删除客户经理信息 -->
+<SQL id="deleteDoCusMangerByOptType"  parameterClass="com.ecc.emp.data.KeyedCollection" >
+  <DELETE>
+  <![CDATA[
+  	DELETE FROM CUS_MANAGER WHERE SERNO = ${serno} AND MANAGER_ID = ${manager_id}
+  ]]>
+  </DELETE>
+</SQL>
+<!-- 修改客户经理信息 -->
+<SQL id="updateDoCusMangerByOptType"  parameterClass="com.ecc.emp.data.KeyedCollection" valueClass ="java.lang.String" >
+  <DELETE>
+  <![CDATA[
+  	UPDATE CUS_MANAGER SET BIZ_TYPE=${biz_type},SER_RATE=${ser_rate},IS_MAIN_MANAGER=${is_main_manager},UPDATE_DATE=${update_date} WHERE SERNO=${serno} AND MANAGER_ID=${manager_id}
+  ]]>
+  </DELETE>
+</SQL>
+<!-- 通过业务编号查看客户经理信息 -->
+<SQL id="selectDoCusMangerByOptType"  parameterClass="com.ecc.emp.data.KeyedCollection" >
+  <DELETE>
+  <![CDATA[
+  	SELECT * FROM CUS_MANAGER WHERE SERNO = ${_SIG_VALUE}
+  ]]>
+  </DELETE>
+</SQL>
+<!-- 通过业务品种、币种、期限获取利率信息 -->
+<SQL id="getRate" parameterClass="java.util.HashMap" resultClass="com.ecc.emp.data.KeyedCollection">
+  <DELETE>
+  <![CDATA[
+  	SELECT * FROM PRD_RATE WHERE BIZ_TYPE = ${prdid} AND CUR_TYPE = ${curtype} AND ${termM} between TERM_MIN and TERM_MAX
+  ]]>
+  </DELETE>
+</SQL>
+
+<!-- 根据业务编号-->
+<SQL id="selectCusManagerByIColl" parameterClass="java.util.HashMap" resultClass="com.ecc.emp.data.KeyedCollection" onlyReturnFirst="false">
+  <SELECT>
+  <![CDATA[
+	 SELECT serno FROM cus_manager WHERE serno=${serno} AND manager_id=${manager_id}
+  ]]>
+  </SELECT>
+</SQL>
+
+<!-- 根据业务编号，更新记录  -->
+<SQL id="updateCusManagerByIColl" parameterClass="java.util.HashMap" valueClass ="java.util.HashMap" >
+   <UPDATE>
+  <![CDATA[
+  	update cus_manager set biz_type=${biz_type},is_main_manager=${is_main_manager},ser_rate=${ser_rate},input_id=${input_id},input_org=${input_org},input_date=${input_date} where serno=${serno} and manager_id=${manager_id}
+  ]]>
+   </UPDATE>
+</SQL>
+	
+<!-- 插入客户经理绩效 -->
+<SQL id="insertCusManagerByIColl" parameterClass="java.lang.String" valueClass ="java.util.HashMap" >
+  <INSERT>
+  <![CDATA[
+  	INSERT INTO cus_manager(serno,biz_type,manager_id,is_main_manager,ser_rate,input_id,input_org,input_date,cont_no) VALUES (${serno},${biz_type},${manager_id},${is_main_manager},${ser_rate},${input_id},${input_org},${input_date},${cont_no})
+  ]]>
+  </INSERT> 
+</SQL>	
+
+<!-- 删除客户经理 -->
+<SQL id="deleteCusManagerByIColl"  parameterClass="java.util.HashMap" >
+  <DELETE>
+  <![CDATA[
+  	DELETE from cus_manager WHERE serno=${serno} AND manager_id=${manager_id}
+  ]]>
+  </DELETE>
+</SQL>
+
+<!-- 删除客户经理By cont_no -->
+<SQL id="deleteCusManagerByContNo"  parameterClass="java.util.HashMap" >
+  <DELETE>
+  <![CDATA[
+  	DELETE from cus_manager WHERE cont_no=${cont_no} AND manager_id=${manager_id}
+  ]]>
+  </DELETE>
+</SQL>
+<!-- 查询客户经理 -->
+<SQL id="queryCusManager" parameterClass="java.util.HashMap" resultClass="com.ecc.emp.data.KeyedCollection" onlyReturnFirst="false">
+  <SELECT>
+  <![CDATA[
+	SELECT serno FROM cus_manager WHERE serno = ${serno} AND manager_id=${manager_id} 
+  ]]>
+  </SELECT>
+</SQL>
+
+<!-- 根据业务编号,查询出tab页签表名-->
+<SQL id="querySubTablesBySerno" parameterClass="java.lang.String" resultClass="java.lang.String" onlyReturnFirst="false">
+  <SELECT>
+  <![CDATA[
+	SELECT TNAME FROM V_IQP_REL_SUB WHERE SERNO = ${_SIG_VALUE}
+  ]]>
+  </SELECT>
+</SQL>
+<!-- 往票据批次关联表中插入关联数据 -->
+<SQL id="insertIqpBatchBillRel" parameterClass="java.lang.String" valueClass ="java.util.HashMap" >
+  <INSERT>
+  <![CDATA[
+  	insert into iqp_batch_bill_rel(batch_no,porder_no) values(${batchno},${porderno})
+  ]]>
+  </INSERT> 
+</SQL>
+
+<!-- 根据汇票号码获得相关汇票信息-->
+<SQL id="getPorderMsgByPorderNo" parameterClass="java.lang.String" resultClass="com.ecc.emp.data.KeyedCollection">
+  <SELECT>
+  <![CDATA[
+	SELECT * FROM IQP_BILL_DETAIL WHERE PORDER_NO = ${_SIG_VALUE}
+  ]]>
+  </SELECT>
+</SQL>
+<!-- 根据资产包编号删除Tab页-->
+<SQL id="deleteTabByAssetNo" parameterClass="java.lang.String" resultClass="com.ecc.emp.data.KeyedCollection">
+  <SELECT>
+  <![CDATA[
+	delete from IQP_ASSET_REL where ASSET_NO = ${_SIG_VALUE}
+  ]]>
+  </SELECT>
+</SQL>
+
+<!-- 根据资产包编号删除Tab页-->
+<SQL id="deleteLmtcreditBySerno" parameterClass="java.lang.String" resultClass="com.ecc.emp.data.KeyedCollection">
+  <SELECT>
+  <![CDATA[
+	delete from r_bus_lmtcredit_info where serno=${_SIG_VALUE}
+  ]]>
+  </SELECT>
+</SQL>
+
+<!-- 根据单一法人授信协议编号，查询关联合同余额明细 -->
+<SQL id="queryBusBalanceByAgrno" parameterClass="java.lang.String" resultClass="com.ecc.emp.data.KeyedCollection" >
+    <SELECT>
+      <![CDATA[
+           select b.cont_no,b.cn_cont_no,b.cus_id,b.prd_id,b.cont_amt,b.cont_balance from r_bus_lmt_info a left join ctr_loan_cont b on a.cont_no=b.cont_no where a.agr_no=${_SIG_VALUE} and b.cont_status='200' and b.cont_balance>0
+      ]]>
+    </SELECT>
+</SQL>
+
+<!-- 根据合作方授信协议编号，查询关联合同余额明细 -->
+<SQL id="queryBusBalanceByCoopAgrno" parameterClass="java.lang.String" resultClass="com.ecc.emp.data.KeyedCollection" >
+    <SELECT>
+      <![CDATA[
+           select b.cont_no,b.cn_cont_no,b.cus_id,b.prd_id,b.cont_amt,b.cont_balance from r_bus_lmtcredit_info a 
+           left join ctr_loan_cont b on a.cont_no=b.cont_no
+           where a.agr_no=${_SIG_VALUE} and b.cont_status='200' and b.cont_balance>0
+      ]]>
+    </SELECT>
+</SQL>
+
+<!-- 根据合同编号获取该合同下所有有效台账的总贷款余额(仅统计贷款台账acc_loan) -->
+<SQL id="queryLoanBalanceByContNo" parameterClass="java.lang.String" resultClass="com.ecc.emp.data.KeyedCollection" >
+    <SELECT>
+      <![CDATA[
+           select a.cont_no,sum(a.loan_balance) loan_balance from acc_loan a where acc_status not in('6','8','9','10','11') and a.cont_no = ${_SIG_VALUE} group by a.cont_no
+      ]]>
+    </SELECT>
+</SQL>
+<!-- 根据合同编号获取该合同下所有有效台账的总贷款余额for信用证、外汇保函(仅统计贷款台账acc_loan) -->
+<SQL id="queryLoanBalanceByContNo4Spe" parameterClass="java.lang.String" resultClass="com.ecc.emp.data.KeyedCollection" >
+    <SELECT>
+      <![CDATA[
+           select a.cont_no,sum(a.loan_balance) loan_balance from acc_loan a where acc_status not in('8','9','10','11') and a.cont_no = ${_SIG_VALUE} group by a.cont_no
+      ]]>
+    </SELECT>
+</SQL>
+
+<!-- 根据合同编号获取该合同下所有有效银承台账的总贷款余额(仅统计贷款台账acc_accp) -->
+<SQL id="queryAccpBalanceByContNo" parameterClass="java.lang.String" resultClass="com.ecc.emp.data.KeyedCollection" >
+    <SELECT>
+      <![CDATA[
+           select sum(acc.drft_amt) as loan_balance from acc_accp acc,ctr_loan_cont cont where acc.cont_no=${_SIG_VALUE} and acc.accp_status not in('6','7','8','9','10','11') and cont.cont_no=acc.cont_no group by acc.cont_no,cont.same_security_amt
+      ]]>
+    </SELECT>
+</SQL>
+
+<!-- 根据合同编号获取该合同下垫款余额(仅统计垫款台账acc_pad)  modified by yangzy 2015/07/30 需求：XD150407026， 更新存量外币业务的汇率-->
+<SQL id="getAccPadBalByContNo" parameterClass="java.lang.String" resultClass="com.ecc.emp.data.KeyedCollection" >
+    <SELECT>
+      <![CDATA[
+		select nvl(sum(acc.pad_bal * nvl(clc.exchange_rate, 1)), 0) as pad_bal
+		  from acc_pad acc, ctr_loan_cont clc
+		 where acc.cont_no = ${_SIG_VALUE}
+		   and acc.prd_id not in ('700020', '700021', '400020')
+		   and acc.cont_no = clc.cont_no(+)
+		 group by acc.cont_no
+      ]]>
+    </SELECT>
+</SQL>
+
+<!-- 根据合同编号获取该合同下所有未审批通过的出账金额(仅统计贷款台账acc_loan) -->
+<SQL id="queryWFPvpAmtByContNo" parameterClass="java.lang.String" resultClass="com.ecc.emp.data.KeyedCollection" >
+    <SELECT>
+      <![CDATA[
+           select sum(a.pvp_amt) pvp_amt from pvp_loan_app a where a.cont_no = ${_SIG_VALUE} and a.approve_status in ('000','111') group by a.cont_no
+      ]]>
+    </SELECT>
+</SQL>
+
+<!-- 根据客户编号获取所有需要统计单一法人授信占用的的合同（循环额度类型） -->
+<SQL id="queryContInfoForLmtByCusId" parameterClass="java.lang.String" resultClass="com.ecc.emp.data.KeyedCollection" >
+    <SELECT>
+      <![CDATA[
+           select a.cont_no
+  			 from ctr_loan_cont a, r_bus_lmt_info b, lmt_agr_details c
+ 			 where a.cont_no = b.cont_no
+   			 and b.cont_no is not null
+   			 and a.cont_status in ('200','100')
+   			 and a.cus_id = ${_SIG_VALUE}
+   			 and b.agr_no = c.limit_code
+   			 and c.limit_type = '01'
+      ]]>
+    </SELECT>
+</SQL>
+
+<!-- 根据客户编号获取所有需要统计单一法人授信占用的的合同 （一次性额度类型）[modified by yangzy 20141017 统计一次性额度占用过滤已过期且项下业务结清的额度]-->
+<SQL id="queryContInfoForOneLmtByCusId" parameterClass="java.lang.String" resultClass="com.ecc.emp.data.KeyedCollection" >
+    <SELECT>
+      <![CDATA[
+select a.cont_no
+  from ctr_loan_cont a, r_bus_lmt_info b, lmt_agr_details c, pub_sys_info e
+ where a.cont_no = b.cont_no
+   and b.cont_no is not null
+   and a.cont_status != '700'
+   and a.cus_id = ${_SIG_VALUE}
+   and b.agr_no = c.limit_code
+   and c.limit_type = '02'
+   and not exists
+ (select 1
+          from lmt_agr_details d
+         where c.limit_code = d.limit_code
+           and not exists
+         (select 1
+                  from r_bus_lmt_info a,
+                       (select cont_no
+                          from ctr_loan_cont
+                         where cont_status = '200'
+                        union all
+                        select cont_no
+                          from ctr_rpddscnt_cont
+                         where cont_status = '200'
+                        union all
+                        select cont_no
+                          from ctr_assetstrsf_cont
+                         where cont_status = '200') b
+                 where d.limit_code = a.agr_no
+                   and a.cont_no = b.cont_no)
+           and add_months(to_date(d.end_date, 'yyyy-mm-dd'), 6) <=
+               to_date(e.openday, 'yyyy-mm-dd'))
+      ]]>
+    </SELECT>
+</SQL>
+
+<!-- 根据客户编号获取所有需要统计单一法人授信占用的的申请 -->
+<SQL id="queryIqpInfoForLmtByCusId" parameterClass="java.lang.String" resultClass="com.ecc.emp.data.KeyedCollection" >
+    <SELECT>
+      <![CDATA[
+           select a.serno from iqp_loan_app a,r_bus_lmt_info b where a.serno = b.serno and b.cont_no is null and a.cus_id = ${_SIG_VALUE}
+      ]]>
+    </SELECT>
+</SQL>
+
+<!-- 监管机构更新客户评级信息信息  -->
+<SQL id="updateCdtEval4Oversee" parameterClass="java.lang.String" valueClass ="java.util.HashMap" >
+   <UPDATE>
+  <![CDATA[
+  	update Iqp_Oversee_Org set cdt_eval=${cdtEval},eval_time=${evalTime} where oversee_org_id=${_SIG_VALUE}
+  ]]>
+   </UPDATE>
+</SQL>
+
+<!-- 根据任务编号获取任务下押品记录信息 -->
+<SQL id="queryIqpChkStoreGageRecordForTab" parameterClass="java.lang.String" resultClass="com.ecc.emp.data.KeyedCollection" >
+    <SELECT>
+      <![CDATA[
+           select b.cargo_name,
+       			b.model,
+       			b.produce_vender,
+       			a.unit_price,
+       			a.qnt,
+       			a.value
+  			from iqp_chk_store_gage_record a, mort_cargo_pledge b
+ 			where a.catalog_no = b.cargo_id
+ 				and a.task_id = ${_SIG_VALUE}
+      ]]>
+    </SELECT>
+</SQL>
+<!-- 根据合同编号获取保证金金额（保证金金额=合同金额*保证金比例） -->
+<SQL id="getBailAmtByContNo" parameterClass="java.lang.String" resultClass="com.ecc.emp.data.KeyedCollection">
+    <SELECT>
+  <![CDATA[
+  	select a.security_rate as ori_bail_perc ,(a.cont_amt*a.security_rate) as ori_bail_amt,a.cont_amt as cont_amt,a.cus_id from ctr_loan_cont a where a.cont_no=${_SIG_VALUE}
+  ]]>
+    </SELECT>
+</SQL>
+
+<!-- 根据业务编号删除保证金追加或者提取的申请信息 -->
+<SQL id="deleteBailAppBySerno" parameterClass="java.lang.String">
+    <SELECT>
+  <![CDATA[
+	delete from iqp_bail_sub_dis where serno=${_SIG_VALUE}
+  ]]>
+    </SELECT>
+</SQL>
+
+<!-- 根据业务编号删除保证金追加或者提取的明细信息 -->
+<SQL id="deleteBailDetailBySerno" parameterClass="java.lang.String" >
+    <SELECT>
+  <![CDATA[
+  	delete from iqp_bail_sub_dis_detail where serno=${_SIG_VALUE}
+  ]]>
+    </SELECT>
+</SQL>
+
+<!-- 根据业务编号删除保证金追加或者提取的明细信息 -->
+<SQL id="deletePubBailBySerno" parameterClass="java.lang.String" >
+    <DELETE>
+  <![CDATA[
+  	 delete from pub_bail_info where serno=${_SIG_VALUE}
+  ]]>
+    </DELETE>
+</SQL>
+
+<!--*************** 展期业务begin ****************-->
+<!-- zq1.取基准利率 -->
+<SQL id="selectBaseRate" parameterClass="java.lang.Double" resultClass="java.lang.Double">
+    <SELECT>
+  <![CDATA[
+  	select a.base_rate_m from prd_rate a where ${_SIG_VALUE} between a.term_min and a.term_max
+  ]]>
+    </SELECT>
+</SQL>
+<!-- zq2.展期后处理生成协议 -->
+<SQL id="addIqpExtensionAgr"  parameterClass="java.lang.String" valueClass ="java.util.HashMap" >
+  <DELETE>
+  <![CDATA[ 
+insert into iqp_extension_agr (
+ select ${serno} as serno , ${agr_no} as agr_no , a.bill_no ,a.cont_no, a.cus_id , a.cur_type , a.loan_amt ,
+ a.loan_balance , a.rate , a.start_date , a.end_date ,a.extension_amt,a.extension_date, a.base_rate ,
+ a.extension_rate , a.memo , a.manager_br_id ,a.manager_id , a.input_id ,a.input_date ,
+ a.input_br_id , '100' as status , '' as sign_date , '' as cn_cont_no  from iqp_extension_app a where serno = ${_SIG_VALUE} )
+  ]]>
+  </DELETE>
+</SQL>
+<!-- zq3.展期申请时选择借据校验 -->
+<SQL id="ExtensionAppCheck" parameterClass="java.lang.String" resultClass="java.lang.String">
+    <SELECT>
+  <![CDATA[
+select count(1)cc from (
+ select BILL_NO,'app' from iqp_extension_app a 
+ where a.approve_status in ('000','991','111','992') and BILL_NO = ${_SIG_VALUE}
+ union (
+ select FOUNT_BILL_NO,'agr' from iqp_extension_agr b 
+ where b.status in ('100','200') and FOUNT_BILL_NO = ${_SIG_VALUE}
+ )
+ union (
+ select FOUNT_BILL_NO,'pvp' from iqp_extension_pvp c 
+ where c.approve_status in ('000','991','111','992') and FOUNT_BILL_NO = ${_SIG_VALUE} ))
+  ]]>
+    </SELECT>
+</SQL>
+<!-- zq4.展期出账时选择协议校验 -->
+<SQL id="ExtensionAgrCheck" parameterClass="java.lang.String" resultClass="java.lang.String">
+    <SELECT>
+  <![CDATA[
+select count(1)cc from iqp_extension_pvp where  approve_status in ('000','991','111','992') and agr_no = ${_SIG_VALUE}
+  ]]>
+    </SELECT>
+</SQL>
+<!-- zq5.由合同号取合同业务编号 -->
+<SQL id="getSnByHt" parameterClass="java.lang.String" resultClass="java.lang.String">
+    <SELECT>
+  <![CDATA[
+select serno from iqp_extension_agr where  agr_no = ${_SIG_VALUE}
+  ]]>
+    </SELECT>
+</SQL>
+
+<!-- 不良资产转移修改合同表主管机构 -->
+<SQL id="DelManageInfoOrg"  parameterClass="java.lang.String" valueClass ="java.lang.String" >
+  <DELETE>
+  <![CDATA[ 
+update Ctr_Loan_Cont set manager_br_id = ${_SIG_VALUE} where cont_no = ${_SIG_VALUE}
+  ]]>
+  </DELETE>
+</SQL>
+
+<!-- 不良资产转移修改台账表主管机构 -->
+<SQL id="DelManageInfoOrgBill"  parameterClass="java.lang.String" valueClass ="java.lang.String" >
+  <DELETE>
+  <![CDATA[ 
+update Acc_Loan set manager_br_id = ${_SIG_VALUE} where bill_no = ${_SIG_VALUE}
+  ]]>
+  </DELETE>
+</SQL>
+
+<!-- 不良资产转移修改主管经理 -->
+<SQL id="DelManageInfoPerson"  parameterClass="java.lang.String" valueClass ="java.lang.String" >
+  <DELETE>
+  <![CDATA[ 
+update Cus_Manager set manager_id = ${_SIG_VALUE} where is_main_manager='1' and rownum = '1' and cont_no = ${_SIG_VALUE}
+  ]]>
+  </DELETE>
+</SQL>
+
+<!-- 展期期限新版校验-->
+<SQL id="CheckExtensionDate"  parameterClass="java.lang.String" resultClass="com.ecc.emp.data.KeyedCollection" >
+  <DELETE>
+  <![CDATA[ 
+select term_type,cont_term,extension_date,date_type from ( select e.*,
+ case when (term_type = '001' and date_type = 'short') then to_char(add_months(to_date(distr_date,'yyyy-mm-dd'), cont_term*12*2),'yyyy-mm-dd')
+ when (term_type = '002' and date_type = 'short') then to_char(add_months(to_date(distr_date,'yyyy-mm-dd'), cont_term*2),'yyyy-mm-dd')
+ when (term_type = '003' and date_type = 'short') then to_char(to_date(distr_date,'yyyy-mm-dd')+ cont_term*2,'yyyy-mm-dd') 
+ when (term_type = '001' and date_type = 'middle') then to_char(add_months(to_date(distr_date,'yyyy-mm-dd'), cont_term*12*1.5),'yyyy-mm-dd')
+ when (term_type = '002' and date_type = 'middle') then to_char(add_months(to_date(distr_date,'yyyy-mm-dd'), cont_term*1.5),'yyyy-mm-dd')
+ when (term_type = '003' and date_type = 'middle') then to_char(to_date(distr_date,'yyyy-mm-dd')+ cont_term*1.5,'yyyy-mm-dd')
+ when (date_type = 'long') then to_char(add_months(to_date(distr_date,'yyyy-mm-dd'), 3*12),'yyyy-mm-dd')  end as extension_date
+ from 
+ (select case when ((term_type = '003' and cont_term <= 365 ) or (term_type = '002' and cont_term <= 12 )
+   or (term_type = '001' and cont_term <= 1 ) ) then 'short'
+ when ( (term_type = '003' and 365 < cont_term and cont_term <= 365*5 ) 
+   or (term_type = '002' and 12 < cont_term and cont_term <= 12*5 ) 
+   or (term_type = '001' and 1 < cont_term and cont_term <= 5 ))then 'middle'
+ else 'long' end as date_type , d.*
+ from (select a.bill_no ,s.term_type,s.cont_term ,a.distr_date,a.ori_end_date
+ from acc_loan a , ctr_loan_cont_sub s where a.cont_no = s.cont_no)d) e )
+ where bill_no = ${_SIG_VALUE}
+  ]]>
+  </DELETE>
+</SQL>
+<!--*************** 展期业务end ****************-->
+<!-- 业务担保合同等级（一般担保合同） -->
+<SQL id="updateGrtLoanRGurLvlYB" parameterClass="java.util.HashMap"  valueClass ="java.lang.String" > 
+    <UPDATE>   
+  <![CDATA[
+         update grt_loan_r_gur a set a.guar_lvl=guar_lvl-1 where a.pk_id in (select b.pk_id from grt_loan_r_gur b,grt_guar_cont c 
+where serno=${serno} and b.guar_cont_no= c.guar_cont_no and b.guar_lvl>${guar_lvl} and c.guar_cont_type='00')
+  ]]>
+    </UPDATE> 
+</SQL>
+<!-- 业务担保合同等级（最高额） -->
+<SQL id="updateGrtLoanRGurLvlZGE" parameterClass="java.util.HashMap"  valueClass ="java.lang.String" > 
+    <UPDATE>   
+  <![CDATA[
+         update grt_loan_r_gur a set a.guar_lvl=guar_lvl-1 where a.pk_id in (select b.pk_id from grt_loan_r_gur b,grt_guar_cont c 
+where serno=${serno} and b.guar_cont_no= c.guar_cont_no and b.guar_lvl>${guar_lvl} and c.guar_cont_type='01')
+  ]]>
+    </UPDATE> 
+</SQL> 
+<!-- 信用证修改-->
+<SQL id="getIqpCreditChangeApp" parameterClass="java.lang.String" resultClass="com.ecc.emp.data.IndexedCollection">
+    <SELECT> 
+  <![CDATA[
+  	 select * from ctr_loan_cont a, pvp_loan_app b where a.prd_id in ('700020','700021') and a.cont_no=b.cont_no and a.cont_status='200'
+  ]]>
+    </SELECT>
+</SQL>
+<!-- 信用证修改时，关联关系为正常的改为续作--> 
+<SQL id="updateGrtLoanRGurCorreRel" parameterClass="java.lang.String"  valueClass ="java.lang.String" > 
+    <UPDATE>     
+  <![CDATA[
+        update grt_loan_r_gur a set a.corre_rel='4' where a.serno=${_SIG_VALUE} and a.corre_rel='1'
+  ]]> 
+    </UPDATE> 
+</SQL> 
+<!-- 通过担保合同编号字符串查询合同编号-->
+<SQL id="getGrtLoanRGur" parameterClass="java.lang.String" resultClass="com.ecc.emp.data.IndexedCollection">
+    <SELECT> 
+  <![CDATA[
+  	 select * from grt_loan_r_gur a where a.guar_cont_no in (${_SIG_VALUE})
+  ]]>
+    </SELECT>
+</SQL>
+
+<!--  将押品准入明细表记录插入押品目录信息表中 -->
+<SQL id="createIqpMortCatalogManaRecord" parameterClass="java.lang.String" valueClass ="com.ecc.emp.data.KeyedCollection">
+   <INSERT>
+  <![CDATA[
+	insert into Iqp_Mort_Catalog_Mana
+	  (select a.catalog_no as catalog_no,
+	          a.catalog_name as catalog_name,
+	          a.sup_catalog_no as sup_catalog_no,
+	          a.catalog_path as catalog_path,
+	          a.attr_type as attr_type,
+	          a.catalog_lvl as catalog_lvl,
+	          a.commo_trait as commo_trait,
+	          a.imn_rate as imn_rate,
+	          a.memo as memo,
+	          '1' as status,
+	          a.input_id as input_id,
+	          a.input_br_id as input_br_id,
+	          a.input_date as input_date,
+	          (select b.acsee_date
+	             from IQP_App_MORT_Acess b
+	            where b.serno = a.serno) as acsee_date,
+	            a.model as model    
+	     from IQP_App_MORT_detail a
+	    where a.serno = ${_SIG_VALUE})
+  ]]>
+   </INSERT>
+</SQL>
+
+
+<!-- 删除网络成员及其从表 -->
+<SQL id="removeIqpAppMem"  parameterClass="java.util.HashMap" valueClass ="java.lang.String" >
+  <DELETE>
+  <![CDATA[ 
+      delete from iqp_app_mem_mana a where a.serno=${serno} and a.mem_cus_id=${mem_cus_id}
+  ]]>
+  </DELETE>
+</SQL>
+
+<!-- 删除网络成员及其从表 -->
+<SQL id="removeIqpAppOverseeAgr"  parameterClass="java.util.HashMap" valueClass ="java.lang.String" >
+  <DELETE>
+  <![CDATA[ 
+      delete from iqp_app_oversee_agr a where a.serno=${serno}  and a.mortgagor_id=${mem_cus_id}
+  ]]>
+  </DELETE>
+</SQL>
+
+<!-- 删除网络成员及其从表 -->
+<SQL id="removeIqpAppDesbuyPlan"  parameterClass="java.util.HashMap" valueClass ="java.lang.String" >
+  <DELETE>
+  <![CDATA[ 
+       delete from iqp_app_desbuy_plan a where a.serno = ${serno} and a.cus_id=${mem_cus_id}
+  ]]>
+  </DELETE>
+</SQL>
+
+<!-- 删除网络成员及其从表 -->
+<SQL id="removeIqpAppBconCoopAgr"  parameterClass="java.util.HashMap" valueClass ="java.lang.String" >
+  <DELETE>
+  <![CDATA[ 
+       delete from iqp_app_bcon_coop_agr a where a.serno =${serno}  and a.borrow_cus_id=${mem_cus_id}
+  ]]>
+  </DELETE>
+</SQL>
+
+<!-- 删除网络成员及其从表 -->
+<SQL id="removeIqpAppDepotAgr"  parameterClass="java.util.HashMap" valueClass ="java.lang.String" >
+  <DELETE>
+  <![CDATA[ 
+       delete from iqp_app_depot_agr a where a.serno =${serno} and a.cus_id = ${mem_cus_id}
+  ]]>
+  </DELETE>
+</SQL>
+
+<!-- 删除网络成员及其从表 -->
+<SQL id="removeIqpAppPsaleCont"  parameterClass="java.util.HashMap" valueClass ="java.lang.String" >
+  <DELETE>
+  <![CDATA[ 
+       delete from iqp_app_psale_cont a where a.serno = ${serno} and a.mem_cus_id = ${mem_cus_id}
+  ]]>
+  </DELETE>
+</SQL>
+
+
+<!-- (入网/退网申请中删除)删除网络成员及其从表 -->
+<SQL id="removeIqpAppMemByApp"  parameterClass="java.lang.String" valueClass ="java.lang.String" >
+  <DELETE>
+  <![CDATA[ 
+      delete from iqp_app_mem_mana a where a.serno=${_SIG_VALUE}
+  ]]>
+  </DELETE>
+</SQL>
+
+<!-- (入网/退网申请中删除)删除网络成员及其从表 -->
+<SQL id="removeIqpAppOverseeAgrByApp"  parameterClass="java.lang.String" valueClass ="java.lang.String" >
+  <DELETE>
+  <![CDATA[ 
+      delete from iqp_app_oversee_agr a where a.serno=${_SIG_VALUE}
+  ]]>
+  </DELETE>
+</SQL>
+
+<!-- (入网/退网申请中删除)删除网络成员及其从表 -->
+<SQL id="removeIqpAppDesbuyPlanByApp"  parameterClass="java.lang.String" valueClass ="java.lang.String" >
+  <DELETE>
+  <![CDATA[ 
+       delete from iqp_app_desbuy_plan a where a.serno = ${_SIG_VALUE}
+  ]]>
+  </DELETE>
+</SQL>
+
+<!-- (入网/退网申请中删除)删除网络成员及其从表 -->
+<SQL id="removeIqpAppBconCoopAgrByApp"  parameterClass="java.lang.String" valueClass ="java.lang.String" >
+  <DELETE>
+  <![CDATA[ 
+       delete from iqp_app_bcon_coop_agr a where a.serno =${_SIG_VALUE}
+  ]]>
+  </DELETE>
+</SQL>
+
+<!-- (入网/退网申请中删除)删除网络成员及其从表 -->
+<SQL id="removeIqpAppDepotAgrByApp"  parameterClass="java.lang.String" valueClass ="java.lang.String" >
+  <DELETE>
+  <![CDATA[ 
+       delete from iqp_app_depot_agr a where a.serno =${_SIG_VALUE}
+  ]]>
+  </DELETE>
+</SQL>
+
+<!-- (入网/退网申请中删除)删除网络成员及其从表 -->
+<SQL id="removeIqpAppPsaleContByApp"  parameterClass="java.lang.String" valueClass ="java.lang.String" >
+  <DELETE>
+  <![CDATA[ 
+       delete from iqp_app_psale_cont a where a.serno = ${_SIG_VALUE}
+  ]]>
+  </DELETE>
+</SQL>
+<!-- 根据serno统计业务申请阶段保证金的占用总额-->
+<SQL id="getBailInfo4IqpApp" parameterClass="java.lang.String" resultClass="com.ecc.emp.data.KeyedCollection" >
+  <SELECT>
+  <![CDATA[
+	select sum(c.security_rate*c.apply_amount) res from iqp_loan_app c 
+	where c.serno in(select b.serno from pub_bail_info b where b.bail_acct_no 
+	in(select a.bail_acct_no from pub_bail_info a where a.serno=${_SIG_VALUE})) 
+	and c.approve_status in('993','000','111','992')
+  ]]>
+  </SELECT>
+</SQL>
+
+<!-- 计算原借据下敞口余额 modified by yangzy 2015/07/30 需求：XD150407026， 更新存量外币业务的汇率-->
+<SQL id="oldBillRiskOpenAmt" parameterClass="java.lang.String" resultClass="com.ecc.emp.data.KeyedCollection" >
+  <SELECT>
+  <![CDATA[
+	    select ((av.bill_bal * (1-clc.security_rate)) * CLC.EXCHANGE_RATE) as risk_open_amt_bal
+     from ctr_loan_cont clc, acc_view av
+     where clc.cont_no = av.cont_no and av.bill_no =${_SIG_VALUE}
+     and av.status = '1' 
+  ]]>
+  </SELECT>
+</SQL>
+
+<!-- 获取置换业务借据编号-->
+<SQL id="getReplaceBillNO" parameterClass="java.lang.String" resultClass="com.ecc.emp.data.KeyedCollection" >
+  <SELECT>
+  <![CDATA[
+    select rpled_serno from ( 
+	select RPLED_SERNO from Iqp_Deliv_Assure where serno = ${_SIG_VALUE}
+    union all
+    select RPLED_SERNO from Iqp_Intbank_Agt where serno = ${_SIG_VALUE}
+    union all
+    select RPLED_SERNO from Iqp_Trust_Receipt_Loan where serno = ${_SIG_VALUE}
+    union all
+    select RPLED_SERNO from Iqp_Delay_Credit_Pur where serno = ${_SIG_VALUE}
+    union all
+    select RPLED_SERNO from Iqp_Fast_Credit_Dscnt where serno = ${_SIG_VALUE}
+    union all
+    select RPLED_SERNO from Iqp_Forftin where serno = ${_SIG_VALUE}
+    union all
+    select RPLED_SERNO from Iqp_Credit_Export_App where serno = ${_SIG_VALUE}
+    union all
+    select RPLED_SERNO from Iqp_Export_Collect_Cont where serno = ${_SIG_VALUE}
+    union all
+    select RPLED_SERNO from Iqp_Export_Porder_Fin where serno = ${_SIG_VALUE}
+    )
+  ]]>
+  </SELECT>
+</SQL>
+<!-- 根据担保合同编号获取其与业务关联信息表信息-->
+<SQL id="getIqpGuarContReByGuarContNo" parameterClass="java.lang.String" resultClass="com.ecc.emp.data.KeyedCollection" >
+  <SELECT>
+  <![CDATA[
+	  select * from Grt_Loan_R_Gur a where a.guar_cont_no=${_SIG_VALUE}
+  ]]>
+  </SELECT>
+</SQL>
+<!-- 根据授信台账编号查询授信与业务关系表中合同信息-->
+<SQL id="selectContNoFormRel" parameterClass="java.lang.String" resultClass="com.ecc.emp.data.KeyedCollection">
+  <SELECT>
+  <![CDATA[
+	 select a.cont_no from r_bus_lmt_info a where a.agr_no=${_SIG_VALUE} and a.cont_no is not null
+     union all select b.cont_no from r_bus_lmtcredit_info b where b.agr_no=${_SIG_VALUE} and b.cont_no is not null
+  ]]>
+  </SELECT>
+</SQL>
+<!-- 根据授信台账编号查询授信与业务关系表中业务流水信息-->
+<SQL id="selectSernoNoFormRel" parameterClass="java.lang.String" resultClass="com.ecc.emp.data.KeyedCollection">
+  <SELECT>
+  <![CDATA[
+	 select a.serno from r_bus_lmt_info a where a.agr_no=${_SIG_VALUE} 
+     union all select b.serno from r_bus_lmtcredit_info b where b.agr_no=${_SIG_VALUE} 
+  ]]>
+  </SELECT>
+</SQL>
+
+<!-- 根据合同编号字符串查询合同信息-->
+<SQL id="selectContByContNo" parameterClass="java.lang.String" resultClass="com.ecc.emp.data.KeyedCollection">
+  <SELECT>
+ <![CDATA[
+	 select a.serno,a.cus_id as cus_id,a.cont_no,a.prd_id,a.cont_amt,a.cont_status,'loanapp' as tab from ctr_loan_cont a where a.cont_no in(${_SIG_VALUE}) and a.cont_status in('100','200')
+     union all select b.serno,b.toorg_name as cus_id,b.cont_no,b.prd_id,b.takeover_total_amt,b.cont_status,'assetstrsf' as tab from ctr_assetstrsf_cont b where b.cont_no in(${_SIG_VALUE}) and b.cont_status in('100','200')
+     union all select c.serno,c.toorg_name as cus_id,c.cont_no,c.prd_id,c.bill_total_amt,c.cont_status,'rpddscnt' as tab from ctr_rpddscnt_cont c where c.cont_no in(${_SIG_VALUE}) and c.cont_status in('100','200')
+  ]]>
+  </SELECT>
+</SQL>
+<!-- 根据业务编号字符串查询业务申请信息-->
+<SQL id="selectIqpBySerno" parameterClass="java.lang.String" resultClass="com.ecc.emp.data.KeyedCollection">
+  <SELECT>
+ <![CDATA[
+	 select a.serno,a.cus_id,a.prd_id,a.apply_amount,a.approve_status,'loanapp' as tab from iqp_loan_app a where a.serno in(${_SIG_VALUE}) and a.approve_status in('000','111','992','993')
+     union all select b.serno,b.toorg_name as cus_id,b.prd_id,b.takeover_total_amt,b.approve_status,'assetstrsf' as tab from Iqp_Assetstrsf b where b.serno in(${_SIG_VALUE}) and b.approve_status in('000','111','992','993')
+     union all select c.serno,c.toorg_name as cus_id,c.prd_id,c.bill_total_amt,c.approve_status,'rpddscnt' as tab from iqp_rpddscnt c where c.serno in(${_SIG_VALUE}) and c.approve_status in('000','111','992','993')
+  ]]>
+  </SELECT>
+</SQL>
+<!-- 根据合同编号字符串查询台账信息 modified by yangzy 2015/07/30 需求：XD150407026， 更新存量外币业务的汇率-->
+<SQL id="selectAccByContNo" parameterClass="java.lang.String" resultClass="com.ecc.emp.data.KeyedCollection">
+  <SELECT>
+ <![CDATA[
+		select al.bill_no,round(nvl(al.loan_balance,0)*nvl(clc.exchange_rate,1),2) as loan_balance from acc_loan al,ctr_loan_cont clc where al.cont_no = clc.cont_no(+) and al.cont_no = ${_SIG_VALUE} and al.acc_status not in('8','9')
+		union all
+		select aa.bill_no,round(nvl(aa.drft_amt,0)*nvl(clc.exchange_rate,1),2) as loan_balance from acc_accp aa,ctr_loan_cont clc where aa.cont_no = clc.cont_no(+) and aa.cont_no = ${_SIG_VALUE} and aa.accp_status not in('8','9')
+		union all
+		select ad.bill_no,round(nvl(ad.rpay_amt+ad.dscnt_int,0)*nvl(clc.exchange_rate,1),2) as loan_balance from acc_drft ad,ctr_loan_cont clc where ad.cont_no = clc.cont_no(+) and ad.cont_no = ${_SIG_VALUE} and ad.accp_status not in('8','9')  ]]>
+  </SELECT>
+</SQL>
+
+
+<!-- 根据客户码获取贷款余额、贷款欠息累计(贷后管理)-->
+<SQL id="selectLoanBalanceByCusId" parameterClass="java.lang.String" resultClass="com.ecc.emp.data.KeyedCollection">
+  <SELECT>
+ <![CDATA[
+	 select sum(a.loan_balance*(select b.base_remit from prd_rate_maintain b where b.fount_cur_type=a.cur_type)) as loan_bal,
+	 sum((a.inner_owe_int+a.out_owe_int)*(select b.base_remit from prd_rate_maintain b where b.fount_cur_type=a.cur_type)) as owe_int from acc_loan a where 
+	 a.cus_id=${_SIG_VALUE} and a.prd_id not in ('400021','400020','700020','700021','400020','500032') and a.prd_id not in (select prdid from prd_basicinfo where supcatalog='PRD20120802669') and a.acc_status='1'
+  ]]>
+  </SELECT>
+</SQL>
+
+<!-- 根据客户码获取银承票面金额(贷后管理)-->
+<SQL id="selectDrftAmtByCusId" parameterClass="java.lang.String" resultClass="com.ecc.emp.data.KeyedCollection">
+  <SELECT>
+ <![CDATA[
+	 select sum(drft_amt*(select b.base_remit from prd_rate_maintain b where b.fount_cur_type=a.cur_type)) as drft_amt from acc_accp a where a.daorg_cusid=${_SIG_VALUE} and a.accp_status='1'
+  ]]>
+  </SELECT>
+</SQL>
+
+<!-- 根据客户码获取保函金额(贷后管理)-->
+<SQL id="selectGuarantAmtByCusId" parameterClass="java.lang.String" resultClass="com.ecc.emp.data.KeyedCollection">
+  <SELECT>
+ <![CDATA[
+	 select sum(loan_amt*(select b.base_remit from prd_rate_maintain b where b.fount_cur_type=a.cur_type)) as guarant_amt from acc_loan a where a.cus_id=${_SIG_VALUE} and a.prd_id in ('400021','400020') and a.acc_status='1'
+  ]]>
+  </SELECT>
+</SQL>
+
+<!-- 根据客户码获取贴现金额(贷后管理)-->
+<SQL id="selectRpayAmtByCusId" parameterClass="java.lang.String" resultClass="com.ecc.emp.data.KeyedCollection">
+  <SELECT>
+ <![CDATA[
+	 select sum(rpay_amt) as rpay_amt from acc_drft where discount_per=${_SIG_VALUE} and accp_status='1'
+  ]]>
+  </SELECT>
+</SQL>
+
+<!-- 根据客户码获取贸易融资余额(贷后管理)-->
+<SQL id="selectTfLoanBalanceByCusId" parameterClass="java.lang.String" resultClass="com.ecc.emp.data.KeyedCollection">
+  <SELECT>
+ <![CDATA[
+	 select sum(a.loan_balance*(select b.base_remit from prd_rate_maintain b where b.fount_cur_type=a.cur_type)) as tf_loan_bal from acc_loan a where 
+	 a.cus_id=${_SIG_VALUE} and (a.prd_id in ('700020','700021','400020','500032') or a.prd_id in (select prdid from prd_basicinfo where supcatalog='PRD20120802669')) and a.acc_status='1'
+  ]]>
+  </SELECT>
+</SQL>
+
+<!-- 根据客户码获取垫款余额(贷后管理)-->
+<SQL id="selectPadBalanceByCusId" parameterClass="java.lang.String" resultClass="com.ecc.emp.data.KeyedCollection">
+  <SELECT>
+ <![CDATA[
+	 select sum(a.pad_bal*(select b.base_remit from prd_rate_maintain b where b.fount_cur_type=a.pad_cur_type)) as pad_bal from acc_pad a where a.cus_id=${_SIG_VALUE} and a.accp_status='1'
+  ]]>
+  </SELECT>
+</SQL>
+
+<!--  -->
+<SQL id="queryDrftAmt4Crt" parameterClass="java.util.HashMap" resultClass="com.ecc.emp.data.KeyedCollection">
+  <SELECT>
+  <![CDATA[
+	select nvl(sum(c.drft_amt),0) as lmt_amt from Iqp_Bill_Detail c where c.status<>'04' and
+	c.aorg_no in (select f.same_org_no from cus_same_org f 
+	where f.head_org_no
+	in (select d.head_org_no from cus_same_org d 
+	where d.cus_id in (select e.cus_id from lmt_intbank_acc e where e.agr_no = ${agr_no_select} and e.end_date>=${openDay} and e.lmt_status='10')))
+	and c.porder_no in (select a.porder_no from iqp_batch_bill_rel a
+				where a.batch_no in (select b.batch_no from Iqp_Batch_Mng b
+						where b.cont_no = ${cont_no}))
+  ]]>
+  </SELECT>
+</SQL>
+
+<!--  -->
+<SQL id="queryDrftAmt4Iqp" parameterClass="java.util.HashMap" resultClass="com.ecc.emp.data.KeyedCollection">
+  <SELECT>
+  <![CDATA[
+	select nvl(sum(c.drft_amt),0) as lmt_amt from Iqp_Bill_Detail c where c.status<>'04' and 
+		c.aorg_no in (select f.same_org_no from cus_same_org f 
+						where f.head_org_no 
+						in (select d.head_org_no from cus_same_org d 
+						where d.cus_id in (select e.cus_id from lmt_intbank_acc e where e.agr_no = ${agr_no_select} and e.end_date>=${openDay} and e.lmt_status='10'))) 
+								and c.porder_no in (select a.porder_no from iqp_batch_bill_rel a 
+								                     where a.batch_no in (select b.batch_no from Iqp_Batch_Mng b 
+								                                           where b.serno = ${serno}))
+  ]]>
+  </SELECT>
+</SQL>
+
+<!-- 统计票面金额 -->
+<SQL id="queryDrftAmt4CtrSp" parameterClass="java.lang.String" resultClass="com.ecc.emp.data.KeyedCollection">
+  <SELECT>
+  <![CDATA[
+	select nvl(sum(detail.drft_amt),0) as amt from iqp_bill_detail detail where detail.status!='04' 
+	       and detail.porder_no in(select rel.porder_no from iqp_batch_bill_rel rel 
+           where rel.batch_no=(select cont.batch_no from Ctr_Rpddscnt_Cont cont where cont.cont_no=${_SIG_VALUE}))
+  ]]>
+  </SELECT>
+</SQL>
+
+<!--统计直贴未核销票据总金额  -->
+<SQL id="queryDrftAmt4CtrLoan" parameterClass="java.lang.String" resultClass="com.ecc.emp.data.KeyedCollection">
+  <SELECT>
+  <![CDATA[
+	select nvl(sum(detail.drft_amt),0) as amt from iqp_bill_detail detail where detail.status!='04' 
+	       and detail.porder_no in(select rel.porder_no from iqp_batch_bill_rel rel 
+           where rel.batch_no=(select bat.batch_no from iqp_batch_mng bat where bat.cont_no=${_SIG_VALUE}))
+  ]]>
+  </SELECT>
+</SQL>
+
+<!-- 资产流转更新申请表信息-->
+<SQL id="updateIqpAssetTransApp" parameterClass="java.lang.String" >
+   <UPDATE>
+  <![CDATA[
+	update iqp_asset_trans_app a
+    set (a.loan_amt_totl, a.loan_balance_totl, a.trans_amt, a.trans_rate, a.trans_qnt) = 
+        (select sum(d.loan_amt) loan_amt_totl,sum(d.loan_balance) loan_balance_totl,sum(b.trans_amt) trans_amt,
+                case when sum(d.loan_balance) = 0 then 0 else sum(b.trans_amt) / sum(d.loan_balance) end trans_rate,
+                count(1) trans_qnt from iqp_asset_trans_list b,
+                iqp_asset_regi c, iqp_asset_regi_app d where b.serno = a.serno and b.bill_no = c.bill_no
+                and c.asset_status = '01' and c.serno = d.serno group by b.serno)
+    where a.serno = ${_SIG_VALUE}
+  ]]>
+   </UPDATE>
+</SQL>
+
+<!-- 资产证券化统计资产清单更新申请表信息-->
+<SQL id="updateIqpAssetProApp" parameterClass="java.lang.String" >
+   <UPDATE>
+  <![CDATA[
+	update iqp_asset_pro_app a
+    set (a.pro_amt, a.pro_qnt) = 
+        (select sum(d.loan_balance) loan_balance_totl,count(1) pro_qnt from iqp_asset_pro_list b,
+                iqp_asset_regi c, iqp_asset_regi_app d where b.serno = a.serno and b.bill_no = c.bill_no
+                and c.asset_status = '01' and c.serno = d.serno group by b.serno)
+    where a.serno = ${_SIG_VALUE}
+  ]]>
+   </UPDATE>
+</SQL>
+
+<!-- 删除资产清单信息-->
+<SQL id="deleteIqpAssetTransList" parameterClass="java.lang.String" valueClass ="java.lang.String" >
+   <DELETE>
+  <![CDATA[
+	delete from iqp_asset_trans_list a where a.serno = ${_SIG_VALUE}
+  ]]>
+   </DELETE>
+</SQL>
+<!-- 删除登记机构信息-->
+<SQL id="deleteIqpAssetOrgRegi" parameterClass="java.lang.String" valueClass ="java.lang.String" >
+   <DELETE>
+  <![CDATA[
+	delete from Iqp_Asset_Org_Regi a where a.serno = ${_SIG_VALUE}
+  ]]>
+   </DELETE>
+</SQL>
+
+<!--根据流水号查询变更的业务的合同编号-->
+<SQL id="selectIsChangeBySernoStr" parameterClass="java.lang.String" resultClass="com.ecc.emp.data.KeyedCollection">
+    <SELECT>
+  <![CDATA[
+     select grt.cont_no as cont_no from iqp_guar_change_app grt where grt.serno=${_SIG_VALUE} and grt.approve_status not in ('997','998')
+     union all
+     select credit.cont_no as cont_no from iqp_credit_change_app credit where credit.serno=${_SIG_VALUE} and credit.approve_status not in ('997','998')
+     union all
+     select guarant.cont_no as cont_no from iqp_guarant_change_app guarant where guarant.serno=${_SIG_VALUE} and guarant.approve_status not in ('997','998')
+  ]]>
+    </SELECT>
+</SQL>
+
+
+<!--  查询合同下直帖业务的利息支付方式  需求编号：XD140812041  2014-09-25 唐顺岩 -->
+<SQL id="queryDscntIntPayModeByContNo" parameterClass="java.lang.String" resultClass="com.ecc.emp.data.KeyedCollection">
+    <SELECT>
+  <![CDATA[
+     SELECT COUNT(*) AS CONT, MIN(DSCNT_INT_PAY_MODE) DSCNT_INT_PAY_MODE
+  		FROM (SELECT F.*,
+               ROW_NUMBER() OVER(PARTITION BY DSCNT_INT_PAY_MODE ORDER BY BATCH_NO ASC) RN
+          FROM IQP_BILL_INCOME F
+         WHERE BATCH_NO = (SELECT BATCH_NO FROM IQP_BATCH_MNG WHERE CONT_NO=${_SIG_VALUE}))
+ 		WHERE RN = 1
+  ]]>
+    </SELECT>
+</SQL>
+
+<!-- 新增可签订合同登记表记录    2014-10-09 唐顺岩 -->
+<SQL id="insertPvpGroupInputInfo" valueClass="com.ecc.emp.data.KeyedCollection" >
+  <INSERT>
+  <![CDATA[
+  INSERT INTO PVP_GROUP_INPUT_INFO(SERNO,CONT_NO,INPUT_DATE) 
+  VALUES(${serno},${cont_no},${input_date})
+  ]]>
+  </INSERT>	
+</SQL>
+
+<!-- 根据申请流水号删除还款计划 2014-10-16 zhaozq -->
+<SQL id="deletePayPlan" parameterClass="java.lang.String" onlyReturnFirst="false">
+  <SELECT>
+  <![CDATA[
+  DELETE FROM IQP_FREEDOM_PAY_INFO WHERE SERNO=${_SIG_VALUE}
+  ]]>
+  </SELECT> 
+</SQL>
+
+<!-- add by lisj 2015-9-8 需求编号：【XD150303015】 关于增加对被放款审查岗打回的业务申请信息进行修改流程需求,根据申请流水号删除还款计划缓存表 -->
+<SQL id="deletePayPlanTmp" parameterClass="java.lang.String" onlyReturnFirst="false">
+  <SELECT>
+  <![CDATA[
+  DELETE FROM IQP_FREEDOM_PAY_INFO_TMP WHERE MODIFY_REL_SERNO=${_SIG_VALUE}
+  ]]>
+  </SELECT> 
+</SQL>
+
+<!-- add by lisj 2015-9-8 需求编号：【XD150303015】 关于增加对被放款审查岗打回的业务申请信息进行修改流程需求,根据申请流水号删除账户信息缓存表 -->
+<SQL id="deleteIqpCusAcct" parameterClass="java.lang.String" onlyReturnFirst="false">
+  <SELECT>
+  <![CDATA[
+  DELETE FROM IQP_CUS_ACCT WHERE SERNO=${_SIG_VALUE}
+  ]]>
+  </SELECT> 
+</SQL>
+
+<!-- add by lisj 2015-9-8 需求编号：【XD150303015】 关于增加对被放款审查岗打回的业务申请信息进行修改流程需求,根据Modify_rel_serno账户信息缓存表 -->
+<SQL id="createIqpCusAcctFromTmp" parameterClass="com.ecc.emp.data.KeyedCollection" >
+   <INSERT>
+  <![CDATA[
+   insert into iqp_cus_acct
+       select serno,cont_no,
+         acct_attr,
+         is_this_org_acct,
+         acct_no,
+         acct_name,
+         opac_org_no,
+         opan_org_name,
+         pay_amt,
+         pk_id,
+         acct_gl_code,
+         cur_type,
+         interbank_id
+    from iqp_cus_acct_tmp
+   where modify_rel_serno = ${MODIFY_REL_SERNO}
+  ]]>
+   </INSERT>
+</SQL>
+
+<!-- 需求:【XD140818051】根据申请流水号获取利率定价模式评分 2014-11-18 lisj -->
+<SQL id="getIntRatPriModeScoreBySerno" parameterClass="java.lang.String" resultClass="java.math.BigDecimal">
+  <SELECT>
+  <![CDATA[
+  	select case
+         when (t1.ir_float_rate - t1.basic_rate) < -0.3 then
+          0
+         else
+          t2.auto_score
+       end as auto_score
+  from (select p1.serno,
+               case
+                 when p2.collateral_type = '05' then
+                  0.1
+                 when p2.collateral_type = '06' then
+                  0.2
+                 when instr('300,500,510',p1.assure_main) > 0 then
+                  0.5
+                 when p1.assure_main = '400' then
+                  0.6
+                 when p2.collateral_type = '03' then
+                  0.3
+                 when p2.collateral_type = '04' then
+                  0.4
+                 when p2.collateral_type = '08' then
+                  0
+                 when p2.collateral_type = '02' then
+                  0.1
+                 when p2.collateral_type = '07' then
+                  0.3
+                 else
+                  0
+               end as basic_rate,
+               nvl(p2.ir_float_rate, 0) ir_float_rate
+          from iqp_loan_app p1, iqp_loan_app_sub p2
+         where p1.serno = p2.serno
+           and p1.serno =${_SIG_VALUE}
+           and exists (select 1
+                  from prd_basicinfo p3
+                 where p1.prd_id = p3.prdid
+                   and p3.supcatalog = 'PRD20120802658')) t1,
+       (select * from ctr_number_imple cni where cni.score_type = '2') t2
+ 		where trim(to_char(t1.ir_float_rate - t1.basic_rate, '0.00')) = t2.score_code(+)
+	union
+
+	select case
+         when (t3.ir_float_rate - t3.basic_rate) < -0.3 then
+          0
+         else
+          t4.auto_score
+       end as auto_score
+  from (select p1.serno,
+               p2.collateral_type,
+               case
+                 when p2.collateral_type = '05' then
+                  0.1
+                 when p2.collateral_type = '06' then
+                  0.2
+                 when instr('300,500,510',p1.assure_main) > 0  then
+                  0.5
+                 when p1.assure_main = '400' then
+                  0.7
+                 when p2.collateral_type = '01' then
+                  0.3
+                 when p2.collateral_type = '03' then
+                  0.4
+                 when p2.collateral_type = '08' then
+                  0
+                 when p2.collateral_type = '02' then
+                  0.1
+                 when p2.collateral_type = '07' then
+                  0.3
+                 else
+                  0
+               end as basic_rate,
+               nvl(p2.ir_float_rate, 0) ir_float_rate
+          from iqp_loan_app p1, iqp_loan_app_sub p2
+         where p1.serno = p2.serno
+           and p1.serno =${_SIG_VALUE}
+           and exists (select 1
+                  from prd_basicinfo p3
+                 where p1.prd_id = p3.prdid
+                   and p3.supcatalog = 'PRD20120802659')) t3,
+       (select * from ctr_number_imple cni where cni.score_type = '2') t4
+ 	where trim(to_char(t3.ir_float_rate - t3.basic_rate, '0.00')) = t4.score_code(+)
+  ]]>
+  </SELECT> 
+</SQL>
+<!-- 需求:【XD140818051】根据申请流水号获取担保模式评分 2014-11-19 lisj -->
+<SQL id="getGuarModeScoreBySerno" parameterClass="java.lang.String" resultClass="java.math.BigDecimal">
+  <SELECT>
+  <![CDATA[
+select nvl(auto_score, 0)
+  from iqp_loan_app p2, ctr_number_imple p1
+ where p2.assure_main = p1.score_code(+)
+   and p2.serno = ${_SIG_VALUE}
+  ]]>
+  </SELECT> 
+</SQL>
+<!-- add by lisj 2015-5-25 需求编号：XD150413030 关于无间贷业务申请改造,检查无间贷期限是否超过上一笔贷款期限(cont_term已转换成月) -->
+<SQL id="queryContTerm" parameterClass="java.lang.String" resultClass="com.ecc.emp.data.KeyedCollection">
+  <SELECT>
+  <![CDATA[
+	select case when p1.term_type = '001' then(p1.cont_term * 12) 
+       when p1.term_type = '003' then(p1.cont_term / 30)
+				else 
+					p1.cont_term
+					end as cont_term,
+       p1.term_type
+   from ctr_loan_cont_sub p1, acc_loan p2
+    where p1.cont_no = p2.cont_no
+   and p2.bill_no = ${_SIG_VALUE}
+  ]]>
+  </SELECT>
+</SQL>
+</S>

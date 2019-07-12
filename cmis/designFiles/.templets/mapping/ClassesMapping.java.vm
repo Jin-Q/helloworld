@@ -1,0 +1,136 @@
+package com.yucheng.cmis.dao.mapping;
+
+/**
+ * auto generated at ${datetime}
+*/
+import java.util.HashMap;
+import com.ecc.emp.data.KeyedCollection;
+import com.ecc.emp.data.InvalidArgumentException;
+import com.ecc.emp.data.ObjectNotFoundException;
+import com.ecc.emp.log.EMPLog;
+
+import ${ClassName};
+
+public class ${MappingClassName} implements MapInterface{
+ 
+  public String getClassNameOfDomain(){
+     return "${ClassName}";
+  }
+ 
+  public void setObject2HashMap(Object _vobj, HashMap<String,Object> _mapdata) throws Exception{
+
+    if(_vobj == null){
+       return;
+    }
+
+    if(_mapdata == null){
+       return;
+    }
+   
+ #foreach( $obj in $listClassInf )
+  #if(!($obj.fieldType == 'double') && !($obj.fieldType == 'float') && !($obj.fieldType == 'int') && !($obj.fieldType == 'char'))
+    if(((${ClassNameShort})_vobj).get${obj.fieldNm4Method}() != null)
+       _mapdata.put("${obj.fieldId}",((${ClassNameShort})_vobj).get${obj.fieldNm4Method}());
+  #else
+      _mapdata.put("${obj.fieldId}",((${ClassNameShort})_vobj).get${obj.fieldNm4Method}());
+  #end
+  #end
+
+  }
+
+  public void setHashMap2Object(HashMap<String,Object> _mapdata, Object _vobj) throws Exception{
+    if(_vobj == null){
+       return;
+    }
+
+    if(_mapdata == null){
+       return;
+    }
+ #foreach( $obj in $listClassInf )
+    if(_mapdata.get("${obj.fieldId}")!=null){
+  #if($obj.fieldType == 'double')
+     ((${ClassNameShort})_vobj).set${obj.fieldNm4Method}((Double)_mapdata.get("${obj.fieldId}"));
+  #elseif($obj.fieldType == 'int')
+     ((${ClassNameShort})_vobj).set${obj.fieldNm4Method}((Integer)_mapdata.get("${obj.fieldId}"));
+  #elseif($obj.fieldType == 'float')
+     ((${ClassNameShort})_vobj).set${obj.fieldNm4Method}((Float)_mapdata.get("${obj.fieldId}"));
+  #elseif($obj.fieldType == 'char')
+     ((${ClassNameShort})_vobj).set${obj.fieldNm4Method}((Character)_mapdata.get("${obj.fieldId}"));
+  #else
+     ((${ClassNameShort})_vobj).set${obj.fieldNm4Method}(($obj.fieldType)_mapdata.get("${obj.fieldId}"));
+  #end
+    }
+ #end
+  }
+
+  public void setObject2KColl(Object _vobj, KeyedCollection kColl) throws Exception{
+
+    if(_vobj == null){
+       return;
+    }
+
+    if(kColl == null){
+       return;
+    }
+
+    kColl.setAppend(true);
+ #foreach( $obj in $listClassInf )
+  #if(!($obj.fieldType == 'double') && !($obj.fieldType == 'float') && !($obj.fieldType == 'int') && !($obj.fieldType == 'char'))
+    if(((${ClassNameShort})_vobj).get${obj.fieldNm4Method}() != null){
+  #end
+	try {
+  	   kColl.setDataValue("${obj.fieldId}", ((${ClassNameShort})_vobj).get${obj.fieldNm4Method}());
+	} catch (Exception e) {
+	   e.printStackTrace();
+	}
+  #if(!($obj.fieldType == 'double') && !($obj.fieldType == 'float') && !($obj.fieldType == 'int') && !($obj.fieldType == 'char'))
+    }
+  #end
+ #end
+  }
+
+  public void setKColl2Object(KeyedCollection kColl, Object _vobj) throws Exception{
+
+    if(_vobj == null){
+       return;
+    }
+
+    if(kColl == null){
+       return;
+    }
+     
+ #foreach( $obj in $listClassInf )
+   Object _obj${obj.fieldId} = null;
+    try {
+      _obj${obj.fieldId} = kColl.getDataValue("${obj.fieldId}");
+    } catch (Exception e1) {
+      EMPLog.log("EMPExt", EMPLog.WARNING, 0, "Not Found ${obj.fieldId} at mapping!!");
+    } 
+    if(_obj${obj.fieldId} != null){
+     #if($obj.fieldType == 'double')
+      ((${ClassNameShort})_vobj).set${obj.fieldNm4Method}((Double)_obj${obj.fieldId});
+     #elseif($obj.fieldType == 'int')
+      ((${ClassNameShort})_vobj).set${obj.fieldNm4Method}((Integer)_obj${obj.fieldId});
+     #elseif($obj.fieldType == 'float')
+      ((${ClassNameShort})_vobj).set${obj.fieldNm4Method}((Float)_obj${obj.fieldId});
+     #elseif($obj.fieldType == 'char')
+      ((${ClassNameShort})_vobj).set${obj.fieldNm4Method}((Character)_obj${obj.fieldId});
+     #else
+      ((${ClassNameShort})_vobj).set${obj.fieldNm4Method}(($obj.fieldType)_obj${obj.fieldId});
+     #end
+    }
+ #end
+  }
+  
+   public String getFieldType(String fieldId){
+   
+#foreach( $obj in $listClassInf )
+     if(fieldId.trim().equals("${obj.fieldId}")){
+        return "${obj.fieldType}";
+     }
+#end  
+      return null; 
+   }
+}
+
+

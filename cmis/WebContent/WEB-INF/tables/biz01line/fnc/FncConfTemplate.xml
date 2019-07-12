@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<FncConfTemplate.xml>
+	<TableModel id="FncConfTemplate" cnname="财务报表列表" dbTableName="fnc_conf_template">
+		<Field id="fnc_id" isPK="true" columnName="fnc_id" cnname="报表编号" length="6" JDBCType="CHAR" canBeNull="false"/>
+		<Field id="fnc_name" columnName="fnc_name" cnname="报表名称" length="200" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="fnc_bs_style_id" columnName="fnc_bs_style_id" cnname="资产负债表样式编号" length="6" JDBCType="CHAR" canBeNull="false"/>
+		<Field id="fnc_pl_style_id" columnName="fnc_pl_style_id" cnname="损益表" length="6" JDBCType="CHAR" canBeNull="false"/>
+		<Field id="fnc_cf_style_id" columnName="fnc_cf_style_id" cnname="现金流量" length="6" JDBCType="CHAR" canBeNull="false"/>
+		<Field id="fnc_fi_style_id" columnName="fnc_fi_style_id" cnname="财务指标" length="6" JDBCType="CHAR" canBeNull="true"/>
+		<Field id="fnc_ri_style_id" columnName="fnc_ri_style_id" cnname="所有者权益变动" length="6" JDBCType="CHAR" canBeNull="true"/>
+		<Field id="fnc_smp_style_id" columnName="fnc_smp_style_id" cnname="简表" length="6" JDBCType="CHAR" canBeNull="true"/>
+		<Field id="fnc_style_id1" columnName="fnc_style_id1" cnname="保留" length="6" JDBCType="CHAR" canBeNull="true"/>
+		<Field id="fnc_style_id2" columnName="fnc_style_id2" cnname="保留" length="6" JDBCType="CHAR" canBeNull="true"/>
+		<Field id="no_ind" columnName="no_ind" cnname="新旧报表标志" length="1" JDBCType="CHAR"/>
+		<Field id="com_ind" columnName="com_ind" cnname="企事业报表标志" length="1" JDBCType="CHAR"/>
+		<Field id="fnc_acc_style_id" columnName="fnc_acc_style_id" cnname="FNC_ACC_STYLE_ID" length="6" JDBCType="VARCHAR2"/>
+		<Field id="fnc_de_style_id" columnName="fnc_de_style_id" cnname="FNC_DE_STYLE_ID" length="6" JDBCType="VARCHAR2"/>
+	</TableModel>
+</FncConfTemplate.xml>

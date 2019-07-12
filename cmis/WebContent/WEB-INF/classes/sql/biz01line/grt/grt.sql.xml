@@ -1,0 +1,318 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<S>
+<!-- 更新担保合同下担保物关系表  -->
+<SQL id="insertGrtGuarantyRe" parameterClass="java.lang.String" valueClass ="java.util.HashMap" >
+   <INSERT>
+  <![CDATA[
+	insert into grt_guaranty_re (guaranty_id,guar_cont_no) values (${guarId},${guarContNo})
+  ]]>
+   </INSERT>
+</SQL>
+<!-- 根据合同编号删除合同表中相关记录-->
+<SQL id="deleteGrtGuarContByContNo" parameterClass="java.lang.String" >
+   <DELETE>
+  <![CDATA[
+	DELETE FROM GRT_GUAR_CONT WHERE GUAR_CONT_STATE='00' AND GUAR_CONT_NO IN(${_SIG_VALUE})
+  ]]>
+   </DELETE>
+</SQL>
+<!-- 根据担保品编号删除关联关系信息-->
+<SQL id="deleteGrtGuarantyReGuar" parameterClass="java.lang.String" valueClass ="java.lang.String" >
+   <DELETE>
+  <![CDATA[
+	delete from grt_guaranty_re where guaranty_id = ${_SIG_VALUE}
+  ]]>
+   </DELETE>
+</SQL>
+<!-- 根据合同编号删除关联关系信息 -->
+<SQL id="deleteGrtGuarantyReCont" parameterClass="java.lang.String" valueClass ="java.lang.String" >
+   <DELETE>
+  <![CDATA[
+	DELETE FROM GRT_GUARANTY_RE WHERE GUAR_CONT_NO IN(SELECT GUAR_CONT_NO FROM GRT_GUAR_CONT WHERE GUAR_CONT_STATE='00') AND  GUAR_CONT_NO IN(${_SIG_VALUE})
+  ]]>
+   </DELETE>
+</SQL>
+<!-- 获取担保合同编号下关联的保证人信息-->
+<SQL id="queryGrtGuarantyReGuarList" parameterClass="java.lang.String" resultClass="com.ecc.emp.data.KeyedCollection" onlyReturnFirst="false">
+   <SELECT>
+  <![CDATA[
+	select * from grt_guarantee where guar_id in (select guaranty_id from grt_guaranty_re where guar_cont_no = ${_SIG_VALUE} )
+  ]]>
+   </SELECT>
+</SQL>
+<!-- 根据担保合同编号获取相关联下的押品担保金额累加和 -->
+<SQL id="queryGrtGuarantyAmt" parameterClass="java.lang.String" resultClass="com.ecc.emp.data.KeyedCollection" onlyReturnFirst="false">
+   <SELECT>
+  <![CDATA[
+	select nvl(sum(guar_amt),0.0) as guar_amt from mort_guaranty_eval_value where guaranty_no in (select guaranty_id from grt_guaranty_re where guar_cont_no = ${_SIG_VALUE})
+  ]]>
+   </SELECT>
+</SQL>
+<SQL id="queryGrtGuaranteeAllList" resultClass="com.ecc.emp.data.KeyedCollection" onlyReturnFirst="false">
+   <SELECT>
+  <![CDATA[
+	select t.guar_cont_no,t.cus_id,t.guar_start_date,t.guar_end_date,t.input_id,t.manager_id,t1.cus_id as guarty_cus_id,t1.guar_amt,t1.guar_type from Grt_Guar_Cont t, grt_guarantee t1 
+	where t.guar_cont_no in 
+	(select t2.guar_cont_no from grt_guaranty_re t2 where t1.guar_id = t2.guaranty_id)
+  ]]>
+   </SELECT>
+</SQL>
+<SQL id="queryGrtGuaranteeAllDetail" parameterClass="com.ecc.emp.data.KeyedCollection" resultClass="com.ecc.emp.data.KeyedCollection" onlyReturnFirst="false">
+   <SELECT>
+  <![CDATA[
+	select t.guar_cont_no,t.cus_id,t.guar_start_date,t.guar_end_date,t.input_id,t.manager_id,t.input_br_id,t.manager_br_id,t.reg_date,t1.cus_id as guarty_cus_id,t1.guar_amt,t1.guar_type from Grt_Guar_Cont t, grt_guarantee t1 where t.guar_cont_no in (select t2.guar_cont_no from grt_guaranty_re t2 where t1.guar_id = t2.guaranty_id) and t.guar_cont_no = ${guarContNo} and t1.cus_id=${cusId}
+  ]]>
+   </SELECT>
+</SQL>
+<!-- 获取综合授信模块所需要的押品信息 -->
+<SQL id="getLmtGuarantyInfoList" parameterClass="com.ecc.emp.data.KeyedCollection" resultClass="com.ecc.emp.data.KeyedCollection" onlyReturnFirst="false">
+   <SELECT>
+  <![CDATA[
+ 	SELECT a.guaranty_cls,a.guaranty_no,a.guaranty_name,a.cus_id,a.guaranty_type,b.wrr_amt,b.guar_amt,a.GUARANTY_INFO_STATUS,a.INPUT_DATE 
+ 	 FROM mort_guaranty_base_info a,mort_guaranty_eval_value b WHERE a.guaranty_no=b.guaranty_no AND a.guaranty_no in (${guaranty_no})
+  ]]>	
+   </SELECT>
+</SQL>
+<!-- 获取综合授信模块所需要的保证人信息 -->
+<SQL id="getLmtGuaranteeInfoList" parameterClass="java.lang.String" resultClass="com.ecc.emp.data.KeyedCollection" onlyReturnFirst="false">
+   <SELECT>
+  <![CDATA[
+   select a.guar_id,a.cus_id,a.guar_type,a.guar_amt from grt_guarantee a where a.guar_id in (${_SIG_VALUE})
+  ]]>	
+   </SELECT>
+</SQL>
+<!-- 获取业务办理模块所需要的担保合同信息 -->
+<SQL id="getIqpGuarContInfoList" parameterClass="java.lang.String" resultClass="com.ecc.emp.data.KeyedCollection" onlyReturnFirst="false">
+   <SELECT>
+  <![CDATA[
+	select a.GUAR_CONT_NO,a.guar_cont_cn_no,a.GUAR_CONT_TYPE,a.GUAR_WAY,a.GUAR_AMT,a.GUAR_CONT_STATE,a.CUR_TYPE,a.GUAR_START_DATE,a.GUAR_END_DATE from grt_guar_cont a where a.guar_cont_no in (${_SIG_VALUE})
+  ]]>	
+   </SELECT>
+</SQL>
+<!-- 查看担保合同信息 -->
+<SQL id="viewGuarContInfoDetail" parameterClass="java.lang.String" resultClass="com.ecc.emp.data.KeyedCollection" onlyReturnFirst="false">
+   <SELECT>
+  <![CDATA[
+	select * from grt_guar_cont a where a.guar_cont_no =${_SIG_VALUE}
+  ]]>	
+   </SELECT>
+</SQL>
+
+<!--根据合同编号获取池编号（一个票据池只能在一个担保合同中做担保品） -->
+<SQL id="getDrfpoNoByGuarContNo" parameterClass="java.lang.String" resultClass="com.ecc.emp.data.KeyedCollection" onlyReturnFirst="false">
+   <SELECT>
+  <![CDATA[
+	select a.guaranty_id from grt_guaranty_re a where a.guar_cont_no =${_SIG_VALUE}
+  ]]>	
+   </SELECT>
+</SQL>
+<!--通过合同编号（支持多值），担保方式获取所需担保列表 -->
+<SQL id="getGrtListByGuarNoListAndGuarWay" parameterClass="java.util.HashMap" resultClass="com.ecc.emp.data.IndexedCollection" onlyReturnFirst="false">
+   <SELECT>
+  <![CDATA[
+	select * from grt_guar_cont where guar_cont_no in (${guar_cont_no}) and guar_cont_type= ${guar_cont_type}
+  ]]>	
+   </SELECT>
+</SQL>
+<!--根据保证人客户码获取保证人所有关联的合同编号 -->
+<SQL id="getGuarContNoByGuarantyteeCusId" parameterClass="java.lang.String" resultClass="com.ecc.emp.data.KeyedCollection" onlyReturnFirst="false">
+   <SELECT>
+  <![CDATA[
+  select a.guar_cont_no from grt_guar_cont a where a.guar_cont_no in(select b.guar_cont_no from grt_guaranty_re b where b.guaranty_id in (select c.guar_id from grt_guarantee c where c.cus_id=${_SIG_VALUE})) and a.guar_cont_state='01'
+  ]]>	
+   </SELECT>
+</SQL>
+<!--根据合同编号获取该合同下保证人担保金额的总额 -->
+<SQL id="getGuarAmtByGuarContNo" parameterClass="java.lang.String" resultClass="com.ecc.emp.data.KeyedCollection" onlyReturnFirst="false">
+   <SELECT>
+  <![CDATA[
+	select nvl(sum(a.guar_amt),0.0)as guar_amt from grt_guarantee a where a.guar_id in(select b.guaranty_id from grt_guaranty_re b where b.guar_cont_no= ${_SIG_VALUE})
+  ]]>	
+   </SELECT>
+</SQL>
+<!--根据合同编号获取担保合同状态 -->
+<SQL id="getGuarContStatusByGuarContNo" parameterClass="java.lang.String" resultClass="com.ecc.emp.data.KeyedCollection" onlyReturnFirst="false">
+   <SELECT>
+  <![CDATA[
+	select a.guar_cont_state as guar_cont_state from grt_guar_cont a where a.guar_cont_no=${_SIG_VALUE}
+  ]]>	
+   </SELECT>
+</SQL>
+
+<!-- 合同撤销时，更新担保合同状态  -->
+<SQL id="updateGrtGuarContSta" parameterClass="java.lang.String" >
+   <UPDATE>
+  <![CDATA[
+  	update grt_guar_cont a set a.guar_cont_state = '02' where a.guar_cont_no in (${_SIG_VALUE}) and a.guar_cont_state='00'
+  ]]>
+   </UPDATE>
+</SQL>
+<!-- 合同作废时，更新担保合同状态  -->
+<SQL id="updateGrtGuarCont4RemoveCont" parameterClass="java.lang.String" >
+   <UPDATE>
+  <![CDATA[
+  	update grt_guar_cont a set a.guar_cont_state = '04' where a.guar_cont_no in (${_SIG_VALUE}) and a.guar_cont_state='00'
+  ]]>
+   </UPDATE>
+</SQL>
+<!-- 查询贷款客户下所有担保品信息 -->
+<SQL id="getGrtMortInfoListByCusId" parameterClass="com.ecc.emp.data.KeyedCollection" resultClass="com.ecc.emp.data.KeyedCollection" onlyReturnFirst="false">
+   <SELECT>
+  <![CDATA[
+ 	select a.cont_no,
+       a.serno,
+       b.guar_cont_no,
+       e.guaranty_no,
+       c.guar_cont_type,
+       c.guar_way,
+       e.guaranty_name,
+       f.guar_amt
+  from ctr_loan_cont            a,
+       grt_loan_r_gur           b,
+       grt_guar_cont            c,
+       grt_guaranty_re          d,
+       mort_guaranty_base_info  e,
+       mort_guaranty_eval_value f
+ where a.cus_id = ${cus_id}
+   and a.cont_status = '200'
+   and a.cont_no = b.cont_no
+   and b.guar_cont_no = c.guar_cont_no
+   and c.guar_cont_no = d.guar_cont_no
+   and d.guaranty_id = e.guaranty_no
+   and e.guaranty_no = f.guaranty_no
+  ]]>	
+   </SELECT>
+</SQL>
+<!-- 查询贷款客户下所有保证人信息 -->
+<SQL id="getGrtGuaranteeInfoListByCusId" parameterClass="com.ecc.emp.data.KeyedCollection" resultClass="com.ecc.emp.data.KeyedCollection" onlyReturnFirst="false">
+   <SELECT>
+  <![CDATA[
+ 	select a.cont_no,
+       a.serno,
+       b.guar_cont_no,
+       e.guar_id,
+       c.guar_cont_type,
+       c.guar_way,
+       e.guar_amt,
+       e.cus_id
+  from ctr_loan_cont   a,
+       grt_loan_r_gur  b,
+       grt_guar_cont   c,
+       grt_guaranty_re d,
+       grt_guarantee   e
+ where a.cus_id = ${cus_id}
+   and a.cont_status = '200'
+   and a.cont_no = b.cont_no
+   and b.guar_cont_no = c.guar_cont_no
+   and c.guar_cont_no = d.guar_cont_no
+   and d.guaranty_id = e.guar_id
+  ]]>	
+   </SELECT>
+</SQL>
+<!-- 根据最高额担保合同编号找到当前授信下的cus_id  -->
+<SQL id="queryCusId4ContNo" parameterClass="java.lang.String" resultClass="com.ecc.emp.data.KeyedCollection" onlyReturnFirst="false" >
+   <SELECT>
+  <![CDATA[
+    select cus_id
+      from Lmt_Agr_Details
+     where limit_code in
+           (select limit_code
+              from r_lmt_app_guar_cont a
+             where a.limit_code || a.guar_cont_no not in
+                   (select b.limit_code || b.guar_cont_no from r_lmt_guar_cont b)
+               and a.guar_cont_no = ${_SIG_VALUE}
+            union
+            select limit_code
+              from r_lmt_guar_cont
+             where guar_cont_no = ${_SIG_VALUE})
+  ]]>
+   </SELECT>
+</SQL>
+<!-- 更新业务申请中担保放大倍数  -->
+<SQL id="updateIqpAssSesMultiple" parameterClass="com.ecc.emp.data.KeyedCollection" valueClass="java.lang.String">
+   <UPDATE>
+  <![CDATA[
+  	update iqp_loan_app loan set loan.ass_sec_multiple=${_SIG_VALUE} 
+  	where loan.serno in(select grtLoan.Serno 
+  	from grt_guaranty_re grtRe,grt_loan_r_gur grtLoan,grt_guarantee grt
+  	where grtRe.Guar_Cont_No = ${guar_cont_no} 
+  	and grt.cus_id=${cus_id}
+  	and grtRe.Guar_Cont_No=grtLoan.guar_cont_no
+  	and grt.guar_id=grtRe.Guaranty_Id)
+  ]]>
+   </UPDATE>
+</SQL>
+
+<!-- 查询贷款客户下所有保证人客户信息 add by tangzf 2014.04.11[modified by yangzy 2014/10/17 贷后任务改造-公司小微客户过滤追加的个人担保,modified by yangzy 2014/10/30 ] 
+     modified by lisj 2015-5-19 需求编号：XD150504034 贷后管理常规检查任务改造,过滤变更类型为解除/已解除
+     modified by yangzy 2015-6-26 需求编号：XD150625045 贷后管理常规检查任务改造,过滤追加保证-->
+<SQL id="getGrtGuaranteeMsgListByCusId" parameterClass="com.ecc.emp.data.KeyedCollection" resultClass="com.ecc.emp.data.KeyedCollection" onlyReturnFirst="false">
+   <SELECT>
+  <![CDATA[
+select distinct cus_id, cus_name, cert_type, cert_code, cus_type, belg_line
+  from (select distinct (f.cus_id) as cus_id,
+                        f.cus_name,
+                        f.cert_type,
+                        f.cert_code,
+                        f.cus_type,
+                        f.belg_line,
+                        e.is_spadd,
+                        g.belg_line cus_belg_line,
+                        case
+                          when e.is_spadd = '1' then
+                           '2'
+                          else
+                           '1'
+                        end as flag
+          from ctr_loan_cont   a,
+               grt_loan_r_gur  b,
+               grt_guar_cont   c,
+               grt_guaranty_re d,
+               grt_guarantee   e,
+               cus_base        f,
+               cus_base        g
+         where a.cus_id = ${cus_id}
+           and a.cus_id = g.cus_id
+           and a.cont_status = '200'
+           and a.cont_no = b.cont_no
+           and b.guar_cont_no = c.guar_cont_no
+           and c.guar_cont_no = d.guar_cont_no
+           and d.guaranty_id = e.guar_id
+           and b.corre_rel not in('3','5')
+           AND c.GUAR_CONT_STATE = '01'
+           and e.cus_id = f.cus_id)
+ where flag = '1'
+  ]]>	
+   </SELECT>
+</SQL>
+
+<!-- 查询贷款客户下所有担保品信息  add by tangzf 2014.04.11 
+     modified by lisj 2015-5-19 需求编号：XD150504034 贷后管理常规检查任务改造,过滤变更类型为解除/已解除-->
+<SQL id="getGuarantyBaseInfoListByCusId" parameterClass="com.ecc.emp.data.KeyedCollection" resultClass="com.ecc.emp.data.KeyedCollection" onlyReturnFirst="false">
+   <SELECT>
+  <![CDATA[
+ 	select distinct(e.guaranty_no) as guaranty_no,
+       e.guaranty_name,
+       e.guaranty_cls,
+       e.cus_id,
+       f.guar_amt 
+  from ctr_loan_cont            a,
+       grt_loan_r_gur           b,
+       grt_guar_cont            c,
+       grt_guaranty_re          d,
+       mort_guaranty_base_info  e,
+       mort_guaranty_eval_value f
+ where a.cus_id = ${cus_id}
+   and a.cont_status = '200'
+   and a.cont_no = b.cont_no
+   and b.guar_cont_no = c.guar_cont_no
+   and c.guar_cont_no = d.guar_cont_no
+   and d.guaranty_id = e.guaranty_no
+   and e.guaranty_no = f.guaranty_no
+   and b.corre_rel not in('3','5')
+   AND c.GUAR_CONT_STATE = '01'
+  ]]>
+   </SELECT>
+</SQL>
+
+</S>

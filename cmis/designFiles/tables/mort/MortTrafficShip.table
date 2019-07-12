@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<MortTrafficShip.xml>
+	<TableModel id="MortTrafficShip" cnname="船舶" dbTableName="mort_traffic_ship">
+		<TableInfo/>
+		<Field id="ship_id" isPK="true" columnName="ship_id" cnname="船舶编号" length="40" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="guaranty_no" columnName="guaranty_no" cnname="押品编号" length="40" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="ship_name" columnName="ship_name" cnname="交通工具名称//" length="200" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="work_license_no" columnName="work_license_no" cnname="交通工具营运执照号" length="200" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="is_ship_society" columnName="is_ship_society" cnname="//" length="1" JSPTag="text" canBeNull="true" JDBCType="CHAR"/>
+		<Field id="nation_license_no" columnName="nation_license_no" cnname="船舶国籍证书号码" length="200" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="fuel" columnName="fuel" cnname="动力燃料" length="20" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="produce_factory" columnName="produce_factory" cnname="制造厂家" length="200" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="manufacture_year" columnName="manufacture_year" cnname="制造年度" length="10" JSPTag="date" canBeNull="true" JDBCType="CHAR"/>
+		<Field id="use_years" dataType="Float" columnName="use_years" cnname="使用年限" length="8" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="manufacture_site" columnName="manufacture_site" cnname="制造地" length="200" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="ship_info" columnName="ship_info" cnname="船舶用途//" length="20" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="total_ton" dataType="Float" columnName="total_ton" cnname="总吨位" length="16" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="leave_factory_date" columnName="leave_factory_date" cnname="出厂日期" length="10" JSPTag="date" canBeNull="true" JDBCType="CHAR"/>
+		<Field id="displacement" dataType="Float" columnName="displacement" cnname="排水量" length="16" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="buy_date" columnName="buy_date" cnname="购入日期" length="10" JSPTag="date" canBeNull="true" JDBCType="CHAR"/>
+		<Field id="certificate_ind" dictname="STD_ZX_YES_NO" columnName="certificate_ind" cnname="是否有航运证" length="1" JSPTag="select" canBeNull="true" JDBCType="CHAR"/>
+		<Field id="certificate_no" columnName="certificate_no" cnname="航运证件号" length="40" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="buy_curr_cd" dictname="STD_ZX_CUR_TYPE" columnName="buy_curr_cd" cnname="购入币种" length="3" JSPTag="select" canBeNull="true" JDBCType="CHAR"/>
+		<Field id="buy_price" dataType="Currency" columnName="buy_price" cnname="购入价格" length="16" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="certificate_date" columnName="certificate_date" cnname="挂牌日期" length="10" JSPTag="date" canBeNull="true" JDBCType="CHAR"/>
+		<Field id="is_import" dictname="STD_ZX_YES_NO" columnName="is_import" cnname="是否进口船舶" length="1" JSPTag="select" canBeNull="true" JDBCType="CHAR"/>
+		<Field id="register_address" columnName="register_address" cnname="注册地址" length="100" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="run_km" dataType="Float" columnName="run_km" cnname="已行使里程" length="16" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="ship_type_cd" columnName="ship_type_cd" cnname="运输交通工具类型//" length="20" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="used_years" dataType="Float" columnName="used_years" cnname="已使用年限" length="8" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="heavy_repair_times" dataType="Float" columnName="heavy_repair_times" cnname="大修次数" length="8" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="accident_reg" columnName="accident_reg" cnname="事故记录" length="200" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="memo" columnName="memo" cnname="备注" length="1000" JSPTag="textarea" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="ship_num" columnName="ship_num" cnname="船牌号//" length="40" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="fuel_label_no" columnName="fuel_label_no" cnname="燃料标号//" length="40" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="insurance_date" columnName="insurance_date" cnname="保险缴至日期//" length="10" JSPTag="text" canBeNull="true" JDBCType="CHAR"/>
+		<Field id="ori_ship_owner" columnName="ori_ship_owner" cnname="原船主名称//" length="100" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="engine_type" columnName="engine_type" cnname="动力类别//" length="20" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="carrying_capacity" columnName="carrying_capacity" cnname="承载能力//" length="200" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="carrying_ability" columnName="carrying_ability" cnname="载重//" length="16" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="ship_power" columnName="ship_power" cnname="功率//" length="16" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="power_unit_cd" columnName="power_unit_cd" cnname="功率单位//" length="20" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="manufacture_factory" columnName="manufacture_factory" cnname="制造商//" length="200" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="spec_model" columnName="spec_model" cnname="规格型号//" length="200" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="is_used" dictname="STD_SKILL_USED" columnName="is_used" cnname="一手/二手" length="2" JSPTag="select" canBeNull="true" JDBCType="CHAR"/>
+		<Field id="ship_brand" columnName="ship_brand" cnname="船舶名称" length="200" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="sys_update_time" columnName="sys_update_time" cnname="系统更新时间" length="10" JSPTag="date" canBeNull="true" JDBCType="CHAR"/>
+		<Field id="use_status" dictname="STD_USE_STATUS" columnName="use_status" cnname="使用状态" length="2" JSPTag="select" canBeNull="true" JDBCType="CHAR"/>
+		<Field id="count" columnName="count" cnname="数量" length="20" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="unit" columnName="unit" cnname="单位" length="20" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="is_ship_join" dictname="STD_ZX_YES_NO" columnName="is_ship_join" cnname="是否入船级社" length="1" JSPTag="select" canBeNull="true" JDBCType="CHAR"/>
+		<OrderFields>ship_id[desc];</OrderFields>
+	</TableModel>
+</MortTrafficShip.xml>

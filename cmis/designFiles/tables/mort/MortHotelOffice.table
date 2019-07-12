@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<MortHotelOffice.xml>
+	<TableModel id="MortHotelOffice" cnname="酒店、办公" dbTableName="mort_hotel_office">
+		<TableInfo/>
+		<Field id="hotel_office_id" isPK="true" columnName="hotel_office_id" cnname="酒店/办公楼编码" length="40" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="guaranty_no" columnName="guaranty_no" cnname="押品编号" length="40" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="room_num" columnName="room_num" cnname="具体房号" length="20" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="building_num" columnName="building_num" cnname="所在楼座" length="20" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="floor" columnName="floor" cnname="所在层数" length="30" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="floor_count" columnName="floor_count" cnname="楼座总层数" length="30" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="floor_height" dataType="Float" columnName="floor_height" cnname="层高（米）" length="8" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="build_area" dataType="Float" columnName="build_area" cnname="建筑面积" length="16" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="land_use_area" dataType="Float" columnName="land_use_area" cnname="用地面积" length="16" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="keep_status" dictname="STD_MAINTAIN_STATUS" columnName="keep_status" cnname="维护状态" length="2" JSPTag="select" canBeNull="true" JDBCType="CHAR"/>
+		<Field id="building_structure_cd" dictname="STD_ARCH_STR" columnName="building_structure_cd" cnname="建筑结构" length="2" JSPTag="select" canBeNull="true" JDBCType="CHAR"/>
+		<Field id="fitment_degree" dictname="STD_FITMENT_DEGREE" columnName="fitment_degree" cnname="装修程度" length="2" JSPTag="select" canBeNull="true" JDBCType="CHAR"/>
+		<Field id="direction" dictname="STD_ZB_ORIENT" columnName="direction" cnname="朝向" length="2" JSPTag="select" canBeNull="true" JDBCType="CHAR"/>
+		<Field id="durable_years" dataType="Float" columnName="durable_years" cnname="押品耐用年限" length="8" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="constructed_date" columnName="constructed_date" cnname="建成日期" length="10" JSPTag="date" canBeNull="true" JDBCType="CHAR"/>
+		<Field id="land_area" dataType="Float" columnName="land_area" cnname="土地面积（平方米）" length="16" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="land_use_type" dictname="STD_LAND_USE_TYPE" columnName="land_use_type" cnname="土地使用权类型" length="2" JSPTag="select" canBeNull="true" JDBCType="CHAR"/>
+		<Field id="street_situation" dictname="STD_FRONTAGE_STATUS" columnName="street_situation" cnname="临街状况" length="2" JSPTag="select" canBeNull="true" JDBCType="CHAR"/>
+		<Field id="land_use_begin_date" columnName="land_use_begin_date" cnname="土地使用起始日期" length="10" JSPTag="date" canBeNull="true" JDBCType="CHAR"/>
+		<Field id="land_use_end_date" columnName="land_use_end_date" cnname="土地使用终止日期" length="10" JSPTag="date" canBeNull="true" JDBCType="CHAR"/>
+		<Field id="land_license_ind" dictname="STD_ZX_YES_NO" columnName="land_license_ind" cnname="是否有土地证" length="1" JSPTag="select" canBeNull="true" JDBCType="CHAR"/>
+		<Field id="land_use_cert_no" columnName="land_use_cert_no" cnname="土地使用权证书号" length="40" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="land_character" dictname="STD_LAND_OWNERS" columnName="land_character" cnname="土地所有制性质" length="2" JSPTag="select" canBeNull="true" JDBCType="CHAR"/>
+		<Field id="public_assort_est_cd" dictname="STD_EQUIP_STATUS" columnName="public_assort_est_cd" cnname="公共配套设施" length="2" JSPTag="select" canBeNull="true" JDBCType="CHAR"/>
+		<Field id="environment_cd" columnName="environment_cd" cnname="环境（质量、景观）" length="20" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="traffic_cd" columnName="traffic_cd" cnname="交通条件" length="20" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="prosperous_cd" columnName="prosperous_cd" cnname="繁华度" length="20" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="is_lift" dictname="STD_ZX_YES_NO" columnName="is_lift" cnname="是否带电梯" length="1" JSPTag="select" canBeNull="true" JDBCType="CHAR"/>
+		<Field id="buy_price" dataType="Currency" columnName="buy_price" cnname="购置价" length="16" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="buy_date" columnName="buy_date" cnname="购买时间" length="10" JSPTag="date" canBeNull="true" JDBCType="CHAR"/>
+		<Field id="is_notice_reg" dictname="STD_ZX_YES_NO" columnName="is_notice_reg" cnname="是否处于预告登记阶段" length="1" JSPTag="select" canBeNull="true" JDBCType="CHAR"/>
+		<Field id="notice_reg_no" columnName="notice_reg_no" cnname="预告登记号" length="40" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="notice_reg_cert_no" columnName="notice_reg_cert_no" cnname="预告登记权利号" length="40" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="notice_reg_date" columnName="notice_reg_date" cnname="预告登记日期" length="10" JSPTag="date" canBeNull="true" JDBCType="CHAR"/>
+		<Field id="reg_begin_date" columnName="reg_begin_date" cnname="可办理所有权登记起始日期" length="10" JSPTag="date" canBeNull="true" JDBCType="CHAR"/>
+		<Field id="plan_complete_date" columnName="plan_complete_date" cnname="预计竣工日期" length="10" JSPTag="date" canBeNull="true" JDBCType="CHAR"/>
+		<Field id="remark" columnName="remark" cnname="其他情况说明" length="1000" JSPTag="textarea" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="sys_update_time" columnName="sys_update_time" cnname="系统更新时间" length="10" JSPTag="date" canBeNull="true" JDBCType="CHAR"/>
+		<Field id="use_status" dictname="STD_USE_STATUS" columnName="use_status" cnname="使用状态" length="2" JSPTag="select" canBeNull="true" JDBCType="CHAR"/>
+		<Field id="design_use" columnName="design_use" cnname="设计用途" length="200" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="locate_addr" columnName="locate_addr" cnname="座落地址" length="20" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="street" columnName="street" cnname="街道" length="100" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<OrderFields>hotel_office_id[desc];</OrderFields>
+		<Field id="guaranty_addr" columnName="guaranty_addr" cnname="押品座落地址" JSPTag="text" length="20" JDBCType="VARCHAR2"/>
+		<Field id="guaranty_street" columnName="guaranty_street" cnname="街道" JSPTag="text" length="100" JDBCType="VARCHAR2"/>
+	</TableModel>
+</MortHotelOffice.xml>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<QryParamDic.xml>
+	<TableModel id="QryParamDic" pageSize="10" cnname="查询条件字典配置表" isPaged="true" dbTableName="qry_param_dic">
+		<TableInfo/>
+		<Field id="param_dic_no" isPK="true" columnName="param_dic_no" cnname="参数选项字典编号" length="20" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="name" columnName="name" cnname="字典名称" length="30" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="par_dic_type" dictname="STD_ZB_PAR_DIC_TYPE" columnName="par_dic_type" cnname="参数类型" length="2" JSPTag="select" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="opttype" columnName="opttype" cnname="参数选项字典编号" length="20" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="query_sql" columnName="query_sql" cnname="查询SQL语句" length="250" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="popname" columnName="popname" cnname="POPNAME" length="60" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<OrderFields>param_dic_no[desc];</OrderFields>
+	</TableModel>
+</QryParamDic.xml>

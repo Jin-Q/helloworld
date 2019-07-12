@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<LmtAppFinGuar.xml>
+	<TableModel id="LmtAppFinGuar" pageSize="10" cnname="融资性担保公司授信申请" isPaged="true" dbTableName="lmt_app_fin_guar">
+		<TableInfo/>
+		<Field id="serno" isPK="true" columnName="serno" cnname="业务编号" length="40" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="cus_id" columnName="cus_id" cnname="客户码" length="30" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="fin_cls" columnName="fin_cls" cnname="融资类别" length="20" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="fin_totl_limit" columnName="fin_totl_limit" cnname="融资总额" length="16" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="single_quota" columnName="single_quota" cnname="单户限额" length="16" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="term" columnName="term" cnname="期限" length="10" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="guar_bail_multiple" columnName="guar_bail_multiple" cnname="担保放大倍数" length="10" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="guar_cls" columnName="guar_cls" cnname="担保类别" length="10" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="eval_rst" columnName="eval_rst" cnname="评级结果" length="1" JSPTag="text" canBeNull="true" JDBCType="CHAR"/>
+		<Field id="share_range" columnName="share_range" cnname="共享范围" length="2" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="app_date" columnName="app_date" cnname="申请日期" length="10" JSPTag="text" canBeNull="true" JDBCType="CHAR"/>
+		<Field id="end_date" columnName="end_date" cnname="办结日期" length="10" JSPTag="text" canBeNull="true" JDBCType="CHAR"/>
+		<Field id="input_id" columnName="input_id" cnname="登记人" length="20" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="input_br_id" columnName="input_br_id" cnname="登记机构" length="20" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="approve_status" columnName="approve_status" cnname="申请状态" length="3" JSPTag="text" canBeNull="true" JDBCType="CHAR"/>
+		<Field id="manager_id" columnName="manager_id" cnname="责任人" length="20" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="manager_br_id" columnName="manager_br_id" cnname="责任机构" length="20" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="input_date" columnName="input_date" cnname="登记日期" length="10" JSPTag="text" canBeNull="true" JDBCType="CHAR"/>
+		<Field id="fin_cur_type" columnName="fin_cur_type" cnname="融资币种" length="10" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<OrderFields>serno[desc];</OrderFields>
+		<ConditionFields>cus_id;</ConditionFields>
+		<RecordRestrict query="true"/>
+		<FilterFields>serno;cus_id;fin_cls;app_date;single_quota;fin_totl_limit;guar_bail_multiple;eval_rst;input_id;input_br_id;approve_status;</FilterFields>
+		<Field id="lmt_term_type" columnName="lmt_term_type" cnname="授信期限类型" length="3" JSPTag="text" JDBCType="CHAR"/>
+		<Field id="fin_totl_spac" columnName="fin_totl_spac" cnname="融资总敞口" length="16" JSPTag="text" JDBCType="NUMBER"/>
+		<Field id="app_type" columnName="app_type" cnname="申请类型" JSPTag="text" length="2" JDBCType="VARCHAR2"/>
+	</TableModel>
+</LmtAppFinGuar.xml>

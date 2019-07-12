@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actionDefines>
+	<classMap>
+		<map id="action" class="com.yucheng.cmis.ad.mvc.ADRequestController"/>
+		<map id="flowInvoker" class="com.yucheng.cmis.ad.mvc.ADFlowInvoker"/>
+		<map id="outputViews" class="java.util.HashMap"/>
+		<map id="output" class="com.ecc.emp.data.KeyedCollection"/>
+		<map id="kColl" class="com.ecc.emp.data.KeyedCollection"/>
+		<map id="iColl" class="com.ecc.emp.data.IndexedCollection"/>
+		<map id="field" class="com.ecc.emp.data.DataField"/>
+	</classMap>
+	
+	<!-- 查询记录列表 -->
+	<action id="queryIqpBksyndicList" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.iqp.op.iqpbksyndic.QueryIqpBksyndicListOp"/>
+			<transition dest="queryListRes"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="queryListRes" url="biz01line/iqp/IqpBksyndic/queryIqpBksyndicList.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 获取新增页面 -->
+	<action id="getIqpBksyndicAddPage" type="normal" checkSession="true" >
+		<jspView id="queryListRes" url="biz01line/iqp/IqpBksyndic/addIqpBksyndicRecord.jsp" />
+	</action>
+	
+	<!-- 新增信息 -->
+	<action id="addIqpBksyndicRecord" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.iqp.op.iqpbksyndic.AddIqpBksyndicRecordOp"/>
+			<transition dest="queryListRes"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="queryListRes" url="biz01line/iqp/IqpBksyndic/updateIqpBksyndicRecord.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 获得编辑页面 -->
+	<action id="getIqpBksyndicUpdatePage" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation updateCheck="false" class="com.yucheng.cmis.biz01line.iqp.op.iqpbksyndic.QueryIqpBksyndicDetailOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="biz01line/iqp/IqpBksyndic/updateIqpBksyndicRecord.jsp" />
+		</outputViews>
+	</action>
+
+	<!-- 修改信息 -->
+	<action id="updateIqpBksyndicRecord" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.iqp.op.iqpbksyndic.UpdateIqpBksyndicRecordOp"/>
+			<transition dest="queryListRes"/>
+		</flowInvoker>
+		<outputViews>
+			<view id="queryListRes" class="com.yucheng.cmis.view.JSONView">
+				<output class="com.ecc.emp.data.KeyedCollection">
+					<field id="flag" class="com.ecc.emp.data.DataField" />
+				</output>
+			</view>
+		</outputViews>
+	</action>
+	
+	<!-- 删除信息 -->
+	<action id="deleteIqpBksyndicRecord" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.iqp.op.iqpbksyndic.DeleteIqpBksyndicRecordOp"/>
+			<transition dest="queryListRes"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="queryListRes" url="operationResult.jsp?url=queryIqpBksyndicList.do" />
+		</outputViews>
+	</action>
+	
+	<!-- 查询详情 -->
+	<action id="queryIqpBksyndicDetail" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.iqp.op.iqpbksyndic.QueryIqpBksyndicDetailOp"/>
+			<transition dest="queryDetailRes"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="queryDetailRes" url="biz01line/iqp/IqpBksyndic/queryIqpBksyndicDetail.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 分页查询记录列表 -->
+	<action id="pageIqpBksyndicQuery" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.iqp.op.iqpbksyndic.QueryIqpBksyndicListOp"/>
+			<transition dest="queryListRes"/>
+		</flowInvoker>
+		<outputViews>
+			<jsonView class="com.yucheng.cmis.view.JSONView" id="queryListRes">
+				<output>
+					<iColl id="IqpBksyndicList">
+						<kColl>
+							<field id="bank_syndic_type" />
+							<field id="agent_org_flag" />
+							<field id="bank_syndic_amt" />
+							<field id="agent_rate" />
+							<field id="amt_arra_rate" />
+						</kColl>
+					</iColl>
+					<kColl id="pageInfo">
+						<field id="currentPage" />
+						<field id="maxLine" />
+						<field id="recordSize" />
+					</kColl>
+					
+				</output>
+			</jsonView>
+		</outputViews>
+	</action>
+	
+	
+	<!--*************************子表【银团信息】*******************************-->
+	
+	<!-- 作为子表的列表页面 -->
+	<action id="queryIqpBksyndicIqpBksyndicInfoList" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.iqp.op.iqpbksyndic.iqpbksyndicinfo.QueryIqpBksyndicIqpBksyndicInfoListOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="biz01line/iqp/IqpBksyndic/IqpBksyndicInfo/queryIqpBksyndicIqpBksyndicInfoList.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 获得作为子表的新增页面 -->
+	<action id="getIqpBksyndicIqpBksyndicInfoAddPage" type="normal" checkSession="true" >
+		<jspView id="addPage" url="biz01line/iqp/IqpBksyndic/IqpBksyndicInfo/addIqpBksyndicIqpBksyndicInfoRecord.jsp"/>
+	</action>
+	
+	<!-- 获得子表编辑页面 -->
+	<action id="getIqpBksyndicIqpBksyndicInfoUpdatePage" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.iqp.op.iqpbksyndic.iqpbksyndicinfo.QueryIqpBksyndicIqpBksyndicInfoDetailOp"/>
+			<transition dest="updatePage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="updatePage" url="biz01line/iqp/IqpBksyndic/IqpBksyndicInfo/updateIqpBksyndicIqpBksyndicInfoRecord.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 子表详情查询 -->
+	<action id="queryIqpBksyndicIqpBksyndicInfoDetail" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.iqp.op.iqpbksyndic.iqpbksyndicinfo.QueryIqpBksyndicIqpBksyndicInfoDetailOp"/>
+			<transition dest="queryDetail"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="queryDetail" url="biz01line/iqp/IqpBksyndic/IqpBksyndicInfo/queryIqpBksyndicIqpBksyndicInfoDetail.jsp"/>
+		</outputViews>	
+	</action>
+	
+	<!-- 子表新增记录 -->
+	<action id="addIqpBksyndicIqpBksyndicInfoRecord" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.iqp.op.iqpbksyndic.iqpbksyndicinfo.AddIqpBksyndicIqpBksyndicInfoRecordOp"/>
+			<transition dest="addRecordRes"/>
+		</flowInvoker>
+		<outputViews>
+			<view id="addRecordRes" class="com.yucheng.cmis.view.JSONView">
+				<output class="com.ecc.emp.data.KeyedCollection">
+					<field id="flag" class="com.ecc.emp.data.DataField" />
+					<field id="message" class="com.ecc.emp.data.DataField" />
+				</output>
+			</view>
+		</outputViews>
+	</action>
+	
+	<!-- 子表更新记录 -->
+	<action id="updateIqpBksyndicIqpBksyndicInfoRecord" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.iqp.op.iqpbksyndic.iqpbksyndicinfo.UpdateIqpBksyndicIqpBksyndicInfoRecordOp"/>
+			<transition dest="updateRecordRes"/>
+		</flowInvoker>
+		<outputViews>
+			<view id="updateRecordRes" class="com.yucheng.cmis.view.JSONView">
+				<output class="com.ecc.emp.data.KeyedCollection">
+					<field id="flag" class="com.ecc.emp.data.DataField" />
+					<field id="message" class="com.ecc.emp.data.DataField" />
+				</output>
+			</view>
+		</outputViews>
+	</action>
+	
+	<!-- 新增检查比例 -->
+	<action id="checkIqpBksyndicIqpBksyndicInfo" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.iqp.op.iqpbksyndic.iqpbksyndicinfo.CheckIqpBksyndicIqpBksyndicInfoOp"/>
+			<transition dest="queryListRes"/>
+		</flowInvoker>
+		<outputViews>
+			<view id="queryListRes" class="com.yucheng.cmis.view.JSONView">
+				<output class="com.ecc.emp.data.KeyedCollection">
+					<field id="flag" class="com.ecc.emp.data.DataField" />
+				</output>
+			</view> 
+		</outputViews>
+	</action>
+	
+	<!-- 修改检查比例 -->
+	<action id="upCheckIqpBksyndicIqpBksyndicInfo" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.iqp.op.iqpbksyndic.iqpbksyndicinfo.UpCheckIqpBksyndicIqpBksyndicInfoOp"/>
+			<transition dest="queryListRes"/>
+		</flowInvoker>
+		<outputViews>
+			<view id="queryListRes" class="com.yucheng.cmis.view.JSONView">
+				<output class="com.ecc.emp.data.KeyedCollection">
+					<field id="flag" class="com.ecc.emp.data.DataField" />
+				</output>
+			</view> 
+		</outputViews>
+	</action>
+	
+	<!-- 子表删除记录 -->
+	<action id="deleteIqpBksyndicIqpBksyndicInfoRecord" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.iqp.op.iqpbksyndic.iqpbksyndicinfo.DeleteIqpBksyndicIqpBksyndicInfoRecordOp"/>
+			<transition dest="deleteRecordRes"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="deleteRecordRes" url="refreshList.jsp?method=refreshIqpBksyndicInfo()"/>    
+		</outputViews>
+	</action>
+	
+	<!-- 分页查询记录列表 -->
+		<action id="pageIqpBksyndicIqpBksyndicInfoQuery" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.iqp.op.iqpbksyndic.iqpbksyndicinfo.QueryIqpBksyndicIqpBksyndicInfoListOp"/>
+			<transition dest="queryListRes"/>
+		</flowInvoker>
+		<outputViews>
+			<jsonView class="com.yucheng.cmis.view.JSONView" id="queryListRes">
+				<output>
+					<iColl id="IqpBksyndicInfoList">
+						<kColl>
+							<field id="prtcpt_org_no" />
+							<field id="prtcpt_org_name" />
+							<field id="prtcpt_role" />
+							<field id="prtcpt_amt_rate" />
+							<field id="prtcpt_curr" />
+							<field id="prtcpt_amt" />
+						</kColl>
+					</iColl>
+					<kColl id="pageInfo">
+						<field id="currentPage" />
+						<field id="maxLine" />
+						<field id="recordSize" />
+					</kColl>
+				</output>
+			</jsonView>
+		</outputViews>
+	</action>	
+	
+</actionDefines>

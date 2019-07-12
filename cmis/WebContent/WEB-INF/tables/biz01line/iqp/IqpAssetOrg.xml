@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<IqpAssetOrg.xml>
+	<TableModel id="IqpAssetOrg" cnname="参与机构信息" dbTableName="iqp_asset_org">
+		<Field id="asset_org_id" isPK="true" columnName="asset_org_id" cnname="机构代码" length="40" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="asset_org_name" columnName="asset_org_name" cnname="机构名称" length="80" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="org_nature" columnName="org_nature" cnname="机构性质" length="2" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="org_address" columnName="org_address" cnname="注册地址" length="200" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="org_repr" columnName="org_repr" cnname="法人代表" length="40" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="pcode" columnName="pcode" cnname="邮政编码" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="phone" columnName="phone" cnname="联系电话" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="fax" columnName="fax" cnname="传真" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="acct_no" columnName="acct_no" cnname="账号" length="40" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="acct_name" columnName="acct_name" cnname="账户名" length="80" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="acctsvcr_no" columnName="acctsvcr_no" cnname="开户行行号" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="acctsvcr_name" columnName="acctsvcr_name" cnname="开户行行名" length="100" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="input_id" columnName="input_id" cnname="登记人" length="40" JDBCType="VARCHAR2"/>
+		<Field id="input_br_id" columnName="input_br_id" cnname="登记机构" length="20" JDBCType="VARCHAR2"/>
+		<Field id="input_date" columnName="input_date" cnname="登记日期" length="10" JDBCType="VARCHAR2"/>
+	</TableModel>
+</IqpAssetOrg.xml>

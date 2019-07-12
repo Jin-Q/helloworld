@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<QryParam.xml>
+	<TableModel id="QryParam" cnname="查询条件参数配置表" dbTableName="qry_param">
+		<Field id="temp_no" isPK="true" columnName="temp_no" cnname="查询模板编号" length="20" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="param_no" isPK="true" columnName="param_no" cnname="条件参数编号" length="20" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="cnname" columnName="cnname" cnname="参数中文名称" length="40" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="enname" columnName="enname" cnname="参数英文名称" length="40" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="param_type" columnName="param_type" cnname="条件参数类型" length="2" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="param_dic_no" columnName="param_dic_no" cnname="参数选项字典编号" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="orderid" columnName="orderid" cnname="排序字段" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+	</TableModel>
+</QryParam.xml>

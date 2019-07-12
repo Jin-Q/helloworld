@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<CtrNumberImple.xml>
+	<TableModel id="CtrNumberImple" cnname="合同评分配置表" dbTableName="ctr_number_imple">
+		<Field id="score_id" isPK="true" columnName="score_id" cnname="主键" length="40" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="score_type" columnName="score_type" cnname="评分类型" length="5" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="score_code" columnName="score_code" cnname="评分字段" length="10" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="score_name" columnName="score_name" cnname="评分字段名称" length="300" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="auto_score" columnName="auto_score" cnname="得分" length="16" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="update_date" columnName="update_date" cnname="修改日期" length="10" JDBCType="VARCHAR2"/>
+		<Field id="input_date" columnName="input_date" cnname="登记日期" length="10" JDBCType="VARCHAR2"/>
+	</TableModel>
+</CtrNumberImple.xml>

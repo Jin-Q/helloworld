@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actionDefines>
+	<classMap>
+		<map id="action" class="com.yucheng.cmis.ad.mvc.ADRequestController"/>
+		<map id="flowInvoker" class="com.yucheng.cmis.ad.mvc.ADFlowInvoker"/>
+		<map id="outputViews" class="java.util.HashMap"/>
+		<map id="output" class="com.ecc.emp.data.KeyedCollection"/>
+		<map id="kColl" class="com.ecc.emp.data.KeyedCollection"/>
+		<map id="iColl" class="com.ecc.emp.data.IndexedCollection"/>
+		<map id="field" class="com.ecc.emp.data.DataField"/>
+	</classMap>
+	<!-- 贷款指标分析　-->
+	
+	<!-- 1.贷款余额begin -->
+	<!-- 贷款余额 -->
+	<action id="getDthLoanBalanceMainPage" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.dth.op.dthLoanSubjectAnaly.GetDthLoanBalanceMainPageOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="biz01line/dth/dthLoanSubjectAnaly/getDthLoanBalanceMainPage.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 贷款余额弹出明细 -->
+	<action id="getDthLoanBalanceDetailPage" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.dth.op.dthLoanSubjectAnaly.GetDthLoanBalanceDetailPageOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="biz01line/dth/dthLoanSubjectAnaly/getDthLoanBalanceDetailPage.jsp" />
+		</outputViews>
+	</action>
+	<action id="pageDthLoanBalanceDetail" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.dth.op.dthLoanSubjectAnaly.GetDthLoanBalanceDetailPageOp"/>
+			<transition dest="queryListRes"/>
+		</flowInvoker>
+		<outputViews>
+			<jsonView class="com.yucheng.cmis.view.JSONView" id="queryListRes">
+				<output>
+					<iColl id="LoanBalanceDetail">
+						<kColl>
+						</kColl>
+					</iColl>
+					<kColl id="pageInfo">
+						<field id="currentPage" />
+						<field id="maxLine" />
+						<field id="recordSize" />
+					</kColl>
+				</output>
+			</jsonView>
+		</outputViews>
+	</action>
+	
+	<!-- 1.贷款余额end -->
+	
+	<!-- 2.不良率begin -->
+	<action id="getDthBadRateMainPage" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.dth.op.dthLoanSubjectAnaly.GetDthBadRateMainPageOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="biz01line/dth/dthLoanSubjectAnaly/getDthBadRateMainPage.jsp" />
+		</outputViews>
+	</action>
+	<!-- 2.不良率end -->
+	
+	<!-- 3.机构不良贷款分析begin -->
+	<!-- 机构不良贷款分析 -->
+	<action id="getDthOrgBadAnalyMainPage" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.dth.op.dthLoanSubjectAnaly.GetDthOrgBadAnalyMainPageOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="biz01line/dth/dthLoanSubjectAnaly/getDthOrgBadAnalyMainPage.jsp" />
+		</outputViews>
+	</action>
+	<!-- 3.机构不良贷款分析end -->
+	
+	<!-- 4.个贷不良贷款分析begin -->
+	<!-- 个贷不良贷款分析 -->
+	<action id="getDthIndivBadAnalyMainPage" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.dth.op.dthLoanSubjectAnaly.GetDthIndivBadAnalyMainPageOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="biz01line/dth/dthLoanSubjectAnaly/getDthIndivBadAnalyMainPage.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 个贷不良贷款分析弹出明细 -->
+	<action id="getDthIndivBadAnalyDetailPage" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.dth.op.dthLoanSubjectAnaly.GetDthIndivBadAnalyDetailPageOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="biz01line/dth/dthLoanSubjectAnaly/getDthIndivBadAnalyDetailPage.jsp" />
+		</outputViews>
+	</action>
+	<action id="pageDthIndivBadAnalyDetail" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.dth.op.dthLoanSubjectAnaly.GetDthIndivBadAnalyDetailPageOp"/>
+			<transition dest="queryListRes"/>
+		</flowInvoker>
+		<outputViews>
+			<jsonView class="com.yucheng.cmis.view.JSONView" id="queryListRes">
+				<output>
+					<iColl id="IndivBadAnalyDetail">
+						<kColl>
+						</kColl>
+					</iColl>
+					<kColl id="pageInfo">
+						<field id="currentPage" />
+						<field id="maxLine" />
+						<field id="recordSize" />
+					</kColl>
+				</output>
+			</jsonView>
+		</outputViews>
+	</action>
+	<!-- 4.个贷不良贷款分析end -->
+	
+	<!-- 5.贷款余额对比begin -->
+	<!-- 贷款余额对比 -->
+	<action id="getDthLoanBalanceAnalyMainPage" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.dth.op.dthLoanSubjectAnaly.GetDthLoanBalanceAnalyMainPageOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="biz01line/dth/dthLoanSubjectAnaly/getDthLoanBalanceAnalyMainPage.jsp" />
+		</outputViews>
+	</action>
+	<!-- 5.贷款余额对比end -->
+	
+	<!-- 6.贷款投向begin -->
+	<!-- 贷款投向 -->
+	<action id="getDthLoanDirectionMainPage" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.dth.op.dthLoanSubjectAnaly.GetDthLoanDirectionMainPageOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="biz01line/dth/dthLoanSubjectAnaly/getDthLoanDirectionMainPage.jsp" />
+		</outputViews>
+	</action>
+	<!-- 6.贷款投向end -->
+	
+	<!-- 7.贷款结构begin -->
+	<!-- 贷款结构 -->
+	<action id="getDthloanStruMainPage" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.dth.op.dthLoanSubjectAnaly.GetDthloanStruMainPageOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="biz01line/dth/dthLoanSubjectAnaly/getDthloanStruMainPage.jsp" />
+		</outputViews>
+	</action>
+	<!-- 7.贷款结构end -->
+	
+</actionDefines>

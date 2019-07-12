@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<CusGoverFinTerBill.xml>
+	<TableModel id="CusGoverFinTerBill" cnname="政府融资平台借据信息" dbTableName="Cus_gover_fin_ter_bill">
+		<Field id="serno" isPK="true" columnName="serno" cnname="申请流水号" length="40" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="cus_id" columnName="cus_id" cnname="客户号" length="30" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="bill_no" columnName="bill_no" cnname="借据编号" length="30" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="loan_amount" columnName="loan_amount" cnname="借款金额" length="16" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="loan_balance" columnName="loan_balance" cnname="借款余额" length="16" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="loan_type" columnName="loan_type" cnname="贷款类型" length="10" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="loan_distr_term" columnName="loan_distr_term" cnname="贷款发放期限(月)" length="10" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="repayment_mode" columnName="repayment_mode" cnname="还款方式" length="5" JDBCType="CHAR" canBeNull="true"/>
+		<Field id="rfn_ori" columnName="rfn_ori" cnname="还款来源" length="5" JDBCType="CHAR" canBeNull="true"/>
+		<Field id="loan_direction" columnName="loan_direction" cnname="贷款投向" length="5" JDBCType="CHAR" canBeNull="true"/>
+		<Field id="loan_direction_name" columnName="loan_direction_name" cnname="贷款投向名称" length="60" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="gover_fin_ter_type" columnName="gover_fin_ter_type" cnname="政府融资投向类型" length="5" JDBCType="CHAR" canBeNull="true"/>
+		<Field id="sort_disp_status" columnName="sort_disp_status" cnname="当期分类处置情况" length="5" JDBCType="CHAR" canBeNull="true"/>
+		<Field id="manager_br_id" columnName="manager_br_id" cnname="管理机构" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="manager_id" columnName="manager_id" cnname="责任人" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="input_id" columnName="input_id" cnname="登记人" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="input_date" columnName="input_date" cnname="登记日期" length="10" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="input_br_id" columnName="input_br_id" cnname="登记机构" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="approve_status" columnName="approve_status" cnname="审批状态" length="3" JDBCType="CHAR" canBeNull="true"/>
+	</TableModel>
+</CusGoverFinTerBill.xml>

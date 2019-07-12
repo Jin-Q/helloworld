@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<WfiApproveCount.xml>
+	<TableModel id="WfiApproveCount" cnname="流程审批计数" dbTableName="wfi_approve_count">
+		<Field id="appl_type" columnName="appl_type" cnname="流程申请类型" length="8" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="nodeid" columnName="nodeid" cnname="节点ID" length="32" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="orgid" columnName="orgid" cnname="业务管理机构" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="actorno" columnName="actorno" cnname="用户ID" length="20" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="approve_date" columnName="approve_date" cnname="审批日期" length="10" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="approve_qnt" columnName="approve_qnt" cnname="审批数量" length="38" JDBCType="NUMBER" canBeNull="false"/>
+		<Field id="status" columnName="status" cnname="生效标志  0-不启用  1-启用" length="4" JDBCType="VARCHAR2" canBeNull="false"/>
+	</TableModel>
+</WfiApproveCount.xml>

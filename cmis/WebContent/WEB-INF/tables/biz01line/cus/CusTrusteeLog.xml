@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<CusTrusteeLog.xml>
+	<TableModel id="CusTrusteeLog" cnname="客户托管日志" dbTableName="cus_trustee_log">
+		<Field id="serno" isPK="true" columnName="serno" cnname="申请流水号" length="40" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="org_type" columnName="org_type" cnname="托管机构与委托机构关系" length="2" JDBCType="CHAR" canBeNull="false"/>
+		<Field id="trustee_scope" columnName="trustee_scope" cnname="托管范围" length="1" JDBCType="CHAR" canBeNull="false"/>
+		<Field id="area_code" columnName="area_code" cnname="区域编码" length="12" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="area_name" columnName="area_name" cnname="区域名称" length="100" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="consignor_id" columnName="consignor_id" cnname="委托人" length="20" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="consignor_br_id" columnName="consignor_br_id" cnname="委托机构" length="20" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="supervise_id" columnName="supervise_id" cnname="监交人" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="supervise_br_id" columnName="supervise_br_id" cnname="监交机构" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="trustee_id" columnName="trustee_id" cnname="托管人" length="20" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="trustee_br_id" columnName="trustee_br_id" cnname="托管机构" length="20" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="trustee_detail" columnName="trustee_detail" cnname="托管说明" length="250" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="trustee_date" columnName="trustee_date" cnname="托管日期" length="10" JDBCType="CHAR" canBeNull="false"/>
+		<Field id="retract_date" columnName="retract_date" cnname="收回日期" length="10" JDBCType="CHAR" canBeNull="false"/>
+	</TableModel>
+</CusTrusteeLog.xml>

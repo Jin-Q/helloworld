@@ -1,0 +1,72 @@
+package com.yucheng.cmis.biz01line.fnc.op.fncconfstyles;
+
+
+import java.sql.Connection;
+
+import com.ecc.emp.core.Context;
+import com.ecc.emp.core.EMPException;
+import com.ecc.emp.data.KeyedCollection;
+import com.ecc.emp.log.EMPLog;
+import com.yucheng.cmis.base.CMISConstance;
+import com.yucheng.cmis.base.CMISException;
+import com.yucheng.cmis.biz01line.fnc.config.component.FncConfStylesComponent;
+import com.yucheng.cmis.biz01line.fnc.config.domain.FncConfStyles;
+import com.yucheng.cmis.log.CMISLog;
+import com.yucheng.cmis.message.CMISMessageManager;
+import com.yucheng.cmis.operation.CMISOperation;
+import com.yucheng.cmis.pub.CMISComponentFactory;
+import com.yucheng.cmis.pub.CMISMessage;
+import com.yucheng.cmis.pub.ComponentHelper;
+import com.yucheng.cmis.pub.PUBConstant;
+
+public class AddFncConfStylesRecordOp extends CMISOperation {
+	
+	
+	/**
+	 * ҵ���߼�ִ�еľ���ʵ�ַ���
+	 */
+	public String doExecute(Context context) throws EMPException {
+		String flagInfo = CMISMessage.DEFEAT;
+		Connection connection = null;
+		try{
+			FncConfStyles domain = new FncConfStyles();//�������
+			connection = this.getConnection(context);
+			//����ҵ������                  
+			FncConfStylesComponent thisComponent = (FncConfStylesComponent)CMISComponentFactory
+			                                                                       
+					.getComponentFactoryInstance().getComponentInstance(PUBConstant.FNCCONFSTYLES,context, connection);
+			//thisComponent.setContext(context);
+			
+			/*
+			 * ��contextȡ����ݶ���
+			 */
+			
+			KeyedCollection kColl = (KeyedCollection)context.getDataElement(PUBConstant.FNCCONFSTYLES);
+			ComponentHelper componetHelper = new ComponentHelper();
+			domain = (FncConfStyles)componetHelper.kcolTOdomain(domain, kColl);
+
+			
+			//����һ���¼��Ϣ
+			flagInfo = thisComponent.addFncConfStyles(domain);
+			
+			//ʧ���׳������ʾ��Ϣ
+			if(flagInfo.equals(CMISMessage.DEFEAT)){
+				throw new CMISException(CMISMessage.MESSAGEDEFAULT,"������Ϣʧ�ܣ������²���!");
+			}
+			
+		}catch(CMISException e){
+			e.printStackTrace();
+			EMPLog.log(this.getClass().getName(), EMPLog.INFO, 0, e.toString());
+			String message = CMISMessageManager.getMessage(e);
+			CMISLog.log(context, CMISConstance.CMIS_PERMISSION, CMISLog.ERROR, 0, message);
+			throw e;
+		} catch(Exception e){
+	                throw new EMPException(e);
+	        } finally {
+	                if (connection != null)
+	                        this.releaseConnection(context, connection);
+	        }
+		return flagInfo;
+	}
+	
+}

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<AccAccp.xml>
+	<TableModel id="AccAccp" cnname="银承台帐" dbTableName="acc_accp">
+		<Field id="serno" isPK="false" columnName="serno" cnname="业务编号" length="40" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="acc_day" columnName="acc_day" cnname="日期" length="5" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="acc_year" columnName="acc_year" cnname="年份" length="5" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="acc_mon" columnName="acc_mon" cnname="月份" length="5" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="prd_id" columnName="prd_id" cnname="产品编号" length="40" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="cont_no" columnName="cont_no" cnname="合同编号" length="40" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="bill_no" isPK="true" columnName="bill_no" cnname="借据编号" length="40" JDBCType="VARCHAR2" canBeNull="false"/>
+		<Field id="bill_type" columnName="bill_type" cnname="票据类型" length="5" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="porder_no" columnName="porder_no" cnname="汇票号码" length="40" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="utakeover_sign" columnName="utakeover_sign" cnname="不得转让标记" length="5" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="is_ebill" columnName="is_ebill" cnname="是否电子票据" length="1" JDBCType="CHAR" canBeNull="true"/>
+		<Field id="daorg_cusid" columnName="daorg_cusid" cnname="出票人客户码" length="40" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="daorg_cus_name" columnName="daorg_cus_name" cnname="出票人名称" length="80" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="drwr_org_code" columnName="drwr_org_code" cnname="出票人组织机构代码" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="daorg_no" columnName="daorg_no" cnname="出票人开户行行号" length="40" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="daorg_name" columnName="daorg_name" cnname="出票人开户行行名" length="100" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="daorg_acct" columnName="daorg_acct" cnname="出票人开户行账号" length="40" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="aorg_type" columnName="aorg_type" cnname="承兑行类型" length="5" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="aorg_no" columnName="aorg_no" cnname="承兑行行号" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="aorg_name" columnName="aorg_name" cnname="承兑行名称" length="100" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="pyee_name" columnName="pyee_name" cnname="收款人名称" length="100" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="paorg_no" columnName="paorg_no" cnname="收款人开户行行号" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="paorg_name" columnName="paorg_name" cnname="收款人开户行行名" length="100" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="paorg_acct_no" columnName="paorg_acct_no" cnname="收款人账号" length="40" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="exchange_rate" columnName="exchange_rate" cnname="汇率" length="16" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="cur_type" columnName="cur_type" cnname="币种" length="5" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="drft_amt" columnName="drft_amt" cnname="票面金额" length="16" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="bill_isse_date" columnName="bill_isse_date" cnname="签发日期" length="10" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="isse_date" columnName="isse_date" cnname="出票日期" length="10" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="porder_end_date" columnName="porder_end_date" cnname="到期日期" length="10" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="pad_rate" columnName="pad_rate" cnname="垫款利率" length="16" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="pad_amt" columnName="pad_amt" cnname="垫款金额" length="16" JDBCType="NUMBER" canBeNull="true"/>
+		<Field id="paydate" columnName="paydate" cnname="转垫款日期" length="10" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="separate_date" columnName="separate_date" cnname="清分日期" length="10" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="writeoff_date" columnName="writeoff_date" cnname="核销日期" length="10" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="five_class" columnName="five_class" cnname="五级分类" length="10" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="twelve_cls_flg" columnName="twelve_cls_flg" cnname="十二级分类标志" length="5" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="manager_br_id" columnName="manager_br_id" cnname="管理机构" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="fina_br_id" columnName="fina_br_id" cnname="账务机构" length="20" JDBCType="VARCHAR2" canBeNull="true"/>
+		<Field id="accp_status" columnName="accp_status" cnname="台帐状态" length="5" JDBCType="VARCHAR2" canBeNull="true"/>
+	    <Field id="settl_date" columnName="settl_date" cnname="结清日期" length="10" JDBCType="VARCHAR2"/>
+	    <Field id="twelve_class_time" columnName="twelve_class_time" cnname="十二级分类时间" length="10" JDBCType="VARCHAR2"/>
+	</TableModel>
+</AccAccp.xml>

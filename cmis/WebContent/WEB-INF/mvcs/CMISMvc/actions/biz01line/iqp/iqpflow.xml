@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<actionDefines>
+	<classMap>
+		<map id="action" class="com.yucheng.cmis.ad.mvc.ADRequestController"/>
+		<map id="flowInvoker" class="com.yucheng.cmis.ad.mvc.ADFlowInvoker"/>
+		<map id="outputViews" class="java.util.HashMap"/>
+		<map id="output" class="com.ecc.emp.data.KeyedCollection"/>
+		<map id="kColl" class="com.ecc.emp.data.KeyedCollection"/>
+		<map id="iColl" class="com.ecc.emp.data.IndexedCollection"/>
+		<map id="field" class="com.ecc.emp.data.DataField"/>
+	</classMap>
+	
+	<!-- 显示流程审批历史 -->
+	<action id="getViewFlowDetail" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.iqp.op.iqpFlow.QueryIqpFlowOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="biz01line/iqp/IqpFlow/viewFlowDetail.jsp" />
+		</outputViews>
+	</action>
+	
+	<!-- 显示业务流程审批历史 -->
+	<action id="getIqpFlowHis" type="normal" checkSession="true" >
+		<jspView id="retPage" url="biz01line/iqp/IqpFlow/iqpFlowHis.jsp" />
+	</action>
+	
+	<!-- 显示授信流程审批历史 -->
+	<action id="getLmtFlowHis" type="normal" checkSession="true" >
+		<jspView id="retPage" url="biz01line/iqp/IqpFlow/lmtFlowHis.jsp" />
+	</action>
+	
+	<!-- 第三方获取流程意见历史 -->
+	<action id="getCreditWFComment" type="normal" checkSession="true" >
+		<flowInvoker>
+			<operation class="com.yucheng.cmis.biz01line.iqp.op.iqpFlow.GetCreditWFCommentOp"/>
+			<transition dest="retPage"/>
+		</flowInvoker>
+		<outputViews>
+			<jspView id="retPage" url="biz01line/iqp/IqpFlow/wfCreditCommentPage.jsp" />
+		</outputViews>
+	</action>
+	
+</actionDefines>

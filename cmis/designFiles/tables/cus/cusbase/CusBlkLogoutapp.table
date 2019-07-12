@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<CusBlkLogoutapp.xml>
+	<TableModel id="CusBlkLogoutapp" pageSize="15" cnname="黑名单客户注销申请" isPaged="true" dbTableName="cus_blk_logoutapp">
+		<TableInfo/>
+		<Field id="serno" isPK="true" columnName="serno" cnname="业务流水号" length="40" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="black_date" columnName="black_date" cnname="进入日期" length="10" JSPTag="date" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="cus_name" columnName="cus_name" cnname="客户名称" length="60" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="cert_code" columnName="cert_code" cnname="证件号码" length="20" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="cert_type" dictname="STD_ZB_CERT_TYP" columnName="cert_type" cnname="证件类型" length="3" JSPTag="select" canBeNull="false" JDBCType="CHAR"/>
+		<Field id="black_type" dictname="STD_ZB_EVENT_TYP" columnName="black_type" cnname="黑名单类型" length="2" JSPTag="select" canBeNull="false" JDBCType="CHAR"/>
+		<Field id="black_level" dictname="STD_ZB_BLACKLIST_TYP" columnName="black_level" cnname="黑名单级别" length="1" JSPTag="select" canBeNull="true" JDBCType="CHAR"/>
+		<Field id="legal_name" columnName="legal_name" cnname="法定代表人" length="30" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="legal_phone" columnName="legal_phone" cnname="联系电话" length="35" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="legal_addr" columnName="legal_addr" cnname="通信地址" length="60" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="black_reason" columnName="black_reason" cnname="进入黑名单原因" length="250" JSPTag="textarea" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="logout_reason" columnName="logout_reason" cnname="注销原因" length="250" JSPTag="textarea" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="remarks" columnName="remarks" cnname="备注" length="250" JSPTag="textarea" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="approve_status" dictname="WF_APP_STATUS" columnName="approve_status" cnname="审批状态" length="3" JSPTag="select" canBeNull="false" JDBCType="CHAR"/>
+		<Field id="input_id" columnName="input_id" cnname="登记(受理人)" length="20" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="input_br_id" columnName="input_br_id" cnname="受理机构" length="20" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="input_date" columnName="input_date" cnname="受理日期" length="10" JSPTag="date" canBeNull="false" JDBCType="VARCHAR2"/>
+		<OrderFields>serno[desc];</OrderFields>
+		<FilterFields>serno;cus_name;cert_code;cert_type;black_level;black_date;input_br_id;input_id;approve_status;</FilterFields>
+		<ConditionFields>serno;cus_name;cert_code;cert_type;*input_date;</ConditionFields>
+		<Field id="cus_id" columnName="cus_id" cnname="客户编号" length="30" JSPTag="text" JDBCType="VARCHAR2"/>
+		<Field id="manager_br_id" columnName="manager_br_id" cnname="管理机构" length="20" JSPTag="text" JDBCType="VARCHAR2"/>
+		<Field id="manager_id" columnName="manager_id" cnname="责任人" length="20" JSPTag="text" JDBCType="VARCHAR2"/>
+		<Field id="street" columnName="street" cnname="街道" length="250" JSPTag="text" JDBCType="VARCHAR2"/>
+	</TableModel>
+</CusBlkLogoutapp.xml>

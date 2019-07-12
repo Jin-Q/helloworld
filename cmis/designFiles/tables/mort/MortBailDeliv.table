@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<MortBailDeliv.xml>
+	<TableModel id="MortBailDeliv" pageSize="10" cnname="保证金提货" isPaged="true" dbTableName="mort_bail_deliv">
+		<TableInfo/>
+		<Field id="serno" isPK="true" columnName="serno" cnname="业务编号" length="60" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="cus_id" columnName="cus_id" cnname="出质人客户编号" length="40" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="guaranty_no" columnName="guaranty_no" cnname="押品编号" length="40" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="oversee_agr_no" columnName="oversee_agr_no" cnname="监管协议编号" length="40" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="storage_total" dataType="Currency" columnName="storage_total" cnname="库存总价值" length="20" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="deliv_total" dataType="Currency" columnName="deliv_total" cnname="提货总价值" length="20" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="surplus_total" dataType="Currency" columnName="surplus_total" cnname="剩余总价值" length="20" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="tally_date" columnName="tally_date" cnname="记账日期" length="10" JSPTag="date" canBeNull="true" JDBCType="CHAR"/>
+		<Field id="memo" columnName="memo" cnname="备注" length="200" JSPTag="textarea" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="status" dictname="STD_ZB_TALLY_STATUS" columnName="status" cnname="状态" length="3" JSPTag="select" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="input_id" columnName="input_id" cnname="登记人" length="20" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="input_br_id" columnName="input_br_id" cnname="登记机构" length="20" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="input_date" columnName="input_date" cnname="登记日期" length="10" JSPTag="date" canBeNull="true" JDBCType="CHAR"/>
+		<Field id="repay_receipt_type" dictname="STD_REPAY_LIST_TYPE" columnName="repay_receipt_type" cnname="还款凭证类型" length="5" JSPTag="select" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="receipt_serno" columnName="receipt_serno" cnname="凭证流水号" length="40" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="repay_amt" dataType="Currency" columnName="repay_amt" cnname="还款金额" length="20" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<OrderFields>serno[desc];</OrderFields>
+		<ConditionFields>cus_id;guaranty_no;oversee_agr_no;</ConditionFields>
+		<FilterFields>cus_id;guaranty_no;oversee_agr_no;storage_total;status;input_id;</FilterFields>
+		<RecordRestrict query="true" delete="true" update="true"/>
+	</TableModel>
+</MortBailDeliv.xml>

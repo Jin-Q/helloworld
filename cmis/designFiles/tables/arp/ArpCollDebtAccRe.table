@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<ArpCollDebtAccRe.xml>
+	<TableModel id="ArpCollDebtAccRe" cnname="抵债物关联表(台账)" dbTableName="arp_coll_debt_acc_re">
+		<TableInfo/>
+		<Field id="serno" isPK="true" columnName="serno" cnname="业务编号" length="40" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="debt_acc_no" columnName="debt_acc_no" cnname="抵债台账编号" length="40" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="guaranty_no" isPK="true" columnName="guaranty_no" cnname="押品编号" length="40" JSPTag="text" canBeNull="false" JDBCType="VARCHAR2"/>
+		<Field id="debt_in_amt" columnName="debt_in_amt" cnname="抵入金额" length="16" JSPTag="text" canBeNull="true" JDBCType="NUMBER"/>
+		<Field id="status" dictname="STD_ZB_DEBT_RE_STATUS" columnName="status" cnname="状态" length="5" JSPTag="select" canBeNull="true" JDBCType="VARCHAR2"/>
+		<Field id="rel" columnName="rel" cnname="关系类型（1-引入已存在的，2-新增的抵债物）" length="5" JSPTag="text" canBeNull="true" JDBCType="VARCHAR2"/>
+		<OrderFields>serno[desc];guaranty_no[desc];</OrderFields>
+	</TableModel>
+</ArpCollDebtAccRe.xml>

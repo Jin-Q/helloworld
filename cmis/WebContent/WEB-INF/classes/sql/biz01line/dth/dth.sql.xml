@@ -1,0 +1,821 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<S>
+<!--*************************************************** 风险预警begin **************************************************-->
+<!--*************** 1.客户预警begin ****************-->
+
+<!--  存款日均图形-对公客户  -->
+<SQL id="getCusSaveChartF" parameterClass="java.util.HashMap" resultClass="com.ecc.emp.data.KeyedCollection">
+    <SELECT>
+  <![CDATA[
+select  count(*)enname ,ods_amt ,
+ decode(ods_amt,'1','50-100\u4e07','2','100-300\u4e07','3','300-500\u4e07','4','500-1000\u4e07','5','1000-3000\u4e07','6','3000-5000\u4e07','7','5000-8000\u4e07','8','8000\u4e07\u4ee5\u4e0a') cnname
+ from (
+   select cus_id,cust_name,
+   case when (ods_amt between 500000 and 1000000 ) then '1'
+   when (ods_amt between 1000000 and 3000000 ) then '2'
+   when (ods_amt between 3000000 and 5000000 ) then '3'
+   when (ods_amt between 5000000 and 10000000 ) then '4'
+   when (ods_amt between 10000000 and 30000000 ) then '5' 
+   when (ods_amt between 30000000 and 50000000 ) then '6' 
+   when (ods_amt between 50000000 and 80000000 ) then '7' 
+   when (ods_amt > 80000000 ) then '8' end as ods_amt
+   from ( 
+     select cus_id,cust_name,sum(month_real_avg) as ods_amt 
+     from v_ods_cus_avg
+     where cus_type = 'F' 
+     and instr((case when(${br_type} = 'all') then manager_br_id 
+        when(${br_type} = 'sup') then (select to_char(LISTAGG(o.organno,',') within group(order by o.organno)) from s_org o where o.locate like '%'||${organNo}||'%') 
+        else ${organNo} end),manager_br_id) > '0'
+     group by cus_id,cust_name having sum(month_real_avg) >= 500000 
+   )
+ ) group by ods_amt order by ods_amt desc
+  ]]>
+    </SELECT>
+</SQL>
+
+<!--  存款日均图形-个人客户  -->
+<SQL id="getCusSaveChartZ" parameterClass="java.util.HashMap" resultClass="com.ecc.emp.data.KeyedCollection">
+    <SELECT>
+  <![CDATA[
+select count(*)enname ,ods_amt,
+  decode(ods_amt,'1','20-100\u4e07','2','100-300\u4e07','3','300-500\u4e07','4','500-1000\u4e07','5','1000\u4e07\u4ee5\u4e0a') cnname 
+  from (
+    select cus_id,cust_name,  
+    case when (ods_amt between 200000 and 1000000 ) then '1'  
+    when (ods_amt between 1000000 and 3000000 ) then '2'  
+    when (ods_amt between 3000000 and 5000000 ) then '3'  
+    when (ods_amt between 5000000 and 10000000 ) then '4'  
+    when (ods_amt > 10000000 ) then '5' end as ods_amt  
+    from (
+     select cus_id,cust_name,sum(month_real_avg) as ods_amt from v_ods_cus_avg 
+     where cus_type = 'Z' 
+     and instr((case when(${br_type} = 'all') then manager_br_id 
+        when(${br_type} = 'sup') then (select to_char(LISTAGG(o.organno,',') within group(order by o.organno)) from s_org o where o.locate like '%'||${organNo}||'%') 
+        else ${organNo} end),manager_br_id) > '0'
+     group by cus_id,cust_name having sum(month_real_avg) >= 200000
+    )
+  ) group by ods_amt order by ods_amt desc 
+  ]]>
+    </SELECT>
+</SQL>
+
+<!--  我行关联客户图形  -->
+<SQL id="getCusWarnChart" parameterClass="java.util.HashMap" resultClass="com.ecc.emp.data.KeyedCollection">
+    <SELECT>
+  <![CDATA[
+select a.enname, a.cnname, nvl(b.cc, 0) as nums
+  from ((select enname, cnname
+           from s_dic d
+          where opttype = 'STD_ZB_CUS_BANK') a left join
+        (select cus_bank_rel, count(*) cc
+           from (select c.cus_bank_rel, b.cus_id
+                   from cus_base b,
+                        (select c.cus_id, c.cus_bank_rel
+                           from cus_com c
+                          where c.is_ours_rela_cust in ('1', '01', '02')
+                         union
+                         select i.cus_id, i.cus_bank_rel
+                           from cus_indiv i
+                          where i.is_rela_cust = '1') c
+                  where b.cus_id = c.cus_id(+)
+                    and exists (select 1
+                           from acc_loan l
+                          where b.cus_id = l.cus_id
+                            and l.prd_id < '2'
+                            and l.loan_balance > 0
+                            and l.acc_status = '1')
+                 and instr((case when(${br_type} = 'all') then b.main_br_id
+                                                when(${br_type} = 'sup') then
+                                                (select to_char(LISTAGG(o.organno,',') within group(order by o.organno))
+                                                   from s_org o
+                                                  where o.locate like '%' || ${organNo} || '%') else
+                                                ${organNo} end),
+                                               b.main_br_id) > '0'
+                 )
+          group by cus_bank_rel
+          order by cus_bank_rel) b on a.enname = b.cus_bank_rel)
+ order by a.enname
+  ]]>
+    </SELECT>
+</SQL>
+
+<!--*************** 1.客户预警end ****************-->
+
+<!--*************** 2.评级预警begin ****************-->
+
+<!-- 信用等级户数情况图形  -->
+<SQL id="getCcrWarnChart" parameterClass="java.util.HashMap" resultClass="com.ecc.emp.data.KeyedCollection">
+    <SELECT>
+  <![CDATA[
+select count(nums) as nums ,le line_enname,lc line_cnname,ge grade_enname,gc grade_cnname 
+ from 
+   (select * from (select enname as le,cnname as lc from s_dic where opttype = 'STD_ZB_BUSILINE' and enname != 'BL_ALL') l
+   join 
+   (select enname as ge,cnname as gc from s_dic where opttype = 'STD_ZB_CREDIT_GRADE' ) d on 1=1 ) dic 
+ left join 
+   (select  cus_crd_grade ,belg_line ,cus_id,1 as nums 
+   from cus_base 
+   where cus_status = '20' 
+   and instr((case when(${br_type} = 'all') then main_br_id when(${br_type} = 'sup') then
+    (select to_char(LISTAGG(o.organno,',') within group(order by o.organno)) from s_org o where o.locate like '%'||${organNo}||'%') else
+    ${organNo} end),main_br_id) > '0'
+   ) c
+ on dic.le = c.belg_line and dic.ge = c.cus_crd_grade group by le,lc,ge,gc order by ge,le
+  ]]>
+    </SELECT>
+</SQL>
+
+<!-- 评级到期比例图形  -->
+<SQL id="getCcrWarnChartTwo" parameterClass="java.util.HashMap" resultClass="com.ecc.emp.data.KeyedCollection">
+    <SELECT>
+  <![CDATA[
+select count(*)nums,over_status, 
+  decode(over_status,'include','\u8bc4\u7ea7\u672a\u5230\u671f','\u8bc4\u7ea7\u5230\u671f')over_name
+  from (
+   select cus_crd_dt,
+    case when (cus_crd_dt> (select openday from pub_sys_info) ) then 'include'  else 'past' end as over_status
+    from cus_base
+   where cus_status = '20'
+     and cus_crd_grade > '00'
+     and trim(cus_crd_dt) is not null
+     and cus_crd_grade in (select enname from s_dic where opttype = 'STD_ZB_CREDIT_GRADE')
+     and instr((case when(${br_type} = 'all') then main_br_id when(${br_type} = 'sup') then
+      (select to_char(LISTAGG(o.organno,',') within group(order by o.organno)) from s_org o where o.locate like '%'||${organNo}||'%') else
+      ${organNo} end),main_br_id) > '0'
+  )group by over_status 
+  ]]>
+    </SELECT>
+</SQL>
+
+<!--*************** 2.评级预警end ****************-->
+
+<!--*************** 3.授信预警begin ****************-->
+
+<!--  授信用户名及金额统计  -->
+<SQL id="getLmtWarnChartOnetwo" parameterClass="java.util.HashMap" resultClass="com.ecc.emp.data.KeyedCollection">
+    <SELECT>
+  <![CDATA[
+select d.*,nvl(l.nums,0) as nums ,nvl(l.crd_amt/1000000,0) as amts 
+ from 
+   (select * from (select cnname line_cnname,enname line_enname  
+   from s_dic where opttype = 'STD_ZB_BUSILINE' and enname != 'BL_ALL' )a
+   join (select cnname guar_cnname,enname guar_enname  from s_dic 
+   where opttype = 'STD_ZB_ASSURE_MEANS' and enname != 'BL_ALL' and enname not in ('500','510')) on 1=1 ) d  
+ left join 
+   ( select count(1)nums,belg_line ,guar_type ,sum(crd_amt)crd_amt 
+     from (
+       select lmt.cus_id, guar_type, belg_line, sum(crd_amt) crd_amt
+       from lmt_agr_details lmt, cus_base cus , lmt_agr_info a
+       where lmt.cus_id = cus.cus_id and lmt.lmt_status = '10' and lmt.agr_no = a.agr_no
+       and instr((case when(${br_type} = 'all') then manager_br_id 
+        when(${br_type} = 'sup') then (select to_char(LISTAGG(o.organno,',') within group(order by o.organno)) from s_org o where o.locate like '%'||${organNo}||'%') 
+        else ${organNo} end),manager_br_id) > '0'
+       group by guar_type, belg_line, lmt.cus_id
+     ) group by guar_type, belg_line 
+   ) l 
+ on l.belg_line = d.line_enname and l.guar_type = d.guar_enname
+  ]]>
+    </SELECT>
+</SQL>
+
+<!--  授信用户名及金额比例  -->
+<SQL id="getLmtWarnChartThreefour" parameterClass="java.util.HashMap" resultClass="com.ecc.emp.data.KeyedCollection">
+    <SELECT>
+  <![CDATA[
+select nums,crd_amt/1000000 as amts ,line_cnname, line_enname from 
+   (select cnname line_cnname,enname line_enname  from s_dic where opttype = 'STD_ZB_BUSILINE' and enname != 'BL_ALL' ) m  
+ left join 
+   ( select count(1) as nums,belg_line  ,sum(crd_amt)crd_amt  
+     from (
+       select lmt.cus_id, belg_line, sum(crd_amt) crd_amt  
+       from lmt_agr_details lmt, cus_base cus
+       where lmt.cus_id = cus.cus_id and lmt.lmt_status = '10'
+       and instr((case when(${br_type} = 'all') then main_br_id 
+        when(${br_type} = 'sup') then (select to_char(LISTAGG(o.organno,',') within group(order by o.organno)) from s_org o where o.locate like '%'||${organNo}||'%') 
+        else ${organNo} end),main_br_id) > '0'
+       group by  belg_line, lmt.cus_id
+     ) group by  belg_line 
+   ) n 
+ on  m.line_enname = n.belg_line
+  ]]>
+    </SELECT>
+</SQL>
+
+<!-- 既是我行授信又是我行担保户的客户数  -->
+<SQL id="getLmtWarnChartFive" parameterClass="java.util.HashMap" resultClass="com.ecc.emp.data.KeyedCollection">
+    <SELECT>
+  <![CDATA[
+select count(*) nums,belg_line as line_enname,
+  (select cnname from s_dic where enname = belg_line and opttype = 'STD_ZB_BUSILINE') as line_cnname
+  from cus_base b
+ where cus_id in (select cus_id from GRT_GUARANTEE)
+   and cus_id in (select cus_id from lmt_agr_details where lmt_status = '10')
+   and instr((case when(${br_type} = 'all') then main_br_id when(${br_type} = 'sup') then
+      (select to_char(LISTAGG(o.organno,',') within group(order by o.organno)) from s_org o where o.locate like '%'||${organNo}||'%') else
+      ${organNo} end),main_br_id) > '0'
+ group by b.belg_line
+ order by belg_line
+  ]]>
+    </SELECT>
+</SQL>
+
+<!-- 全行授信前十大户  -->
+<SQL id="getLmtWarnChartSix" parameterClass="java.util.HashMap" resultClass="com.ecc.emp.data.KeyedCollection">
+    <SELECT>
+  <![CDATA[
+select *
+  from (select l.cus_id, sum(crd_amt) / 1000000 as lmt_amt, b.cus_name
+          from lmt_agr_details l, cus_base b, lmt_agr_info a
+         where lmt_status = '10'
+           and l.cus_id = b.cus_id(+) and l.agr_no = a.agr_no
+           and instr((case when(${br_type} = 'all') then manager_br_id 
+        when(${br_type} = 'sup') then (select to_char(LISTAGG(o.organno,',') within group(order by o.organno)) from s_org o where o.locate like '%'||${organNo}||'%') 
+        else ${organNo} end),manager_br_id) > '0'
+         group by l.cus_id, b.cus_name
+         order by lmt_amt desc)
+ where rownum < '11'
+  ]]>
+    </SELECT>
+</SQL>
+
+<!-- 全行集团授信前十大户  -->
+<SQL id="getLmtWarnChartSeven" parameterClass="java.util.HashMap" resultClass="com.ecc.emp.data.KeyedCollection">
+    <SELECT>
+  <![CDATA[
+select *
+  from (select l.cus_id, sum(crd_amt) / 1000000 as lmt_amt, b.cus_name
+          from lmt_agr_details l, cus_base b, lmt_agr_info a
+         where lmt_status = '10'
+           and l.cus_id = b.cus_id(+) and l.agr_no = a.agr_no
+           and l.cus_id in (select cus_id from cus_grp_member)
+           and instr((case when(${br_type} = 'all') then manager_br_id 
+        when(${br_type} = 'sup') then (select to_char(LISTAGG(o.organno,',') within group(order by o.organno)) from s_org o where o.locate like '%'||${organNo}||'%') 
+        else ${organNo} end),manager_br_id) > '0'
+         group by l.cus_id, b.cus_name
+         order by lmt_amt desc)
+ where rownum < '11' 
+  ]]>
+    </SELECT>
+</SQL>
+
+<!-- 担保下授信前十大户  -->
+<SQL id="getLmtWarnChartGuar" parameterClass="java.util.HashMap" resultClass="com.ecc.emp.data.KeyedCollection">
+    <SELECT>
+  <![CDATA[
+select *
+  from (select l.cus_id, sum(crd_amt) / 1000000 as lmt_amt, b.cus_name
+          from lmt_agr_details l, cus_base b, lmt_agr_info a
+         where lmt_status = '10'
+           and l.cus_id = b.cus_id(+) and l.agr_no = a.agr_no
+           and l.guar_type = ${guar_type}
+           and instr((case when(${br_type} = 'all') then manager_br_id 
+        when(${br_type} = 'sup') then (select to_char(LISTAGG(o.organno,',') within group(order by o.organno)) from s_org o where o.locate like '%'||${organNo}||'%') 
+        else ${organNo} end),manager_br_id) > '0'
+         group by l.cus_id, b.cus_name
+         order by lmt_amt desc)
+ where rownum < '11'
+  ]]>
+    </SELECT>
+</SQL>
+
+<!--*************** 3.授信预警end ****************-->
+
+<!--*************** 4.用信预警begin ****************-->
+
+<!--  逾期业务比例图形  -->
+<SQL id="getCostWarnChartOne" parameterClass="java.util.HashMap" resultClass="com.ecc.emp.data.KeyedCollection">
+    <SELECT>
+  <![CDATA[
+select count(*) nums,over_status,
+ decode(over_status,'past','\u903e\u671f\u4e1a\u52a1','\u672a\u903e\u671f\u4e1a\u52a1') as over_name
+ from (
+  select case when (a.overdue_date is not null and a.overdue_balance > 0) then 'past' else 'include' end as over_status
+  from acc_loan a
+  where a.acc_status = '1'
+  and instr((case when(${br_type} = 'all') then manager_br_id 
+  when(${br_type} = 'sup') then (select to_char(LISTAGG(o.organno,',') within group(order by o.organno)) from s_org o where o.locate like '%'||${organNo}||'%') 
+  else ${organNo} end),manager_br_id) > '0'
+ ) group by over_status 
+  ]]>
+    </SELECT>
+</SQL>
+
+<!--  贷款投向业务比例图形  modified by yangzy 2015/07/30 需求：XD150407026， 更新存量外币业务的汇率-->
+<SQL id="getCostWarnChartTwothree" parameterClass="java.util.HashMap" resultClass="com.ecc.emp.data.KeyedCollection">
+    <SELECT>
+  <![CDATA[
+select cnname as indus_cnname,enname as indus_enname ,nvl(sum(nums),0) as nums ,nvl(sum(cont_amt),0)/1000000 as amt  
+ from 
+   (select cnname,enname from s_treedic where opttype = 'STD_GB_4754-2011' and enname between 'A' and 'Z') a
+ left join  
+   (select c.cont_no,c.cus_id, 1 as nums, c.exchange_rate * c.cont_amt as cont_amt, substr(t.locate,5,1) indus_type
+    from CTR_LOAN_CONT c, CTR_LOAN_CONT_SUB s ,
+    (select * from s_treedic where opttype = 'STD_GB_4754-2011') t
+   where c.cont_no = s.cont_no and c.cont_status = '200'
+     and t.enname(+) = s.loan_direction
+     and s.loan_direction is not null
+     and instr((case when(${br_type} = 'all') then c.manager_br_id 
+      when(${br_type} = 'sup') then (select to_char(LISTAGG(o.organno,',') within group(order by o.organno)) from s_org o where o.locate like '%'||${organNo}||'%') 
+      else ${organNo} end),c.manager_br_id) > '0'
+     ) b
+ on a.enname = b.indus_type group by cnname,enname order by enname
+  ]]>
+    </SELECT>
+</SQL>
+
+<!--  全行五级分类业务比例图形  -->
+<SQL id="getCostWarnChartFour" parameterClass="java.util.HashMap" resultClass="com.ecc.emp.data.KeyedCollection">
+    <SELECT>
+  <![CDATA[
+select enname  as class_enname,cnname as class_cnname , nvl(sum(loan_amt),0)/1000000 as amt 
+ from 
+   (select enname,cnname from s_dic where opttype = 'STD_ZB_FIVE_SORT' and enname != '00') a 
+ left join 
+   (select five_class,loan_amt from acc_loan 
+    where acc_status = '1' 
+    and instr((case when(${br_type} = 'all') then manager_br_id 
+    when(${br_type} = 'sup') then (select to_char(LISTAGG(o.organno,',') within group(order by o.organno)) from s_org o where o.locate like '%'||${organNo}||'%') 
+    else ${organNo} end),manager_br_id) > '0'
+   ) b
+ on a.enname = b.five_class group by enname,cnname order by enname 
+  ]]>
+    </SELECT>
+</SQL>
+
+<!--  条线下五级分类业务比例图形  -->
+<SQL id="getCostWarnChartFiveSeven" parameterClass="java.util.HashMap" resultClass="com.ecc.emp.data.KeyedCollection">
+    <SELECT>
+  <![CDATA[
+select enname  as class_enname,cnname as class_cnname , nvl(sum(loan_amt),0)/1000000 as amt 
+ from 
+   (select enname,cnname from s_dic where opttype = 'STD_ZB_FIVE_SORT' and enname != '00') a 
+ left join 
+   (select five_class,loan_amt  
+    from acc_loan l ,cus_base c
+    where acc_status = '1' and l.cus_id = c.cus_id
+    and c.belg_line = ${belg_line}
+    and instr((case when(${br_type} = 'all') then manager_br_id 
+    when(${br_type} = 'sup') then (select to_char(LISTAGG(o.organno,',') within group(order by o.organno)) from s_org o where o.locate like '%'||${organNo}||'%') 
+    else ${organNo} end),manager_br_id) > '0'
+    ) b
+ on a.enname = b.five_class group by enname,cnname order by enname 
+  ]]>
+    </SELECT>
+</SQL>
+
+<!--  用信十大户  -->
+<SQL id="getCostWarnChartEight" parameterClass="java.lang.String" resultClass="com.ecc.emp.data.KeyedCollection">
+    <SELECT>
+  <![CDATA[
+select cus_id,
+       lmt_cost_amt / 1000000 as amt,
+       (select cus_name from cus_base where cus_id = a.cus_id) cus_name
+  from lmt_cost_last a
+  where flag = '01'
+ order by amt desc
+  ]]>
+    </SELECT>
+</SQL>
+
+<!--  业务十大户  -->
+<SQL id="getCostWarnChartNine" parameterClass="java.util.HashMap" resultClass="com.ecc.emp.data.KeyedCollection">
+    <SELECT>
+  <![CDATA[
+select a.cus_id, amt/1000000 as amt, b.cus_name 
+ from (
+   select cus_id,sum(bill_amt)amt from ( 
+     select case when (substr(v.prd_id,1,2)>= '50' ) then '50' else substr(v.prd_id,1,2) end as prd_type , 
+     (m.base_remit * v.bill_amt)bill_amt, cus_id 
+     from acc_view v ,prd_rate_maintain m 
+     where v.cur_type = m.fount_cur_type
+     and v.prd_id not in ('400022','400023','400024','600020','600021','600022','100063','100065') 
+     and cus_id not in (select cus_id from cus_same_org) and v.status = '1'
+     and instr((case when(${br_type} = 'all') then manager_br_id 
+      when(${br_type} = 'sup') then (select to_char(LISTAGG(o.organno,',') within group(order by o.organno)) from s_org o where o.locate like '%'||${organNo}||'%') 
+      else ${organNo} end),manager_br_id) > '0'
+   ) a where a.prd_type = ${prd_type} group by cus_id order by amt desc 
+ )a , cus_base b where a.cus_id = b.cus_id and rownum < '11'
+  ]]>
+    </SELECT>
+</SQL>
+
+<!--  垫款十大户  -->
+<SQL id="getCostWarnChartFourteen" parameterClass="java.util.HashMap" resultClass="com.ecc.emp.data.KeyedCollection">
+    <SELECT>
+  <![CDATA[
+select cus_id,pad_amt / 1000000 as amt,
+       (select cus_name from cus_base where cus_id = a.cus_id) cus_name
+  from (select cus_id, sum(pad_amt) as pad_amt
+          from (select cus_id, m.base_remit * pad_amt as pad_amt
+                  from acc_pad a, prd_rate_maintain m
+                 where a.pad_cur_type = m.fount_cur_type
+                   and cus_id not in (select cus_id from cus_same_org)
+                   and a.accp_status = '1'
+                   and instr((case when(${br_type} = 'all') then a.manager_br_id 
+                    when(${br_type} = 'sup') then (select to_char(LISTAGG(o.organno,',') within group(order by o.organno)) from s_org o where o.locate like '%'||${organNo}||'%') 
+                    else ${organNo} end),a.manager_br_id) > '0'
+         )group by cus_id
+         order by pad_amt desc) a
+ where rownum < '11'
+  ]]>
+    </SELECT>
+</SQL>
+
+<!--*************** 4.用信预警end ****************-->
+
+<!--*************** 5.同业预警begin ****************-->
+
+<!--  全行同业客户用信比例图形  -->
+<SQL id="getIntbankWarnChart" parameterClass="java.lang.String" resultClass="com.ecc.emp.data.KeyedCollection">
+    <SELECT>
+  <![CDATA[
+select cus_id,lmt_cost_amt/1000000 as amt ,(select same_org_cnname from cus_same_org where cus_id = v.cus_id) as cus_name 
+ from lmt_cost_last v where flag = '02' order by amt desc 
+  ]]>
+    </SELECT>
+</SQL>
+
+<!--*************** 5.同业预警end ****************-->
+
+<!--*************** 6.储备项目begin ****************-->
+<!-- 机构储备项目数及金额  -->
+<SQL id="getSaveWarnChart" parameterClass="java.lang.String" resultClass="com.ecc.emp.data.KeyedCollection">
+    <SELECT>
+  <![CDATA[
+select * from
+(select (select cnname
+          from s_dic
+         where opttype = 'STD_ZB_BUSILINE'
+           and enname = a.enname) as line_cnname,
+       (select organname from s_org where organno = a.manager_br_id) as org_name,
+       a.manager_br_id,
+       a.enname as line_enname,
+       nvl(sum(crd_totl_amt), 0) / 1000000 as amts,
+       nvl(sum(nums), 0) as nums
+  from (select *
+          from (select enname
+                  from s_dic
+                 where opttype = 'STD_ZB_BUSILINE'
+                   and enname in ('BL100', 'BL200')) d
+          join (select manager_br_id
+                 from lmt_apply a
+                where a.approve_status not in ('000', '997', '998')
+               union
+               select manager_br_id
+                 from LMT_APP_JOINT_COOP c
+                where c.approve_status not in ('000', '997', '998')) f on 1 = 1) a
+  left join (select (select belg_line from cus_base where cus_id = a.cus_id) as line_enname,
+                    a.cus_id,
+                    a.crd_totl_amt,
+                    a.manager_br_id,
+                    1 as nums
+               from lmt_apply a
+              where a.approve_status not in ('000', '997', '998')
+             union
+             select (select belg_line from cus_base where cus_id = c.cus_id) as line_enname,
+                    c.cus_id,
+                    c.lmt_totl_amt,
+                    c.manager_br_id,
+                    1 as nums
+               from LMT_APP_JOINT_COOP c
+              where c.approve_status not in ('000', '997', '998')) b on a.enname =
+                                                                        b.line_enname
+                                                                    and a.manager_br_id =
+                                                                        b.manager_br_id
+ group by a.manager_br_id, a.enname
+ order by a.manager_br_id, a.enname) where nums <> 0
+  ]]>
+    </SELECT>
+</SQL>
+
+<!--*************** 6.储备项目end ****************-->
+
+<!--*************** 7.新资本统计begin ****************-->
+<!-- 取ods新资本统计表  -->
+<SQL id="getCapStsChart" parameterClass="java.lang.String" resultClass="com.ecc.emp.data.KeyedCollection">
+    <SELECT>
+  <![CDATA[
+select (case when a.result is null then 0*100||'%' else a.result*100||'%' end) as nums
+ from ods_m_ods_cap_sts a  where a.work_date = (select max(work_date) from ods_m_ods_cap_sts) order by captype 
+  ]]>
+    </SELECT>
+</SQL>
+<!--*************** 7.新资本统计end ****************-->
+
+<!--*************************************************** 风险预警end **************************************************-->
+
+
+<!--*************************************************** 贷款指标分析begin **************************************************-->
+<!--*************** 1.贷款余额begin ****************-->
+
+<!--  贷款余额图形  -->
+<SQL id="getLoanBalanceChart" parameterClass="java.lang.String" resultClass="com.ecc.emp.data.KeyedCollection">
+    <SELECT>
+  <![CDATA[
+select his_date as enname,sum(m.loan_balance)/10000 as nums,substr(his_date,0,4)||'\u5e74'||substr(his_date,6,2)||'\u6708' as cnname
+ from acc_loan_m m where m.his_date >= ( select (substr(openday,1,4)-1)||'-12-31' as lastEnd  from pub_sys_info )
+ and m.his_date < ( select openday  from pub_sys_info ) and prd_id in (select prdid from Prd_Basicinfo where prdowner like '%BL300%')
+ group by his_date order by his_date 
+  ]]>
+    </SELECT>
+</SQL>
+
+<!--*************** 1.贷款余额end ****************-->
+
+<!--*************** 2.不良率begin ****************-->
+
+<!--  不良率表格取数  -->
+<SQL id="getBadRateChart" parameterClass="java.lang.String" resultClass="com.ecc.emp.data.KeyedCollection">
+    <SELECT>
+  <![CDATA[
+select month,trim(to_char(balance_amt,'99,999,990.00')) as balance_amt ,trim(to_char(bad_amt,'99,999,990.00')) as bad_amt,
+ trim(to_char(round(bad_rate*100,2),'99,999,990.00')||'%') as bad_rate from (
+ select replace(substr(his_date, 6, 1), '0', '')||substr(his_date, 7, 1) as month,balance_amt,bad_amt,
+ case when balance_amt = 0 then 0 else round(bad_amt/balance_amt,4) end as bad_rate  from (
+ select his_date,sum(m.loan_balance)/10000 as balance_amt,sum(m.overdue_balance+m.slack_balance+m.bad_dbt_balance)/10000 as bad_amt
+ from acc_loan_m m where m.his_date > ( select (substr(openday,1,4)-1)||'-12-31' as lastEnd  from pub_sys_info )
+ and m.his_date < ( select openday  from pub_sys_info )and prd_id in (select prdid from Prd_Basicinfo where prdowner like '%BL300%')
+ group by his_date order by his_date ))
+  ]]>
+    </SELECT>
+</SQL>
+
+<!--*************** 2.不良率end ****************-->
+
+<!--*************** 3.机构不良贷款分析begin ****************-->
+
+<!--  机构不良贷款分析表格取数  -->
+<SQL id="getOrgBadAnalyChart" parameterClass="java.lang.String" resultClass="com.ecc.emp.data.KeyedCollection">
+    <SELECT>
+  <![CDATA[
+select (select organname from s_org where organno = manager_br_id ) as orgName,
+ trim(to_char(loan_balance,'99,999,990.00')) as loan_balance ,trim(to_char(bad_amt,'99,999,990.00')) as bad_amt,
+ case when loan_balance = 0 then '0' else trim(to_char(round(bad_amt*100/loan_balance,2),'99,999,990.00')||'%') end as bad_rate ,
+ trim(to_char(overdue_balance,'99,999,990.00')) as overdue_balance,trim(to_char(slack_balance,'99,999,990.00')) as slack_balance,
+ trim(to_char(bad_dbt_balance,'99,999,990.00')) as bad_dbt_balance
+ from ( select manager_br_id,sum(loan_balance)loan_balance,sum(bad_amt)bad_amt,
+ sum(overdue_balance)overdue_balance,sum(slack_balance)slack_balance,sum(bad_dbt_balance)bad_dbt_balance
+ from ( select loan_balance/10000 as loan_balance,a.overdue_balance/10000 as overdue_balance,
+ (overdue_balance + slack_balance + bad_dbt_balance)/10000 as bad_amt ,a.manager_br_id,
+ a.slack_balance/10000 as slack_balance,a.bad_dbt_balance/10000 as bad_dbt_balance from acc_loan_m a 
+ where his_date = (select to_char(add_months(last_day(to_date(openday,'yyyy-mm-dd')),-1),'yyyy-mm-dd') from pub_sys_info ) 
+ and prd_id in (select prdid from Prd_Basicinfo where prdowner like '%BL300%') 
+ ) group by manager_br_id having sum(bad_amt)>0  order by bad_amt desc )
+  ]]>
+    </SELECT>
+</SQL>
+
+<!--*************** 3.机构不良贷款分析end ****************-->
+
+<!--*************** 4.个贷不良贷款分析begin ****************-->
+
+<!--  各个贷品种下不良贷款比例饼图  -->
+<SQL id="getIndivBadAnalyChartOne" parameterClass="java.lang.String" resultClass="com.ecc.emp.data.KeyedCollection">
+    <SELECT>
+  <![CDATA[
+select prd_id as prd_enname , (select prdname from Prd_Basicinfo where prdid = m.prd_id) as prd_cnname ,
+ sum(m.loan_balance)/10000 as nums 
+ from acc_loan_m m where m.loan_balance > 0 and m.normal_balance = 0 
+ and his_date = (select to_char(add_months(last_day(to_date(openday,'yyyy-mm-dd')),-1),'yyyy-mm-dd') from pub_sys_info ) 
+ and prd_id in (select prdid from Prd_Basicinfo where prdowner like '%BL300%') group by  prd_id
+  ]]>
+    </SELECT>
+</SQL>
+
+<!--  个人不良贷款前10的客户经理分布柱状图  -->
+<SQL id="getIndivBadAnalyChartTwo" parameterClass="java.lang.String" resultClass="com.ecc.emp.data.KeyedCollection">
+    <SELECT>
+  <![CDATA[
+select * from (
+ select c.manager_id as cust_mgr ,u.actorname as mgr_name ,sum(loan_balance)/10000 as nums
+ from acc_loan_m m ,(select cont_no,manager_id from cus_manager where is_main_manager = '1') c ,s_user u
+ where m.loan_balance>0 and m.normal_balance = 0  and m.cont_no = c.cont_no(+) and c.manager_id = u.actorno
+ and his_date = (select to_char(add_months(last_day(to_date(openday,'yyyy-mm-dd')),-1),'yyyy-mm-dd') from pub_sys_info )
+ and prd_id in (select prdid from Prd_Basicinfo where prdowner like '%BL300%')
+ group by c.manager_id,u.actorname order by nums desc 
+)where rownum <11
+  ]]>
+    </SELECT>
+</SQL>
+
+<!--*************** 4.个贷不良贷款分析end ****************-->
+
+<!--*************** 5.贷款余额对比begin ****************-->
+
+<!--  贷款余额对比图形  -->
+<SQL id="getLoanBalanceAnalyChart" parameterClass="java.lang.String" resultClass="com.ecc.emp.data.KeyedCollection">
+    <SELECT>
+  <![CDATA[
+select his_date as enname,sum(m.loan_balance)/100000000 as nums,substr(his_date,0,4)||'\u5e74'||substr(his_date,6,2)||'\u6708' as cnname
+ from acc_loan_m m where m.his_date >= ( select (substr(openday,1,4)-1)||'-12-31' as lastEnd  from pub_sys_info )
+ and m.his_date < ( select openday  from pub_sys_info ) and prd_id in (select prdid from Prd_Basicinfo where prdowner like '%BL300%')
+ group by his_date order by his_date 
+  ]]>
+    </SELECT>
+</SQL>
+
+<!--*************** 5.贷款余额对比end ****************-->
+
+<!--*************** 6.贷款投向begin ****************-->
+
+<!--  贷款投向图形  -->
+<SQL id="getLoanDirectionChart" parameterClass="java.lang.String" resultClass="com.ecc.emp.data.KeyedCollection">
+    <SELECT>
+  <![CDATA[
+select nvl(sum(loan_balance)/100000000,0) as nums , d.prdid,d.prdname from 
+ (select * from (select prdname,prdid from Prd_Basicinfo where prdowner like '%BL300%' ) a
+ join (select ${_SIG_VALUE} as his_date from dual )b on 1=1)d left join ( select prd_id,his_date,loan_balance from acc_loan_m) m
+ on m.prd_id = d.prdid and m.his_date = d.his_date  group by d.prdid,d.his_date,prdname order by d.his_date , d.prdid
+  ]]>
+    </SELECT>
+</SQL>
+
+<!--*************** 6.贷款投向end ****************-->
+
+<!--*************** 7.贷款结构begin ****************-->
+
+<!--  贷款结构图形  -->
+<SQL id="getloanStruChart" parameterClass="java.lang.String" resultClass="com.ecc.emp.data.KeyedCollection">
+    <SELECT>
+  <![CDATA[
+select nvl(sum(loan_balance)/100000000,0) as nums , a.prdid, m.his_date as date_enname,a.prdname,
+ substr(m.his_date,0,4)||'\u5e74'||substr(m.his_date,6,2)||'\u6708' as date_cnname from 
+ (select enname prdid,cnname prdname from s_dic where opttype = 'STD_ZB_ASSURE_MEANS' and enname in ('100','200','300','400'))a
+ left join (select assure_main as prd_id,jj.his_date,loan_balance from acc_loan_m jj , ctr_loan_cont ht 
+ where jj.cont_no = ht.cont_no  and ht.assure_main in ('100','200','300','400')
+ and jj.prd_id in (select prdid from Prd_Basicinfo where prdowner like '%BL300%') and jj.his_date = ${_SIG_VALUE} ) m 
+ on m.prd_id = a.prdid  group by a.prdid,m.his_date,prdname order by m.his_date , a.prdid
+  ]]>
+    </SELECT>
+</SQL>
+
+<!--*************** 7.贷款结构end ****************-->
+
+<!--*************************************************** 贷款指标分析end ****************************************************-->
+
+<!--*************************************************** 审批官报备begin ****************************************************-->
+
+<!--  审批官人员范围  -->
+<SQL id="getDthApproveUser" parameterClass="java.lang.String" resultClass="java.lang.String">
+    <SELECT>
+  <![CDATA[
+select to_char(wmsys.wm_concat(distinct(actorno))) from s_dutyuser 
+ where dutyno in ('D0003','D0001','D0002','D0021','D0020','D0015','S0002','D0017')
+  ]]>
+    </SELECT>
+</SQL>
+
+<!--  上周授信报备  -->
+<SQL id="getDthApproveLmtLast" parameterClass="java.lang.String" resultClass="com.ecc.emp.data.KeyedCollection">
+    <SELECT>
+  <![CDATA[
+select row_number()over(PARTITION BY c.instanceid ORDER BY c.commenttime )as num,
+ substr(commenttime,0,10) as nodeendtime,c.userid,c.username,
+ l.serno,l.app_type,l.cus_id,cus.cus_name,l.crd_totl_amt,nvl(l.org_crd_totl_amt,0)org_crd_totl_amt,
+ (crd_totl_amt-nvl(org_crd_totl_amt,0))change_amt,l.approve_status,
+ (select nvl(to_char(LISTAGG(prd_id,',') within group(order by prd_id)),' ')  from lmt_app_details where serno = l.serno) as prd_id ,
+ (select nvl(to_char(wmsys.wm_concat(distinct(guar_type))),' ') from lmt_app_details where serno = l.serno) as guar_type ,
+ cus.belg_line,cus.com_cll_type ,w.bizseqno,w.wfsign,w.orgid,
+ (select cnname from s_treedic where opttype = 'STD_GB_4754-2011' and enname = substr(cus.com_cll_type,2, 4))com_cll_big_type,
+ (select cnname from s_treedic where opttype = 'STD_GB_4754-2011' and enname = substr(cus.com_cll_type,0,1))com_cll_door_type,
+ case when (l.app_type = '01') then '201' when (l.app_type = '02' and crd_totl_amt-nvl(org_crd_totl_amt,0) > 0) then '202'
+ when (l.app_type = '02' and crd_totl_amt-nvl(org_crd_totl_amt,0) < 0) then '204'
+ when (l.app_type = '02' and crd_totl_amt-nvl(org_crd_totl_amt,0) = 0) then '203' else '' end as report_type  ,
+ c.commentcontent as commentcontent 
+ from wf_main_recordend w ,(select b.cus_id, b.cus_name,b.belg_line, 
+ (select com_cll_type from cus_com where cus_id = b.cus_id) as com_cll_type from cus_base b ) cus,
+ (select serno,app_type,cus_id,crd_totl_amt,org_crd_totl_amt,approve_status from lmt_apply union 
+ select serno,app_type,cus_id,crd_totl_amt,org_crd_totl_amt,approve_status from lmt_app_indiv ) l,
+ (select commentid,instanceid,userid,username,commenttime,commentcontent from wf_commentend ) c
+ where l.cus_id = cus.cus_id and wfsign in ('Lmt_Apply','Lmt_Apply_f','Lmt_Apply_Other') and l.serno = w.bizseqno  
+ and l.approve_status in ('997','998') and c.instanceid = w.instanceid
+ and userid in (select actorno from s_dutyuser where dutyno in ('D0003','D0001','D0002','D0021','D0020','D0015','S0002','D0017'))
+ and replace(substr(commenttime,0,10),'-','') >= (select to_char(trunc(to_date(openday,'yyyy-mm-dd'),'d')-7,'yyyymmdd') from pub_sys_info)
+ and replace(substr(commenttime,0,10),'-','') <= (select to_char(trunc(to_date(openday,'yyyy-mm-dd'),'d')-1,'yyyymmdd') from pub_sys_info)
+  ]]>
+    </SELECT>
+</SQL>
+
+<!--  本周授信报备  -->
+<SQL id="getDthApproveLmtThis" parameterClass="java.lang.String" resultClass="com.ecc.emp.data.KeyedCollection">
+    <SELECT>
+  <![CDATA[
+select row_number()over(PARTITION BY c.instanceid ORDER BY c.commenttime )as num,
+ substr(commenttime,0,10) as nodeendtime,c.userid,c.username,
+ l.serno,l.app_type,l.cus_id,cus.cus_name,l.crd_totl_amt,nvl(l.org_crd_totl_amt,0)org_crd_totl_amt,
+ (crd_totl_amt-nvl(org_crd_totl_amt,0))change_amt,l.approve_status,
+ (select nvl(to_char(LISTAGG(prd_id,',') within group(order by prd_id)),' ')  from lmt_app_details where serno = l.serno) as prd_id ,
+ (select nvl(to_char(LISTAGG(guar_type,',') within group(order by guar_type)),' ') from lmt_app_details where serno = l.serno) as guar_type ,
+ cus.belg_line,cus.com_cll_type ,w.bizseqno,w.wfsign,w.orgid,
+ (select cnname from s_treedic where opttype = 'STD_GB_4754-2011' and enname = substr(cus.com_cll_type,2, 4))com_cll_big_type,
+ (select cnname from s_treedic where opttype = 'STD_GB_4754-2011' and enname = substr(cus.com_cll_type,0,1))com_cll_door_type,
+ case when (l.app_type = '01') then '201' when (l.app_type = '02' and crd_totl_amt-nvl(org_crd_totl_amt,0) > 0) then '202'
+ when (l.app_type = '02' and crd_totl_amt-nvl(org_crd_totl_amt,0) < 0) then '204'
+ when (l.app_type = '02' and crd_totl_amt-nvl(org_crd_totl_amt,0) = 0) then '203' else '' end as report_type  ,
+ c.commentcontent as commentcontent 
+ from wf_main_recordend w ,(select b.cus_id, b.cus_name,b.belg_line, 
+ (select com_cll_type from cus_com where cus_id = b.cus_id) as com_cll_type from cus_base b ) cus,
+ (select serno,app_type,cus_id,crd_totl_amt,org_crd_totl_amt,approve_status from lmt_apply union 
+ select serno,app_type,cus_id,crd_totl_amt,org_crd_totl_amt,approve_status from lmt_app_indiv ) l,
+ (select commentid,instanceid,userid,username,commenttime,commentcontent from wf_commentend ) c
+ where l.cus_id = cus.cus_id and wfsign in ('Lmt_Apply','Lmt_Apply_f','Lmt_Apply_Other') and l.serno = w.bizseqno  
+ and l.approve_status in ('997','998') and c.instanceid = w.instanceid
+ and userid in (select actorno from s_dutyuser where dutyno in ('D0003','D0001','D0002','D0021','D0020','D0015','S0002','D0017'))
+ and replace(substr(commenttime,0,10),'-','') >= (select to_char(trunc(to_date(openday,'yyyy-mm-dd'),'d'),'yyyymmdd') from pub_sys_info)
+ and replace(substr(commenttime,0,10),'-','') <= (select to_char(trunc(to_date(openday,'yyyy-mm-dd'),'d')+6,'yyyymmdd') from pub_sys_info)
+  ]]>
+    </SELECT>
+</SQL>
+
+<!--  上周评级报备  -->
+<SQL id="getDthApproveCcrLast" parameterClass="java.lang.String" resultClass="com.ecc.emp.data.KeyedCollection">
+    <SELECT>
+  <![CDATA[
+select row_number()over(PARTITION BY c.instanceid ORDER BY c.commenttime )as num,
+ substr(commenttime,0,10) as nodeendtime,c.userid,c.username,
+ r.approve_status,r.cus_id,(select model_name from Ind_Model where model_no = d.model_no ) as flag, case when (d.last_adjusted_grade is null) then '101' else '102' end as app_type,
+ d.auto_grade,d.adjusted_grade,d.auto_score,cus.cus_name,cus.belg_line,cus.com_cll_type ,w.bizseqno,w.orgid, 
+ (select cnname from s_treedic where opttype = 'STD_GB_4754-2011' and enname = substr(cus.com_cll_type,2, 4))com_cll_big_type,
+ (select cnname from s_treedic where opttype = 'STD_GB_4754-2011' and enname = substr(cus.com_cll_type,0,1))com_cll_door_type,
+ c.commentcontent as commentcontent 
+ from Ccr_App_Info r ,  wf_main_recordend w ,ccr_app_detail d ,(select b.cus_id, b.cus_name,b.belg_line, 
+ (select com_cll_type from cus_com where cus_id = b.cus_id) as com_cll_type from cus_base b ) cus ,
+ (select commentid,instanceid,userid,username,commenttime,commentcontent from wf_commentend ) c
+ where r.cus_id = cus.cus_id  and r.serno = w.bizseqno and r.approve_status in ('997','998') 
+ and r.serno = d.serno and c.instanceid = w.instanceid
+ and wfsign in ('ccr_app_info','ccr_app_info_f','Lmt_Sig_Lmt','CcrAppFinGuar','CcrAppFinGuar_F','ccr_rat_direct','ccr_rat_direct_f')
+ and userid in (select actorno from s_dutyuser where dutyno in ('D0003','D0001','D0002','D0021','D0020','D0015','S0002','D0017'))
+ and replace(substr(commenttime,0,10),'-','') >= (select to_char(trunc(to_date(openday,'yyyy-mm-dd'),'d')-7,'yyyymmdd') from pub_sys_info)
+ and replace(substr(commenttime,0,10),'-','') <= (select to_char(trunc(to_date(openday,'yyyy-mm-dd'),'d')-1,'yyyymmdd') from pub_sys_info)
+  ]]>
+    </SELECT>
+</SQL>
+
+<!--  本周评级报备  -->
+<SQL id="getDthApproveCcrThis" parameterClass="java.lang.String" resultClass="com.ecc.emp.data.KeyedCollection">
+    <SELECT>
+  <![CDATA[
+select row_number()over(PARTITION BY c.instanceid ORDER BY c.commenttime )as num,
+ substr(commenttime,0,10) as nodeendtime,c.userid,c.username,
+ r.approve_status,r.cus_id,(select model_name from Ind_Model where model_no = d.model_no ) as flag, case when (d.last_adjusted_grade is null) then '101' else '102' end as app_type,
+ d.auto_grade,d.adjusted_grade,d.auto_score,cus.cus_name,cus.belg_line,cus.com_cll_type ,w.bizseqno,w.orgid, 
+ (select cnname from s_treedic where opttype = 'STD_GB_4754-2011' and enname = substr(cus.com_cll_type,2, 4))com_cll_big_type,
+ (select cnname from s_treedic where opttype = 'STD_GB_4754-2011' and enname = substr(cus.com_cll_type,0,1))com_cll_door_type,
+ c.commentcontent as commentcontent 
+ from Ccr_App_Info r ,  wf_main_recordend w ,ccr_app_detail d ,(select b.cus_id, b.cus_name,b.belg_line, 
+ (select com_cll_type from cus_com where cus_id = b.cus_id) as com_cll_type from cus_base b ) cus ,
+ (select commentid,instanceid,userid,username,commenttime,commentcontent from wf_commentend ) c
+ where r.cus_id = cus.cus_id  and r.serno = w.bizseqno and r.approve_status in ('997','998') 
+ and r.serno = d.serno and c.instanceid = w.instanceid
+ and wfsign in ('ccr_app_info','ccr_app_info_f','Lmt_Sig_Lmt','CcrAppFinGuar','CcrAppFinGuar_F','ccr_rat_direct','ccr_rat_direct_f')
+ and userid in (select actorno from s_dutyuser where dutyno in ('D0003','D0001','D0002','D0021','D0020','D0015','S0002','D0017'))
+ and replace(substr(commenttime,0,10),'-','') >= (select to_char(trunc(to_date(openday,'yyyy-mm-dd'),'d'),'yyyymmdd') from pub_sys_info)
+ and replace(substr(commenttime,0,10),'-','') <= (select to_char(trunc(to_date(openday,'yyyy-mm-dd'),'d')+6,'yyyymmdd') from pub_sys_info)
+  ]]>
+    </SELECT>
+</SQL>
+
+<!--  首页工作量统计  -->
+<SQL id="queryDthApproveQuery" parameterClass="java.lang.String" resultClass="com.ecc.emp.data.KeyedCollection">
+    <SELECT>
+  <![CDATA[
+select * from (
+ select actorno as userid,username ,nvl(this_ccr,0)this_ccr,nvl(last_ccr,0)last_ccr,nvl(this_lmt,0)this_lmt,nvl(last_lmt,0)last_lmt
+ from (select actorno,(select actorname from s_user where actorno = dt.actorno)username 
+ from (select distinct(actorno)actorno from s_dutyuser where dutyno in ('D0003','D0001','D0002','D0021','D0020','D0015','S0002','D0017'))dt) sdt
+ left join
+ (select userid,sum(this_ccr)this_ccr,sum(last_ccr)last_ccr,sum(this_lmt)this_lmt,sum(last_lmt)last_lmt from (
+ select c.instanceid,userid,0 as this_ccr,0 as last_ccr,
+ case when (replace(substr(commenttime,0,10),'-','') >=(select to_char(trunc(to_date(openday,'yyyy-mm-dd'),'d'),'yyyymmdd') 
+ from pub_sys_info)) then 1 else 0 end as this_lmt,
+ case when (replace(substr(commenttime,0,10),'-','') <(select to_char(trunc(to_date(openday,'yyyy-mm-dd'),'d'),'yyyymmdd') 
+ from pub_sys_info)) then 1 else 0 end as last_lmt
+ from wf_commentend c,wf_main_recordend m where c.instanceid = m.instanceid
+ and m.wfsign in  ('Lmt_Apply','Lmt_Apply_f','Lmt_Apply_Other')
+ and bizseqno in (select serno from (select serno,approve_status,cus_id from lmt_apply  union select serno,approve_status,cus_id 
+ from lmt_app_indiv )  where approve_status in ('997','998') and cus_id in (select cus_id from cus_base) )
+ and userid in (select actorno from s_dutyuser where dutyno in ('D0003','D0001','D0002','D0021','D0020','D0015','S0002','D0017'))
+ and replace(substr(commenttime,0,10),'-','')  >= (select to_char(trunc(to_date(openday,'yyyy-mm-dd'),'d')-7,'yyyymmdd') from pub_sys_info)
+ and replace(substr(commenttime,0,10),'-','')  <= (select to_char(trunc(to_date(openday,'yyyy-mm-dd'),'d')+6,'yyyymmdd') from pub_sys_info)
+ union all
+ (select c.instanceid,userid,
+ case when (replace(substr(commenttime,0,10),'-','') >=(select to_char(trunc(to_date(openday,'yyyy-mm-dd'),'d'),'yyyymmdd') 
+ from pub_sys_info)) then 1 else 0 end as this_ccr,
+ case when (replace(substr(commenttime,0,10),'-','') <(select to_char(trunc(to_date(openday,'yyyy-mm-dd'),'d'),'yyyymmdd') 
+ from pub_sys_info)) then 1 else 0 end as last_ccr,
+ 0 as this_lmt,0 as last_lmt 
+  from wf_commentend c,wf_main_recordend m where c.instanceid = m.instanceid
+ and m. wfsign in  ('ccr_app_info','ccr_app_info_f','Lmt_Sig_Lmt','CcrAppFinGuar','CcrAppFinGuar_F','ccr_rat_direct','ccr_rat_direct_f')
+ and bizseqno in (select serno from Ccr_App_Info where approve_status in ('997','998') and cus_id in (select cus_id from cus_base))
+ and userid in (select actorno from s_dutyuser where dutyno in ('D0003','D0001','D0002','D0021','D0020','D0015','S0002','D0017'))
+ and replace(substr(commenttime,0,10),'-','')  >= (select to_char(trunc(to_date(openday,'yyyy-mm-dd'),'d')-7,'yyyymmdd') from pub_sys_info)
+ and replace(substr(commenttime,0,10),'-','')  <= (select to_char(trunc(to_date(openday,'yyyy-mm-dd'),'d')+6,'yyyymmdd') from pub_sys_info)
+ )) a group by userid) wf on sdt.actorno = wf.userid)
+ order by this_lmt desc ,this_ccr desc ,last_lmt desc ,last_ccr desc
+  ]]>
+    </SELECT>
+</SQL>
+
+<!--*************************************************** 审批官报备end ****************************************************-->
+
+</S>
