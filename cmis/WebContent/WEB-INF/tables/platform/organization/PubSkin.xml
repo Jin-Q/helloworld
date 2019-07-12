@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-
-
-<PubSkin.xml>
-	<TableModel id="PubSkin" cnname="PUB_SKIN" dbTableName="pub_skin">
-		<Field id="actorno" columnName="actorno" cnname="用户码" length="8" JDBCType="VARCHAR2" canBeNull="false"/>
-		<Field id="skinid" columnName="skinid" cnname="皮肤id" length="10" JDBCType="VARCHAR2" canBeNull="true"/>
-	</TableModel>
-</PubSkin.xml>

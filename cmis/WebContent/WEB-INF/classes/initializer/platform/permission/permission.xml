@@ -1,7 +1,0 @@
-<CMIS>
-	<buildingElement name="permission" modualName="资源管理模块">
-        
-		<initializer class="com.yucheng.cmis.platform.permission.initializer.PermissionInitializer" desc="资源定义初始化缓存"/>
-          
-	</buildingElement>
-</CMIS>

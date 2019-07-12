@@ -1,7 +1,0 @@
-<CMIS>
-	<buildingElement name="workflow" modualName="工作流引擎接入服务">
-        
-		<initializer class="com.yucheng.cmis.platform.workflow.initializer.WorkFlowInitializer" desc="工作流引擎接入初始化缓存"/>
-          
-	</buildingElement>
-</CMIS>

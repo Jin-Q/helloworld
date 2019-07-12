@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-
-
-<MortCommenOwner.xml>
-	<TableModel id="MortCommenOwner" cnname="共有人信息表" dbTableName="mort_commen_owner">
-		<Field id="commen_owner_no" isPK="true" columnName="commen_owner_no" cnname="共有人编号" length="40" JDBCType="VARCHAR2" canBeNull="false"/>
-		<Field id="guaranty_no" isPK="true" columnName="guaranty_no" cnname="押品编号" length="40" JDBCType="VARCHAR2" canBeNull="false"/>
-	</TableModel>
-</MortCommenOwner.xml>

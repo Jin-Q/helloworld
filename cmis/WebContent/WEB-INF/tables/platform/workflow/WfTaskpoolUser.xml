@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-
-
-<WfTaskpoolUser.xml>
-	<TableModel id="WfTaskpoolUser" cnname="项目池关联设置" dbTableName="wf_taskpool_user">
-		<Field id="tpid" isPK="true" columnName="tpid" cnname="TPID" length="32" JDBCType="VARCHAR2" canBeNull="false"/>
-		<Field id="userid" isPK="true" columnName="userid" cnname="USERID" length="32" JDBCType="VARCHAR2" canBeNull="false"/>
-	</TableModel>
-</WfTaskpoolUser.xml>

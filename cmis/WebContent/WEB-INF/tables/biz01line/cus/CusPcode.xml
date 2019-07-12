@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-
-
-<CusPcode.xml>
-	<TableModel id="CusPcode" cnname="客户邮政编码表" dbTableName="cus_pcode">
-		<Field id="regionalism" columnName="regionalism" cnname="REGIONALISM" length="10" JDBCType="VARCHAR2" canBeNull="true"/>
-		<Field id="pcode" columnName="pcode" cnname="PCODE" length="10" JDBCType="VARCHAR2" canBeNull="true"/>
-	</TableModel>
-</CusPcode.xml>

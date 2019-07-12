@@ -1,1 +1,0 @@
-<?xml version='1.0' encoding='UTF-8' ?><permission.xml><classMap><map id="user" class="com.yucheng.cmis.accesscontroll.UserObject"/><map id="action" class="com.yucheng.cmis.accesscontroll.ActionObject"/></classMap><user id="100005"></user></permission.xml>

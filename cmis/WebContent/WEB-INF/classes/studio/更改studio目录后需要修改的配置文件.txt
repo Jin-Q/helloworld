@@ -1,6 +1,0 @@
-更改studio目录后需要修改的配置文件
-
-com.yucheng.cmis.pub.base.CMISBusinessInitializer
-WebContent\shuffle\shufflestudio.jnlp
-WebContent\WEB-INF\classes\echain.properties
-WebContent\WEB-INF\classes\shuffle.properties

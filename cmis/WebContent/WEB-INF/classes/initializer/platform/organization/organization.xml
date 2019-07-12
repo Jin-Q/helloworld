@@ -1,7 +1,0 @@
-<CMIS>
-	<buildingElement name="organization" modualName="组织机构管理模块">
-        
-		<initializer class="com.yucheng.cmis.platform.organization.initializer.OrganizationInitializer" desc="组织机构初始化缓存"/>
-          
-	</buildingElement>
-</CMIS>
